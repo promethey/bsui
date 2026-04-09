@@ -6,6 +6,7 @@ import { classnames as cs } from "utils/classnames";
 import { spacing as spacingUtility } from "utils/spacing";
 import { background as backgroundUtility } from "utils/background";
 import { text as textUtility } from "utils/text";
+import {border as borderUtility} from 'utils/border';
 
 const propTypes = {
   as: PropTypes.oneOf([
@@ -213,47 +214,25 @@ const propTypes = {
   // border
   border: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.oneOf([
-      0,
-      "top",
-      "top-0",
-      "end",
-      "end-0",
-      "bottom",
-      "bottom-0",
-      "start",
-      "start-0",
-    ]),
+    PropTypes.shape({
+      color: PropTypes.oneOf([
+        "primary",
+        "secondary",
+        "success",
+        "danger",
+        "warning",
+        "info",
+        "light",
+        "dark",
+        "white",
+      ]),
+      width: PropTypes.oneOf([1, 2, 3, 4, 5]),
+      top: PropTypes.oneOf([1, 2, 3, 4, 5]),
+      end: PropTypes.oneOf([1, 2, 3, 4, 5]),
+      bottom: PropTypes.oneOf([1, 2, 3, 4, 5]),
+      start: PropTypes.oneOf([1, 2, 3, 4, 5]),
+    })
   ]),
-
-  // border color
-  borderColor: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "success",
-    "danger",
-    "warning",
-    "info",
-    "light",
-    "dark",
-    "white",
-  ]),
-
-  // border opacity
-  borderOpacity: PropTypes.oneOf([10, 25, 50, 75]),
-
-  // border width
-  borderWidth: PropTypes.oneOf([1, 2, 3, 4, 5]),
-
-  // border radius
-  borderRadius: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.oneOf([0, 1, 2, 3]),
-    PropTypes.oneOf(["top", "end", "bottom", "start", "circle", "pill"]),
-  ]),
-
-  // border radius size
-  borderRadiusSize: PropTypes.oneOfType([PropTypes.oneOf([0, 1, 2, 3])]),
 
   // visually
   visually: PropTypes.oneOfType([
@@ -308,12 +287,7 @@ const defaultProps = {
   shadow: null,
   bg: null,
   text: null,
-  borderWidth: null,
   border: false,
-  borderColor: null,
-  borderOpacity: null,
-  borderRadius: null,
-  borderRadiusSize: null,
   visually: null,
   visible: false,
   invisible: false,
@@ -400,11 +374,7 @@ const Box = React.forwardRef((props, ref) => {
     bg,
     text,
     border,
-    borderColor,
-    borderOpacity,
-    borderWidth,
-    borderRadius,
-    borderRadiusSize,
+    rounded,
     visually,
     visible,
     invisible,
@@ -427,17 +397,7 @@ const Box = React.forwardRef((props, ref) => {
       [prefix("start", start)]: start,
       [prefix("opacity", opacity)]: opacity,
       [prefix("shadow", shadow)]: shadow,
-      [prefix("border border", border)]: typeof border === "string",
-      [prefix("border", borderWidth)]: borderWidth,
-      [prefix("border", borderColor)]: borderColor,
-      [prefix("border", borderOpacity)]: borderOpacity,
-      [prefix("border", border)]:
-        typeof border === "string" || typeof border === "number",
-      border: typeof border === "boolean" && border,
-      [prefix("rounded", borderRadius)]: typeof borderRadius === "string",
-      [prefix("rounded", borderRadiusSize)]:
-        typeof borderRadiusSize === "number",
-      rounded: typeof borderRadius === "boolean",
+      [prefix("rounded", rounded)]: rounded,
       [prefix("visually", "hidden")]:
         typeof visually === "boolean" && !visually,
       [prefix("visually", visually)]: typeof visually === "string",
@@ -454,6 +414,7 @@ const Box = React.forwardRef((props, ref) => {
     textUtility(text),
     spacingUtility("m", m),
     spacingUtility("p", p),
+    borderUtility(border),
     cs("d", d),
     cs("d-print", dp),
     cs("float", float),

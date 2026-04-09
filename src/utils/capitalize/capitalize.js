@@ -1,6 +1,6 @@
 /**
  * Function to translate a string with the first letter capitalized
- * @param {string} str
+ * @param {string} [str=""]
  * @return {string} result
  */
 export function capitalize(str = "") {

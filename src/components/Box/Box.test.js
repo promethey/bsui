@@ -64,12 +64,25 @@ describe("Box component", () => {
     expect(el).toHaveClass("text-light");
   });
 
-  test("applies border utilities", () => {
-    render(<Box border borderWidth={2} data-testid="box" />);
+  test("applies regular border utility", () => {
+    render(<Box border data-testid="box" />);
 
     const el = screen.getByTestId("box");
     expect(el).toHaveClass("border");
-    expect(el).toHaveClass("border-2");
+  });
+
+  test("applies primary border utility", () => {
+    render(<Box border={{ color: "primary" }} data-testid="box" />);
+
+    const el = screen.getByTestId("box");
+    expect(el).toHaveClass("border border-primary");
+  });
+
+  test("applies success border utility", () => {
+    render(<Box border={{ color: "success", width: 3, top: 0, bottom: 0 }} data-testid="box" />);
+
+    const el = screen.getByTestId("box");
+    expect(el).toHaveClass("border border-success border-3 border-top-0 border-bottom-0");
   });
 
   test("visible and invisible logic works", () => {
