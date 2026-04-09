@@ -25,7 +25,7 @@ import { prefix } from "utils/prefix";
  * text({ color: 'primary', align: 'start', break: true, transform: 'lowercase', decoration: 'underline'  }) // return 'text-primary text-start text-break text-lowercase text-decoration-underline'
  *
  * @example
- * text({ color: 'danger', brk: true }) // return 'text-danger', brk was igrnored
+ * text({ color: 'danger', brk: true }) // return 'text-danger', 'brk' was igrnored
  *
  * @param {TextProp} value - text utility value
  *

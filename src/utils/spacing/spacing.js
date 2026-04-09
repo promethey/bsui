@@ -56,6 +56,7 @@ export function spacing(prfx, spaces) {
    *
    * @example
    * spacing("m", [1,2]) // 'mx-1 my-2'
+   * spacing("p", [1,2]) // 'px-1 py-2'
    * spacing("m", [1,2,3,4]) // 'mt-1 me-2 mb-3 ms-4'
    */
   if (Array.isArray(spaces)) {
@@ -67,12 +68,12 @@ export function spacing(prfx, spaces) {
       let y = spaces[1];
 
       if (check("number", x, y)) {
-        return `mx-${x} my-${y}`;
+        return `${prfx}x-${x} ${prfx}y-${y}`;
       }
 
       if (check("object, x, y")) {
-        x = classnames("mx", x);
-        y = classnames("my", y);
+        x = classnames(`${prfx}x`, x);
+        y = classnames(`${prfx}y`, y);
 
         result.push(x, y);
         return result.join(" ");
@@ -86,15 +87,15 @@ export function spacing(prfx, spaces) {
       const start = spaces[3];
 
       if (check("number", top, end, bottom, start)) {
-        return `mt-${top} me-${end} mb-${bottom} ms-${start}`;
+        return `${prfx}t-${top} ${prfx}e-${end} ${prfx}b-${bottom} ${prfx}s-${start}`;
       }
 
       if (check("object", top, end, bottom, start)) {
         result.push(
-          classnames("mt", top),
-          classnames("me", end),
-          classnames("mb", bottom),
-          classnames("ms", start),
+          classnames(`${prfx}t`, top),
+          classnames(`${prfx}e`, end),
+          classnames(`${prfx}b`, bottom),
+          classnames(`${prfx}s`, start),
         );
         return result.join(" ");
       }

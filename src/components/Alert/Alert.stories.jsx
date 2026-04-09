@@ -30,11 +30,18 @@ Default.args = {
 };
 
 export function AllThemes() {
+  const themes = ['primary', 'secondary', 'danger', 'success', 'warning', 'info', 'light', 'dark'];
+
   return (
     <>
       <Alert.Primary>Primary</Alert.Primary>
       <Alert.Secondary>Secondary</Alert.Secondary>
       <Alert.Danger>Danger</Alert.Danger>
+      <Alert.Success>Success</Alert.Success>
+      <Alert.Warning>Danger</Alert.Warning>
+      <Alert.Info>Info</Alert.Info>
+      <Alert.Light>Light</Alert.Light>
+      <Alert.Dark>Dark</Alert.Dark>
     </>
   );
 }
@@ -44,10 +51,11 @@ export const BoxAPI = Template.bind({});
 BoxAPI.args = {
   children: "Box API for Alert",
   theme: "secondary",
-  mt: 4,
-  mb: 1,
-  p: 4,
+  m: [2, 3, 4, 1],
+  p: [1, 4, 3, 2],
   borderRadiusSize: 5,
+  bg: { color: "primary", gradient: true, opacity: 10 },
+  text: { color: 'primary', align: 'start', break: true, transform: 'uppercase', decoration: 'underline'  },
 };
 
 export function AlertHeadingTypes() {
