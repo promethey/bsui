@@ -6,7 +6,7 @@ import { classnames as cs } from "utils/classnames";
 import { spacing as spacingUtility } from "utils/spacing";
 import { background as backgroundUtility } from "utils/background";
 import { text as textUtility } from "utils/text";
-import {border as borderUtility} from 'utils/border';
+import { border as borderUtility } from 'utils/border';
 
 const propTypes = {
   as: PropTypes.oneOf([
