@@ -27,5 +27,8 @@ describe("border()", () => {
   });
   test("primary border with other props", () => {
     expect(border({ color: "primary", width: 1, top: 0 })).toBe("border border-primary border-1 border-top-0")
-  })
+  });
+  test("border aspect top", () => {
+    expect(border({ aspect: "top", color: 'primary', width: 1, top: 0 })).toBe("border-top border-primary border-1 border-top-0")
+  });
 });

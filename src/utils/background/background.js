@@ -1,5 +1,22 @@
 import { prefix } from "utils/prefix";
 
+const BASE_CLASS_NAME = "bg";
+  const BG_PROPERTY_LIST = ["color", "gradient", "opacity"];
+  const BG_COLOR_LIST = [
+    "primary",
+    "secondary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+    "light",
+    "dark",
+    "body",
+    "white",
+    "transparent",
+  ];
+  const BG_OPACITY_VALUES = [10, 25, 50, 75];
+
 /**
  * Function for background utility
  *
@@ -20,23 +37,6 @@ export function background(value) {
   if (!value) {
     return "";
   }
-
-  const BASE_CLASS_NAME = "bg";
-  const BG_PROPERTY_LIST = ["color", "gradient", "opacity"];
-  const BG_COLOR_LIST = [
-    "primary",
-    "secondary",
-    "success",
-    "danger",
-    "warning",
-    "info",
-    "light",
-    "dark",
-    "body",
-    "white",
-    "transparent",
-  ];
-  const BG_OPACITY_VALUES = [10, 25, 50, 75];
 
   if (typeof value === "string" && BG_COLOR_LIST.includes(value)) {
     return prefix(BASE_CLASS_NAME, value); // return example 'bg-primary'

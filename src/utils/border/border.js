@@ -2,6 +2,11 @@
 // border={true} -> "border"
 // border={{ color="success" }} -> "border border-success"
 // border={1} -> "border border-1"
+// border="top" -> "border-top"
+// border="end" -> "border-end"
+// border="bottom" -> "border-bottom"
+// border="start" -> "border-start"
+// border={{ aspect: "top", color: "primary" }} -> "border-top border-primary"
 
 const BASE_CLASSNAME = 'border';
 const borderWidthList = [1, 2, 3, 4, 5];
@@ -15,6 +20,14 @@ export function border(value) {
     return BASE_CLASSNAME;
   }
 
+  if (valueType === 'string') {
+    if (borderDirectionsList.includes(value)) {
+      return `${BASE_CLASSNAME}-${value}`;
+    }
+
+    return "";
+  }
+
   if (valueType === "number") {
     if (borderWidthList.includes(value)) {
       return [BASE_CLASSNAME, `${BASE_CLASSNAME}-${value}`].join(" ").trim();
@@ -24,7 +37,13 @@ export function border(value) {
   }
 
   if (valueType === "object") {
-    let result = [BASE_CLASSNAME];
+    let result = [];
+
+    if (value?.aspect && borderDirectionsList.includes(value.aspect)) {
+      result.push(`${BASE_CLASSNAME}-${value.aspect}`)
+    } else {
+      result.push(BASE_CLASSNAME);
+    }
 
     for (let [key, val] of Object.entries(value)) {
       if (borderPropertyList.includes(key)) {

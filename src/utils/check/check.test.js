@@ -8,6 +8,9 @@ describe("Check utility", () => {
     test("Check number", () => {
       expect(check("number", 1, 2, 3)).toBe(true);
     });
+    test("Check number", () => {
+      expect(!check("number", 1, 2, 3)).toBe(false);
+    });
     test("Check number and string", () => {
       expect(check("number", 1, "2", 3)).toBe(false);
     });

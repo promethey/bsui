@@ -1,5 +1,34 @@
 import { prefix } from "utils/prefix";
 
+const BASE_CLASS_NAME = "text";
+const TEXT_PROPERTY_LIST = [
+  "color",
+  "align",
+  "break",
+  "transform",
+  "decoration",
+];
+const TEXT_COLOR_LIST = [
+  "primary",
+  "secondary",
+  "success",
+  "danger",
+  "warning",
+  "info",
+  "light",
+  "dark",
+  "body",
+  "muted",
+  "white",
+  "black-50",
+  "white-50",
+  "reset",
+];
+const TEXT_ALIGN_LIST = ["start", "center", "end"];
+const TEXT_ALIGN_BREAKPOINT_LIST = ["xs", "sm", "md", "lg", "xl"];
+const TEXT_TRANSFORM_LIST = ["lowercase", "uppercase", "capitalize"];
+const TEXT_DECORATION_LIST = ["underline", "line-through", "none"];
+
 /**
  * @typedef {(
  *   'primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark'
@@ -22,7 +51,7 @@ import { prefix } from "utils/prefix";
  * text("primary") // return 'text-primary'
  *
  * @example
- * text({ color: 'primary', align: 'start', break: true, transform: 'lowercase', decoration: 'underline'  }) // return 'text-primary text-start text-break text-lowercase text-decoration-underline'
+ * text({ color: 'primary', align: 'start', linebreak: true, transform: 'lowercase', decoration: 'underline'  }) // return 'text-primary text-start text-break text-lowercase text-decoration-underline'
  *
  * @example
  * text({ color: 'danger', brk: true }) // return 'text-danger', 'brk' was igrnored
@@ -38,35 +67,6 @@ export function text(value) {
   if (!value) {
     return "";
   }
-
-  const BASE_CLASS_NAME = "text";
-  const TEXT_PROPERTY_LIST = [
-    "color",
-    "align",
-    "break",
-    "transform",
-    "decoration",
-  ];
-  const TEXT_COLOR_LIST = [
-    "primary",
-    "secondary",
-    "success",
-    "danger",
-    "warning",
-    "info",
-    "light",
-    "dark",
-    "body",
-    "muted",
-    "white",
-    "black-50",
-    "white-50",
-    "reset",
-  ];
-  const TEXT_ALIGN_LIST = ["start", "center", "end"];
-  const TEXT_ALIGN_BREAKPOINT_LIST = ["xs", "sm", "md", "lg", "xl"];
-  const TEXT_TRANSFORM_LIST = ["lowercase", "uppercase", "capitalize"];
-  const TEXT_DECORATION_LIST = ["underline", "line-through", "none"];
 
   if (typeof value === "string" && TEXT_COLOR_LIST.includes(value)) {
     return prefix(BASE_CLASS_NAME, value); // return example 'text-primary'

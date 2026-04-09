@@ -29,10 +29,6 @@ export function spacing(prfx, spaces) {
     return "Error: prfx not equal m or p";
   }
 
-  if (!check("number", spaces) && !check("object", spaces)) {
-    return "Error: prfx type: " + typeof prfx;
-  }
-
   /**
    * number
    * ("m", 0) -> 'm-0'

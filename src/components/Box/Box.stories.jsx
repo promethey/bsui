@@ -36,33 +36,39 @@ export function Example() {
 
 export function Width() {
   const examples = [25, 50, 75, 100];
+  const bgBorderColors = ["danger", "warning", "warning", "success"];
 
   return (
-    <Box p={2} bgColor="light" border>
+    <>
       {examples.map((width, index) => (
         <Box
           w={width}
-          mb={index !== examples.length - 1 ? 2 : null}
+          m={[0, 0, 2, 0]}
           p={2}
-          bgColor="primary"
-          textColor="light"
-          border>
+          bg={{ color: bgBorderColors[index], opacity: 75 }}
+          text={{ color: 'white', align: 'center' }}
+          border={{ color: bgBorderColors[index], width: 1 }}
+          rounded
+        >
           {width}%
         </Box>
       ))}
-    </Box>
+    </>
   );
 }
 
 export function MaxWidth() {
   return (
-    <Box
-      maxW={100}
-      bgColor="secondary"
-      textColor="light"
-      style={{ height: "100px" }}
-      p={3}>
-      Max-width 100%
+    <Box bg={{ color: 'info', opacity: 25 }} style={{ height: '200px' }}>
+      <Box
+        mw={100}
+        p={3}
+        bg="info"
+        text="dark"
+        style={{ height: "100px" }}
+      >
+        Max-width 100%
+      </Box>
     </Box>
   );
 }
@@ -72,16 +78,18 @@ export function Height() {
   const examples = [25, 50, 75, 100];
 
   return (
-    <Box d="flex" p={2} bgColor="light" border style={{ height: "200px" }}>
+    <Box d="flex" style={{ height: "200px" }}>
       {examples.map((height, index) => (
         <Box
           w={25}
           h={height}
+          m={[0, 2, 0, 0]}
           p={[1, 2]}
-          me={index !== examples.length - 1 ? 2 : null}
-          bgColor="primary"
-          textColor="light"
-          border>
+          bg="light"
+          text={{ align: 'center' }}
+          border
+          rounded
+        >
           {height}%
         </Box>
       ))}
@@ -91,11 +99,13 @@ export function Height() {
 
 export function MaxHeight() {
   return (
-    <Box bgColor="info" bgOpacity={25} style={{ height: "100px" }}>
+    <Box bg={{ color: 'info', opacity: 25 }} style={{ height: "200px" }}>
       <Box
-        maxH={100}
-        bgColor="info"
-        style={{ width: "100px", height: "200px" }}>
+        mh={100}
+        p={3}
+        bg="info"
+        style={{ width: "150px", height: "200px" }}
+      >
         Max-height 100%
       </Box>
     </Box>
@@ -106,10 +116,10 @@ MaxHeight.storyName = "Max height";
 export function Visibility() {
   return (
     <>
-      <Box p={2} bgColor="light" border visible>
+      <Box p={2} bg="light" border visible>
         Visible
       </Box>
-      <Box p={2} bgColor="light" border invisible>
+      <Box p={2} bg="light" border invisible>
         Invisible
       </Box>
     </>
@@ -119,16 +129,16 @@ export function Visibility() {
 export function Visually() {
   return (
     <>
-      <Box p={2} bgColor="light" border>
+      <Box p={2} bg="light" border>
         Visible
       </Box>
-      <Box p={2} bgColor="light" border visually={false}>
+      <Box p={2} bg="light" border visually={false}>
         Visually hidden
       </Box>
-      <Box p={2} bgColor="light" border visually="hidden">
+      <Box p={2} bg="light" border visually="hidden">
         Visually hidden v2
       </Box>
-      <Box p={2} bgColor="light" border visually="hidden-focusable">
+      <Box p={2} bg="light" border visually="hidden-focusable">
         Visually hidden focusable
       </Box>
     </>
@@ -153,7 +163,7 @@ export function BackgroundColors() {
   return (
     <>
       {examples.map(({ bgColor, textColor }) => (
-        <Box bgColor={bgColor} textColor={textColor} p={3} mb={2}>
+        <Box bg={bgColor} text={textColor} p={3} m={[0, 0, 2, 0]}>
           .bg-
           {bgColor}
         </Box>
@@ -178,7 +188,7 @@ export function BackgroundGradients() {
   return (
     <>
       {examples.map(({ bgColor, textColor }) => (
-        <Box bgColor={bgColor} bgGradient textColor={textColor} p={3} mb={2}>
+        <Box bg={{ color: bgColor, gradient: true }} text={textColor} p={3} m={[0, 0, 2, 0]}>
           .bg-
           {bgColor}
           .bg-gradient
@@ -197,9 +207,9 @@ export function BackgroundOpacity() {
       {examples.map((opacity) => (
         <Box
           p={2}
-          bgColor="success"
-          bgOpacity={opacity}
-          textColor={opacity >= 10 && opacity <= 50 ? "dark" : "white"}>
+          bg={{ color: "primary", opacity }}
+          text={opacity >= 10 && opacity <= 50 ? "dark" : "white"}
+        >
           {opacity === null
             ? "This is default success background"
             : `This is ${opacity}% opacity success background`}
@@ -211,15 +221,16 @@ export function BackgroundOpacity() {
 BackgroundOpacity.storyName = "Background opacity";
 
 export function BorderAdditives() {
-  const examples = [true, "top", "end", "bottom", "start"];
+  const aspects = [true, "top", "end", "bottom", "start"];
+
   return (
     <Box d="flex">
-      {examples.map((border) => (
+      {aspects.map((aspect) => (
         <Box
+          m={[0, 3, 0, 0]}
+          bg={{ color: "info", opacity: 10 }}
+          border={{ width: 2, color: "info", aspect }}
           style={{ width: "5rem", height: "5rem" }}
-          me={3}
-          bgColor="light"
-          border={border}
         />
       ))}
     </Box>
