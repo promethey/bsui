@@ -53,7 +53,7 @@ describe("Box component", () => {
 
     const el = screen.getByTestId("box");
 
-    expect(el).toHaveClass("m-3 m-md-2 m-lg-4 mt-2 me-3 mb-4 ms-4");
+    expect(el).toHaveClass("m-3 m-md-2 m-lg-4 pt-2 pe-3 pb-4 ps-4");
   });
 
   test("applies background and text color utilities", () => {
