@@ -18,16 +18,17 @@ export default {
 export function Example() {
   return (
     <>
-      <Box bgColor="light" p={3} border>
+      <Box bg="light" p={3} border>
         Box component
       </Box>
-      <div className="my-3" />
+      <Box my={3} />
       <Box
         d={bs.d.flex}
-        bgColor={bs.bg.colors.light}
+        bg={bs.bg.colors.light}
+        text={bs.text.colors.primary}
         p={3}
         border
-        textColor={bs.text.colors.primary}>
+      >
         Box component
       </Box>
     </>
@@ -227,7 +228,7 @@ export function BorderAdditives() {
     <Box d="flex">
       {aspects.map((aspect) => (
         <Box
-          m={[0, 3, 0, 0]}
+          me={3}
           bg={{ color: "info", opacity: 10 }}
           border={{ width: 2, color: "info", aspect }}
           style={{ width: "5rem", height: "5rem" }}
@@ -239,16 +240,16 @@ export function BorderAdditives() {
 BorderAdditives.storyName = "Border additives";
 
 export function BorderSubtractive() {
-  const examples = [0, "top-0", "end-0", "bottom-0", "start-0"];
+  const examples = [0, { top: 0 }, { end: 0 }, { bottom: 0 }, { start: 0 }];
 
   return (
     <Box d="flex">
       {examples.map((border) => (
         <Box
+          m={[0, 3, 0, 0]}
+          bg="light"
+          border={{ color: 'info', width: 2, ...border }}
           style={{ width: "5rem", height: "5rem" }}
-          me={3}
-          bgColor="light"
-          border={border}
         />
       ))}
     </Box>
@@ -257,7 +258,7 @@ export function BorderSubtractive() {
 BorderSubtractive.storyName = "Border subtractive";
 
 export function BorderColors() {
-  const examples = [
+  const colors = [
     "primary",
     "secondary",
     "success",
@@ -271,13 +272,12 @@ export function BorderColors() {
 
   return (
     <Box d="flex">
-      {examples.map((borderColor) => (
+      {colors.map((bColor) => (
         <Box
-          style={{ width: "5rem", height: "5rem" }}
           me={3}
-          bgColor="light"
-          border
-          borderColor={borderColor}
+          bg="light"
+          border={{color: bColor}}
+          style={{ width: "5rem", height: "5rem" }}
         />
       ))}
     </Box>
@@ -290,13 +290,12 @@ export function BorderWidth() {
 
   return (
     <Box d="flex">
-      {examples.map((borderWidth) => (
+      {examples.map((bWidth) => (
         <Box
-          style={{ width: "5rem", height: "5rem" }}
           me={3}
-          bgColor="light"
-          border
-          borderWidth={borderWidth}
+          bg="light"
+          border={{ width: bWidth }}
+          style={{ width: "5rem", height: "5rem" }}
         />
       ))}
     </Box>
@@ -311,14 +310,14 @@ export function BorderRadius() {
     <Box d="flex">
       {examples.map((radius) => (
         <Box
+          me={3}
+          bg="secondary"
+          rounded={radius}
+          text="light"
           style={{
             width: radius === "pill" ? "10rem" : "5rem",
             height: "5rem",
           }}
-          me={3}
-          bgColor="secondary"
-          borderRadius={radius}
-          textColor="light"
         />
       ))}
     </Box>
@@ -333,14 +332,14 @@ export function BorderSizes() {
     <Box d="flex">
       {examples.map((size) => (
         <Box
+          me={3}
+          bg="secondary"
+          rounded={size}
+          text="light"
           style={{
             width: "5rem",
             height: "5rem",
           }}
-          me={3}
-          bgColor="secondary"
-          borderRadiusSize={size}
-          textColor="light"
         />
       ))}
     </Box>
@@ -350,27 +349,27 @@ BorderSizes.storyName = "Border sizes";
 
 export function TextColors() {
   const examples = [
-    { textColor: "primary", bgColor: null },
-    { textColor: "secondary", bgColor: null },
-    { textColor: "success", bgColor: null },
-    { textColor: "danger", bgColor: null },
-    { textColor: "warning", bgColor: "dark" },
-    { textColor: "info", bgColor: "dark" },
-    { textColor: "light", bgColor: "dark" },
-    { textColor: "dark", bgColor: null },
-    { textColor: "body", bgColor: null },
-    { textColor: "muted", bgColor: null },
-    { textColor: "white", bgColor: "dark" },
-    { textColor: "black-50", bgColor: null },
-    { textColor: "white-50", bgColor: "dark" },
+    { text: "primary", bg: null },
+    { text: "secondary", bg: null },
+    { text: "success", bg: null },
+    { text: "danger", bg: null },
+    { text: "warning", bg: "dark" },
+    { text: "info", bg: "dark" },
+    { text: "light", bg: "dark" },
+    { text: "dark", bg: null },
+    { text: "body", bg: null },
+    { text: "muted", bg: null },
+    { text: "white", bg: "dark" },
+    { text: "black-50", bg: null },
+    { text: "white-50", bg: "dark" },
   ];
 
   return (
     <>
-      {examples.map(({ textColor, bgColor }) => (
-        <Box textColor={textColor} bgColor={bgColor} mb={3}>
+      {examples.map(({ text, bg }) => (
+        <Box text={text} bg={bg} mb={3}>
           .text-
-          {textColor}
+          {text}
         </Box>
       ))}
     </>
@@ -381,24 +380,25 @@ TextColors.storyName = "Text colors";
 export function Display() {
   return (
     <>
-      <Box d="inline" p={2} me={2} bgColor="primary">
+      <Box d="inline" p={2} me={2} bg="primary">
         d=inline
       </Box>
-      <Box display="inline" p={2} bgColor="dark" textColor="white">
+      <Box d="inline" p={2} bg="dark" text="white">
         display=inline
       </Box>
       <Box py={2} />
-      <Box d="block" p={2} bgColor="primary" mb={2}>
+      <Box d="block" p={2} bg="primary" mb={2}>
         d=block
       </Box>
-      <Box display="block" p={2} bgColor="dark" textColor="white" mb={2}>
+      <Box d="block" p={2} bg="dark" text="white" mb={2}>
         display=block
       </Box>
       <Box
         d={{ xs: "inline-flex", md: "flex" }}
         p={2}
-        bgColor="dark"
-        textColor="white">
+        bg="dark"
+        text="white"
+      >
         xs: inline-flex
         {", "}
         md: flex
@@ -455,13 +455,13 @@ FloatResponsive.storyName = "Float responsive";
 export function TextSelections() {
   return (
     <>
-      <Box textSelect="all" mb={2}>
+      <Box text={{ select: "all" }} mb={2}>
         This paragraph will be entirely selected when clicked by the user.
       </Box>
-      <Box textSelect="auto" mb={2}>
+      <Box text={{ select: "auto" }} mb={2}>
         This paragraph has default select behavior.
       </Box>
-      <Box textSelect="none">
+      <Box text={{ select: "none" }}>
         This paragraph will not be selectable when clicked by the user.
       </Box>
     </>
@@ -475,7 +475,7 @@ export function Opacity() {
   return (
     <>
       {examples.map((opacity) => (
-        <Box bgColor="primary" textColor="white" p={3} opacity={opacity}>
+        <Box bg="primary" text="white" p={3} opacity={opacity}>
           {opacity}%
         </Box>
       ))}
@@ -491,7 +491,8 @@ export function Overflow() {
         p={3}
         me={3}
         overflow="auto"
-        bgColor="light">
+        bg="light"
+      >
         This is an example of using .overflow-auto on an element with set width
         and height dimensions. By design, this content will vertically scroll.
       </Box>
@@ -500,7 +501,8 @@ export function Overflow() {
         p={3}
         me={3}
         overflow="hidden"
-        bgColor="light">
+        bg="light"
+      >
         This is an example of using .overflow-hidden on an element with set
         width and height dimensions.
       </Box>
@@ -509,7 +511,8 @@ export function Overflow() {
         p={3}
         me={3}
         overflow="visible"
-        bgColor="light">
+        bg="light"
+      >
         This is an example of using .overflow-visible on an element with set
         width and height dimensions.
       </Box>
@@ -518,7 +521,8 @@ export function Overflow() {
         p={3}
         me={3}
         overflow="scroll"
-        bgColor="light">
+        bg="light"
+      >
         This is an example of using .overflow-scroll on an element with set
         width and height dimensions.
       </Box>
@@ -568,22 +572,22 @@ export function Positions() {
 
   return (
     <Box
-      position="relative"
-      bgColor="light"
+      pos="relative"
+      bg="light"
       border
-      borderRadius={3}
+      rounded={3}
       style={{ height: "200px" }}>
       {examples.map(({ top, end, bottom, start }) => (
         <Box
           style={{ width: "2rem", height: "2rem" }}
-          position="absolute"
+          pos="absolute"
           top={top}
           end={end}
           bottom={bottom}
           start={start}
-          bgColor="dark"
+          bg="dark"
           border
-          borderRadius={3}
+          rounded={3}
         />
       ))}
     </Box>
@@ -650,23 +654,23 @@ export function CenterElements() {
 
   return (
     <Box
-      position="relative"
+      pos="relative"
       m={5}
-      bgColor="light"
+      bg="light"
       border
-      borderRadius={3}
+      rounded={3}
       style={{ height: "200px" }}>
       {examples.map(({ top, end, bottom, start }) => (
         <Box
           style={{ width: "2rem", height: "2rem" }}
-          position="absolute"
+          pos="absolute"
           top={top}
           end={end}
           bottom={bottom}
           start={start}
-          bgColor="dark"
+          bg="dark"
           border
-          borderRadius={3}
+          rounded={3}
           translateMiddle
         />
       ))}
@@ -762,10 +766,10 @@ export function CenterElements2() {
 
   return (
     <Box
-      position="relative"
-      bgColor="light"
+      pos="relative"
+      bg="light"
       border
-      borderRadius={3}
+      rounded={3}
       style={{ height: "200px" }}>
       {examples.map(
         ({
@@ -779,14 +783,14 @@ export function CenterElements2() {
         }) => (
           <Box
             style={{ width: "2rem", height: "2rem" }}
-            position="absolute"
+            pos="absolute"
             top={top}
             end={end}
             bottom={bottom}
             start={start}
-            bgColor="dark"
+            bg="dark"
             border
-            borderRadius={3}
+            rounded={3}
             translateMiddle={translateMiddle}
             translateMiddleX={translateMiddleX}
             translateMiddleY={translateMiddleY}
@@ -811,8 +815,8 @@ export function Shadows() {
       {examples.map(({ shadow, label }) => (
         <Box
           shadow={shadow}
-          bgColor={!shadow ? "light" : "body"}
-          borderRadius
+          bg={!shadow ? "light" : "body"}
+          rounded
           p={3}
           mb={5}>
           {label} shadow
@@ -824,7 +828,7 @@ export function Shadows() {
 
 export function ClearFix() {
   return (
-    <Box bgColor="info" clearFix>
+    <Box bg="light" p={3} clearfix>
       <Button theme="secondary" float="start">
         Example Button floated left
       </Button>

@@ -345,6 +345,11 @@ const defaultProps = {
  *
  * @param {BoxProps} props
  * @return {JSX.Element} Box
+ * 
+ * @todo
+ * - create rounded util
+ * - create mx, my, mt, me, mb, ms etc. util
+ * - create top, end, bottom, start util
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -367,7 +372,19 @@ const Box = React.forwardRef((props, ref) => {
     bottom,
     start,
     m, // margin
+    mx,
+    my,
+    mt,
+    me,
+    mb,
+    ms,
     p, // padding
+    px,
+    py,
+    pt,
+    pe,
+    pb,
+    ps,
     float,
     opacity,
     shadow,
@@ -391,13 +408,25 @@ const Box = React.forwardRef((props, ref) => {
       [prefix("h", h)]: h,
       [prefix("mh", mh)]: mh, // max height
       [prefix("position", pos)]: pos, // position
-      [prefix("top", top)]: top,
-      [prefix("end", end)]: end,
-      [prefix("bottom", bottom)]: bottom,
-      [prefix("start", start)]: start,
+      [prefix("top", top)]: typeof top === 'number',
+      [prefix("end", end)]: typeof end === 'number',
+      [prefix("bottom", bottom)]: typeof bottom === 'number',
+      [prefix("start", start)]: typeof start === 'number',
       [prefix("opacity", opacity)]: opacity,
       [prefix("shadow", shadow)]: shadow,
-      [prefix("rounded", rounded)]: rounded,
+      [cs("mx", mx)]: mx,
+      [cs("my", my)]: my,
+      [cs("mt", mt)]: mt,
+      [cs("me", me)]: me,
+      [cs("mb", mb)]: mb,
+      [cs("ms", ms)]: ms,
+      [cs("px", px)]: px,
+      [cs("py", py)]: py,
+      [cs("pt", pt)]: pt,
+      [cs("pe", pe)]: pe,
+      [cs("pb", pb)]: pb,
+      [cs("ps", ps)]: ps,
+      [cs("rounded", rounded)]: rounded,
       [prefix("visually", "hidden")]:
         typeof visually === "boolean" && !visually,
       [prefix("visually", visually)]: typeof visually === "string",
@@ -423,7 +452,7 @@ const Box = React.forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={ref} style={style} className={classes} {...rest}>
+    <Component ref={ref} style={style} className={classes === "" ? null : classes} {...rest}>
       {children}
     </Component>
   );

@@ -7,6 +7,7 @@ const TEXT_PROPERTY_LIST = [
   "break",
   "transform",
   "decoration",
+  "select"
 ];
 const TEXT_COLOR_LIST = [
   "primary",
@@ -28,6 +29,7 @@ const TEXT_ALIGN_LIST = ["start", "center", "end"];
 const TEXT_ALIGN_BREAKPOINT_LIST = ["xs", "sm", "md", "lg", "xl"];
 const TEXT_TRANSFORM_LIST = ["lowercase", "uppercase", "capitalize"];
 const TEXT_DECORATION_LIST = ["underline", "line-through", "none"];
+const TEXT_SELECT_LIST = ["all", "auto", "none"];
 
 /**
  * @typedef {(
@@ -118,6 +120,10 @@ export function text(value) {
 
         if (key === "decoration" && TEXT_DECORATION_LIST.includes(value)) {
           result.push(prefix(BASE_CLASS_NAME, "decoration", value));
+        }
+
+        if (key === "select" && TEXT_SELECT_LIST.includes(value)) {
+          result.push(prefix("user", "select", value));
         }
       }
     }
