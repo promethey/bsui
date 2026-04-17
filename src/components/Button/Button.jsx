@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "utils/prefix";
-import { capitalize } from "utils/capitalize";
 import { defineThemeVariants, attachStaticVariants } from "utils/variants";
-import Box from "components/Box";
+import Prime from "components/Prime";
 
 const BUTTON_THEMES = [
   "primary",
@@ -182,22 +181,22 @@ function ButtonBase(props) {
   // render <a />
   if (ComponentType === "a") {
     return (
-      <Box as="a" {...linkProperties}>
+      <Prime as="a" {...linkProperties}>
         {children}
-      </Box>
+      </Prime>
     );
   }
 
   // render <input />
   if (ComponentType === "input") {
-    return <Box as="input" {...inputProps} />;
+    return <Prime as="input" {...inputProps} />;
   }
 
   // default render <button />
   return (
-    <Box as="button" {...buttonProperties}>
+    <Prime as="button" {...buttonProperties}>
       {children}
-    </Box>
+    </Prime>
   );
 }
 

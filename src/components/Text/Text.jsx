@@ -2,77 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "utils/prefix";
-import Box from "components/Box";
+import Prime from "@/components/Prime";
 import { classnames } from "utils/classnames";
-
-function Text(props) {
-  const {
-    style,
-    children,
-    className,
-
-    fs,
-    fontSize,
-
-    fw,
-    fontWeight,
-
-    fst,
-    fontStyle,
-
-    lh,
-    lineHeight,
-
-    textOpacity,
-    textAlign,
-    textTransform,
-
-    decoration,
-    lead,
-
-    wrap,
-    noWrap,
-
-    breakWord,
-
-    monospace,
-
-    truncate,
-    ...rest
-  } = props;
-
-  const BASE_CLASSNAME = "text";
-
-  let classes = classNames(
-    {
-      [prefix(BASE_CLASSNAME, "opacity", textOpacity)]: textOpacity !== null,
-      [prefix("fs", fs)]: fs || fontSize,
-      [prefix("fw", fw)]: fw || fontWeight,
-      [prefix("fst", fst)]: fst || fontStyle,
-      [prefix("lh", lh)]: lh || lineHeight,
-      [prefix(BASE_CLASSNAME, textTransform)]: textTransform,
-      [prefix(BASE_CLASSNAME, "decoration", decoration)]: decoration,
-      lead,
-      [prefix(BASE_CLASSNAME, "wrap")]: wrap && !noWrap,
-      [prefix(BASE_CLASSNAME, "nowrap")]: noWrap && !wrap,
-      [prefix(BASE_CLASSNAME, "break")]: breakWord,
-      [prefix("font", "monospace")]: monospace,
-      [prefix(BASE_CLASSNAME, "truncation")]: truncate,
-    },
-    classnames(BASE_CLASSNAME, textAlign),
-    className,
-  );
-
-  if (classes === "") {
-    classes = null;
-  }
-
-  return (
-    <Box style={style} className={classes} {...rest}>
-      {children}
-    </Box>
-  );
-}
 
 Text.propTypes = {
   /** Change JSX type */
@@ -102,21 +33,8 @@ Text.propTypes = {
   /** Change font size style [SHORT VERSION] */
   fs: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
 
-  /** Change font size style [SHORT VERSION] */
-  fontSize: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
-
   /** Change font weight style [SHORT VERSION] */
   fw: PropTypes.oneOf([
-    "bold",
-    "bolder",
-    "semibold",
-    "normal",
-    "light",
-    "lighter",
-  ]),
-
-  /** Change font weight style */
-  fontWeight: PropTypes.oneOf([
     "bold",
     "bolder",
     "semibold",
@@ -210,5 +128,74 @@ Text.defaultProps = {
   monospace: false,
   truncate: false,
 };
+
+function Text(props) {
+  const {
+    style,
+    children,
+    className,
+
+    fs,
+    fontSize,
+
+    fw,
+    fontWeight,
+
+    fst,
+    fontStyle,
+
+    lh,
+    lineHeight,
+
+    textOpacity,
+    textAlign,
+    textTransform,
+
+    decoration,
+    lead,
+
+    wrap,
+    noWrap,
+
+    breakWord,
+
+    monospace,
+
+    truncate,
+    ...rest
+  } = props;
+
+  const BASE_CLASSNAME = "text";
+
+  let classes = classNames(
+    {
+      [prefix(BASE_CLASSNAME, "opacity", textOpacity)]: textOpacity !== null,
+      [prefix("fs", fs)]: fs || fontSize,
+      [prefix("fw", fw)]: fw || fontWeight,
+      [prefix("fst", fst)]: fst || fontStyle,
+      [prefix("lh", lh)]: lh || lineHeight,
+      [prefix(BASE_CLASSNAME, textTransform)]: textTransform,
+      [prefix(BASE_CLASSNAME, "decoration", decoration)]: decoration,
+      lead,
+      [prefix(BASE_CLASSNAME, "wrap")]: wrap && !noWrap,
+      [prefix(BASE_CLASSNAME, "nowrap")]: noWrap && !wrap,
+      [prefix(BASE_CLASSNAME, "break")]: breakWord,
+      [prefix("font", "monospace")]: monospace,
+      [prefix(BASE_CLASSNAME, "truncation")]: truncate,
+    },
+    classnames(BASE_CLASSNAME, textAlign),
+    className,
+  );
+
+  if (classes === "") {
+    classes = null;
+  }
+
+  return (
+    <Prime style={style} className={classes} {...rest}>
+      {children}
+    </Prime>
+  );
+}
 
 export default Text;

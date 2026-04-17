@@ -4,7 +4,7 @@ const BASE_CLASS_NAME = "text";
 const TEXT_PROPERTY_LIST = [
   "color",
   "align",
-  "break",
+  "wordBreak",
   "transform",
   "decoration",
   "select"
@@ -110,8 +110,8 @@ export function text(value) {
           }
         }
 
-        if (key === "break" && value) {
-          result.push(prefix(BASE_CLASS_NAME, key));
+        if (key === "wordBreak" && value) {
+          result.push(prefix(BASE_CLASS_NAME, "break"));
         }
 
         if (key === "transform" && TEXT_TRANSFORM_LIST.includes(value)) {

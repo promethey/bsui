@@ -39,12 +39,12 @@ describe("text utility", () => {
     expect(result).toContain("text-lg-end");
   });
 
-  test("applies break utility", () => {
-    expect(text({ break: true })).toBe("text-break");
+  test("applies word break utility", () => {
+    expect(text({ wordBreak: true })).toBe("text-break");
   });
 
-  test("ignores break when false", () => {
-    expect(text({ break: false })).toBe("");
+  test("ignores word break when false", () => {
+    expect(text({ wordBreak: false })).toBe("");
   });
 
   test("applies text transform", () => {
@@ -64,7 +64,7 @@ describe("text utility", () => {
     const result = text({
       color: "primary",
       align: "start",
-      break: true,
+      wordBreak: true,
       transform: "lowercase",
       decoration: "underline",
     });

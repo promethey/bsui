@@ -1,9 +1,8 @@
-import { check } from "utils/check";
+import { everyType } from "utils/everyType";
 import { classnames } from "utils/classnames";
 
 /**
- * spacing - function for generate margin and padding classnames string
- * @function
+ * Function for generate margin and padding classnames string
  *
  * @param {"m"|"p"} prfx - Prefix for margin "m" or padding "p"
  * @param {Object|(0|1|2|3|4|5)|[number, number, number, number]} spaces - margin or padding values
@@ -15,40 +14,43 @@ import { classnames } from "utils/classnames";
  * spacing("m", [2,3,4,2]) -> "mt-2 me-3 mb-3 ms-2"
  * spacing("m", [{xs: 2, lg: 3}, {xs: 3, lg: 3}]) -> "mx-2 mx-lg-3 my-3 my-lg-3"
  *
- * @returns {string} classes
+ * @returns {string} spaces
  *
  * @todo
  * - craete function for checks spaces types fn(type, ...values) return true or false
  */
 export function spacing(prfx, spaces) {
-  if (!check("string", prfx) || prfx.length === 0) {
-    return null;
+  if (!everyType("string", prfx) || prfx.length === 0) {
+    return "";
   }
 
-  if (prfx !== "m" && prfx !== "p") {
+  if (prfx[0] !== "m" && prfx[0] !== "p") {
     return "Error: prfx not equal m or p";
   }
 
   /**
-   * number
-   * ("m", 0) -> 'm-0'
+   * Number
+   * 
+   * @example
+   * spacing("m", 0) -> 'm-0'
    */
-  if (check("number", spaces)) {
+  if (everyType("number", spaces)) {
     return `${prfx}-${spaces}`;
   }
 
   /**
-   * object
+   * Object
    *
    * @example
    * spacing("m", {xs: 2, lg: 3}) // 'm-2 m-lg-3'
+   * spacing("mt", { xs: 3 }) // 'mt-3'
    */
-  if (check("object", spaces) && !Array.isArray(spaces)) {
+  if (everyType("object", spaces) && !Array.isArray(spaces)) {
     return classnames(prfx, spaces);
   }
 
   /**
-   * array
+   * Array
    *
    * @example
    * spacing("m", [1,2]) // 'mx-1 my-2'
@@ -63,11 +65,11 @@ export function spacing(prfx, spaces) {
       let x = spaces[0];
       let y = spaces[1];
 
-      if (check("number", x, y)) {
+      if (everyType("number", x, y)) {
         return `${prfx}x-${x} ${prfx}y-${y}`;
       }
 
-      if (check("object, x, y")) {
+      if (everyType("object, x, y")) {
         x = classnames(`${prfx}x`, x);
         y = classnames(`${prfx}y`, y);
 
@@ -82,11 +84,11 @@ export function spacing(prfx, spaces) {
       const bottom = spaces[2];
       const start = spaces[3];
 
-      if (check("number", top, end, bottom, start)) {
+      if (everyType("number", top, end, bottom, start)) {
         return `${prfx}t-${top} ${prfx}e-${end} ${prfx}b-${bottom} ${prfx}s-${start}`;
       }
 
-      if (check("object", top, end, bottom, start)) {
+      if (everyType("object", top, end, bottom, start)) {
         result.push(
           classnames(`${prfx}t`, top),
           classnames(`${prfx}e`, end),

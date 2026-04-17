@@ -1,10 +1,10 @@
 import React from "react";
 import { bs } from "constants";
-import { Box, Button } from "components";
+import { Prime, Button } from "components";
 
 export default {
-  title: "Components/Box",
-  component: Box,
+  title: "Components/Prime",
+  component: Prime,
   parameters: {
     docs: {
       description: {
@@ -18,41 +18,41 @@ export default {
 export function Example() {
   return (
     <>
-      <Box bg="light" p={3} border>
-        Box component
-      </Box>
-      <Box my={3} />
-      <Box
+      <Prime bg="light" p={3} border>
+        Prime component
+      </Prime>
+      <Prime my={3} />
+      <Prime
         d={bs.d.flex}
         bg={bs.bg.colors.light}
         text={bs.text.colors.primary}
         p={3}
         border
       >
-        Box component
-      </Box>
+        Prime component
+      </Prime>
     </>
   );
 }
 
 export function Width() {
   const examples = [25, 50, 75, 100];
-  const bgBorderColors = ["danger", "warning", "warning", "success"];
+  const bgBorderColors = ["danger", "warning", "info", "success"];
 
   return (
     <>
       {examples.map((width, index) => (
-        <Box
+        <Prime
           w={width}
           m={[0, 0, 2, 0]}
           p={2}
           bg={{ color: bgBorderColors[index], opacity: 75 }}
           text={{ color: 'white', align: 'center' }}
           border={{ color: bgBorderColors[index], width: 1 }}
-          rounded
+          rounded={2}
         >
           {width}%
-        </Box>
+        </Prime>
       ))}
     </>
   );
@@ -60,8 +60,8 @@ export function Width() {
 
 export function MaxWidth() {
   return (
-    <Box bg={{ color: 'info', opacity: 25 }} style={{ height: '200px' }}>
-      <Box
+    <Prime bg={{ color: 'info', opacity: 25 }} style={{ height: '200px' }}>
+      <Prime
         mw={100}
         p={3}
         bg="info"
@@ -69,8 +69,8 @@ export function MaxWidth() {
         style={{ height: "100px" }}
       >
         Max-width 100%
-      </Box>
-    </Box>
+      </Prime>
+    </Prime>
   );
 }
 MaxWidth.storyName = "Max width";
@@ -79,9 +79,9 @@ export function Height() {
   const examples = [25, 50, 75, 100];
 
   return (
-    <Box d="flex" style={{ height: "200px" }}>
+    <Prime d="flex" style={{ height: "200px" }}>
       {examples.map((height, index) => (
-        <Box
+        <Prime
           w={25}
           h={height}
           m={[0, 2, 0, 0]}
@@ -92,24 +92,24 @@ export function Height() {
           rounded
         >
           {height}%
-        </Box>
+        </Prime>
       ))}
-    </Box>
+    </Prime>
   );
 }
 
 export function MaxHeight() {
   return (
-    <Box bg={{ color: 'info', opacity: 25 }} style={{ height: "200px" }}>
-      <Box
+    <Prime bg={{ color: 'info', opacity: 25 }} style={{ height: "200px" }}>
+      <Prime
         mh={100}
         p={3}
         bg="info"
         style={{ width: "150px", height: "200px" }}
       >
         Max-height 100%
-      </Box>
-    </Box>
+      </Prime>
+    </Prime>
   );
 }
 MaxHeight.storyName = "Max height";
@@ -117,12 +117,12 @@ MaxHeight.storyName = "Max height";
 export function Visibility() {
   return (
     <>
-      <Box p={2} bg="light" border visible>
+      <Prime p={2} bg="light" border visible>
         Visible
-      </Box>
-      <Box p={2} bg="light" border invisible>
+      </Prime>
+      <Prime p={2} bg="light" border invisible>
         Invisible
-      </Box>
+      </Prime>
     </>
   );
 }
@@ -130,18 +130,18 @@ export function Visibility() {
 export function Visually() {
   return (
     <>
-      <Box p={2} bg="light" border>
+      <Prime p={2} bg="light" border>
         Visible
-      </Box>
-      <Box p={2} bg="light" border visually={false}>
+      </Prime>
+      <Prime p={2} bg="light" border visually={false}>
         Visually hidden
-      </Box>
-      <Box p={2} bg="light" border visually="hidden">
+      </Prime>
+      <Prime p={2} bg="light" border visually="hidden">
         Visually hidden v2
-      </Box>
-      <Box p={2} bg="light" border visually="hidden-focusable">
+      </Prime>
+      <Prime p={2} bg="light" border visually="hidden-focusable">
         Visually hidden focusable
-      </Box>
+      </Prime>
     </>
   );
 }
@@ -164,10 +164,10 @@ export function BackgroundColors() {
   return (
     <>
       {examples.map(({ bgColor, textColor }) => (
-        <Box bg={bgColor} text={textColor} p={3} m={[0, 0, 2, 0]}>
+        <Prime bg={bgColor} text={textColor} p={3} m={[0, 0, 2, 0]}>
           .bg-
           {bgColor}
-        </Box>
+        </Prime>
       ))}
     </>
   );
@@ -189,11 +189,11 @@ export function BackgroundGradients() {
   return (
     <>
       {examples.map(({ bgColor, textColor }) => (
-        <Box bg={{ color: bgColor, gradient: true }} text={textColor} p={3} m={[0, 0, 2, 0]}>
+        <Prime bg={{ color: bgColor, gradient: true }} text={textColor} p={3} m={[0, 0, 2, 0]}>
           .bg-
           {bgColor}
           .bg-gradient
-        </Box>
+        </Prime>
       ))}
     </>
   );
@@ -206,7 +206,7 @@ export function BackgroundOpacity() {
   return (
     <>
       {examples.map((opacity) => (
-        <Box
+        <Prime
           p={2}
           bg={{ color: "primary", opacity }}
           text={opacity >= 10 && opacity <= 50 ? "dark" : "white"}
@@ -214,7 +214,7 @@ export function BackgroundOpacity() {
           {opacity === null
             ? "This is default success background"
             : `This is ${opacity}% opacity success background`}
-        </Box>
+        </Prime>
       ))}
     </>
   );
@@ -225,16 +225,16 @@ export function BorderAdditives() {
   const aspects = [true, "top", "end", "bottom", "start"];
 
   return (
-    <Box d="flex">
+    <Prime d="flex">
       {aspects.map((aspect) => (
-        <Box
+        <Prime
           me={3}
           bg={{ color: "info", opacity: 10 }}
           border={{ width: 2, color: "info", aspect }}
           style={{ width: "5rem", height: "5rem" }}
         />
       ))}
-    </Box>
+    </Prime>
   );
 }
 BorderAdditives.storyName = "Border additives";
@@ -243,16 +243,16 @@ export function BorderSubtractive() {
   const examples = [0, { top: 0 }, { end: 0 }, { bottom: 0 }, { start: 0 }];
 
   return (
-    <Box d="flex">
+    <Prime d="flex">
       {examples.map((border) => (
-        <Box
+        <Prime
           m={[0, 3, 0, 0]}
           bg="light"
           border={{ color: 'info', width: 2, ...border }}
           style={{ width: "5rem", height: "5rem" }}
         />
       ))}
-    </Box>
+    </Prime>
   );
 }
 BorderSubtractive.storyName = "Border subtractive";
@@ -271,16 +271,16 @@ export function BorderColors() {
   ];
 
   return (
-    <Box d="flex">
+    <Prime d="flex">
       {colors.map((bColor) => (
-        <Box
+        <Prime
           me={3}
           bg="light"
           border={{color: bColor}}
           style={{ width: "5rem", height: "5rem" }}
         />
       ))}
-    </Box>
+    </Prime>
   );
 }
 BorderColors.storyName = "Border colors";
@@ -289,16 +289,16 @@ export function BorderWidth() {
   const examples = [1, 2, 3, 4, 5];
 
   return (
-    <Box d="flex">
+    <Prime d="flex">
       {examples.map((bWidth) => (
-        <Box
+        <Prime
           me={3}
           bg="light"
           border={{ width: bWidth }}
           style={{ width: "5rem", height: "5rem" }}
         />
       ))}
-    </Box>
+    </Prime>
   );
 }
 BorderWidth.storyName = "Border width";
@@ -307,9 +307,9 @@ export function BorderRadius() {
   const examples = [true, "top", "end", "bottom", "start", "circle", "pill"];
 
   return (
-    <Box d="flex">
+    <Prime d="flex">
       {examples.map((radius) => (
-        <Box
+        <Prime
           me={3}
           bg="secondary"
           rounded={radius}
@@ -320,7 +320,7 @@ export function BorderRadius() {
           }}
         />
       ))}
-    </Box>
+    </Prime>
   );
 }
 BorderRadius.storyName = "Border radius";
@@ -329,9 +329,9 @@ export function BorderSizes() {
   const examples = [0, 1, 2, 3, 4, 5];
 
   return (
-    <Box d="flex">
+    <Prime d="flex">
       {examples.map((size) => (
-        <Box
+        <Prime
           me={3}
           bg="secondary"
           rounded={size}
@@ -342,7 +342,7 @@ export function BorderSizes() {
           }}
         />
       ))}
-    </Box>
+    </Prime>
   );
 }
 BorderSizes.storyName = "Border sizes";
@@ -367,10 +367,10 @@ export function TextColors() {
   return (
     <>
       {examples.map(({ text, bg }) => (
-        <Box text={text} bg={bg} mb={3}>
+        <Prime text={text} bg={bg} mb={3}>
           .text-
           {text}
-        </Box>
+        </Prime>
       ))}
     </>
   );
@@ -380,20 +380,20 @@ TextColors.storyName = "Text colors";
 export function Display() {
   return (
     <>
-      <Box d="inline" p={2} me={2} bg="primary">
+      <Prime d="inline" p={2} me={2} bg="primary">
         d=inline
-      </Box>
-      <Box d="inline" p={2} bg="dark" text="white">
+      </Prime>
+      <Prime d="inline" p={2} bg="dark" text="white">
         display=inline
-      </Box>
-      <Box py={2} />
-      <Box d="block" p={2} bg="primary" mb={2}>
+      </Prime>
+      <Prime py={2} />
+      <Prime d="block" p={2} bg="primary" mb={2}>
         d=block
-      </Box>
-      <Box d="block" p={2} bg="dark" text="white" mb={2}>
+      </Prime>
+      <Prime d="block" p={2} bg="dark" text="white" mb={2}>
         display=block
-      </Box>
-      <Box
+      </Prime>
+      <Prime
         d={{ xs: "inline-flex", md: "flex" }}
         p={2}
         bg="dark"
@@ -402,7 +402,7 @@ export function Display() {
         xs: inline-flex
         {", "}
         md: flex
-      </Box>
+      </Prime>
     </>
   );
 }
@@ -411,42 +411,42 @@ export function Float() {
   const examples = ["start", "end", "none"];
 
   return (
-    <Box>
+    <Prime>
       {examples.map((float) => (
         <>
-          <Box float={float}>
+          <Prime float={float}>
             {float === "none" ? "Don`t float" : `Float ${float}`} on all
             viewport sizes
-          </Box>
+          </Prime>
           <br />
         </>
       ))}
-    </Box>
+    </Prime>
   );
 }
 
 export function FloatResponsive() {
   return (
     <>
-      <Box float={{ sm: "start" }}>
+      <Prime float={{ sm: "start" }}>
         Float start on viewports sized SM (small) or wider
-      </Box>
+      </Prime>
       <br />
-      <Box float={{ md: "start" }}>
+      <Prime float={{ md: "start" }}>
         Float start on viewports sized MD (medium) or wider
-      </Box>
+      </Prime>
       <br />
-      <Box float={{ lg: "start" }}>
+      <Prime float={{ lg: "start" }}>
         Float start on viewports sized LG (large) or wider
-      </Box>
+      </Prime>
       <br />
-      <Box float={{ xl: "start" }}>
+      <Prime float={{ xl: "start" }}>
         Float start on viewports sized XL (extra-large) or wider
-      </Box>
+      </Prime>
       <br />
-      <Box float={{ xxl: "start" }}>
+      <Prime float={{ xxl: "start" }}>
         Float start on viewports sized XXL (extra-large) or wider
-      </Box>
+      </Prime>
     </>
   );
 }
@@ -455,15 +455,15 @@ FloatResponsive.storyName = "Float responsive";
 export function TextSelections() {
   return (
     <>
-      <Box text={{ select: "all" }} mb={2}>
+      <Prime text={{ select: "all" }} mb={2}>
         This paragraph will be entirely selected when clicked by the user.
-      </Box>
-      <Box text={{ select: "auto" }} mb={2}>
+      </Prime>
+      <Prime text={{ select: "auto" }} mb={2}>
         This paragraph has default select behavior.
-      </Box>
-      <Box text={{ select: "none" }}>
+      </Prime>
+      <Prime text={{ select: "none" }}>
         This paragraph will not be selectable when clicked by the user.
-      </Box>
+      </Prime>
     </>
   );
 }
@@ -475,9 +475,9 @@ export function Opacity() {
   return (
     <>
       {examples.map((opacity) => (
-        <Box bg="primary" text="white" p={3} opacity={opacity}>
+        <Prime bg="primary" text="white" p={3} opacity={opacity}>
           {opacity}%
-        </Box>
+        </Prime>
       ))}
     </>
   );
@@ -485,8 +485,8 @@ export function Opacity() {
 
 export function Overflow() {
   return (
-    <Box d="flex">
-      <Box
+    <Prime d="flex">
+      <Prime
         style={{ maxWidth: "250px", maxHeight: "100px" }}
         p={3}
         me={3}
@@ -495,8 +495,8 @@ export function Overflow() {
       >
         This is an example of using .overflow-auto on an element with set width
         and height dimensions. By design, this content will vertically scroll.
-      </Box>
-      <Box
+      </Prime>
+      <Prime
         style={{ maxWidth: "250px", maxHeight: "100px" }}
         p={3}
         me={3}
@@ -505,8 +505,8 @@ export function Overflow() {
       >
         This is an example of using .overflow-hidden on an element with set
         width and height dimensions.
-      </Box>
-      <Box
+      </Prime>
+      <Prime
         style={{ maxWidth: "250px", maxHeight: "100px" }}
         p={3}
         me={3}
@@ -515,8 +515,8 @@ export function Overflow() {
       >
         This is an example of using .overflow-visible on an element with set
         width and height dimensions.
-      </Box>
-      <Box
+      </Prime>
+      <Prime
         style={{ maxWidth: "250px", maxHeight: "100px" }}
         p={3}
         me={3}
@@ -525,8 +525,8 @@ export function Overflow() {
       >
         This is an example of using .overflow-scroll on an element with set
         width and height dimensions.
-      </Box>
-    </Box>
+      </Prime>
+    </Prime>
   );
 }
 
@@ -571,14 +571,14 @@ export function Positions() {
   ];
 
   return (
-    <Box
+    <Prime
       pos="relative"
       bg="light"
       border
       rounded={3}
       style={{ height: "200px" }}>
       {examples.map(({ top, end, bottom, start }) => (
-        <Box
+        <Prime
           style={{ width: "2rem", height: "2rem" }}
           pos="absolute"
           top={top}
@@ -590,7 +590,7 @@ export function Positions() {
           rounded={3}
         />
       ))}
-    </Box>
+    </Prime>
   );
 }
 
@@ -653,7 +653,7 @@ export function CenterElements() {
   ];
 
   return (
-    <Box
+    <Prime
       pos="relative"
       m={5}
       bg="light"
@@ -661,7 +661,7 @@ export function CenterElements() {
       rounded={3}
       style={{ height: "200px" }}>
       {examples.map(({ top, end, bottom, start }) => (
-        <Box
+        <Prime
           style={{ width: "2rem", height: "2rem" }}
           pos="absolute"
           top={top}
@@ -674,7 +674,7 @@ export function CenterElements() {
           translateMiddle
         />
       ))}
-    </Box>
+    </Prime>
   );
 }
 CenterElements.storyName = "Center elements";
@@ -765,7 +765,7 @@ export function CenterElements2() {
   ];
 
   return (
-    <Box
+    <Prime
       pos="relative"
       bg="light"
       border
@@ -781,7 +781,7 @@ export function CenterElements2() {
           translateMiddleX,
           translateMiddleY,
         }) => (
-          <Box
+          <Prime
             style={{ width: "2rem", height: "2rem" }}
             pos="absolute"
             top={top}
@@ -797,7 +797,7 @@ export function CenterElements2() {
           />
         ),
       )}
-    </Box>
+    </Prime>
   );
 }
 CenterElements2.storyName = "Center elements 2";
@@ -813,14 +813,14 @@ export function Shadows() {
   return (
     <>
       {examples.map(({ shadow, label }) => (
-        <Box
+        <Prime
           shadow={shadow}
           bg={!shadow ? "light" : "body"}
           rounded
           p={3}
           mb={5}>
           {label} shadow
-        </Box>
+        </Prime>
       ))}
     </>
   );
@@ -828,13 +828,13 @@ export function Shadows() {
 
 export function ClearFix() {
   return (
-    <Box bg="light" p={3} clearfix>
+    <Prime bg="light" p={3} clearfix>
       <Button theme="secondary" float="start">
         Example Button floated left
       </Button>
       <Button theme="secondary" float="end">
         Example Button floated right
       </Button>
-    </Box>
+    </Prime>
   );
 }

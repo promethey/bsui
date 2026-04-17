@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Button, Text, Box } from "components";
+import { Alert, Button, Text, Prime } from "components";
 
 export default {
   title: "Components/Alert",
@@ -49,7 +49,7 @@ AllThemes.storyName = "All Themes";
 
 export const BoxAPI = Template.bind({});
 BoxAPI.args = {
-  children: "Box API for Alert",
+  children: "Prime API for Alert",
   theme: "secondary",
   m: [2, 3, 4, 1],
   p: [1, 4, 3, 2],
@@ -155,27 +155,27 @@ export function Icons() {
   return (
     <>
       <Alert theme="primary" d="flex" alignItems="center">
-        <Box d="inline-block" me={2}>
+        <Prime d="inline-block" me={2}>
           <i className="bi bi-info-circle-fill" />
-        </Box>
+        </Prime>
         <div>An example alert with an icon</div>
       </Alert>
       <Alert theme="success" d="flex" alignItems="center">
-        <Box d="inline-block" me={2}>
+        <Prime d="inline-block" me={2}>
           <i className="bi bi-check-circle-fill" />
-        </Box>
+        </Prime>
         <div>An example success alert with an icon</div>
       </Alert>
       <Alert theme="warning" d="flex" alignItems="center">
-        <Box d="inline-block" me={2}>
+        <Prime d="inline-block" me={2}>
           <i className="bi bi-exclamation-triangle-fill" />
-        </Box>
+        </Prime>
         <div>An example warning alert with an icon</div>
       </Alert>
       <Alert theme="danger" d="flex" alignItems="center">
-        <Box d="inline-block" me={2}>
+        <Prime d="inline-block" me={2}>
           <i className="bi bi-exclamation-triangle-fill" />
-        </Box>
+        </Prime>
         <div>An example danger alert with an icon</div>
       </Alert>
     </>

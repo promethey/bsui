@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "utils/prefix";
-import Box from "components/Box";
+import Prime from "components/Prime";
 import CloseButton from "components/CloseButton";
 import AlertLink from "./AlertLink";
 import AlertHeading from "./AlertHeading";
@@ -80,15 +80,16 @@ function AlertBase({
   );
 
   return (
-    <Box
+    <Prime
       role="alert"
       ref={alertRef}
       className={classes}
       style={style}
-      {...rest}>
+      {...rest}
+    >
       {children}
       {dismissible && <CloseButton onClick={onClose} />}
-    </Box>
+    </Prime>
   );
 }
 AlertBase.propTypes = propTypes;
@@ -114,7 +115,7 @@ AlertBase.defaultProps = defaultProps;
  * @property {boolean} [dismissible=false] - Add close button and state
  * @property {boolean} [animated=false] - Add animate CSS styles
  * @property {React.MouseEventHandler<HTMLButtonElement>} [onClose=null] - Add event handler on close
- * @property {import(../Box/Box.jsx).BoxProps} ...rest - Box component API
+ * @property {import(../Prime/Prime.jsx).BoxProps} ...rest - Prime component API
  *
  * @param {AlertProps} props
  * @return {JSX.Element} Alert

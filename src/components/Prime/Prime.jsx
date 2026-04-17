@@ -259,24 +259,24 @@ const defaultProps = {
   style: null,
   className: null,
   d: null,
-  dp: null,
+  dp: null, // display print
   w: null,
-  mw: null,
+  mw: null, // max width
   h: null,
-  mh: null,
-  pos: null,
+  mh: null, // max height
+  pos: null, // position
   top: null,
   end: null,
   bottom: null,
   start: null,
-  m: null,
+  m: null, // margin
   mx: null,
   my: null,
   mt: null,
   me: null,
   mb: null,
   ms: null,
-  p: null,
+  p: null, // padding
   px: null,
   py: null,
   pt: null,
@@ -285,7 +285,7 @@ const defaultProps = {
   ps: null,
   opacity: null,
   shadow: null,
-  bg: null,
+  bg: null, // background
   text: null,
   border: false,
   visually: null,
@@ -349,12 +349,12 @@ const defaultProps = {
  * @todo
  * - create rounded util
  * - create mx, my, mt, me, mb, ms etc. util
- * - create top, end, bottom, start util
+ * - create position top, end, bottom, start util
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
-const Box = React.forwardRef((props, ref) => {
+const Prime = React.forwardRef((props, ref) => {
   const {
     as: Component = "div",
     style,
@@ -458,7 +458,7 @@ const Box = React.forwardRef((props, ref) => {
   );
 });
 
-Box.propTypes = propTypes;
-Box.defaultProps = defaultProps;
+Prime.propTypes = propTypes;
+Prime.defaultProps = defaultProps;
 
-export default Box;
+export default Prime;
