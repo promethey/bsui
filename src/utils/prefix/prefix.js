@@ -1,13 +1,13 @@
 /**
  * Function for creating classnames like Bootstrap
- *
- * @param {string} prfx
- * @param  {...string} classNames
- *
+ * 
  * @example
  * prefix("m", 0) // return 'm-0'
  * prefix("mt", 3) // return 'mt-3'
  * prefix("bg", "opacity", 25) // return 'bg-opacity-25'
+ *
+ * @param {string} prfx
+ * @param  {...string} classNames
  *
  * @returns {string} result classNames
  */

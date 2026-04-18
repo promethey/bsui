@@ -36,20 +36,21 @@ export function background(value) {
     return "";
   }
 
+  // String
   if (typeof value === "string" && BG_COLOR_LIST.includes(value)) {
     return prefix(BASE_CLASS_NAME, value); // return example 'bg-primary'
   }
 
+  // Object
   if (typeof value === "object") {
-    let valueEntries = Object.entries(value);
     let result = [];
 
     if (valueEntries.length === 0) {
       return "";
     }
 
-    for (let [key, value] of valueEntries) {
-      // if key is not 'color', 'gradient' or 'opacity' - ignore
+    for (let [key, value] of Object.entries(value)) {
+      // if key is not 'color', 'gradient', 'opacity' - ignore
       if (BG_PROPERTY_LIST.includes(key)) {
         if (key === "color" && BG_COLOR_LIST.includes(value)) {
           result.push(prefix(BASE_CLASS_NAME, value));

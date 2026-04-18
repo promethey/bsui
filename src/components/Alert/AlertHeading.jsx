@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import Text from "components/Text";
+import Prime from "components/Prime";
 
 // @type {string}
 const BASE_CLASS_NAME = "alert-heading";
@@ -35,9 +35,9 @@ function AlertHeadingBase({
   const classes = classNames(BASE_CLASS_NAME, className);
 
   return (
-    <Text as={ComponentType} className={classes} style={style} {...rest}>
+    <Prime as={ComponentType} className={classes} style={style} {...rest}>
       {children}
-    </Text>
+    </Prime>
   );
 }
 AlertHeadingBase.propTypes = propTypes;

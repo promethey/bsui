@@ -6,7 +6,7 @@ const FONT_PROPS_LIST = [
   "style",
   "lineHeight",
   "monospace", //@see {@link https://getbootstrap.com/docs/5.1/utilities/text/#monospace}
-]
+];
 
 // @see {@link https://getbootstrap.com/docs/5.1/utilities/text/#font-size}
 const FONT_SIZE_LIST = [1, 2, 3, 4, 5, 6];

@@ -1,11 +1,11 @@
 /**
- * function for checks value types
+ * Function for checks value types
  *
  * @example
- * everyType("string", "str1", "str2", "str3") // return true
- * everyType("number", 0, 1, 2) // return true
- * everyType("string", "str1", "str2", 3) // return false
- * everyType("number", 0, 1, "2") // return false
+ * everyType("string", "str1", "str2", "str3") // true
+ * everyType("number", 0, 1, 2) // true
+ * everyType("string", "str1", "str2", 3) // false
+ * everyType("number", 0, 1, "2") // false
  *
  * @param {'number'|'string'|'object'} type - js typeof value
  * @param {...any} values - any js values for checking

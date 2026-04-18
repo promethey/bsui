@@ -7,7 +7,7 @@ import { prefix } from "utils/prefix";
  * @example
  * classnames('justify-content', 'md', 'center') // 'justify-content-md-center'
  * classnames('justify-content', 'md', 'center') // 'justify-content-md-center'
- * classnames('align-items', {xs: 'center', md: 'start'}) // 'align-items-center align-items-md-start'
+ * classnames('align-items', { xs: 'center', md: 'start' }) // 'align-items-center align-items-md-start'
  *
  * @param {string} prfx - Bootstrap prefix (for example: 'btn')
  * @param {number|string|boolean|Object} classNames - Other classnames
