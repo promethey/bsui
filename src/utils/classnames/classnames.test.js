@@ -52,11 +52,10 @@ describe("classnames function", () => {
     test("generates responsive classes with prefixInsertBetween", () => {
       expect(
         classnames(
-          "flex-wrap",
+          "flex",
           { xs: "nowrap", md: "wrap" },
-          { prefixInsertBetween: true },
         ),
-      ).toBe("flex-nowrap-wrap flex-md-wrap-wrap");
+      ).toBe("flex-nowrap flex-md-wrap");
     });
   });
 

@@ -106,8 +106,8 @@ export function classnames(
                * @example
                * classnames('flex-fill', { xs: true, sm: false, md: true })) // 'flex-fill flex-md-fill'
                */
-              typeof className === "boolean" ? "" : className,
               shiftPrfxInArray.join("-"),
+              (typeof className === "boolean" && className) ? "" : className,
             ),
           );
         } else {

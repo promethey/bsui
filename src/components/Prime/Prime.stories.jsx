@@ -201,6 +201,194 @@ export function FlexFill() {
 }
 FlexFill.storyName = 'Flex fill';
 
+export function FlexGrow() {
+  return (
+    <Prime d="flex" bg="light" style={{ width: '400px', height: '150px' }}>
+      <Prime
+        flex={{ xs: { grow: 1 } }}
+        bg={{ color: "primary", opacity: 75 }}
+        text={{ color: "light", align: "center" }}
+        style={{ width: '70px', minHeight: '70px' }}
+      >
+        Flex item
+      </Prime>
+      <Prime
+        bg={{ color: "primary", opacity: 50 }}
+        text={{ color: "primary", align: "center" }}
+        style={{ width: '70px', minHeight: '70px' }}
+      >
+        Flex item
+      </Prime>
+      <Prime
+        bg={{ color: "primary", opacity: 25 }}
+        text={{ color: "primary", align: "center" }}
+        style={{ width: '70px', minHeight: '70px' }}
+      >
+        Third flex item
+      </Prime>
+    </Prime>
+  )
+}
+FlexGrow.storyName = 'Flex grow';
+
+export function FlexShrink() {
+  return (
+    <Prime d="flex" bg="light" style={{ width: '400px', height: '150px' }}>
+      <Prime
+        w={100}
+        bg={{ color: "primary", opacity: 75 }}
+        text={{ color: "light", align: "center" }}
+        style={{ width: '70px', minHeight: '70px' }}
+      >
+        Flex item
+      </Prime>
+      <Prime
+        flex={{ xs: { shrink: 1 } }}
+        bg={{ color: "primary", opacity: 25 }}
+        text={{ color: "primary", align: "center" }}
+        style={{ width: '70px', minHeight: '70px' }}
+      >
+        Flex item
+      </Prime>
+    </Prime>
+  )
+}
+FlexShrink.storyName = 'Flex shrink';
+
+export function FlexAutoMargins() {
+  return (
+    <Prime d="flex" bg={{ color: "secondary", opacity: 25 }} style={{ width: '400px' }}>
+      <Prime
+        bg={{ color: "primary", opacity: 75 }}
+        text={{ color: "light", align: "center" }}
+        p={1}
+        me={1}
+      >
+        Flex item
+      </Prime>
+      <Prime
+        bg={{ color: "primary", opacity: 75 }}
+        text={{ color: "light", align: "center" }}
+        p={1}
+        me="auto"
+      >
+        Flex item
+      </Prime>
+      <Prime
+        bg={{ color: "primary", opacity: 75 }}
+        text={{ color: "light", align: "center" }}
+        p={1}
+      >
+        Flex item
+      </Prime>
+    </Prime>
+  )
+}
+FlexAutoMargins.storyName = 'Flex auto margins';
+
+export function FlexNoWrap() {
+  return (
+    <Prime d="flex" flex={{ xs: { nowrap: true } }} bg={{ color: "secondary", opacity: 50 }} style={{ width: '200px' }}>
+      {[Array(10).keys().map((item) => (
+        <Prime
+          bg={{ color: "primary", opacity: 75 }}
+          text={{ color: "light", align: "center" }}
+          m={1}
+          p={3}
+        >
+          Flex item
+        </Prime>
+      ))]}
+    </Prime>
+  )
+}
+FlexNoWrap.storyName = 'Flex nowrap';
+
+export function FlexWrap() {
+  return (
+    <Prime d="flex" flex={{ xs: { wrap: true } }} bg={{ color: "secondary", opacity: 50 }} style={{ width: '500px' }}>
+      {[Array(10).keys().map((item) => (
+        <Prime
+          bg={{ color: "primary", opacity: 75 }}
+          text={{ color: "light", align: "center" }}
+          m={1}
+          p={3}
+        >
+          Flex item
+        </Prime>
+      ))]}
+    </Prime>
+  )
+}
+FlexWrap.storyName = 'Flex wrap';
+
+export function FlexWrapReverse() {
+  return (
+    <Prime d="flex" flex={{ xs: { wrapReverse: true } }} bg={{ color: "secondary", opacity: 50 }} style={{ width: '500px' }}>
+      {[Array(10).keys().map((item) => (
+        <Prime
+          bg={{ color: "primary", opacity: 75 }}
+          text={{ color: "light", align: "center" }}
+          m={1}
+          p={3}
+        >
+          Flex item
+        </Prime>
+      ))]}
+    </Prime>
+  )
+}
+FlexWrapReverse.storyName = 'Flex wrap reverse';
+
+export function FlexOrder() {
+  return (
+    <Prime d="flex" bg={{ color: "secondary", opacity: 50 }} style={{ width: '600px' }}>
+      {[Array(3).keys().map((item) => (
+        <Prime
+          flex={{ xs: { order: 2 - item } }}
+          bg={{ color: "primary", opacity: 75 }}
+          text={{ color: "light", align: "center" }}
+          p={3}
+          m={1}
+        >
+          Flex item {item}
+        </Prime>
+      ))]}
+    </Prime>
+  )
+}
+FlexOrder.storyName = 'Flex order';
+
+export function FlexAlignContent() {
+  const examples = ['start', 'end', 'center', 'between', 'around', 'stretch'];
+
+  return (
+    <Prime>
+      {examples.map((value) => (
+        <Prime
+          d="flex"
+          flex={{ xs: { alignContent: value, wrap: true } }}
+          bg={{ color: "secondary", opacity: 25 }}
+          style={{ width: '600px', height: '200px' }}
+          mb={3}
+        >
+          {[[0, 1, 2, 3, 4, 5].map(() => (
+            <Prime
+              bg={{ color: "primary", opacity: 75 }}
+              text={{ color: "light", align: "center" }}
+              p={3}
+              m={1}
+            >
+              Flex item
+            </Prime>
+          ))]}
+        </Prime>
+      ))}
+    </Prime>
+  )
+}
+FlexAlignContent.storyName = 'Flex align content';
+
 export function Visually() {
   return (
     <>

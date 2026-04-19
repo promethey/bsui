@@ -7,6 +7,13 @@ const FLEX_MAP = {
   align: 'align-items',
   alignSelf: 'align-self',
   fill: 'flex-fill',
+  grow: 'flex-grow',
+  shrink: 'flex-shrink',
+  wrap: 'flex-wrap',
+  nowrap: 'flex-nowrap',
+  wrapReverse: 'flex-wrap-reverse',
+  order: 'order',
+  alignContent: 'align-content',
 };
 
 const FLEX_VALUES_MAP = {
@@ -14,7 +21,14 @@ const FLEX_VALUES_MAP = {
   justify: ['start', 'end', 'center', 'between', 'around', 'evenly'],
   align: ['start', 'end', 'center', 'baseline', 'stretch'],
   alignSelf: ['start', 'end', 'center', 'baseline', 'stretch'],
-  fill: [true, false],
+  fill: [true],
+  grow: [0, 1],
+  shrink: [0, 1],
+  wrap: [true],
+  nowrap: [true],
+  wrapReverse: [true],
+  order: [-1, 0, 1, 2, 3, 4, 5, 6, 'first', 'last'],
+  alignContent: ['start', 'end', 'center', 'between', 'around', 'stretch'],
 }
 
 /**
@@ -28,6 +42,13 @@ const FLEX_OPTIONS_MAP = {
   align: false,
   alignSelf: false,
   fill: true,
+  grow: true,
+  shrink: true,
+  wrap: true,
+  nowrap: true,
+  wrapReverse: true,
+  order: false,
+  alignContent: false,
 }
 
 const JUSTIFY_ALIGN_LIST = ['start', 'end', 'center'];
