@@ -1,5 +1,7 @@
 import { prefix } from "utils/prefix";
 
+const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
+
 /**
  * Function for convert object or string to
  * responsive classes
@@ -82,7 +84,6 @@ export function classnames(
   }
 
   if (typeof classNames === "object") {
-    const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
     const classNamesArray = [];
 
     if (Object.entries(classNames).length === 0) {
@@ -100,7 +101,12 @@ export function classnames(
             prefix(
               prfxInArray[0],
               breakpoint === "xs" ? "" : breakpoint,
-              className,
+              /**
+               * Fix if className value is boolean
+               * @example
+               * classnames('flex-fill', { xs: true, sm: false, md: true })) // 'flex-fill flex-md-fill'
+               */
+              typeof className === "boolean" ? "" : className,
               shiftPrfxInArray.join("-"),
             ),
           );

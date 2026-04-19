@@ -2,6 +2,7 @@ import { flex } from './flex';
 
 describe("Check utility", () => {
   describe("Basic function", () => {
+    /** String */
     test("Check string start value", () => {
       expect(flex("start")).toBe("justify-content-start align-items-start");
     });
@@ -42,12 +43,52 @@ describe("Check utility", () => {
       expect(flex({ xxl: "center" })).toBe("justify-content-xxl-center align-items-xxl-center");
     });
 
+    /** Object */
     test("Check object justify xs center", () => {
       expect(flex({ xs: { justify: "center" } })).toBe("justify-content-center");
     });
 
     test("Check object justify md start", () => {
       expect(flex({ md: { justify: "start" } })).toBe("justify-content-md-start");
+    });
+
+    /** Direction */
+    test("Check row direction", () => {
+      expect(flex({ xs: { dir: "row" } })).toBe("flex-row");
+    });
+
+    test("Check row md direction", () => {
+      expect(flex({ md: { dir: "row" } })).toBe("flex-md-row");
+    });
+
+    test("Check column direction", () => {
+      expect(flex({ xs: { dir: "column" } })).toBe("flex-column");
+    });
+
+    test("Check column md direction", () => {
+      expect(flex({ md: { dir: "column" } })).toBe("flex-md-column");
+    });
+
+    /** Align self */
+    test("Check align self center", () => {
+      expect(flex({ xs: { alignSelf: "center" } })).toBe("align-self-center");
+    });
+
+    test("Check align self md center", () => {
+      expect(flex({ md: { alignSelf: "center" } })).toBe("align-self-md-center");
+    });
+
+    /** Fill */
+    test("Check flex fill", () => {
+      expect(flex({ xs: { fill: true } })).toBe("flex-fill");
+    });
+
+    test("Check flex md fill", () => {
+      expect(flex({ md: { fill: true } })).toBe("flex-md-fill");
+    });
+
+    test("Check flex md fill", () => {
+      expect(flex({ xs: { fill: true }, md: { fill: true } })).toBe("flex-fill flex-md-fill");
     });
   });
 });

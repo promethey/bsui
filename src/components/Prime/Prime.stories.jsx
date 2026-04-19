@@ -150,6 +150,57 @@ export function FlexResponsive() {
 }
 FlexResponsive.storyName = 'Flex responsive';
 
+export function FlexAlignSelf() {
+  const examples = ["Start", "Center", "End", "Stretch", "Baseline"];
+
+  return (
+    <Prime d="flex" bg="info" style={{ width: '350px', height: '350px' }}>
+      {examples.map((value) => (
+        <Prime
+          flex={{ xs: { alignSelf: value.toLowerCase() } }}
+          bg="light"
+          text={{ color: "primary", align: "center" }}
+          border={{ color: "primary" }}
+          style={{ width: '70px', minHeight: '70px' }}
+        >
+          {value}
+        </Prime>
+      ))}
+    </Prime>
+  )
+}
+FlexAlignSelf.storyName = 'Flex align self';
+
+export function FlexFill() {
+  return (
+    <Prime d="flex" bg="light" style={{ width: '400px', height: '150px' }}>
+      <Prime
+        flex={{ xs: { fill: true } }}
+        bg={{ color: "primary", opacity: 75 }}
+        text={{ color: "light", align: "center" }}
+        style={{ width: '70px', minHeight: '70px' }}
+      >
+        Flex item with a lot of content
+      </Prime>
+      <Prime
+        bg={{ color: "primary", opacity: 50 }}
+        text={{ color: "primary", align: "center" }}
+        style={{ width: '70px', minHeight: '70px' }}
+      >
+        Flex item
+      </Prime>
+      <Prime
+        bg={{ color: "primary", opacity: 25 }}
+        text={{ color: "primary", align: "center" }}
+        style={{ width: '70px', minHeight: '70px' }}
+      >
+        Flex item
+      </Prime>
+    </Prime>
+  )
+}
+FlexFill.storyName = 'Flex fill';
+
 export function Visually() {
   return (
     <>

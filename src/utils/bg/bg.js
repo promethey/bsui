@@ -49,19 +49,19 @@ export function bg(value) {
       return "";
     }
 
-    for (let [key, value] of Object.entries(value)) {
+    for (let [key, val] of Object.entries(value)) {
       // if key is not 'color', 'gradient', 'opacity' - ignore
       if (BG_PROPERTY_LIST.includes(key)) {
-        if (key === "color" && BG_COLOR_LIST.includes(value)) {
-          result.push(prefix(BG_CLASS_NAME, value));
+        if (key === "color" && BG_COLOR_LIST.includes(val)) {
+          result.push(prefix(BG_CLASS_NAME, val));
         }
 
-        if (key === "gradient" && value) {
+        if (key === "gradient" && val) {
           result.push(prefix(BG_CLASS_NAME, key));
         }
 
-        if (key === "opacity" && BG_OPACITY_VALUES.includes(value)) {
-          result.push(prefix(BG_CLASS_NAME, key, value));
+        if (key === "opacity" && BG_OPACITY_VALUES.includes(val)) {
+          result.push(prefix(BG_CLASS_NAME, key, val));
         }
       }
     }
