@@ -588,7 +588,7 @@ export function BorderRadius() {
 BorderRadius.storyName = "Border radius";
 
 export function BorderSizes() {
-  const examples = [0, 1, 2, 3, 4, 5];
+  const examples = [0, 1, 2, 3];
 
   return (
     <Prime d="flex">
