@@ -311,6 +311,10 @@ const defaultProps = {
 
 /**
  * Box component is basic for this library
+ * 
+ * Support utilities:
+ * + prefix
+ * + bg
  *
  * @example
  * <Box>This is box component</Box>

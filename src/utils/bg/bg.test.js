@@ -32,17 +32,23 @@ describe("background utility", () => {
   });
 
   test("handles color object", () => {
-    expect(bg({ color: "primary" })).toBe("bg-primary");
-    expect(bg({ color: "secondary" })).toBe("bg-secondary");
-    expect(bg({ color: "success" })).toBe("bg-success");
-    expect(bg({ color: "danger" })).toBe("bg-danger");
-    expect(bg({ color: "warning" })).toBe("bg-warning");
-    expect(bg({ color: "info" })).toBe("bg-info");
-    expect(bg({ color: "light" })).toBe("bg-light");
-    expect(bg({ color: "dark" })).toBe("bg-dark");
-    expect(bg({ color: "body" })).toBe("bg-body");
-    expect(bg({ color: "white" })).toBe("bg-white");
-    expect(bg({ color: "transparent" })).toBe("bg-transparent");
+    const colors = [
+      "primary",
+      "secondary",
+      "success",
+      "danger",
+      "warning",
+      "info",
+      "light",
+      "dark",
+      "body",
+      "white",
+      "transparent",
+    ];
+
+    colors.map((color) => {
+      expect(bg({ color })).toBe(`bg-${color}`);
+    })
   });
 
   test("ignores invalid color value", () => {

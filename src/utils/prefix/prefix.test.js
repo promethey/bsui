@@ -2,18 +2,18 @@ import { prefix } from "./prefix";
 
 describe("prefix function", () => {
   describe("Basic functionality", () => {
-    test("returns only prefix when no additional classes", () => {
+    test("without classnames", () => {
       expect(prefix("btn")).toBe("btn");
     });
 
-    test("handles single and multiple additional classes", () => {
+    test("regular cases", () => {
       expect(prefix("btn", "primary")).toBe("btn-primary");
       expect(prefix("alert", "dismissible", "animated")).toBe(
         "alert-dismissible-animated",
       );
     });
 
-    test("handles numeric class names", () => {
+    test("with numbers", () => {
       expect(prefix("col", 3)).toBe("col-3");
       expect(prefix("col", "md", 6)).toBe("col-md-6");
     });
@@ -27,25 +27,26 @@ describe("prefix function", () => {
       expect(prefix("btn", [], "warning")).toBe("btn-warning");
     });
 
-    test("handles empty strings", () => {
+    test("ignores empty strings", () => {
       expect(prefix("btn", "")).toBe("btn");
       expect(prefix("btn", "", "primary")).toBe("btn-primary");
       expect(prefix("btn", "    ", "primary")).toBe("btn-primary");
     });
   });
 
-  describe("Special characters", () => {
-    test("preserves special characters and UTF-8", () => {
+  describe("Special cases", () => {
+    test("special characters and UTF-8", () => {
       expect(prefix("btn", "hover:focus")).toBe("btn-hover:focus");
       expect(prefix("custom", "btn_primary")).toBe("custom-btn_primary");
     });
   });
 
   describe("Type handling", () => {
-    test("handles non-string prefix without throwing", () => {
-      expect(prefix(123)).toBe(undefined);
-      expect(prefix(null)).toBe(undefined);
-      expect(prefix(true)).toBe(undefined);
+    test("handles non-string prefix without errors", () => {
+      expect(prefix(123)).toBe("");
+      expect(prefix(null)).toBe("");
+      expect(prefix(true)).toBe("");
+      expect(prefix(false)).toBe("");
     });
   });
 });
