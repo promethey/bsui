@@ -1,21 +1,28 @@
 import { prefix } from "utils/prefix";
 
-const BG_CLASS_NAME = "bg";
-const BG_PROPERTY_LIST = ["color", "gradient", "opacity"];
-const BG_COLOR_LIST = [
-  "primary",
-  "secondary",
-  "success",
-  "danger",
-  "warning",
-  "info",
-  "light",
-  "dark",
-  "body",
-  "white",
-  "transparent",
-];
-const BG_OPACITY_VALUES = [10, 25, 50, 75];
+const BG_MAP = {
+  color: "bg",
+  gradient: "bg-gradient",
+  opacity: "bg-opacity",
+};
+
+const BG_VALUES_MAP = {
+  color: [
+    "primary",
+    "secondary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+    "light",
+    "dark",
+    "body",
+    "white",
+    "transparent",
+  ],
+  gradient: [true],
+  opacity: [10, 25, 50, 75],
+};
 
 /**
  * Function for background utility
@@ -32,13 +39,11 @@ const BG_OPACITY_VALUES = [10, 25, 50, 75];
  * @returns {string}
  */
 export function bg(value) {
-  if (!value) {
-    return "";
-  }
+  if (!value) return "";
 
   // String
-  if (typeof value === "string" && BG_COLOR_LIST.includes(value)) {
-    return prefix(BG_CLASS_NAME, value); // return example 'bg-primary'
+  if (typeof value === "string" && BG_VALUES_MAP["color"].includes(value)) {
+    return prefix(BG_MAP["color"], value); // return example 'bg-primary'
   }
 
   // Object
@@ -50,23 +55,14 @@ export function bg(value) {
     }
 
     for (let [key, val] of Object.entries(value)) {
-      // if key is not 'color', 'gradient', 'opacity' - ignore
-      if (BG_PROPERTY_LIST.includes(key)) {
-        if (key === "color" && BG_COLOR_LIST.includes(val)) {
-          result.push(prefix(BG_CLASS_NAME, val));
-        }
-
-        if (key === "gradient" && val) {
-          result.push(prefix(BG_CLASS_NAME, key));
-        }
-
-        if (key === "opacity" && BG_OPACITY_VALUES.includes(val)) {
-          result.push(prefix(BG_CLASS_NAME, key, val));
+      if (Object.keys(BG_MAP).includes(key)) {
+        if (BG_VALUES_MAP[key].includes(val)) {
+          result.push(prefix(BG_MAP[key], val));
         }
       }
     }
 
-    return result.join(" ");
+    return result.join(" ").trim();
   }
 
   return "";
