@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { prefix } from "utils/prefix";
 import { classnames as cs } from "utils/classnames";
 import { spacing as spacingUtility } from "utils/spacing";
-import { background as backgroundUtility } from "utils/background";
+import { bg as bgUtility } from "utils/bg";
 import { text as textUtility } from "utils/text";
 import { border as borderUtility } from 'utils/border';
 import { flex as flexUtility } from 'utils/flex';
@@ -34,6 +34,7 @@ const propTypes = {
   style: PropTypes.shape({}),
   children: PropTypes.node.isRequired,
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+
   d: PropTypes.oneOf([
     "none",
     "inline",
@@ -107,6 +108,19 @@ const propTypes = {
   pb: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
   ps: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
+  // font
+  fs: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
+  fw: PropTypes.oneOf(['bold', 'bolder', 'normal', 'light', 'lighter']),
+  fst: PropTypes.oneOf(['italic', 'normal']),
+  lh: PropTypes.oneOf([1, 'sm', 'base', 'lg']),
+  monospace: PropTypes.bool,
+
+  rounded: PropTypes.oneOfType([
+    PropTypes.oneOf(['top', 'end', 'bottom', 'start', 'circle', 'pill']),
+    PropTypes.oneOf([0, 1, 2, 3]),
+    PropTypes.object,
+  ]),
+
   flex: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 
   float: PropTypes.oneOfType([
@@ -177,7 +191,7 @@ const propTypes = {
         }),
         PropTypes.oneOf(["start", "center", "end"]),
       ]),
-      break: PropTypes.bool,
+      wordBreak: PropTypes.bool,
       transform: PropTypes.oneOf(["lowercase", "uppercase", "capitalize"]),
       decoration: PropTypes.oneOf(["underline", "line-through", "none"]),
     }),
@@ -237,17 +251,22 @@ const defaultProps = {
   as: "div",
   style: null,
   className: null,
+
   d: null,
   dp: null, // display print
+
   w: null,
   mw: null, // max width
+
   h: null,
   mh: null, // max height
+  
   pos: null, // position
   top: null,
   end: null,
   bottom: null,
   start: null,
+
   m: null, // margin
   mx: null,
   my: null,
@@ -255,6 +274,7 @@ const defaultProps = {
   me: null,
   mb: null,
   ms: null,
+
   p: null, // padding
   px: null,
   py: null,
@@ -262,11 +282,25 @@ const defaultProps = {
   pe: null,
   pb: null,
   ps: null,
+
+  fs: null,
+  fw: null,
+  fst: null,
+  lh: null,
+  monospace: false,
+
+  rounded: null,
+
   flex: null,
+
+  float: null,
+
   shadow: null,
+
   bg: null, // background
   text: null,
   border: false,
+
   visually: null,
   visible: false,
   invisible: false,
@@ -306,6 +340,7 @@ const Prime = React.forwardRef((props, ref) => {
 
     w,
     mw, // max width
+
     h,
     mh, // max height
 
@@ -322,6 +357,7 @@ const Prime = React.forwardRef((props, ref) => {
     me,
     mb,
     ms,
+
     p, // padding
     px,
     py,
@@ -339,12 +375,14 @@ const Prime = React.forwardRef((props, ref) => {
     flex,
 
     float,
-    opacity,
+
     shadow,
+
     bg,
     text,
     border,
     rounded,
+
     visually,
     visible,
     invisible,
@@ -355,31 +393,39 @@ const Prime = React.forwardRef((props, ref) => {
   } = props;
 
   const classes = classNames(
+    cs("d", d),
+    cs("d-print", dp),
     {
       [prefix("w", w)]: w,
       [prefix("mw", mw)]: mw, // max width
+      
       [prefix("h", h)]: h,
       [prefix("mh", mh)]: mh, // max height
+      
       [prefix("position", pos)]: pos, // position
       [prefix("top", top)]: typeof top === 'number',
       [prefix("end", end)]: typeof end === 'number',
       [prefix("bottom", bottom)]: typeof bottom === 'number',
       [prefix("start", start)]: typeof start === 'number',
-      [prefix("opacity", opacity)]: opacity,
+
       [prefix("shadow", shadow)]: shadow,
+      
       [cs("mx", mx)]: mx,
       [cs("my", my)]: my,
       [cs("mt", mt)]: mt,
       [cs("me", me)]: me,
       [cs("mb", mb)]: mb,
       [cs("ms", ms)]: ms,
+      
       [cs("px", px)]: px,
       [cs("py", py)]: py,
       [cs("pt", pt)]: pt,
       [cs("pe", pe)]: pe,
       [cs("pb", pb)]: pb,
       [cs("ps", ps)]: ps,
+      
       [cs("rounded", rounded)]: rounded,
+      
       [prefix("visually", "hidden")]:
         typeof visually === "boolean" && !visually,
       [prefix("visually", visually)]: typeof visually === "string",
@@ -392,14 +438,16 @@ const Prime = React.forwardRef((props, ref) => {
        */
       clearfix,
     },
-    backgroundUtility(bg),
+    bgUtility(bg),
     textUtility(text),
+
     spacingUtility("m", m),
     spacingUtility("p", p),
+
     borderUtility(border),
+
     flexUtility(flex),
-    cs("d", d),
-    cs("d-print", dp),
+
     cs("float", float),
     cs("translate-middle", translateMiddle),
     className,

@@ -1,6 +1,6 @@
 import { prefix } from "utils/prefix";
 
-const BASE_CLASS_NAME = "bg";
+const BG_CLASSNAME = "bg";
 const BG_PROPERTY_LIST = ["color", "gradient", "opacity"];
 const BG_COLOR_LIST = [
   "primary",
@@ -31,14 +31,14 @@ const BG_OPACITY_VALUES = [10, 25, 50, 75];
  *
  * @returns {string}
  */
-export function background(value) {
+export function bg(value) {
   if (!value) {
     return "";
   }
 
   // String
   if (typeof value === "string" && BG_COLOR_LIST.includes(value)) {
-    return prefix(BASE_CLASS_NAME, value); // return example 'bg-primary'
+    return prefix(BG_CLASSNAME, value); // return example 'bg-primary'
   }
 
   // Object
@@ -53,15 +53,15 @@ export function background(value) {
       // if key is not 'color', 'gradient', 'opacity' - ignore
       if (BG_PROPERTY_LIST.includes(key)) {
         if (key === "color" && BG_COLOR_LIST.includes(value)) {
-          result.push(prefix(BASE_CLASS_NAME, value));
+          result.push(prefix(BG_CLASSNAME, value));
         }
 
         if (key === "gradient" && value) {
-          result.push(prefix(BASE_CLASS_NAME, key));
+          result.push(prefix(BG_CLASSNAME, key));
         }
 
         if (key === "opacity" && BG_OPACITY_VALUES.includes(value)) {
-          result.push(prefix(BASE_CLASS_NAME, key, value));
+          result.push(prefix(BG_CLASSNAME, key, value));
         }
       }
     }

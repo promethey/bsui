@@ -1,4 +1,4 @@
-const BASE_CLASSNAME = 'border';
+const BORDER_CLASSNAME = 'border';
 const BORDER_WIDTH_LIST = [1, 2, 3, 4, 5];
 const BORDER_PROPERTY_LIST = ["color", "width", "top", "end", "bottom", "start"];
 const BORDER_DIRECTION_LIST = ["top", "end", "bottom", "start"];
@@ -25,13 +25,13 @@ const BORDER_DIRECTION_LIST = ["top", "end", "bottom", "start"];
 export function border(value) {
   // Boolean
   if (typeof value === 'boolean') {
-    return BASE_CLASSNAME;
+    return BORDER_CLASSNAME;
   }
 
   // String
   if (typeof value === 'string') {
     if (BORDER_DIRECTION_LIST.includes(value)) {
-      return `${BASE_CLASSNAME}-${value}`;
+      return `${BORDER_CLASSNAME}-${value}`;
     }
 
     return "";
@@ -40,7 +40,7 @@ export function border(value) {
   // Number
   if (typeof value === "number") {
     if (BORDER_WIDTH_LIST.includes(value)) {
-      return [BASE_CLASSNAME, `${BASE_CLASSNAME}-${value}`].join(" ").trim();
+      return [BORDER_CLASSNAME, `${BORDER_CLASSNAME}-${value}`].join(" ").trim();
     }
 
     return "";
@@ -51,18 +51,18 @@ export function border(value) {
     let result = [];
 
     if (value?.aspect && BORDER_DIRECTION_LIST.includes(value.aspect)) {
-      result.push(`${BASE_CLASSNAME}-${value.aspect}`)
+      result.push(`${BORDER_CLASSNAME}-${value.aspect}`)
     } else {
-      result.push(BASE_CLASSNAME);
+      result.push(BORDER_CLASSNAME);
     }
 
     for (let [key, val] of Object.entries(value)) {
       if (BORDER_PROPERTY_LIST.includes(key)) {
         // for top end bottom start
         if (BORDER_DIRECTION_LIST.includes(key)) {
-          result.push(`${BASE_CLASSNAME}-${key}-${val}`);
+          result.push(`${BORDER_CLASSNAME}-${key}-${val}`);
         } else {
-          result.push(`${BASE_CLASSNAME}-${val}`);
+          result.push(`${BORDER_CLASSNAME}-${val}`);
         }    
       }
     }

@@ -1,4 +1,4 @@
-import { background } from "./background.js";
+import { background } from "./bg.js";
 
 describe("background utility", () => {
   test("returns empty string for falsy values", () => {
