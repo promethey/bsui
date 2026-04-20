@@ -20,7 +20,7 @@ const BORDER_DIRECTION_LIST = ["top", "end", "bottom", "start"];
  * border={{ color: "primary", width: 1, top: 0 }} // "border border-primary border-1 border-top-0"
  * 
  * @param {boolean|string|number|Object} value 
- * @returns border classnames
+ * @returns {string} border classnames
  */
 export function border(value) {
   // Boolean

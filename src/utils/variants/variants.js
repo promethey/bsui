@@ -1,5 +1,5 @@
 import React from "react";
-import { capitalize } from "utils/capitalize";
+import { capitalize } from "helpers/capitalize";
 
 /**
  * Creates a static subcomponent variant (dot-notation API).

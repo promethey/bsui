@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { prefix } from "utils/prefix";
+import { prefix } from "helpers/prefix";
 import { defineThemeVariants, attachStaticVariants } from "utils/variants";
 import Prime from "components/Prime";
 

@@ -7,6 +7,7 @@ module.exports = {
   moduleFileExtensions: ["js", "jsx"],
   moduleNameMapper: {
     "^utils/(.*)$": "<rootDir>/src/utils/$1",
+    "^helpers/(.*)$": "<rootDir>/src/helpers/$1",
     "^components/(.*)$": "<rootDir>/src/components/$1",
   },
 };

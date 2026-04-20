@@ -1,5 +1,5 @@
-import { everyType } from "utils/everyType";
-import { classnames } from "utils/classnames";
+import { everyType } from "helpers/everyType";
+import { classnames } from "helpers/classnames";
 
 /**
  * Function for generate margin and padding classnames string

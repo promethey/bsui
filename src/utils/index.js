@@ -1,1 +1,1 @@
-export { prefix } from './prefix';
+export { prefix } from '../helpers/prefix';

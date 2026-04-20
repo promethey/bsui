@@ -1,4 +1,4 @@
-import { prefix } from "utils/prefix";
+import { prefix } from "helpers/prefix";
 
 const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
 

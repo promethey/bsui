@@ -1,4 +1,4 @@
-import { prefix } from "utils/prefix";
+import { prefix } from "helpers/prefix";
 
 const BASE_CLASS_NAME = "text";
 const TEXT_PROPERTY_LIST = [

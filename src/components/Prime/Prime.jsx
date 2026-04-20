@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { prefix } from "utils/prefix";
-import { classnames as cs } from "utils/classnames";
+import { prefix } from "helpers/prefix";
+import { classnames as cs } from "helpers/classnames";
 import { spacing as spacingUtility } from "utils/spacing";
 import { bg as bgUtility } from "utils/bg";
 import { text as textUtility } from "utils/text";
@@ -163,6 +163,8 @@ const propTypes = {
     ]),
   ]),
 
+  opacity: PropTypes.oneOf([25, 50, 75, 100]),
+
   text: PropTypes.oneOfType([
     PropTypes.shape({
       color: PropTypes.oneOf([
@@ -298,6 +300,7 @@ const defaultProps = {
   shadow: null,
 
   bg: null, // background
+  opacity: null,
   text: null,
   border: false,
 
@@ -384,6 +387,7 @@ const Prime = React.forwardRef((props, ref) => {
 
     bg,
     text,
+    opacity,
     border,
     rounded,
 
@@ -429,6 +433,8 @@ const Prime = React.forwardRef((props, ref) => {
       [cs("ps", ps)]: ps,
       
       [cs("rounded", rounded)]: rounded,
+
+      [cs("opacity", opacity)]: opacity,
       
       [prefix("visually", "hidden")]:
         typeof visually === "boolean" && !visually,
@@ -454,6 +460,7 @@ const Prime = React.forwardRef((props, ref) => {
 
     cs("float", float),
     cs("translate-middle", translateMiddle),
+    
     className,
   );
 

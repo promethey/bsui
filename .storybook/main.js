@@ -18,6 +18,7 @@ const config = {
       ...config.resolve.alias,
       components: path.resolve(__dirname, "../src/components"),
       utils: path.resolve(__dirname, "../src/utils"),
+      helpers: path.resolve(__dirname, "../src/helpers"),
       constants: path.resolve(__dirname, "../src/constants"),
     };
     return config;

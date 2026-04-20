@@ -11,17 +11,23 @@ describe("background utility", () => {
   });
 
   test("returns correct class for string value", () => {
-    expect(bg("primary")).toBe("bg-primary");
-    expect(bg("secondary")).toBe("bg-secondary");
-    expect(bg("success")).toBe("bg-success");
-    expect(bg("danger")).toBe("bg-danger");
-    expect(bg("warning")).toBe("bg-warning");
-    expect(bg("info")).toBe("bg-info");
-    expect(bg("light")).toBe("bg-light");
-    expect(bg("dark")).toBe("bg-dark");
-    expect(bg("body")).toBe("bg-body");
-    expect(bg("white")).toBe("bg-white");
-    expect(bg("transparent")).toBe("bg-transparent");
+    const colors = [
+      "primary",
+      "secondary",
+      "success",
+      "danger",
+      "warning",
+      "info",
+      "light",
+      "dark",
+      "body",
+      "white",
+      "transparent",
+    ];
+
+    colors.map((color) => {
+      expect(bg(color)).toBe(`bg-${color}`);
+    })
   });
 
   test("ignores invalid string, false, incorrect values", () => {

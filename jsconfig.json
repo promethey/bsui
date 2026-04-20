@@ -5,7 +5,8 @@
       "@/*": ["./*"],
       "components/*": ["components/*"],
       "utils/*": ["utils/*"],
-      "constants/*": ["constants/*"]
+      "helpers/*": ["helpers/*"],
+      "constants/*": ["constants/*"],
     }
   },
   "exclude": ["node_modules", "dist"]

@@ -1,4 +1,4 @@
-import { everyType } from 'utils/everyType';
+import { everyType } from 'helpers/everyType';
 
 const FONT_PROPS_LIST = [
   "size",

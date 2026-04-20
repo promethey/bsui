@@ -1,7 +1,7 @@
 import React from "react";
 import { isValidElementType } from "react-is";
 import { render } from "@testing-library/react";
-import { capitalize } from "utils/capitalize";
+import { capitalize } from "helpers/capitalize";
 import {
   createStaticVariant,
   defineThemeVariants,

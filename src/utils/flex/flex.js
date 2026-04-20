@@ -1,5 +1,5 @@
-import { prefix } from 'utils/prefix';
-import { classnames as cs } from 'utils/classnames';
+import { prefix } from 'helpers/prefix';
+import { classnames as cs } from 'helpers/classnames';
 
 const FLEX_MAP = {
   dir: 'flex',
