@@ -92,7 +92,7 @@ export function flex(value) {
       // 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'
       if (BREAKPOINTS_LIST.includes(breakpoint)) {
         // 'start', 'end', 'center'
-        if (typeof val === 'string' && JUSTIFY_ALIGN_LIST.includes(val)) {
+        if ((typeof val === 'string' || typeof val === 'boolean') && JUSTIFY_ALIGN_LIST.includes(val)) {
           let justify = cs(FLEX_MAP.justify, { [breakpoint]: val });
           let align = cs(FLEX_MAP.align, { [breakpoint]: val });
           result.push(`${justify} ${align}`);

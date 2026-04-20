@@ -1,134 +1,90 @@
-import { prefix } from "helpers/prefix";
+import { classnames as cs } from 'helpers/classnames';
 
 const BASE_CLASS_NAME = "text";
-const TEXT_PROPERTY_LIST = [
-  "color",
-  "align",
-  "wordBreak",
-  "transform",
-  "decoration",
-  "select"
-];
-const TEXT_COLOR_LIST = [
-  "primary",
-  "secondary",
-  "success",
-  "danger",
-  "warning",
-  "info",
-  "light",
-  "dark",
-  "body",
-  "muted",
-  "white",
-  "black-50",
-  "white-50",
-  "reset",
-];
-const TEXT_ALIGN_LIST = ["start", "center", "end"];
 const TEXT_ALIGN_BREAKPOINT_LIST = ["xs", "sm", "md", "lg", "xl"];
-const TEXT_TRANSFORM_LIST = ["lowercase", "uppercase", "capitalize"];
-const TEXT_DECORATION_LIST = ["underline", "line-through", "none"];
-const TEXT_SELECT_LIST = ["all", "auto", "none"];
 
-/**
- * @typedef {(
- *   'primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark'
- *   |'body'|'muted'|'white'|'black-50'|'white-50'|'reset'
- *   | {
- *       color?: 'primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark'
- *         |'body'|'muted'|'white'|'black-50'|'white-50'|'reset',
- *       align?: 'start'|'center'|'end' | { xs?: 'start'|'center'|'end', sm?: 'start'|'center'|'end', md?: 'start'|'center'|'end', lg?: 'start'|'center'|'end', xl?: 'start'|'center'|'end' },
- *       break?: boolean,
- *       transform?: 'lowercase'|'uppercase'|'capitalize',
- *       decoration?: 'underline'|'line-through'|'none'
- *     }
- * )} TextProp
- */
+const TEXT_MAP = {
+  color: "text",
+  align: "text",
+  wordBreak: "text-break",
+  transform: "text",
+  decoration: "text-decoration",
+  wrap: "text-wrap",
+  nowrap: "text-nowrap",
+  select: "user-select"
+};
+
+const TEXT_VALUES_MAP = {
+  color: [
+    "primary",
+    "secondary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+    "light",
+    "dark",
+    "body",
+    "muted",
+    "white",
+    "black-50",
+    "white-50",
+    "reset",
+  ],
+  align: ["start", "center", "end"],
+  wordBreak: [true],
+  transform: ["lowercase", "uppercase", "capitalize"],
+  decoration: ["underline", "line-through", "none"],
+  wrap: [true],
+  nowrap: [true],
+  select: ["all", "auto", "none"],
+};
 
 /**
  * Function for text utility
  *
  * @example
  * text("primary") // return 'text-primary'
- *
- * @example
  * text({ color: 'primary', align: 'start', linebreak: true, transform: 'lowercase', decoration: 'underline'  }) // return 'text-primary text-start text-break text-lowercase text-decoration-underline'
- *
- * @example
  * text({ color: 'danger', brk: true }) // return 'text-danger', 'brk' was igrnored
  *
- * @param {TextProp} value - text utility value
+ * @param {string|Object} value - text utility value
  *
  * @returns {string}
- *
- * @todo
- * - add text select utility
  */
 export function text(value) {
-  if (!value) {
-    return "";
+  if (!value) return "";
+
+  // String
+  if (typeof value === "string" && TEXT_VALUES_MAP["color"].includes(value)) {
+    return cs(BASE_CLASS_NAME, value);
   }
 
-  if (typeof value === "string" && TEXT_COLOR_LIST.includes(value)) {
-    return prefix(BASE_CLASS_NAME, value); // return example 'text-primary'
-  }
-
+  // Object
   if (typeof value === "object") {
-    let valueEntries = Object.entries(value);
+    if (Object.entries(value).length === 0) return "";
+
     let result = [];
 
-    if (valueEntries.length === 0) {
-      return "";
-    }
-
-    for (let [key, value] of valueEntries) {
-      // if key is not 'color', 'align', 'break', 'transform', 'decoration' - ignore
-      if (TEXT_PROPERTY_LIST.includes(key)) {
-        if (key === "color" && TEXT_COLOR_LIST.includes(value)) {
-          result.push(prefix(BASE_CLASS_NAME, value));
+    for (let [key, val] of Object.entries(value)) {
+      if (Object.keys(TEXT_MAP).includes(key)) {
+        // String or Boolean
+        if ((typeof val === "string" || typeof val === "boolean") && TEXT_VALUES_MAP[key].includes(val)) {
+          result.push(cs(TEXT_MAP[key], val));
         }
-
-        if (key === "align") {
-          if (typeof value === "object") {
-            const alignEntries = Object.entries(value);
-            for (let [breakpoint, alignPos] of alignEntries) {
-              if (TEXT_ALIGN_BREAKPOINT_LIST.includes(breakpoint)) {
-                result.push(
-                  prefix(
-                    BASE_CLASS_NAME,
-                    breakpoint === "xs" ? "" : breakpoint,
-                    alignPos,
-                  ),
-                );
-              }
+        
+        // Object
+        if (typeof val === 'object') {
+          for (let [breakpoint, textVal] of Object.entries(val)) {
+            if (TEXT_ALIGN_BREAKPOINT_LIST.includes(breakpoint) && TEXT_VALUES_MAP[key].includes(textVal)) {
+              result.push(cs(TEXT_MAP[breakpoint], { [breakpoint]: textVal }));
             }
           }
-
-          if (typeof value === "string" && TEXT_ALIGN_LIST.includes(value)) {
-            result.push(prefix(BASE_CLASS_NAME, value));
-          }
-        }
-
-        if (key === "wordBreak" && value) {
-          result.push(prefix(BASE_CLASS_NAME, "break"));
-        }
-
-        if (key === "transform" && TEXT_TRANSFORM_LIST.includes(value)) {
-          result.push(prefix(BASE_CLASS_NAME, value));
-        }
-
-        if (key === "decoration" && TEXT_DECORATION_LIST.includes(value)) {
-          result.push(prefix(BASE_CLASS_NAME, "decoration", value));
-        }
-
-        if (key === "select" && TEXT_SELECT_LIST.includes(value)) {
-          result.push(prefix("user", "select", value));
         }
       }
     }
 
-    return result.join(" ");
+    return result.join(" ").trim();
   }
 
   return "";

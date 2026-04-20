@@ -315,8 +315,11 @@ const defaultProps = {
 /**
  * Box component is basic for this library
  * 
- * Support utilities:
+ * Support helpers:
  * + prefix
+ * + classnames
+ * 
+ * Support utilities:
  * + bg
  *
  * @example
@@ -460,7 +463,7 @@ const Prime = React.forwardRef((props, ref) => {
 
     cs("float", float),
     cs("translate-middle", translateMiddle),
-    
+
     className,
   );
 
