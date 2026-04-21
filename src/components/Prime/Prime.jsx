@@ -321,6 +321,8 @@ const defaultProps = {
  * 
  * Support utilities:
  * + bg
+ * + text
+ * + border
  *
  * @example
  * <Box>This is box component</Box>

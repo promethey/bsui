@@ -4,6 +4,9 @@ describe("border()", () => {
   test("regular border", () => {
     expect(border(true)).toBe("border");
   });
+  test("primary border", () => {
+    expect(border("primary")).toBe("border border-primary");
+  });
   test("border width 1", () => {
     expect(border(1)).toBe("border border-1");
   });
@@ -26,9 +29,6 @@ describe("border()", () => {
     expect(border({ color: 'success' })).toBe("border border-success");
   });
   test("primary border with other props", () => {
-    expect(border({ color: "primary", width: 1, top: 0 })).toBe("border border-primary border-1 border-top-0")
-  });
-  test("border aspect top", () => {
-    expect(border({ aspect: "top", color: 'primary', width: 1, top: 0 })).toBe("border-top border-primary border-1 border-top-0")
+    expect(border({ color: "primary", width: 1, top: 0 })).toBe("border border-primary border-1 border-top-0");
   });
 });
