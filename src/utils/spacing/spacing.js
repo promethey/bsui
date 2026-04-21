@@ -1,52 +1,41 @@
 import { everyType } from "helpers/everyType";
-import { classnames } from "helpers/classnames";
+import { classnames as cs } from "helpers/classnames";
+
+// m, mt, me, mb, ms, mx, my
+// p, pt, pe, pb, ps, px, py
 
 /**
- * Function for generate margin and padding classnames string
- *
- * @param {"m"|"p"} prfx - Prefix for margin "m" or padding "p"
- * @param {Object|(0|1|2|3|4|5)|[number, number, number, number]} spaces - margin or padding values
- *
+ * Function for generate margin and padding classnames
+ * 
  * @example
- * spacing("m", 3) -> "m-3"
- * spacing("m", {xs: 2, lg: 3}) -> "m-2 m-lg-2"
- * spacing("m", [2,3]) -> "mx-2 my-3"
- * spacing("m", [2,3,4,2]) -> "mt-2 me-3 mb-3 ms-2"
- * spacing("m", [{xs: 2, lg: 3}, {xs: 3, lg: 3}]) -> "mx-2 mx-lg-3 my-3 my-lg-3"
+ * spacing("m", 3) // "m-3"
+ * spacing("m", { xs: 2, lg: 3 }) // "m-2 m-lg-2"
+ * spacing("m", [2, 3]) // "mx-2 my-3"
+ * spacing("m", [2, 3, 4, 2]) // "mt-2 me-3 mb-3 ms-2"
+ * spacing("m", [{ xs: 2, lg: 3 }, { xs: 3, lg: 3 }]) // "mx-2 mx-lg-3 my-3 my-lg-3"
  *
- * @returns {string} spaces
+ * @param {string} prfx - Prefix for margin "m" or padding "p"
+ * @param {number|Object} spaces - margin or padding values
  *
- * @todo
- * - craete function for checks spaces types fn(type, ...values) return true or false
+ * @returns {string} spacing classnames
  */
 export function spacing(prfx, spaces) {
-  if (!everyType("string", prfx) || prfx.length === 0) {
+  if (typeof prfx !== "string" || prfx.length === 0) {
     return "";
   }
 
   if (prfx[0] !== "m" && prfx[0] !== "p") {
-    return "Error: prfx not equal m or p";
+    return "";
   }
 
-  /**
-   * Number
-   * 
-   * @example
-   * spacing("m", 0) -> 'm-0'
-   */
-  if (everyType("number", spaces)) {
-    return `${prfx}-${spaces}`;
+  // Number
+  if (typeof spaces === "number") {
+    return cs(prfx, spaces);
   }
 
-  /**
-   * Object
-   *
-   * @example
-   * spacing("m", {xs: 2, lg: 3}) // 'm-2 m-lg-3'
-   * spacing("mt", { xs: 3 }) // 'mt-3'
-   */
-  if (everyType("object", spaces) && !Array.isArray(spaces)) {
-    return classnames(prfx, spaces);
+  // Object
+  if (typeof spaces === "object" && !Array.isArray(spaces)) {
+    return cs(prfx, spaces);
   }
 
   /**
@@ -59,6 +48,7 @@ export function spacing(prfx, spaces) {
    */
   if (Array.isArray(spaces)) {
     const length = spaces.length;
+
     let result = [];
 
     if (length === 2) {
@@ -69,12 +59,13 @@ export function spacing(prfx, spaces) {
         return `${prfx}x-${x} ${prfx}y-${y}`;
       }
 
-      if (everyType("object, x, y")) {
-        x = classnames(`${prfx}x`, x);
-        y = classnames(`${prfx}y`, y);
+      if (everyType("object", x, y)) {
+        x = cs(`${prfx}x`, x);
+        y = cs(`${prfx}y`, y);
 
         result.push(x, y);
-        return result.join(" ");
+
+        return result.join(" ").trim();
       }
     }
 
@@ -90,15 +81,17 @@ export function spacing(prfx, spaces) {
 
       if (everyType("object", top, end, bottom, start)) {
         result.push(
-          classnames(`${prfx}t`, top),
-          classnames(`${prfx}e`, end),
-          classnames(`${prfx}b`, bottom),
-          classnames(`${prfx}s`, start),
+          cs(`${prfx}t`, top),
+          cs(`${prfx}e`, end),
+          cs(`${prfx}b`, bottom),
+          cs(`${prfx}s`, start),
         );
-        return result.join(" ");
+        return result.join(" ").trim();
       }
     }
 
     return "";
   }
+
+  return "";
 }
