@@ -61,13 +61,7 @@ const BREAKPOINTS_LIST = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
  * flex("center"); // 'justify-content-center align-items-center'
  * flex("start"); // 'justify-content-start align-items-start'
  * flex({ justify: "center", align: "start" }); // 'justify-content-center align-items-start'
- * flex({ justify: { xs: "center", md: "start" }, align: { xs: "start" } }); // 
- * flex({ xs: { justify: "center", align: "center" }, lg: { justify: "start", align: "start" } });
- * // 'justify-content-center align-items-center justify-content-lg-start align-items-lg-start'
- * 
- * @example
- * <Prime flex="center">Center</Prime>
- * <Prime flex={{ xs: { justify: "center" } }}>Center</Prime>
+ * flex({ xs: { justify: "center" }, lg: { justify: "start" } }); // 'justify-content-center justify-content-lg-start'
  * 
  * @param {string|Object} value 
  * 
