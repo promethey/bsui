@@ -326,9 +326,9 @@ const defaultProps = {
  *
  * @example
  * <Box>This is box component</Box>
- * <Box d={bs.d.inlineBlock}>This is inline-block box component</Box>
- * <Box textColor="primary" d="flex">Flex and primary color</Box>
- * <Box textColor={bs.text.colors.primary} d={bs.d.flex}>Flex and primary color</Box>
+ * <Box d="inline-block">This is inline-block box component</Box>
+ * <Box d="flex" text="primary">Flex and primary color</Box>
+ * <Box d="flex" text="primary">Flex and primary color</Box>
 
  * @return {JSX.Element} Box
  * 

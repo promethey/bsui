@@ -1,4 +1,3 @@
-import { prefix } from 'helpers/prefix';
 import { classnames as cs } from 'helpers/classnames';
 
 const FLEX_MAP = {
@@ -78,27 +77,30 @@ export function flex(value) {
 
   // String
   if (typeof value === "string" && value) {
-    // 'start', 'end', 'center'
     if (JUSTIFY_ALIGN_LIST.includes(value)) {
-      return [prefix(FLEX_MAP.justify, value), prefix(FLEX_MAP.align, value)].join(" ").trim();
+      return `${cs(FLEX_MAP.justify, value)} ${cs(FLEX_MAP.align, value)}`;
     }
   }
 
   // Object
-  if (typeof value === 'object' && Object.keys(value).length > 0) {
+  if (typeof value === "object") {
+    if (Object.keys(value).length === 0) {
+      return "";
+    }
+
     let result = [];
 
     for (let [breakpoint, val] of Object.entries(value)) {
-      // 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'
       if (BREAKPOINTS_LIST.includes(breakpoint)) {
-        // 'start', 'end', 'center'
+        // String or Boolean
         if ((typeof val === 'string' || typeof val === 'boolean') && JUSTIFY_ALIGN_LIST.includes(val)) {
           let justify = cs(FLEX_MAP.justify, { [breakpoint]: val });
           let align = cs(FLEX_MAP.align, { [breakpoint]: val });
+
           result.push(`${justify} ${align}`);
         }
 
-        // { xs: { justify: 'center', align: 'center' } }
+        // Object
         if (typeof val === 'object') {
           for (let [flexKey, flexVal] of Object.entries(val)) {
             if (Object.keys(FLEX_MAP).includes(flexKey) && FLEX_VALUES_MAP[flexKey].includes(flexVal)) {
