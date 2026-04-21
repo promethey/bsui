@@ -32,7 +32,6 @@ const FLEX_VALUES_MAP = {
 
 /**
  * For classnames utility
- * @example
  * if true 'flex-row-md' -> 'flex-md-row'
  */
 const FLEX_OPTIONS_MAP = {
@@ -55,6 +54,7 @@ const BREAKPOINTS_LIST = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 /**
  * Function for flex utility
+ * 
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/flex/}
  * 
  * @example
@@ -62,21 +62,23 @@ const BREAKPOINTS_LIST = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
  * flex("start"); // 'justify-content-start align-items-start'
  * flex({ justify: "center", align: "start" }); // 'justify-content-center align-items-start'
  * flex({ justify: { xs: "center", md: "start" }, align: { xs: "start" } }); // 
- * 
  * flex({ xs: { justify: "center", align: "center" }, lg: { justify: "start", align: "start" } });
  * // 'justify-content-center align-items-center justify-content-lg-start align-items-lg-start'
  * 
+ * @example
  * <Prime flex="center">Center</Prime>
  * <Prime flex={{ xs: { justify: "center" } }}>Center</Prime>
  * 
  * @param {string|Object} value 
- * @returns flex classnames string
+ * 
+ * @returns {string} flex classnames
  */
 export function flex(value) {
   if (!value) return "";
 
   // String
-  if (typeof value === "string" && value) {
+  if (typeof value === "string" && FLEX_VALUES_MAP["justify"].includes(value)
+    && FLEX_VALUES_MAP["align"].includes(value)) {
     if (JUSTIFY_ALIGN_LIST.includes(value)) {
       return `${cs(FLEX_MAP.justify, value)} ${cs(FLEX_MAP.align, value)}`;
     }

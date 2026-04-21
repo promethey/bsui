@@ -320,9 +320,11 @@ const defaultProps = {
  * + classnames
  * 
  * Support utilities:
+ * + flex
  * + bg
- * + text
  * + border
+ * + text
+ * + font
  *
  * @example
  * <Box>This is box component</Box>
