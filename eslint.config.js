@@ -32,7 +32,8 @@ export default defineConfig([{
     "node_modules/**",
     "dist/**",
     "build/**",
-    "*.config.js",
-    "src/tests/**",
+    "**/*.config.js",
+    "**/*.test.js",
+    "**/*.stories.jsx",
   ],
 }, ...storybook.configs["flat/recommended"]]);

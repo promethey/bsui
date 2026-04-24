@@ -9,5 +9,6 @@ module.exports = {
     "^utils/(.*)$": "<rootDir>/src/utils/$1",
     "^helpers/(.*)$": "<rootDir>/src/helpers/$1",
     "^components/(.*)$": "<rootDir>/src/components/$1",
+    "^core/(.*)$": "<rootDir>/src/core/$1",
   },
 };

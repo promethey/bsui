@@ -20,6 +20,7 @@ const config = {
       utils: path.resolve(__dirname, "../src/utils"),
       helpers: path.resolve(__dirname, "../src/helpers"),
       constants: path.resolve(__dirname, "../src/constants"),
+      core: path.resolve(__dirname, "../src/core"),
     };
     return config;
   },
