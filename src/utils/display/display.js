@@ -30,14 +30,8 @@ export function display(value) {
 
   // Object
   if (typeof value === "object" && value && Object.keys(value).length > 0) {
-    // for (let [breakpoint, displayValue] in Object.entries(value)) {
-    //   if (!BREAKPOINTS.includes(breakpoint) || !DISPLAY_VALUES.includes(displayValue)) {
-    //     delete value.breakpoint;
-    //   }
-    // }
-
     const displayFilterValues = Object.entries(value).filter(
-      ([breakpoint, displayValue], index, array) =>
+      ([breakpoint, displayValue]) =>
         BREAKPOINTS.includes(breakpoint) &&
         DISPLAY_VALUES.includes(displayValue),
     );
