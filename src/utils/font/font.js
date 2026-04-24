@@ -1,11 +1,11 @@
-import { classnames as cs } from 'helpers/classnames';
+import { classnames as cs } from "helpers/classnames";
 
 const FONT_MAP = {
-  size: 'fs',
-  weight: 'fw',
-  style: 'fst',
-  lineHeight: 'lh',
-  monospace: 'monospace',
+  size: "fs",
+  weight: "fw",
+  style: "fst",
+  lineHeight: "lh",
+  monospace: "monospace",
 };
 
 const FONT_VALUES_MAP = {
@@ -18,15 +18,15 @@ const FONT_VALUES_MAP = {
 
 /**
  * Font function
- * 
+ *
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/text/}
- * 
+ *
  * @example
  * font(3) // "fs-1"
  * font({ size: 3, weight: "bold" }) // 'fs-3 fw-bold'
- * 
+ *
  * @param {number|Object} value - Default number is size
- * 
+ *
  * @return {string} font classnames
  */
 export function font(value) {
@@ -46,7 +46,10 @@ export function font(value) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {
-      if (Object.keys(FONT_MAP).includes(key) && FONT_VALUES_MAP[key].includes(val)) {
+      if (
+        Object.keys(FONT_MAP).includes(key) &&
+        FONT_VALUES_MAP[key].includes(val)
+      ) {
         result.push(cs(FONT_MAP[key], val));
       }
     }

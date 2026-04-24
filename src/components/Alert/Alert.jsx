@@ -85,8 +85,7 @@ function AlertBase({
       ref={alertRef}
       className={classes}
       style={style}
-      {...rest}
-    >
+      {...rest}>
       {children}
       {dismissible && <CloseButton onClick={onClose} />}
     </Prime>

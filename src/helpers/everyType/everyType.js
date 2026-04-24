@@ -14,7 +14,7 @@
  */
 export function everyType(type, ...values) {
   if (!type) return "";
-  
+
   if (!values) return "";
 
   let result = true;

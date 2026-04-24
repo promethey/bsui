@@ -8,9 +8,9 @@ export default {
   parameters: {
     docs: {
       source: {
-        type: 'dynamic', // 'dynamic' (re-renders on arg change) or 'code' (static)
-        format: true,    // Set to false to disable auto-formatting
-        language: 'jsx',
+        type: "dynamic", // 'dynamic' (re-renders on arg change) or 'code' (static)
+        format: true, // Set to false to disable auto-formatting
+        language: "jsx",
       },
       description: {
         component:
@@ -32,8 +32,7 @@ export function Example() {
         bg={bs.bg.colors.light}
         text={bs.text.colors.primary}
         p={3}
-        border
-      >
+        border>
         Prime component
       </Prime>
     </>
@@ -52,10 +51,9 @@ export function Width() {
           m={[0, 0, 2, 0]}
           p={2}
           bg={{ color: bgBorderColors[index], opacity: 75 }}
-          text={{ color: 'white', align: 'center' }}
+          text={{ color: "white", align: "center" }}
           border={{ color: bgBorderColors[index], width: 1 }}
-          rounded={2}
-        >
+          rounded={2}>
           {width}%
         </Prime>
       ))}
@@ -65,14 +63,8 @@ export function Width() {
 
 export function MaxWidth() {
   return (
-    <Prime bg={{ color: 'info', opacity: 25 }} style={{ height: '200px' }}>
-      <Prime
-        mw={100}
-        p={3}
-        bg="info"
-        text="dark"
-        style={{ height: "100px" }}
-      >
+    <Prime bg={{ color: "info", opacity: 25 }} style={{ height: "200px" }}>
+      <Prime mw={100} p={3} bg="info" text="dark" style={{ height: "100px" }}>
         Max-width 100%
       </Prime>
     </Prime>
@@ -92,10 +84,9 @@ export function Height() {
           m={[0, 2, 0, 0]}
           p={[1, 2]}
           bg="light"
-          text={{ align: 'center' }}
+          text={{ align: "center" }}
           border
-          rounded
-        >
+          rounded>
           {height}%
         </Prime>
       ))}
@@ -105,13 +96,12 @@ export function Height() {
 
 export function MaxHeight() {
   return (
-    <Prime bg={{ color: 'info', opacity: 25 }} style={{ height: "200px" }}>
+    <Prime bg={{ color: "info", opacity: 25 }} style={{ height: "200px" }}>
       <Prime
         mh={100}
         p={3}
         bg="info"
-        style={{ width: "150px", height: "200px" }}
-      >
+        style={{ width: "150px", height: "200px" }}>
         Max-height 100%
       </Prime>
     </Prime>
@@ -134,233 +124,269 @@ export function Visibility() {
 
 export function FlexCenter() {
   return (
-    <Prime d="flex" flex="center" bg="primary" style={{ width: '200px', height: '200px' }}>
-      <Prime bg="light" text="primary" border style={{ width: '50px', height: '50px' }} />
+    <Prime
+      d="flex"
+      flex="center"
+      bg="primary"
+      style={{ width: "200px", height: "200px" }}>
+      <Prime
+        bg="light"
+        text="primary"
+        border
+        style={{ width: "50px", height: "50px" }}
+      />
     </Prime>
-  )
+  );
 }
-FlexCenter.storyName = 'Flex center';
+FlexCenter.storyName = "Flex center";
 
 export function FlexResponsive() {
   return (
-    <Prime d="flex" flex={{ xs: "start", sm: "end", md: "center" }} bg="primary" style={{ width: '200px', height: '200px' }}>
-      <Prime bg="light" text="primary" border style={{ width: '50px', height: '50px' }} />
+    <Prime
+      d="flex"
+      flex={{ xs: "start", sm: "end", md: "center" }}
+      bg="primary"
+      style={{ width: "200px", height: "200px" }}>
+      <Prime
+        bg="light"
+        text="primary"
+        border
+        style={{ width: "50px", height: "50px" }}
+      />
     </Prime>
-  )
+  );
 }
-FlexResponsive.storyName = 'Flex responsive';
+FlexResponsive.storyName = "Flex responsive";
 
 export function FlexAlignSelf() {
   const examples = ["Start", "Center", "End", "Stretch", "Baseline"];
 
   return (
-    <Prime d="flex" bg="info" style={{ width: '350px', height: '350px' }}>
+    <Prime d="flex" bg="info" style={{ width: "350px", height: "350px" }}>
       {examples.map((value) => (
         <Prime
           flex={{ xs: { alignSelf: value.toLowerCase() } }}
           bg="light"
           text={{ color: "primary", align: "center" }}
           border={{ color: "primary" }}
-          style={{ width: '70px', minHeight: '70px' }}
-        >
+          style={{ width: "70px", minHeight: "70px" }}>
           {value}
         </Prime>
       ))}
     </Prime>
-  )
+  );
 }
-FlexAlignSelf.storyName = 'Flex align self';
+FlexAlignSelf.storyName = "Flex align self";
 
 export function FlexFill() {
   return (
-    <Prime d="flex" bg="light" style={{ width: '400px', height: '150px' }}>
+    <Prime d="flex" bg="light" style={{ width: "400px", height: "150px" }}>
       <Prime
         flex={{ xs: { fill: true } }}
         bg={{ color: "primary", opacity: 75 }}
         text={{ color: "light", align: "center" }}
-        style={{ width: '70px', minHeight: '70px' }}
-      >
+        style={{ width: "70px", minHeight: "70px" }}>
         Flex item with a lot of content
       </Prime>
       <Prime
         bg={{ color: "primary", opacity: 50 }}
         text={{ color: "primary", align: "center" }}
-        style={{ width: '70px', minHeight: '70px' }}
-      >
+        style={{ width: "70px", minHeight: "70px" }}>
         Flex item
       </Prime>
       <Prime
         bg={{ color: "primary", opacity: 25 }}
         text={{ color: "primary", align: "center" }}
-        style={{ width: '70px', minHeight: '70px' }}
-      >
+        style={{ width: "70px", minHeight: "70px" }}>
         Flex item
       </Prime>
     </Prime>
-  )
+  );
 }
-FlexFill.storyName = 'Flex fill';
+FlexFill.storyName = "Flex fill";
 
 export function FlexGrow() {
   return (
-    <Prime d="flex" bg="light" style={{ width: '400px', height: '150px' }}>
+    <Prime d="flex" bg="light" style={{ width: "400px", height: "150px" }}>
       <Prime
         flex={{ xs: { grow: 1 } }}
         bg={{ color: "primary", opacity: 75 }}
         text={{ color: "light", align: "center" }}
-        style={{ width: '70px', minHeight: '70px' }}
-      >
+        style={{ width: "70px", minHeight: "70px" }}>
         Flex item
       </Prime>
       <Prime
         bg={{ color: "primary", opacity: 50 }}
         text={{ color: "primary", align: "center" }}
-        style={{ width: '70px', minHeight: '70px' }}
-      >
+        style={{ width: "70px", minHeight: "70px" }}>
         Flex item
       </Prime>
       <Prime
         bg={{ color: "primary", opacity: 25 }}
         text={{ color: "primary", align: "center" }}
-        style={{ width: '70px', minHeight: '70px' }}
-      >
+        style={{ width: "70px", minHeight: "70px" }}>
         Third flex item
       </Prime>
     </Prime>
-  )
+  );
 }
-FlexGrow.storyName = 'Flex grow';
+FlexGrow.storyName = "Flex grow";
 
 export function FlexShrink() {
   return (
-    <Prime d="flex" bg="light" style={{ width: '400px', height: '150px' }}>
+    <Prime d="flex" bg="light" style={{ width: "400px", height: "150px" }}>
       <Prime
         w={100}
         bg={{ color: "primary", opacity: 75 }}
         text={{ color: "light", align: "center" }}
-        style={{ width: '70px', minHeight: '70px' }}
-      >
+        style={{ width: "70px", minHeight: "70px" }}>
         Flex item
       </Prime>
       <Prime
         flex={{ xs: { shrink: 1 } }}
         bg={{ color: "primary", opacity: 25 }}
         text={{ color: "primary", align: "center" }}
-        style={{ width: '70px', minHeight: '70px' }}
-      >
+        style={{ width: "70px", minHeight: "70px" }}>
         Flex item
       </Prime>
     </Prime>
-  )
+  );
 }
-FlexShrink.storyName = 'Flex shrink';
+FlexShrink.storyName = "Flex shrink";
 
 export function FlexAutoMargins() {
   return (
-    <Prime d="flex" bg={{ color: "secondary", opacity: 25 }} style={{ width: '400px' }}>
+    <Prime
+      d="flex"
+      bg={{ color: "secondary", opacity: 25 }}
+      style={{ width: "400px" }}>
       <Prime
         bg={{ color: "primary", opacity: 75 }}
         text={{ color: "light", align: "center" }}
         p={1}
-        me={1}
-      >
+        me={1}>
         Flex item
       </Prime>
       <Prime
         bg={{ color: "primary", opacity: 75 }}
         text={{ color: "light", align: "center" }}
         p={1}
-        me="auto"
-      >
+        me="auto">
         Flex item
       </Prime>
       <Prime
         bg={{ color: "primary", opacity: 75 }}
         text={{ color: "light", align: "center" }}
-        p={1}
-      >
+        p={1}>
         Flex item
       </Prime>
     </Prime>
-  )
+  );
 }
-FlexAutoMargins.storyName = 'Flex auto margins';
+FlexAutoMargins.storyName = "Flex auto margins";
 
 export function FlexNoWrap() {
   return (
-    <Prime d="flex" flex={{ xs: { nowrap: true } }} bg={{ color: "secondary", opacity: 50 }} style={{ width: '200px' }}>
-      {[Array(10).keys().map((item) => (
-        <Prime
-          bg={{ color: "primary", opacity: 75 }}
-          text={{ color: "light", align: "center" }}
-          m={1}
-          p={3}
-        >
-          Flex item
-        </Prime>
-      ))]}
+    <Prime
+      d="flex"
+      flex={{ xs: { nowrap: true } }}
+      bg={{ color: "secondary", opacity: 50 }}
+      style={{ width: "200px" }}>
+      {[
+        Array(10)
+          .keys()
+          .map((item) => (
+            <Prime
+              bg={{ color: "primary", opacity: 75 }}
+              text={{ color: "light", align: "center" }}
+              m={1}
+              p={3}>
+              Flex item
+            </Prime>
+          )),
+      ]}
     </Prime>
-  )
+  );
 }
-FlexNoWrap.storyName = 'Flex nowrap';
+FlexNoWrap.storyName = "Flex nowrap";
 
 export function FlexWrap() {
   return (
-    <Prime d="flex" flex={{ xs: { wrap: true } }} bg={{ color: "secondary", opacity: 50 }} style={{ width: '500px' }}>
-      {[Array(10).keys().map((item) => (
-        <Prime
-          bg={{ color: "primary", opacity: 75 }}
-          text={{ color: "light", align: "center" }}
-          m={1}
-          p={3}
-        >
-          Flex item
-        </Prime>
-      ))]}
+    <Prime
+      d="flex"
+      flex={{ xs: { wrap: true } }}
+      bg={{ color: "secondary", opacity: 50 }}
+      style={{ width: "500px" }}>
+      {[
+        Array(10)
+          .keys()
+          .map((item) => (
+            <Prime
+              bg={{ color: "primary", opacity: 75 }}
+              text={{ color: "light", align: "center" }}
+              m={1}
+              p={3}>
+              Flex item
+            </Prime>
+          )),
+      ]}
     </Prime>
-  )
+  );
 }
-FlexWrap.storyName = 'Flex wrap';
+FlexWrap.storyName = "Flex wrap";
 
 export function FlexWrapReverse() {
   return (
-    <Prime d="flex" flex={{ xs: { wrapReverse: true } }} bg={{ color: "secondary", opacity: 50 }} style={{ width: '500px' }}>
-      {[Array(10).keys().map((item) => (
-        <Prime
-          bg={{ color: "primary", opacity: 75 }}
-          text={{ color: "light", align: "center" }}
-          m={1}
-          p={3}
-        >
-          Flex item
-        </Prime>
-      ))]}
+    <Prime
+      d="flex"
+      flex={{ xs: { wrapReverse: true } }}
+      bg={{ color: "secondary", opacity: 50 }}
+      style={{ width: "500px" }}>
+      {[
+        Array(10)
+          .keys()
+          .map((item) => (
+            <Prime
+              bg={{ color: "primary", opacity: 75 }}
+              text={{ color: "light", align: "center" }}
+              m={1}
+              p={3}>
+              Flex item
+            </Prime>
+          )),
+      ]}
     </Prime>
-  )
+  );
 }
-FlexWrapReverse.storyName = 'Flex wrap reverse';
+FlexWrapReverse.storyName = "Flex wrap reverse";
 
 export function FlexOrder() {
   return (
-    <Prime d="flex" bg={{ color: "secondary", opacity: 50 }} style={{ width: '600px' }}>
-      {[Array(3).keys().map((item) => (
-        <Prime
-          flex={{ xs: { order: 2 - item } }}
-          bg={{ color: "primary", opacity: 75 }}
-          text={{ color: "light", align: "center" }}
-          p={3}
-          m={1}
-        >
-          Flex item {item}
-        </Prime>
-      ))]}
+    <Prime
+      d="flex"
+      bg={{ color: "secondary", opacity: 50 }}
+      style={{ width: "600px" }}>
+      {[
+        Array(3)
+          .keys()
+          .map((item) => (
+            <Prime
+              flex={{ xs: { order: 2 - item } }}
+              bg={{ color: "primary", opacity: 75 }}
+              text={{ color: "light", align: "center" }}
+              p={3}
+              m={1}>
+              Flex item {item}
+            </Prime>
+          )),
+      ]}
     </Prime>
-  )
+  );
 }
-FlexOrder.storyName = 'Flex order';
+FlexOrder.storyName = "Flex order";
 
 export function FlexAlignContent() {
-  const examples = ['start', 'end', 'center', 'between', 'around', 'stretch'];
+  const examples = ["start", "end", "center", "between", "around", "stretch"];
 
   return (
     <Prime>
@@ -369,25 +395,25 @@ export function FlexAlignContent() {
           d="flex"
           flex={{ xs: { alignContent: value, wrap: true } }}
           bg={{ color: "secondary", opacity: 25 }}
-          style={{ width: '600px', height: '200px' }}
-          mb={3}
-        >
-          {[[0, 1, 2, 3, 4, 5].map(() => (
-            <Prime
-              bg={{ color: "primary", opacity: 75 }}
-              text={{ color: "light", align: "center" }}
-              p={3}
-              m={1}
-            >
-              Flex item
-            </Prime>
-          ))]}
+          style={{ width: "600px", height: "200px" }}
+          mb={3}>
+          {[
+            [0, 1, 2, 3, 4, 5].map(() => (
+              <Prime
+                bg={{ color: "primary", opacity: 75 }}
+                text={{ color: "light", align: "center" }}
+                p={3}
+                m={1}>
+                Flex item
+              </Prime>
+            )),
+          ]}
         </Prime>
       ))}
     </Prime>
-  )
+  );
 }
-FlexAlignContent.storyName = 'Flex align content';
+FlexAlignContent.storyName = "Flex align content";
 
 export function Visually() {
   return (
@@ -451,7 +477,11 @@ export function BackgroundGradients() {
   return (
     <>
       {examples.map(({ bgColor, textColor }) => (
-        <Prime bg={{ color: bgColor, gradient: true }} text={textColor} p={3} m={[0, 0, 2, 0]}>
+        <Prime
+          bg={{ color: bgColor, gradient: true }}
+          text={textColor}
+          p={3}
+          m={[0, 0, 2, 0]}>
           .bg-
           {bgColor}
           .bg-gradient
@@ -471,8 +501,7 @@ export function BackgroundOpacity() {
         <Prime
           p={2}
           bg={{ color: "primary", opacity }}
-          text={opacity >= 10 && opacity <= 50 ? "dark" : "white"}
-        >
+          text={opacity >= 10 && opacity <= 50 ? "dark" : "white"}>
           {opacity === null
             ? "This is default success background"
             : `This is ${opacity}% opacity success background`}
@@ -510,7 +539,7 @@ export function BorderSubtractive() {
         <Prime
           m={[0, 3, 0, 0]}
           bg="light"
-          border={{ color: 'info', width: 2, ...border }}
+          border={{ color: "info", width: 2, ...border }}
           style={{ width: "5rem", height: "5rem" }}
         />
       ))}
@@ -538,7 +567,7 @@ export function BorderColors() {
         <Prime
           me={3}
           bg="light"
-          border={{color: bColor}}
+          border={{ color: bColor }}
           style={{ width: "5rem", height: "5rem" }}
         />
       ))}
@@ -655,12 +684,7 @@ export function Display() {
       <Prime d="block" p={2} bg="dark" text="white" mb={2}>
         display=block
       </Prime>
-      <Prime
-        d={{ xs: "inline-flex", md: "flex" }}
-        p={2}
-        bg="dark"
-        text="white"
-      >
+      <Prime d={{ xs: "inline-flex", md: "flex" }} p={2} bg="dark" text="white">
         xs: inline-flex
         {", "}
         md: flex
@@ -753,8 +777,7 @@ export function Overflow() {
         p={3}
         me={3}
         overflow="auto"
-        bg="light"
-      >
+        bg="light">
         This is an example of using .overflow-auto on an element with set width
         and height dimensions. By design, this content will vertically scroll.
       </Prime>
@@ -763,8 +786,7 @@ export function Overflow() {
         p={3}
         me={3}
         overflow="hidden"
-        bg="light"
-      >
+        bg="light">
         This is an example of using .overflow-hidden on an element with set
         width and height dimensions.
       </Prime>
@@ -773,8 +795,7 @@ export function Overflow() {
         p={3}
         me={3}
         overflow="visible"
-        bg="light"
-      >
+        bg="light">
         This is an example of using .overflow-visible on an element with set
         width and height dimensions.
       </Prime>
@@ -783,8 +804,7 @@ export function Overflow() {
         p={3}
         me={3}
         overflow="scroll"
-        bg="light"
-      >
+        bg="light">
         This is an example of using .overflow-scroll on an element with set
         width and height dimensions.
       </Prime>

@@ -1,4 +1,4 @@
-import { flex } from './flex';
+import { flex } from "./flex";
 
 describe("Check utility", () => {
   describe("Basic function", () => {
@@ -20,11 +20,15 @@ describe("Check utility", () => {
     });
 
     test("Check string flex xs start", () => {
-      expect(flex({ xs: "start" })).toBe("justify-content-start align-items-start");
+      expect(flex({ xs: "start" })).toBe(
+        "justify-content-start align-items-start",
+      );
     });
 
     test("Check string flex md start", () => {
-      expect(flex({ md: "start" })).toBe("justify-content-md-start align-items-md-start");
+      expect(flex({ md: "start" })).toBe(
+        "justify-content-md-start align-items-md-start",
+      );
     });
 
     test("Check string flex xs end", () => {
@@ -32,24 +36,34 @@ describe("Check utility", () => {
     });
 
     test("Check string flex lg end", () => {
-      expect(flex({ lg: "end" })).toBe("justify-content-lg-end align-items-lg-end");
+      expect(flex({ lg: "end" })).toBe(
+        "justify-content-lg-end align-items-lg-end",
+      );
     });
 
     test("Check string flex xs center", () => {
-      expect(flex({ xs: "center" })).toBe("justify-content-center align-items-center");
+      expect(flex({ xs: "center" })).toBe(
+        "justify-content-center align-items-center",
+      );
     });
 
     test("Check string flex xxl center", () => {
-      expect(flex({ xxl: "center" })).toBe("justify-content-xxl-center align-items-xxl-center");
+      expect(flex({ xxl: "center" })).toBe(
+        "justify-content-xxl-center align-items-xxl-center",
+      );
     });
 
     /** Object */
     test("Check object justify xs center", () => {
-      expect(flex({ xs: { justify: "center" } })).toBe("justify-content-center");
+      expect(flex({ xs: { justify: "center" } })).toBe(
+        "justify-content-center",
+      );
     });
 
     test("Check object justify md start", () => {
-      expect(flex({ md: { justify: "start" } })).toBe("justify-content-md-start");
+      expect(flex({ md: { justify: "start" } })).toBe(
+        "justify-content-md-start",
+      );
     });
 
     /** Direction */
@@ -75,7 +89,9 @@ describe("Check utility", () => {
     });
 
     test("Check align self md center", () => {
-      expect(flex({ md: { alignSelf: "center" } })).toBe("align-self-md-center");
+      expect(flex({ md: { alignSelf: "center" } })).toBe(
+        "align-self-md-center",
+      );
     });
 
     /** Fill */
@@ -88,7 +104,9 @@ describe("Check utility", () => {
     });
 
     test("Check flex md fill", () => {
-      expect(flex({ xs: { fill: true }, md: { fill: true } })).toBe("flex-fill flex-md-fill");
+      expect(flex({ xs: { fill: true }, md: { fill: true } })).toBe(
+        "flex-fill flex-md-fill",
+      );
     });
 
     // Grow
@@ -139,20 +157,26 @@ describe("Check utility", () => {
     // Wrap reverse
     test("Check flex nowrap", () => {
       expect(flex({ xs: { order: 0 } })).toBe("order-0");
-      expect(flex({ xs: { order: 'first' } })).toBe("order-first");
-      expect(flex({ xs: { order: 'last' } })).toBe("order-last");
-      expect(flex({ md: { order: 'first' } })).toBe("order-md-first");
-      expect(flex({ md: { order: 'last' } })).toBe("order-md-last");
+      expect(flex({ xs: { order: "first" } })).toBe("order-first");
+      expect(flex({ xs: { order: "last" } })).toBe("order-last");
+      expect(flex({ md: { order: "first" } })).toBe("order-md-first");
+      expect(flex({ md: { order: "last" } })).toBe("order-md-last");
       expect(flex({ md: { order: 1 } })).toBe("order-md-1");
       expect(flex({ xs: { order: 10 } })).toBe("");
     });
 
     // Align content
     test("Check flex align content", () => {
-      expect(flex({ xs: { alignContent: 'start' } })).toBe("align-content-start");
-      expect(flex({ xs: { alignContent: 'end' } })).toBe("align-content-end");
-      expect(flex({ md: { alignContent: 'start' } })).toBe("align-content-md-start");
-      expect(flex({ xl: { alignContent: 'end' } })).toBe("align-content-xl-end");
+      expect(flex({ xs: { alignContent: "start" } })).toBe(
+        "align-content-start",
+      );
+      expect(flex({ xs: { alignContent: "end" } })).toBe("align-content-end");
+      expect(flex({ md: { alignContent: "start" } })).toBe(
+        "align-content-md-start",
+      );
+      expect(flex({ xl: { alignContent: "end" } })).toBe(
+        "align-content-xl-end",
+      );
     });
   });
 });

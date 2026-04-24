@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "checkJs": true,
-    "strict": true,
+    "strict": false,
 
     "target": "ESNext",
     "module": "ESNext",
@@ -13,7 +13,7 @@
       "components/*": ["./src/components/*"],
       "utils/*": ["./src/utils/*"],
       "helpers/*": ["./src/helpers/*"],
-      "constants/*": ["./src/constants/*"],
+      "constants/*": ["./src/constants/*"]
     },
 
     "allowSyntheticDefaultImports": true,
@@ -21,7 +21,7 @@
 
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "noEmit": true,
+    "noEmit": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

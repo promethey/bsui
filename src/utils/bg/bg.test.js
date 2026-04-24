@@ -27,7 +27,7 @@ describe("background utility", () => {
 
     colors.map((color) => {
       expect(bg(color)).toBe(`bg-${color}`);
-    })
+    });
   });
 
   test("ignores invalid string, false, incorrect values", () => {
@@ -54,7 +54,7 @@ describe("background utility", () => {
 
     colors.map((color) => {
       expect(bg({ color })).toBe(`bg-${color}`);
-    })
+    });
   });
 
   test("ignores invalid color value", () => {

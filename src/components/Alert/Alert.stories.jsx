@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Alert, Button, Text, Prime } from "components";
 
 export default {
@@ -29,8 +29,17 @@ Default.args = {
   children: "A simple default alert—check it out!",
 };
 
-export function AllThemes() {
-  const themes = ['primary', 'secondary', 'danger', 'success', 'warning', 'info', 'light', 'dark'];
+export function Themes() {
+  const themes = [
+    "primary",
+    "secondary",
+    "danger",
+    "success",
+    "warning",
+    "info",
+    "light",
+    "dark",
+  ];
 
   return (
     <>
@@ -45,17 +54,23 @@ export function AllThemes() {
     </>
   );
 }
-AllThemes.storyName = "All Themes";
+Themes.storyName = "Themes";
 
-export const BoxAPI = Template.bind({});
-BoxAPI.args = {
+export const API = Template.bind({});
+API.args = {
   children: "Prime API for Alert",
   theme: "secondary",
   m: [2, 3, 4, 1],
   p: [1, 4, 3, 2],
   borderRadiusSize: 5,
   bg: { color: "primary", gradient: true, opacity: 10 },
-  text: { color: 'primary', align: 'start', break: true, transform: 'uppercase', decoration: 'underline'  },
+  text: {
+    color: "primary",
+    align: "start",
+    break: true,
+    transform: "uppercase",
+    decoration: "underline",
+  },
 };
 
 export function AlertHeadingTypes() {

@@ -1,4 +1,4 @@
-import {border} from './border';
+import { border } from "./border";
 
 describe("border()", () => {
   test("regular border", () => {
@@ -26,9 +26,11 @@ describe("border()", () => {
     expect(border(6)).toBe("");
   });
   test("color success", () => {
-    expect(border({ color: 'success' })).toBe("border border-success");
+    expect(border({ color: "success" })).toBe("border border-success");
   });
   test("primary border with other props", () => {
-    expect(border({ color: "primary", width: 1, top: 0 })).toBe("border border-primary border-1 border-top-0");
+    expect(border({ color: "primary", width: 1, top: 0 })).toBe(
+      "border border-primary border-1 border-top-0",
+    );
   });
 });

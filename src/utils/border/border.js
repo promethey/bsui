@@ -1,6 +1,6 @@
-import { classnames as cs } from 'helpers/classnames';
+import { classnames as cs } from "helpers/classnames";
 
-const BORDER_CLASS_NAME = 'border';
+const BORDER_CLASS_NAME = "border";
 
 const BORDER_MAP = {
   color: "border",
@@ -12,7 +12,17 @@ const BORDER_MAP = {
 };
 
 const BORDER_VALUES_MAP = {
-  color: ["primary", "secondary", "success", "danger", "warning", "info", "light", "dark", "white"],
+  color: [
+    "primary",
+    "secondary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+    "light",
+    "dark",
+    "white",
+  ],
   width: [1, 2, 3, 4, 5],
   top: [true, 0],
   end: [true, 0],
@@ -22,9 +32,9 @@ const BORDER_VALUES_MAP = {
 
 /**
  * Function for border utility
- * 
+ *
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/borders/}
- * 
+ *
  * @example
  * border={true} // "border"
  * border={1} // "border border-1"
@@ -35,18 +45,18 @@ const BORDER_VALUES_MAP = {
  * border={{ color="success" }} // "border border-success"
  * border={{ top: true, color: "primary" }} // "border-top border-primary"
  * border={{ color: "primary", width: 1, top: 0 }} // "border border-primary border-1 border-top-0"
- * 
- * @param {boolean|string|number|Object} value 
+ *
+ * @param {boolean|string|number|Object} value
  * @returns {string} border classnames
  */
 export function border(value) {
   // Boolean
-  if (typeof value === 'boolean') {
+  if (typeof value === "boolean") {
     return BORDER_CLASS_NAME;
   }
 
   // String
-  if (typeof value === 'string') {
+  if (typeof value === "string") {
     if (BORDER_VALUES_MAP["color"].includes(value)) {
       return `${BORDER_CLASS_NAME} ${BORDER_MAP["color"]}-${value}`;
     }
@@ -72,7 +82,10 @@ export function border(value) {
     let result = [BORDER_CLASS_NAME];
 
     for (let [key, val] of Object.entries(value)) {
-      if (Object.keys(BORDER_MAP).includes(key) && BORDER_VALUES_MAP[key].includes(val)) {
+      if (
+        Object.keys(BORDER_MAP).includes(key) &&
+        BORDER_VALUES_MAP[key].includes(val)
+      ) {
         result.push(cs(BORDER_MAP[key], val));
       }
     }

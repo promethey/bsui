@@ -107,7 +107,7 @@ export function classnames(
                * classnames('flex-fill', { xs: true, sm: false, md: true })) // 'flex-fill flex-md-fill'
                */
               shiftPrfxInArray.join("-"),
-              (typeof className === "boolean" && className) ? "" : className,
+              typeof className === "boolean" && className ? "" : className,
             ),
           );
         } else {

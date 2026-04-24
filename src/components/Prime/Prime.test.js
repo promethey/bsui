@@ -48,7 +48,11 @@ describe("Prime component", () => {
 
   test("applies complex spacing utilities", () => {
     render(
-      <Prime m={{ xs: 3, md: 2, lg: 4 }} p={[2, 3, 4, 4]} data-testid="prime" />,
+      <Prime
+        m={{ xs: 3, md: 2, lg: 4 }}
+        p={[2, 3, 4, 4]}
+        data-testid="prime"
+      />,
     );
 
     const el = screen.getByTestId("prime");
@@ -79,10 +83,17 @@ describe("Prime component", () => {
   });
 
   test("applies success border utility", () => {
-    render(<Prime border={{ color: "success", width: 3, top: 0, bottom: 0 }} data-testid="prime" />);
+    render(
+      <Prime
+        border={{ color: "success", width: 3, top: 0, bottom: 0 }}
+        data-testid="prime"
+      />,
+    );
 
     const el = screen.getByTestId("prime");
-    expect(el).toHaveClass("border border-success border-3 border-top-0 border-bottom-0");
+    expect(el).toHaveClass(
+      "border border-success border-3 border-top-0 border-bottom-0",
+    );
   });
 
   test("visible and invisible logic works", () => {

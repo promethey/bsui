@@ -1,6 +1,6 @@
 /**
  * Function for creating classnames like Bootstrap
- * 
+ *
  * @example
  * prefix("m", 0) // 'm-0'
  * prefix("mt", 3) // 'mt-3'

@@ -6,8 +6,8 @@ import { classnames as cs } from "helpers/classnames";
 import { spacing as spacingUtility } from "utils/spacing";
 import { bg as bgUtility } from "utils/bg";
 import { text as textUtility } from "utils/text";
-import { border as borderUtility } from 'utils/border';
-import { flex as flexUtility } from 'utils/flex';
+import { border as borderUtility } from "utils/border";
+import { flex as flexUtility } from "utils/flex";
 
 const propTypes = {
   as: PropTypes.oneOf([
@@ -110,13 +110,13 @@ const propTypes = {
 
   // font
   fs: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
-  fw: PropTypes.oneOf(['bold', 'bolder', 'normal', 'light', 'lighter']),
-  fst: PropTypes.oneOf(['italic', 'normal']),
-  lh: PropTypes.oneOf([1, 'sm', 'base', 'lg']),
+  fw: PropTypes.oneOf(["bold", "bolder", "normal", "light", "lighter"]),
+  fst: PropTypes.oneOf(["italic", "normal"]),
+  lh: PropTypes.oneOf([1, "sm", "base", "lg"]),
   monospace: PropTypes.bool,
 
   rounded: PropTypes.oneOfType([
-    PropTypes.oneOf(['top', 'end', 'bottom', 'start', 'circle', 'pill']),
+    PropTypes.oneOf(["top", "end", "bottom", "start", "circle", "pill"]),
     PropTypes.oneOf([0, 1, 2, 3]),
     PropTypes.object,
   ]),
@@ -234,7 +234,7 @@ const propTypes = {
       end: PropTypes.oneOf([1, 2, 3, 4, 5]),
       bottom: PropTypes.oneOf([1, 2, 3, 4, 5]),
       start: PropTypes.oneOf([1, 2, 3, 4, 5]),
-    })
+    }),
   ]),
 
   visually: PropTypes.oneOfType([
@@ -262,7 +262,7 @@ const defaultProps = {
 
   h: null,
   mh: null, // max height
-  
+
   pos: null, // position
   top: null,
   end: null,
@@ -412,36 +412,36 @@ const Prime = React.forwardRef((props, ref) => {
     {
       [prefix("w", w)]: w,
       [prefix("mw", mw)]: mw, // max width
-      
+
       [prefix("h", h)]: h,
       [prefix("mh", mh)]: mh, // max height
-      
+
       [prefix("position", pos)]: pos, // position
-      [prefix("top", top)]: typeof top === 'number',
-      [prefix("end", end)]: typeof end === 'number',
-      [prefix("bottom", bottom)]: typeof bottom === 'number',
-      [prefix("start", start)]: typeof start === 'number',
+      [prefix("top", top)]: typeof top === "number",
+      [prefix("end", end)]: typeof end === "number",
+      [prefix("bottom", bottom)]: typeof bottom === "number",
+      [prefix("start", start)]: typeof start === "number",
 
       [prefix("shadow", shadow)]: shadow,
-      
+
       [cs("mx", mx)]: mx,
       [cs("my", my)]: my,
       [cs("mt", mt)]: mt,
       [cs("me", me)]: me,
       [cs("mb", mb)]: mb,
       [cs("ms", ms)]: ms,
-      
+
       [cs("px", px)]: px,
       [cs("py", py)]: py,
       [cs("pt", pt)]: pt,
       [cs("pe", pe)]: pe,
       [cs("pb", pb)]: pb,
       [cs("ps", ps)]: ps,
-      
+
       [cs("rounded", rounded)]: rounded,
 
       [cs("opacity", opacity)]: opacity,
-      
+
       [prefix("visually", "hidden")]:
         typeof visually === "boolean" && !visually,
       [prefix("visually", visually)]: typeof visually === "string",
@@ -471,7 +471,11 @@ const Prime = React.forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={ref} style={style} className={classes === "" ? null : classes} {...rest}>
+    <Component
+      ref={ref}
+      style={style}
+      className={classes === "" ? null : classes}
+      {...rest}>
       {children}
     </Component>
   );

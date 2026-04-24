@@ -6,7 +6,7 @@ import { classnames as cs } from "helpers/classnames";
 
 /**
  * Function for generate margin and padding classnames
- * 
+ *
  * @example
  * spacing("m", 3) // "m-3"
  * spacing("m", { xs: 2, lg: 3 }) // "m-2 m-lg-2"

@@ -26,7 +26,7 @@ const BG_VALUES_MAP = {
 
 /**
  * Function for background utility
- * 
+ *
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/background/}
  *
  * @example

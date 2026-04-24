@@ -1,4 +1,4 @@
-import { classnames as cs } from 'helpers/classnames';
+import { classnames as cs } from "helpers/classnames";
 
 const BASE_CLASS_NAME = "text";
 const TEXT_ALIGN_BREAKPOINT_LIST = ["xs", "sm", "md", "lg", "xl"];
@@ -11,7 +11,7 @@ const TEXT_MAP = {
   decoration: "text-decoration",
   wrap: "text-wrap",
   nowrap: "text-nowrap",
-  select: "user-select"
+  select: "user-select",
 };
 
 const TEXT_VALUES_MAP = {
@@ -69,14 +69,20 @@ export function text(value) {
     for (let [key, val] of Object.entries(value)) {
       if (Object.keys(TEXT_MAP).includes(key)) {
         // String or Boolean
-        if ((typeof val === "string" || typeof val === "boolean") && TEXT_VALUES_MAP[key].includes(val)) {
+        if (
+          (typeof val === "string" || typeof val === "boolean") &&
+          TEXT_VALUES_MAP[key].includes(val)
+        ) {
           result.push(cs(TEXT_MAP[key], val));
         }
-        
+
         // Object
-        if (typeof val === 'object') {
+        if (typeof val === "object") {
           for (let [breakpoint, textVal] of Object.entries(val)) {
-            if (TEXT_ALIGN_BREAKPOINT_LIST.includes(breakpoint) && TEXT_VALUES_MAP[key].includes(textVal)) {
+            if (
+              TEXT_ALIGN_BREAKPOINT_LIST.includes(breakpoint) &&
+              TEXT_VALUES_MAP[key].includes(textVal)
+            ) {
               result.push(cs(TEXT_MAP[breakpoint], { [breakpoint]: textVal }));
             }
           }
