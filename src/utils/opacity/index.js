@@ -1,1 +1,1 @@
-export { opacity } from './opacity';
+export { opacity } from "./opacity";

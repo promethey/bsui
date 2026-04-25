@@ -10,7 +10,7 @@ export function sizing(value) {
   if (typeof value === "object" && Object.keys(value).length > 0) {
     let result = [];
 
-    for (let [prop, val] in Object.entries(value)) {
+    for (let [prop, val] of Object.entries(value)) {
       if (SIZING_MAP.includes(prop) && SIZING_VALUES.includes(val)) {
         result.push(cs(prop, val));
       }

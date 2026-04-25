@@ -14,19 +14,21 @@ import { rounded as roundedUtility } from "utils/rounded";
 import { shadow as shadowUtility } from "utils/shadow";
 import { font as fontUtility } from "utils/font";
 import { float as floatUtility } from "utils/float";
-import { overflow as overflowUtility } from 'utils/overflow';
-import { opacity as opacityUtility } from 'utils/opacity';
+import { overflow as overflowUtility } from "utils/overflow";
+import { opacity as opacityUtility } from "utils/opacity";
+import { sizing as sizingUtility } from "utils/sizing";
 
 export function resolveClassNames(props) {
   const {
-    d,
-    dp, // display print
-
     w,
     mw, // max width
-
     h,
     mh, // max height
+
+    d,
+    dp,
+
+    flex,
 
     pos, // position
     top,
@@ -34,7 +36,9 @@ export function resolveClassNames(props) {
     bottom,
     start,
 
-    m, // margin
+    float,
+
+    m,
     mx,
     my,
     mt,
@@ -42,7 +46,7 @@ export function resolveClassNames(props) {
     mb,
     ms,
 
-    p, // padding
+    p,
     px,
     py,
     pt,
@@ -50,29 +54,25 @@ export function resolveClassNames(props) {
     pb,
     ps,
 
+    bg,
+    text,
     fs,
     fw,
     fst,
     lh,
     monospace,
-
-    flex,
-
-    float,
-
-    shadow,
-
-    bg,
-    text,
     opacity,
     border,
     rounded,
+
+    shadow,
+
+    overflow,
 
     visually,
     visible,
     invisible,
     translateMiddle,
-    overflow,
 
     clearfix,
 
@@ -82,12 +82,6 @@ export function resolveClassNames(props) {
   const result = classNames(
     cs("translate-middle", translateMiddle),
     {
-      [prefix("w", w)]: w,
-      [prefix("mw", mw)]: mw, // max width
-
-      [prefix("h", h)]: h,
-      [prefix("mh", mh)]: mh, // max height
-
       [prefix("position", pos)]: pos, // position
       [prefix("top", top)]: typeof top === "number",
       [prefix("end", end)]: typeof end === "number",
@@ -120,20 +114,24 @@ export function resolveClassNames(props) {
       clearfix,
     },
 
+    sizingUtility({ w, mw, h, mh }),
     dispalyUtility(d),
     displayPrintUtility(dp),
+    flexUtility(flex),
+    floatUtility(float),
+
+    spacingUtility("m", m),
+    spacingUtility("p", p),
+
     bgUtility(bg),
     textUtility(text),
     fontUtility({ fs, fw, fst, lh, monospace }),
-    spacingUtility("m", m),
-    spacingUtility("p", p),
+    opacityUtility(opacity),
     borderUtility(border),
     roundedUtility(rounded),
-    flexUtility(flex),
+
     shadowUtility(shadow),
-    floatUtility(float),
     overflowUtility(overflow),
-    opacityUtility(opacity),
 
     className,
   );

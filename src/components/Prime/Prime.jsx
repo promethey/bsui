@@ -313,6 +313,7 @@ const defaultProps = {
  * + classnames
  * 
  * Support utilities:
+ * + sizing
  * + display
  * + displayPrint
  * + flex

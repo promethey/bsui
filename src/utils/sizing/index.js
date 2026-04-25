@@ -1,1 +1,1 @@
-export { sizing } from './sizing';
+export { sizing } from "./sizing";
