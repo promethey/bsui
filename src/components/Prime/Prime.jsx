@@ -323,6 +323,7 @@ const defaultProps = {
  * + font
  * + shadow
  * + float
+ * + overflow
  *
  * @example
  * <Prime>This is box component</Prime>

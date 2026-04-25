@@ -14,6 +14,7 @@ import { rounded as roundedUtility } from "utils/rounded";
 import { shadow as shadowUtility } from "utils/shadow";
 import { font as fontUtility } from "utils/font";
 import { float as floatUtility } from "utils/float";
+import { overflow as overflowUtility } from 'utils/overflow';
 
 export function resolveClassNames(props) {
   const {
@@ -111,7 +112,6 @@ export function resolveClassNames(props) {
       [prefix("visually", "hidden")]:
         typeof visually === "boolean" && !visually,
       [prefix("visually", visually)]: typeof visually === "string",
-      [prefix("overflow", overflow)]: overflow,
       visible: visible && !invisible,
       invisible: invisible && !visible,
       /**
@@ -133,6 +133,7 @@ export function resolveClassNames(props) {
     flexUtility(flex),
     shadowUtility(shadow),
     floatUtility(float),
+    overflowUtility(overflow),
 
     className,
   );
