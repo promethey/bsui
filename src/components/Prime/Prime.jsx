@@ -314,12 +314,14 @@ const defaultProps = {
  * 
  * Support utilities:
  * + display
+ * + displayPrint
  * + flex
  * + bg
  * + border
+ * + rounded
  * + text
  * + font
- * + rounded
+ * + shadow
  *
  * @example
  * <Box>This is box component</Box>
@@ -337,12 +339,12 @@ const defaultProps = {
  * @version 1.0.0
  */
 const Prime = React.forwardRef((props, ref) => {
-  const { as: Component = "div", style, children, className, ...rest } = props;
+  const { as: Component = "div", style, children, className } = props;
 
   const classes = resolveClassNames(props);
 
   return (
-    <Component ref={ref} style={style} className={classes} {...rest}>
+    <Component ref={ref} style={style} className={classes}>
       {children}
     </Component>
   );

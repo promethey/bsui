@@ -22,20 +22,19 @@ export default {
 
 export function Example() {
   return (
-    <>
-      <Prime bg="light" p={3} border>
-        Prime component
-      </Prime>
-      <Prime my={3} />
-      <Prime
-        d={bs.d.flex}
-        bg={bs.bg.colors.light}
-        text={bs.text.colors.primary}
-        p={3}
-        border>
-        Prime component
-      </Prime>
-    </>
+    <Prime
+      bg="primary"
+      text={{ color: "light", transform: "uppercase", align: "center" }}
+      fs={4}
+      fw="bolder"
+      monospace
+      p={3}
+      py={5}
+      rounded="pill"
+      shadow="lg"
+    >
+      Prime example
+    </Prime>
   );
 }
 
@@ -48,7 +47,7 @@ export function Width() {
       {examples.map((width, index) => (
         <Prime
           w={width}
-          m={[0, 0, 2, 0]}
+          mb={2}
           p={2}
           bg={{ color: bgBorderColors[index], opacity: 75 }}
           text={{ color: "white", align: "center" }}
@@ -120,6 +119,21 @@ export function Visibility() {
       </Prime>
     </>
   );
+}
+
+export function Shadows() {
+  const values = ["none", "sm", true, "lg"];
+  const text = ["No shadow", "Small shadow", "Regular shadow", "Larger shadow"];
+
+  return (
+    <>
+      {values.map((shadowValue, index) => (
+        <Prime bg="body" text="dark" p={3} mb={5} shadow={shadowValue} rounded>
+          {text[index]}
+        </Prime>
+      ))}
+    </>
+  )
 }
 
 export function FlexCenter() {
@@ -1083,30 +1097,6 @@ export function CenterElements2() {
   );
 }
 CenterElements2.storyName = "Center elements 2";
-
-export function Shadows() {
-  const examples = [
-    { shadow: false, label: "No" },
-    { shadow: "sm", label: "Small" },
-    { shadow: true, label: "Regular" },
-    { shadow: "lg", label: "Large" },
-  ];
-
-  return (
-    <>
-      {examples.map(({ shadow, label }) => (
-        <Prime
-          shadow={shadow}
-          bg={!shadow ? "light" : "body"}
-          rounded
-          p={3}
-          mb={5}>
-          {label} shadow
-        </Prime>
-      ))}
-    </>
-  );
-}
 
 export function ClearFix() {
   return (

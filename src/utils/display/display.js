@@ -1,6 +1,7 @@
 import { classnames as cs } from "helpers/classnames";
 
 const DISPLAY_CLASS_NAME = "d";
+const DISPLAY_PRINT_CLASS_NAME = "d-print";
 
 const DISPLAY_VALUES = [
   "none",
@@ -18,13 +19,13 @@ const DISPLAY_VALUES = [
 
 const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
-export function display(value) {
+export function display(value, prfx = DISPLAY_CLASS_NAME) {
   if (!value) return "";
 
   // String
   if (typeof value === "string" && value.trim()) {
     if (DISPLAY_VALUES.includes(value)) {
-      return cs(DISPLAY_CLASS_NAME, value);
+      return cs(prfx, value);
     }
   }
 
@@ -36,8 +37,12 @@ export function display(value) {
         DISPLAY_VALUES.includes(displayValue),
     );
 
-    return cs(DISPLAY_CLASS_NAME, Object.fromEntries(displayFilterValues));
+    return cs(prfx, Object.fromEntries(displayFilterValues));
   }
 
   return "";
+}
+
+export function displayPrint(value, prfx = DISPLAY_PRINT_CLASS_NAME) {
+  return display(value, prfx);
 }

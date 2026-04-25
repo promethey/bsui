@@ -1,18 +1,18 @@
 import { classnames as cs } from "helpers/classnames";
 
 const FONT_MAP = {
-  size: "fs",
-  weight: "fw",
-  style: "fst",
-  lineHeight: "lh",
-  monospace: "monospace",
+  fs: "fs",
+  fw: "fw",
+  fst: "fst",
+  lh: "lh",
+  monospace: "font-monospace",
 };
 
 const FONT_VALUES_MAP = {
-  size: [1, 2, 3, 4, 5, 6],
-  weight: ["bold", "bolder", "normal", "light", "lighter"],
-  style: ["italic", "normal"],
-  lineHeight: [1, "sm", "base", "lg"],
+  fs: [1, 2, 3, 4, 5, 6],
+  fw: ["bold", "bolder", "normal", "light", "lighter"],
+  fst: ["italic", "normal"],
+  lh: [1, "sm", "base", "lg"],
   monospace: [true],
 };
 
@@ -32,24 +32,12 @@ const FONT_VALUES_MAP = {
 export function font(value) {
   if (!value) return "";
 
-  // String
-  if (typeof value === "number" && FONT_VALUES_MAP["size"].includes(value)) {
-    return `${FONT_MAP["size"]}-${value}`;
-  }
-
   // Object
-  if (typeof value === "object") {
-    if (Object.keys(value).length === 0) {
-      return "";
-    }
-
+  if (typeof value === "object" && Object.keys(value).length > 0) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {
-      if (
-        Object.keys(FONT_MAP).includes(key) &&
-        FONT_VALUES_MAP[key].includes(val)
-      ) {
+      if (key in FONT_MAP && FONT_VALUES_MAP[key].includes(val)) {
         result.push(cs(FONT_MAP[key], val));
       }
     }

@@ -6,9 +6,13 @@ import { bg as bgUtility } from "utils/bg";
 import { text as textUtility } from "utils/text";
 import { border as borderUtility } from "utils/border";
 import { flex as flexUtility } from "utils/flex";
-import { display as dispalyUtility } from "utils/display";
+import {
+  display as dispalyUtility,
+  displayPrint as displayPrintUtility
+} from "utils/display";
 import { rounded as roundedUtility } from "utils/rounded";
 import { shadow as shadowUtility } from 'utils/shadow';
+import { font as fontUtility } from 'utils/font';
 
 export function resolveClassNames(props) {
   const {
@@ -43,10 +47,10 @@ export function resolveClassNames(props) {
     pb,
     ps,
 
-    fs, // font style
-    fw, // font weight
-    fst, // font style
-    lh, // line height
+    fs,
+    fw,
+    fst,
+    lh,
     monospace,
 
     flex,
@@ -64,17 +68,15 @@ export function resolveClassNames(props) {
     visually,
     visible,
     invisible,
-    clearfix,
     translateMiddle,
     overflow,
 
-    className,
+    clearfix,
 
-    ...rest
+    className,
   } = props;
 
-  const classes = classNames(
-    cs("d-print", dp),
+  const result = classNames(
     cs("float", float),
     cs("translate-middle", translateMiddle),
     {
@@ -120,8 +122,10 @@ export function resolveClassNames(props) {
     },
 
     dispalyUtility(d),
+    displayPrintUtility(dp),
     bgUtility(bg),
     textUtility(text),
+    fontUtility({ fs, fw, fst, lh, monospace }),
     spacingUtility("m", m),
     spacingUtility("p", p),
     borderUtility(border),
@@ -132,5 +136,5 @@ export function resolveClassNames(props) {
     className,
   );
 
-  return classes;
+  return result;
 }
