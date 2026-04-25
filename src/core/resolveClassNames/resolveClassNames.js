@@ -15,6 +15,7 @@ import { shadow as shadowUtility } from "utils/shadow";
 import { font as fontUtility } from "utils/font";
 import { float as floatUtility } from "utils/float";
 import { overflow as overflowUtility } from 'utils/overflow';
+import { opacity as opacityUtility } from 'utils/opacity';
 
 export function resolveClassNames(props) {
   const {
@@ -107,8 +108,6 @@ export function resolveClassNames(props) {
       [cs("pb", pb)]: pb,
       [cs("ps", ps)]: ps,
 
-      [cs("opacity", opacity)]: opacity,
-
       [prefix("visually", "hidden")]:
         typeof visually === "boolean" && !visually,
       [prefix("visually", visually)]: typeof visually === "string",
@@ -134,6 +133,7 @@ export function resolveClassNames(props) {
     shadowUtility(shadow),
     floatUtility(float),
     overflowUtility(overflow),
+    opacityUtility(opacity),
 
     className,
   );

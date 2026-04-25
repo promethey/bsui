@@ -769,11 +769,11 @@ export function TextSelections() {
 TextSelections.storyName = "Text selections";
 
 export function Opacity() {
-  const examples = [100, 75, 50, 25];
+  const values = [100, 75, 50, 25];
 
   return (
     <>
-      {examples.map((opacity) => (
+      {values.map((opacity) => (
         <Prime bg="primary" text="white" p={3} opacity={opacity}>
           {opacity}%
         </Prime>
