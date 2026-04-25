@@ -7,6 +7,7 @@ import { text as textUtility } from "utils/text";
 import { border as borderUtility } from "utils/border";
 import { flex as flexUtility } from "utils/flex";
 import { display as dispalyUtility } from "utils/display";
+import { rounded as roundedUtility } from "utils/rounded";
 
 export function resolveClassNames(props) {
   const {
@@ -65,6 +66,9 @@ export function resolveClassNames(props) {
     clearfix,
     translateMiddle,
     overflow,
+
+    className,
+
     ...rest
   } = props;
 
@@ -101,12 +105,9 @@ export function resolveClassNames(props) {
       [cs("pb", pb)]: pb,
       [cs("ps", ps)]: ps,
 
-      [cs("rounded", rounded)]: rounded,
-
       [cs("opacity", opacity)]: opacity,
 
-      [prefix("visually", "hidden")]:
-        typeof visually === "boolean" && !visually,
+      [prefix("visually", "hidden")]: typeof visually === "boolean" && !visually,
       [prefix("visually", visually)]: typeof visually === "string",
       [prefix("overflow", overflow)]: overflow,
       visible: visible && !invisible,
@@ -124,7 +125,10 @@ export function resolveClassNames(props) {
     spacingUtility("p", p),
     borderUtility(border),
     flexUtility(flex),
+    roundedUtility(rounded),
+
+    className
   );
 
-  return classes === "" ? null : classes;
+  return classes;
 }

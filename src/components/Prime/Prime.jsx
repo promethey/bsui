@@ -319,6 +319,7 @@ const defaultProps = {
  * + border
  * + text
  * + font
+ * + rounded
  *
  * @example
  * <Box>This is box component</Box>

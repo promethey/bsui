@@ -1,1 +1,1 @@
-export { classnames } from "./classnames.js";
+export { classnames } from "./classnames";
