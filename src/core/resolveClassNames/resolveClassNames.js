@@ -8,6 +8,7 @@ import { border as borderUtility } from "utils/border";
 import { flex as flexUtility } from "utils/flex";
 import { display as dispalyUtility } from "utils/display";
 import { rounded as roundedUtility } from "utils/rounded";
+import { shadow as shadowUtility } from 'utils/shadow';
 
 export function resolveClassNames(props) {
   const {
@@ -89,8 +90,6 @@ export function resolveClassNames(props) {
       [prefix("bottom", bottom)]: typeof bottom === "number",
       [prefix("start", start)]: typeof start === "number",
 
-      [prefix("shadow", shadow)]: shadow,
-
       [cs("mx", mx)]: mx,
       [cs("my", my)]: my,
       [cs("mt", mt)]: mt,
@@ -107,7 +106,8 @@ export function resolveClassNames(props) {
 
       [cs("opacity", opacity)]: opacity,
 
-      [prefix("visually", "hidden")]: typeof visually === "boolean" && !visually,
+      [prefix("visually", "hidden")]:
+        typeof visually === "boolean" && !visually,
       [prefix("visually", visually)]: typeof visually === "string",
       [prefix("overflow", overflow)]: overflow,
       visible: visible && !invisible,
@@ -118,16 +118,18 @@ export function resolveClassNames(props) {
        */
       clearfix,
     },
+
     dispalyUtility(d),
     bgUtility(bg),
     textUtility(text),
     spacingUtility("m", m),
     spacingUtility("p", p),
     borderUtility(border),
-    flexUtility(flex),
     roundedUtility(rounded),
+    flexUtility(flex),
+    shadowUtility(shadow),
 
-    className
+    className,
   );
 
   return classes;
