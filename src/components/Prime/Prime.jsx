@@ -306,7 +306,7 @@ const defaultProps = {
 };
 
 /**
- * Box component is basic for this library
+ * Prime component is basic for this library
  * 
  * Support helpers:
  * + prefix
@@ -322,16 +322,16 @@ const defaultProps = {
  * + text
  * + font
  * + shadow
+ * + float
  *
  * @example
- * <Box>This is box component</Box>
- * <Box d="inline-block">This is inline-block box component</Box>
- * <Box d="flex" text="primary">Flex and primary color</Box>
+ * <Prime>This is box component</Prime>
+ * <Prime d="inline-block">This is inline-block box component</Prime>
+ * <Prime d="flex" text="primary">Flex and primary color</Prime>
 
- * @return {JSX.Element} Box
+ * @return {JSX.Element} Prime
  * 
  * @todo
- * - create rounded util
  * - create mx, my, mt, me, mb, ms etc. util
  * - create position top, end, bottom, start util
  *

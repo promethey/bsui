@@ -23,16 +23,15 @@ export default {
 export function Example() {
   return (
     <Prime
-      bg="primary"
+      bg={{ color: "primary", gradient: true }}
       text={{ color: "light", transform: "uppercase", align: "center" }}
       fs={4}
       fw="bolder"
       monospace
-      p={3}
-      py={5}
+      p={2}
+      py={4}
       rounded="pill"
-      shadow="lg"
-    >
+      shadow="lg">
       Prime example
     </Prime>
   );
@@ -133,7 +132,7 @@ export function Shadows() {
         </Prime>
       ))}
     </>
-  )
+  );
 }
 
 export function FlexCenter() {

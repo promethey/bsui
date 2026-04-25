@@ -54,7 +54,9 @@ describe("display utility", () => {
   });
 
   test("display breakpoints (display print)", () => {
-    expect(displayPrint({ xs: "inline", md: "flex" })).toBe("d-print-inline d-print-md-flex");
+    expect(displayPrint({ xs: "inline", md: "flex" })).toBe(
+      "d-print-inline d-print-md-flex",
+    );
     expect(displayPrint({ fs: "inline", md: "flex" })).toBe("d-print-md-flex");
   });
 

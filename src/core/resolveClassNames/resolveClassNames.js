@@ -8,11 +8,12 @@ import { border as borderUtility } from "utils/border";
 import { flex as flexUtility } from "utils/flex";
 import {
   display as dispalyUtility,
-  displayPrint as displayPrintUtility
+  displayPrint as displayPrintUtility,
 } from "utils/display";
 import { rounded as roundedUtility } from "utils/rounded";
-import { shadow as shadowUtility } from 'utils/shadow';
-import { font as fontUtility } from 'utils/font';
+import { shadow as shadowUtility } from "utils/shadow";
+import { font as fontUtility } from "utils/font";
+import { float as floatUtility } from "utils/float";
 
 export function resolveClassNames(props) {
   const {
@@ -77,7 +78,6 @@ export function resolveClassNames(props) {
   } = props;
 
   const result = classNames(
-    cs("float", float),
     cs("translate-middle", translateMiddle),
     {
       [prefix("w", w)]: w,
@@ -132,6 +132,7 @@ export function resolveClassNames(props) {
     roundedUtility(rounded),
     flexUtility(flex),
     shadowUtility(shadow),
+    floatUtility(float),
 
     className,
   );

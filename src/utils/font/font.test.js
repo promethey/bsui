@@ -40,7 +40,7 @@ describe("font utility", () => {
   });
 
   test("applies monospace from object", () => {
-    expect(font({ monospace: true })).toBe("monospace");
+    expect(font({ monospace: true })).toBe("font-monospace");
     expect(font({ monospace: false })).toBe("");
   });
 });
