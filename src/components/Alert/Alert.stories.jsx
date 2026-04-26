@@ -42,16 +42,7 @@ export function Themes() {
   ];
 
   return (
-    <>
-      <Alert.Primary>Primary</Alert.Primary>
-      <Alert.Secondary>Secondary</Alert.Secondary>
-      <Alert.Danger>Danger</Alert.Danger>
-      <Alert.Success>Success</Alert.Success>
-      <Alert.Warning>Danger</Alert.Warning>
-      <Alert.Info>Info</Alert.Info>
-      <Alert.Light>Light</Alert.Light>
-      <Alert.Dark>Dark</Alert.Dark>
-    </>
+    <Alert>Alert</Alert>
   );
 }
 Themes.storyName = "Themes";
@@ -75,13 +66,11 @@ API.args = {
 
 export function AlertHeadingTypes() {
   return (
-    <>
-      <Alert theme="secondary">
-        <Alert.Heading as={Alert.Heading.Types.H1}>H1</Alert.Heading>
-        <Alert.Heading.H2>H2</Alert.Heading.H2>
-        <Alert.Heading.H3>H3</Alert.Heading.H3>
-      </Alert>
-    </>
+    <Alert theme="secondary">
+      <Alert.Heading as={Alert.Heading.Types.H1}>H1</Alert.Heading>
+      <Alert.Heading.H2>H2</Alert.Heading.H2>
+      <Alert.Heading.H3>H3</Alert.Heading.H3>
+    </Alert>
   );
 }
 AlertHeadingTypes.storyName = "Alert Heading Types";
@@ -173,25 +162,25 @@ export function Icons() {
         <Prime d="inline-block" me={2}>
           <i className="bi bi-info-circle-fill" />
         </Prime>
-        <div>An example alert with an icon</div>
+        <Prime>An example alert with an icon</Prime>
       </Alert>
       <Alert theme="success" d="flex" alignItems="center">
         <Prime d="inline-block" me={2}>
           <i className="bi bi-check-circle-fill" />
         </Prime>
-        <div>An example success alert with an icon</div>
+        <Prime>An example success alert with an icon</Prime>
       </Alert>
       <Alert theme="warning" d="flex" alignItems="center">
         <Prime d="inline-block" me={2}>
           <i className="bi bi-exclamation-triangle-fill" />
         </Prime>
-        <div>An example warning alert with an icon</div>
+        <Prime>An example warning alert with an icon</Prime>
       </Alert>
       <Alert theme="danger" d="flex" alignItems="center">
         <Prime d="inline-block" me={2}>
           <i className="bi bi-exclamation-triangle-fill" />
         </Prime>
-        <div>An example danger alert with an icon</div>
+        <Prime>An example danger alert with an icon</Prime>
       </Alert>
     </>
   );
@@ -203,7 +192,7 @@ Dismissing.args = {
   dissmisible: true,
   animated: true,
   children: [
-    <Text as="strong">Holy guacamole!</Text>,
+    <Prime as="strong">Holy guacamole!</Prime>,
     " ",
     "You should check in on some of those fields below.",
   ],
@@ -214,16 +203,16 @@ AdditionalContent.args = {
   theme: "success",
   children: [
     <Alert.Heading>Well done!</Alert.Heading>,
-    <Text>
+    <Prime>
       Aww yeah, you successfully read this important alert message. This example
       text is going to run a bit longer so that you can see how spacing within
       an alert works with this kind of content.
-    </Text>,
+    </Prime>,
     <hr />,
-    <Text mb={0}>
+    <Prime mb={0}>
       Whenever you need to, be sure to use margin utilities to keep things nice
       and tidy.
-    </Text>,
+    </Prime>,
   ],
 };
 AdditionalContent.storyName = "Additional content";
