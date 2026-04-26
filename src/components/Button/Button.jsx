@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { prefix } from "helpers/prefix";
+import { prefix } from "helpers";
 import { defineThemeVariants, attachStaticVariants } from "utils/variants";
-import Prime from "components/Prime";
+import Prime from "components";
 
 const BUTTON_THEMES = [
   "primary",
@@ -68,27 +68,14 @@ const defaultProps = {
  * @component
  *
  * @example
- * // regular button
  * <Button>Button</Button>
- *
- * @example
- * // success button
  * <Button theme="success">Button</Button>
- *
- * @example
- * // danger button
  * <Button theme="danger">Button</Button>
- *
- * @example
- * // primary button
  * <Button.Primary>Primary</Button>
- *
- * @example
- * // outline button
  * <Button.Outline>Outline</Button>
  *
  * @example
- * import {bs} from 'utils/constants';
+ * import {bs} from 'constants';
  * <Button theme={bs.theme.danger}>Button</Button>
  *
  * @typedef {Object} ButtonProps
@@ -199,6 +186,9 @@ function ButtonBase(props) {
     </Prime>
   );
 }
+
+ButtonBase.propTypes = propTypes;
+ButtonBase.defaultProps = defaultProps;
 
 const Button = (props) => <ButtonBase {...props} />;
 

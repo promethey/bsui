@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { prefix } from "helpers/prefix";
+import { prefix } from "helpers";
 
 const BASE_CLASS_NAME = "btn-close";
 
