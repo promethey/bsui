@@ -15,7 +15,7 @@ import {
   overflow as overflowUtility,
   opacity as opacityUtility,
   sizing as sizingUtility,
-} from 'utils';
+} from "utils";
 
 export function resolveUtils(props) {
   const {

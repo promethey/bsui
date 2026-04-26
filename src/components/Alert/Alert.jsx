@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { prefix } from "helpers/prefix";
-import Prime from "components/Prime";
-import CloseButton from "components/CloseButton";
+import { prefix } from "helpers";
+import Prime from "components";
+import CloseButton from "components";
 import AlertLink from "./AlertLink";
 import AlertHeading from "./AlertHeading";
 
