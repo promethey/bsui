@@ -8,6 +8,8 @@ const SPACING_MAP = ["m", "p"];
 const SPACING_SIDES_MAP = ["t", "e", "b", "s", "x", "y"];
 const SPACING_VALUES = [1, 2, 3, 4, 5, "auto"];
 
+const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
+
 /**
  * Function for generate margin and padding classnames
  *
@@ -28,7 +30,13 @@ export function spacing(prfx, value) {
     return "";
   }
 
-  if (!SPACING_MAP.includes(prfx)) {
+  // "m", "p"
+  if (prfx.length === 1 && !SPACING_MAP.includes(prfx[0])) {
+    return "";
+  }
+
+  // "t", "e", "b", "s", "x", "y"
+  if (prfx.length === 2 && !SPACING_SIDES_MAP.includes(prfx[1])) {
     return "";
   }
 
@@ -38,12 +46,21 @@ export function spacing(prfx, value) {
   }
 
   // Object
-  if (
-    typeof value === "object" &&
-    !Array.isArray(value) &&
-    Object.keys(value).length > 0
-  ) {
-    return cs(prfx, value);
+  if (typeof value === "object" && !Array.isArray(value)) {
+    if (Object.keys(value).length > 0) {
+      let result = [];
+
+      for (let [breakpoint, val] of Object.entries(value)) {
+        if (
+          !BREAKPOINTS.includes(breakpoint) ||
+          !SPACING_VALUES.includes(val)
+        ) {
+          delete value[breakpoint];
+        }
+      }
+
+      return cs(prfx, value);
+    }
   }
 
   /**
@@ -57,20 +74,14 @@ export function spacing(prfx, value) {
    */
   if (Array.isArray(value) && value.length > 0) {
     let result = [];
+    let sides = { 2: ["x", "y"], 4: SPACING_SIDES_MAP };
 
-    if (value.length === 2) {
-      let x = value[0];
-      let y = value[1];
-
-      if (everyType("number", x, y)) {
-        return `${prfx}x-${x} ${prfx}y-${y}`;
-      }
-    }
-
-    if (value.length === 4) {
+    if (value.length === 2 || value.length === 4) {
       for (let i = 0; i <= value.length; i += 1) {
         if (typeof value[i] === "number") {
-          result.push(cs(`${prfx}${SPACING_SIDES_MAP[i]}`, value[i]));
+          // [1, 2] -> 'mx-1 my-2'
+          // [1, 2, 3, 4] -> 'mt-1 me-2 mb-3 ms-4'
+          result.push(cs(`${prfx}${sides[value.length][i]}`, value[i]));
         }
       }
     }
