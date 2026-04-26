@@ -1,23 +1,23 @@
 import classNames from "classnames";
 import { classnames as cs } from "helpers";
-import { spacing as spacingUtility } from "utils/spacing";
-import { bg as bgUtility } from "utils/bg";
-import { text as textUtility } from "utils/text";
-import { border as borderUtility } from "utils/border";
-import { flex as flexUtility } from "utils/flex";
 import {
+  spacing as spacingUtility,
+  bg as bgUtility,
+  text as textUtility,
+  border as borderUtility,
+  flex as flexUtility,
   display as dispalyUtility,
   displayPrint as displayPrintUtility,
-} from "utils/display";
-import { rounded as roundedUtility } from "utils/rounded";
-import { shadow as shadowUtility } from "utils/shadow";
-import { font as fontUtility } from "utils/font";
-import { float as floatUtility } from "utils/float";
-import { overflow as overflowUtility } from "utils/overflow";
-import { opacity as opacityUtility } from "utils/opacity";
-import { sizing as sizingUtility } from "utils/sizing";
+  rounded as roundedUtility,
+  shadow as shadowUtility,
+  font as fontUtility,
+  float as floatUtility,
+  overflow as overflowUtility,
+  opacity as opacityUtility,
+  sizing as sizingUtility,
+} from 'utils';
 
-export function resolveUtilities(props) {
+export function resolveUtils(props) {
   const {
     w,
     mw, // max width
@@ -101,8 +101,7 @@ export function resolveUtilities(props) {
       [cs("pb", pb)]: pb,
       [cs("ps", ps)]: ps,
 
-      [cs("visually", "hidden")]:
-        typeof visually === "boolean" && !visually,
+      [cs("visually", "hidden")]: typeof visually === "boolean" && !visually,
       [cs("visually", visually)]: typeof visually === "string",
       visible: visible && !invisible,
       invisible: invisible && !visible,

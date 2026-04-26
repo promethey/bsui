@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { resolveUtilities } from "core/resolveUtilities";
+import { resolveUtils } from "core/resolveUtils";
 
 const propTypes = {
   as: PropTypes.oneOf([
@@ -345,7 +345,7 @@ const defaultProps = {
 const Prime = React.forwardRef((props, ref) => {
   const { as: Component = "div", style, children } = props;
 
-  const classNames = resolveUtilities(props);
+  const classNames = resolveUtils(props);
 
   return (
     <Component ref={ref} style={style} className={classNames}>

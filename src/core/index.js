@@ -1,1 +1,1 @@
-export { resolveClassName } from "./resolveUtilities";
+export { resolveClassName } from "./resolveUtils";
