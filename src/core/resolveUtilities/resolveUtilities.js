@@ -1,6 +1,5 @@
-import { prefix } from "helpers/prefix";
-import { classnames as cs } from "helpers/classnames";
 import classNames from "classnames";
+import { classnames as cs } from "helpers";
 import { spacing as spacingUtility } from "utils/spacing";
 import { bg as bgUtility } from "utils/bg";
 import { text as textUtility } from "utils/text";
@@ -18,7 +17,7 @@ import { overflow as overflowUtility } from "utils/overflow";
 import { opacity as opacityUtility } from "utils/opacity";
 import { sizing as sizingUtility } from "utils/sizing";
 
-export function resolveClassNames(props) {
+export function resolveUtilities(props) {
   const {
     w,
     mw, // max width
@@ -82,11 +81,11 @@ export function resolveClassNames(props) {
   const result = classNames(
     cs("translate-middle", translateMiddle),
     {
-      [prefix("position", pos)]: pos, // position
-      [prefix("top", top)]: typeof top === "number",
-      [prefix("end", end)]: typeof end === "number",
-      [prefix("bottom", bottom)]: typeof bottom === "number",
-      [prefix("start", start)]: typeof start === "number",
+      [cs("position", pos)]: pos, // position
+      [cs("top", top)]: typeof top === "number",
+      [cs("end", end)]: typeof end === "number",
+      [cs("bottom", bottom)]: typeof bottom === "number",
+      [cs("start", start)]: typeof start === "number",
 
       [cs("mx", mx)]: mx,
       [cs("my", my)]: my,
@@ -102,9 +101,9 @@ export function resolveClassNames(props) {
       [cs("pb", pb)]: pb,
       [cs("ps", ps)]: ps,
 
-      [prefix("visually", "hidden")]:
+      [cs("visually", "hidden")]:
         typeof visually === "boolean" && !visually,
-      [prefix("visually", visually)]: typeof visually === "string",
+      [cs("visually", visually)]: typeof visually === "string",
       visible: visible && !invisible,
       invisible: invisible && !visible,
       /**
@@ -115,9 +114,12 @@ export function resolveClassNames(props) {
     },
 
     sizingUtility({ w, mw, h, mh }),
+
     dispalyUtility(d),
     displayPrintUtility(dp),
+
     flexUtility(flex),
+
     floatUtility(float),
 
     spacingUtility("m", m),
@@ -126,11 +128,14 @@ export function resolveClassNames(props) {
     bgUtility(bg),
     textUtility(text),
     fontUtility({ fs, fw, fst, lh, monospace }),
+
     opacityUtility(opacity),
+
     borderUtility(border),
     roundedUtility(rounded),
 
     shadowUtility(shadow),
+
     overflowUtility(overflow),
 
     className,

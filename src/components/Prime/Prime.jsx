@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { resolveClassNames } from "core/resolveClassNames";
+import { resolveUtilities } from "core/resolveUtilities";
 
 const propTypes = {
   as: PropTypes.oneOf([
@@ -317,6 +317,7 @@ const defaultProps = {
  * + display
  * + displayPrint
  * + flex
+ * + spacing
  * + bg
  * + border
  * + rounded
@@ -342,12 +343,12 @@ const defaultProps = {
  * @version 1.0.0
  */
 const Prime = React.forwardRef((props, ref) => {
-  const { as: Component = "div", style, children, className } = props;
+  const { as: Component = "div", style, children } = props;
 
-  const classes = resolveClassNames(props);
+  const classNames = resolveUtilities(props);
 
   return (
-    <Component ref={ref} style={style} className={classes}>
+    <Component ref={ref} style={style} className={classNames}>
       {children}
     </Component>
   );
