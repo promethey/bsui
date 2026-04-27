@@ -19,6 +19,21 @@ const DISPLAY_VALUES = [
 
 const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
+/**
+ * Display function
+ *
+ * @see {@link https://getbootstrap.com/docs/5.1/utilities/display/}
+ *
+ * @example
+ * display("flex") // 'd-flex'
+ * display("inline") // 'd-inline'
+ * display({ xs: "inline", md: "flex" }) // 'd-inline d-md-flex'
+ *
+ * @param {string|Object} value
+ * @param {string} prfx - default 'd'
+ *
+ * @returns {string} classnames
+ */
 export function display(value, prfx = DISPLAY_CLASS_NAME) {
   if (!value) return "";
 
@@ -36,13 +51,13 @@ export function display(value, prfx = DISPLAY_CLASS_NAME) {
     !Array.isArray(value) &&
     Object.keys(value).length > 0
   ) {
-    const dFilterUnsupportedValues = Object.entries(value).filter(
+    const displayFilterUnsupportedValues = Object.entries(value).filter(
       ([breakpoint, displayValue]) =>
         BREAKPOINTS.includes(breakpoint) &&
         DISPLAY_VALUES.includes(displayValue),
     );
 
-    return cs(prfx, Object.fromEntries(dFilterUnsupportedValues));
+    return cs(prfx, Object.fromEntries(displayFilterUnsupportedValues));
   }
 
   return "";

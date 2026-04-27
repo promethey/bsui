@@ -18,6 +18,13 @@ const ROUNDED_VALUES = [
 /**
  * Rounded function
  *
+ * @see {@link https://getbootstrap.com/docs/5.1/utilities/borders/}
+ *
+ * @example
+ * rounded(true) // 'rounded'
+ * rounded("top") // 'rounded-top'
+ * rounded(0) // 'rounded-0'
+ *
  * @param {boolean|string|number} value
  * @returns {string} classnames
  */
