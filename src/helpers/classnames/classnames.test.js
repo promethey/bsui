@@ -77,4 +77,16 @@ describe("classnames function", () => {
       ).toBe("d-block");
     });
   });
+
+  describe("Breakpoints with boolean values", () => {
+    test("boolean breakpoints", () => {
+      expect(
+        classnames(
+          "flex-fill",
+          { xs: true, sm: false, md: true },
+          { prefixInsertBetween: true },
+        ),
+      ).toBe("flex-fill flex-md-fill");
+    });
+  });
 });

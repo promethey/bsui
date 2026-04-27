@@ -1,1 +1,1 @@
-export { prefix } from "./prefix.js";
+export { prefix } from "./prefix";

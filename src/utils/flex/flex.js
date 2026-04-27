@@ -82,11 +82,11 @@ export function flex(value) {
   }
 
   // Object
-  if (typeof value === "object") {
-    if (Object.keys(value).length === 0) {
-      return "";
-    }
-
+  if (
+    typeof value === "object" &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     let result = [];
 
     for (let [breakpoint, val] of Object.entries(value)) {
@@ -106,7 +106,7 @@ export function flex(value) {
         if (typeof val === "object") {
           for (let [flexKey, flexVal] of Object.entries(val)) {
             if (
-              Object.keys(FLEX_MAP).includes(flexKey) &&
+              flexKey in FLEX_MAP &&
               FLEX_VALUES_MAP[flexKey].includes(flexVal)
             ) {
               result.push(
