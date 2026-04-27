@@ -9,20 +9,28 @@ export function float(value) {
 
   // String
   if (typeof value === "string" && value.trim()) {
-    if (FLOAT_VALUES.includes(value)) {
-      return cs(FLOAT_CLASS_NAME, value);
+    if (FLOAT_VALUES.includes(value.trim())) {
+      return cs(FLOAT_CLASS_NAME, value.trim());
     }
   }
 
   // Object
-  if (typeof value === "object" && value && Object.keys(value).length > 0) {
-    const displayFilterValues = Object.entries(value).filter(
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
+    const floatFilterUnsupportedValues = Object.entries(value).filter(
       ([breakpoint, displayValue]) =>
         FLOAT_BREAKPOINTS.includes(breakpoint) &&
         FLOAT_VALUES.includes(displayValue),
     );
 
-    return cs(FLOAT_CLASS_NAME, Object.fromEntries(displayFilterValues));
+    return cs(
+      FLOAT_CLASS_NAME,
+      Object.fromEntries(floatFilterUnsupportedValues),
+    );
   }
 
   return "";
