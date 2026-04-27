@@ -1,3 +1,5 @@
+const SUPPORT_TYPES = ["string", "number", "object", "array"];
+
 /**
  * Function for check value type
  * use strict mode for check empty string, empty object and empty array
@@ -5,14 +7,14 @@
  * @example
  * is("string", "") // true
  * is("string", " ") // true
- * is("string", " ", { strict: true }) // false
+ * is("string", " ", { notEmpty: true }) // false
  *
  * is("number", 123) // true
  * is("number", 0) // true
  *
  * is("object", {}) // true
- * is("object", {}, { strict: true }) // false
- * is("object", { value: "" }, { strict: true }) // true
+ * is("object", {}, { notEmpty: true }) // false
+ * is("object", { value: "" }, { notEmpty: true }) // true
  *
  * @param {any} type - "string", "number", "object", "array"
  * @param {any} value - all of types
@@ -21,6 +23,14 @@
  * @returns {boolean} result
  */
 export function is(type, value, options = { notEmpty: false }) {
+  if (!SUPPORT_TYPES.includes(type)) {
+    return false;
+  }
+
+  if (value === undefined) {
+    return false;
+  }
+
   switch (type) {
     case "string": {
       if (typeof value !== type) return false;
