@@ -27,13 +27,18 @@ const FONT_VALUES_MAP = {
  *
  * @param {number|Object} value - Default number is size
  *
- * @return {string} font classnames
+ * @return {string} classnames
  */
 export function font(value) {
   if (!value) return "";
 
   // Object
-  if (typeof value === "object" && Object.keys(value).length > 0) {
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {
