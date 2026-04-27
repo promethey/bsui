@@ -1,4 +1,4 @@
-import { prefix } from "helpers/prefix";
+import { classnames as cs } from "helpers/classnames";
 
 const BG_MAP = {
   color: "bg",
@@ -25,7 +25,7 @@ const BG_VALUES_MAP = {
 };
 
 /**
- * Function for background utility
+ * Background function
  *
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/background/}
  *
@@ -36,29 +36,27 @@ const BG_VALUES_MAP = {
  *
  * @param {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark'|'body'|'white'|'transparent' | { color?: 'primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark'|'body'|'white'|'transparent', gradient?: boolean, opacity?: 10|25|50|75 })} value
  *
- * @returns {string}
+ * @returns {string} bg
  */
 export function bg(value) {
   if (!value) return "";
 
   // String
   if (typeof value === "string" && BG_VALUES_MAP["color"].includes(value)) {
-    return prefix(BG_MAP["color"], value); // return example 'bg-primary'
+    return cs(BG_MAP["color"], value); // example 'bg-primary'
   }
 
   // Object
-  if (typeof value === "object") {
+  if (
+    typeof value === "object" &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     let result = [];
 
-    if (Object.entries(value).length === 0) {
-      return "";
-    }
-
     for (let [key, val] of Object.entries(value)) {
-      if (Object.keys(BG_MAP).includes(key)) {
-        if (BG_VALUES_MAP[key].includes(val)) {
-          result.push(prefix(BG_MAP[key], val));
-        }
+      if (key in BG_MAP && BG_VALUES_MAP[key].includes(val)) {
+        result.push(cs(BG_MAP[key], val));
       }
     }
 

@@ -1,13 +1,16 @@
 import { bg } from "./bg.js";
 
 describe("background utility", () => {
-  test("returns empty string for falsy values", () => {
+  test("returns empty string for unsupported values", () => {
     expect(bg()).toBe("");
     expect(bg({})).toBe("");
     expect(bg(null)).toBe("");
     expect(bg(undefined)).toBe("");
     expect(bg(true)).toBe("");
     expect(bg(false)).toBe("");
+    expect(bg(123)).toBe("");
+    expect(bg([])).toBe("");
+    expect(bg(() => {})).toBe("");
   });
 
   test("returns correct class for string value", () => {
@@ -92,11 +95,5 @@ describe("background utility", () => {
     expect(bg({ color: "primary", grdnt: true, foo: "bar" })).toBe(
       "bg-primary",
     );
-  });
-
-  test("returns empty string for unsupported types", () => {
-    expect(bg(123)).toBe("");
-    expect(bg([])).toBe("");
-    expect(bg(() => {})).toBe("");
   });
 });
