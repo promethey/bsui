@@ -26,7 +26,7 @@ const FLEX_VALUES_MAP = {
   wrap: [true],
   nowrap: [true],
   wrapReverse: [true],
-  order: [-1, 0, 1, 2, 3, 4, 5, 6, "first", "last"],
+  order: [0, 1, 2, 3, 4, 5, 6, "first", "last"],
   alignContent: ["start", "end", "center", "between", "around", "stretch"],
 };
 
@@ -53,7 +53,7 @@ const JUSTIFY_ALIGN_LIST = ["start", "end", "center"];
 const BREAKPOINTS_LIST = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
 /**
- * Function for flex utility
+ * Flex function
  *
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/flex/}
  *
@@ -65,17 +65,13 @@ const BREAKPOINTS_LIST = ["xs", "sm", "md", "lg", "xl", "xxl"];
  *
  * @param {string|Object} value
  *
- * @returns {string} flex classnames
+ * @returns {string} classnames
  */
 export function flex(value) {
   if (!value) return "";
 
   // String
-  if (
-    typeof value === "string" &&
-    FLEX_VALUES_MAP["justify"].includes(value) &&
-    FLEX_VALUES_MAP["align"].includes(value)
-  ) {
+  if (typeof value === "string") {
     if (JUSTIFY_ALIGN_LIST.includes(value)) {
       return `${cs(FLEX_MAP.justify, value)} ${cs(FLEX_MAP.align, value)}`;
     }
@@ -84,6 +80,7 @@ export function flex(value) {
   // Object
   if (
     typeof value === "object" &&
+    value &&
     !Array.isArray(value) &&
     Object.keys(value).length > 0
   ) {
@@ -91,11 +88,8 @@ export function flex(value) {
 
     for (let [breakpoint, val] of Object.entries(value)) {
       if (BREAKPOINTS_LIST.includes(breakpoint)) {
-        // String or Boolean
-        if (
-          (typeof val === "string" || typeof val === "boolean") &&
-          JUSTIFY_ALIGN_LIST.includes(val)
-        ) {
+        // String
+        if (typeof val === "string" && JUSTIFY_ALIGN_LIST.includes(val)) {
           let justify = cs(FLEX_MAP.justify, { [breakpoint]: val });
           let align = cs(FLEX_MAP.align, { [breakpoint]: val });
 
@@ -103,7 +97,12 @@ export function flex(value) {
         }
 
         // Object
-        if (typeof val === "object") {
+        if (
+          typeof val === "object" &&
+          val &&
+          !Array.isArray(val) &&
+          Object.keys(val).length > 0
+        ) {
           for (let [flexKey, flexVal] of Object.entries(val)) {
             if (
               flexKey in FLEX_MAP &&

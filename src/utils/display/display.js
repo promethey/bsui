@@ -24,20 +24,25 @@ export function display(value, prfx = DISPLAY_CLASS_NAME) {
 
   // String
   if (typeof value === "string" && value.trim()) {
-    if (DISPLAY_VALUES.includes(value)) {
-      return cs(prfx, value);
+    if (DISPLAY_VALUES.includes(value.trim())) {
+      return cs(prfx, value.trim());
     }
   }
 
   // Object
-  if (typeof value === "object" && value && Object.keys(value).length > 0) {
-    const displayFilterValues = Object.entries(value).filter(
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
+    const dFilterUnsupportedValues = Object.entries(value).filter(
       ([breakpoint, displayValue]) =>
         BREAKPOINTS.includes(breakpoint) &&
         DISPLAY_VALUES.includes(displayValue),
     );
 
-    return cs(prfx, Object.fromEntries(displayFilterValues));
+    return cs(prfx, Object.fromEntries(dFilterUnsupportedValues));
   }
 
   return "";
