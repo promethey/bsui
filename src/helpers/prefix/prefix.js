@@ -8,23 +8,28 @@
  * prefix("bg-gradient", true) // 'bg-gradient'
  *
  * @param {string} prfx - prefix
- * @param  {...string} classNames
+ * @param  {...string} values - classnames
  *
- * @returns {string} classnames string
+ * @returns {string} classnames
  */
-export function prefix(prfx, ...classNames) {
-  if (typeof prfx !== "string") return "";
+export function prefix(prfx, ...values) {
+  if (typeof prfx !== "string" || !prfx) return "";
 
-  if (classNames.length === 0) return prfx;
+  // prefix("border", true) -> "border"
+  if (typeof values === "boolean" && values) return prfx;
 
-  const result = [];
-  result.push(prfx);
+  if (values.length === 0) return prfx;
 
-  for (let i = 0; i < classNames.length; i += 1) {
-    let className = classNames[i];
-    let type = typeof className;
+  const result = [prfx];
 
-    if ((type === "string" && className.length > 0) || type === "number") {
+  for (let i = 0; i < values.length; i += 1) {
+    let className = values[i];
+
+    // String Number
+    if (
+      (typeof className === "string" && className) ||
+      typeof className === "number"
+    ) {
       String(className).trim().length > 0 && result.push("-" + className);
     }
   }

@@ -6,6 +6,10 @@ describe("prefix function", () => {
       expect(prefix("btn")).toBe("btn");
     });
 
+    test("if values is true", () => {
+      expect(prefix("btn", true)).toBe("btn");
+    });
+
     test("regular cases", () => {
       expect(prefix("btn", "primary")).toBe("btn-primary");
       expect(prefix("alert", "dismissible", "animated")).toBe(
