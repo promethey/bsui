@@ -43,6 +43,8 @@ const TEXT_VALUES_MAP = {
 /**
  * Function for text utility
  *
+ * @see {@link https://getbootstrap.com/docs/5.1/utilities/text/}
+ *
  * @example
  * text("primary") // return 'text-primary'
  * text({ color: 'primary', align: 'start', linebreak: true, transform: 'lowercase', decoration: 'underline'  }) // return 'text-primary text-start text-break text-lowercase text-decoration-underline'
@@ -50,24 +52,32 @@ const TEXT_VALUES_MAP = {
  *
  * @param {string|Object} value - text utility value
  *
- * @returns {string}
+ * @returns {string} classnames
+ *
+ * @todo
+ * - refactor text({ align: { xs: "center" }}) -> text({ xs: { align: "center" }})
  */
 export function text(value) {
   if (!value) return "";
 
   // String
-  if (typeof value === "string" && TEXT_VALUES_MAP["color"].includes(value)) {
-    return cs(BASE_CLASS_NAME, value);
+  if (typeof value === "string" && value.trim()) {
+    if (TEXT_VALUES_MAP["color"].includes(value)) {
+      return cs(BASE_CLASS_NAME, value);
+    }
   }
 
   // Object
-  if (typeof value === "object") {
-    if (Object.entries(value).length === 0) return "";
-
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {
-      if (Object.keys(TEXT_MAP).includes(key)) {
+      if (key in TEXT_MAP) {
         // String or Boolean
         if (
           (typeof val === "string" || typeof val === "boolean") &&
@@ -77,7 +87,12 @@ export function text(value) {
         }
 
         // Object
-        if (typeof val === "object") {
+        if (
+          typeof val === "object" &&
+          val &&
+          !Array.isArray(val) &&
+          Object.keys(val).length > 0
+        ) {
           for (let [breakpoint, textVal] of Object.entries(val)) {
             if (
               TEXT_ALIGN_BREAKPOINT_LIST.includes(breakpoint) &&
