@@ -31,7 +31,7 @@ export function sizing(value) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {
-      if (key in SIZING_MAP && SIZING_VALUES.includes(val)) {
+      if (SIZING_MAP.includes(key) && SIZING_VALUES.includes(val)) {
         result.push(cs(key, val));
       }
     }

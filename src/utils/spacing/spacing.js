@@ -1,4 +1,3 @@
-import { everyType } from "helpers/everyType";
 import { classnames as cs } from "helpers/classnames";
 
 // m, mt, me, mb, ms, mx, my
@@ -11,7 +10,9 @@ const SPACING_VALUES = [1, 2, 3, 4, 5, "auto"];
 const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
 /**
- * Function for generate margin and padding classnames
+ * Spacing (Margin and Padding) function
+ *
+ * @see {@link https://getbootstrap.com/docs/5.1/utilities/spacing/}
  *
  * @example
  * spacing("m", 3) // "m-3"
@@ -23,7 +24,7 @@ const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * @param {string} prfx - Prefix for margin "m" or padding "p"
  * @param {number|Object} value - margin or padding values
  *
- * @returns {string} spacing classnames
+ * @returns {string} classnames
  */
 export function spacing(prfx, value) {
   if (typeof prfx !== "string" && !prfx.trim()) {
