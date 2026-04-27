@@ -46,8 +46,8 @@ const TEXT_VALUES_MAP = {
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/text/}
  *
  * @example
- * text("primary") // return 'text-primary'
- * text({ color: 'primary', align: 'start', linebreak: true, transform: 'lowercase', decoration: 'underline'  }) // return 'text-primary text-start text-break text-lowercase text-decoration-underline'
+ * text("primary") // 'text-primary'
+ * text({ color: 'primary', align: 'start', linebreak: true, transform: 'lowercase', decoration: 'underline'  }) // 'text-primary text-start text-break text-lowercase text-decoration-underline'
  * text({ color: 'danger', brk: true }) // return 'text-danger', 'brk' was igrnored
  *
  * @param {string|Object} value - text utility value
