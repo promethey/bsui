@@ -22,7 +22,7 @@ export function classnames(
   value,
   options = { prefixInsertBetween: false },
 ) {
-  if (typeof prfx !== "string" && !prfx) return "";
+  if (typeof prfx !== "string" || !prfx) return "";
 
   // Boolean
   if (typeof value === "boolean") {
@@ -34,7 +34,7 @@ export function classnames(
    * @example
    * 'justify-content'.split('-') // ['justify', 'content']
    */
-  const prfxInArray = String(prfx).split("-");
+  const prfxInArray = prfx.split("-");
 
   /**
    * Copy prefix array and drop first elem in prefix array.
