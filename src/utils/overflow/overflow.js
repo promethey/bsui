@@ -8,8 +8,8 @@ export function overflow(value) {
 
   // String
   if (typeof value === "string" && value.trim()) {
-    if (OVERFLOW_VALUES.includes(value)) {
-      return cs(OVERFLOW_CLASS_NAME, value);
+    if (OVERFLOW_VALUES.includes(value.trim())) {
+      return cs(OVERFLOW_CLASS_NAME, value.trim());
     }
   }
 
