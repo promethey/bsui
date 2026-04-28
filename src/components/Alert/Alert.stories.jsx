@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Alert, Button, Text, Prime } from "components";
+import { capitalize } from "helpers/capitalize";
 
 export default {
   title: "Components/Alert",
@@ -42,7 +43,11 @@ export function Themes() {
   ];
 
   return (
-    <Alert>Alert</Alert>
+    <>
+      {themes.map((theme) => (
+        <Alert theme={theme}>{capitalize(theme)}</Alert>
+      ))}
+    </>
   );
 }
 Themes.storyName = "Themes";

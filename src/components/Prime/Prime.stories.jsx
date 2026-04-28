@@ -1,6 +1,7 @@
 import React from "react";
 import { bs } from "constants";
 import { Prime, Button } from "components";
+import { opacity } from "utils/opacity";
 
 export default {
   title: "Components/Prime",
@@ -888,6 +889,29 @@ export function Positions() {
     </Prime>
   );
 }
+
+export function PositionProgress() {
+  const buttons = [
+    { theme: "primary", start: 0},
+    { theme: "primary", start: 50},
+    { theme: "secondary", start: 100},
+  ];
+
+  return (
+    <Prime pos="relative" m={4}>
+      <Prime d="flex" w={100}>
+        <Prime w={50} bg={{ color: "primary", opacity: 75 }} style={{ height: '1px' }} />
+        <Prime w={50} bg={{ color: "secondary", opacity: 25 }} style={{ height: '1px' }} />
+      </Prime>
+      {buttons.map(({ theme, start }, index) => (
+        <Button theme={theme} size="sm" pos="absolute" translateMiddle top={0} start={start} rounded="pill" style={{ width: '2rem', height: '2rem'}}>
+          {index + 1}
+        </Button>
+      ))}
+    </Prime>
+  )
+}
+PositionProgress.storyName = "Position progress";
 
 export function CenterElements() {
   const examples = [

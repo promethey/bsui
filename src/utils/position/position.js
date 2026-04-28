@@ -28,6 +28,9 @@ const POSITION_VALUES = {
  *
  * @param {Object} value
  * @returns {string} classnames
+ *
+ * @todo
+ * + add support translate-middle
  */
 export function position(
   value = { pos: null, top: null, end: null, bottom: null, start: null },

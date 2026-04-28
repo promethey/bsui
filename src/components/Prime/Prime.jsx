@@ -3,27 +3,7 @@ import PropTypes from "prop-types";
 import { resolveUtils } from "core/resolveUtils";
 
 const propTypes = {
-  as: PropTypes.oneOf([
-    "div",
-    "span",
-    "a",
-    "button",
-    "input",
-    "h1",
-    "h2",
-    "h3",
-    "h4",
-    "h5",
-    "h6",
-    "strong",
-    "small",
-    "p",
-    "form",
-    "ul",
-    "ol",
-    "select",
-    "label",
-  ]),
+  as: PropTypes.elementType,
   style: PropTypes.shape({}),
   children: PropTypes.node.isRequired,
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),

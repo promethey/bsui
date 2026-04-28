@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "helpers";
-import { defineThemeVariants, attachStaticVariants } from "utils/variants";
-import Prime from "components";
+import Prime from "components/Prime";
 
+const BASE_CLASS_NAME = "btn";
 const BUTTON_THEMES = [
   "primary",
   "secondary",
@@ -78,25 +78,12 @@ const defaultProps = {
  * import {bs} from 'constants';
  * <Button theme={bs.theme.danger}>Button</Button>
  *
- * @typedef {Object} ButtonProps
- * @param {('button'|'a'|'input')} [as='button'] - Render button as
- * @param {object} [style=null] - React CSS object
- * @param {React.ReactNode} children - React children components
- * @param {(string|Array<string>|object)} [className=null] - Classnames utility [(Read npmjs.com)]{@link https://www.npmjs.com/package/classnames}
- * @param {string} [to=null] - Set link for button
- * @param {string} [type="button"] - Change button html tag
- * @param {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark')} [theme="primary"] - Change theme color
- * @param {boolean} [disabled=false] - Change disabled state
- * @param {boolean} [pressed=false] - Change pressed state
- * @param {boolean} [stretchedLink=false] - Add stretched link style
- * @param {function} [onClick=null] - Add event hanlder for click
- *
  * @returns {JSX.Element} Button
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
-function ButtonBase(props) {
+function Button(props) {
   const {
     as: ComponentType,
     style,
@@ -113,8 +100,6 @@ function ButtonBase(props) {
     onClick,
     ...rest
   } = props;
-
-  const BASE_CLASS_NAME = "btn";
 
   const classes = classNames(
     BASE_CLASS_NAME,
@@ -135,69 +120,42 @@ function ButtonBase(props) {
     ...rest,
   };
 
-  // button props
-  const buttonProperties = {
-    ...baseProperties,
-    type,
-    disabled,
-  };
-
-  // link props
-  const linkProperties = {
-    ...baseProperties,
-    href: to || "#",
-    role: "button",
-  };
-
-  // input props
-  const inputProps = {
-    ...baseProperties,
-    type,
-    value: typeof children === "string" ? children : undefined,
+  const properties = {
+    button: { ...baseProperties, type, disabled },
+    link: { ...baseProperties, href: to || "#", role: "button" },
+    input: { ...baseProperties, type, value: typeof children === "string" ? children : undefined }
   };
 
   if (pressed) {
-    buttonProperties["aria-pressed"] = true;
-    linkProperties["aria-pressed"] = true;
+    properties["button"]["aria-pressed"] = true;
+    properties["link"]["aria-pressed"] = true;
   }
 
   if (disabled) {
-    linkProperties["aria-disabled"] = true;
+    properties["link"]["aria-disabled"] = true;
   }
 
-  // render <a />
+  // <a />
   if (ComponentType === "a") {
     return (
-      <Prime as="a" {...linkProperties}>
+      <Prime as="a" {...properties["link"]}>
         {children}
       </Prime>
     );
   }
 
-  // render <input />
+  // <input />
   if (ComponentType === "input") {
-    return <Prime as="input" {...inputProps} />;
+    return <Prime as="input" {...properties["input"]} />;
   }
 
-  // default render <button />
+  // default <button />
   return (
-    <Prime as="button" {...buttonProperties}>
+    <Prime as="button" {...properties["button"]}>
       {children}
     </Prime>
   );
 }
-
-ButtonBase.propTypes = propTypes;
-ButtonBase.defaultProps = defaultProps;
-
-const Button = (props) => <ButtonBase {...props} />;
-
-defineThemeVariants(Button, BUTTON_THEMES);
-
-attachStaticVariants(Button, {
-  Outline: { outline: true },
-  Link: { as: "a" },
-});
 
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;

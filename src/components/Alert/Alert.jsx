@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "helpers";
-import Prime from "components";
+import Prime from "components/Prime";
 import CloseButton from "components";
 import AlertLink from "./AlertLink";
 import AlertHeading from "./AlertHeading";
@@ -89,7 +89,7 @@ function Alert({
   );
 
   return (
-    <div
+    <Prime
       role="alert"
       ref={alertRef}
       className={classes}
@@ -98,7 +98,7 @@ function Alert({
     >
       {children}
       {dismissible && <CloseButton onClick={onClose} />}
-    </div>
+    </Prime>
   );
 }
 Alert.propTypes = propTypes;
