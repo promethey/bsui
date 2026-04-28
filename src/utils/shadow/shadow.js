@@ -22,7 +22,7 @@ export function shadow(value) {
   if (!value) return "";
 
   // Boolean
-  if (typeof value === "boolean" && value) {
+  if (is("boolean", value, { notFalse: true })) {
     return SHADOW_CLASS_NAME;
   }
 

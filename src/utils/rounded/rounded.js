@@ -33,7 +33,7 @@ export function rounded(value) {
   if (value !== 0 && !value) return "";
 
   // Boolean
-  if (typeof value === "boolean" && value) {
+  if (is("boolean", value, { notFalse: true })) {
     return ROUNDED_CLASS_NAME;
   }
 

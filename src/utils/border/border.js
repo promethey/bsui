@@ -55,7 +55,7 @@ export function border(value) {
   if (!value) return "";
 
   // Boolean
-  if (typeof value === "boolean" && value) {
+  if (is("boolean", value, { notFalse: true })) {
     return BORDER_CLASS_NAME;
   }
 
