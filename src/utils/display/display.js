@@ -1,4 +1,5 @@
 import { classnames as cs } from "helpers/classnames";
+import { is } from "helpers/is";
 
 const DISPLAY_CLASS_NAME = "d";
 const DISPLAY_PRINT_CLASS_NAME = "d-print";
@@ -38,19 +39,14 @@ export function display(value, prfx = DISPLAY_CLASS_NAME) {
   if (!value) return "";
 
   // String
-  if (typeof value === "string" && value.trim()) {
+  if (is("string", value, { notEmpty: true })) {
     if (DISPLAY_VALUES.includes(value.trim())) {
       return cs(prfx, value.trim());
     }
   }
 
   // Object
-  if (
-    typeof value === "object" &&
-    value &&
-    !Array.isArray(value) &&
-    Object.keys(value).length > 0
-  ) {
+  if (is("object", value, { notEmpty: true })) {
     const displayFilterUnsupportedValues = Object.entries(value).filter(
       ([breakpoint, displayValue]) =>
         BREAKPOINTS.includes(breakpoint) &&
@@ -63,6 +59,20 @@ export function display(value, prfx = DISPLAY_CLASS_NAME) {
   return "";
 }
 
+/**
+ * Display print function
+ *
+ * @see {@link https://getbootstrap.com/docs/5.1/utilities/display/}
+ *
+ * @example
+ * displayPrint("flex") // 'd-print-flex'
+ * displayPrint("inline") // 'd-print-inline'
+ *
+ * @param {string|Object} value
+ * @param {string} prfx - default 'd-print'
+ *
+ * @returns {string} classnames
+ */
 export function displayPrint(value, prfx = DISPLAY_PRINT_CLASS_NAME) {
   return display(value, prfx);
 }

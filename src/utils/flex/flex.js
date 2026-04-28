@@ -1,4 +1,5 @@
 import { classnames as cs } from "helpers/classnames";
+import { is } from "helpers/is";
 
 const FLEX_MAP = {
   dir: "flex",
@@ -71,38 +72,30 @@ export function flex(value) {
   if (!value) return "";
 
   // String
-  if (typeof value === "string") {
+  if (is("string", value, { notEmpty: true })) {
     if (JUSTIFY_ALIGN_LIST.includes(value)) {
       return `${cs(FLEX_MAP.justify, value)} ${cs(FLEX_MAP.align, value)}`;
     }
   }
 
   // Object
-  if (
-    typeof value === "object" &&
-    value &&
-    !Array.isArray(value) &&
-    Object.keys(value).length > 0
-  ) {
+  if (is("object", value, { notEmpty: true })) {
     let result = [];
 
     for (let [breakpoint, val] of Object.entries(value)) {
       if (BREAKPOINTS_LIST.includes(breakpoint)) {
         // String
-        if (typeof val === "string" && JUSTIFY_ALIGN_LIST.includes(val)) {
-          let justify = cs(FLEX_MAP.justify, { [breakpoint]: val });
-          let align = cs(FLEX_MAP.align, { [breakpoint]: val });
+        if (is("string", val, { notEmpty: true })) {
+          if (JUSTIFY_ALIGN_LIST.includes(val)) {
+            let justify = cs(FLEX_MAP.justify, { [breakpoint]: val });
+            let align = cs(FLEX_MAP.align, { [breakpoint]: val });
 
-          result.push(`${justify} ${align}`);
+            result.push(`${justify} ${align}`);
+          }
         }
 
         // Object
-        if (
-          typeof val === "object" &&
-          val &&
-          !Array.isArray(val) &&
-          Object.keys(val).length > 0
-        ) {
+        if (is("object", val, { notEmpty: true })) {
           for (let [flexKey, flexVal] of Object.entries(val)) {
             if (
               flexKey in FLEX_MAP &&
