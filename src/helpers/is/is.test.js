@@ -72,11 +72,25 @@ describe("is - array", () => {
   });
 });
 
-describe("is - edge cases", () => {
-  test("unsupported type", () => {
-    expect(is("boolean", true)).toBe(false);
+describe("is - boolean", () => {
+  test("valid boolean", () => {
+    expect(is("boolean", true)).toBe(true);
   });
 
+  test("empty array allowed by default", () => {
+    expect(is("boolean", false)).toBe(true);
+  });
+
+  test("notFalse rejects false value", () => {
+    expect(is("boolean", false, { notFalse: true })).toBe(false);
+  });
+
+  test("true is valid", () => {
+    expect(is("boolean", true, { notFalse: true })).toBe(true);
+  });
+});
+
+describe("is - edge cases", () => {
   test("undefined value", () => {
     expect(is("string", undefined)).toBe(false);
   });

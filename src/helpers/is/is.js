@@ -1,4 +1,4 @@
-const SUPPORT_TYPES = ["string", "number", "object", "array"];
+const SUPPORT_TYPES = ["string", "number", "object", "array", "boolean"];
 
 /**
  * Function for check value type
@@ -16,9 +16,14 @@ const SUPPORT_TYPES = ["string", "number", "object", "array"];
  * is("object", {}, { notEmpty: true }) // false
  * is("object", { value: "" }, { notEmpty: true }) // true
  *
+ * is("boolean", true) // true
+ * is("boolean", false) // true
+ * is("boolean", false, { notFalse: true }) // false
+ *
  * @param {any} type - "string", "number", "object", "array"
  * @param {any} value - all of types
  * @param {boolean} option.notEmpty - not empty check value (work for string, object and array)
+ * @param {boolean} option.notFalse - not false check value (work for boolean)
  *
  * @returns {boolean} result
  *
@@ -28,7 +33,11 @@ const SUPPORT_TYPES = ["string", "number", "object", "array"];
  * @todo
  * + add support boolean type with option notFalse
  */
-export function is(type, value, options = { notEmpty: false }) {
+export function is(
+  type,
+  value,
+  options = { notEmpty: false, notFalse: false },
+) {
   if (!SUPPORT_TYPES.includes(type)) {
     return false;
   }
@@ -63,8 +72,11 @@ export function is(type, value, options = { notEmpty: false }) {
       return typeof value === type && !Number.isNaN(value);
     }
 
-    default: {
-      return typeof value === type;
+    case "boolean": {
+      if (typeof value !== type) return false;
+      if (options.notFalse && !value) return false;
+
+      return true;
     }
   }
 }
