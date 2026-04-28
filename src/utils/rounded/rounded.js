@@ -1,4 +1,5 @@
 import { classnames as cs } from "helpers/classnames";
+import { is } from "helpers/is";
 
 const ROUNDED_CLASS_NAME = "rounded";
 const ROUNDED_VALUES = [
@@ -37,14 +38,14 @@ export function rounded(value) {
   }
 
   // String
-  if (typeof value === "string" && value.trim()) {
+  if (is("string", value, { notEmpty: true })) {
     if (ROUNDED_VALUES.includes(value)) {
       return cs(ROUNDED_CLASS_NAME, value);
     }
   }
 
   // Number
-  if (typeof value === "number" && ROUNDED_VALUES.includes(value)) {
+  if (is("number", value) && ROUNDED_VALUES.includes(value)) {
     return cs(ROUNDED_CLASS_NAME, value);
   }
 

@@ -21,6 +21,12 @@ const SUPPORT_TYPES = ["string", "number", "object", "array"];
  * @param {boolean} option.notEmpty - not empty check value (work for string, object and array)
  *
  * @returns {boolean} result
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
+ *
+ * @todo
+ * + add support boolean type with option notFalse
  */
 export function is(type, value, options = { notEmpty: false }) {
   if (!SUPPORT_TYPES.includes(type)) {

@@ -1,4 +1,5 @@
 import { classnames as cs } from "helpers/classnames";
+import { is } from "helpers/is";
 
 const BASE_CLASS_NAME = "text";
 const TEXT_ALIGN_BREAKPOINT_LIST = ["xs", "sm", "md", "lg", "xl"];
@@ -55,25 +56,20 @@ const TEXT_VALUES_MAP = {
  * @returns {string} classnames
  *
  * @todo
- * - refactor text({ align: { xs: "center" }}) -> text({ xs: { align: "center" }})
+ * + refactor text({ align: { xs: "center" }}) -> text({ xs: { align: "center" }})
  */
 export function text(value) {
   if (!value) return "";
 
   // String
-  if (typeof value === "string" && value.trim()) {
+  if (is("string", value, { notEmpty: true })) {
     if (TEXT_VALUES_MAP["color"].includes(value)) {
       return cs(BASE_CLASS_NAME, value);
     }
   }
 
   // Object
-  if (
-    typeof value === "object" &&
-    value &&
-    !Array.isArray(value) &&
-    Object.keys(value).length > 0
-  ) {
+  if (is("object", value, { notEmpty: true })) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {
@@ -87,12 +83,7 @@ export function text(value) {
         }
 
         // Object
-        if (
-          typeof val === "object" &&
-          val &&
-          !Array.isArray(val) &&
-          Object.keys(val).length > 0
-        ) {
+        if (is("object", val, { notEmpty: true })) {
           for (let [breakpoint, textVal] of Object.entries(val)) {
             if (
               TEXT_ALIGN_BREAKPOINT_LIST.includes(breakpoint) &&

@@ -1,4 +1,5 @@
 import { classnames as cs } from "helpers/classnames";
+import { is } from "helpers/is";
 
 const FONT_MAP = {
   fs: "fs",
@@ -25,7 +26,7 @@ const FONT_VALUES_MAP = {
  * font(3) // "fs-1"
  * font({ size: 3, weight: "bold" }) // 'fs-3 fw-bold'
  *
- * @param {number|Object} value - Default number is size
+ * @param {number|Object} value - default number is size
  *
  * @return {string} classnames
  */
@@ -33,12 +34,7 @@ export function font(value) {
   if (!value) return "";
 
   // Object
-  if (
-    typeof value === "object" &&
-    value &&
-    !Array.isArray(value) &&
-    Object.keys(value).length > 0
-  ) {
+  if (is("object", value, { notEmpty: true })) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {

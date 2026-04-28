@@ -1,4 +1,5 @@
 import { classnames as cs } from "helpers/classnames";
+import { is } from "helpers/is";
 
 // m, mt, me, mb, ms, mx, my
 // p, pt, pe, pb, ps, px, py
@@ -42,12 +43,12 @@ export function spacing(prfx, value) {
   }
 
   // Number
-  if (typeof value === "number" && SPACING_VALUES.includes(value)) {
+  if (is("number", value) && SPACING_VALUES.includes(value)) {
     return cs(prfx, value);
   }
 
   // Object
-  if (typeof value === "object" && !Array.isArray(value)) {
+  if (is("object", value, { notEmpty: true })) {
     if (Object.keys(value).length > 0) {
       let result = [];
 
@@ -73,13 +74,13 @@ export function spacing(prfx, value) {
    * spacing("p", [1,2]) // 'px-1 py-2'
    * spacing("m", [1,2,3,4]) // 'mt-1 me-2 mb-3 ms-4'
    */
-  if (Array.isArray(value) && value.length > 0) {
+  if (is("array", value, { notEmpty: true })) {
     let result = [];
     let sides = { 2: ["x", "y"], 4: SPACING_SIDES_MAP };
 
     if (value.length === 2 || value.length === 4) {
       for (let i = 0; i <= value.length; i += 1) {
-        if (typeof value[i] === "number") {
+        if (is("number", value[i])) {
           // [1, 2] -> 'mx-1 my-2'
           // [1, 2, 3, 4] -> 'mt-1 me-2 mb-3 ms-4'
           result.push(cs(`${prfx}${sides[value.length][i]}`, value[i]));
