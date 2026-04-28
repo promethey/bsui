@@ -24,20 +24,18 @@ export function resolveUtils(props) {
     mw, // max width
     h,
     mh, // max height
-
     d,
     dp,
-
     flex,
-
     pos, // position
     top,
     end,
     bottom,
     start,
-
+    translateMiddle,
+    translateMiddleX,
+    translateMiddleY,
     float,
-
     m,
     mx,
     my,
@@ -45,7 +43,6 @@ export function resolveUtils(props) {
     me,
     mb,
     ms,
-
     p,
     px,
     py,
@@ -53,7 +50,6 @@ export function resolveUtils(props) {
     pe,
     pb,
     ps,
-
     bg,
     text,
     fs,
@@ -64,28 +60,26 @@ export function resolveUtils(props) {
     opacity,
     border,
     rounded,
-
     shadow,
-
     overflow,
-
-    visually,
-    visible,
-    invisible,
-    translateMiddle,
-
-    clearfix,
-
     className,
   } = props;
 
   const result = classNames(
     cs("translate-middle", translateMiddle),
-    { clearfix },
 
     spacingResolver({ m, mt, me, mb, ms, mx, my, p, pt, pe, pb, ps, px, py }),
 
-    positionUtility({ pos, top, end, bottom, start }),
+    positionUtility({
+      pos,
+      top,
+      end,
+      bottom,
+      start,
+      translateMiddle,
+      translateMiddleX,
+      translateMiddleY,
+    }),
 
     sizingUtility({ w, mw, h, mh }),
 

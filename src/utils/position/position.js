@@ -7,6 +7,9 @@ const POSITION_MAP = {
   end: "end",
   bottom: "bottom",
   start: "start",
+  translateMiddle: "translate-middle",
+  translateMiddleX: "translate-middle-x",
+  translateMiddleY: "translate-middle-y",
 };
 
 const POSITION_VALUES = {
@@ -15,6 +18,9 @@ const POSITION_VALUES = {
   end: [0, 50, 100],
   bottom: [0, 50, 100],
   start: [0, 50, 100],
+  translateMiddle: [true],
+  translateMiddleX: [true],
+  translateMiddleY: [true],
 };
 
 /**
@@ -28,9 +34,6 @@ const POSITION_VALUES = {
  *
  * @param {Object} value
  * @returns {string} classnames
- *
- * @todo
- * + add support translate-middle
  */
 export function position(
   value = { pos: null, top: null, end: null, bottom: null, start: null },

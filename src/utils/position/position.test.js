@@ -55,4 +55,16 @@ describe("position utility", () => {
       expect(position({ start: value })).toBe("");
     });
   });
+
+  test("translate middle", () => {
+    expect(position({ translateMiddle: true })).toBe("translate-middle");
+    expect(position({ translateMiddleX: true })).toBe("translate-middle-x");
+    expect(position({ translateMiddleY: true })).toBe("translate-middle-y");
+  });
+
+  test("translate middle false", () => {
+    expect(position({ translateMiddle: false })).toBe("");
+    expect(position({ translateMiddleX: false })).toBe("");
+    expect(position({ translateMiddleY: false })).toBe("");
+  });
 });
