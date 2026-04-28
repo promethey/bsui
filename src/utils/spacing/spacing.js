@@ -52,16 +52,12 @@ export function spacing(prfx, value) {
     if (Object.keys(value).length > 0) {
       let result = [];
 
-      for (let [breakpoint, val] of Object.entries(value)) {
-        if (
-          !BREAKPOINTS.includes(breakpoint) ||
-          !SPACING_VALUES.includes(val)
-        ) {
-          delete value[breakpoint];
-        }
-      }
+      let filterValues = Object.entries(value).filter(
+        ([breakpoint, val]) =>
+          BREAKPOINTS.includes(breakpoint) && SPACING_VALUES.includes(val),
+      );
 
-      return cs(prfx, value);
+      return cs(prfx, Object.fromEntries(filterValues));
     }
   }
 
