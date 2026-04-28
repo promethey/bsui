@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { classnames as cs } from "helpers/classnames";
 import {
   position as positionUtility,
-  spacing as spacingUtility,
+  spacingResolver,
   bg as bgUtility,
   text as textUtility,
   border as borderUtility,
@@ -81,31 +81,9 @@ export function resolveUtils(props) {
 
   const result = classNames(
     cs("translate-middle", translateMiddle),
-    {
-      [cs("mx", mx)]: mx,
-      [cs("my", my)]: my,
-      [cs("mt", mt)]: mt,
-      [cs("me", me)]: me,
-      [cs("mb", mb)]: mb,
-      [cs("ms", ms)]: ms,
+    { clearfix },
 
-      [cs("px", px)]: px,
-      [cs("py", py)]: py,
-      [cs("pt", pt)]: pt,
-      [cs("pe", pe)]: pe,
-      [cs("pb", pb)]: pb,
-      [cs("ps", ps)]: ps,
-
-      [cs("visually", "hidden")]: typeof visually === "boolean" && !visually,
-      [cs("visually", visually)]: typeof visually === "string",
-      visible: visible && !invisible,
-      invisible: invisible && !visible,
-      /**
-       * Clearfix utility
-       * @see {@link https://getbootstrap.com/docs/5.3/helpers/clearfix/}
-       */
-      clearfix,
-    },
+    spacingResolver({ m, mt, me, mb, ms, mx, my, p, pt, pe, pb, ps, px, py }),
 
     positionUtility({ pos, top, end, bottom, start }),
 
@@ -118,10 +96,8 @@ export function resolveUtils(props) {
 
     floatUtility(float),
 
-    spacingUtility("m", m),
-    spacingUtility("p", p),
-
     bgUtility(bg),
+
     textUtility(text),
     fontUtility({ fs, fw, fst, lh, monospace }),
 

@@ -4,8 +4,22 @@ import { is } from "helpers/is";
 // m, mt, me, mb, ms, mx, my
 // p, pt, pe, pb, ps, px, py
 
-const SPACING_MAP = ["m", "p"];
-const SPACING_SIDES_MAP = ["t", "e", "b", "s", "x", "y"];
+const SPACING_MAP = [
+  "m",
+  "mt",
+  "me",
+  "mb",
+  "ms",
+  "mx",
+  "my",
+  "p",
+  "pt",
+  "pe",
+  "pb",
+  "ps",
+  "px",
+  "py",
+];
 const SPACING_VALUES = [1, 2, 3, 4, 5, "auto"];
 
 const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
@@ -28,17 +42,7 @@ const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * @returns {string} classnames
  */
 export function spacing(prfx, value) {
-  if (typeof prfx !== "string" && !prfx.trim()) {
-    return "";
-  }
-
-  // "m", "p"
-  if (prfx.length === 1 && !SPACING_MAP.includes(prfx[0])) {
-    return "";
-  }
-
-  // "t", "e", "b", "s", "x", "y"
-  if (prfx.length === 2 && !SPACING_SIDES_MAP.includes(prfx[1])) {
+  if (is("number", prfx) || !SPACING_MAP.includes(prfx)) {
     return "";
   }
 
@@ -49,16 +53,14 @@ export function spacing(prfx, value) {
 
   // Object
   if (is("object", value, { notEmpty: true })) {
-    if (Object.keys(value).length > 0) {
-      let result = [];
+    let result = [];
 
-      let filterValues = Object.entries(value).filter(
-        ([breakpoint, val]) =>
-          BREAKPOINTS.includes(breakpoint) && SPACING_VALUES.includes(val),
-      );
+    let filterValues = Object.entries(value).filter(
+      ([breakpoint, val]) =>
+        BREAKPOINTS.includes(breakpoint) && SPACING_VALUES.includes(val),
+    );
 
-      return cs(prfx, Object.fromEntries(filterValues));
-    }
+    return cs(prfx, Object.fromEntries(filterValues));
   }
 
   /**
@@ -67,19 +69,20 @@ export function spacing(prfx, value) {
    *
    * @example
    * spacing("m", [1,2]) // 'mx-1 my-2'
-   * spacing("p", [1,2]) // 'px-1 py-2'
    * spacing("m", [1,2,3,4]) // 'mt-1 me-2 mb-3 ms-4'
    */
   if (is("array", value, { notEmpty: true })) {
     let result = [];
-    let sides = { 2: ["x", "y"], 4: SPACING_SIDES_MAP };
+    let sides = { 2: ["x", "y"], 4: ["t", "e", "b", "s"] };
 
+    // [1, 2] -> 'mx-1 my-2'
+    // [1, 2, 3, 4] -> 'mt-1 me-2 mb-3 ms-4'
     if (value.length === 2 || value.length === 4) {
       for (let i = 0; i <= value.length; i += 1) {
+        let prefix = prfx + sides[value.length][i]; // mx, my or mt, me etc.
+
         if (is("number", value[i])) {
-          // [1, 2] -> 'mx-1 my-2'
-          // [1, 2, 3, 4] -> 'mt-1 me-2 mb-3 ms-4'
-          result.push(cs(`${prfx}${sides[value.length][i]}`, value[i]));
+          result.push(cs(prefix, value[i]));
         }
       }
     }
@@ -88,4 +91,20 @@ export function spacing(prfx, value) {
   }
 
   return "";
+}
+
+export function spacingResolver(props) {
+  if (!is("object", props, { notEmpty: true })) {
+    return "";
+  }
+
+  let result = [];
+
+  for (let [key, value] of Object.entries(props)) {
+    if (SPACING_MAP.includes(key)) {
+      result.push(spacing(key, value));
+    }
+  }
+
+  return result.join(" ").trim();
 }

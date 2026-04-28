@@ -1,1 +1,1 @@
-export { spacing } from "./spacing";
+export { spacing, spacingResolver } from "./spacing";
