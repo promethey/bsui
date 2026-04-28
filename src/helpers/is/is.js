@@ -40,7 +40,7 @@ export function is(type, value, options = { notEmpty: false }) {
     }
 
     case "object": {
-      if (typeof value !== type && !value && Array.isArray(value)) return false;
+      if (typeof value !== type || !value || Array.isArray(value)) return false;
       if (options.notEmpty && Object.keys(value).length === 0) return false;
 
       return true;
