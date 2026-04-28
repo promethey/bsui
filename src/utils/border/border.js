@@ -83,6 +83,11 @@ export function border(value) {
 
     for (let [key, val] of Object.entries(value)) {
       if (key in BORDER_MAP && BORDER_VALUES_MAP[key].includes(val)) {
+        // drop default 'border' class if top, end, bottom, start is true
+        if (["top", "end", "bottom", "start"].includes(key) && val === true) {
+          if (result.includes(BORDER_CLASS_NAME)) result.shift();
+        }
+
         result.push(cs(BORDER_MAP[key], val));
       }
     }

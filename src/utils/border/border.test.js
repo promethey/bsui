@@ -47,8 +47,16 @@ describe("border()", () => {
     });
   });
 
-  test("border top", () => {
-    expect(border({ top: true })).toBe("border-top");
+  test("border top true", () => {
+    expect(border({ color: "primary", top: true })).toBe(
+      "border-primary border-top",
+    );
+  });
+
+  test("border top true", () => {
+    expect(border({ color: "primary", top: 0 })).toBe(
+      "border border-primary border-top-0",
+    );
   });
 
   test("primary border with other props", () => {
