@@ -11,3 +11,4 @@ export { shadow } from "./shadow";
 export { sizing } from "./sizing";
 export { spacing } from "./spacing";
 export { text } from "./text";
+export { position } from "./position";

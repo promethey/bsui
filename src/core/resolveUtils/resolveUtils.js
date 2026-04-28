@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { classnames as cs } from "helpers";
 import {
+  position as positionUtility,
   spacing as spacingUtility,
   bg as bgUtility,
   text as textUtility,
@@ -81,12 +82,6 @@ export function resolveUtils(props) {
   const result = classNames(
     cs("translate-middle", translateMiddle),
     {
-      [cs("position", pos)]: pos, // position
-      [cs("top", top)]: typeof top === "number",
-      [cs("end", end)]: typeof end === "number",
-      [cs("bottom", bottom)]: typeof bottom === "number",
-      [cs("start", start)]: typeof start === "number",
-
       [cs("mx", mx)]: mx,
       [cs("my", my)]: my,
       [cs("mt", mt)]: mt,
@@ -111,6 +106,8 @@ export function resolveUtils(props) {
        */
       clearfix,
     },
+
+    positionUtility({ pos, top, end, bottom, start }),
 
     sizingUtility({ w, mw, h, mh }),
 
