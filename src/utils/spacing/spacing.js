@@ -46,8 +46,8 @@ export function spacing(prfx, value) {
     return "";
   }
 
-  // Number
-  if (is("number", value) && SPACING_VALUES.includes(value)) {
+  // Number or String
+  if (SPACING_VALUES.includes(value)) {
     return cs(prfx, value);
   }
 

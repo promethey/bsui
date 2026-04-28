@@ -832,7 +832,7 @@ export function Overflow() {
   );
 }
 
-export function Positions() {
+export function ArrangeElements() {
   const examples = [
     {
       top: 0,
@@ -888,13 +888,13 @@ export function Positions() {
           bottom={bottom}
           start={start}
           bg="dark"
-          border
           rounded={3}
         />
       ))}
     </Prime>
   );
 }
+ArrangeElements.storyName = "Arrange elements";
 
 export function PositionProgress() {
   const buttons = [
