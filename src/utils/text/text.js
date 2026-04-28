@@ -76,7 +76,7 @@ export function text(value) {
       if (key in TEXT_MAP) {
         // String or Boolean
         if (
-          (typeof val === "string" || typeof val === "boolean") &&
+          (is("string", val) || is("boolean", val)) &&
           TEXT_VALUES_MAP[key].includes(val)
         ) {
           result.push(cs(TEXT_MAP[key], val));

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { prefix } from "helpers";
+import { classnames as cs } from "helpers/classnames";
 
 const BASE_CLASS_NAME = "btn-close";
 
@@ -9,8 +9,7 @@ CloseButton.propTypes = {
   style: PropTypes.shape({}),
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   theme: PropTypes.oneOf(["white"]),
-  dataDismiss: PropTypes.string,
-  isDisabled: PropTypes.bool,
+  disabled: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
@@ -18,8 +17,7 @@ CloseButton.defaultProps = {
   style: null,
   className: null,
   theme: null,
-  dataDismiss: null,
-  isDisabled: false,
+  disabled: false,
   onClick: null,
 };
 
@@ -27,14 +25,13 @@ function CloseButton({
   style,
   className,
   theme,
-  dataDismiss,
-  isDisabled,
+  disabled,
   onClick,
   ...rest
 }) {
   const classes = classNames(
     BASE_CLASS_NAME,
-    { [prefix(BASE_CLASS_NAME, theme)]: theme },
+    { [cs(BASE_CLASS_NAME, theme)]: theme },
     className,
   );
 
@@ -44,8 +41,7 @@ function CloseButton({
       className={classes}
       style={style}
       aria-label="Close"
-      disabled={isDisabled}
-      data-bs-dismiss={dataDismiss}
+      disabled={disabled}
       onClick={onClick}
       {...rest}
     />

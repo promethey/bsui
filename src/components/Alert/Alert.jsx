@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { prefix } from "helpers";
+import { classnames as cs } from "helpers/classnames";
 import Prime from "components/Prime";
 import CloseButton from "components";
 import AlertLink from "./AlertLink";
@@ -64,7 +64,6 @@ const defaultProps = {
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
- * @since 1.0.0
  */
 function Alert({
   style,
@@ -80,9 +79,9 @@ function Alert({
 
   const classes = classNames(
     BASE_CLASS_NAME,
-    prefix(BASE_CLASS_NAME, theme),
+    cs(BASE_CLASS_NAME, theme),
     {
-      [prefix(BASE_CLASS_NAME, "dismissible")]: dismissible,
+      [cs(BASE_CLASS_NAME, "dismissible")]: dismissible,
       "show fade": animated,
     },
     className,

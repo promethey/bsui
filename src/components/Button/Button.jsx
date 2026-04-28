@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { prefix } from "helpers";
+import { classnames as cs } from "helpers/classnames";
 import Prime from "components/Prime";
 
 const BASE_CLASS_NAME = "btn";
+
 const BUTTON_THEMES = [
   "primary",
   "secondary",
@@ -65,7 +66,6 @@ const defaultProps = {
  * Button never throws.
  * Invalid props are ignored.
  * Always returns valid JSX.
- * @component
  *
  * @example
  * <Button>Button</Button>
@@ -85,7 +85,7 @@ const defaultProps = {
  */
 function Button(props) {
   const {
-    as: ComponentType,
+    as: Component,
     style,
     children,
     className,
@@ -104,11 +104,11 @@ function Button(props) {
   const classes = classNames(
     BASE_CLASS_NAME,
     {
-      [prefix(BASE_CLASS_NAME, outline > 0 ? "outline" : "", theme)]: theme,
-      disabled: disabled && ComponentType !== "button",
-      [prefix(BASE_CLASS_NAME, size)]: size,
+      [cs(BASE_CLASS_NAME, outline > 0 ? "outline" : "", theme)]: theme,
+      disabled: disabled && Component !== "button",
+      [cs(BASE_CLASS_NAME, size)]: size,
       active: pressed,
-      [prefix("stretched", "link")]: stretchedLink && ComponentType === "a",
+      [cs("stretched", "link")]: stretchedLink && Component === "a",
     },
     className,
   );
@@ -136,7 +136,7 @@ function Button(props) {
   }
 
   // <a />
-  if (ComponentType === "a") {
+  if (Component === "a") {
     return (
       <Prime as="a" {...properties["link"]}>
         {children}
@@ -145,7 +145,7 @@ function Button(props) {
   }
 
   // <input />
-  if (ComponentType === "input") {
+  if (Component === "input") {
     return <Prime as="input" {...properties["input"]} />;
   }
 

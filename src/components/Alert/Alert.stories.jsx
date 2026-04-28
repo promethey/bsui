@@ -52,24 +52,24 @@ export function Themes() {
 }
 Themes.storyName = "Themes";
 
-export const API = Template.bind({});
-API.args = {
+export const PrimeAPI = Template.bind({});
+PrimeAPI.args = {
   children: "Prime API for Alert",
-  theme: "secondary",
   m: [2, 3, 4, 1],
-  p: [1, 4, 3, 2],
-  borderRadiusSize: 5,
-  bg: { color: "primary", gradient: true, opacity: 10 },
+  p: 4,
+  rounded: "pill",
+  bg: { color: "primary", gradient: true, opacity: 50 },
   text: {
-    color: "primary",
+    color: "dark",
     align: "start",
     break: true,
     transform: "uppercase",
-    decoration: "underline",
   },
+  fw: "bolder",
 };
+PrimeAPI.storyName = 'Prime API';
 
-export function AlertHeadingTypes() {
+export function AlertHeadings() {
   return (
     <Alert theme="secondary">
       <Alert.Heading as={Alert.Heading.Types.H1}>H1</Alert.Heading>
@@ -78,7 +78,7 @@ export function AlertHeadingTypes() {
     </Alert>
   );
 }
-AlertHeadingTypes.storyName = "Alert Heading Types";
+AlertHeadings.storyName = "Headings";
 
 export function LiveExample() {
   const [show, setShow] = useState(false);
@@ -90,7 +90,7 @@ export function LiveExample() {
 
   return (
     <>
-      <Button onClick={handleClick}>Live Alert</Button>
+      <Button theme="primary" onClick={handleClick}>Live Alert</Button>
       {show && (
         <Alert
           mt={2}
