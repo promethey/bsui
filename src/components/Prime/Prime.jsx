@@ -289,10 +289,10 @@ const defaultProps = {
  * Prime component is basic for this library
  * 
  * Support helpers:
- * + prefix
  * + classnames
  * 
- * Support utilities:
+ * Support utils:
+ * + position
  * + sizing
  * + display
  * + displayPrint
@@ -317,7 +317,6 @@ const defaultProps = {
  * 
  * @todo
  * - create mx, my, mt, me, mb, ms etc. util
- * - create position top, end, bottom, start util
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
