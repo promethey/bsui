@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import { classnames as cs } from "helpers/classnames";
 import {
   position as positionUtility,
@@ -65,9 +64,7 @@ export function resolveUtils(props) {
     className,
   } = props;
 
-  const result = classNames(
-    cs("translate-middle", translateMiddle),
-
+  return [
     spacingResolver({ m, mt, me, mb, ms, mx, my, p, pt, pe, pb, ps, px, py }),
 
     positionUtility({
@@ -105,7 +102,7 @@ export function resolveUtils(props) {
     overflowUtility(overflow),
 
     className,
-  );
-
-  return result;
+  ]
+    .join(" ")
+    .trim();
 }
