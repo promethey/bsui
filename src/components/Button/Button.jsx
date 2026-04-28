@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { classnames as cs } from "helpers/classnames";
+import { prefix } from "helpers/prefix";
 import Prime from "components/Prime";
 
 const BASE_CLASS_NAME = "btn";
@@ -104,11 +104,11 @@ function Button(props) {
   const classes = classNames(
     BASE_CLASS_NAME,
     {
-      [cs(BASE_CLASS_NAME, outline > 0 ? "outline" : "", theme)]: theme,
+      [prefix(BASE_CLASS_NAME, outline > 0 ? "outline" : "", theme)]: theme,
       disabled: disabled && Component !== "button",
-      [cs(BASE_CLASS_NAME, size)]: size,
+      [prefix(BASE_CLASS_NAME, size)]: size,
       active: pressed,
-      [cs("stretched", "link")]: stretchedLink && Component === "a",
+      [prefix("stretched", "link")]: stretchedLink && Component === "a",
     },
     className,
   );
