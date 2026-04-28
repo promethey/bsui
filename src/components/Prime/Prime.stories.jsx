@@ -429,25 +429,6 @@ export function FlexAlignContent() {
 }
 FlexAlignContent.storyName = "Flex align content";
 
-export function Visually() {
-  return (
-    <>
-      <Prime p={2} bg="light" border>
-        Visible
-      </Prime>
-      <Prime p={2} bg="light" border visually={false}>
-        Visually hidden
-      </Prime>
-      <Prime p={2} bg="light" border visually="hidden">
-        Visually hidden v2
-      </Prime>
-      <Prime p={2} bg="light" border visually="hidden-focusable">
-        Visually hidden focusable
-      </Prime>
-    </>
-  );
-}
-
 export function BackgroundColors() {
   const examples = [
     { bgColor: "primary", textColor: "white" },
