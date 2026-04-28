@@ -527,7 +527,13 @@ export function BackgroundOpacity() {
 BackgroundOpacity.storyName = "Background opacity";
 
 export function BorderAdditives() {
-  const aspects = [true, "top", "end", "bottom", "start"];
+  const aspects = [
+    true,
+    "top",
+    "end",
+    "bottom",
+    "start"
+  ];
 
   return (
     <Prime d="flex">
@@ -535,7 +541,7 @@ export function BorderAdditives() {
         <Prime
           me={3}
           bg={{ color: "info", opacity: 10 }}
-          border={{ width: 2, color: "info", aspect }}
+          border={aspect}
           style={{ width: "5rem", height: "5rem" }}
         />
       ))}
@@ -545,7 +551,7 @@ export function BorderAdditives() {
 BorderAdditives.storyName = "Border additives";
 
 export function BorderSubtractive() {
-  const examples = [0, { top: 0 }, { end: 0 }, { bottom: 0 }, { start: 0 }];
+  const examples = [{ top: 0 }, { end: 0 }, { bottom: 0 }, { start: 0 }];
 
   return (
     <Prime d="flex">

@@ -61,8 +61,8 @@ export function border(value) {
 
   // String
   if (is("string", value, { notEmpty: true })) {
-    if (BORDER_VALUES_MAP["color"].includes(value.trim())) {
-      return `${BORDER_CLASS_NAME} ${prefix(BORDER_MAP["color"], value.trim())}`;
+    if (value.trim() in BORDER_MAP) {
+      return cs(BORDER_CLASS_NAME, value.trim());
     }
 
     return "";

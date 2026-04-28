@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { classnames as cs } from "helpers";
+import { classnames as cs } from "helpers/classnames";
 import {
   position as positionUtility,
   spacing as spacingUtility,

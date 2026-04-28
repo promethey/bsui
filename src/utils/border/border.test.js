@@ -5,36 +5,50 @@ describe("border()", () => {
     expect(border(true)).toBe("border");
   });
 
-  test("primary border", () => {
-    expect(border("primary")).toBe("border border-primary");
+  test("border aspects", () => {
+    const aspects = ["top", "end", "bottom", "start"];
+
+    aspects.forEach((aspect) => {
+      expect(border(aspect)).toBe("border-" + aspect);
+    });
   });
 
-  test("border width 1", () => {
-    expect(border(1)).toBe("border border-1");
+  test("border width", () => {
+    const values = [1, 2, 3, 4, 5];
+
+    values.forEach((value) => {
+      expect(border(value)).toBe("border border-" + value);
+    });
   });
 
-  test("border width 2", () => {
-    expect(border(2)).toBe("border border-2");
+  test("border ignore unsupported width", () => {
+    const values = [6, 7, 0];
+
+    values.forEach((value) => {
+      expect(border(value)).toBe("");
+    });
   });
 
-  test("border width 3", () => {
-    expect(border(3)).toBe("border border-3");
+  test("border colors", () => {
+    const colors = [
+      "primary",
+      "secondary",
+      "success",
+      "danger",
+      "warning",
+      "info",
+      "light",
+      "dark",
+      "white",
+    ];
+
+    colors.forEach((color) => {
+      expect(border({ color: color })).toBe("border border-" + color);
+    });
   });
 
-  test("border width 4", () => {
-    expect(border(4)).toBe("border border-4");
-  });
-
-  test("border width 5", () => {
-    expect(border(5)).toBe("border border-5");
-  });
-
-  test("border width 6 - is not right", () => {
-    expect(border(6)).toBe("");
-  });
-
-  test("color success", () => {
-    expect(border({ color: "success" })).toBe("border border-success");
+  test("border top", () => {
+    expect(border({ top: true })).toBe("border-top");
   });
 
   test("primary border with other props", () => {

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { classnames as cs } from "helpers/classnames";
 import Prime from "components/Prime";
-import CloseButton from "components";
+import CloseButton from "components/CloseButton";
 import AlertLink from "./AlertLink";
 import AlertHeading from "./AlertHeading";
 
