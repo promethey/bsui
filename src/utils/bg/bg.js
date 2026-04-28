@@ -1,4 +1,5 @@
 import { classnames as cs } from "helpers/classnames";
+import { is } from "helpers/is";
 
 const BG_MAP = {
   color: "bg",
@@ -42,16 +43,12 @@ export function bg(value) {
   if (!value) return "";
 
   // String
-  if (typeof value === "string" && BG_VALUES_MAP["color"].includes(value)) {
+  if (is("string", value) && BG_VALUES_MAP["color"].includes(value)) {
     return cs(BG_MAP["color"], value); // example 'bg-primary'
   }
 
   // Object
-  if (
-    typeof value === "object" &&
-    !Array.isArray(value) &&
-    Object.keys(value).length > 0
-  ) {
+  if (is("object", value, { notEmpty: true })) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {
