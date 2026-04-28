@@ -1,5 +1,6 @@
 import { classnames as cs } from "helpers/classnames";
 import { prefix } from "helpers/prefix";
+import { is } from "helpers/is";
 
 const BORDER_CLASS_NAME = "border";
 
@@ -59,7 +60,7 @@ export function border(value) {
   }
 
   // String
-  if (typeof value === "string" && value.trim()) {
+  if (is("string", value, { notEmpty: true })) {
     if (BORDER_VALUES_MAP["color"].includes(value.trim())) {
       return `${BORDER_CLASS_NAME} ${prefix(BORDER_MAP["color"], value.trim())}`;
     }
@@ -68,7 +69,7 @@ export function border(value) {
   }
 
   // Number
-  if (typeof value === "number") {
+  if (is("number", value)) {
     if (BORDER_VALUES_MAP["width"].includes(value)) {
       return `${BORDER_CLASS_NAME} ${prefix(BORDER_MAP["width"], value)}`;
     }
@@ -77,12 +78,7 @@ export function border(value) {
   }
 
   // Object
-  if (
-    typeof value === "object" &&
-    value &&
-    !Array.isArray(value) &&
-    Object.keys(value).length > 0
-  ) {
+  if (is("object", value, { notEmpty: true })) {
     let result = [BORDER_CLASS_NAME];
 
     for (let [key, val] of Object.entries(value)) {
