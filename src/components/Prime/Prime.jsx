@@ -2,21 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import { classnames as cs } from "helpers/classnames";
 import {
-  position as positionUtility,
+  position as positionResolver,
   spacingResolver,
-  bg as bgUtility,
-  text as textUtility,
-  border as borderUtility,
-  flex as flexUtility,
-  display as dispalyUtility,
-  displayPrint as displayPrintUtility,
-  rounded as roundedUtility,
-  shadow as shadowUtility,
-  font as fontUtility,
-  float as floatUtility,
-  overflow as overflowUtility,
-  opacity as opacityUtility,
-  sizing as sizingUtility,
+  bg as bgResolver,
+  text as textResolver,
+  border as borderResolver,
+  flex as flexResolver,
+  display as dispalyResolver,
+  displayPrint as displayPrintResolver,
+  rounded as roundedResolver,
+  shadow as shadowResolver,
+  font as fontResolver,
+  float as floatResolver,
+  overflow as overflowResolver,
+  opacity as opacityResolver,
+  sizing as sizingResolver,
 } from "utils";
 
 const propTypes = {
@@ -24,7 +24,10 @@ const propTypes = {
   style: PropTypes.shape({}),
   children: PropTypes.node.isRequired,
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-
+  w: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
+  mw: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
+  h: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
+  mh: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
   d: PropTypes.oneOf([
     "none",
     "inline",
@@ -49,16 +52,7 @@ const propTypes = {
     "flex",
     "inline-flex",
   ]),
-
-  // width
-  w: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
-  mw: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
-
-  // height
-  h: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
-  mh: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
-
-  // position
+  flex: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   pos: PropTypes.oneOf([
     "static",
     "relative",
@@ -76,9 +70,10 @@ const propTypes = {
   translateMiddle: PropTypes.bool,
   translateMiddleX: PropTypes.bool,
   translateMiddleY: PropTypes.bool,
-
-
-  // margin
+  float: PropTypes.oneOfType([
+    PropTypes.shape({}),
+    PropTypes.oneOf(["start, end, none"]),
+  ]),
   m: PropTypes.oneOfType([
     PropTypes.shape({}),
     PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
@@ -89,8 +84,6 @@ const propTypes = {
   me: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
   mb: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
   ms: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
-
-  // padding
   p: PropTypes.oneOfType([
     PropTypes.shape({}),
     PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
@@ -101,29 +94,6 @@ const propTypes = {
   pe: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
   pb: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
   ps: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
-
-  // font
-  fs: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
-  fw: PropTypes.oneOf(["bold", "bolder", "normal", "light", "lighter"]),
-  fst: PropTypes.oneOf(["italic", "normal"]),
-  lh: PropTypes.oneOf([1, "sm", "base", "lg"]),
-  monospace: PropTypes.bool,
-
-  rounded: PropTypes.oneOfType([
-    PropTypes.oneOf(["top", "end", "bottom", "start", "circle", "pill"]),
-    PropTypes.oneOf([0, 1, 2, 3]),
-    PropTypes.object,
-  ]),
-
-  flex: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-
-  float: PropTypes.oneOfType([
-    PropTypes.shape({}),
-    PropTypes.oneOf(["start, end, none"]),
-  ]),
-
-  shadow: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["sm", "lg"])]),
-
   bg: PropTypes.oneOfType([
     PropTypes.shape({
       color: PropTypes.oneOf([
@@ -156,9 +126,6 @@ const propTypes = {
       "transparent",
     ]),
   ]),
-
-  opacity: PropTypes.oneOf([25, 50, 75, 100]),
-
   text: PropTypes.oneOfType([
     PropTypes.shape({
       color: PropTypes.oneOf([
@@ -208,7 +175,12 @@ const propTypes = {
       "reset",
     ]),
   ]),
-
+  fs: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
+  fw: PropTypes.oneOf(["bold", "bolder", "normal", "light", "lighter"]),
+  fst: PropTypes.oneOf(["italic", "normal"]),
+  lh: PropTypes.oneOf([1, "sm", "base", "lg"]),
+  monospace: PropTypes.bool,
+  opacity: PropTypes.oneOf([25, 50, 75, 100]),
   border: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.shape({
@@ -230,7 +202,12 @@ const propTypes = {
       start: PropTypes.oneOf([1, 2, 3, 4, 5]),
     }),
   ]),
-
+  rounded: PropTypes.oneOfType([
+    PropTypes.oneOf(["top", "end", "bottom", "start", "circle", "pill"]),
+    PropTypes.oneOf([0, 1, 2, 3]),
+    PropTypes.object,
+  ]),
+  shadow: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["sm", "lg"])]),
   overflow: PropTypes.oneOf(["auto", "hidden", "visible", "scroll"]),
 };
 
@@ -238,16 +215,13 @@ const defaultProps = {
   as: "div",
   style: null,
   className: null,
-
-  d: null,
-  dp: null, // display print
-
   w: null,
   mw: null, // max width
-
   h: null,
   mh: null, // max height
-
+  d: null,
+  dp: null, // display print
+  flex: null,
   pos: null, // position
   top: null,
   end: null,
@@ -256,7 +230,7 @@ const defaultProps = {
   translateMiddle: false,
   translateMiddleX: false,
   translateMiddleY: false,
-
+  float: null,
   m: null, // margin
   mx: null,
   my: null,
@@ -264,7 +238,6 @@ const defaultProps = {
   me: null,
   mb: null,
   ms: null,
-
   p: null, // padding
   px: null,
   py: null,
@@ -272,26 +245,17 @@ const defaultProps = {
   pe: null,
   pb: null,
   ps: null,
-
+  bg: null, // background
+  text: null,
   fs: null,
   fw: null,
   fst: null,
   lh: null,
   monospace: false,
-
-  rounded: null,
-
-  flex: null,
-
-  float: null,
-
-  shadow: null,
-
-  bg: null, // background
   opacity: null,
-  text: null,
   border: false,
-
+  rounded: null,
+  shadow: null,
   overflow: null,
 };
 
@@ -299,28 +263,29 @@ const defaultProps = {
  * Prime component is basic for this library
  * 
  * Support helpers:
+ * + prefix
  * + classnames
  * 
  * Support utils:
- * + position
  * + sizing
  * + display
  * + displayPrint
  * + flex
+ * + position
+ * + float
  * + spacing
  * + bg
- * + border
- * + rounded
  * + text
  * + font
- * + shadow
- * + float
- * + overflow
  * + opacity
+ * + border
+ * + rounded
+ * + shadow
+ * + overflow
  *
  * @example
- * <Prime>This is box component</Prime>
- * <Prime d="inline-block">This is inline-block box component</Prime>
+ * <Prime>This is Prime component</Prime>
+ * <Prime d="inline-block">This is inline-block Prime component</Prime>
  * <Prime d="flex" text="primary">Flex and primary color</Prime>
 
  * @return {JSX.Element} Prime
@@ -380,9 +345,11 @@ const Prime = React.forwardRef((props, ref) => {
   } = props;
 
   const classNames = [
-    spacingResolver({ m, mt, me, mb, ms, mx, my, p, pt, pe, pb, ps, px, py }),
-
-    positionUtility({
+    sizingResolver({ w, mw, h, mh }),
+    dispalyResolver(d),
+    displayPrintResolver(dp),
+    flexResolver(flex),
+    positionResolver({
       pos,
       top,
       end,
@@ -392,34 +359,23 @@ const Prime = React.forwardRef((props, ref) => {
       translateMiddleX,
       translateMiddleY,
     }),
-
-    sizingUtility({ w, mw, h, mh }),
-
-    dispalyUtility(d),
-    displayPrintUtility(dp),
-
-    flexUtility(flex),
-
-    floatUtility(float),
-
-    bgUtility(bg),
-
-    textUtility(text),
-    fontUtility({ fs, fw, fst, lh, monospace }),
-
-    opacityUtility(opacity),
-
-    borderUtility(border),
-    roundedUtility(rounded),
-
-    shadowUtility(shadow),
-
-    overflowUtility(overflow),
-
+    floatResolver(float),
+    spacingResolver({
+      m, mt, me, mb, ms, mx, my,
+      p, pt, pe, pb, ps, px, py
+    }),
+    bgResolver(bg),
+    textResolver(text),
+    fontResolver({ fs, fw, fst, lh, monospace }),
+    opacityResolver(opacity),
+    borderResolver(border),
+    roundedResolver(rounded),
+    shadowResolver(shadow),
+    overflowResolver(overflow),
     className,
   ]
     .join(" ")
-    .trim();;
+    .trim();
 
   return (
     <Component ref={ref} style={style} className={classNames} {...rest}>
