@@ -85,13 +85,13 @@ const defaultProps = {
  */
 function Button(props) {
   const {
-    as: Component,
+    as: Component = "button",
     style,
     children,
     className,
     to,
     type,
-    theme,
+    theme = "primary",
     outline,
     size,
     disabled,
