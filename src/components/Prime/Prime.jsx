@@ -344,7 +344,7 @@ const Prime = React.forwardRef((props, ref) => {
     ...rest
   } = props;
 
-  const classNames = [
+  const classes = [
     sizingResolver({ w, mw, h, mh }),
     dispalyResolver(d),
     displayPrintResolver(dp),
@@ -378,7 +378,7 @@ const Prime = React.forwardRef((props, ref) => {
     .trim();
 
   return (
-    <Component ref={ref} style={style} className={classNames} {...rest}>
+    <Component ref={ref} style={style} className={classes ? classes : null} {...rest}>
       {children}
     </Component>
   );

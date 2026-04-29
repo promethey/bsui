@@ -55,9 +55,10 @@ const defaultProps = {
 /**
  * Alert component
  * 
- * @see {@link https://getbootstrap.com/docs/5.3/components/alerts|Bootstrap Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.3/components/alerts}
  *
  * @example
+ * <Alert>Basic Alert</Alert>
  * <Alert theme="secondary">Message</Alert>
  *
  * @return {JSX.Element} Alert
