@@ -1,6 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { resolveUtils } from "core/resolveUtils";
+import { classnames as cs } from "helpers/classnames";
+import {
+  position as positionUtility,
+  spacingResolver,
+  bg as bgUtility,
+  text as textUtility,
+  border as borderUtility,
+  flex as flexUtility,
+  display as dispalyUtility,
+  displayPrint as displayPrintUtility,
+  rounded as roundedUtility,
+  shadow as shadowUtility,
+  font as fontUtility,
+  float as floatUtility,
+  overflow as overflowUtility,
+  opacity as opacityUtility,
+  sizing as sizingUtility,
+} from "utils";
 
 const propTypes = {
   as: PropTypes.elementType,
@@ -56,6 +73,10 @@ const propTypes = {
   end: PropTypes.oneOf([0, 50, 100]),
   bottom: PropTypes.oneOf([0, 50, 100]),
   start: PropTypes.oneOf([0, 50, 100]),
+  translateMiddle: PropTypes.bool,
+  translateMiddleX: PropTypes.bool,
+  translateMiddleY: PropTypes.bool,
+
 
   // margin
   m: PropTypes.oneOfType([
@@ -210,15 +231,6 @@ const propTypes = {
     }),
   ]),
 
-  visually: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.oneOf(["hidden", "hidden-focusable"]),
-  ]),
-
-  visible: PropTypes.bool,
-  invisible: PropTypes.bool,
-  clearfix: PropTypes.bool,
-  translateMiddle: PropTypes.bool,
   overflow: PropTypes.oneOf(["auto", "hidden", "visible", "scroll"]),
 };
 
@@ -241,6 +253,9 @@ const defaultProps = {
   end: null,
   bottom: null,
   start: null,
+  translateMiddle: false,
+  translateMiddleX: false,
+  translateMiddleY: false,
 
   m: null, // margin
   mx: null,
@@ -277,11 +292,6 @@ const defaultProps = {
   text: null,
   border: false,
 
-  visually: null,
-  visible: false,
-  invisible: false,
-  clearfix: false,
-  translateMiddle: false,
   overflow: null,
 };
 
@@ -314,20 +324,105 @@ const defaultProps = {
  * <Prime d="flex" text="primary">Flex and primary color</Prime>
 
  * @return {JSX.Element} Prime
- * 
- * @todo
- * - create mx, my, mt, me, mb, ms etc. util
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
 const Prime = React.forwardRef((props, ref) => {
-  const { as: Component = "div", style, children } = props;
+  const {
+    as: Component = "div",
+    style,
+    children,
+    w,
+    mw, // max width
+    h,
+    mh, // max height
+    d,
+    dp,
+    flex,
+    pos, // position
+    top,
+    end,
+    bottom,
+    start,
+    translateMiddle,
+    translateMiddleX,
+    translateMiddleY,
+    float,
+    m,
+    mx,
+    my,
+    mt,
+    me,
+    mb,
+    ms,
+    p,
+    px,
+    py,
+    pt,
+    pe,
+    pb,
+    ps,
+    bg,
+    text,
+    fs,
+    fw,
+    fst,
+    lh,
+    monospace,
+    opacity,
+    border,
+    rounded,
+    shadow,
+    overflow,
+    className,
+    ...rest
+  } = props;
 
-  const classNames = resolveUtils(props);
+  const classNames = [
+    spacingResolver({ m, mt, me, mb, ms, mx, my, p, pt, pe, pb, ps, px, py }),
+
+    positionUtility({
+      pos,
+      top,
+      end,
+      bottom,
+      start,
+      translateMiddle,
+      translateMiddleX,
+      translateMiddleY,
+    }),
+
+    sizingUtility({ w, mw, h, mh }),
+
+    dispalyUtility(d),
+    displayPrintUtility(dp),
+
+    flexUtility(flex),
+
+    floatUtility(float),
+
+    bgUtility(bg),
+
+    textUtility(text),
+    fontUtility({ fs, fw, fst, lh, monospace }),
+
+    opacityUtility(opacity),
+
+    borderUtility(border),
+    roundedUtility(rounded),
+
+    shadowUtility(shadow),
+
+    overflowUtility(overflow),
+
+    className,
+  ]
+    .join(" ")
+    .trim();;
 
   return (
-    <Component ref={ref} style={style} className={classNames}>
+    <Component ref={ref} style={style} className={classNames} {...rest}>
       {children}
     </Component>
   );
