@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
+import cn from "classnames";
 import { prefix } from "helpers/prefix";
 import Prime from "components/Prime";
+import { themeResolver } from "utils/theme";
 
 const BASE_CLASS_NAME = "btn";
 
@@ -15,6 +16,14 @@ const BUTTON_THEMES = [
   "info",
   "light",
   "dark",
+  "outline-primary",
+  "outline-secondary",
+  "outline-success",
+  "outline-danger",
+  "outline-warning",
+  "outline-info",
+  "outline-light",
+  "outline-dark",
 ];
 
 const propTypes = {
@@ -101,10 +110,10 @@ function Button(props) {
     ...rest
   } = props;
 
-  const classes = classNames(
+  const classes = cn(
     BASE_CLASS_NAME,
+    themeResolver(BASE_CLASS_NAME, outline ? `outline-${theme}` : theme, BUTTON_THEMES),
     {
-      [prefix(BASE_CLASS_NAME, outline > 0 ? "outline" : "", theme)]: theme,
       disabled: disabled && Component !== "button",
       [prefix(BASE_CLASS_NAME, size)]: size,
       active: pressed,

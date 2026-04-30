@@ -6,6 +6,7 @@ import Prime from "components/Prime";
 import CloseButton from "components/CloseButton";
 import AlertLink from "./AlertLink";
 import AlertHeading from "./AlertHeading";
+import { themeResolver } from "utils/theme";
 
 const BASE_CLASS_NAME = "alert";
 
@@ -80,7 +81,7 @@ function Alert({
 
   const classes = classNames(
     BASE_CLASS_NAME,
-    cs(BASE_CLASS_NAME, theme),
+    themeResolver(BASE_CLASS_NAME, theme, ALERT_THEMES),
     {
       [cs(BASE_CLASS_NAME, "dismissible")]: dismissible,
       "show fade": animated,
