@@ -21,14 +21,7 @@ CloseButton.defaultProps = {
   onClick: null,
 };
 
-function CloseButton({
-  style,
-  className,
-  theme,
-  disabled,
-  onClick,
-  ...rest
-}) {
+function CloseButton({ style, className, theme, disabled, onClick, ...rest }) {
   const classes = classNames(
     BASE_CLASS_NAME,
     { [cs(BASE_CLASS_NAME, theme)]: theme },

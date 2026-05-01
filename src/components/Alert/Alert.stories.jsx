@@ -67,7 +67,7 @@ PrimeAPI.args = {
   },
   fw: "bolder",
 };
-PrimeAPI.storyName = 'Prime API';
+PrimeAPI.storyName = "Prime API";
 
 export function AlertHeadings() {
   return (
@@ -90,7 +90,9 @@ export function LiveExample() {
 
   return (
     <>
-      <Button theme="primary" onClick={handleClick}>Live Alert</Button>
+      <Button theme="primary" onClick={handleClick}>
+        Live Alert
+      </Button>
       {show && (
         <Alert
           mt={2}

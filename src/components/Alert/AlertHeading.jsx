@@ -20,26 +20,20 @@ const defaultProps = {
 
 /**
  * AlertHeading is children component of Alert
- * 
+ *
  * @see {@link https://getbootstrap.com/docs/5.3/components/alerts}
  *
  * @example
  * <AlertHeading>Title</AlertHeading>
  * <AlertHeading as="h1">Title H1</AlertHeading>
- * 
+ *
  * @return {JSX.Element} AlertHeading
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
 function AlertHeading(props) {
-  const {
-    as: Component = "h4",
-    style,
-    children,
-    className,
-    ...rest
-  } = props;
+  const { as: Component = "h4", style, children, className, ...rest } = props;
 
   const classes = classNames(BASE_CLASS_NAME, className);
 

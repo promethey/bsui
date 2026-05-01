@@ -1,14 +1,15 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
+import cn from "classnames";
 import { classnames as cs } from "helpers/classnames";
 import Prime from "components/Prime";
 import CloseButton from "components/CloseButton";
 import AlertLink from "./AlertLink";
 import AlertHeading from "./AlertHeading";
 import { themeResolver } from "utils/theme";
+import { is } from "helpers/is";
 
-const BASE_CLASS_NAME = "alert";
+const ALERT_CLASS_NAME = "alert";
 
 const ALERT_THEMES = [
   "primary",
@@ -55,7 +56,7 @@ const defaultProps = {
 
 /**
  * Alert component
- * 
+ *
  * @see {@link https://getbootstrap.com/docs/5.3/components/alerts}
  *
  * @example
@@ -79,12 +80,14 @@ function Alert({
 }) {
   const alertRef = useRef(null);
 
-  const classes = classNames(
-    BASE_CLASS_NAME,
-    themeResolver(BASE_CLASS_NAME, theme, ALERT_THEMES),
+  const classes = cn(
+    ALERT_CLASS_NAME, // default
+    themeResolver(ALERT_CLASS_NAME, theme, ALERT_THEMES),
     {
-      [cs(BASE_CLASS_NAME, "dismissible")]: dismissible,
-      "show fade": animated,
+      [cs(ALERT_CLASS_NAME, "dismissible")]: is("boolean", dismissible, {
+        notFalse: true,
+      }),
+      "show fade": is("boolean", animated, { notFalse: true }),
     },
     className,
   );
@@ -95,13 +98,13 @@ function Alert({
       ref={alertRef}
       className={classes}
       style={style}
-      {...rest}
-    >
+      {...rest}>
       {children}
       {dismissible && <CloseButton onClick={onClose} />}
     </Prime>
   );
 }
+
 Alert.propTypes = propTypes;
 Alert.defaultProps = defaultProps;
 

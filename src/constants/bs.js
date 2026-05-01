@@ -19,6 +19,7 @@ export const bs = {
     flex: "flex",
     inlineFlex: "inline-flex",
   },
+
   /**
    * dp - display print utility
    * @see {@link https://getbootstrap.com/docs/5.1/utilities/display/#display-in-print}
@@ -35,6 +36,7 @@ export const bs = {
     flex: "flex",
     inlineFlex: "inline-flex",
   },
+
   /**
    * bg - background utility
    * @see {@link https://getbootstrap.com/docs/5.1/utilities/background/}
@@ -59,6 +61,7 @@ export const bs = {
       10: 10,
     },
   },
+
   /**
    * text utility
    * @see {@link https://getbootstrap.com/docs/5.1/utilities/colors}
@@ -83,5 +86,28 @@ export const bs = {
       50: 50,
       25: 25,
     },
+  },
+
+  /** ----------COMPONENTS---------- */
+  alert: {
+    primary: "primary",
+    secondary: "secondary",
+    success: "success",
+    danger: "danger",
+    warning: "warning",
+    info: "info",
+    light: "light",
+    dark: "dark",
+  },
+
+  btn: {
+    primary: "primary",
+    secondary: "secondary",
+    success: "success",
+    danger: "danger",
+    warning: "warning",
+    info: "info",
+    light: "light",
+    dark: "dark",
   },
 };

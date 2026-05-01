@@ -361,8 +361,20 @@ const Prime = React.forwardRef((props, ref) => {
     }),
     floatResolver(float),
     spacingResolver({
-      m, mt, me, mb, ms, mx, my,
-      p, pt, pe, pb, ps, px, py
+      m,
+      mt,
+      me,
+      mb,
+      ms,
+      mx,
+      my,
+      p,
+      pt,
+      pe,
+      pb,
+      ps,
+      px,
+      py,
     }),
     bgResolver(bg),
     textResolver(text),
@@ -378,7 +390,11 @@ const Prime = React.forwardRef((props, ref) => {
     .trim();
 
   return (
-    <Component ref={ref} style={style} className={classes ? classes : null} {...rest}>
+    <Component
+      ref={ref}
+      style={style}
+      className={classes ? classes : null}
+      {...rest}>
       {children}
     </Component>
   );

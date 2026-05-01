@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { prefix } from "helpers/prefix";
+import { classnames as cs } from "helpers/classnames";
 import Prime from "components/Prime";
 import { themeResolver } from "utils/theme";
+import { is } from "helpers/is";
 
 const BASE_CLASS_NAME = "btn";
 
@@ -112,12 +113,17 @@ function Button(props) {
 
   const classes = cn(
     BASE_CLASS_NAME,
-    themeResolver(BASE_CLASS_NAME, outline ? `outline-${theme}` : theme, BUTTON_THEMES),
+    themeResolver(
+      BASE_CLASS_NAME,
+      outline ? `outline-${theme}` : theme,
+      BUTTON_THEMES,
+    ),
     {
-      disabled: disabled && Component !== "button",
-      [prefix(BASE_CLASS_NAME, size)]: size,
-      active: pressed,
-      [prefix("stretched", "link")]: stretchedLink && Component === "a",
+      disabled: is("boolean", disabled, { notFalse: true }) && Component !== "button",
+      [cs(BASE_CLASS_NAME, size)]: is("string", size, { notEmpty: true }),
+      active: is("boolean", pressed, { notFalse: true }),
+      [cs("stretched", "link")]:
+        is("boolean", stretchedLink, { notFalse: true }) && Component === "a",
     },
     className,
   );
@@ -132,7 +138,11 @@ function Button(props) {
   const properties = {
     button: { ...baseProperties, type, disabled },
     link: { ...baseProperties, href: to || "#", role: "button" },
-    input: { ...baseProperties, type, value: typeof children === "string" ? children : undefined }
+    input: {
+      ...baseProperties,
+      type,
+      value: typeof children === "string" ? children : undefined,
+    },
   };
 
   if (pressed) {

@@ -508,13 +508,7 @@ export function BackgroundOpacity() {
 BackgroundOpacity.storyName = "Background opacity";
 
 export function BorderAdditives() {
-  const aspects = [
-    true,
-    "top",
-    "end",
-    "bottom",
-    "start"
-  ];
+  const aspects = [true, "top", "end", "bottom", "start"];
 
   return (
     <Prime d="flex">
@@ -879,24 +873,40 @@ ArrangeElements.storyName = "Arrange elements";
 
 export function PositionProgress() {
   const buttons = [
-    { theme: "primary", start: 0},
-    { theme: "primary", start: 50},
-    { theme: "secondary", start: 100},
+    { theme: "primary", start: 0 },
+    { theme: "primary", start: 50 },
+    { theme: "secondary", start: 100 },
   ];
 
   return (
     <Prime pos="relative" m={4}>
       <Prime d="flex" w={100}>
-        <Prime w={50} bg={{ color: "primary", opacity: 75 }} style={{ height: '1px' }} />
-        <Prime w={50} bg={{ color: "secondary", opacity: 25 }} style={{ height: '1px' }} />
+        <Prime
+          w={50}
+          bg={{ color: "primary", opacity: 75 }}
+          style={{ height: "1px" }}
+        />
+        <Prime
+          w={50}
+          bg={{ color: "secondary", opacity: 25 }}
+          style={{ height: "1px" }}
+        />
       </Prime>
       {buttons.map(({ theme, start }, index) => (
-        <Button theme={theme} size="sm" pos="absolute" translateMiddle top={0} start={start} rounded="pill" style={{ width: '2rem', height: '2rem'}}>
+        <Button
+          theme={theme}
+          size="sm"
+          pos="absolute"
+          translateMiddle
+          top={0}
+          start={start}
+          rounded="pill"
+          style={{ width: "2rem", height: "2rem" }}>
           {index + 1}
         </Button>
       ))}
     </Prime>
-  )
+  );
 }
 PositionProgress.storyName = "Position progress";
 
