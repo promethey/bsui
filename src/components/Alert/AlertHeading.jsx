@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import Prime from "components/Prime";
 
-const BASE_CLASS_NAME = "alert-heading";
+const ALERT_HEADING_CLASS_NAME = "alert-heading";
 
 const propTypes = {
   as: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"]),
@@ -21,13 +21,22 @@ const defaultProps = {
 /**
  * AlertHeading is children component of Alert
  *
- * @see {@link https://getbootstrap.com/docs/5.3/components/alerts}
+ * @see {@link Prime|Base component}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/alerts/#additional-content|Official Documentation}
  *
  * @example
  * <AlertHeading>Title</AlertHeading>
+ * 
+ * @example
  * <AlertHeading as="h1">Title H1</AlertHeading>
+ * 
+ * @param {Object} props
+ * @param {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [props.as="h4"]
+ * @param {Object} [props.style=null]
+ * @param {ReactNode} [props.children=null]
+ * @param {Object|string} [props.className]
  *
- * @return {JSX.Element} AlertHeading
+ * @returns {JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -35,7 +44,7 @@ const defaultProps = {
 function AlertHeading(props) {
   const { as: Component = "h4", style, children, className, ...rest } = props;
 
-  const classes = classNames(BASE_CLASS_NAME, className);
+  const classes = classNames(ALERT_HEADING_CLASS_NAME, className);
 
   return (
     <Prime as={Component} className={classes} style={style} {...rest}>

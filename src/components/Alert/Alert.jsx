@@ -57,7 +57,7 @@ const defaultProps = {
 /**
  * Provide contextual feedback messages for typical user
  * actions with the handful of available and flexible alert messages.
- *
+ * 
  * @see {@link Prime|Base component}
  * @see {@link https://getbootstrap.com/docs/5.3/components/alerts|Official Documentation}
  *
@@ -65,16 +65,19 @@ const defaultProps = {
  * <Alert>Primary</Alert>
  * 
  * @example
- * <Alert theme="secondary" mb={3}>Secondary with Prime API</Alert>
+ * <Alert theme="secondary" mb={3} p={3}>
+ *  Secondary with Prime API
+ * </Alert>
  * 
  * @param {Object} props
- * @param {Object} [props.style]
+ * @param {Object} [props.style=null]
  * @param {ReactNode} [props.children=null]
  * @param {Object|string} [props.className=null]
  * @param {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"} [props.theme="primary"] Change color scheme
  * @param {boolean} [props.dismissible=false] Add close button
  * @param {boolean} [props.animated=false] Add animation styles
  * @param {() => void} [props.onClose=null] Add function when close
+ * @param {...any} [props.rest] Add somehting else (example aria attributes)
  * 
  * @returns {JSX.Element}
  *
