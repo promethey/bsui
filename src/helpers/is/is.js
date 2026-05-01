@@ -2,36 +2,42 @@ const SUPPORT_TYPES = ["string", "number", "object", "array", "boolean"];
 
 /**
  * Function for check value type
- * use strict mode for check empty string, empty object and empty array
+ * use option for check false, empty string, empty object and empty array
  *
  * @example
- * is("string", "") // true
+ * is("string", "name") // true
+ * is("number", 123) // true
+ * is("array", [1, 2, 3]) // true
+ *
+ * @example
  * is("string", " ") // true
  * is("string", " ", { notEmpty: true }) // false
  *
+ * @example
  * is("number", 123) // true
  * is("number", 0) // true
  *
- * is("object", {}) // true
- * is("object", {}, { notEmpty: true }) // false
- * is("object", { value: "" }, { notEmpty: true }) // true
+ * @example
+ * is("object", { name: "John" }) // true
  *
+ * @example
+ * is("object", {}, { notEmpty: true }) // false
+ * is("object", { name: "Doe" }, { notEmpty: true }) // true
+ *
+ * @example
  * is("boolean", true) // true
  * is("boolean", false) // true
  * is("boolean", false, { notFalse: true }) // false
  *
- * @param {any} type - "string", "number", "object", "array"
- * @param {any} value - all of types
- * @param {boolean} option.notEmpty - not empty check value (work for string, object and array)
- * @param {boolean} option.notFalse - not false check value (work for boolean)
+ * @param {"object"|"array"|"string"|"number"|"boolean"} type - "string", "number", "object", "array", "boolean"
+ * @param {Object|Array|string|number|boolean} value - all of types
+ * @param {boolean} [option.notEmpty=false] - not empty check value (work for string, object and array)
+ * @param {boolean} [option.notFalse=false] - not false check value (work for boolean)
  *
- * @returns {boolean} result
+ * @returns {boolean}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
- *
- * @todo
- * + add support boolean type with option notFalse
  */
 export function is(
   type,
