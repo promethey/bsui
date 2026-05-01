@@ -5,8 +5,9 @@ import { classnames as cs } from "helpers/classnames";
 import Prime from "components/Prime";
 import { themeResolver } from "utils/theme";
 import { is } from "helpers/is";
+import { equal } from "helpers/equal";
 
-const BASE_CLASS_NAME = "btn";
+const BUTTON_CLASS_NAME = "btn";
 
 const BUTTON_THEMES = [
   "primary",
@@ -95,7 +96,7 @@ const defaultProps = {
  */
 function Button(props) {
   const {
-    as: Component = "button",
+    as: ComponentType = "button",
     style,
     children,
     className,
@@ -112,18 +113,18 @@ function Button(props) {
   } = props;
 
   const classes = cn(
-    BASE_CLASS_NAME,
+    BUTTON_CLASS_NAME,
     themeResolver(
-      BASE_CLASS_NAME,
+      BUTTON_CLASS_NAME,
       outline ? `outline-${theme}` : theme,
       BUTTON_THEMES,
     ),
     {
-      disabled: is("boolean", disabled, { notFalse: true }) && Component !== "button",
-      [cs(BASE_CLASS_NAME, size)]: is("string", size, { notEmpty: true }),
+      disabled: is("boolean", disabled, { notFalse: true }) && !equal(ComponentType, "button"),
+      [cs(BUTTON_CLASS_NAME, size)]: is("string", size, { notEmpty: true }),
       active: is("boolean", pressed, { notFalse: true }),
       [cs("stretched", "link")]:
-        is("boolean", stretchedLink, { notFalse: true }) && Component === "a",
+        is("boolean", stretchedLink, { notFalse: true }) && equal(ComponentType, "a"),
     },
     className,
   );
@@ -135,45 +136,38 @@ function Button(props) {
     ...rest,
   };
 
-  const properties = {
-    button: { ...baseProperties, type, disabled },
-    link: { ...baseProperties, href: to || "#", role: "button" },
+  const propertyList = {
+    button: {
+      ...baseProperties,
+      type,
+      disabled
+    },
+    a: {
+      ...baseProperties,
+      href: to || "#",
+      role: "button"
+    },
     input: {
       ...baseProperties,
       type,
-      value: typeof children === "string" ? children : undefined,
+      value: is("string", children, { notEmpty: true }) ? children : undefined,
     },
   };
 
   if (pressed) {
-    properties["button"]["aria-pressed"] = true;
-    properties["link"]["aria-pressed"] = true;
+    propertyList["button"]["aria-pressed"] = true;
+    propertyList["a"]["aria-pressed"] = true;
   }
 
   if (disabled) {
-    properties["link"]["aria-disabled"] = true;
+    propertyList["a"]["aria-disabled"] = true;
   }
 
-  // <a />
-  if (Component === "a") {
-    return (
-      <Prime as="a" {...properties["link"]}>
-        {children}
-      </Prime>
-    );
-  }
-
-  // <input />
-  if (Component === "input") {
-    return <Prime as="input" {...properties["input"]} />;
-  }
-
-  // default <button />
   return (
-    <Prime as="button" {...properties["button"]}>
+    <Prime as={ComponentType} {...propertyList[ComponentType]}>
       {children}
     </Prime>
-  );
+  )
 }
 
 Button.propTypes = propTypes;
