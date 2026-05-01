@@ -1,35 +1,57 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
+import cn from "classnames";
 import { classnames as cs } from "helpers/classnames";
+import Prime from "components/Prime";
+import { is } from "helpers/is";
 
-const BASE_CLASS_NAME = "btn-close";
+const CLOSE_BUTTON_CLASS_NAME = "btn-close";
 
-CloseButton.propTypes = {
+const propTypes = {
   style: PropTypes.shape({}),
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  theme: PropTypes.oneOf(["white"]),
+  white: PropTypes.bool,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
-CloseButton.defaultProps = {
+const defaultProps = {
   style: null,
   className: null,
-  theme: null,
+  white: false,
   disabled: false,
   onClick: null,
 };
 
-function CloseButton({ style, className, theme, disabled, onClick, ...rest }) {
-  const classes = classNames(
-    BASE_CLASS_NAME,
-    { [cs(BASE_CLASS_NAME, theme)]: theme },
+/**
+ * Close button
+ *
+ * @see {@link https://getbootstrap.com/docs/5.1/components/close-button/}
+ *
+ * @example
+ * <CloseButton />
+ * <CloseButton white />
+ * <CloseButton disabled />
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
+ */
+function CloseButton(props) {
+  const { style, className, white, disabled, onClick, ...rest } = props;
+
+  const classes = cn(
+    CLOSE_BUTTON_CLASS_NAME,
+    {
+      [cs(CLOSE_BUTTON_CLASS_NAME, "white")]: is("boolean", white, {
+        notFalse: true,
+      }),
+    },
     className,
   );
 
   return (
-    <button
+    <Prime
+      as="button"
       type="button"
       className={classes}
       style={style}
@@ -40,5 +62,8 @@ function CloseButton({ style, className, theme, disabled, onClick, ...rest }) {
     />
   );
 }
+
+CloseButton.propTypes = propTypes;
+CloseButton.defaultProps = defaultProps;
 
 export default CloseButton;

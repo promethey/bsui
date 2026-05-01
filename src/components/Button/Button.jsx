@@ -120,11 +120,14 @@ function Button(props) {
       BUTTON_THEMES,
     ),
     {
-      disabled: is("boolean", disabled, { notFalse: true }) && !equal(ComponentType, "button"),
+      disabled:
+        is("boolean", disabled, { notFalse: true }) &&
+        !equal(ComponentType, "button"),
       [cs(BUTTON_CLASS_NAME, size)]: is("string", size, { notEmpty: true }),
       active: is("boolean", pressed, { notFalse: true }),
       [cs("stretched", "link")]:
-        is("boolean", stretchedLink, { notFalse: true }) && equal(ComponentType, "a"),
+        is("boolean", stretchedLink, { notFalse: true }) &&
+        equal(ComponentType, "a"),
     },
     className,
   );
@@ -140,12 +143,12 @@ function Button(props) {
     button: {
       ...baseProperties,
       type,
-      disabled
+      disabled,
     },
     a: {
       ...baseProperties,
       href: to || "#",
-      role: "button"
+      role: "button",
     },
     input: {
       ...baseProperties,
@@ -167,7 +170,7 @@ function Button(props) {
     <Prime as={ComponentType} {...propertyList[ComponentType]}>
       {children}
     </Prime>
-  )
+  );
 }
 
 Button.propTypes = propTypes;
