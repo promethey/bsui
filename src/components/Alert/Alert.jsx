@@ -55,29 +55,44 @@ const defaultProps = {
 };
 
 /**
- * Alert component
+ * Provide contextual feedback messages for typical user
+ * actions with the handful of available and flexible alert messages.
  *
- * @see {@link https://getbootstrap.com/docs/5.3/components/alerts}
+ * @see {@link Prime|Base component}
+ * @see {@link https://getbootstrap.com/docs/5.3/components/alerts|Official Documentation}
  *
  * @example
- * <Alert>Basic Alert</Alert>
- * <Alert theme="secondary">Message</Alert>
- *
- * @return {JSX.Element} Alert
+ * <Alert>Primary</Alert>
+ * 
+ * @example
+ * <Alert theme="secondary" mb={3}>Secondary with Prime API</Alert>
+ * 
+ * @param {Object} props
+ * @param {Object} [props.style]
+ * @param {ReactNode} [props.children=null]
+ * @param {Object|string} [props.className=null]
+ * @param {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"} [props.theme="primary"] Change color scheme
+ * @param {boolean} [props.dismissible=false] Add close button
+ * @param {boolean} [props.animated=false] Add animation styles
+ * @param {() => void} [props.onClose=null] Add function when close
+ * 
+ * @returns {JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
-function Alert({
-  style,
-  children,
-  className,
-  theme,
-  dismissible,
-  animated,
-  onClose,
-  ...rest
-}) {
+function Alert(props) {
+  const {
+    style,
+    children,
+    className,
+    theme,
+    dismissible,
+    animated,
+    onClose,
+    ...rest
+  } = props;
+  
   const alertRef = useRef(null);
 
   const classes = cn(
