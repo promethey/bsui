@@ -1,5 +1,6 @@
 import { classnames as cs } from "helpers/classnames";
 import { is } from "helpers/is";
+import { equal } from "helpers/equal";
 
 // m, mt, me, mb, ms, mx, my
 // p, pt, pe, pb, ps, px, py
@@ -77,7 +78,7 @@ export function spacing(prfx, value) {
 
     // [1, 2] -> 'mx-1 my-2'
     // [1, 2, 3, 4] -> 'mt-1 me-2 mb-3 ms-4'
-    if (value.length === 2 || value.length === 4) {
+    if (equal(value.length, 2) || equal(value.length, 4)) {
       for (let i = 0; i <= value.length; i += 1) {
         let prefix = prfx + sides[value.length][i]; // mx, my or mt, me etc.
 
