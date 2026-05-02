@@ -1,5 +1,4 @@
-import { classnames as cs } from "helpers/classnames";
-import { is } from "helpers/is";
+import { classnames as cs , is } from "helpers";
 
 const FLEX_MAP = {
   dir: "flex",

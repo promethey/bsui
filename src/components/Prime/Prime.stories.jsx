@@ -1,7 +1,4 @@
-import React from "react";
-import { bs } from "constants";
 import { Prime, Button } from "components";
-import { opacity } from "utils/opacity";
 
 export default {
   title: "Components/Prime",
@@ -34,6 +31,10 @@ export function Example() {
 }
 
 export function Width() {
+  /**
+   * @typedef {25|50|75|100} WidthValues
+   * @type {Array<WidthValues>}
+   */
   const examples = [25, 50, 75, 100];
   const bgBorderColors = ["danger", "warning", "info", "success"];
 
@@ -67,15 +68,20 @@ export function MaxWidth() {
 MaxWidth.storyName = "Max width";
 
 export function Height() {
+  /**
+   * @typedef {25|50|75|100} HeightValues
+   * @type {Array<HeightValues>}
+   */
   const examples = [25, 50, 75, 100];
 
   return (
     <Prime d="flex" style={{ height: "200px" }}>
-      {examples.map((height, index) => (
+      {examples.map((height) => (
         <Prime
+          key={height}
           w={25}
           h={height}
-          m={[0, 2, 0, 0]}
+          me={2}
           p={[1, 2]}
           bg="light"
           text={{ align: "center" }}
@@ -106,10 +112,10 @@ MaxHeight.storyName = "Max height";
 export function Visibility() {
   return (
     <>
-      <Prime p={2} bg="light" border visible>
+      <Prime p={2} bg="light" border>
         Visible
       </Prime>
-      <Prime p={2} bg="light" border invisible>
+      <Prime p={2} bg="light" border>
         Invisible
       </Prime>
     </>
@@ -117,6 +123,10 @@ export function Visibility() {
 }
 
 export function Shadows() {
+  /**
+   * @typedef {"none"|"sm"|true|"lg"} ShadowValues
+   * @type {Array<ShadowValues>}
+   */
   const values = ["none", "sm", true, "lg"];
   const text = ["No shadow", "Small shadow", "Regular shadow", "Larger shadow"];
 
@@ -483,7 +493,11 @@ export function BackgroundGradients() {
 BackgroundGradients.storyName = "Background gradients";
 
 export function BackgroundOpacity() {
-  const examples = [null, 75, 50, 25, 10];
+  /**
+   * @typedef {undefined|75|50|25|10} OpacityValues
+   * @type {Array<OpacityValues>}
+   */
+  const examples = [undefined, 75, 50, 25, 10];
 
   return (
     <>
@@ -491,8 +505,8 @@ export function BackgroundOpacity() {
         <Prime
           p={2}
           bg={{ color: "primary", opacity }}
-          text={opacity >= 10 && opacity <= 50 ? "dark" : "white"}>
-          {opacity === null
+          text={(opacity >= 10 && opacity <= 50 )? "dark" : "white"}>
+          {opacity === undefined
             ? "This is default success background"
             : `This is ${opacity}% opacity success background`}
         </Prime>
@@ -585,6 +599,10 @@ export function BorderWidth() {
 BorderWidth.storyName = "Border width";
 
 export function BorderRadius() {
+  /**
+   * @typedef {true|"top"|"end"|"bottom"|"start"|"circle"|"pill"} RoundedValues
+   * @type {Array<RoundedValues>}
+   */
   const examples = [true, "top", "end", "bottom", "start", "circle", "pill"];
 
   return (
@@ -607,6 +625,10 @@ export function BorderRadius() {
 BorderRadius.storyName = "Border radius";
 
 export function BorderSizes() {
+  /**
+   * @typedef {0|1|2|3} RoundedValues
+   * @type {Array<RoundedValues>}
+   */
   const examples = [0, 1, 2, 3];
 
   return (

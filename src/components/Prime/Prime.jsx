@@ -442,6 +442,32 @@ const defaultProps = {
 };
 
 /**
+ * @typedef {object} DisplayObject
+ * @property {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [xs] - X-Small breakpoint
+ * @property {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [sm] - Small breakpoint
+ * @property {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [md] - Medium brekpoint
+ * @property {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [lg] - Large breakpoint
+ * @property {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [xl] - Extra large breakpoint
+ * @property {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [xxl] - Extra extra large breakpoint
+ */
+
+/**
+ * @typedef {object} FlexObject
+ * @property {"row"|"row-reverse"|"column"|"column-reverse"} [dir] - Sets flex direction
+ * @property {"start"|"end"|"center"|"between"|"around"|"evenly"} [justify] - Sets flex justify-content
+ * @property {"start"|"end"|"center"|"baseline"|"stretch"} [align] - Sets flex align-items
+ * @property {"start"|"end"|"center"|"baseline"|"stretch"} [alignSelf] - Sets flex align-self
+ * @property {boolean} [fill] - Sets flex fill
+ * @property {0|1} [grow] - Sets flex grow
+ * @property {0|1} [shrink] - Sets flex grow
+ * @property {boolean} [wrap] - Sets flex wrap
+ * @property {boolean} [nowrap] - Sets flex nowrap
+ * @property {boolean} [wrapReverse] - Sets flex wrapReverse
+ * @property {0|1|2|3|4|5|6|"first"|"last"} [order] - Sets flex order
+ * @property {"start"|"end"|"center"|"between"|"around"|"stretch"} [alignContent] - Sets flex align content
+ */
+
+/**
  * Prime component is basic for this library
  * @component
  *
@@ -486,10 +512,10 @@ const defaultProps = {
  * @property {25|50|75|100|"auto"} [props.h] - Sets height.
  * @property {25|50|75|100|"auto"} [props.mh] - Sets max-height.
  * 
- * @property {Object|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [props.d=null] - Controls CSS display property.
- * @property {Object|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [props.dp=null] - Controls display property for print media.
+ * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [props.d=null] - Controls CSS display property.
+ * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [props.dp=null] - Controls display property for print media.
  * 
- * @property {Object|"start"|"end"|"center"} [props.flex=null] - Controls flexbox behavior.
+ * @property {FlexObject|"start"|"end"|"center"} [props.flex=null] - Controls flexbox behavior.
  * 
  * @property {"static"|"relative"|"absolute"|"fixed"|"sticky"} [props.pos=null] - Sets position type.
  * @property {0|50|100} [props.top=null] - Sets top offset.
