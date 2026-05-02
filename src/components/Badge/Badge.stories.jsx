@@ -57,7 +57,7 @@ export function BackgroundColors() {
     </>
   );
 }
-BackgroundColors.storyName = 'Background colors';
+BackgroundColors.storyName = "Background colors";
 
 export function Headings() {
   const examples = ["h1", "h2", "h3", "h4", "h5", "h6"];

@@ -7,8 +7,8 @@ import {
   text as textResolver,
   border as borderResolver,
   flex as flexResolver,
-  display as dispalyResolver,
-  displayPrint as displayPrintResolver,
+  displayResolver,
+  displayPrintResolver,
   rounded as roundedResolver,
   shadow as shadowResolver,
   font as fontResolver,
@@ -38,7 +38,7 @@ const propTypes = {
    * Additional classes applied to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  
+
   /**
    * Sets width
    */
@@ -95,7 +95,7 @@ const propTypes = {
    * Controls flexbox behavior
    */
   flex: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  
+
   /**
    * Sets position type
    */
@@ -327,7 +327,7 @@ const propTypes = {
    * Sets font weight
    */
   fw: PropTypes.oneOf(["bold", "bolder", "normal", "light", "lighter"]),
-  
+
   /**
    * Sets font styles
    */
@@ -386,7 +386,7 @@ const propTypes = {
    * Applies shadow
    */
   shadow: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["sm", "lg"])]),
-  
+
   /**
    * Controls overflow behavior
    */
@@ -442,13 +442,7 @@ const defaultProps = {
 };
 
 /**
- * @typedef {object} DisplayObject
- * @property {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [xs] - X-Small breakpoint
- * @property {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [sm] - Small breakpoint
- * @property {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [md] - Medium brekpoint
- * @property {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [lg] - Large breakpoint
- * @property {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [xl] - Extra large breakpoint
- * @property {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [xxl] - Extra extra large breakpoint
+ * @typedef {import("../../utils/display/display").DisplayObject} DisplayObject
  */
 
 /**
@@ -486,29 +480,29 @@ const defaultProps = {
  *
  * @example
  * <Prime>This is Prime component</Prime>
- * 
+ *
  * @example
  * <Prime d="inline-block">This is inline-block Prime component</Prime>
- * 
+ *
  * @example
  * <Prime d="flex" text="primary">Flex and primary color</Prime>
- * 
+ *
  * @typedef {Object} PrimeProps
  * @property {React.ElementType} [props.as="div"] - HTML element type used for rendering.
  * @property {Object} [props.style] - Inline styles applied to the root.
  * @property {React.ReactNode} [props.children] - Content rendered inside the component.
  * @property {Object|string} [props.className] - Additional classes applied to the root element.
- * 
+ *
  * @property {25|50|75|100|"auto"} [props.w] - Sets width.
  * @property {25|50|75|100|"auto"} [props.mw] - Sets max-width.
  * @property {25|50|75|100|"auto"} [props.h] - Sets height.
  * @property {25|50|75|100|"auto"} [props.mh] - Sets max-height.
- * 
+ *
  * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [props.d=null] - Controls CSS display property.
  * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [props.dp=null] - Controls display property for print media.
- * 
+ *
  * @property {FlexObject|"start"|"end"|"center"} [props.flex=null] - Controls flexbox behavior.
- * 
+ *
  * @property {"static"|"relative"|"absolute"|"fixed"|"sticky"} [props.pos=null] - Sets position type.
  * @property {0|50|100} [props.top=null] - Sets top offset.
  * @property {0|50|100} [props.end=null] - Sets end (right) offset.
@@ -517,9 +511,9 @@ const defaultProps = {
  * @property {boolean} [props.translateMiddle=false] - Centers element using translate.
  * @property {boolean} [props.translateMiddleX=false] - Centers element using translate axis-x.
  * @property {boolean} [props.translateMiddleY=false] - Centers element using translate axis-y.
- * 
+ *
  * @property {FloatObject|"start"|"end"|"none"} [props.float=null] - Controls float behavior.
- * 
+ *
  * @property {Object|Array<number>|1|2|3|4|5|"auto"} [props.m=null] - Sets margins.
  * @property {Object|1|2|3|4|5|"auto"} [props.mt=null] - Sets top margin.
  * @property {Object|1|2|3|4|5|"auto"} [props.me=null] - Sets end (right) margin.
@@ -527,7 +521,7 @@ const defaultProps = {
  * @property {Object|1|2|3|4|5|"auto"} [props.ms=null] - Sets start (left) margin.
  * @property {Object|1|2|3|4|5|"auto"} [props.mx=null] - Sets horizontal margin.
  * @property {Object|1|2|3|4|5|"auto"} [props.my=null] - Sets vertical margin.
- * 
+ *
  * @property {Object|Array<number>|1|2|3|4|5|"auto"} [props.p=null] - Sets paddings.
  * @property {Object|1|2|3|4|5|"auto"} [props.pt=null] - Sets top padding.
  * @property {Object|1|2|3|4|5|"auto"} [props.pe=null] - Sets end (right) padding.
@@ -535,33 +529,33 @@ const defaultProps = {
  * @property {Object|1|2|3|4|5|"auto"} [props.ps=null] - Sets start (left) padding.
  * @property {Object|1|2|3|4|5|"auto"} [props.px=null] - Sets horizontal padding.
  * @property {Object|1|2|3|4|5|"auto"} [props.py=null] - Sets vertical padding.
- * 
+ *
  * @property {Object|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [props.bg=null] - Sets background color and related options.
- * 
+ *
  * @property {Object|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset"} [props.text=null] - Controls test styles.
- * 
+ *
  * @property {1|2|3|4|5|6} [props.fs=null] - Sets font size.
  * @property {"bold"|"bolder"|"normal"|"light"|"lighter"} [props.fw=null] - Sets font weight.
  * @property {"italic"|"normal"} [props.fst=null] - Sets font styles.
  * @property {1|"sm"|"base"|"lg"} [props.lh=null] - Sets line height.
  * @property {boolean} [props.monospace] - Enabled monospace font.
- * 
+ *
  * @property {25|50|75|100} [props.opacity=null] - Sets opacity level.
- * 
+ *
  * @property {Object|"top"|"end"|"bottom"|"start"|1|2|3|4|5} [props.border=null] - Controls border styles.
  * @property {boolean|"top"|"end"|"bottom"|"start"|"circle"|"pill"|0|1|2|3} [props.rounded=null] - Controls border radius.
- * 
+ *
  * @property {boolean|"none"|"sm"|"lg"} [props.shadow=null] - Applies shadow.
- * 
+ *
  * @property {"auto"|"hidden"|"visible"|"scroll"} [props.overflow=null] - Controls overflow behavior.
- * 
+ *
  * @param {PrimeProps} props
- * 
+ *
  * @return {JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
- * 
+ *
  * @type {React.ForwardRefExoticComponent<PrimeProps & React.RefAttributes<HTMLElement>>}
  */
 const Prime = React.forwardRef((props, ref) => {
@@ -617,7 +611,7 @@ const Prime = React.forwardRef((props, ref) => {
 
   const classes = [
     sizingResolver({ w, mw, h, mh }),
-    dispalyResolver(d),
+    displayResolver(d),
     displayPrintResolver(dp),
     flexResolver(flex),
     positionResolver({

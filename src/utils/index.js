@@ -1,6 +1,6 @@
 export { bg } from "./bg";
 export { border } from "./border";
-export { display, displayPrint } from "./display";
+export { displayResolver, displayPrintResolver } from "./display";
 export { flex } from "./flex";
 export { floatResolver } from "./float";
 export { font } from "./font";

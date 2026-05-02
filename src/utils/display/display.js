@@ -1,9 +1,15 @@
-import { classnames as cs } from "helpers/classnames";
-import { is } from "helpers/is";
+import { classnames as cs, is } from "helpers";
 
 const DISPLAY_CLASS_NAME = "d";
 const DISPLAY_PRINT_CLASS_NAME = "d-print";
 
+/**
+ * @typedef {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} DisplayValues
+ */
+
+/**
+ * @type {Array<string>}
+ */
 const DISPLAY_VALUES = [
   "none",
   "inline",
@@ -18,7 +24,18 @@ const DISPLAY_VALUES = [
   "inline-flex",
 ];
 
+/**
+ * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} DisplayBreakpoints
+ */
+
+/**
+ * @type {Array<string>}
+ */
 const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
+
+/**
+ * @typedef {Partial<Record<DisplayBreakpoints, DisplayValues>>} DisplayObject
+ */
 
 /**
  * Display function
@@ -30,18 +47,18 @@ const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * display("inline") // 'd-inline'
  * display({ xs: "inline", md: "flex" }) // 'd-inline d-md-flex'
  *
- * @param {string|Object|undefined} value
+ * @param {DisplayObject|string} [value]
  * @param {string} prfx - default 'd'
  *
- * @returns {string} classnames
+ * @returns {string}
  */
-export function display(value, prfx = DISPLAY_CLASS_NAME) {
+export function displayResolver(value, prfx = DISPLAY_CLASS_NAME) {
   if (!value) return "";
 
   // String
   if (is("string", value, { notEmpty: true })) {
-    if (DISPLAY_VALUES.includes(value.trim())) {
-      return cs(prfx, value.trim());
+    if (DISPLAY_VALUES.includes(String(value).trim())) {
+      return cs(prfx, String(value).trim());
     }
   }
 
@@ -68,11 +85,11 @@ export function display(value, prfx = DISPLAY_CLASS_NAME) {
  * displayPrint("flex") // 'd-print-flex'
  * displayPrint("inline") // 'd-print-inline'
  *
- * @param {string|Object|undefined} value
+ * @param {DisplayObject|string} [value]
  * @param {string} prfx - default 'd-print'
  *
  * @returns {string} classnames
  */
-export function displayPrint(value, prfx = DISPLAY_PRINT_CLASS_NAME) {
-  return display(value, prfx);
+export function displayPrintResolver(value, prfx = DISPLAY_PRINT_CLASS_NAME) {
+  return displayResolver(value, prfx);
 }

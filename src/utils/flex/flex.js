@@ -1,4 +1,4 @@
-import { classnames as cs , is } from "helpers";
+import { classnames as cs, is } from "helpers";
 
 /**
  * @typedef {"dir"|"justify"|"align"|"alignSelf"|"fill"|"grow"|"shrink"|"wrap"|"nowrap"|"wrapReverse"|"order"|"alignContent"} FlexKey
@@ -120,7 +120,10 @@ export function flex(value) {
 
         // Object
         if (is("object", val, { notEmpty: true })) {
-          for (let [flexKey, flexVal] /** @type {[FlexKey, any]} */ of Object.entries(val)) {
+          for (let [
+            flexKey,
+            flexVal,
+          ] /** @type {[FlexKey, any]} */ of Object.entries(val)) {
             if (
               flexKey in FLEX_MAP &&
               FLEX_VALUES_MAP[flexKey].includes(flexVal)

@@ -1,1 +1,1 @@
-export { display, displayPrint } from "./display";
+export { displayResolver, displayPrintResolver } from "./display";

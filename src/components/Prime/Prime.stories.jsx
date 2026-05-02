@@ -505,7 +505,7 @@ export function BackgroundOpacity() {
         <Prime
           p={2}
           bg={{ color: "primary", opacity }}
-          text={(opacity >= 10 && opacity <= 50 )? "dark" : "white"}>
+          text={opacity >= 10 && opacity <= 50 ? "dark" : "white"}>
           {opacity === undefined
             ? "This is default success background"
             : `This is ${opacity}% opacity success background`}

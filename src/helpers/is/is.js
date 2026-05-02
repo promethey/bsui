@@ -32,7 +32,7 @@ const SUPPORT_TYPES = ["string", "number", "object", "array", "boolean"];
  * @typedef {object} OptionObject
  * @property {boolean} [notEmpty] - not empty check value (work for string, object and array)
  * @property {boolean} [notFalse] - not false check value (work for boolean)
- * 
+ *
  * @param {"object"|"array"|"string"|"number"|"boolean"} type - "string", "number", "object", "array", "boolean"
  * @param {Object|Array<number>|string|number|boolean} value - all of types
  * @param {OptionObject} [options]

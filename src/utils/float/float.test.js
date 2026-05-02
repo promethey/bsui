@@ -24,7 +24,9 @@ describe("float utility", () => {
   });
 
   test("float breakpoints", () => {
-    expect(floatResolver({ xs: "start", md: "end" })).toBe("float-start float-md-end");
+    expect(floatResolver({ xs: "start", md: "end" })).toBe(
+      "float-start float-md-end",
+    );
     expect(floatResolver({ fs: "inline", md: "none" })).toBe("float-md-none");
   });
 });
