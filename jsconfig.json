@@ -1,20 +1,24 @@
 {
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"],
+
   "compilerOptions": {
-    "checkJs": false,
-    "strict": false,
+    "ignoreDeprecations": "6.0",
+    "baseUrl": "src",
+    "checkJs": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "noEmit": true,
 
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
 
-    "jsx": "react-jsx",
-
     "paths": {
-      "components/*": ["./src/components/*"],
-      "utils/*": ["./src/utils/*"],
-      "helpers/*": ["./src/helpers/*"],
-      "constants/*": ["./src/constants/*"],
-      "core/*": ["./src/core/*"]
+      "components/*": ["src/components/*"],
+      "utils/*": ["src/utils/*"],
+      "helpers/*": ["src/helpers/*"],
+      "constants/*": ["src/constants/*"],
     },
 
     "allowSyntheticDefaultImports": true,
@@ -22,8 +26,5 @@
 
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "noEmit": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
 }

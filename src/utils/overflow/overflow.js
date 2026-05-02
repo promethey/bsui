@@ -13,7 +13,7 @@ const OVERFLOW_VALUES = ["auto", "hidden", "visible", "scroll"];
  * overflow("auto") // 'overflow-auto'
  * overflow("hidden") // 'overflow-hidden'
  *
- * @param {string} value
+ * @param {string|undefined} value
  * @returns {string} classnames
  */
 export function overflow(value) {

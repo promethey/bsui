@@ -64,7 +64,7 @@ const BREAKPOINTS_LIST = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * flex({ justify: "center", align: "start" }); // 'justify-content-center align-items-start'
  * flex({ xs: { justify: "center" }, lg: { justify: "start" } }); // 'justify-content-center justify-content-lg-start'
  *
- * @param {string|Object} value
+ * @param {string|Object|undefined} value
  *
  * @returns {string} classnames
  */

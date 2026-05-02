@@ -30,7 +30,7 @@ const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * display("inline") // 'd-inline'
  * display({ xs: "inline", md: "flex" }) // 'd-inline d-md-flex'
  *
- * @param {string|Object} value
+ * @param {string|Object|undefined} value
  * @param {string} prfx - default 'd'
  *
  * @returns {string} classnames
@@ -68,7 +68,7 @@ export function display(value, prfx = DISPLAY_CLASS_NAME) {
  * displayPrint("flex") // 'd-print-flex'
  * displayPrint("inline") // 'd-print-inline'
  *
- * @param {string|Object} value
+ * @param {string|Object|undefined} value
  * @param {string} prfx - default 'd-print'
  *
  * @returns {string} classnames

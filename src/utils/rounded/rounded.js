@@ -26,7 +26,7 @@ const ROUNDED_VALUES = [
  * rounded("top") // 'rounded-top'
  * rounded(0) // 'rounded-0'
  *
- * @param {boolean|string|number} value
+ * @param {boolean|string|number|undefined} value
  * @returns {string} classnames
  */
 export function rounded(value) {

@@ -35,7 +35,7 @@ const BG_VALUES_MAP = {
  * bg({ color: 'primary', gradient: true, opacity: 10 }) // 'bg-primary bg-gradient bg-opacity-10'
  * bg({ color: 'danger', grdnt: true }) // 'bg-danger', grdnt was igrnored
  *
- * @param {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark'|'body'|'white'|'transparent' | { color?: 'primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark'|'body'|'white'|'transparent', gradient?: boolean, opacity?: 10|25|50|75 })} value
+ * @param {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark'|'body'|'white'|'transparent' | { color?: 'primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark'|'body'|'white'|'transparent', gradient?: boolean, opacity?: 10|25|50|75 }|undefined)} value
  *
  * @returns {string} bg
  */

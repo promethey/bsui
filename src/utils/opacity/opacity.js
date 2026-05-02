@@ -12,7 +12,7 @@ const OPACITY_VALUES = [100, 75, 50, 25];
  * @example
  * opacity(100) // 'opacity-100'
  *
- * @param {number} value
+ * @param {number|undefined} value
  * @returns {string} classnames
  */
 export function opacity(value) {

@@ -51,7 +51,7 @@ const TEXT_VALUES_MAP = {
  * text({ color: 'primary', align: 'start', linebreak: true, transform: 'lowercase', decoration: 'underline'  }) // 'text-primary text-start text-break text-lowercase text-decoration-underline'
  * text({ color: 'danger', brk: true }) // return 'text-danger', 'brk' was igrnored
  *
- * @param {string|Object} value - text utility value
+ * @param {string|Object|undefined} value - text utility value
  *
  * @returns {string} classnames
  *

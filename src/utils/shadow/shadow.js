@@ -14,7 +14,7 @@ const SHADOW_VALUES = ["none", "sm", true, "lg"];
  * shadow("none") // 'shadow-none'
  * shadow("sm") // 'shadow-sm'
  *
- * @param {string|boolean} value
+ * @param {string|boolean|undefined} value
  *
  * @returns {string} classnames
  */

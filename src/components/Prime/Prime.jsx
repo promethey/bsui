@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { classnames as cs } from "helpers/classnames";
 import {
   position as positionResolver,
   spacingResolver,
@@ -20,14 +19,49 @@ import {
 } from "utils";
 
 const propTypes = {
+  /**
+   * HTML element type used for rendering
+   */
   as: PropTypes.elementType,
+
+  /**
+   * Inline styles applied to the root
+   */
   style: PropTypes.shape({}),
+
+  /**
+   * Content rendered inside the component
+   */
   children: PropTypes.node.isRequired,
+
+  /**
+   * Additional classes applied to the root element
+   */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  
+  /**
+   * Sets width
+   */
   w: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
+
+  /**
+   * Sets max-width
+   */
   mw: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
+
+  /**
+   * Sets height
+   */
   h: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
+
+  /**
+   * Sets max-height
+   */
   mh: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
+
+  /**
+   * Controls CSS display property
+   */
   d: PropTypes.oneOf([
     "none",
     "inline",
@@ -40,6 +74,10 @@ const propTypes = {
     "flex",
     "inline-flex",
   ]),
+
+  /**
+   * Controls display property for print media
+   */
   dp: PropTypes.oneOf([
     "none",
     "inline",
@@ -52,7 +90,15 @@ const propTypes = {
     "flex",
     "inline-flex",
   ]),
+
+  /**
+   * Controls flexbox behavior
+   */
   flex: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  
+  /**
+   * Sets position type
+   */
   pos: PropTypes.oneOf([
     "static",
     "relative",
@@ -63,37 +109,129 @@ const propTypes = {
     "sticky",
     "sticky-top",
   ]),
+
+  /**
+   * Sets top offset
+   */
   top: PropTypes.oneOf([0, 50, 100]),
+
+  /**
+   * Sets end (right) offset
+   */
   end: PropTypes.oneOf([0, 50, 100]),
+
+  /**
+   * Sets bottom offset
+   */
   bottom: PropTypes.oneOf([0, 50, 100]),
+
+  /**
+   * Sets start (left) offset
+   */
   start: PropTypes.oneOf([0, 50, 100]),
+
+  /**
+   * Centers element using translate
+   */
   translateMiddle: PropTypes.bool,
+
+  /**
+   * Centers element using translate axis-x
+   */
   translateMiddleX: PropTypes.bool,
+
+  /**
+   * Centers element using translate axis-y
+   */
   translateMiddleY: PropTypes.bool,
+
+  /**
+   * Controls float behavior
+   */
   float: PropTypes.oneOfType([
     PropTypes.shape({}),
     PropTypes.oneOf(["start, end, none"]),
   ]),
+
+  /**
+   * Sets margins
+   */
   m: PropTypes.oneOfType([
     PropTypes.shape({}),
     PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
   ]),
-  mx: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
-  my: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
+
+  /**
+   * Sets top margin
+   */
   mt: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
+
+  /**
+   * Sets end (right) margin
+   */
   me: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
+
+  /**
+   * Sets bottom margin
+   */
   mb: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
+
+  /**
+   * Sets start (left) margin
+   */
   ms: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
+
+  /**
+   * Sets horizontal margin
+   */
+  mx: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
+
+  /**
+   * Sets vertical margin
+   */
+  my: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
+
+  /**
+   * Sets paddings
+   */
   p: PropTypes.oneOfType([
     PropTypes.shape({}),
     PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
   ]),
-  px: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
-  py: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+
+  /**
+   * Sets top padding
+   */
   pt: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
+
+  /**
+   * Sets end (right) padding
+   */
   pe: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
+
+  /**
+   * Sets bottom padding
+   */
   pb: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
+
+  /**
+   * Sets start (left) padding
+   */
   ps: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
+
+  /**
+   * Sets horizontal padding
+   */
+  px: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+
+  /**
+   * Sets vertical padding
+   */
+  py: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+
+  /**
+   * Sets background color and related options
+   */
   bg: PropTypes.oneOfType([
     PropTypes.shape({
       color: PropTypes.oneOf([
@@ -109,7 +247,7 @@ const propTypes = {
         "white",
         "transparent",
       ]),
-      gradient: PropTypes.boolean,
+      gradient: PropTypes.bool,
       opacity: PropTypes.oneOf([10, 25, 50, 75]),
     }),
     PropTypes.oneOf([
@@ -126,6 +264,10 @@ const propTypes = {
       "transparent",
     ]),
   ]),
+
+  /**
+   * Controls test styles
+   */
   text: PropTypes.oneOfType([
     PropTypes.shape({
       color: PropTypes.oneOf([
@@ -175,12 +317,40 @@ const propTypes = {
       "reset",
     ]),
   ]),
+
+  /**
+   * Sets font size
+   */
   fs: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
+
+  /**
+   * Sets font weight
+   */
   fw: PropTypes.oneOf(["bold", "bolder", "normal", "light", "lighter"]),
+  
+  /**
+   * Sets font styles
+   */
   fst: PropTypes.oneOf(["italic", "normal"]),
+
+  /**
+   * Sets line height
+   */
   lh: PropTypes.oneOf([1, "sm", "base", "lg"]),
+
+  /**
+   * Enabled monospace font
+   */
   monospace: PropTypes.bool,
+
+  /**
+   * Sets opacity level
+   */
   opacity: PropTypes.oneOf([25, 50, 75, 100]),
+
+  /**
+   * Controls border styles
+   */
   border: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.shape({
@@ -202,12 +372,24 @@ const propTypes = {
       start: PropTypes.oneOf([1, 2, 3, 4, 5]),
     }),
   ]),
+
+  /**
+   * Controls border radius
+   */
   rounded: PropTypes.oneOfType([
     PropTypes.oneOf(["top", "end", "bottom", "start", "circle", "pill"]),
     PropTypes.oneOf([0, 1, 2, 3]),
-    PropTypes.object,
+    PropTypes.bool,
   ]),
+
+  /**
+   * Applies shadow
+   */
   shadow: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["sm", "lg"])]),
+  
+  /**
+   * Controls overflow behavior
+   */
   overflow: PropTypes.oneOf(["auto", "hidden", "visible", "scroll"]),
 };
 
@@ -261,6 +443,7 @@ const defaultProps = {
 
 /**
  * Prime component is basic for this library
+ * @component
  *
  * Support helpers:
  * + prefix
@@ -285,19 +468,90 @@ const defaultProps = {
  *
  * @example
  * <Prime>This is Prime component</Prime>
+ * 
+ * @example
  * <Prime d="inline-block">This is inline-block Prime component</Prime>
+ * 
+ * @example
  * <Prime d="flex" text="primary">Flex and primary color</Prime>
- *
- * @return {JSX.Element} Prime
+ * 
+ * @typedef {Object} PrimeProps
+ * @property {React.ElementType} [props.as="div"] - HTML element type used for rendering.
+ * @property {Object} [props.style] - Inline styles applied to the root.
+ * @property {React.ReactNode} [props.children] - Content rendered inside the component.
+ * @property {Object|string} [props.className] - Additional classes applied to the root element.
+ * 
+ * @property {25|50|75|100|"auto"} [props.w] - Sets width.
+ * @property {25|50|75|100|"auto"} [props.mw] - Sets max-width.
+ * @property {25|50|75|100|"auto"} [props.h] - Sets height.
+ * @property {25|50|75|100|"auto"} [props.mh] - Sets max-height.
+ * 
+ * @property {Object|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [props.d=null] - Controls CSS display property.
+ * @property {Object|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [props.dp=null] - Controls display property for print media.
+ * 
+ * @property {Object|"start"|"end"|"center"} [props.flex=null] - Controls flexbox behavior.
+ * 
+ * @property {"static"|"relative"|"absolute"|"fixed"|"sticky"} [props.pos=null] - Sets position type.
+ * @property {0|50|100} [props.top=null] - Sets top offset.
+ * @property {0|50|100} [props.end=null] - Sets end (right) offset.
+ * @property {0|50|100} [props.bottom=null] - Sets bottom offset.
+ * @property {0|50|100} [props.start=null] - Sets start (left) offset.
+ * @property {boolean} [props.translateMiddle=false] - Centers element using translate.
+ * @property {boolean} [props.translateMiddleX=false] - Centers element using translate axis-x.
+ * @property {boolean} [props.translateMiddleY=false] - Centers element using translate axis-y.
+ * 
+ * @property {Object|"start"|"end"|"none"} [props.float=null] - Controls float behavior.
+ * 
+ * @property {Object|Array<number>|1|2|3|4|5|"auto"} [props.m=null] - Sets margins.
+ * @property {Object|1|2|3|4|5|"auto"} [props.mt=null] - Sets top margin.
+ * @property {Object|1|2|3|4|5|"auto"} [props.me=null] - Sets end (right) margin.
+ * @property {Object|1|2|3|4|5|"auto"} [props.mb=null] - Sets bottom margin.
+ * @property {Object|1|2|3|4|5|"auto"} [props.ms=null] - Sets start (left) margin.
+ * @property {Object|1|2|3|4|5|"auto"} [props.mx=null] - Sets horizontal margin.
+ * @property {Object|1|2|3|4|5|"auto"} [props.my=null] - Sets vertical margin.
+ * 
+ * @property {Object|Array<number>|1|2|3|4|5|"auto"} [props.p=null] - Sets paddings.
+ * @property {Object|1|2|3|4|5|"auto"} [props.pt=null] - Sets top padding.
+ * @property {Object|1|2|3|4|5|"auto"} [props.pe=null] - Sets end (right) padding.
+ * @property {Object|1|2|3|4|5|"auto"} [props.pb=null] - Sets bottom padding.
+ * @property {Object|1|2|3|4|5|"auto"} [props.ps=null] - Sets start (left) padding.
+ * @property {Object|1|2|3|4|5|"auto"} [props.px=null] - Sets horizontal padding.
+ * @property {Object|1|2|3|4|5|"auto"} [props.py=null] - Sets vertical padding.
+ * 
+ * @property {Object|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [props.bg=null] - Sets background color and related options.
+ * 
+ * @property {Object|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset"} [props.text=null] - Controls test styles.
+ * 
+ * @property {1|2|3|4|5|6} [props.fs=null] - Sets font size.
+ * @property {"bold"|"bolder"|"normal"|"light"|"lighter"} [props.fw=null] - Sets font weight.
+ * @property {"italic"|"normal"} [props.fst=null] - Sets font styles.
+ * @property {1|"sm"|"base"|"lg"} [props.lh=null] - Sets line height.
+ * @property {boolean} [props.monospace] - Enabled monospace font.
+ * 
+ * @property {25|50|75|100} [props.opacity=null] - Sets opacity level.
+ * 
+ * @property {Object|"top"|"end"|"bottom"|"start"|1|2|3|4|5} [props.border=null] - Controls border styles.
+ * @property {boolean|"top"|"end"|"bottom"|"start"|"circle"|"pill"|0|1|2|3} [props.rounded=null] - Controls border radius.
+ * 
+ * @property {boolean|"none"|"sm"|"lg"} [props.shadow=null] - Applies shadow.
+ * 
+ * @property {"auto"|"hidden"|"visible"|"scroll"} [props.overflow=null] - Controls overflow behavior.
+ * 
+ * @param {PrimeProps} props
+ * 
+ * @return {JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
+ * 
+ * @type {React.ForwardRefExoticComponent<PrimeProps & React.RefAttributes<HTMLElement>>}
  */
 const Prime = React.forwardRef((props, ref) => {
   const {
-    as: Component = "div",
+    as: ComponentType = "div",
     style,
     children,
+    className,
     w,
     mw, // max width
     h,
@@ -340,7 +594,6 @@ const Prime = React.forwardRef((props, ref) => {
     rounded,
     shadow,
     overflow,
-    className,
     ...rest
   } = props;
 
@@ -390,17 +643,16 @@ const Prime = React.forwardRef((props, ref) => {
     .trim();
 
   return (
-    <Component
+    <ComponentType
       ref={ref}
       style={style}
       className={classes ? classes : null}
       {...rest}>
       {children}
-    </Component>
+    </ComponentType>
   );
 });
 
 Prime.propTypes = propTypes;
-Prime.defaultProps = defaultProps;
 
 export default Prime;

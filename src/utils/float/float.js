@@ -15,7 +15,7 @@ const FLOAT_BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * float("none") // 'float-none'
  * float({ xs: "none", md: "start" }) // 'float-none float-md-start'
  *
- * @param {string|Object} value
+ * @param {string|Object|undefined} value
  * @returns {string} classnames
  */
 export function float(value) {

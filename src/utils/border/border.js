@@ -48,7 +48,7 @@ const BORDER_VALUES_MAP = {
  * border={{ top: true, color: "primary" }} // "border-top border-primary"
  * border={{ color: "primary", width: 1, top: 0 }} // "border border-primary border-1 border-top-0"
  *
- * @param {boolean|string|number|Object} value
+ * @param {boolean|string|number|Object|undefined} value
  * @returns {string} border classnames
  */
 export function border(value) {
