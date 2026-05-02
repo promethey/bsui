@@ -5,6 +5,11 @@ const preview = {
   parameters: {
     docs: {
       codePanel: true, // Включает панель с кодом для всех историй
+      source: {
+        type: "dynamic", // 'dynamic' (re-renders on arg change) or 'code' (static)
+        format: true, // Set to false to disable auto-formatting
+        language: "jsx",
+      },
     },
     controls: {
       matchers: {

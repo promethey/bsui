@@ -57,18 +57,18 @@ const defaultProps = {
 /**
  * Provide contextual feedback messages for typical user
  * actions with the handful of available and flexible alert messages.
- * 
- * @see {@link Prime|Base component}
+ *
+ * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.3/components/alerts|Official Documentation}
  *
  * @example
  * <Alert>Primary</Alert>
- * 
+ *
  * @example
  * <Alert theme="secondary" mb={3} p={3}>
  *  Secondary with Prime API
  * </Alert>
- * 
+ *
  * @param {Object} props
  * @param {Object} [props.style=null]
  * @param {ReactNode} [props.children=null]
@@ -78,7 +78,7 @@ const defaultProps = {
  * @param {boolean} [props.animated=false] Add animation styles
  * @param {() => void} [props.onClose=null] Add function when close
  * @param {...any} [props.rest] Add somehting else (example aria attributes)
- * 
+ *
  * @returns {JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
@@ -95,7 +95,7 @@ function Alert(props) {
     onClose,
     ...rest
   } = props;
-  
+
   const alertRef = useRef(null);
 
   const classes = cn(

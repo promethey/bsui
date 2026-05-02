@@ -261,11 +261,11 @@ const defaultProps = {
 
 /**
  * Prime component is basic for this library
- * 
+ *
  * Support helpers:
  * + prefix
  * + classnames
- * 
+ *
  * Support utils:
  * + sizing
  * + display
@@ -287,7 +287,7 @@ const defaultProps = {
  * <Prime>This is Prime component</Prime>
  * <Prime d="inline-block">This is inline-block Prime component</Prime>
  * <Prime d="flex" text="primary">Flex and primary color</Prime>
- * 
+ *
  * @return {JSX.Element} Prime
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>

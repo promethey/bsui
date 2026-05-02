@@ -8,11 +8,6 @@ export default {
   component: Prime,
   parameters: {
     docs: {
-      source: {
-        type: "dynamic", // 'dynamic' (re-renders on arg change) or 'code' (static)
-        format: true, // Set to false to disable auto-formatting
-        language: "jsx",
-      },
       description: {
         component:
           "Main and basic component for Bootstrap-UI. This component helps provide classname functionality for other components",

@@ -21,15 +21,15 @@ const defaultProps = {
 /**
  * AlertHeading is children component of Alert
  *
- * @see {@link Prime|Base component}
+ * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/alerts/#additional-content|Official Documentation}
  *
  * @example
  * <AlertHeading>Title</AlertHeading>
- * 
+ *
  * @example
  * <AlertHeading as="h1">Title H1</AlertHeading>
- * 
+ *
  * @param {Object} props
  * @param {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [props.as="h4"]
  * @param {Object} [props.style=null]

@@ -20,13 +20,13 @@ const defaultProps = {
 
 /**
  * AlertLink is children component of Alert
- * 
- * @see {@link Prime|Base component}
+ *
+ * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/alerts/#link-color|Official Documentation}
  *
  * @example
  * <AlertLink to="/home">Home</AlertLink>
- * 
+ *
  * @param {Object} props
  * @param {Object} [props.style=null]
  * @param {ReactNode} [props.children]
@@ -39,13 +39,7 @@ const defaultProps = {
  * @version 1.0.0
  */
 function AlertLink(props) {
-  const {
-    style,
-    children,
-    className,
-    to,
-    ...rest
-  } = props;
+  const { style, children, className, to, ...rest } = props;
 
   const classes = cn(ALERT_LINK_CLASS_NAME, className);
 
