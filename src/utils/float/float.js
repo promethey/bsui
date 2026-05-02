@@ -1,9 +1,18 @@
-import { classnames as cs } from "helpers/classnames";
-import { is } from "helpers/is";
+import { classnames as cs, is } from "helpers";
 
 const FLOAT_CLASS_NAME = "float";
 const FLOAT_VALUES = ["start", "end", "none"];
 const FLOAT_BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
+
+/**
+ * @typedef {object} FloatObject
+ * @property {"start"|"end"|"none"} [xs] - X-Small breakpoint
+ * @property {"start"|"end"|"none"} [sm] - Small breakpoint
+ * @property {"start"|"end"|"none"} [md] - Medium brekpoint
+ * @property {"start"|"end"|"none"} [lg] - Large breakpoint
+ * @property {"start"|"end"|"none"} [xl] - Extra large breakpoint
+ * @property {"start"|"end"|"none"} [xxl] - Extra extra large breakpoint
+ */
 
 /**
  * Float function
@@ -15,16 +24,16 @@ const FLOAT_BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * float("none") // 'float-none'
  * float({ xs: "none", md: "start" }) // 'float-none float-md-start'
  *
- * @param {string|Object|undefined} value
- * @returns {string} classnames
+ * @param {FloatObject|"start"|"end"|"none"} [value]
+ * @returns {string}
  */
-export function float(value) {
+export function floatResolver(value) {
   if (!value) return "";
 
   // String
   if (is("string", value, { notEmpty: true })) {
-    if (FLOAT_VALUES.includes(value.trim())) {
-      return cs(FLOAT_CLASS_NAME, value.trim());
+    if (FLOAT_VALUES.includes(String(value).trim())) {
+      return cs(FLOAT_CLASS_NAME, String(value).trim());
     }
   }
 

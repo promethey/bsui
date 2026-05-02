@@ -29,10 +29,13 @@ const SUPPORT_TYPES = ["string", "number", "object", "array", "boolean"];
  * is("boolean", false) // true
  * is("boolean", false, { notFalse: true }) // false
  *
+ * @typedef {object} OptionObject
+ * @property {boolean} [notEmpty] - not empty check value (work for string, object and array)
+ * @property {boolean} [notFalse] - not false check value (work for boolean)
+ * 
  * @param {"object"|"array"|"string"|"number"|"boolean"} type - "string", "number", "object", "array", "boolean"
- * @param {Object|Array|string|number|boolean} value - all of types
- * @param {boolean} [option.notEmpty=false] - not empty check value (work for string, object and array)
- * @param {boolean} [option.notFalse=false] - not false check value (work for boolean)
+ * @param {Object|Array<number>|string|number|boolean} value - all of types
+ * @param {OptionObject} [options]
  *
  * @returns {boolean}
  *
@@ -55,7 +58,7 @@ export function is(
   switch (type) {
     case "string": {
       if (typeof value !== type) return false;
-      if (options.notEmpty && value.trim().length === 0) return false;
+      if (options.notEmpty && String(value).trim().length === 0) return false;
 
       return true;
     }

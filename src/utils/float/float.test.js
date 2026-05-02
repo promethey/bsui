@@ -1,30 +1,30 @@
-import { float } from "./float";
+import { floatResolver } from "./float";
 
 describe("float utility", () => {
   test("returns empty string for falsy values", () => {
-    expect(float()).toBe("");
-    expect(float({})).toBe("");
-    expect(float(null)).toBe("");
-    expect(float(undefined)).toBe("");
-    expect(float(true)).toBe("");
-    expect(float(false)).toBe("");
+    expect(floatResolver()).toBe("");
+    expect(floatResolver({})).toBe("");
+    expect(floatResolver(null)).toBe("");
+    expect(floatResolver(undefined)).toBe("");
+    expect(floatResolver(true)).toBe("");
+    expect(floatResolver(false)).toBe("");
   });
 
   test("ignores invalid values", () => {
-    expect(float(0)).toBe("");
-    expect(float(7)).toBe("");
-    expect(float("started")).toBe("");
-    expect(float("ends")).toBe("");
+    expect(floatResolver(0)).toBe("");
+    expect(floatResolver(7)).toBe("");
+    expect(floatResolver("started")).toBe("");
+    expect(floatResolver("ends")).toBe("");
   });
 
   test("applies floating from string", () => {
-    expect(float("start")).toBe("float-start");
-    expect(float("end")).toBe("float-end");
-    expect(float("none")).toBe("float-none");
+    expect(floatResolver("start")).toBe("float-start");
+    expect(floatResolver("end")).toBe("float-end");
+    expect(floatResolver("none")).toBe("float-none");
   });
 
   test("float breakpoints", () => {
-    expect(float({ xs: "start", md: "end" })).toBe("float-start float-md-end");
-    expect(float({ fs: "inline", md: "none" })).toBe("float-md-none");
+    expect(floatResolver({ xs: "start", md: "end" })).toBe("float-start float-md-end");
+    expect(floatResolver({ fs: "inline", md: "none" })).toBe("float-md-none");
   });
 });

@@ -1,1 +1,1 @@
-export { float } from "./float";
+export { floatResolver } from "./float";

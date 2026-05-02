@@ -2,7 +2,7 @@ export { bg } from "./bg";
 export { border } from "./border";
 export { display, displayPrint } from "./display";
 export { flex } from "./flex";
-export { float } from "./float";
+export { floatResolver } from "./float";
 export { font } from "./font";
 export { opacity } from "./opacity";
 export { overflow } from "./overflow";

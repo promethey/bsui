@@ -12,7 +12,7 @@ import {
   rounded as roundedResolver,
   shadow as shadowResolver,
   font as fontResolver,
-  float as floatResolver,
+  floatResolver,
   overflow as overflowResolver,
   opacity as opacityResolver,
   sizing as sizingResolver,
@@ -468,6 +468,10 @@ const defaultProps = {
  */
 
 /**
+ * @typedef {import("../../utils/float/float").FloatObject} FloatObject
+ */
+
+/**
  * Prime component is basic for this library
  * @component
  *
@@ -526,7 +530,7 @@ const defaultProps = {
  * @property {boolean} [props.translateMiddleX=false] - Centers element using translate axis-x.
  * @property {boolean} [props.translateMiddleY=false] - Centers element using translate axis-y.
  * 
- * @property {Object|"start"|"end"|"none"} [props.float=null] - Controls float behavior.
+ * @property {FloatObject|"start"|"end"|"none"} [props.float=null] - Controls float behavior.
  * 
  * @property {Object|Array<number>|1|2|3|4|5|"auto"} [props.m=null] - Sets margins.
  * @property {Object|1|2|3|4|5|"auto"} [props.mt=null] - Sets top margin.
