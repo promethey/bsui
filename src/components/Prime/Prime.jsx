@@ -452,19 +452,7 @@ const defaultProps = {
  */
 
 /**
- * @typedef {object} FlexObject
- * @property {"row"|"row-reverse"|"column"|"column-reverse"} [dir] - Sets flex direction
- * @property {"start"|"end"|"center"|"between"|"around"|"evenly"} [justify] - Sets flex justify-content
- * @property {"start"|"end"|"center"|"baseline"|"stretch"} [align] - Sets flex align-items
- * @property {"start"|"end"|"center"|"baseline"|"stretch"} [alignSelf] - Sets flex align-self
- * @property {boolean} [fill] - Sets flex fill
- * @property {0|1} [grow] - Sets flex grow
- * @property {0|1} [shrink] - Sets flex grow
- * @property {boolean} [wrap] - Sets flex wrap
- * @property {boolean} [nowrap] - Sets flex nowrap
- * @property {boolean} [wrapReverse] - Sets flex wrapReverse
- * @property {0|1|2|3|4|5|6|"first"|"last"} [order] - Sets flex order
- * @property {"start"|"end"|"center"|"between"|"around"|"stretch"} [alignContent] - Sets flex align content
+ * @typedef {import("../../utils/flex/flex").FlexObject} FlexObject
  */
 
 /**

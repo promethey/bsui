@@ -1,5 +1,12 @@
 import { classnames as cs , is } from "helpers";
 
+/**
+ * @typedef {"dir"|"justify"|"align"|"alignSelf"|"fill"|"grow"|"shrink"|"wrap"|"nowrap"|"wrapReverse"|"order"|"alignContent"} FlexKey
+ */
+
+/**
+ * @type {Object<FlexKey, any>}
+ */
 const FLEX_MAP = {
   dir: "flex",
   justify: "justify-content",
@@ -15,6 +22,9 @@ const FLEX_MAP = {
   alignContent: "align-content",
 };
 
+/**
+ * @type {Object<FlexKey, any[]>}
+ */
 const FLEX_VALUES_MAP = {
   dir: ["row", "row-reverse", "column", "column-reverse"],
   justify: ["start", "end", "center", "between", "around", "evenly"],
@@ -31,8 +41,7 @@ const FLEX_VALUES_MAP = {
 };
 
 /**
- * For classnames utility
- * if true 'flex-row-md' -> 'flex-md-row'
+ * @type {Object<FlexKey, boolean>}
  */
 const FLEX_OPTIONS_MAP = {
   dir: true,
@@ -53,6 +62,22 @@ const JUSTIFY_ALIGN_LIST = ["start", "end", "center"];
 const BREAKPOINTS_LIST = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
 /**
+ * @typedef {object} FlexObject
+ * @property {"row"|"row-reverse"|"column"|"column-reverse"} [dir] - Sets flex direction
+ * @property {"start"|"end"|"center"|"between"|"around"|"evenly"} [justify] - Sets flex justify-content
+ * @property {"start"|"end"|"center"|"baseline"|"stretch"} [align] - Sets flex align-items
+ * @property {"start"|"end"|"center"|"baseline"|"stretch"} [alignSelf] - Sets flex align-self
+ * @property {boolean} [fill] - Sets flex fill
+ * @property {0|1} [grow] - Sets flex grow
+ * @property {0|1} [shrink] - Sets flex grow
+ * @property {boolean} [wrap] - Sets flex wrap
+ * @property {boolean} [nowrap] - Sets flex nowrap
+ * @property {boolean} [wrapReverse] - Sets flex wrapReverse
+ * @property {0|1|2|3|4|5|6|"first"|"last"} [order] - Sets flex order
+ * @property {"start"|"end"|"center"|"between"|"around"|"stretch"} [alignContent] - Sets flex align content
+ */
+
+/**
  * Flex function
  *
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/flex/}
@@ -63,16 +88,16 @@ const BREAKPOINTS_LIST = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * flex({ justify: "center", align: "start" }); // 'justify-content-center align-items-start'
  * flex({ xs: { justify: "center" }, lg: { justify: "start" } }); // 'justify-content-center justify-content-lg-start'
  *
- * @param {string|Object|undefined} value
+ * @param {FlexObject|string} [value]
  *
- * @returns {string} classnames
+ * @returns {string}
  */
 export function flex(value) {
   if (!value) return "";
 
   // String
   if (is("string", value, { notEmpty: true })) {
-    if (JUSTIFY_ALIGN_LIST.includes(value)) {
+    if (JUSTIFY_ALIGN_LIST.includes(String(value))) {
       return `${cs(FLEX_MAP.justify, value)} ${cs(FLEX_MAP.align, value)}`;
     }
   }
@@ -95,7 +120,7 @@ export function flex(value) {
 
         // Object
         if (is("object", val, { notEmpty: true })) {
-          for (let [flexKey, flexVal] of Object.entries(val)) {
+          for (let [flexKey, flexVal] /** @type {[FlexKey, any]} */ of Object.entries(val)) {
             if (
               flexKey in FLEX_MAP &&
               FLEX_VALUES_MAP[flexKey].includes(flexVal)
