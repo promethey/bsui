@@ -47,7 +47,7 @@ const BG_VALUES_MAP = {
  *
  * @returns {string} bg
  */
-export function bg(value) {
+export function bgResolver(value) {
   if (!value) return "";
 
   // String
@@ -60,7 +60,7 @@ export function bg(value) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {
-      if (key in BG_MAP && BG_VALUES_MAP[/** @type {BackgroundProperties} */ (key)].includes(val)) {
+      if (key in BG_MAP && BG_VALUES_MAP[/** @type {BackgroundProperties} */ (key)].includes(/** @type {never} */ (val))) {
         result.push(cs(BG_MAP[/** @type {BackgroundProperties} */ (key)], val));
       }
     }

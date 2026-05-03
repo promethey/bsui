@@ -1,16 +1,16 @@
-import { bg } from "./bg.js";
+import { bgResolver } from "./bg.js";
 
 describe("background utility", () => {
   test("returns empty string for unsupported values", () => {
-    expect(bg()).toBe("");
-    expect(bg({})).toBe("");
-    expect(bg(null)).toBe("");
-    expect(bg(undefined)).toBe("");
-    expect(bg(true)).toBe("");
-    expect(bg(false)).toBe("");
-    expect(bg(123)).toBe("");
-    expect(bg([])).toBe("");
-    expect(bg(() => {})).toBe("");
+    expect(bgResolver()).toBe("");
+    expect(bgResolver({})).toBe("");
+    expect(bgResolver(null)).toBe("");
+    expect(bgResolver(undefined)).toBe("");
+    expect(bgResolver(true)).toBe("");
+    expect(bgResolver(false)).toBe("");
+    expect(bgResolver(123)).toBe("");
+    expect(bgResolver([])).toBe("");
+    expect(bgResolver(() => {})).toBe("");
   });
 
   test("returns correct class for string value", () => {
@@ -29,15 +29,15 @@ describe("background utility", () => {
     ];
 
     colors.map((color) => {
-      expect(bg(color)).toBe(`bg-${color}`);
+      expect(bgResolver(color)).toBe(`bg-${color}`);
     });
   });
 
   test("ignores invalid string, false, incorrect values", () => {
-    expect(bg("invalid")).toBe("");
-    expect(bg({ color: "invalid" })).toBe("");
-    expect(bg({ gradient: false })).toBe("");
-    expect(bg({ opacity: 5 })).toBe("");
+    expect(bgResolver("invalid")).toBe("");
+    expect(bgResolver({ color: "invalid" })).toBe("");
+    expect(bgResolver({ gradient: false })).toBe("");
+    expect(bgResolver({ opacity: 5 })).toBe("");
   });
 
   test("handles color object", () => {
@@ -56,43 +56,43 @@ describe("background utility", () => {
     ];
 
     colors.map((color) => {
-      expect(bg({ color })).toBe(`bg-${color}`);
+      expect(bgResolver({ color })).toBe(`bg-${color}`);
     });
   });
 
   test("ignores invalid color value", () => {
-    expect(bg({ color: "pink" })).toBe("");
+    expect(bgResolver({ color: "pink" })).toBe("");
   });
 
   test("handles gradient flag", () => {
-    expect(bg({ gradient: true })).toBe("bg-gradient");
-    expect(bg({ gradient: false })).toBe("");
+    expect(bgResolver({ gradient: true })).toBe("bg-gradient");
+    expect(bgResolver({ gradient: false })).toBe("");
   });
 
   test("handles opacity value", () => {
-    expect(bg({ opacity: 10 })).toBe("bg-opacity-10");
-    expect(bg({ opacity: 75 })).toBe("bg-opacity-75");
+    expect(bgResolver({ opacity: 10 })).toBe("bg-opacity-10");
+    expect(bgResolver({ opacity: 75 })).toBe("bg-opacity-75");
   });
 
   test("ignores invalid opacity value", () => {
-    expect(bg({ opacity: 30 })).toBe("");
-    expect(bg({ opacity: 100 })).toBe("");
+    expect(bgResolver({ opacity: 30 })).toBe("");
+    expect(bgResolver({ opacity: 100 })).toBe("");
   });
 
   test("handles full background config", () => {
-    expect(bg({ color: "primary", gradient: true, opacity: 10 })).toBe(
+    expect(bgResolver({ color: "primary", gradient: true, opacity: 10 })).toBe(
       "bg-primary bg-gradient bg-opacity-10",
     );
   });
 
   test("order of properties does not matter", () => {
-    expect(bg({ opacity: 25, color: "success", gradient: true })).toBe(
+    expect(bgResolver({ opacity: 25, color: "success", gradient: true })).toBe(
       "bg-opacity-25 bg-success bg-gradient",
     );
   });
 
   test("ignores unknown properties", () => {
-    expect(bg({ color: "primary", grdnt: true, foo: "bar" })).toBe(
+    expect(bgResolver({ color: "primary", grdnt: true, foo: "bar" })).toBe(
       "bg-primary",
     );
   });

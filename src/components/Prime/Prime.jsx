@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {
   position as positionResolver,
   spacingResolver,
-  bg as bgResolver,
+  bgResolver,
   text as textResolver,
   border as borderResolver,
   flexResolver,

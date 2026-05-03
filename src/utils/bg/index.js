@@ -1,1 +1,1 @@
-export { bg } from "./bg.js";
+export { bgResolver } from "./bg";

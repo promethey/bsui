@@ -1,4 +1,4 @@
-export { bg } from "./bg";
+export { bgResolver } from "./bg";
 export { border } from "./border";
 export { displayResolver, displayPrintResolver } from "./display";
 export { flexResolver } from "./flex";
