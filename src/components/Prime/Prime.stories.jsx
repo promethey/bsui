@@ -108,24 +108,8 @@ export function MaxHeight() {
 }
 MaxHeight.storyName = "Max height";
 
-export function Visibility() {
-  return (
-    <>
-      <Prime p={2} bg="light" border>
-        Visible
-      </Prime>
-      <Prime p={2} bg="light" border>
-        Invisible
-      </Prime>
-    </>
-  );
-}
-
 export function Shadows() {
-  /**
-   * @typedef {"none"|"sm"|true|"lg"} ShadowValues
-   * @type {Array<ShadowValues>}
-   */
+  /** @type {Array<"none"|"sm"|true|"lg">} */
   const values = ["none", "sm", true, "lg"];
   const text = ["No shadow", "Small shadow", "Regular shadow", "Larger shadow"];
 
@@ -731,19 +715,19 @@ export function FloatResponsive() {
         Float start on viewports sized SM (small) or wider
       </Prime>
       <br />
-      <Prime float={{ md: "start" }}>
+      <Prime float={{ md: "end" }}>
         Float start on viewports sized MD (medium) or wider
       </Prime>
       <br />
-      <Prime float={{ lg: "start" }}>
+      <Prime float={{ lg: "none" }}>
         Float start on viewports sized LG (large) or wider
       </Prime>
       <br />
-      <Prime float={{ xl: "start" }}>
+      <Prime float={{ xl: "end" }}>
         Float start on viewports sized XL (extra-large) or wider
       </Prime>
       <br />
-      <Prime float={{ xxl: "start" }}>
+      <Prime float={{ xxl: "none" }}>
         Float start on viewports sized XXL (extra-large) or wider
       </Prime>
     </>
