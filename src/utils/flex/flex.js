@@ -4,7 +4,15 @@ import { classnames as cs, is } from "helpers";
  * @typedef {"dir"|"justify"|"align"|"alignSelf"|"fill"|"grow"|"shrink"|"wrap"|"nowrap"|"wrapReverse"|"order"|"alignContent"} FlexKey
  * @typedef {"start"|"end"|"center"} FlexShortValues
  * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} FlexBreakpoints
- * 
+ *
+ * @typedef {Object} FlexBreakpointsValue
+ * @property {FlexObject} [xs] - X-Small breakpoint
+ * @property {FlexObject} [sm] - Small breakpoint
+ * @property {FlexObject} [md] - Medium breakpoint
+ * @property {FlexObject} [lg] - Large breakpoint
+ * @property {FlexObject} [xl] - Extra large breakpoint
+ * @property {FlexObject} [xxl] - Extra extra breakpoint
+ *
  * @typedef {object} FlexObject
  * @property {"row"|"row-reverse"|"column"|"column-reverse"} [dir] - Sets flex direction
  * @property {"start"|"end"|"center"|"between"|"around"|"evenly"} [justify] - Sets flex justify-content
@@ -18,15 +26,12 @@ import { classnames as cs, is } from "helpers";
  * @property {boolean} [wrapReverse] - Sets flex wrapReverse
  * @property {0|1|2|3|4|5|6|"first"|"last"} [order] - Sets flex order
  * @property {"start"|"end"|"center"|"between"|"around"|"stretch"} [alignContent] - Sets flex align content
- * 
- * @typedef {Partial<Record<FlexBreakpoints, FlexObject>>} FlexBreakpointsObject
- * 
+ *
+ * @typedef {Partial<FlexBreakpointsValue>} FlexBreakpointsObject
  * @typedef {Partial<Record<FlexBreakpoints, FlexShortValues>>} FlexBreakpointsShort
  */
 
-/**
- * @type {Object<FlexKey, string>}
- */
+/** @type {Object<FlexKey, string>} */
 const FLEX_MAP = {
   dir: "flex",
   justify: "justify-content",
@@ -42,9 +47,7 @@ const FLEX_MAP = {
   alignContent: "align-content",
 };
 
-/**
- * @type {Object<FlexKey, any[]>}
- */
+/** @type {Object<FlexKey, any[]>} */
 const FLEX_VALUES_MAP = {
   dir: ["row", "row-reverse", "column", "column-reverse"],
   justify: ["start", "end", "center", "between", "around", "evenly"],
@@ -60,9 +63,7 @@ const FLEX_VALUES_MAP = {
   alignContent: ["start", "end", "center", "between", "around", "stretch"],
 };
 
-/**
- * @type {Object<FlexKey, boolean>}
- */
+/** @type {Object<FlexKey, boolean>} */
 const FLEX_OPTIONS_MAP = {
   dir: true,
   justify: false,
@@ -95,7 +96,7 @@ const BREAKPOINTS_LIST = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * flex({ justify: "center", align: "start" }); // 'justify-content-center align-items-start'
  * flex({ xs: { justify: "center" }, lg: { justify: "start" } }); // 'justify-content-center justify-content-lg-start'
  *
- * @param {FlexObject|string} [value]
+ * @param {FlexObject|FlexBreakpointsObject|FlexBreakpointsShort|string} [value]
  *
  * @returns {string}
  */
@@ -104,7 +105,7 @@ export function flexResolver(value) {
 
   // String
   if (typeof value === "string" && value.length > 0) {
-    if (JUSTIFY_ALIGN_LIST.includes(value)) {
+    if (JUSTIFY_ALIGN_LIST.includes(/** @type {FlexShortValues} */ (value))) {
       return `${cs(FLEX_MAP.justify, value)} ${cs(FLEX_MAP.align, value)}`;
     }
   }
@@ -114,7 +115,9 @@ export function flexResolver(value) {
     let result = [];
 
     for (let [breakpoint, val] of Object.entries(value)) {
-      if (BREAKPOINTS_LIST.includes(breakpoint)) {
+      if (
+        BREAKPOINTS_LIST.includes(/** @type {FlexBreakpoints} */ (breakpoint))
+      ) {
         // String
         if (is("string", val, { notEmpty: true })) {
           if (JUSTIFY_ALIGN_LIST.includes(val)) {

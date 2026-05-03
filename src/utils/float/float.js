@@ -1,9 +1,5 @@
 import { classnames as cs, is } from "helpers";
 
-const FLOAT_CLASS_NAME = "float";
-const FLOAT_VALUES = ["start", "end", "none"];
-const FLOAT_BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
-
 /**
  * @typedef {object} FloatObject
  * @property {"start"|"end"|"none"} [xs] - X-Small breakpoint
@@ -13,6 +9,10 @@ const FLOAT_BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * @property {"start"|"end"|"none"} [xl] - Extra large breakpoint
  * @property {"start"|"end"|"none"} [xxl] - Extra extra large breakpoint
  */
+
+const FLOAT_CLASS_NAME = "float";
+const FLOAT_VALUES = ["start", "end", "none"];
+const FLOAT_BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
 /**
  * Float function

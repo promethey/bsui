@@ -1,5 +1,13 @@
 import { classnames as cs, is } from "helpers";
 
+/**
+ * @typedef {"m"|"mt"|"me"|"mb"|"ms"|"mx"|"my"|"p"|"pt"|"pe"|"pb"|"ps"|"px"|"py"} SpacingPropertySides
+ * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} SpacingBreakpoints
+ * @typedef {1|2|3|4|5|"auto"} SpacingValues
+ * @typedef {[SpacingValues, SpacingValues]|[SpacingValues, SpacingValues, SpacingValues, SpacingValues]} SpacingArray
+ * @typedef {Partial<Record<SpacingBreakpoints, SpacingValues>>} SpacingObject
+ */
+
 // m, mt, me, mb, ms, mx, my
 // p, pt, pe, pb, ps, px, py
 
@@ -19,14 +27,6 @@ const SPACING_MAP = [
   "px",
   "py",
 ];
-
-/**
- * @typedef {"m"|"mt"|"me"|"mb"|"ms"|"mx"|"my"|"p"|"pt"|"pe"|"pb"|"ps"|"px"|"py"} SpacingPropertySides
- * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} SpacingBreakpoints
- * @typedef {1|2|3|4|5|"auto"} SpacingValues
- * @typedef {[SpacingValues, SpacingValues]|[SpacingValues, SpacingValues, SpacingValues, SpacingValues]} SpacingArray
- * @typedef {Partial<Record<SpacingBreakpoints, SpacingValues>>} SpacingObject
- */
 
 /**
  * @type {Array<SpacingValues>}
@@ -61,18 +61,27 @@ export function spacing(prfx, value) {
   }
 
   // Number or String
-  if ((typeof value === "number" || typeof value === "string") && SPACING_VALUES.includes(value)) {
+  if (
+    (typeof value === "number" || typeof value === "string") &&
+    SPACING_VALUES.includes(value)
+  ) {
     return cs(prfx, value);
   }
 
   // Object
-  if (typeof value === "object" && value && !Array.isArray(value) && Object.keys(value).length > 0) {
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     /** @type {SpacingObject} */
     const obj = value;
 
     let filterValues = Object.entries(obj).filter(
       ([breakpoint, val]) =>
-        BREAKPOINTS.includes(/** @type {SpacingBreakpoints} */ (breakpoint)) && SPACING_VALUES.includes(val),
+        BREAKPOINTS.includes(/** @type {SpacingBreakpoints} */ (breakpoint)) &&
+        SPACING_VALUES.includes(val),
     );
 
     return cs(prfx, Object.fromEntries(filterValues));

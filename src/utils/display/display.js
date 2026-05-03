@@ -1,12 +1,14 @@
 import { classnames as cs, is } from "helpers";
 
+/**
+ * @typedef {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} DisplayValues
+ * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} DisplayBreakpoints
+ */
+
 const DISPLAY_CLASS_NAME = "d";
 const DISPLAY_PRINT_CLASS_NAME = "d-print";
 
-/**
- * @typedef {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} DisplayValues
- * @type {Array<string>}
- */
+/** @type {Array<DisplayValues>} */
 const DISPLAY_VALUES = [
   "none",
   "inline",
@@ -21,10 +23,7 @@ const DISPLAY_VALUES = [
   "inline-flex",
 ];
 
-/**
- * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} DisplayBreakpoints
- * @type {Array<string>}
- */
+/** @type {Array<DisplayBreakpoints>} */
 const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
 /**
@@ -50,9 +49,9 @@ export function displayResolver(value, prfx = DISPLAY_CLASS_NAME) {
   if (!value) return "";
 
   // String
-  if (is("string", value, { notEmpty: true })) {
-    if (DISPLAY_VALUES.includes(String(value).trim())) {
-      return cs(prfx, String(value).trim());
+  if (typeof value === "string" && value.length > 0) {
+    if (DISPLAY_VALUES.includes(/** @type {DisplayValues} */ (value))) {
+      return cs(prfx, value);
     }
   }
 
@@ -60,8 +59,8 @@ export function displayResolver(value, prfx = DISPLAY_CLASS_NAME) {
   if (is("object", value, { notEmpty: true })) {
     const displayFilterUnsupportedValues = Object.entries(value).filter(
       ([breakpoint, displayValue]) =>
-        BREAKPOINTS.includes(breakpoint) &&
-        DISPLAY_VALUES.includes(displayValue),
+        BREAKPOINTS.includes(/** @type {DisplayBreakpoints} */ (breakpoint)) &&
+        DISPLAY_VALUES.includes(/** @type {DisplayValues} */ (displayValue)),
     );
 
     return cs(prfx, Object.fromEntries(displayFilterUnsupportedValues));

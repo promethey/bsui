@@ -178,20 +178,23 @@ export function FlexResponsive() {
 FlexResponsive.storyName = "Flex responsive";
 
 export function FlexAlignSelf() {
-  const examples = ["Start", "Center", "End", "Stretch", "Baseline"];
+  /** @type {Array<"start"|"end"|"center"|"baseline"|"stretch">} */
+  const examples = ["start", "center", "end", "stretch", "baseline"];
 
   return (
     <Prime d="flex" bg="info" style={{ width: "350px", height: "350px" }}>
-      {examples.map((value) => (
-        <Prime
-          flex={{ xs: { alignSelf: value.toLowerCase() } }}
-          bg="light"
-          text={{ color: "primary", align: "center" }}
-          border={{ color: "primary" }}
-          style={{ width: "70px", minHeight: "70px" }}>
-          {value}
-        </Prime>
-      ))}
+      {examples.map((value) => {
+        return (
+          <Prime
+            flex={{ xs: { alignSelf: value } }}
+            bg="light"
+            text={{ color: "primary", align: "center" }}
+            border={{ color: "primary" }}
+            style={{ width: "70px", minHeight: "70px" }}>
+            {value}
+          </Prime>
+        );
+      })}
     </Prime>
   );
 }
