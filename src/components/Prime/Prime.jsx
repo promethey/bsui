@@ -398,6 +398,7 @@ const propTypes = {
  * @typedef {import("../../utils/flex/flex").FlexObject} FlexObject
  * @typedef {import("../../utils/float/float").FloatObject} FloatObject
  * @typedef {import("../../utils/spacing/spacing").SpacingObject} SpacingObject
+ * @typedef {import("../../utils/spacing/spacing").SpacingArray} SpacingArray
  * @typedef {import("../../utils/spacing/spacing").SpacingValues} SpacingValues
  */
 
@@ -436,66 +437,66 @@ const propTypes = {
  * <Prime d="flex" text="primary">Flex and primary color</Prime>
  *
  * @typedef {Object} PrimeProps
- * @property {React.ElementType} [props.as="div"] - HTML element type used for rendering.
- * @property {Object} [props.style] - Inline styles applied to the root.
- * @property {React.ReactNode} [props.children] - Content rendered inside the component.
- * @property {Object|string} [props.className] - Additional classes applied to the root element.
+ * @property {React.ElementType} [as="div"] - HTML element type used for rendering.
+ * @property {Object} [style] - Inline styles applied to the root.
+ * @property {React.ReactNode} [children] - Content rendered inside the component.
+ * @property {Object|string} [className] - Additional classes applied to the root element.
  *
- * @property {25|50|75|100|"auto"} [props.w] - Sets width.
- * @property {25|50|75|100|"auto"} [props.mw] - Sets max-width.
- * @property {25|50|75|100|"auto"} [props.h] - Sets height.
- * @property {25|50|75|100|"auto"} [props.mh] - Sets max-height.
+ * @property {25|50|75|100|"auto"} [w] - Sets width.
+ * @property {25|50|75|100|"auto"} [mw] - Sets max-width.
+ * @property {25|50|75|100|"auto"} [h] - Sets height.
+ * @property {25|50|75|100|"auto"} [mh] - Sets max-height.
  *
- * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [props.d=null] - Controls CSS display property.
- * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [props.dp=null] - Controls display property for print media.
+ * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [d] - Controls CSS display property.
+ * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [dp] - Controls display property for print media.
  *
- * @property {FlexObject|"start"|"end"|"center"} [props.flex=null] - Controls flexbox behavior.
+ * @property {FlexObject|"start"|"end"|"center"} [flex] - Controls flexbox behavior.
  *
- * @property {"static"|"relative"|"absolute"|"fixed"|"sticky"} [props.pos=null] - Sets position type.
- * @property {0|50|100} [props.top=null] - Sets top offset.
- * @property {0|50|100} [props.end=null] - Sets end (right) offset.
- * @property {0|50|100} [props.bottom=null] - Sets bottom offset.
- * @property {0|50|100} [props.start=null] - Sets start (left) offset.
- * @property {boolean} [props.translateMiddle=false] - Centers element using translate.
- * @property {boolean} [props.translateMiddleX=false] - Centers element using translate axis-x.
- * @property {boolean} [props.translateMiddleY=false] - Centers element using translate axis-y.
+ * @property {"static"|"relative"|"absolute"|"fixed"|"sticky"} [pos] - Sets position type.
+ * @property {0|50|100} [top] - Sets top offset.
+ * @property {0|50|100} [end] - Sets end (right) offset.
+ * @property {0|50|100} [bottom] - Sets bottom offset.
+ * @property {0|50|100} [start] - Sets start (left) offset.
+ * @property {boolean} [translateMiddle=false] - Centers element using translate.
+ * @property {boolean} [translateMiddleX=false] - Centers element using translate axis-x.
+ * @property {boolean} [translateMiddleY=false] - Centers element using translate axis-y.
  *
- * @property {FloatObject|"start"|"end"|"none"} [props.float=null] - Controls float behavior.
+ * @property {FloatObject|"start"|"end"|"none"} [float] - Controls float behavior.
  *
- * @property {SpacingObject|Array<SpacingValues>|1|2|3|4|5|"auto"} [props.m=null] - Sets margins.
- * @property {SpacingObject|1|2|3|4|5|"auto"} [props.mt=null] - Sets top margin.
- * @property {SpacingObject|1|2|3|4|5|"auto"} [props.me=null] - Sets end (right) margin.
- * @property {SpacingObject|1|2|3|4|5|"auto"} [props.mb=null] - Sets bottom margin.
- * @property {SpacingObject|1|2|3|4|5|"auto"} [props.ms=null] - Sets start (left) margin.
- * @property {SpacingObject|1|2|3|4|5|"auto"} [props.mx=null] - Sets horizontal margin.
- * @property {SpacingObject|1|2|3|4|5|"auto"} [props.my=null] - Sets vertical margin.
+ * @property {SpacingObject|SpacingArray|SpacingValues} [m] - Sets margins.
+ * @property {SpacingObject|SpacingValues} [mt] - Sets top margin.
+ * @property {SpacingObject|SpacingValues} [me] - Sets end (right) margin.
+ * @property {SpacingObject|SpacingValues} [mb] - Sets bottom margin.
+ * @property {SpacingObject|SpacingValues} [ms] - Sets start (left) margin.
+ * @property {SpacingObject|SpacingValues} [mx] - Sets horizontal margin.
+ * @property {SpacingObject|SpacingValues} [my] - Sets vertical margin.
  *
- * @property {SpacingObject|Array<SpacingValues>|1|2|3|4|5|"auto"} [props.p=null] - Sets paddings.
- * @property {SpacingObject|1|2|3|4|5|"auto"} [props.pt=null] - Sets top padding.
- * @property {SpacingObject|1|2|3|4|5|"auto"} [props.pe=null] - Sets end (right) padding.
- * @property {SpacingObject|1|2|3|4|5|"auto"} [props.pb=null] - Sets bottom padding.
- * @property {SpacingObject|1|2|3|4|5|"auto"} [props.ps=null] - Sets start (left) padding.
- * @property {SpacingObject|1|2|3|4|5|"auto"} [props.px=null] - Sets horizontal padding.
- * @property {SpacingObject|1|2|3|4|5|"auto"} [props.py=null] - Sets vertical padding.
+ * @property {SpacingObject|SpacingArray|SpacingValues} [p] - Sets paddings.
+ * @property {SpacingObject|SpacingValues} [pt] - Sets top padding.
+ * @property {SpacingObject|SpacingValues} [pe] - Sets end (right) padding.
+ * @property {SpacingObject|SpacingValues} [pb] - Sets bottom padding.
+ * @property {SpacingObject|SpacingValues} [ps] - Sets start (left) padding.
+ * @property {SpacingObject|SpacingValues} [px] - Sets horizontal padding.
+ * @property {SpacingObject|SpacingValues} [py] - Sets vertical padding.
  *
- * @property {Object|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [props.bg=null] - Sets background color and related options.
+ * @property {Object|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [bg] - Sets background color and related options.
  *
- * @property {Object|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset"} [props.text=null] - Controls test styles.
+ * @property {Object|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset"} [text] - Controls test styles.
  *
- * @property {1|2|3|4|5|6} [props.fs=null] - Sets font size.
- * @property {"bold"|"bolder"|"normal"|"light"|"lighter"} [props.fw=null] - Sets font weight.
- * @property {"italic"|"normal"} [props.fst=null] - Sets font styles.
- * @property {1|"sm"|"base"|"lg"} [props.lh=null] - Sets line height.
- * @property {boolean} [props.monospace] - Enabled monospace font.
+ * @property {1|2|3|4|5|6} [fs] - Sets font size.
+ * @property {"bold"|"bolder"|"normal"|"light"|"lighter"} [fw] - Sets font weight.
+ * @property {"italic"|"normal"} [fst] - Sets font styles.
+ * @property {1|"sm"|"base"|"lg"} [lh] - Sets line height.
+ * @property {boolean} [monospace] - Enabled monospace font.
  *
- * @property {25|50|75|100} [props.opacity=null] - Sets opacity level.
+ * @property {25|50|75|100} [opacity] - Sets opacity level.
  *
- * @property {Object|"top"|"end"|"bottom"|"start"|1|2|3|4|5} [props.border=null] - Controls border styles.
- * @property {boolean|"top"|"end"|"bottom"|"start"|"circle"|"pill"|0|1|2|3} [props.rounded=null] - Controls border radius.
+ * @property {Object|"top"|"end"|"bottom"|"start"|1|2|3|4|5} [border] - Controls border styles.
+ * @property {boolean|"top"|"end"|"bottom"|"start"|"circle"|"pill"|0|1|2|3} [rounded] - Controls border radius.
  *
- * @property {boolean|"none"|"sm"|"lg"} [props.shadow=null] - Applies shadow.
+ * @property {boolean|"none"|"sm"|"lg"} [shadow] - Applies shadow.
  *
- * @property {"auto"|"hidden"|"visible"|"scroll"} [props.overflow=null] - Controls overflow behavior.
+ * @property {"auto"|"hidden"|"visible"|"scroll"} [overflow] - Controls overflow behavior.
  *
  * @param {PrimeProps} props
  *

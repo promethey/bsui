@@ -24,6 +24,7 @@ const SPACING_MAP = [
  * @typedef {"m"|"mt"|"me"|"mb"|"ms"|"mx"|"my"|"p"|"pt"|"pe"|"pb"|"ps"|"px"|"py"} SpacingPropertySides
  * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} SpacingBreakpoints
  * @typedef {1|2|3|4|5|"auto"} SpacingValues
+ * @typedef {[SpacingValues, SpacingValues]|[SpacingValues, SpacingValues, SpacingValues, SpacingValues]} SpacingArray
  * @typedef {Partial<Record<SpacingBreakpoints, SpacingValues>>} SpacingObject
  */
 
@@ -50,25 +51,28 @@ const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * spacing("m", [{ xs: 2, lg: 3 }, { xs: 3, lg: 3 }]) // "mx-2 mx-lg-3 my-3 my-lg-3"
  *
  * @param {string} prfx - prefix for margin "m" or padding "p"
- * @param {SpacingObject|SpacingValues|Array<SpacingValues>} [value] - margin or padding values
+ * @param {SpacingObject|SpacingValues|SpacingArray} [value] - margin or padding values
  *
  * @returns {string}
  */
 export function spacing(prfx, value) {
-  if (is("number", prfx) || !SPACING_MAP.includes(prfx)) {
+  if (!SPACING_MAP.includes(prfx)) {
     return "";
   }
 
   // Number or String
-  if (SPACING_VALUES.includes(value)) {
+  if ((typeof value === "number" || typeof value === "string") && SPACING_VALUES.includes(value)) {
     return cs(prfx, value);
   }
 
   // Object
-  if (is("object", Object(value), { notEmpty: true })) {
-    let filterValues = Object.entries(Object(value)).filter(
+  if (typeof value === "object" && value && !Array.isArray(value) && Object.keys(value).length > 0) {
+    /** @type {SpacingObject} */
+    const obj = value;
+
+    let filterValues = Object.entries(obj).filter(
       ([breakpoint, val]) =>
-        BREAKPOINTS.includes(breakpoint) && SPACING_VALUES.includes(val),
+        BREAKPOINTS.includes(/** @type {SpacingBreakpoints} */ (breakpoint)) && SPACING_VALUES.includes(val),
     );
 
     return cs(prfx, Object.fromEntries(filterValues));
@@ -82,19 +86,22 @@ export function spacing(prfx, value) {
    * spacing("m", [1,2]) // 'mx-1 my-2'
    * spacing("m", [1,2,3,4]) // 'mt-1 me-2 mb-3 ms-4'
    */
-  if (is("array", value, { notEmpty: true })) {
+  if (Array.isArray(value) && (value.length === 2 || value.length === 4)) {
+    /** @type {SpacingArray} */
+    const arr = value;
+
     let result = [];
+
+    /** @type {{ 2: string[], 4: string[] }} */
     let sides = { 2: ["x", "y"], 4: ["t", "e", "b", "s"] };
 
     // [1, 2] -> 'mx-1 my-2'
     // [1, 2, 3, 4] -> 'mt-1 me-2 mb-3 ms-4'
-    if (equal(value.length, 2) || equal(value.length, 4)) {
-      for (let i = 0; i <= value.length; i += 1) {
-        let prefix = prfx + sides[value.length][i]; // mx, my or mt, me etc.
+    for (let i = 0; i < arr.length; i += 1) {
+      let prefix = prfx + sides[arr.length][i]; // mx, my or mt, me etc.
 
-        if (is("number", value[i])) {
-          result.push(cs(prefix, value[i]));
-        }
+      if (is("number", arr[i])) {
+        result.push(cs(prefix, arr[i]));
       }
     }
 

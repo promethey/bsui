@@ -34,7 +34,7 @@ const SUPPORT_TYPES = ["string", "number", "object", "array", "boolean"];
  * @property {boolean} [notFalse] - not false check value (work for boolean)
  *
  * @param {"object"|"array"|"string"|"number"|"boolean"} type - "string", "number", "object", "array", "boolean"
- * @param {Object|Array<number>|string|number|boolean} value - all of types
+ * @param {any} value - all of types
  * @param {OptionObject} [options]
  *
  * @returns {boolean}

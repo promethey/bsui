@@ -21,7 +21,7 @@ export function Example() {
       fs={4}
       fw="bolder"
       monospace
-      p={2}
+      p={{ xs: 2 }}
       py={4}
       rounded="pill"
       shadow="lg">
