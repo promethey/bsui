@@ -31,11 +31,10 @@ export function Example() {
 }
 
 export function Width() {
-  /**
-   * @typedef {25|50|75|100} WidthValues
-   * @type {Array<WidthValues>}
-   */
+  /** @type {Array<25|50|75|100>} */
   const examples = [25, 50, 75, 100];
+
+  /** @type {Array<"danger"|"warning"|"info"|"success">} */
   const bgBorderColors = ["danger", "warning", "info", "success"];
 
   return (
@@ -408,6 +407,7 @@ export function FlexOrder() {
 FlexOrder.storyName = "Flex order";
 
 export function FlexAlignContent() {
+  /** @type {Array<"start"|"end"|"center"|"between"|"around"|"stretch">} */
   const examples = ["start", "end", "center", "between", "around", "stretch"];
 
   return (
@@ -628,10 +628,7 @@ export function BorderRadius() {
 BorderRadius.storyName = "Border radius";
 
 export function BorderSizes() {
-  /**
-   * @typedef {0|1|2|3} RoundedValues
-   * @type {Array<RoundedValues>}
-   */
+  /** @type {Array<0|1|2|3>} */
   const examples = [0, 1, 2, 3];
 
   return (
@@ -709,6 +706,7 @@ export function Display() {
 }
 
 export function Float() {
+  /** @type {Array<"start"|"end"|"none">} */
   const examples = ["start", "end", "none"];
 
   return (

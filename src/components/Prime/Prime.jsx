@@ -402,6 +402,7 @@ const propTypes = {
  * @typedef {import("../../utils/spacing/spacing").SpacingObject} SpacingObject
  * @typedef {import("../../utils/spacing/spacing").SpacingArray} SpacingArray
  * @typedef {import("../../utils/spacing/spacing").SpacingValues} SpacingValues
+ * @typedef {import("../../utils/bg/bg").BackgroundObject} BackgroundObject
  */
 
 /**
@@ -433,10 +434,14 @@ const propTypes = {
  * <Prime>This is Prime component</Prime>
  *
  * @example
- * <Prime d="inline-block">This is inline-block Prime component</Prime>
+ * <Prime d="inline-block">
+ *  This is inline-block Prime component
+ * </Prime>
  *
  * @example
- * <Prime d="flex" text="primary">Flex and primary color</Prime>
+ * <Prime d="flex" text="primary">
+ *  Flex and primary color
+ * </Prime>
  *
  * @typedef {Object} PrimeProps
  * @property {React.ElementType} [as="div"] - HTML element type used for rendering.
@@ -481,7 +486,7 @@ const propTypes = {
  * @property {SpacingObject|SpacingValues} [px] - Sets horizontal padding.
  * @property {SpacingObject|SpacingValues} [py] - Sets vertical padding.
  *
- * @property {Object|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [bg] - Sets background color and related options.
+ * @property {BackgroundObject|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [bg] - Sets background color and related options.
  *
  * @property {Object|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset"} [text] - Controls test styles.
  *
