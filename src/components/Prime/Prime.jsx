@@ -6,7 +6,7 @@ import {
   bg as bgResolver,
   text as textResolver,
   border as borderResolver,
-  flex as flexResolver,
+  flexResolver,
   displayResolver,
   displayPrintResolver,
   rounded as roundedResolver,
@@ -393,63 +393,9 @@ const propTypes = {
   overflow: PropTypes.oneOf(["auto", "hidden", "visible", "scroll"]),
 };
 
-const defaultProps = {
-  as: "div",
-  style: null,
-  className: null,
-  w: null,
-  mw: null, // max width
-  h: null,
-  mh: null, // max height
-  d: null,
-  dp: null, // display print
-  flex: null,
-  pos: null, // position
-  top: null,
-  end: null,
-  bottom: null,
-  start: null,
-  translateMiddle: false,
-  translateMiddleX: false,
-  translateMiddleY: false,
-  float: null,
-  m: null, // margin
-  mx: null,
-  my: null,
-  mt: null,
-  me: null,
-  mb: null,
-  ms: null,
-  p: null, // padding
-  px: null,
-  py: null,
-  pt: null,
-  pe: null,
-  pb: null,
-  ps: null,
-  bg: null, // background
-  text: null,
-  fs: null,
-  fw: null,
-  fst: null,
-  lh: null,
-  monospace: false,
-  opacity: null,
-  border: false,
-  rounded: null,
-  shadow: null,
-  overflow: null,
-};
-
 /**
  * @typedef {import("../../utils/display/display").DisplayObject} DisplayObject
- */
-
-/**
  * @typedef {import("../../utils/flex/flex").FlexObject} FlexObject
- */
-
-/**
  * @typedef {import("../../utils/float/float").FloatObject} FloatObject
  */
 

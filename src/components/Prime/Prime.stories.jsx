@@ -17,7 +17,7 @@ export function Example() {
   return (
     <Prime
       bg={{ color: "primary", gradient: true }}
-      text={{ color: "light", transform: "uppercase", align: "center" }}
+      text={{ transform: "uppercase", align: "center", color: "light" }}
       fs={4}
       fw="bolder"
       monospace

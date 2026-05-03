@@ -92,7 +92,7 @@ const BREAKPOINTS_LIST = ["xs", "sm", "md", "lg", "xl", "xxl"];
  *
  * @returns {string}
  */
-export function flex(value) {
+export function flexResolver(value) {
   if (!value) return "";
 
   // String

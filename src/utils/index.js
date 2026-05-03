@@ -1,7 +1,7 @@
 export { bg } from "./bg";
 export { border } from "./border";
 export { displayResolver, displayPrintResolver } from "./display";
-export { flex } from "./flex";
+export { flexResolver } from "./flex";
 export { floatResolver } from "./float";
 export { font } from "./font";
 export { opacity } from "./opacity";

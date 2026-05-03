@@ -1,1 +1,1 @@
-export { flex } from "./flex";
+export { flexResolver } from "./flex";
