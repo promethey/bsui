@@ -397,6 +397,8 @@ const propTypes = {
  * @typedef {import("../../utils/display/display").DisplayObject} DisplayObject
  * @typedef {import("../../utils/flex/flex").FlexObject} FlexObject
  * @typedef {import("../../utils/float/float").FloatObject} FloatObject
+ * @typedef {import("../../utils/spacing/spacing").SpacingObject} SpacingObject
+ * @typedef {import("../../utils/spacing/spacing").SpacingValues} SpacingValues
  */
 
 /**
@@ -460,21 +462,21 @@ const propTypes = {
  *
  * @property {FloatObject|"start"|"end"|"none"} [props.float=null] - Controls float behavior.
  *
- * @property {Object|Array<number>|1|2|3|4|5|"auto"} [props.m=null] - Sets margins.
- * @property {Object|1|2|3|4|5|"auto"} [props.mt=null] - Sets top margin.
- * @property {Object|1|2|3|4|5|"auto"} [props.me=null] - Sets end (right) margin.
- * @property {Object|1|2|3|4|5|"auto"} [props.mb=null] - Sets bottom margin.
- * @property {Object|1|2|3|4|5|"auto"} [props.ms=null] - Sets start (left) margin.
- * @property {Object|1|2|3|4|5|"auto"} [props.mx=null] - Sets horizontal margin.
- * @property {Object|1|2|3|4|5|"auto"} [props.my=null] - Sets vertical margin.
+ * @property {SpacingObject|Array<SpacingValues>|1|2|3|4|5|"auto"} [props.m=null] - Sets margins.
+ * @property {SpacingObject|1|2|3|4|5|"auto"} [props.mt=null] - Sets top margin.
+ * @property {SpacingObject|1|2|3|4|5|"auto"} [props.me=null] - Sets end (right) margin.
+ * @property {SpacingObject|1|2|3|4|5|"auto"} [props.mb=null] - Sets bottom margin.
+ * @property {SpacingObject|1|2|3|4|5|"auto"} [props.ms=null] - Sets start (left) margin.
+ * @property {SpacingObject|1|2|3|4|5|"auto"} [props.mx=null] - Sets horizontal margin.
+ * @property {SpacingObject|1|2|3|4|5|"auto"} [props.my=null] - Sets vertical margin.
  *
- * @property {Object|Array<number>|1|2|3|4|5|"auto"} [props.p=null] - Sets paddings.
- * @property {Object|1|2|3|4|5|"auto"} [props.pt=null] - Sets top padding.
- * @property {Object|1|2|3|4|5|"auto"} [props.pe=null] - Sets end (right) padding.
- * @property {Object|1|2|3|4|5|"auto"} [props.pb=null] - Sets bottom padding.
- * @property {Object|1|2|3|4|5|"auto"} [props.ps=null] - Sets start (left) padding.
- * @property {Object|1|2|3|4|5|"auto"} [props.px=null] - Sets horizontal padding.
- * @property {Object|1|2|3|4|5|"auto"} [props.py=null] - Sets vertical padding.
+ * @property {SpacingObject|Array<SpacingValues>|1|2|3|4|5|"auto"} [props.p=null] - Sets paddings.
+ * @property {SpacingObject|1|2|3|4|5|"auto"} [props.pt=null] - Sets top padding.
+ * @property {SpacingObject|1|2|3|4|5|"auto"} [props.pe=null] - Sets end (right) padding.
+ * @property {SpacingObject|1|2|3|4|5|"auto"} [props.pb=null] - Sets bottom padding.
+ * @property {SpacingObject|1|2|3|4|5|"auto"} [props.ps=null] - Sets start (left) padding.
+ * @property {SpacingObject|1|2|3|4|5|"auto"} [props.px=null] - Sets horizontal padding.
+ * @property {SpacingObject|1|2|3|4|5|"auto"} [props.py=null] - Sets vertical padding.
  *
  * @property {Object|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [props.bg=null] - Sets background color and related options.
  *

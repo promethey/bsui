@@ -1,4 +1,4 @@
-import { prefix } from "helpers/prefix";
+import { prefix } from "helpers";
 
 const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
@@ -12,7 +12,7 @@ const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * classnames('align-items', { xs: 'center', md: 'start' }) // 'align-items-center align-items-md-start'
  *
  * @param {string} prfx - bootstrap prefix (for example 'btn')
- * @param {number|string|boolean|Object} value - values for prefix (for example 'primary')
+ * @param {number|string|boolean|Object} [value] - values for prefix (for example 'primary')
  * @param {Object} options - insert breakpoint in between
  *
  * @returns {string} classnames

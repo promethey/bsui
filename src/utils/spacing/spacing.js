@@ -1,6 +1,4 @@
-import { classnames as cs } from "helpers/classnames";
-import { is } from "helpers/is";
-import { equal } from "helpers/equal";
+import { classnames as cs, is, equal } from "helpers";
 
 // m, mt, me, mb, ms, mx, my
 // p, pt, pe, pb, ps, px, py
@@ -21,8 +19,22 @@ const SPACING_MAP = [
   "px",
   "py",
 ];
+
+/**
+ * @typedef {"m"|"mt"|"me"|"mb"|"ms"|"mx"|"my"|"p"|"pt"|"pe"|"pb"|"ps"|"px"|"py"} SpacingPropertySides
+ * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} SpacingBreakpoints
+ * @typedef {1|2|3|4|5|"auto"} SpacingValues
+ * @typedef {Partial<Record<SpacingBreakpoints, SpacingValues>>} SpacingObject
+ */
+
+/**
+ * @type {Array<SpacingValues>}
+ */
 const SPACING_VALUES = [1, 2, 3, 4, 5, "auto"];
 
+/**
+ * @type {Array<SpacingBreakpoints>}
+ */
 const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
 /**
@@ -37,10 +49,10 @@ const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * spacing("m", [2, 3, 4, 2]) // "mt-2 me-3 mb-3 ms-2"
  * spacing("m", [{ xs: 2, lg: 3 }, { xs: 3, lg: 3 }]) // "mx-2 mx-lg-3 my-3 my-lg-3"
  *
- * @param {string} prfx - Prefix for margin "m" or padding "p"
- * @param {number|Object} value - margin or padding values
+ * @param {string} prfx - prefix for margin "m" or padding "p"
+ * @param {SpacingObject|SpacingValues|Array<SpacingValues>} [value] - margin or padding values
  *
- * @returns {string} classnames
+ * @returns {string}
  */
 export function spacing(prfx, value) {
   if (is("number", prfx) || !SPACING_MAP.includes(prfx)) {
@@ -53,10 +65,8 @@ export function spacing(prfx, value) {
   }
 
   // Object
-  if (is("object", value, { notEmpty: true })) {
-    let result = [];
-
-    let filterValues = Object.entries(value).filter(
+  if (is("object", Object(value), { notEmpty: true })) {
+    let filterValues = Object.entries(Object(value)).filter(
       ([breakpoint, val]) =>
         BREAKPOINTS.includes(breakpoint) && SPACING_VALUES.includes(val),
     );
@@ -94,6 +104,10 @@ export function spacing(prfx, value) {
   return "";
 }
 
+/**
+ * @param {Object} props
+ * @returns {string}
+ */
 export function spacingResolver(props) {
   if (!is("object", props, { notEmpty: true })) {
     return "";

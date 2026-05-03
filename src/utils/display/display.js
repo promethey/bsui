@@ -5,9 +5,6 @@ const DISPLAY_PRINT_CLASS_NAME = "d-print";
 
 /**
  * @typedef {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} DisplayValues
- */
-
-/**
  * @type {Array<string>}
  */
 const DISPLAY_VALUES = [
@@ -26,9 +23,6 @@ const DISPLAY_VALUES = [
 
 /**
  * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} DisplayBreakpoints
- */
-
-/**
  * @type {Array<string>}
  */
 const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
@@ -88,7 +82,7 @@ export function displayResolver(value, prfx = DISPLAY_CLASS_NAME) {
  * @param {DisplayObject|string} [value]
  * @param {string} prfx - default 'd-print'
  *
- * @returns {string} classnames
+ * @returns {string}
  */
 export function displayPrintResolver(value, prfx = DISPLAY_PRINT_CLASS_NAME) {
   return displayResolver(value, prfx);
