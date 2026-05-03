@@ -2,7 +2,7 @@ import { classnames as cs, is } from "helpers";
 
 /**
  * @typedef {"color"|"gradient"|"opacity"} BackgroundProperties
- * 
+ *
  * @typedef {object} BackgroundObject
  * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [color] - Sets background color
  * @property {boolean} [gradient] - Sets background gradient
@@ -60,7 +60,12 @@ export function bgResolver(value) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {
-      if (key in BG_MAP && BG_VALUES_MAP[/** @type {BackgroundProperties} */ (key)].includes(/** @type {never} */ (val))) {
+      if (
+        key in BG_MAP &&
+        BG_VALUES_MAP[/** @type {BackgroundProperties} */ (key)].includes(
+          /** @type {never} */ (val),
+        )
+      ) {
         result.push(cs(BG_MAP[/** @type {BackgroundProperties} */ (key)], val));
       }
     }

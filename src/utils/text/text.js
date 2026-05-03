@@ -1,8 +1,30 @@
-import { classnames as cs } from "helpers/classnames";
-import { is } from "helpers/is";
+import { classnames as cs } from "helpers";
+
+/**
+ * @typedef {"color"|"align"|"wordBreak"|"transform"|"decoration"|"wrap"|"nowrap"|"select"} TextProperties
+ * @typedef {"xs"|"sm"|"md"|"lg"|"xl"} TextBreakpoints
+ * @typedef {"start"|"center"|"end"} TextAlignValues
+ *
+ * @typedef {object} TextAlignObject
+ * @property {TextAlignValues} [xs] - X-Small breakpoint
+ * @property {TextAlignValues} [sm] - Small breakpoint
+ * @property {TextAlignValues} [md] - Medium breakpoint
+ * @property {TextAlignValues} [lg] - Large breakpoint
+ * @property {TextAlignValues} [xl] - Extra large breakpoint
+ *
+ * @typedef {object} TextObject
+ * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset"} [color] - Sets text color
+ * @property {TextAlignObject|"start"|"center"|"end"} [align] - Sets text align
+ * @property {boolean} [wordBreak] - Sets word break
+ * @property {"lowercase"|"uppercase"|"capitalize"} [transform] - Sets text transform
+ * @property {"underline"|"line-through"|"none"} [decoration] - Sets text decoration
+ * @property {boolean} [wrap] - Sets text wrap
+ * @property {boolean} [nowrap] - Sets text wrap
+ * @property {"all"|"auto"|"none"} [select] - Sets text select
+ */
 
 const BASE_CLASS_NAME = "text";
-const TEXT_ALIGN_BREAKPOINT_LIST = ["xs", "sm", "md", "lg", "xl"];
+const TEXT_BREAKPOINTS = ["xs", "sm", "md", "lg", "xl"];
 
 const TEXT_MAP = {
   color: "text",
@@ -51,45 +73,57 @@ const TEXT_VALUES_MAP = {
  * text({ color: 'primary', align: 'start', linebreak: true, transform: 'lowercase', decoration: 'underline'  }) // 'text-primary text-start text-break text-lowercase text-decoration-underline'
  * text({ color: 'danger', brk: true }) // return 'text-danger', 'brk' was igrnored
  *
- * @param {string|Object|undefined} value - text utility value
+ * @param {TextObject|string} [value]
  *
- * @returns {string} classnames
- *
- * @todo
- * + refactor text({ align: { xs: "center" }}) -> text({ xs: { align: "center" }})
+ * @returns {string}
  */
 export function text(value) {
   if (!value) return "";
 
   // String
-  if (is("string", value, { notEmpty: true })) {
+  if (typeof value === "string" && value.length > 0) {
     if (TEXT_VALUES_MAP["color"].includes(value)) {
       return cs(BASE_CLASS_NAME, value);
     }
   }
 
   // Object
-  if (is("object", value, { notEmpty: true })) {
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {
       if (key in TEXT_MAP) {
         // String or Boolean
         if (
-          (is("string", val) || is("boolean", val)) &&
-          TEXT_VALUES_MAP[key].includes(val)
+          (typeof val === "string" || typeof val === "boolean") &&
+          TEXT_VALUES_MAP[/** @type {TextProperties} */ (key)].includes(
+            /** @type {never} */ (val),
+          )
         ) {
-          result.push(cs(TEXT_MAP[key], val));
+          result.push(cs(TEXT_MAP[/** @type {TextProperties} */ (key)], val));
         }
 
-        // Object
-        if (is("object", val, { notEmpty: true })) {
-          for (let [breakpoint, textVal] of Object.entries(val)) {
+        // Object (work only for align)
+        if (
+          typeof val === "object" &&
+          val &&
+          !Array.isArray(val) &&
+          Object.keys(val).length &&
+          key === "align"
+        ) {
+          for (let [breakpoint, alignValue] of Object.entries(val)) {
             if (
-              TEXT_ALIGN_BREAKPOINT_LIST.includes(breakpoint) &&
-              TEXT_VALUES_MAP[key].includes(textVal)
+              TEXT_BREAKPOINTS.includes(breakpoint) &&
+              TEXT_VALUES_MAP[/** @type {TextProperties} */ (key)].includes(
+                /** @type {never} */ (alignValue),
+              )
             ) {
-              result.push(cs(TEXT_MAP[breakpoint], { [breakpoint]: textVal }));
+              result.push(cs(breakpoint, { [breakpoint]: alignValue }));
             }
           }
         }

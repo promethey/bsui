@@ -403,6 +403,7 @@ const propTypes = {
  * @typedef {import("../../utils/spacing/spacing").SpacingArray} SpacingArray
  * @typedef {import("../../utils/spacing/spacing").SpacingValues} SpacingValues
  * @typedef {import("../../utils/bg/bg").BackgroundObject} BackgroundObject
+ * @typedef {import("../../utils/text/text").TextObject} TextObject
  */
 
 /**
@@ -488,7 +489,7 @@ const propTypes = {
  *
  * @property {BackgroundObject|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [bg] - Sets background color and related options.
  *
- * @property {Object|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset"} [text] - Controls test styles.
+ * @property {TextObject|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset"} [text] - Controls test styles.
  *
  * @property {1|2|3|4|5|6} [fs] - Sets font size.
  * @property {"bold"|"bolder"|"normal"|"light"|"lighter"} [fw] - Sets font weight.
