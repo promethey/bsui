@@ -1,4 +1,4 @@
-import { classnames as cs, is, equal } from "helpers";
+import { classnames as cs, is } from "helpers";
 
 // m, mt, me, mb, ms, mx, my
 // p, pt, pe, pb, ps, px, py

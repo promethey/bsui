@@ -2,10 +2,30 @@ import { classnames as cs, is } from "helpers";
 
 /**
  * @typedef {"dir"|"justify"|"align"|"alignSelf"|"fill"|"grow"|"shrink"|"wrap"|"nowrap"|"wrapReverse"|"order"|"alignContent"} FlexKey
+ * @typedef {"start"|"end"|"center"} FlexShortValues
+ * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} FlexBreakpoints
+ * 
+ * @typedef {object} FlexObject
+ * @property {"row"|"row-reverse"|"column"|"column-reverse"} [dir] - Sets flex direction
+ * @property {"start"|"end"|"center"|"between"|"around"|"evenly"} [justify] - Sets flex justify-content
+ * @property {"start"|"end"|"center"|"baseline"|"stretch"} [align] - Sets flex align-items
+ * @property {"start"|"end"|"center"|"baseline"|"stretch"} [alignSelf] - Sets flex align-self
+ * @property {boolean} [fill] - Sets flex fill
+ * @property {0|1} [grow] - Sets flex grow
+ * @property {0|1} [shrink] - Sets flex grow
+ * @property {boolean} [wrap] - Sets flex wrap
+ * @property {boolean} [nowrap] - Sets flex nowrap
+ * @property {boolean} [wrapReverse] - Sets flex wrapReverse
+ * @property {0|1|2|3|4|5|6|"first"|"last"} [order] - Sets flex order
+ * @property {"start"|"end"|"center"|"between"|"around"|"stretch"} [alignContent] - Sets flex align content
+ * 
+ * @typedef {Partial<Record<FlexBreakpoints, FlexObject>>} FlexBreakpointsObject
+ * 
+ * @typedef {Partial<Record<FlexBreakpoints, FlexShortValues>>} FlexBreakpointsShort
  */
 
 /**
- * @type {Object<FlexKey, any>}
+ * @type {Object<FlexKey, string>}
  */
 const FLEX_MAP = {
   dir: "flex",
@@ -58,24 +78,11 @@ const FLEX_OPTIONS_MAP = {
   alignContent: false,
 };
 
+/** @type {Array<FlexShortValues>} */
 const JUSTIFY_ALIGN_LIST = ["start", "end", "center"];
-const BREAKPOINTS_LIST = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
-/**
- * @typedef {object} FlexObject
- * @property {"row"|"row-reverse"|"column"|"column-reverse"} [dir] - Sets flex direction
- * @property {"start"|"end"|"center"|"between"|"around"|"evenly"} [justify] - Sets flex justify-content
- * @property {"start"|"end"|"center"|"baseline"|"stretch"} [align] - Sets flex align-items
- * @property {"start"|"end"|"center"|"baseline"|"stretch"} [alignSelf] - Sets flex align-self
- * @property {boolean} [fill] - Sets flex fill
- * @property {0|1} [grow] - Sets flex grow
- * @property {0|1} [shrink] - Sets flex grow
- * @property {boolean} [wrap] - Sets flex wrap
- * @property {boolean} [nowrap] - Sets flex nowrap
- * @property {boolean} [wrapReverse] - Sets flex wrapReverse
- * @property {0|1|2|3|4|5|6|"first"|"last"} [order] - Sets flex order
- * @property {"start"|"end"|"center"|"between"|"around"|"stretch"} [alignContent] - Sets flex align content
- */
+/** @type {Array<FlexBreakpoints>} */
+const BREAKPOINTS_LIST = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
 /**
  * Flex function
@@ -96,8 +103,8 @@ export function flexResolver(value) {
   if (!value) return "";
 
   // String
-  if (is("string", value, { notEmpty: true })) {
-    if (JUSTIFY_ALIGN_LIST.includes(String(value))) {
+  if (typeof value === "string" && value.length > 0) {
+    if (JUSTIFY_ALIGN_LIST.includes(value)) {
       return `${cs(FLEX_MAP.justify, value)} ${cs(FLEX_MAP.align, value)}`;
     }
   }

@@ -396,6 +396,8 @@ const propTypes = {
 /**
  * @typedef {import("../../utils/display/display").DisplayObject} DisplayObject
  * @typedef {import("../../utils/flex/flex").FlexObject} FlexObject
+ * @typedef {import("../../utils/flex/flex").FlexBreakpointsObject} FlexBreakpointsObject
+ * @typedef {import("../../utils/flex/flex").FlexBreakpointsShort} FlexBreakpointsShort
  * @typedef {import("../../utils/float/float").FloatObject} FloatObject
  * @typedef {import("../../utils/spacing/spacing").SpacingObject} SpacingObject
  * @typedef {import("../../utils/spacing/spacing").SpacingArray} SpacingArray
@@ -450,7 +452,7 @@ const propTypes = {
  * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [d] - Controls CSS display property.
  * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [dp] - Controls display property for print media.
  *
- * @property {FlexObject|"start"|"end"|"center"} [flex] - Controls flexbox behavior.
+ * @property {FlexObject|FlexBreakpointsObject|FlexBreakpointsShort|"start"|"end"|"center"} [flex] - Controls flexbox behavior.
  *
  * @property {"static"|"relative"|"absolute"|"fixed"|"sticky"} [pos] - Sets position type.
  * @property {0|50|100} [top] - Sets top offset.
