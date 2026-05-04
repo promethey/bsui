@@ -1,6 +1,16 @@
-import { classnames as cs } from "helpers/classnames";
-import { prefix } from "helpers/prefix";
-import { is } from "helpers/is";
+import { classnames as cs } from "helpers";
+
+/**
+ * @typedef {"color"|"width"|"top"|"end"|"bottom"|"start"} BorderProperties
+ *
+ * @typedef {object} BorderObject
+ * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"} [color] - Sets border color
+ * @property {1|2|3|4|5} [width] - Sets border width
+ * @property {true|0} [top] - Sets top border
+ * @property {true|0} [end] - Sets top border
+ * @property {true|0} [bottom] - Sets top border
+ * @property {true|0} [start] - Sets top border
+ */
 
 const BORDER_CLASS_NAME = "border";
 
@@ -55,12 +65,12 @@ export function border(value) {
   if (!value) return "";
 
   // Boolean
-  if (is("boolean", value, { notFalse: true })) {
+  if (typeof value === "boolean" && value) {
     return BORDER_CLASS_NAME;
   }
 
   // String
-  if (is("string", value, { notEmpty: true })) {
+  if (typeof value === "string" && value.length > 0) {
     if (value.trim() in BORDER_MAP) {
       return cs(BORDER_CLASS_NAME, value.trim());
     }
@@ -69,26 +79,36 @@ export function border(value) {
   }
 
   // Number
-  if (is("number", value)) {
+  if (typeof value === "number") {
     if (BORDER_VALUES_MAP["width"].includes(value)) {
-      return `${BORDER_CLASS_NAME} ${prefix(BORDER_MAP["width"], value)}`;
+      return `${BORDER_CLASS_NAME} ${cs(BORDER_MAP["width"], value)}`;
     }
 
     return "";
   }
 
   // Object
-  if (is("object", value, { notEmpty: true })) {
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     let result = [BORDER_CLASS_NAME];
 
     for (let [key, val] of Object.entries(value)) {
-      if (key in BORDER_MAP && BORDER_VALUES_MAP[key].includes(val)) {
+      if (
+        key in BORDER_MAP &&
+        BORDER_VALUES_MAP[/** @type {BorderProperties} */ (key)].includes(
+          /** @type {never} */ (val),
+        )
+      ) {
         // drop default 'border' class if top, end, bottom, start is true
         if (["top", "end", "bottom", "start"].includes(key) && val === true) {
           if (result.includes(BORDER_CLASS_NAME)) result.shift();
         }
 
-        result.push(cs(BORDER_MAP[key], val));
+        result.push(cs(BORDER_MAP[/** @type {BorderProperties} */ (key)], val));
       }
     }
 

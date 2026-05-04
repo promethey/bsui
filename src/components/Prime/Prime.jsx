@@ -404,6 +404,7 @@ const propTypes = {
  * @typedef {import("../../utils/spacing/spacing").SpacingValues} SpacingValues
  * @typedef {import("../../utils/bg/bg").BackgroundObject} BackgroundObject
  * @typedef {import("../../utils/text/text").TextObject} TextObject
+ * @typedef {import("../../utils/border/border").BorderObject} BorderObject
  */
 
 /**
@@ -499,10 +500,10 @@ const propTypes = {
  *
  * @property {25|50|75|100} [opacity] - Sets opacity level.
  *
- * @property {Object|"top"|"end"|"bottom"|"start"|1|2|3|4|5} [border] - Controls border styles.
+ * @property {BorderObject|"top"|"end"|"bottom"|"start"|1|2|3|4|5} [border] - Controls border styles.
  * @property {boolean|"top"|"end"|"bottom"|"start"|"circle"|"pill"|0|1|2|3} [rounded] - Controls border radius.
  *
- * @property {boolean|"none"|"sm"|"lg"} [shadow] - Applies shadow.
+ * @property {true|"none"|"sm"|"lg"} [shadow] - Applies shadow.
  *
  * @property {"auto"|"hidden"|"visible"|"scroll"} [overflow] - Controls overflow behavior.
  *

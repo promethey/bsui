@@ -33,16 +33,16 @@ export function Example() {
 export function PricingCard() {
   return (
     <Prime
+      shadow="lg"
       border={{ color: "primary" }}
       overflow="hidden"
       rounded={3}
       style={{ width: "300px" }}>
       <Prime
-        as="h3"
+        as="h4"
         py={3}
         bg="primary"
-        text={{ color: "light", align: "center" }}
-      >
+        text={{ color: "light", align: "center" }}>
         Enterprise
       </Prime>
       <Prime
@@ -51,14 +51,19 @@ export function PricingCard() {
         p={3}>
         <Prime d="flex" fs={1} lh={1}>
           <Prime fw="bolder">$29</Prime>
-          <Prime fw="light" text="muted">/mo</Prime>
+          <Prime fw="light" text="muted">
+            /mo
+          </Prime>
         </Prime>
         <Prime
           d="flex"
-          flex={{ dir: "row" }}
+          flex={{
+            xs: {
+              dir: "row",
+            },
+          }}
           py={4}
-          text={{ align: "center" }}
-        >
+          text={{ align: "center" }}>
           <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
             <li>30 users included</li>
             <li>15 GB of storage</li>
