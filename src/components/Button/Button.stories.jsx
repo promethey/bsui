@@ -39,7 +39,7 @@ export function All() {
 }
 
 export function BaseClass() {
-  return <Button theme={null}>Base class</Button>;
+  return <Button theme={undefined}>Base class</Button>;
 }
 BaseClass.storyName = "Base class";
 

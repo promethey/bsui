@@ -12,3 +12,4 @@ export { sizing } from "./sizing";
 export { spacing, spacingResolver } from "./spacing";
 export { text } from "./text";
 export { position } from "./position";
+export { themeResolver } from "./theme";

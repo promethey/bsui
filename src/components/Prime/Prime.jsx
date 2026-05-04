@@ -509,7 +509,7 @@ const propTypes = {
  *
  * @param {PrimeProps} props
  *
- * @return {JSX.Element}
+ * @return {React.ReactNode}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

@@ -1,11 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { classnames as cs } from "helpers/classnames";
-import Prime from "components/Prime";
-import { themeResolver } from "utils/theme";
-import { is } from "helpers/is";
-import { equal } from "helpers/equal";
+import { classnames as cs, is, equal } from "helpers";
+import { themeResolver } from "utils";
+import { Prime } from "components";
 
 const BUTTON_CLASS_NAME = "btn";
 
@@ -78,6 +76,8 @@ const defaultProps = {
  * Invalid props are ignored.
  * Always returns valid JSX.
  *
+ * @see {@link https://getbootstrap.com/docs/5.1/components/buttons/}
+ *
  * @example
  * <Button>Button</Button>
  * <Button theme="success">Button</Button>
@@ -85,11 +85,28 @@ const defaultProps = {
  * <Button.Primary>Primary</Button>
  * <Button.Outline>Outline</Button>
  *
- * @example
- * import {bs} from 'constants';
- * <Button theme={bs.theme.danger}>Button</Button>
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
- * @returns {JSX.Element} Button
+ * @typedef {object} ButtonOwnProps
+ * @property {"button"|"input"|"a"} [as] - HTML element type used for rendering.
+ * @property {Object} [style] - Inline styles applied to the root.
+ * @property {React.ReactNode} [children] - Content rendered inside the component.
+ * @property {Object|string} [className] - Additional classes applied to the root element.
+ *
+ * @property {string} [to] - Sets href
+ * @property {"button"|"submit"|"reset"} [type] - Sets type
+ * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link"} [theme] - Sets button theme
+ * @property {boolean} [outline] - Sets button outline theme
+ * @property {"sm"|"lg"} [size] - Sets button size
+ * @property {boolean} [disabled] - Sets button disabled state
+ * @property {boolean} [pressed] - Sets button pressed style
+ * @property {function} [onClick] - Event handler for click
+ *
+ * @typedef {ButtonOwnProps & PrimeProps} ButtonProps
+ *
+ * @param {ButtonProps} props
+ *
+ * @returns {React.ReactNode}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -107,7 +124,6 @@ function Button(props) {
     size,
     disabled,
     pressed,
-    stretchedLink,
     onClick,
     ...rest
   } = props;
@@ -125,9 +141,6 @@ function Button(props) {
         !equal(ComponentType, "button"),
       [cs(BUTTON_CLASS_NAME, size)]: is("string", size, { notEmpty: true }),
       active: is("boolean", pressed, { notFalse: true }),
-      [cs("stretched", "link")]:
-        is("boolean", stretchedLink, { notFalse: true }) &&
-        equal(ComponentType, "a"),
     },
     className,
   );
@@ -167,7 +180,9 @@ function Button(props) {
   }
 
   return (
-    <Prime as={ComponentType} {...propertyList[ComponentType]}>
+    <Prime
+      as={ComponentType}
+      {...propertyList[/** @type {"button"|"input"|"a"} */ (ComponentType)]}>
       {children}
     </Prime>
   );
