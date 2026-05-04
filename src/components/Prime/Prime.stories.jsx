@@ -30,6 +30,51 @@ export function Example() {
   );
 }
 
+export function PricingCard() {
+  return (
+    <Prime
+      border={{ color: "primary" }}
+      overflow="hidden"
+      rounded={3}
+      style={{ width: "300px" }}>
+      <Prime
+        as="h3"
+        py={3}
+        bg="primary"
+        text={{ color: "light", align: "center" }}
+      >
+        Enterprise
+      </Prime>
+      <Prime
+        d="flex"
+        flex={{ xs: { dir: "column", justify: "center", align: "center" } }}
+        p={3}>
+        <Prime d="flex" fs={1} lh={1}>
+          <Prime fw="bolder">$29</Prime>
+          <Prime fw="light" text="muted">/mo</Prime>
+        </Prime>
+        <Prime
+          d="flex"
+          flex={{ dir: "row" }}
+          py={4}
+          text={{ align: "center" }}
+        >
+          <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
+            <li>30 users included</li>
+            <li>15 GB of storage</li>
+            <li>Phone and email support</li>
+            <li>Help center access</li>
+          </ul>
+        </Prime>
+        <Button w={100} size="lg">
+          Contact us
+        </Button>
+      </Prime>
+    </Prime>
+  );
+}
+PricingCard.storyName = "Pricing card";
+
 export function Width() {
   /** @type {Array<25|50|75|100>} */
   const examples = [25, 50, 75, 100];
