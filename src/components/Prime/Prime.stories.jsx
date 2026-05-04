@@ -47,7 +47,13 @@ export function PricingCard() {
       </Prime>
       <Prime
         d="flex"
-        flex={{ xs: { dir: "column", justify: "center", align: "center" } }}
+        flex={{
+          xs: {
+            dir: "column",
+            justify: "center",
+            align: "center",
+          },
+        }}
         p={3}>
         <Prime d="flex" fs={1} lh={1}>
           <Prime fw="bolder">$29</Prime>
@@ -117,10 +123,7 @@ export function MaxWidth() {
 MaxWidth.storyName = "Max width";
 
 export function Height() {
-  /**
-   * @typedef {25|50|75|100} HeightValues
-   * @type {Array<HeightValues>}
-   */
+  /** @type {Array<25|50|75|100>} */
   const examples = [25, 50, 75, 100];
 
   return (
@@ -416,26 +419,33 @@ export function FlexWrapReverse() {
 FlexWrapReverse.storyName = "Flex wrap reverse";
 
 export function FlexOrder() {
+  /** @type {Array<0|1|2|3|4|5|6|"first"|"last">} */
+  const orders = [0, 1, 2, 3, 4, 5, 6, "first", "last"];
+
   return (
-    <Prime
-      d="flex"
-      bg={{ color: "secondary", opacity: 50 }}
-      style={{ width: "600px" }}>
-      {[
-        Array(3)
-          .keys()
-          .map((item) => (
-            <Prime
-              flex={{ xs: { order: 2 - item } }}
-              bg={{ color: "primary", opacity: 75 }}
-              text={{ color: "light", align: "center" }}
-              p={3}
-              m={1}>
-              Flex item {item}
-            </Prime>
-          )),
-      ]}
-    </Prime>
+    <>
+      {orders.map((order) => (
+        <Prime
+          d="flex"
+          bg={{ color: "secondary", opacity: 50 }}
+          style={{ width: "600px" }}>
+          {[
+            Array(3)
+              .keys()
+              .map((item) => (
+                <Prime
+                  flex={{ xs: { order: order } }}
+                  bg={{ color: "primary", opacity: 75 }}
+                  text={{ color: "light", align: "center" }}
+                  p={3}
+                  m={1}>
+                  Flex item {item}
+                </Prime>
+              )),
+          ]}
+        </Prime>
+      ))}
+    </>
   );
 }
 FlexOrder.storyName = "Flex order";
@@ -472,24 +482,40 @@ export function FlexAlignContent() {
 FlexAlignContent.storyName = "Flex align content";
 
 export function BackgroundColors() {
-  const examples = [
-    { bgColor: "primary", textColor: "white" },
-    { bgColor: "secondary", textColor: "white" },
-    { bgColor: "success", textColor: "white" },
-    { bgColor: "danger", textColor: "white" },
-    { bgColor: "warning", textColor: "dark" },
-    { bgColor: "info", textColor: "dark" },
-    { bgColor: "light", textColor: "dark" },
-    { bgColor: "dark", textColor: "white" },
-    { bgColor: "body", textColor: "dark" },
-    { bgColor: "white", textColor: "dark" },
-    { bgColor: "transparent", textColor: "dark" },
+  /** @type {Array<"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent">} */
+  const bgColors = [
+    "primary",
+    "secondary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+    "light",
+    "dark",
+    "body",
+    "white",
+    "transparent",
+  ];
+
+  /** @type {Array<"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset">} */
+  const textColors = [
+    "white",
+    "white",
+    "white",
+    "white",
+    "dark",
+    "dark",
+    "dark",
+    "white",
+    "dark",
+    "dark",
+    "dark",
   ];
 
   return (
     <>
-      {examples.map(({ bgColor, textColor }) => (
-        <Prime bg={bgColor} text={textColor} p={3} m={[0, 0, 2, 0]}>
+      {bgColors.map((bgColor, index) => (
+        <Prime bg={bgColor} text={textColors[index]} p={3} mb={2}>
           .bg-
           {bgColor}
         </Prime>
@@ -500,23 +526,42 @@ export function BackgroundColors() {
 BackgroundColors.storyName = "Background colors";
 
 export function BackgroundGradients() {
-  const examples = [
-    { bgColor: "primary", textColor: "white" },
-    { bgColor: "secondary", textColor: "white" },
-    { bgColor: "success", textColor: "white" },
-    { bgColor: "danger", textColor: "white" },
-    { bgColor: "warning", textColor: "dark" },
-    { bgColor: "info", textColor: "dark" },
-    { bgColor: "light", textColor: "dark" },
-    { bgColor: "dark", textColor: "white" },
+  /** @type {Array<"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent">} */
+  const bgColors = [
+    "primary",
+    "secondary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+    "light",
+    "dark",
+    "body",
+    "white",
+    "transparent",
+  ];
+
+  /** @type {Array<"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset">} */
+  const textColors = [
+    "white",
+    "white",
+    "white",
+    "white",
+    "dark",
+    "dark",
+    "dark",
+    "white",
+    "dark",
+    "dark",
+    "dark",
   ];
 
   return (
     <>
-      {examples.map(({ bgColor, textColor }) => (
+      {bgColors.map((bgColor, index) => (
         <Prime
           bg={{ color: bgColor, gradient: true }}
-          text={textColor}
+          text={textColors[index]}
           p={3}
           m={[0, 0, 2, 0]}>
           .bg-
@@ -530,19 +575,19 @@ export function BackgroundGradients() {
 BackgroundGradients.storyName = "Background gradients";
 
 export function BackgroundOpacity() {
-  /**
-   * @typedef {undefined|75|50|25|10} OpacityValues
-   * @type {Array<OpacityValues>}
-   */
+  /** @type {Array<undefined|75|50|25|10>} */
   const examples = [undefined, 75, 50, 25, 10];
+
+  /** @type {Array<"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset">} */
+  const textColors = ["white", "white", "dark", "dark", "dark"];
 
   return (
     <>
-      {examples.map((opacity) => (
+      {examples.map((opacity, index) => (
         <Prime
           p={2}
           bg={{ color: "primary", opacity }}
-          text={opacity >= 10 && opacity <= 50 ? "dark" : "white"}>
+          text={textColors[index]}>
           {opacity === undefined
             ? "This is default success background"
             : `This is ${opacity}% opacity success background`}
@@ -554,6 +599,7 @@ export function BackgroundOpacity() {
 BackgroundOpacity.storyName = "Background opacity";
 
 export function BorderAdditives() {
+  /** @type {Array<true|"top"|"end"|"bottom"|"start">} */
   const aspects = [true, "top", "end", "bottom", "start"];
 
   return (
@@ -572,25 +618,40 @@ export function BorderAdditives() {
 BorderAdditives.storyName = "Border additives";
 
 export function BorderSubtractive() {
-  const examples = [{ top: 0 }, { end: 0 }, { bottom: 0 }, { start: 0 }];
-
   return (
     <Prime d="flex">
-      {examples.map((border) => (
-        <Prime
-          m={[0, 3, 0, 0]}
-          bg="light"
-          border={{ color: "info", width: 2, ...border }}
-          style={{ width: "5rem", height: "5rem" }}
-        />
-      ))}
+      <Prime
+        me={3}
+        bg="light"
+        border={{ color: "info", width: 2, top: 0 }}
+        style={{ width: "5rem", height: "5rem" }}
+      />
+      <Prime
+        me={3}
+        bg="light"
+        border={{ color: "info", width: 2, end: 0 }}
+        style={{ width: "5rem", height: "5rem" }}
+      />
+      <Prime
+        me={3}
+        bg="light"
+        border={{ color: "info", width: 2, bottom: 0 }}
+        style={{ width: "5rem", height: "5rem" }}
+      />
+      <Prime
+        me={3}
+        bg="light"
+        border={{ color: "info", width: 2, start: 0 }}
+        style={{ width: "5rem", height: "5rem" }}
+      />
     </Prime>
   );
 }
 BorderSubtractive.storyName = "Border subtractive";
 
 export function BorderColors() {
-  const colors = [
+  /** @type {Array<"info"|"light"|"primary"|"secondary"|"success"|"danger"|"warning"|"dark"|"white">} */
+  const borderColors = [
     "primary",
     "secondary",
     "success",
@@ -604,11 +665,11 @@ export function BorderColors() {
 
   return (
     <Prime d="flex">
-      {colors.map((bColor) => (
+      {borderColors.map((borderColor) => (
         <Prime
           me={3}
           bg="light"
-          border={{ color: bColor }}
+          border={{ color: borderColor }}
           style={{ width: "5rem", height: "5rem" }}
         />
       ))}
@@ -618,15 +679,16 @@ export function BorderColors() {
 BorderColors.storyName = "Border colors";
 
 export function BorderWidth() {
-  const examples = [1, 2, 3, 4, 5];
+  /** @type {Array<1|2|3|4|5>} */
+  const borderWidth = [1, 2, 3, 4, 5];
 
   return (
     <Prime d="flex">
-      {examples.map((bWidth) => (
+      {borderWidth.map((width) => (
         <Prime
           me={3}
           bg="light"
-          border={{ width: bWidth }}
+          border={{ width: width }}
           style={{ width: "5rem", height: "5rem" }}
         />
       ))}
@@ -636,10 +698,7 @@ export function BorderWidth() {
 BorderWidth.storyName = "Border width";
 
 export function BorderRadius() {
-  /**
-   * @typedef {true|"top"|"end"|"bottom"|"start"|"circle"|"pill"} RoundedValues
-   * @type {Array<RoundedValues>}
-   */
+  /** @type {Array<true|"top"|"end"|"bottom"|"start"|"circle"|"pill">}*/
   const examples = [true, "top", "end", "bottom", "start", "circle", "pill"];
 
   return (
@@ -685,28 +744,47 @@ export function BorderSizes() {
 BorderSizes.storyName = "Border sizes";
 
 export function TextColors() {
-  const examples = [
-    { text: "primary", bg: null },
-    { text: "secondary", bg: null },
-    { text: "success", bg: null },
-    { text: "danger", bg: null },
-    { text: "warning", bg: "dark" },
-    { text: "info", bg: "dark" },
-    { text: "light", bg: "dark" },
-    { text: "dark", bg: null },
-    { text: "body", bg: null },
-    { text: "muted", bg: null },
-    { text: "white", bg: "dark" },
-    { text: "black-50", bg: null },
-    { text: "white-50", bg: "dark" },
+  /** @type {Array<undefined|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent">} */
+  const bgColors = [
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    "dark",
+    "dark",
+    "dark",
+    undefined,
+    undefined,
+    undefined,
+    "dark",
+    undefined,
+    "dark",
+  ];
+
+  /** @type {Array<"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset">} */
+  const textColors = [
+    "primary",
+    "secondary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+    "light",
+    "dark",
+    "body",
+    "muted",
+    "white",
+    "black-50",
+    "white-50",
+    "reset",
   ];
 
   return (
     <>
-      {examples.map(({ text, bg }) => (
-        <Prime text={text} bg={bg} mb={3}>
+      {textColors.map((color, index) => (
+        <Prime text={color} bg={bgColors[index]} mb={3}>
           .text-
-          {text}
+          {color}
         </Prime>
       ))}
     </>
@@ -803,6 +881,7 @@ export function TextSelections() {
 TextSelections.storyName = "Text selections";
 
 export function Opacity() {
+  /** @type {Array<100|75|50|25>} */
   const values = [100, 75, 50, 25];
 
   return (
@@ -860,44 +939,17 @@ export function Overflow() {
 }
 
 export function ArrangeElements() {
-  const examples = [
-    {
-      top: 0,
-      end: null,
-      bottom: null,
-      start: 0,
-    },
-    {
-      top: 0,
-      end: 0,
-      bottom: null,
-      start: null,
-    },
-    {
-      top: 50,
-      end: null,
-      bottom: null,
-      start: 50,
-    },
-    {
-      top: null,
-      end: 50,
-      bottom: 50,
-      start: null,
-    },
-    {
-      top: null,
-      end: null,
-      bottom: 0,
-      start: 0,
-    },
-    {
-      top: null,
-      end: 0,
-      bottom: 0,
-      start: null,
-    },
-  ];
+  /** @type {Array<0|50|undefined>} */
+  const tops = [0, 0, 50, undefined, undefined, undefined];
+
+  /** @type {Array<0|50|undefined>} */
+  const ends = [undefined, 0, undefined, 50, undefined, 0];
+
+  /** @type {Array<0|50|undefined>} */
+  const bottoms = [undefined, undefined, undefined, 50, 0, 0];
+
+  /** @type {Array<0|50|undefined>} */
+  const starts = [0, undefined, 50, undefined, 0, undefined];
 
   return (
     <Prime
@@ -906,14 +958,14 @@ export function ArrangeElements() {
       border
       rounded={3}
       style={{ height: "200px" }}>
-      {examples.map(({ top, end, bottom, start }) => (
+      {tops.map((top, index) => (
         <Prime
           style={{ width: "2rem", height: "2rem" }}
           pos="absolute"
           top={top}
-          end={end}
-          bottom={bottom}
-          start={start}
+          end={ends[index]}
+          bottom={bottoms[index]}
+          start={starts[index]}
           bg="dark"
           rounded={3}
         />
@@ -963,62 +1015,11 @@ export function PositionProgress() {
 PositionProgress.storyName = "Position progress";
 
 export function CenterElements() {
-  const examples = [
-    {
-      top: 0,
-      end: null,
-      bottom: null,
-      start: 0,
-    },
-    {
-      top: 0,
-      end: null,
-      bottom: null,
-      start: 50,
-    },
-    {
-      top: 0,
-      end: null,
-      bottom: null,
-      start: 100,
-    },
-    {
-      top: 50,
-      end: null,
-      bottom: null,
-      start: 0,
-    },
-    {
-      top: 50,
-      end: null,
-      bottom: null,
-      start: 50,
-    },
-    {
-      top: 50,
-      end: null,
-      bottom: null,
-      start: 100,
-    },
-    {
-      top: 100,
-      end: null,
-      bottom: null,
-      start: 0,
-    },
-    {
-      top: 100,
-      end: null,
-      bottom: null,
-      start: 50,
-    },
-    {
-      top: 100,
-      end: null,
-      bottom: null,
-      start: 100,
-    },
-  ];
+  /** @type {Array<0|50|100|undefined>} */
+  const tops = [0, 0, 0, 50, 50, 50, 100, 100, 100];
+
+  /** @type {Array<0|50|100|undefined>} */
+  const starts = [0, 50, 100, 0, 50, 100, 0, 50, 100];
 
   return (
     <Prime
@@ -1028,14 +1029,12 @@ export function CenterElements() {
       border
       rounded={3}
       style={{ height: "200px" }}>
-      {examples.map(({ top, end, bottom, start }) => (
+      {tops.map((top, index) => (
         <Prime
           style={{ width: "2rem", height: "2rem" }}
           pos="absolute"
           top={top}
-          end={end}
-          bottom={bottom}
-          start={start}
+          start={starts[index]}
           bg="dark"
           border
           rounded={3}
@@ -1046,139 +1045,3 @@ export function CenterElements() {
   );
 }
 CenterElements.storyName = "Center elements";
-
-export function CenterElements2() {
-  const examples = [
-    {
-      top: 0,
-      end: null,
-      bottom: null,
-      start: 0,
-      translateMiddle: false,
-      translateMiddleX: false,
-      translateMiddleY: false,
-    },
-    {
-      top: 0,
-      end: null,
-      bottom: null,
-      start: 50,
-      translateMiddle: false,
-      translateMiddleX: true,
-      translateMiddleY: false,
-    },
-    {
-      top: 0,
-      end: 0,
-      bottom: null,
-      start: null,
-      translateMiddle: false,
-      translateMiddleX: false,
-      translateMiddleY: false,
-    },
-    {
-      top: 50,
-      end: null,
-      bottom: null,
-      start: 0,
-      translateMiddle: false,
-      translateMiddleX: false,
-      translateMiddleY: true,
-    },
-    {
-      top: 50,
-      end: null,
-      bottom: null,
-      start: 50,
-      translateMiddle: true,
-      translateMiddleX: false,
-      translateMiddleY: false,
-    },
-    {
-      top: 50,
-      end: 0,
-      bottom: null,
-      start: null,
-      translateMiddle: false,
-      translateMiddleX: false,
-      translateMiddleY: true,
-    },
-    {
-      top: null,
-      end: null,
-      bottom: 0,
-      start: 0,
-      translateMiddle: false,
-      translateMiddleX: false,
-      translateMiddleY: false,
-    },
-    {
-      top: null,
-      end: null,
-      bottom: 0,
-      start: 50,
-      translateMiddle: false,
-      translateMiddleX: true,
-      translateMiddleY: false,
-    },
-    {
-      top: null,
-      end: 0,
-      bottom: 0,
-      start: null,
-      translateMiddle: false,
-      translateMiddleX: false,
-      translateMiddleY: false,
-    },
-  ];
-
-  return (
-    <Prime
-      pos="relative"
-      bg="light"
-      border
-      rounded={3}
-      style={{ height: "200px" }}>
-      {examples.map(
-        ({
-          top,
-          end,
-          bottom,
-          start,
-          translateMiddle,
-          translateMiddleX,
-          translateMiddleY,
-        }) => (
-          <Prime
-            style={{ width: "2rem", height: "2rem" }}
-            pos="absolute"
-            top={top}
-            end={end}
-            bottom={bottom}
-            start={start}
-            bg="dark"
-            border
-            rounded={3}
-            translateMiddle={translateMiddle}
-            translateMiddleX={translateMiddleX}
-            translateMiddleY={translateMiddleY}
-          />
-        ),
-      )}
-    </Prime>
-  );
-}
-CenterElements2.storyName = "Center elements 2";
-
-export function ClearFix() {
-  return (
-    <Prime bg="light" p={3} clearfix>
-      <Button theme="secondary" float="start">
-        Example Button floated left
-      </Button>
-      <Button theme="secondary" float="end">
-        Example Button floated right
-      </Button>
-    </Prime>
-  );
-}

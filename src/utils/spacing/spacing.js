@@ -3,7 +3,7 @@ import { classnames as cs, is } from "helpers";
 /**
  * @typedef {"m"|"mt"|"me"|"mb"|"ms"|"mx"|"my"|"p"|"pt"|"pe"|"pb"|"ps"|"px"|"py"} SpacingPropertySides
  * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} SpacingBreakpoints
- * @typedef {1|2|3|4|5|"auto"} SpacingValues
+ * @typedef {0|1|2|3|4|5|"auto"} SpacingValues
  * @typedef {[SpacingValues, SpacingValues]|[SpacingValues, SpacingValues, SpacingValues, SpacingValues]} SpacingArray
  * @typedef {Partial<Record<SpacingBreakpoints, SpacingValues>>} SpacingObject
  */
@@ -31,7 +31,7 @@ const SPACING_MAP = [
 /**
  * @type {Array<SpacingValues>}
  */
-const SPACING_VALUES = [1, 2, 3, 4, 5, "auto"];
+const SPACING_VALUES = [0, 1, 2, 3, 4, 5, "auto"];
 
 /**
  * @type {Array<SpacingBreakpoints>}

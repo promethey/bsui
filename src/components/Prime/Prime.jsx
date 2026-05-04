@@ -500,7 +500,7 @@ const propTypes = {
  *
  * @property {25|50|75|100} [opacity] - Sets opacity level.
  *
- * @property {BorderObject|"top"|"end"|"bottom"|"start"|1|2|3|4|5} [border] - Controls border styles.
+ * @property {BorderObject|true|"top"|"end"|"bottom"|"start"|1|2|3|4|5} [border] - Controls border styles.
  * @property {boolean|"top"|"end"|"bottom"|"start"|"circle"|"pill"|0|1|2|3} [rounded] - Controls border radius.
  *
  * @property {true|"none"|"sm"|"lg"} [shadow] - Applies shadow.
