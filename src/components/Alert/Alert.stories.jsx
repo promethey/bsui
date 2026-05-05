@@ -1,6 +1,7 @@
+// @ts-nocheck
 import { useState } from "react";
-import { Alert, Button, Text, Prime } from "components";
-import { capitalize } from "helpers/capitalize";
+import { Alert, Button, Prime } from "components";
+import { capitalize } from "helpers";
 
 export default {
   title: "Components/Alert",
