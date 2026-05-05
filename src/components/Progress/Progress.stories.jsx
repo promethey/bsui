@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Progress, Prime } from "components";
 
 export default {

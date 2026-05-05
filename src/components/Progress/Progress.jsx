@@ -4,6 +4,8 @@ import { Prime } from "components";
 import React from "react";
 import ProgressBar from "./ProgressBar";
 
+const BASE_CLASS_NAME = "progress";
+
 const propTypes = {
   /**
    * Inline styles applied to the root
@@ -50,8 +52,6 @@ const defaultProps = {
  */
 function Progress(props) {
   const { style, children, className, ...rest } = props;
-
-  const BASE_CLASS_NAME = "progress";
 
   const classes = cn(BASE_CLASS_NAME, className);
 

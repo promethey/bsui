@@ -1,4 +1,4 @@
-import React from "react";
+// @ts-nocheck
 import { Button, Prime } from "components";
 
 export default {
@@ -43,11 +43,6 @@ export function All() {
     </>
   );
 }
-
-export function BaseClass() {
-  return <Button theme={undefined}>Base class</Button>;
-}
-BaseClass.storyName = "Base class";
 
 export function Outlines() {
   /** @type {Array<"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link">} */

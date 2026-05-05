@@ -3,6 +3,8 @@ import cn from "classnames";
 import { classnames as cs } from "helpers";
 import { Prime } from "components";
 
+const BASE_CLASS_NAME = "progress-bar";
+
 const propTypes = {
   /**
    * Inline styles applied to the root
@@ -108,8 +110,6 @@ function ProgressBar(props) {
     animated,
     ...rest
   } = props;
-
-  const BASE_CLASS_NAME = "progress-bar";
 
   const classes = cn(
     BASE_CLASS_NAME,

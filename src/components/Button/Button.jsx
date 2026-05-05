@@ -59,6 +59,7 @@ const defaultProps = {
   as: "button",
   style: null,
   className: null,
+  children: null,
   to: null,
   type: "button",
   theme: "primary",
@@ -96,7 +97,7 @@ const defaultProps = {
  * @property {"sm"|"lg"} [size] - Sets button size
  * @property {boolean} [disabled] - Sets button disabled state
  * @property {boolean} [pressed] - Sets button pressed style
- * @property {function} [onClick] - Event handler for click
+ * @property {() => void} [onClick] - Event handler for click
  *
  * @typedef {ButtonOwnProps & PrimeProps} ButtonProps
  *
@@ -148,6 +149,13 @@ function Button(props) {
     ...rest,
   };
 
+  /**
+   * @type {{
+   *  button: React.ButtonHTMLAttributes<HTMLButtonElement>,
+   *  a: React.AnchorHTMLAttributes<HTMLAnchorElement>,
+   *  input: React.InputHTMLAttributes<HTMLInputElement>
+   * }}
+   */
   const propertyList = {
     button: {
       ...baseProperties,
@@ -162,7 +170,7 @@ function Button(props) {
     input: {
       ...baseProperties,
       type,
-      value: is("string", children, { notEmpty: true }) ? children : undefined,
+      value: typeof children === "string" ? children : undefined,
     },
   };
 
