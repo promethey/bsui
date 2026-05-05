@@ -21,21 +21,27 @@ function DefaultTemplate(args) {
 }
 
 export function All() {
-  return [
-    "Primary",
-    "Secondary",
-    "Success",
-    "Danger",
-    "Warning",
-    "Info",
-    "Light",
-    "Dark",
-    "Link",
-  ].map((theme) => (
-    <Button key={theme} me={2} theme={theme.toLowerCase()}>
-      {theme}
-    </Button>
-  ));
+  /** @type {Array<"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link">} */
+  const themes = [
+    "primary",
+    "secondary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+    "light",
+    "dark",
+  ];
+
+  return (
+    <>
+      {themes.map((theme) => (
+        <Button key={theme} me={2} theme={theme}>
+          {theme}
+        </Button>
+      ))}
+    </>
+  );
 }
 
 export function BaseClass() {
@@ -44,25 +50,32 @@ export function BaseClass() {
 BaseClass.storyName = "Base class";
 
 export function Outlines() {
-  return [
-    "Primary",
-    "Secondary",
-    "Success",
-    "Danger",
-    "Warning",
-    "Info",
-    "Light",
-    "Dark",
-  ].map((theme) => (
-    <Button key={theme} me={2} theme={theme.toLowerCase()} outline>
-      {theme}
-    </Button>
-  ));
+  /** @type {Array<"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link">} */
+  const themes = [
+    "primary",
+    "secondary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+    "light",
+    "dark",
+  ];
+
+  return (
+    <>
+      {themes.map((theme) => (
+        <Button key={theme} me={2} theme={theme} outline>
+          {theme}
+        </Button>
+      ))}
+    </>
+  );
 }
 
 export function Width() {
   return (
-    <Prime flex={{ dir: "column" }} p={2} bg="light" border>
+    <Prime flex={{ xs: { dir: "column" } }} p={2} bg="light" border>
       <Button w={25} mw={100} mb={2}>
         Width 25%
       </Button>
@@ -83,15 +96,6 @@ export function Width() {
   );
 }
 
-export function StretchedLink() {
-  return (
-    <Button as="a" stretched>
-      Stretched link
-    </Button>
-  );
-}
-StretchedLink.storyName = "Stretched link";
-
 export function Opacity() {
   return (
     <>
@@ -110,19 +114,19 @@ export function Opacity() {
 }
 
 export function Tags() {
-  const examples = [
-    { as: "a", type: null, label: "Link" },
-    { as: "button", type: "submit", label: "Button" },
-    { as: "input", type: "button", label: "Input" },
-    { as: "input", type: "submit", label: "Submit" },
-    { as: "input", type: "reset", label: "Reset" },
-  ];
+  /** @type {Array<"a"|"button"|"input">} */
+  const types = ["a", "button", "input", "input", "input"];
+
+  /** @type {Array<"submit"|"button"|"reset"|undefined>} */
+  const buttonTypes = [undefined, "submit", "button", "submit", "reset"];
+
+  const lables = ["Link", "Button", "Input", "Submit", "Reset"];
 
   return (
     <>
-      {examples.map(({ as, type, label }) => (
-        <Button key={label} as={as} type={type} me={2}>
-          {label}
+      {types.map((type, index) => (
+        <Button key={index} as={type} type={buttonTypes[index]} me={2}>
+          {lables[index]}
         </Button>
       ))}
     </>

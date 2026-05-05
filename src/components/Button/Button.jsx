@@ -52,7 +52,6 @@ const propTypes = {
   size: PropTypes.oneOf(["sm", "lg"]),
   disabled: PropTypes.bool,
   pressed: PropTypes.bool,
-  stretchedLink: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
@@ -67,7 +66,6 @@ const defaultProps = {
   size: null,
   disabled: false,
   pressed: false,
-  stretchedLink: false,
   onClick: null,
 };
 
@@ -82,8 +80,6 @@ const defaultProps = {
  * <Button>Button</Button>
  * <Button theme="success">Button</Button>
  * <Button theme="danger">Button</Button>
- * <Button.Primary>Primary</Button>
- * <Button.Outline>Outline</Button>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
