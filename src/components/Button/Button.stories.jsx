@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { Button, Prime } from "components";
+import { capitalize } from "helpers";
 
 export default {
   title: "Components/Button",
@@ -37,7 +38,7 @@ export function All() {
     <>
       {themes.map((theme) => (
         <Button key={theme} me={2} theme={theme}>
-          {theme}
+          {capitalize(theme)}
         </Button>
       ))}
     </>
@@ -61,7 +62,7 @@ export function Outlines() {
     <>
       {themes.map((theme) => (
         <Button key={theme} me={2} theme={theme} outline>
-          {theme}
+          {capitalize(theme)}
         </Button>
       ))}
     </>
@@ -120,8 +121,13 @@ export function Tags() {
   return (
     <>
       {types.map((type, index) => (
-        <Button key={index} as={type} type={buttonTypes[index]} me={2}>
-          {lables[index]}
+        <Button
+          key={index}
+          as={type}
+          value={type === "input" ? lables[index] : undefined}
+          type={buttonTypes[index]}
+          me={2}>
+          {type === "input" ? null : lables[index]}
         </Button>
       ))}
     </>
@@ -224,7 +230,7 @@ DisabledInput.args = {
   as: "input",
   theme: "primary",
   disabled: true,
-  children: "Disabled",
+  value: "Disabled",
 };
 DisabledInput.storyName = "Disabled input";
 

@@ -27,9 +27,24 @@ const BUTTON_THEMES = [
 ];
 
 const propTypes = {
+  /**
+   * HTML element type used for rendering
+   */
   as: PropTypes.oneOf(["button", "a", "input"]),
+
+  /**
+   * Inline styles applied to the root
+   */
   style: PropTypes.shape({}),
+
+  /**
+   * Content rendered inside the component
+   */
   children: PropTypes.node.isRequired,
+
+  /**
+   * Additional classes applied to the root element
+   */
   className: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.arrayOf(PropTypes.string),
@@ -49,6 +64,7 @@ const propTypes = {
     "link",
   ]),
   outline: PropTypes.bool,
+  value: PropTypes.string,
   size: PropTypes.oneOf(["sm", "lg"]),
   disabled: PropTypes.bool,
   pressed: PropTypes.bool,
@@ -64,6 +80,7 @@ const defaultProps = {
   type: "button",
   theme: "primary",
   outline: false,
+  value: null,
   size: null,
   disabled: false,
   pressed: false,
@@ -94,6 +111,7 @@ const defaultProps = {
  * @property {"button"|"submit"|"reset"} [type] - Sets type
  * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link"} [theme] - Sets button theme
  * @property {boolean} [outline] - Sets button outline theme
+ * @property {string} [value] - Sets input value string
  * @property {"sm"|"lg"} [size] - Sets button size
  * @property {boolean} [disabled] - Sets button disabled state
  * @property {boolean} [pressed] - Sets button pressed style
@@ -118,6 +136,7 @@ function Button(props) {
     type,
     theme = "primary",
     outline,
+    value,
     size,
     disabled,
     pressed,
@@ -170,7 +189,7 @@ function Button(props) {
     input: {
       ...baseProperties,
       type,
-      value: typeof children === "string" ? children : undefined,
+      value: value,
     },
   };
 
