@@ -1,5 +1,4 @@
-import { is } from "helpers/is";
-import { classnames as cs } from "helpers/classnames";
+import { classnames as cs, is } from "helpers";
 
 /**
  * Function for generate theme
@@ -10,7 +9,7 @@ import { classnames as cs } from "helpers/classnames";
  *
  * @param {string} prfx - prefix (example "btn" or "alert")
  * @param {string} currentTheme - (example "primary")
- * @param {array} themeList - (example ["primary", "secondary"...])
+ * @param {Array<string>} themeList - (example ["primary", "secondary"...])
  */
 export function themeResolver(prfx, currentTheme, themeList) {
   if (!is("string", prfx, { notEmpty: true })) {

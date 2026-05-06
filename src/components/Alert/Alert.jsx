@@ -1,13 +1,11 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { classnames as cs } from "helpers/classnames";
-import Prime from "components/Prime";
-import CloseButton from "components/CloseButton";
+import { classnames as cs, is } from "helpers";
+import { Prime, CloseButton } from "components";
 import AlertLink from "./AlertLink";
 import AlertHeading from "./AlertHeading";
-import { themeResolver } from "utils/theme";
-import { is } from "helpers/is";
+import { themeResolver } from "utils";
 
 const ALERT_CLASS_NAME = "alert";
 
@@ -23,13 +21,28 @@ const ALERT_THEMES = [
 ];
 
 const propTypes = {
+  /**
+   * Content rendered inside the component
+   */
   children: PropTypes.node.isRequired,
+
+  /**
+   * Inline styles applied to the root
+   */
   style: PropTypes.shape({}),
+
+  /**
+   * Additional classes applied to the root element
+   */
   className: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.string,
   ]),
+
+  /**
+   * Sets visual style
+   */
   theme: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -40,8 +53,20 @@ const propTypes = {
     "light",
     "dark",
   ]),
+
+  /**
+   * Enable dismiss (close) button
+   */
   dismissible: PropTypes.bool,
+
+  /**
+   * Enable animations
+   */
   animated: PropTypes.bool,
+
+  /**
+   * Fired on dismiss action
+   */
   onClose: PropTypes.func,
 };
 
@@ -69,17 +94,23 @@ const defaultProps = {
  *  Secondary with Prime API
  * </Alert>
  *
- * @param {Object} props
- * @param {Object} [props.style=null] Inline styles applied to the root element
- * @param {React.ReactNode} [props.children=null] Content rendred inside the component
- * @param {Object|string} [props.className=null] Additional classes applied to the root element
- * @param {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"} [props.theme="primary"] Change color scheme
- * @param {boolean} [props.dismissible=false] Add close button
- * @param {boolean} [props.animated=false] Add animation styles
- * @param {() => void} [props.onClose=null] Add function when close
- * @param {...any} [props.rest] Add somehting else (for example: aria attributes)
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
- * @returns {JSX.Element}
+ * @typedef {object} AlertOwnProps
+ * @property {object} [style] - Inline styles applied to the root element
+ * @property {React.ReactNode} [children] - Content rendred inside the component
+ * @property {object|string} [className] - Additional classes applied to the root element
+ *
+ * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"} [theme] - Sets visual style
+ * @property {boolean} [dismissible] - Enable dismiss (close) button
+ * @property {boolean} [animated] - Enable animations
+ * @property {() => void} [onClose] - Fired on dismiss action
+ *
+ * @typedef {AlertOwnProps & PrimeProps} AlertProps
+ *
+ * @param {AlertProps} props
+ *
+ * @returns {React.ReactNode}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -89,7 +120,7 @@ function Alert(props) {
     style,
     children,
     className,
-    theme,
+    theme = "primary",
     dismissible,
     animated,
     onClose,

@@ -30,6 +30,11 @@ const propTypes = {
   role: PropTypes.string,
 
   /**
+   * HTML href
+   */
+  href: PropTypes.string,
+
+  /**
    * Inline styles applied to the root
    */
   style: PropTypes.shape({}),
@@ -453,6 +458,7 @@ const propTypes = {
  * @typedef {Object} PrimeProps
  * @property {React.ElementType} [as="div"] - HTML element type used for rendering.
  * @property {string} [role] - HTML role.
+ * @property {string} [href] - HTML href.
  * @property {Object} [style] - Inline styles applied to the root.
  * @property {React.ReactNode} [children] - Content rendered inside the component.
  * @property {Object|string} [className] - Additional classes applied to the root element.
@@ -526,6 +532,7 @@ const Prime = React.forwardRef((props, ref) => {
   const {
     as: ComponentType = "div",
     role,
+    href,
     style,
     children,
     className,
@@ -623,6 +630,7 @@ const Prime = React.forwardRef((props, ref) => {
     <ComponentType
       ref={ref}
       role={role}
+      href={href}
       style={style}
       className={classes ? classes : null}
       {...rest}>

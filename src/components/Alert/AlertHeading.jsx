@@ -1,14 +1,28 @@
-import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import Prime from "components/Prime";
+import { Prime } from "components";
 
 const ALERT_HEADING_CLASS_NAME = "alert-heading";
 
 const propTypes = {
+  /**
+   * HTML element type used for rendering
+   */
   as: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"]),
-  children: PropTypes.node.isRequired,
+
+  /**
+   * Inline styles applied to the root
+   */
   style: PropTypes.shape({}),
+
+  /**
+   * Content rendered inside the component
+   */
+  children: PropTypes.node.isRequired,
+
+  /**
+   * Additional classes applied to the root element
+   */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
@@ -30,13 +44,19 @@ const defaultProps = {
  * @example
  * <AlertHeading as="h1">Title H1</AlertHeading>
  *
- * @param {Object} props
- * @param {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [props.as="h4"]
- * @param {Object} [props.style=null]
- * @param {ReactNode} [props.children=null]
- * @param {Object|string} [props.className]
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
- * @returns {JSX.Element}
+ * @typedef {Object} AlertHeadingOwnProps
+ * @property {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [as] - HTML element type used for rendering
+ * @property {Object} [style] - Inline styles applied to the root
+ * @property {React.ReactNode} [children] - Content rendered inside the component
+ * @property {Object|string} [className] - Additional classes applied to the root element
+ *
+ * @typedef {AlertHeadingOwnProps & PrimeProps} AlertHeadingProps
+ *
+ * @param {AlertHeadingProps} props
+ *
+ * @returns {React.ReactNode}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

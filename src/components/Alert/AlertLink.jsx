@@ -1,14 +1,28 @@
-import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import Prime from "components/Prime";
+import { Prime } from "components";
 
 const ALERT_LINK_CLASS_NAME = "alert-link";
 
 const propTypes = {
+  /**
+   * Content rendered inside the component
+   */
   children: PropTypes.node.isRequired,
+
+  /**
+   * Inline styles applied to the root
+   */
   style: PropTypes.shape({}),
+
+  /**
+   * Additional classes applied to the root element
+   */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+
+  /**
+   * Sets navigation target (alias for href)
+   */
   to: PropTypes.string,
 };
 
@@ -27,13 +41,19 @@ const defaultProps = {
  * @example
  * <AlertLink to="/home">Home</AlertLink>
  *
- * @param {Object} props
- * @param {Object} [props.style=null]
- * @param {ReactNode} [props.children]
- * @param {Object|string} [props.className]
- * @param {string} [props.to=#] Alias for link href
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
- * @returns {JSX.Element}
+ * @typedef {object} AlertLinkOwnProps
+ * @property {Object} [style] - Inline styles applied to the root
+ * @property {React.ReactNode} [children] - Content rendered inside the component
+ * @property {Object|string} [className] - Additional classes applied to the root element
+ * @property {string} [to] - Sets navigation target (alias for href)
+ *
+ * @typedef {AlertLinkOwnProps & PrimeProps} AlertLinkProps
+ *
+ * @param {AlertLinkProps} props
+ *
+ * @returns {React.ReactElement}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
