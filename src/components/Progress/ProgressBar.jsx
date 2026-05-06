@@ -71,7 +71,8 @@ const defaultProps = {
  * Progress bar component
  * @component
  *
- * @see {@link https://getbootstrap.com/docs/5.1/components/progress/}
+ * @see {Prime}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/progress/|Official Documentation}
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *

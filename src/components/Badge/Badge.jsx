@@ -1,13 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import Prime from "components/Prime";
+import { Prime } from "components";
 
 const BASE_CLASS_NAME = "badge";
 
 const propTypes = {
+  /**
+   * Inline styles applied to the root
+   */
   style: PropTypes.shape({}),
+
+  /**
+   * Content rendered inside the component
+   */
   children: PropTypes.node.isRequired,
+
+  /**
+   * Additional classes applied to the root element
+   */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
@@ -18,16 +29,23 @@ const defaultProps = {
 
 /**
  * Badge component
+ * @component
  *
  * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/badge/|Official Documentation}
  *
- * @param {Object} props
- * @param {Object} [props.style=null] Inline styles applied to the root element
- * @param {React.ReactNode} props.children Content rendred inside the component
- * @param {Object|string} [props.className=null] Additional classes applied to the root element
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
- * @returns {JSX.Element}
+ * @typedef {object} BadgeOwnProps
+ * @property {Object} [style] - Inline styles applied to the root.
+ * @property {React.ReactNode} [children] - Content rendered inside the component.
+ * @property {Object|string} [className] - Additional classes applied to the root element.
+ *
+ * @typedef {BadgeOwnProps & PrimeProps} BadgeProps
+ *
+ * @param {BadgeProps} props
+ *
+ * @returns {React.ReactNode}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
