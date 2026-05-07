@@ -22,14 +22,14 @@ const ALERT_THEMES = [
 
 const propTypes = {
   /**
-   * Content rendered inside the component
-   */
-  children: PropTypes.node.isRequired,
-
-  /**
    * Inline styles applied to the root
    */
   style: PropTypes.shape({}),
+
+  /**
+   * Content rendered inside the component
+   */
+  children: PropTypes.node.isRequired,
 
   /**
    * Additional classes applied to the root element
