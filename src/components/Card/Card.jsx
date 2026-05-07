@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
-// import CardGroup from "./CardGroup";
+import CardGroup from "./CardGroup";
 import CardHeader from "./CardHeader";
 import CardImg from "./CardImg";
 import CardBody from "./CardBody";
@@ -77,7 +77,7 @@ function Card(props) {
 Card.propTypes = propTypes;
 Card.defaultProps = defaultProps;
 
-// Card.Group = CardGroup;
+Card.Group = CardGroup;
 Card.Header = CardHeader;
 Card.Img = CardImg;
 Card.Body = CardBody;

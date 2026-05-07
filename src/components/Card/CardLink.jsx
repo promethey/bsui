@@ -51,7 +51,7 @@ const defaultProps = {
  * @version 1.0.0
  */
 function CardLink(props) {
-  const { style, children, className, to, ...rest } = props;
+  const { style, children, className, to = "#", ...rest } = props;
 
   const classes = cn(BASE_CLASS_NAME, className);
 
