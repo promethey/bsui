@@ -9,13 +9,12 @@ export default {
   subcomponents: {
     "Alert.Heading": Alert.Heading,
     "Alert.Link": Alert.Link,
+    Prime,
   },
   parameters: {
     docs: {
       description: {
-        component: `Provide contextual feedback messages for
-        typical user actions with the handful of
-        available and flexible alert messages.`,
+        component: `Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.`,
       },
     },
   },
@@ -53,33 +52,16 @@ export function Themes() {
 }
 Themes.storyName = "Themes";
 
-export const PrimeAPI = Template.bind({});
-PrimeAPI.args = {
-  children: "Prime API for Alert",
-  m: [2, 3, 4, 1],
-  p: 4,
-  rounded: "pill",
-  bg: { color: "primary", gradient: true, opacity: 50 },
-  text: {
-    color: "dark",
-    align: "start",
-    break: true,
-    transform: "uppercase",
-  },
-  fw: "bolder",
-};
-PrimeAPI.storyName = "Prime API";
-
-export function AlertHeadings() {
+export function Headings() {
   return (
     <Alert theme="secondary">
-      <Alert.Heading as={Alert.Heading.Types.H1}>H1</Alert.Heading>
-      <Alert.Heading.H2>H2</Alert.Heading.H2>
-      <Alert.Heading.H3>H3</Alert.Heading.H3>
+      <Alert.Heading as="h1">H1</Alert.Heading>
+      <Alert.Heading as="h2">H2</Alert.Heading>
+      <Alert.Heading as="h3">H3</Alert.Heading>
     </Alert>
   );
 }
-AlertHeadings.storyName = "Headings";
+Headings.storyName = "Headings";
 
 export function LiveExample() {
   const [show, setShow] = useState(false);
@@ -150,46 +132,40 @@ Dark.args = {
   children: "A simple dark alert—check it out!",
 };
 
-export const LinkColor = Template.bind({});
-LinkColor.args = {
-  theme: "primary",
-  children: [
-    "A simple primary alert with",
-    " ",
-    <Alert.Link to="https://www.getbootstrap.com">an example link</Alert.Link>,
-    ". ",
-    "Give it a click if you like.",
-  ],
-};
+export function LinkColor() {
+  return (
+    <Alert>
+      A simple primary alert with{" "}
+      <Alert.Link to="https://www.getbootstrap.com">an example link</Alert.Link>{" "}
+      Give it a click if you like.
+    </Alert>
+  );
+}
 LinkColor.storyName = "Link color";
 
 export function Icons() {
+  const icons = [
+    "info-circle-fill",
+    "check-circle-fill",
+    "exclamation-triangle-fill",
+    "exclamation-triangle-fill",
+  ];
+
+  const themes = [undefined, "success", "warning", "danger"];
+
   return (
     <>
-      <Alert theme="primary" d="flex" alignItems="center">
-        <Prime d="inline-block" me={2}>
-          <i className="bi bi-info-circle-fill" />
-        </Prime>
-        <Prime>An example alert with an icon</Prime>
-      </Alert>
-      <Alert theme="success" d="flex" alignItems="center">
-        <Prime d="inline-block" me={2}>
-          <i className="bi bi-check-circle-fill" />
-        </Prime>
-        <Prime>An example success alert with an icon</Prime>
-      </Alert>
-      <Alert theme="warning" d="flex" alignItems="center">
-        <Prime d="inline-block" me={2}>
-          <i className="bi bi-exclamation-triangle-fill" />
-        </Prime>
-        <Prime>An example warning alert with an icon</Prime>
-      </Alert>
-      <Alert theme="danger" d="flex" alignItems="center">
-        <Prime d="inline-block" me={2}>
-          <i className="bi bi-exclamation-triangle-fill" />
-        </Prime>
-        <Prime>An example danger alert with an icon</Prime>
-      </Alert>
+      {icons.map((icon, index) => (
+        <Alert
+          theme={themes[index]}
+          d="flex"
+          flex={{ xs: { align: "center" } }}>
+          <Prime d="inline-block" me={2}>
+            <i className={"bi bi-" + icon} />
+          </Prime>
+          <Prime>An example {themes[index]} alert with an icon</Prime>
+        </Alert>
+      ))}
     </>
   );
 }
@@ -197,7 +173,7 @@ export function Icons() {
 export const Dismissing = Template.bind({});
 Dismissing.args = {
   theme: "warning",
-  dissmisible: true,
+  dismissible: true,
   animated: true,
   children: [
     <Prime as="strong">Holy guacamole!</Prime>,
