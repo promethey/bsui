@@ -73,17 +73,18 @@ export function LiveExample() {
 
   return (
     <>
-      <Button theme="primary" onClick={handleClick}>
-        Live Alert
-      </Button>
-      {show && (
+      {show ? (
         <Alert
-          mt={2}
           theme="success"
-          dissmisible
+          dismissible
+          mb={0}
           onClose={() => setShow(false)}>
           Nice, you triggered this alert message!
         </Alert>
+      ) : (
+        <Button theme="primary" onClick={handleClick}>
+          Live Alert
+        </Button>
       )}
     </>
   );
