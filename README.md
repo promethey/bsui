@@ -1,16 +1,10 @@
-# Bootstrap-UI
-
 <p align="center">
   <img src="./public/bsui-logo.png" width="220" />
 </p>
 
-### Modern Bootstrap component system for React applications
+# Bootstrap-UI
 
-Bootstrap-UI is a production-ready UI layer that combines **Bootstrap 5 core**
-with **modern React architecture**, delivering a scalable component system with
-strong IDE intelligence — without TypeScript.
-
----
+Modern Bootstrap component system for React applications
 
 ```text
 React • Bootstrap 5 • Pure JavaScript • JSDoc Types • Storybook-first
