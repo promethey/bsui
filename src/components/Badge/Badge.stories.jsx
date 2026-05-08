@@ -8,7 +8,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `Documentation and examples for badges, our small count and labeling component.`,
+        component: "Highlights statuses, labels and counters",
       },
     },
   },

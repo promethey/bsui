@@ -7,8 +7,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:
-          "Main and basic component for Bootstrap-UI. This component helps provide classname functionality for other components",
+        component: "Utility-based component for layout, spacing and styling",
       },
     },
   },

@@ -8,7 +8,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `Documentation and examples for using Bootstrap custom progress bars featuring support for stacked bars, animated backgrounds, and text labels.`,
+        component: "Visual indicator of progress and completion state",
       },
     },
   },
@@ -20,26 +20,19 @@ function Template(args) {
 
 export const Default = Template.bind({});
 Default.args = {
-  children: [<Progress.Bar now={25} max={100} />],
+  children: [<Progress.Bar now={25} />],
 };
 
 export function Examples() {
-  const examples = [
-    { now: 0, max: 100 },
-    { now: 25, max: 100 },
-    { now: 50, max: 100 },
-    { now: 75, max: 100 },
-    { now: 100, max: 100 },
-  ];
+  const examples = [0, 25, 50, 75, 100];
 
   return (
     <>
-      {examples.map((example, index, array) => (
+      {examples.map((now, index) => (
         <>
-          <Progress>
-            <Progress.Bar now={example.now} max={example.max} />
+          <Progress mt={index !== 0 ? 3 : 0}>
+            <Progress.Bar now={now} />
           </Progress>
-          {index !== array.length && <Prime mb={3} />}
         </>
       ))}
     </>
@@ -47,27 +40,15 @@ export function Examples() {
 }
 
 export function Labels() {
-  const examples = [
-    { now: 0, max: 100 },
-    { now: 25, max: 100 },
-    { now: 50, max: 100 },
-    { now: 75, max: 100 },
-    { now: 100, max: 100 },
-  ];
+  const examples = [0, 25, 50, 75, 100];
 
   return (
     <>
-      {examples.map((example, index, array) => (
+      {examples.map((now, index) => (
         <>
-          <Progress>
-            <Progress.Bar
-              now={example.now}
-              max={example.max}
-              fw="bolder"
-              displayedPercent
-            />
+          <Progress mt={index !== 0 ? 3 : 0}>
+            <Progress.Bar now={now} fw="bolder" displayedPercent />
           </Progress>
-          {index !== array.length && <Prime my={3} />}
         </>
       ))}
     </>
@@ -78,37 +59,28 @@ export function Heights() {
   return (
     <>
       <Progress style={{ height: "1px" }}>
-        <Progress.Bar now={30} max={100} />
+        <Progress.Bar now={30} />
       </Progress>
       <Prime my={3} />
       <Progress style={{ height: "20px" }}>
-        <Progress.Bar now={30} max={100} />
+        <Progress.Bar now={30} />
       </Progress>
     </>
   );
 }
 
 export function Backgrounds() {
-  const examples = [
-    { now: 10, max: 100, bgColor: null },
-    { now: 25, max: 100, bgColor: "success" },
-    { now: 50, max: 100, bgColor: "info" },
-    { now: 75, max: 100, bgColor: "warning" },
-    { now: 100, max: 100, bgColor: "danger" },
-  ];
+  const examples = [0, 25, 50, 75, 100];
+
+  const bgColors = [null, "success", "info", "warning", "danger"];
 
   return (
     <>
-      {examples.map((example, index, array) => (
+      {examples.map((now, index) => (
         <>
           <Progress>
-            <Progress.Bar
-              bg={example.bgColor}
-              now={example.now}
-              max={example.max}
-            />
+            <Progress.Bar bg={bgColors[index]} now={now} />
           </Progress>
-          {index !== array.length && <Prime my={3} />}
         </>
       ))}
     </>
@@ -118,35 +90,25 @@ export function Backgrounds() {
 export const MultipleBars = Template.bind({});
 MultipleBars.args = {
   children: [
-    <Progress.Bar now={15} max={100} />,
-    <Progress.Bar bg="success" now={30} max={100} />,
-    <Progress.Bar bg="info" now={20} max={100} />,
+    <Progress.Bar now={15} />,
+    <Progress.Bar bg="success" now={30} />,
+    <Progress.Bar bg="info" now={20} />,
   ],
 };
 MultipleBars.storyName = "Multiple bars";
 
 export function Striped() {
-  const examples = [
-    { now: 10, max: 100, bgColor: null },
-    { now: 25, max: 100, bgColor: "success" },
-    { now: 50, max: 100, bgColor: "info" },
-    { now: 75, max: 100, bgColor: "warning" },
-    { now: 100, max: 100, bgColor: "danger" },
-  ];
+  const examples = [0, 25, 50, 75, 100];
+
+  const bgColors = [null, "success", "info", "warning", "danger"];
 
   return (
     <>
-      {examples.map((example, index, array) => (
+      {examples.map((now, index) => (
         <>
-          <Progress>
-            <Progress.Bar
-              bg={example.bgColor}
-              now={example.now}
-              max={example.max}
-              striped
-            />
+          <Progress mt={index !== 0 ? 3 : 0}>
+            <Progress.Bar bg={bgColors[index]} now={now} striped />
           </Progress>
-          {index !== array.length && <Prime my={3} />}
         </>
       ))}
     </>
@@ -154,28 +116,17 @@ export function Striped() {
 }
 
 export function AnimatedStripes() {
-  const examples = [
-    { now: 10, max: 100, bgColor: null },
-    { now: 25, max: 100, bgColor: "success" },
-    { now: 50, max: 100, bgColor: "info" },
-    { now: 75, max: 100, bgColor: "warning" },
-    { now: 100, max: 100, bgColor: "danger" },
-  ];
+  const examples = [0, 25, 50, 75, 100];
+
+  const bgColors = [null, "success", "info", "warning", "danger"];
 
   return (
     <>
-      {examples.map((example, index, array) => (
+      {examples.map((now, index) => (
         <>
-          <Progress>
-            <Progress.Bar
-              bg={example.bgColor}
-              now={example.now}
-              max={example.max}
-              striped
-              animated
-            />
+          <Progress mt={index !== 0 ? 3 : 0}>
+            <Progress.Bar bg={bgColors[index]} now={now} striped animated />
           </Progress>
-          {index !== array.length && <Prime my={3} />}
         </>
       ))}
     </>

@@ -18,7 +18,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.`,
+        component: "Flexible container for structured content and sections",
       },
     },
   },

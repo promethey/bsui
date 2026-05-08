@@ -9,27 +9,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `Use Bootstrap custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more`,
+        component: "Triggers actions, events and user interactions",
       },
-    },
-  },
-  argTypes: {
-    theme: {
-      options: [
-        "primary",
-        "secondary",
-        "success",
-        "danger",
-        "warning",
-        "info",
-        "light",
-        "dark",
-      ],
-      control: { type: "select" },
-    },
-    size: {
-      control: "radio",
-      options: ["sm", "lg"],
     },
   },
 };
@@ -94,22 +75,21 @@ export function Width() {
   return (
     <>
       <Button w={25} mw={100} mb={2}>
-        Width 25%
+        25%
       </Button>
       <br />
       <Button w={50} mb={2}>
-        Width 50%
+        50%
       </Button>
       <Button w={75} mb={2}>
-        Width 75%
+        75%
       </Button>
       <Button w={100} mb={2}>
-        Width 100%
+        100%
       </Button>
       <Button w="auto" mb={2}>
-        Width auto
+        Auto
       </Button>
-      <Button w={100}>Block</Button>
     </>
   );
 }
