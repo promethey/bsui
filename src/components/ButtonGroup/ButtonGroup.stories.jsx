@@ -8,8 +8,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `Group a series of buttons together on a single line
-        or stack them in a vertical column`,
+        component: `Group a series of buttons together on a single line or stack them in a vertical column`,
       },
     },
   },

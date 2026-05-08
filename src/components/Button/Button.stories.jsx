@@ -9,16 +9,37 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `Use Bootstrap custom button styles for actions in forms,
-        dialogs, and more with support for multiple sizes, states, and more`,
+        component: `Use Bootstrap custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more`,
       },
     },
   },
-  args: { onClick: null },
+  argTypes: {
+    theme: {
+      options: [
+        "primary",
+        "secondary",
+        "success",
+        "danger",
+        "warning",
+        "info",
+        "light",
+        "dark",
+      ],
+      control: { type: "select" },
+    },
+    size: {
+      control: "radio",
+      options: ["sm", "lg"],
+    },
+  },
 };
 
 function DefaultTemplate(args) {
   return <Button {...args} />;
+}
+
+export function Default() {
+  return <Button>Button</Button>;
 }
 
 export function All() {
@@ -71,10 +92,11 @@ export function Outlines() {
 
 export function Width() {
   return (
-    <Prime flex={{ xs: { dir: "column" } }} p={2} bg="light" border>
+    <>
       <Button w={25} mw={100} mb={2}>
         Width 25%
       </Button>
+      <br />
       <Button w={50} mb={2}>
         Width 50%
       </Button>
@@ -88,7 +110,7 @@ export function Width() {
         Width auto
       </Button>
       <Button w={100}>Block</Button>
-    </Prime>
+    </>
   );
 }
 

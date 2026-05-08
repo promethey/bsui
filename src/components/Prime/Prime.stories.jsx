@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Prime, Button } from "components";
 
 export default {
