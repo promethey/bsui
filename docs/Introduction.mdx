@@ -1,36 +1,94 @@
 # Bootstrap-UI
 
-<img src="/bsui-logo.png" width="286" style={{ margin: "24px 0 38px 0" }} />
+<img src="/bsui-logo.png" width="280" style={{ margin: "28px 0 36px 0" }} />
 
 ### Modern Bootstrap component system for React applications.
 
-Bootstrap-UI combines clean Bootstrap architecture with modern React
-patterns, full IntelliSense support and production-grade developer
-experience — without TypeScript overhead.
+Bootstrap-UI is a production-ready UI layer that combines **Bootstrap 5 core**
+with **modern React architecture**, delivering a scalable component system with
+strong IDE intelligence — without TypeScript.
 
 ```text
-React • Bootstrap 5 • Pure JavaScript • JSDoc Types • Storybook
+React • Bootstrap 5 • Pure JavaScript • JSDoc Types • Storybook-first
 ```
 
-<br />
+---
 
 ### Why Bootstrap-UI
 
-- No TypeScript complexity
-- Full autocomplete and type checking via JSDoc
-- Documentation directly inside Storybook
-- Native Bootstrap ecosystem compatibility
-- Fast integration into existing projects
-- Support for latest Bootstrap releases immediately after launch
+Bootstrap-UI is designed for teams who want Bootstrap stability with modern DX.
 
-<br />
+It removes typical friction points in UI libraries:
+
+- no TypeScript setup or build overhead
+- no duplicated component styling logic
+- no fragmented documentation
+- no lack of IDE intelligence
+
+Instead, you get a **fully typed developer experience using JSDoc + Storybook**.
+
+---
+
+# Key Advantages
+
+### ⚡ Zero TypeScript, full type safety experience
+
+Bootstrap-UI uses **JSDoc-based typing**, which provides:
+
+- full IntelliSense in VSCode
+- autocomplete for props and components
+- hover-based documentation
+- inline type validation
+- zero compilation overhead
+
+You write **pure JavaScript**, but still get a typed ecosystem.
+
+---
+
+### 📚 Documentation where you actually use it
+
+Every component is documented in two layers:
+
+- Storybook (interactive usage)
+- JSDoc (inline code documentation)
+
+This eliminates:
+
+- outdated docs
+- missing prop descriptions
+- context switching between sources
+
+---
+
+### 🔥 Native Bootstrap compatibility
+
+Bootstrap-UI stays fully aligned with Bootstrap 5:
+
+- same utility system
+- same layout principles
+- immediate support for new Bootstrap releases
+- no abstraction lag behind upstream updates
+
+---
+
+### 🧩 React-first component design
+
+Components are built with:
+
+- composition-first architecture
+- predictable DOM output
+- minimal styling side effects
+- flexible `as` rendering patterns
+- clean prop surface
+
+---
 
 # Developer Experience
 
-### Pure JavaScript
+### Pure JavaScript with enterprise DX
 
-Bootstrap-UI is built entirely with modern JavaScript while preserving
-strong editor tooling and scalable APIs.
+Bootstrap-UI is intentionally built without TypeScript to reduce setup
+complexity while preserving strong tooling support.
 
 ```jsx
 import { Button } from "bootstrap-ui";
@@ -44,107 +102,151 @@ export function Example() {
 }
 ```
 
-### Full IntelliSense without TypeScript
+---
+
+### JSDoc-powered IntelliSense
 
 ```js
 /**
- * @typedef {object} ButtonOwnProps
- * @property {"button"|"input"|"a"} [as] - HTML element type used for rendering.
- * @property {Object} [style] - Inline styles applied to the root.
- * @property {React.ReactNode} [children] - Content rendered inside the component.
- * @property {Object|string} [className] - Additional classes applied to the root element.
+ * @typedef {object} ButtonProps
+ *
+ * @property {"primary"|"secondary"|"danger"|"ghost"} theme
+ * Visual style variant based on Bootstrap system.
+ *
+ * @property {"sm"|"md"|"lg"} size
+ * Controls component density.
+ *
+ * @property {"button"|"a"|"div"} [as]
+ * Underlying HTML element.
+ *
+ * @property {React.ReactNode} children
+ * Content inside the button.
  */
 ```
 
-- autocomplete
-- prop validation
-- hover documentation
-- IDE hints (VSCode)
-- typed APIs
+#### What you get:
 
-without `.ts` files or TypeScript configuration.
+- autocomplete for every prop
+- inline documentation in IDE
+- type hints without TypeScript
+- safer refactoring experience
 
-<br />
+---
 
-# Bootstrap Integration
+### Bootstrap Integration Model
 
-Bootstrap-UI follows the latest Bootstrap architecture and styling
-patterns while extending them with reusable React abstractions.
+Bootstrap-UI does not replace Bootstrap — it **extends it safely**.
 
-### Advantages
+#### Core principles:
 
-- Bootstrap 5 compatibility
-- predictable class behavior
-- utility-first integration
-- minimal styling conflicts
-- immediate support for new Bootstrap releases
+- Bootstrap remains source of truth for layout system
+- React layer handles composition and logic
+- utilities stay compatible with native Bootstrap classes
+- no divergence from Bootstrap naming conventions
 
-<br />
+---
 
-# Storybook-first Documentation
-
-Every component includes:
-
-- live examples
-- controls
-- prop documentation
-- usage guidelines
-- JSDoc integration
-- accessibility notes
-
-<br />
-
-# Quick Example
+### Quick Example
 
 ```jsx
 import { Button, Card } from "bootstrap-ui";
 
 export function Example() {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "20rem" }}>
       <Card.Body>
-        <Card.Title>Card title</Card.Title>
+        <Card.Title>Project dashboard</Card.Title>
+
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card&apos;s content.
+          A scalable UI system built on Bootstrap 5 with modern React
+          composition patterns.
         </Card.Text>
-        <Button>Go somewhere</Button>
+
+        <Button theme="primary">Open dashboard</Button>
       </Card.Body>
     </Card>
   );
 }
 ```
 
-# Installation
+---
 
-```bash
-npm i bsui
-```
+# Component System
 
-# Tooling
+### Inputs
 
-Bootstrap-UI is optimized for modern frontend workflows.
+Button • Input • Select • Checkbox • Switch • Textarea
 
-```text
-Vite • Storybook • ESLint • JSDoc • Bootstrap 5
-```
+### Feedback
 
-<br />
+Alert • Toast • Modal • Spinner • Progress
 
-# Accessibility
+### Layout
 
-Components include built-in support for:
+Card • Stack • Grid • Container • Divider
+
+### Navigation
+
+Tabs • Navbar • Breadcrumbs • Pagination
+
+---
+
+### Documentation System
+
+Bootstrap-UI documentation is fully unified:
+
+### Storybook
+
+- interactive component playground
+- live prop controls
+- real usage examples
+
+### JSDoc
+
+- inline documentation
+- IDE-level intelligence
+- contextual hints during development
+
+---
+
+### Accessibility
+
+Accessibility is not optional — it is part of the core architecture.
+
+Built-in support includes:
 
 - keyboard navigation
-- focus management
-- semantic HTML
+- focus management system
+- semantic HTML structure
 - ARIA attributes
-- accessible interaction patterns
+- consistent interaction patterns
 
-<br />
+---
+
+### Installation
+
+```bash
+npm install bsui
+```
+
+or
+
+```bash
+pnpm add bsui
+```
+
+---
+
+### Design Philosophy
+
+Bootstrap-UI is built around three priorities:
+
+1. **Predictability** — no hidden behavior
+2. **Compatibility** — full Bootstrap alignment
+3. **Developer velocity** — minimal setup, maximum output
 
 ---
 
 ### Bootstrap-UI
 
-Enterprise-ready React components powered by Bootstrap.
+Enterprise UI system built on Bootstrap 5 and modern React principles.

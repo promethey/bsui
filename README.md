@@ -1,0 +1,254 @@
+# Bootstrap-UI
+
+<p align="center">
+  <img src="./public/bsui-logo.png" width="220" />
+</p>
+
+### Modern Bootstrap component system for React applications
+
+Bootstrap-UI is a production-ready UI layer that combines **Bootstrap 5 core**
+with **modern React architecture**, delivering a scalable component system with
+strong IDE intelligence — without TypeScript.
+
+---
+
+```text
+React • Bootstrap 5 • Pure JavaScript • JSDoc Types • Storybook-first
+```
+
+---
+
+## Why Bootstrap-UI
+
+Bootstrap-UI is designed for teams who want Bootstrap stability with modern DX.
+
+It removes typical friction points in UI libraries:
+
+- no TypeScript setup or build overhead
+- no duplicated component styling logic
+- no fragmented documentation
+- no lack of IDE intelligence
+
+Instead, you get a **fully typed developer experience using JSDoc + Storybook**.
+
+---
+
+## Key Advantages
+
+### ⚡ Zero TypeScript, full type safety experience
+
+Bootstrap-UI uses **JSDoc-based typing**, which provides:
+
+- full IntelliSense in VSCode
+- autocomplete for props and components
+- hover-based documentation
+- inline type validation
+- zero compilation overhead
+
+You write **pure JavaScript**, but still get a typed ecosystem.
+
+---
+
+### 📚 Documentation where you actually use it
+
+Every component is documented in two layers:
+
+- Storybook (interactive usage)
+- JSDoc (inline code documentation)
+
+This eliminates:
+
+- outdated docs
+- missing prop descriptions
+- context switching between sources
+
+---
+
+### 🔥 Native Bootstrap compatibility
+
+Bootstrap-UI stays fully aligned with Bootstrap 5:
+
+- same utility system
+- same layout principles
+- immediate support for new Bootstrap releases
+- no abstraction lag behind upstream updates
+
+---
+
+### 🧩 React-first component design
+
+Components are built with:
+
+- composition-first architecture
+- predictable DOM output
+- minimal styling side effects
+- flexible `as` rendering patterns
+- clean prop surface
+
+---
+
+## Developer Experience
+
+### Pure JavaScript with enterprise DX
+
+Bootstrap-UI is intentionally built without TypeScript to reduce setup
+complexity while preserving strong tooling support.
+
+```jsx
+import { Button } from "bootstrap-ui";
+
+export function Example() {
+  return (
+    <Button theme="primary" size="lg">
+      Create project
+    </Button>
+  );
+}
+```
+
+---
+
+### JSDoc-powered IntelliSense
+
+```js
+/**
+ * @typedef {object} ButtonProps
+ *
+ * @property {"primary"|"secondary"|"danger"|"ghost"} theme
+ * Visual style variant based on Bootstrap system.
+ *
+ * @property {"sm"|"md"|"lg"} size
+ * Controls component density.
+ *
+ * @property {"button"|"a"|"div"} [as]
+ * Underlying HTML element.
+ *
+ * @property {React.ReactNode} children
+ * Content inside the button.
+ */
+```
+
+**What you get:**
+
+- autocomplete for every prop
+- inline documentation in IDE
+- type hints without TypeScript
+- safer refactoring experience
+
+---
+
+## Bootstrap Integration Model
+
+Bootstrap-UI does not replace Bootstrap — it **extends it safely**.
+
+### Core principles:
+
+- Bootstrap remains source of truth for layout system
+- React layer handles composition and logic
+- utilities stay compatible with native Bootstrap classes
+- no divergence from Bootstrap naming conventions
+
+---
+
+## Quick Example
+
+```jsx
+import { Button, Card } from "bootstrap-ui";
+
+export function Example() {
+  return (
+    <Card style={{ width: "20rem" }}>
+      <Card.Body>
+        <Card.Title>Project dashboard</Card.Title>
+
+        <Card.Text>
+          A scalable UI system built on Bootstrap 5 with modern React
+          composition patterns.
+        </Card.Text>
+
+        <Button theme="primary">Open dashboard</Button>
+      </Card.Body>
+    </Card>
+  );
+}
+```
+
+---
+
+## Component System
+
+### Inputs
+
+Button • Input • Select • Checkbox • Switch • Textarea
+
+### Feedback
+
+Alert • Toast • Modal • Spinner • Progress
+
+### Layout
+
+Card • Stack • Grid • Container • Divider
+
+### Navigation
+
+Tabs • Navbar • Breadcrumbs • Pagination
+
+---
+
+## Documentation System
+
+### Storybook
+
+- interactive component playground
+- live prop controls
+- real usage examples
+
+### JSDoc
+
+- inline documentation
+- IDE-level intelligence
+- contextual hints during development
+
+---
+
+## Accessibility
+
+Accessibility is a core requirement, not an afterthought.
+
+Built-in support includes:
+
+- keyboard navigation
+- focus management system
+- semantic HTML structure
+- ARIA attributes
+- consistent interaction patterns
+
+---
+
+## Installation
+
+```bash
+npm install bsui
+```
+
+or
+
+```bash
+pnpm add bsui
+```
+
+---
+
+## Design Philosophy
+
+Bootstrap-UI is built around three priorities:
+
+1. **Predictability** — no hidden behavior
+2. **Compatibility** — full Bootstrap alignment
+3. **Developer velocity** — minimal setup, maximum output
+
+---
+
+## License
+
+MIT
