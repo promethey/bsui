@@ -61,6 +61,9 @@ const defaultProps = {
  * <Row></Row>
  *
  * @example
+ * <Row flex={{ align: "start" }}></Row>
+ *
+ * @example
  * <Row cols={3} g={4}></Row>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
