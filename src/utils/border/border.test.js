@@ -1,23 +1,23 @@
-import { border } from "./border";
+// @ts-nocheck
+import { borderResolver } from "./border";
 
 describe("border()", () => {
   test("regular border", () => {
-    expect(border(true)).toBe("border");
+    expect(borderResolver(true)).toBe("border");
   });
 
   test("border aspects", () => {
-    const aspects = ["top", "end", "bottom", "start"];
-
-    aspects.forEach((aspect) => {
-      expect(border(aspect)).toBe("border-" + aspect);
-    });
+    expect(borderResolver({ top: true })).toBe("border-top");
+    expect(borderResolver({ end: true })).toBe("border-end");
+    expect(borderResolver({ bottom: true })).toBe("border-bottom");
+    expect(borderResolver({ start: true })).toBe("border-start");
   });
 
   test("border width", () => {
     const values = [1, 2, 3, 4, 5];
 
     values.forEach((value) => {
-      expect(border(value)).toBe("border border-" + value);
+      expect(borderResolver(value)).toBe("border border-" + value);
     });
   });
 
@@ -25,7 +25,7 @@ describe("border()", () => {
     const values = [6, 7, 0];
 
     values.forEach((value) => {
-      expect(border(value)).toBe("");
+      expect(borderResolver(value)).toBe("");
     });
   });
 
@@ -43,29 +43,47 @@ describe("border()", () => {
     ];
 
     colors.forEach((color) => {
-      expect(border({ color: color })).toBe("border border-" + color);
+      expect(borderResolver(color)).toBe("border border-" + color);
+    });
+  });
+
+  test("border colors (object)", () => {
+    const colors = [
+      "primary",
+      "secondary",
+      "success",
+      "danger",
+      "warning",
+      "info",
+      "light",
+      "dark",
+      "white",
+    ];
+
+    colors.forEach((color) => {
+      expect(borderResolver({ color: color })).toBe("border border-" + color);
     });
   });
 
   test("border top true", () => {
-    expect(border({ color: "primary", top: true })).toBe(
+    expect(borderResolver({ color: "primary", top: true })).toBe(
       "border-primary border-top",
     );
   });
 
   test("border top true", () => {
-    expect(border({ color: "primary", top: 0 })).toBe(
-      "border border-primary border-top-0",
+    expect(borderResolver({ color: "primary", top: 0 })).toBe(
+      "border-primary border-top-0",
     );
   });
 
   test("primary border with other props", () => {
-    expect(border({ color: "primary", width: 1, top: 0 })).toBe(
-      "border border-primary border-1 border-top-0",
+    expect(borderResolver({ color: "primary", width: 1, top: 0 })).toBe(
+      "border-primary border-1 border-top-0",
     );
   });
 
   test("ignore unsupported properties", () => {
-    expect(border({ colorr: "primary", w: 1, center: 0 })).toBe("");
+    expect(borderResolver({ colorr: "primary", w: 1, center: 0 })).toBe("");
   });
 });

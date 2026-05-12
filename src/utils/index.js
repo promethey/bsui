@@ -1,5 +1,5 @@
 export { bgResolver } from "./bg";
-export { border } from "./border";
+export { borderResolver } from "./border";
 export { displayResolver, displayPrintResolver } from "./display";
 export { flexResolver } from "./flex";
 export { floatResolver } from "./float";

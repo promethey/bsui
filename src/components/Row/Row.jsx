@@ -79,6 +79,9 @@ const defaultProps = {
  *
  * @author Sedelkov Egor <sedelkovegor@gmail.com>
  * @version 1.0.0
+ *
+ * @todo
+ * - add responsive object for cols
  */
 function Row(props) {
   const { style, children, className, cols, g, gx, gy, ...rest } = props;

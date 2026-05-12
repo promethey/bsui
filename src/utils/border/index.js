@@ -1,1 +1,1 @@
-export { border } from "./border";
+export { borderResolver } from "./border";

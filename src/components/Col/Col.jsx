@@ -129,13 +129,15 @@ function Col(props) {
   } = props;
 
   const classes = cn(
-    { [BASE_CLASS_NAME]: !xs },
-    [cs(BASE_CLASS_NAME, xs)],
-    [cs("col", "sm", sm)],
-    [cs("col", "md", md)],
-    [cs("col", "lg", lg)],
-    [cs("col", "xl", xl)],
-    [cs("col", "xxl", xxl)],
+    {
+      [BASE_CLASS_NAME]: !xs && !sm && !md && !lg && !xl && !xxl,
+      [cs(BASE_CLASS_NAME, xs)]: xs,
+      [cs("col-sm", sm)]: sm,
+      [cs("col-md", md)]: md,
+      [cs("col-lg", lg)]: lg,
+      [cs("col-xl", xl)]: xl,
+      [cs("col-xxl", xxl)]: xxl,
+    },
     className,
   );
 

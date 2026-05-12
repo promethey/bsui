@@ -50,18 +50,15 @@ const BORDER_VALUES_MAP = {
  * @example
  * border={true} // "border"
  * border={1} // "border border-1"
- * border="top" // "border-top"
- * border="end" // "border-end"
- * border="bottom" // "border-bottom"
- * border="start" // "border-start"
+ * border="primary" // "border border-primary"
  * border={{ color: "success" }} // "border border-success"
  * border={{ top: true, color: "primary" }} // "border-top border-primary"
  * border={{ color: "primary", width: 1, top: 0 }} // "border border-primary border-1 border-top-0"
  *
- * @param {BorderObject|boolean|string|number} [value]
+ * @param {BorderObject|boolean|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"|1|2|3|4|5} [value]
  * @returns {string}
  */
-export function border(value) {
+export function borderResolver(value) {
   if (!value) return "";
 
   // Boolean
@@ -71,8 +68,8 @@ export function border(value) {
 
   // String
   if (typeof value === "string" && value.length > 0) {
-    if (value.trim() in BORDER_MAP) {
-      return cs(BORDER_CLASS_NAME, value.trim());
+    if (BORDER_VALUES_MAP.color.includes(value.trim())) {
+      return `${BORDER_CLASS_NAME} ${cs(BORDER_CLASS_NAME, value.trim())}`;
     }
 
     return "";
@@ -94,6 +91,9 @@ export function border(value) {
     !Array.isArray(value) &&
     Object.keys(value).length > 0
   ) {
+    /**
+     * @type {Array<string>}
+     */
     let result = [BORDER_CLASS_NAME];
 
     for (let [key, val] of Object.entries(value)) {
@@ -104,16 +104,24 @@ export function border(value) {
         )
       ) {
         // drop default 'border' class if top, end, bottom, start is true
-        if (["top", "end", "bottom", "start"].includes(key) && val === true) {
-          if (result.includes(BORDER_CLASS_NAME)) result.shift();
+        if (
+          ["top", "end", "bottom", "start"].includes(key) &&
+          (val === true || val === 0)
+        ) {
+          if (result[0] === BORDER_CLASS_NAME) result.shift();
         }
 
         result.push(cs(BORDER_MAP[/** @type {BorderProperties} */ (key)], val));
       }
     }
 
+    // if all key or values in object incorrect
+    if (result.length === 1 && result[0] === BORDER_CLASS_NAME) {
+      result.shift();
+    }
+
     // if result contains only 'border' than return empty string
-    return result.length === 1 ? "" : result.join(" ").trim();
+    return result.join(" ").trim();
   }
 
   return "";

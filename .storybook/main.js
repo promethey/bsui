@@ -4,7 +4,7 @@ import path from "path";
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
   docs: {
-    defaultName: "Documentation",
+    defaultName: "Docs",
     docsMode: false,
   },
   stories: [
