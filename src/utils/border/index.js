@@ -1,1 +1,0 @@
-export { borderResolver } from "./border";

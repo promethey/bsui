@@ -1,22 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import {
-  position as positionResolver,
-  spacingResolver,
   bgResolver,
-  text as textResolver,
   borderResolver,
-  flexResolver,
   displayResolver,
   displayPrintResolver,
-  rounded as roundedResolver,
-  shadow as shadowResolver,
-  font as fontResolver,
+  flexResolver,
+  fontResolver,
+  opacityResolver,
+  overflowResolver,
+  positionResolver,
+  roundedResolver,
+  shadowResolver,
+  sizingResolver,
+  spacingResolver,
+  textResolver,
   floatResolver,
-  overflow as overflowResolver,
-  opacity as opacityResolver,
-  sizing as sizingResolver,
-} from "utils";
+} from "./utils";
 
 const propTypes = {
   /**
@@ -404,17 +405,17 @@ const propTypes = {
 };
 
 /**
- * @typedef {import("../../utils/display/display").DisplayObject} DisplayObject
- * @typedef {import("../../utils/flex/flex").FlexObject} FlexObject
- * @typedef {import("../../utils/flex/flex").FlexBreakpointsObject} FlexBreakpointsObject
- * @typedef {import("../../utils/flex/flex").FlexBreakpointsShort} FlexBreakpointsShort
- * @typedef {import("../../utils/float/float").FloatObject} FloatObject
- * @typedef {import("../../utils/spacing/spacing").SpacingObject} SpacingObject
- * @typedef {import("../../utils/spacing/spacing").SpacingArray} SpacingArray
- * @typedef {import("../../utils/spacing/spacing").SpacingValues} SpacingValues
- * @typedef {import("../../utils/bg/bg").BackgroundObject} BackgroundObject
- * @typedef {import("../../utils/text/text").TextObject} TextObject
- * @typedef {import("../../utils/border/border").BorderObject} BorderObject
+ * @typedef {import("./utils/display").DisplayObject} DisplayObject
+ * @typedef {import("./utils/flex").FlexObject} FlexObject
+ * @typedef {import("./utils/flex").FlexBreakpointsObject} FlexBreakpointsObject
+ * @typedef {import("./utils/flex").FlexBreakpointsShort} FlexBreakpointsShort
+ * @typedef {import("./utils/float").FloatObject} FloatObject
+ * @typedef {import("./utils/spacing").SpacingObject} SpacingObject
+ * @typedef {import("./utils/spacing").SpacingArray} SpacingArray
+ * @typedef {import("./utils/spacing").SpacingValues} SpacingValues
+ * @typedef {import("./utils/bg").BackgroundObject} BackgroundObject
+ * @typedef {import("./utils/text").TextObject} TextObject
+ * @typedef {import("./utils/border").BorderObject} BorderObject
  */
 
 /**

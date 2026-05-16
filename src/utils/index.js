@@ -1,15 +1,1 @@
-export { bgResolver } from "./bg";
-export { borderResolver } from "./border";
-export { displayResolver, displayPrintResolver } from "./display";
-export { flexResolver } from "./flex";
-export { floatResolver } from "./float";
-export { font } from "./font";
-export { opacity } from "./opacity";
-export { overflow } from "./overflow";
-export { rounded } from "./rounded";
-export { shadow } from "./shadow";
-export { sizing } from "./sizing";
-export { spacing, spacingResolver } from "./spacing";
-export { text } from "./text";
-export { position } from "./position";
 export { themeResolver } from "./theme";
