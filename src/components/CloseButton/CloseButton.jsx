@@ -1,9 +1,7 @@
-import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { classnames as cs } from "helpers/classnames";
-import Prime from "components/Prime";
-import { is } from "helpers/is";
+import { classnames as cs, is } from "helpers";
+import { Prime } from "components";
 
 const CLOSE_BUTTON_CLASS_NAME = "btn-close";
 
@@ -30,8 +28,22 @@ const defaultProps = {
  *
  * @example
  * <CloseButton />
+ *
+ * @example
  * <CloseButton white />
+ *
+ * @example
  * <CloseButton disabled />
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
+ * @typedef {object} CloseButtonOwnProps
+ * @property {boolean} [white] - Sets white variant
+ * @property {boolean} [disabled] - Sets disabled state
+ * @property {() => void} [onClick] - Click handler callback
+ *
+ * @typedef {PrimeProps & CloseButtonOwnProps} CloseButtonProps
+ * @param {CloseButtonProps} props
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

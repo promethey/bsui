@@ -4,23 +4,27 @@ import { classnames as cs, is } from "helpers";
  * Function for generate theme
  *
  * @example
- * themeResolver("btn", "primary", ["primary", "secondary"...]) // "btn-primary"
- * themeResolver("btn", "aqua", ["primary", "secondary"...]) // ""
+ * themeResolver("btn", "primary", ["primary", "secondary"]) // "btn-primary"
+ *
+ * @example
+ * themeResolver("btn", "secondary", ["primary", "secondary"]) // "btn-secondary"
  *
  * @param {string} prfx - prefix (example "btn" or "alert")
  * @param {string} currentTheme - (example "primary")
  * @param {Array<string>} themeList - (example ["primary", "secondary"...])
+ *
+ * @return {string}
  */
 export function themeResolver(prfx, currentTheme, themeList) {
-  if (!is("string", prfx, { notEmpty: true })) {
+  if (typeof prfx !== "string" || prfx.length === 0) {
     return "";
   }
 
-  if (!is("string", currentTheme, { notEmpty: true })) {
+  if (typeof currentTheme !== "string" || currentTheme.length === 0) {
     return "";
   }
 
-  if (!is("array", themeList, { notEmpty: true })) {
+  if (!Array.isArray(themeList) || themeList.length === 0) {
     return "";
   }
 

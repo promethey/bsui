@@ -31,6 +31,21 @@ const propTypes = {
   role: PropTypes.string,
 
   /**
+   * HTML type
+   */
+  type: PropTypes.string,
+
+  /**
+   * HTML disabled
+   */
+  disabled: PropTypes.bool,
+
+  /**
+   * HTML onclick
+   */
+  onClick: PropTypes.func,
+
+  /**
    * HTML href
    */
   href: PropTypes.string,
@@ -459,6 +474,9 @@ const propTypes = {
  * @typedef {Object} PrimeProps
  * @property {React.ElementType} [as="div"] - HTML element type used for rendering.
  * @property {string} [role] - HTML role.
+ * @property {string} [type] - HTML type.
+ * @property {boolean} [disabled] - HTML disabled.
+ * @property {() => void} [onClick] - HTML onclick.
  * @property {string} [href] - HTML href.
  * @property {Object} [style] - Inline styles applied to the root.
  * @property {React.ReactNode} [children] - Content rendered inside the component.
@@ -533,6 +551,9 @@ const Prime = React.forwardRef((props, ref) => {
   const {
     as: ComponentType = "div",
     role,
+    type,
+    disabled,
+    onClick,
     href,
     style,
     children,

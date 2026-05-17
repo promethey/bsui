@@ -84,14 +84,14 @@ const defaultProps = {
  * actions with the handful of available and flexible alert messages.
  *
  * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.3/components/alerts|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.3/components/alerts}
  *
  * @example
- * <Alert>Primary</Alert>
+ * <Alert>.alert .alert-primary</Alert>
  *
  * @example
  * <Alert theme="secondary" mb={3} p={3}>
- *  Secondary with Prime API
+ *  .alert .alert-secondary .mb-3 .p-3
  * </Alert>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
@@ -130,7 +130,7 @@ function Alert(props) {
   const alertRef = useRef(null);
 
   const classes = cn(
-    ALERT_CLASS_NAME, // default
+    ALERT_CLASS_NAME,
     themeResolver(ALERT_CLASS_NAME, theme, ALERT_THEMES),
     {
       [cs(ALERT_CLASS_NAME, "dismissible")]: is("boolean", dismissible, {
