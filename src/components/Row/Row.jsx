@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { classnames as cs } from "helpers";
 import { Prime } from "components";
+import { gutterResolver, columnsResolver } from "./utils";
 
-const BASE_CLASS_NAME = "row";
+const ROW_CLASS_NAME = "row";
 
 const propTypes = {
   /**
@@ -58,40 +58,40 @@ const defaultProps = {
  * @see {@link https://getbootstrap.com/docs/5.1/layout/grid/}
  *
  * @example
- * <Row></Row>
+ * <Row>.row</Row>
  *
  * @example
- * <Row flex={{ align: "start" }}></Row>
+ * <Row flex={{ align: "start" }}>.row .align-items-start</Row>
  *
  * @example
- * <Row cols={3} g={4}></Row>
+ * <Row cols={3} g={4}>.row .row-cols-3 .g-4</Row>
+ *
+ * @example
+ * <Row cols={{ xs: 3, md: 4 }}>.row .row-cols-3 .row-cols-md-4</Row>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ * @typedef {import("./utils/columns").ColumnsObject} ColumnsObject
+ * @typedef {import("./utils/gutter").GutterObject} GutterObject
  *
  * @typedef {object} RowOwnProps
- * @property {1|2|3|4|5|6|7|8|9|10|11|12|"auto"} [cols] - Sets row columns
- * @property {0|1|2|3|4|5} [g] - Sets gaps between columns
- * @property {0|1|2|3|4|5} [gx] - Sets gaps between columns axis-X
- * @property {0|1|2|3|4|5} [gy] - Sets gaps between columns axis-Y
+ * @property {1|2|3|4|5|6|7|8|9|10|11|12|"auto"|ColumnsObject} [cols] - Sets row columns
+ * @property {0|1|2|3|4|5|GutterObject} [g] - Sets gaps between columns
+ * @property {0|1|2|3|4|5|GutterObject} [gx] - Sets gaps between columns axis-X
+ * @property {0|1|2|3|4|5|GutterObject} [gy] - Sets gaps between columns axis-Y
  *
  * @typedef {RowOwnProps & PrimeProps} RowProps
  * @param {RowProps} props
  *
  * @author Sedelkov Egor <sedelkovegor@gmail.com>
  * @version 1.0.0
- *
- * @todo
- * - add responsive object for cols
  */
 function Row(props) {
   const { style, children, className, cols, g, gx, gy, ...rest } = props;
 
   const classes = cn(
-    BASE_CLASS_NAME,
-    cs("row-cols", cols),
-    cs("g", g),
-    cs("gx", gx),
-    cs("gy", gy),
+    ROW_CLASS_NAME,
+    columnsResolver(cols),
+    gutterResolver({ g, gx, gy }),
     className,
   );
 

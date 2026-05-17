@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { classnames } from "./classnames";
 
 describe("classnames function", () => {
