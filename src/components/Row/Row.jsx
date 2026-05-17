@@ -44,6 +44,7 @@ const propTypes = {
 
 const defaultProps = {
   style: null,
+  children: null,
   className: null,
   cols: null,
   g: null,
