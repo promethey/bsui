@@ -652,6 +652,9 @@ const Prime = React.forwardRef((props, ref) => {
     <ComponentType
       ref={ref}
       role={role}
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
       href={href}
       style={style}
       className={classes ? classes : null}
