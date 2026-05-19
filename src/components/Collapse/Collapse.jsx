@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { Prime } from "components";
 import PropTypes from "prop-types";
 import { Transition } from "react-transition-group";
+import cn from "classnames";
 
 const propTypes = {
   /**
@@ -268,7 +269,14 @@ function Collapse(props) {
       {(state) => (
         <Prime
           ref={nodeRef}
-          className={`${transitionStyles[state]} ${horizontal ? "collapse-horizontal" : ""}`}
+          className={cn(
+            transitionStyles[state],
+            {
+              "collapse-horizontal":
+                typeof horizontal === "boolean" && horizontal,
+            },
+            className,
+          )}
           style={style}
           {...rest}>
           {children}
