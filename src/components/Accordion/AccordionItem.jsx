@@ -1,6 +1,8 @@
 import { Prime } from "components";
 import PropTypes from "prop-types";
 import cn from "classnames";
+import { AccordionItemContext } from "./AccordionItemContext";
+import { useCallback, useContext, useMemo, useState } from "react";
 
 const propTypes = {
   /**
@@ -25,13 +27,19 @@ const propTypes = {
   /**
    * Sets item key
    */
-  itemKey: PropTypes.number,
+  itemKey: PropTypes.string,
+
+  /**
+   * Sets default expanded state
+   */
+  defaultExpanded: PropTypes.bool,
 };
 
 const defaultProps = {
   style: null,
   className: null,
   itemKey: null,
+  defaultExpanded: false,
 };
 
 const BASE_CLASS_NAME = "accordion-item";
@@ -62,7 +70,8 @@ const BASE_CLASS_NAME = "accordion-item";
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionItemOwnProps
- * @property {number} [itemKey] - Sets item key
+ * @property {string} [itemKey] - Sets item key
+ * @property {boolean} [defaultExpanded] - Sets default expanded state
  *
  * @typedef {PrimeProps & AccordionItemOwnProps} AccordionItemProps
  *
@@ -74,14 +83,35 @@ const BASE_CLASS_NAME = "accordion-item";
  * @version 1.0.0
  */
 function AccordionItem(props) {
-  const { style, children, className, itemKey, ...rest } = props;
+  const {
+    style,
+    children,
+    className,
+    itemKey,
+    defaultExpanded = false,
+    ...rest
+  } = props;
 
   const classes = cn(BASE_CLASS_NAME, className);
 
+  const [expanded, setExpanded] = useState(defaultExpanded);
+
+  const onToggle = useCallback(() => setExpanded((prev) => !prev), []);
+
+  const value = useMemo(
+    () => ({
+      expanded,
+      onToggle,
+    }),
+    [expanded],
+  );
+
   return (
-    <Prime className={classes} style={style} {...rest}>
-      {children}
-    </Prime>
+    <AccordionItemContext.Provider value={value}>
+      <Prime className={classes} style={style} {...rest}>
+        {children}
+      </Prime>
+    </AccordionItemContext.Provider>
   );
 }
 

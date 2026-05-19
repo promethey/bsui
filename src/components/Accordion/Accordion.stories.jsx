@@ -23,12 +23,29 @@ export default {
 };
 
 export function Default() {
+  const examples = [
+    {
+      title: "Accordion Item #1",
+      body: "This is the first item's accordion body",
+    },
+    {
+      title: "Accordion Item #2",
+      body: "This is the second item's accordion body",
+    },
+    {
+      title: "Accordion Item #3",
+      body: "This is the third item's accordion body",
+    },
+  ];
+
   return (
     <Accordion>
-      <Accordion.Item itemKey={1}>
-        <Accordion.Header>Accordion Item #1</Accordion.Header>
-        <Accordion.Body>This is the first item's accordion body</Accordion.Body>
-      </Accordion.Item>
+      {examples.map(({ title, body }, index) => (
+        <Accordion.Item itemKey={index + 1}>
+          <Accordion.Header>{title}</Accordion.Header>
+          <Accordion.Body>{body}</Accordion.Body>
+        </Accordion.Item>
+      ))}
     </Accordion>
   );
 }

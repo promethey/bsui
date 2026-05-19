@@ -82,7 +82,7 @@ function AccordionButton(props) {
     children,
     className,
     collapsed = false,
-    disabled = true,
+    disabled = false,
     onClick,
     ...rest
   } = props;

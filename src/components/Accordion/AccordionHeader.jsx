@@ -2,6 +2,7 @@ import { Prime } from "components";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import AccordionButton from "./AccordionButton";
+import { useAccordionItemContext } from "./AccordionItemContext";
 
 const propTypes = {
   /**
@@ -48,7 +49,6 @@ const BASE_CLASS_NAME = "accordion-header";
  *
  * @typedef {object} AccordionHeaderOwnProps
  * @property {boolean} [disabled] - Sets disabled state
- * @property {() => void} onClick - Sets click handle
  *
  * @typedef {PrimeProps & AccordionHeaderOwnProps} AccordionHeaderProps
  *
@@ -64,9 +64,13 @@ function AccordionHeader(props) {
 
   const classes = cn(BASE_CLASS_NAME, className);
 
+  const { expanded, onToggle } = useAccordionItemContext();
+
   return (
     <Prime as="h2" className={classes} style={style} {...rest}>
-      <AccordionButton>{children}</AccordionButton>
+      <AccordionButton collapsed={expanded} onClick={onToggle}>
+        {children}
+      </AccordionButton>
     </Prime>
   );
 }

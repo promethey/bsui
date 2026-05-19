@@ -2,6 +2,7 @@ import { Prime } from "components";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import AccordionCollapse from "./AccordionCollapse";
+import { useAccordionItemContext } from "./AccordionItemContext";
 
 const propTypes = {
   /**
@@ -62,8 +63,10 @@ function AccordionBody(props) {
 
   const classes = cn(BASE_CLASS_NAME, className);
 
+  const { expanded } = useAccordionItemContext();
+
   return (
-    <AccordionCollapse>
+    <AccordionCollapse open={expanded}>
       <Prime className={classes} style={style} {...rest}>
         {children}
       </Prime>

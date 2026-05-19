@@ -31,12 +31,18 @@ const propTypes = {
    * Sets flush style
    */
   flush: PropTypes.bool,
+
+  /**
+   * Sets default expanded item
+   */
+  defaultActiveKey: PropTypes.string,
 };
 
 const defaultProps = {
   style: null,
   className: null,
   flush: false,
+  defaultActiveKey: "0",
 };
 
 const BASE_CLASS_NAME = "accordion";
@@ -55,6 +61,7 @@ const BASE_CLASS_NAME = "accordion";
  *
  * @typedef {object} AccordionOwnProps
  * @property {boolean} [flush] - Sets flush style
+ * @property {string} [defaultActiveKey] - Sets default expanded item
  *
  * @typedef {PrimeProps & AccordionOwnProps} AccordionProps
  *
@@ -66,7 +73,14 @@ const BASE_CLASS_NAME = "accordion";
  * @version 1.0.0
  */
 function Accordion(props) {
-  const { style, children, className, flush = false, ...rest } = props;
+  const {
+    style,
+    children,
+    className,
+    flush = false,
+    defaultActiveKey = "",
+    ...rest
+  } = props;
 
   const classes = cn(
     BASE_CLASS_NAME,
