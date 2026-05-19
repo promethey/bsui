@@ -88,11 +88,6 @@ const propTypes = {
    * Callback fired after the "exiting" status is applied
    */
   onExiting: PropTypes.func,
-
-  /**
-   * Callback fired after the "exited" status is applied
-   */
-  onExited: PropTypes.func,
 };
 
 const defaultProps = {
@@ -112,7 +107,6 @@ const defaultProps = {
   onEntered: null,
   onExit: null,
   onExiting: null,
-  onExited: null,
 };
 
 /**
@@ -146,12 +140,12 @@ const defaultProps = {
  * @property {boolean} [enter] - Enable or disable enter transitions
  * @property {boolean} [exit] - Enable or disable exit transitions
  * @property {boolean} [addEndListener] - Add a custom transition end trigger
- * @property {() => void} [onEnter] - Callback fired before the "entering" status is applied
- * @property {() => void} [onEntering] - Callback fired after the "entering" status is applied
- * @property {() => void} [onEntered] - Callback fired after the "entered" status is applied
- * @property {() => void} [onExit] - Callback fired before the "exiting" status is applied
- * @property {() => void} [onExiting] - Callback fired after the "exiting" status is applied
- * @property {() => void} [onExited] - Callback fired after the "exited" status is applied
+ * @property {(elem: HTMLElement) => void} [onEnter] - Callback fired before the "entering" status is applied
+ * @property {(elem: HTMLElement) => void} [onEntering] - Callback fired after the "entering" status is applied
+ * @property {(elem: HTMLElement) => void} [onEntered] - Callback fired after the "entered" status is applied
+ * @property {(elem: HTMLElement) => void} [onExit] - Callback fired before the "exiting" status is applied
+ * @property {(elem: HTMLElement) => void} [onExiting] - Callback fired after the "exiting" status is applied
+ * @property {(elem: HTMLElement) => void} [onExited] - Callback fired after the "exited" status is applied
  *
  * @typedef {PrimeProps & CollapseOwnProps} CollapseProps
  * @param {CollapseProps} props
@@ -162,7 +156,7 @@ const defaultProps = {
  * @version 1.0.0
  *
  * @todo
- * - add horizontal style
+ * - refactor event handles
  */
 function Collapse(props) {
   const {
@@ -183,7 +177,6 @@ function Collapse(props) {
     onEntered,
     onExit,
     onExiting,
-    onExited,
     ...rest
   } = props;
 
@@ -198,35 +191,63 @@ function Collapse(props) {
     entered: "collapse show",
   };
 
+  const quantity = horizontal ? "width" : "height";
+
   const handleEnter = () => {
-    if (nodeRef.current) {
-      nodeRef.current.style.height = "0";
-    }
+    const elem = nodeRef.current;
+
+    if (!elem) return;
+
+    elem.style[quantity] = "0";
+
+    onEnter?.(elem);
   };
 
   const handleEntering = () => {
-    if (nodeRef.current) {
-      nodeRef.current.style.height = `${nodeRef.current.scrollHeight}px`;
-    }
+    const elem = nodeRef.current;
+
+    if (!elem) return;
+
+    /** @type {"scrollHeight"|"scrollWidth"} */
+    let scroll = horizontal ? "scrollWidth" : "scrollHeight";
+
+    elem.style[quantity] = `${elem[scroll]}px`;
+
+    onEntering?.(elem);
   };
 
   const handleEntered = () => {
-    if (nodeRef.current) {
-      nodeRef.current.style.height = "";
-    }
+    const elem = nodeRef.current;
+
+    if (!elem) return;
+
+    elem.style[quantity] = "";
+
+    onEntered?.(elem);
   };
 
   const handleExit = () => {
-    if (nodeRef.current) {
-      nodeRef.current.style.height = `${nodeRef.current.offsetHeight}px`;
-      nodeRef.current.offsetHeight;
-    }
+    const elem = nodeRef.current;
+
+    if (!elem) return;
+
+    /** @type {"offsetWidth"|"offsetHeight"} */
+    const offset = horizontal ? "offsetWidth" : "offsetHeight";
+
+    elem.style[quantity] = `${elem[offset]}px`;
+    elem[offset]; // force update
+
+    onExit?.(elem);
   };
 
   const handleExiting = () => {
-    if (nodeRef.current) {
-      nodeRef.current.style.height = "";
-    }
+    const elem = nodeRef.current;
+
+    if (!elem) return;
+
+    elem.style[quantity] = "";
+
+    onExiting?.(elem);
   };
 
   return (
@@ -245,7 +266,11 @@ function Collapse(props) {
       onExit={handleExit}
       onExiting={handleExiting}>
       {(state) => (
-        <Prime ref={nodeRef} className={transitionStyles[state]} {...rest}>
+        <Prime
+          ref={nodeRef}
+          className={`${transitionStyles[state]} ${horizontal ? "collapse-horizontal" : ""}`}
+          style={style}
+          {...rest}>
           {children}
         </Prime>
       )}
