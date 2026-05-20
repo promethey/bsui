@@ -65,12 +65,10 @@ const BASE_CLASS_NAME = "accordion-item";
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionItemOwnProps
- * @property {string} [itemKey] - Sets item key
+ * @property {string|number} [itemKey] - Sets item key
  *
  * @typedef {PrimeProps & AccordionItemOwnProps} AccordionItemProps
- *
  * @param {AccordionItemProps} props
- *
  * @return {React.ReactElement}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
@@ -81,22 +79,36 @@ function AccordionItem(props) {
 
   const classes = cn(BASE_CLASS_NAME, className);
 
-  const { activeKey, setActiveKey } = useAccordionContext();
+  const { activeKey, setActiveKey, alwaysOpen } = useAccordionContext();
+
+  const expanded = Array.isArray(activeKey)
+    ? activeKey.includes(itemKey)
+    : activeKey === itemKey;
 
   const onToggle = useCallback(() => {
-    setActiveKey((prevItemKey) => (prevItemKey === itemKey ? "" : itemKey));
+    setActiveKey((previousItemKey) => {
+      if (!alwaysOpen) {
+        return previousItemKey === itemKey ? "" : itemKey;
+      }
+
+      if (Array.isArray(previousItemKey) && previousItemKey.includes(itemKey)) {
+        return previousItemKey.filter((item) => item !== itemKey);
+      }
+
+      return [...previousItemKey, itemKey];
+    });
   }, [itemKey]);
 
-  const value = useMemo(
+  const AccordionItemValue = useMemo(
     () => ({
-      expanded: itemKey === activeKey,
+      expanded,
       onToggle,
     }),
     [activeKey],
   );
 
   return (
-    <AccordionItemContext.Provider value={value}>
+    <AccordionItemContext.Provider value={AccordionItemValue}>
       <Prime className={classes} style={style} {...rest}>
         {children}
       </Prime>

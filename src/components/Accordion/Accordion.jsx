@@ -38,6 +38,11 @@ const propTypes = {
    * Sets default expanded item
    */
   defaultActiveKey: PropTypes.string,
+
+  /**
+   * Make accordion items stay open when another item is opened
+   */
+  alwaysOpen: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -45,6 +50,7 @@ const defaultProps = {
   className: null,
   flush: false,
   defaultActiveKey: "",
+  alwaysOpen: false,
 };
 
 const BASE_CLASS_NAME = "accordion";
@@ -63,12 +69,11 @@ const BASE_CLASS_NAME = "accordion";
  *
  * @typedef {object} AccordionOwnProps
  * @property {boolean} [flush] - Sets flush style
- * @property {string} [defaultActiveKey] - Sets default expanded item
+ * @property {string|Array<string>|Array<number>} [defaultActiveKey] - Sets default expanded item
+ * @property {boolean} [alwaysOpen] - Make accordion items stay open when another item is opened
  *
  * @typedef {PrimeProps & AccordionOwnProps} AccordionProps
- *
  * @param {AccordionProps} props
- *
  * @return {React.ReactElement}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
@@ -81,6 +86,7 @@ function Accordion(props) {
     className,
     flush = false,
     defaultActiveKey = "",
+    alwaysOpen = false,
     ...rest
   } = props;
 
@@ -90,18 +96,30 @@ function Accordion(props) {
     className,
   );
 
-  const [activeKey, setActiveKey] = useState(defaultActiveKey);
+  // list of item key(s) that will be opened
+  const [activeKey, setActiveKey] = useState(() => {
+    if (!alwaysOpen) {
+      return defaultActiveKey;
+    }
 
-  const value = useMemo(
+    if (Array.isArray(defaultActiveKey)) {
+      return defaultActiveKey.length > 0 && [...defaultActiveKey];
+    }
+
+    return defaultActiveKey ? [defaultActiveKey] : [];
+  });
+
+  const AccordionValue = useMemo(
     () => ({
       activeKey,
       setActiveKey,
+      alwaysOpen,
     }),
     [activeKey],
   );
 
   return (
-    <AccordionContext.Provider value={/** @type {any} */ (value)}>
+    <AccordionContext.Provider value={/** @type {any} */ (AccordionValue)}>
       <Prime className={classes} style={style} {...rest}>
         {children}
       </Prime>
