@@ -1,6 +1,15 @@
 import { useContext, createContext } from "react";
 
-export const AccordionItemContext = createContext(null);
+/**
+ * @typedef {Object} AccordionItemContextValue
+ * @property {boolean} expanded
+ * @property {() => void} onToggle
+ */
+
+/** @type {React.Context<AccordionItemContextValue | null>} */
+export const AccordionItemContext = createContext(
+  /** @type {AccordionItemContextValue | null} */ (null),
+);
 
 export const useAccordionItemContext = () => {
   const context = useContext(AccordionItemContext);

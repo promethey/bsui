@@ -39,9 +39,37 @@ export function Default() {
   ];
 
   return (
-    <Accordion>
+    <Accordion defaultActiveKey="1">
       {examples.map(({ title, body }, index) => (
-        <Accordion.Item itemKey={index + 1}>
+        <Accordion.Item itemKey={`${index + 1}`}>
+          <Accordion.Header>{title}</Accordion.Header>
+          <Accordion.Body>{body}</Accordion.Body>
+        </Accordion.Item>
+      ))}
+    </Accordion>
+  );
+}
+
+export function Flush() {
+  const examples = [
+    {
+      title: "Accordion Item #1",
+      body: "This is the first item's accordion body",
+    },
+    {
+      title: "Accordion Item #2",
+      body: "This is the second item's accordion body",
+    },
+    {
+      title: "Accordion Item #3",
+      body: "This is the third item's accordion body",
+    },
+  ];
+
+  return (
+    <Accordion defaultActiveKey="1" flush>
+      {examples.map(({ title, body }, index) => (
+        <Accordion.Item itemKey={`${index + 1}`}>
           <Accordion.Header>{title}</Accordion.Header>
           <Accordion.Body>{body}</Accordion.Body>
         </Accordion.Item>

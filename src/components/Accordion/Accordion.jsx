@@ -6,6 +6,8 @@ import AccordionHeader from "./AccordionHeader";
 import AccordionButton from "./AccordionButton";
 import AccordionBody from "./AccordionBody";
 import AccordionCollapse from "./AccordionCollapse";
+import { AccordionContext } from "./AccordionContext";
+import { useMemo, useState } from "react";
 
 const propTypes = {
   /**
@@ -42,7 +44,7 @@ const defaultProps = {
   style: null,
   className: null,
   flush: false,
-  defaultActiveKey: "0",
+  defaultActiveKey: "",
 };
 
 const BASE_CLASS_NAME = "accordion";
@@ -88,10 +90,22 @@ function Accordion(props) {
     className,
   );
 
+  const [activeKey, setActiveKey] = useState(defaultActiveKey);
+
+  const value = useMemo(
+    () => ({
+      activeKey,
+      setActiveKey,
+    }),
+    [activeKey],
+  );
+
   return (
-    <Prime className={classes} style={style} {...rest}>
-      {children}
-    </Prime>
+    <AccordionContext.Provider value={/** @type {any} */ (value)}>
+      <Prime className={classes} style={style} {...rest}>
+        {children}
+      </Prime>
+    </AccordionContext.Provider>
   );
 }
 
