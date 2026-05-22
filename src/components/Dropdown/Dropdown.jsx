@@ -6,6 +6,8 @@ import DropdownButton from "./DropdownButton";
 import DropdownMenu from "./DropdownMenu";
 import DropdownItem from "./DropdownItem";
 import DropdownDivider from "./DropdownDivider";
+import DropdownText from "./DropdownText";
+import DropdownHeader from "./DropdownHeader";
 import { DropdownContext } from "./DropdownContext";
 
 const BASE_CLASS_NAME = "dropdown";
@@ -25,11 +27,17 @@ const propTypes = {
    * Additional classes applied to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+
+  /**
+   * Sets direction
+   */
+  drop: PropTypes.oneOf(["up", "end", "start"]),
 };
 
 const defaultProps = {
   style: null,
   className: null,
+  drop: null,
 };
 
 /**
@@ -42,6 +50,7 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} DropdownOwnProps
+ * @property {"up"|"end"|"start"} [drop] - Sets direction
  *
  * @typedef {PrimeProps & DropdownOwnProps} DropdownProps
  *
@@ -53,9 +62,32 @@ const defaultProps = {
  * @version 1.0.0
  */
 function Dropdown(props) {
-  const { style, children, className, ...rest } = props;
+  /**
+    const floating = useFloating({
+    open: expanded,
 
-  const classes = cn(BASE_CLASS_NAME, className);
+    placement: "bottom-start",
+
+    middleware: [
+      offset(4),
+      flip(),
+      shift({
+        padding: 8,
+      }),
+    ],
+    });
+  */
+
+  const { style, children, className, drop, ...rest } = props;
+
+  const classes = cn(
+    BASE_CLASS_NAME,
+    {
+      [`drop${drop}`]:
+        typeof drop === "string" && ["up", "end", "start"].includes(drop),
+    },
+    className,
+  );
 
   const [show, setShow] = useState(false);
 
@@ -83,5 +115,7 @@ Dropdown.Button = DropdownButton;
 Dropdown.Menu = DropdownMenu;
 Dropdown.Item = DropdownItem;
 Dropdown.Divider = DropdownDivider;
+Dropdown.Header = DropdownHeader;
+Dropdown.Text = DropdownText;
 
 export default Dropdown;

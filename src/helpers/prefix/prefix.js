@@ -8,7 +8,7 @@
  * prefix("bg-gradient", true) // 'bg-gradient'
  *
  * @param {string} prfx - prefix
- * @param  {...string} values - classnames
+ * @param  {...string|undefined} values - classnames
  *
  * @returns {string} classnames
  */

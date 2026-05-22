@@ -30,6 +30,11 @@ const propTypes = {
    * Sets active style
    */
   active: PropTypes.bool,
+
+  /**
+   * Sets disabled style
+   */
+  disabled: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -37,6 +42,7 @@ const defaultProps = {
   className: null,
   to: "#",
   active: false,
+  disabled: false,
 };
 
 /**
@@ -51,6 +57,7 @@ const defaultProps = {
  * @typedef {object} DropdownItemOwnProps
  * @property {string} to - Sets href path
  * @property {boolean} [active] - Sets active style
+ * @property {boolean} [disabled] - Sets disabled style
  *
  * @typedef {PrimeProps & DropdownItemOwnProps} DropdownItemProps
  *
@@ -68,6 +75,7 @@ function DropdownItem(props) {
     className,
     to = "#",
     active = false,
+    disabled = false,
     ...rest
   } = props;
 
@@ -75,6 +83,7 @@ function DropdownItem(props) {
     BASE_CLASS_NAME,
     {
       active: active,
+      disabled: disabled,
     },
     className,
   );
