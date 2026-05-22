@@ -30,7 +30,7 @@ const propTypes = {
   /**
    * HTML element type used for rendering
    */
-  as: PropTypes.oneOf(["button", "a", "input"]),
+  as: PropTypes.elementType,
 
   /**
    * Inline styles applied to the root
@@ -117,7 +117,7 @@ const defaultProps = {
  * @property {boolean} [pressed] - Sets button pressed style
  * @property {() => void} [onClick] - Event handler for click
  *
- * @typedef {ButtonOwnProps & PrimeProps} ButtonProps
+ * @typedef {PrimeProps & ButtonOwnProps} ButtonProps
  *
  * @param {ButtonProps} props
  *
