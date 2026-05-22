@@ -123,7 +123,7 @@ export function textResolver(value) {
                 /** @type {never} */ (alignValue),
               )
             ) {
-              result.push(cs(breakpoint, { [breakpoint]: alignValue }));
+              result.push(cs(BASE_CLASS_NAME, { [breakpoint]: alignValue }));
             }
           }
         }

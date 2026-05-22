@@ -36,8 +36,8 @@ describe("textResolver utility", () => {
     });
 
     expect(textResolver({ align: "center" })).toBe("text-center");
-    // expect(result).toContain("text-md-center");
-    // expect(result).toContain("text-lg-end");
+    expect(result).toContain("text-md-center");
+    expect(result).toContain("text-lg-end");
   });
 
   test("applies word break utility", () => {
