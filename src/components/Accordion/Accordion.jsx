@@ -109,7 +109,7 @@ function Accordion(props) {
     return defaultActiveKey ? [defaultActiveKey] : [];
   });
 
-  const AccordionValue = useMemo(
+  const accordionValue = useMemo(
     () => ({
       activeKey,
       setActiveKey,
@@ -119,7 +119,7 @@ function Accordion(props) {
   );
 
   return (
-    <AccordionContext.Provider value={/** @type {any} */ (AccordionValue)}>
+    <AccordionContext.Provider value={/** @type {any} */ (accordionValue)}>
       <Prime className={classes} style={style} {...rest}>
         {children}
       </Prime>

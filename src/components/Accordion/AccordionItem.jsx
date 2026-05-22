@@ -99,7 +99,7 @@ function AccordionItem(props) {
     });
   }, [itemKey]);
 
-  const AccordionItemValue = useMemo(
+  const accordionItemValue = useMemo(
     () => ({
       expanded,
       onToggle,
@@ -108,7 +108,7 @@ function AccordionItem(props) {
   );
 
   return (
-    <AccordionItemContext.Provider value={AccordionItemValue}>
+    <AccordionItemContext.Provider value={accordionItemValue}>
       <Prime className={classes} style={style} {...rest}>
         {children}
       </Prime>
