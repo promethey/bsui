@@ -111,7 +111,8 @@ const defaultProps = {
 };
 
 /**
- * Collapse component
+ * Animates the expansion and collapsing of content visibility.
+ *
  * @component
  *
  * @see {@link Prime}
@@ -132,21 +133,51 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CollapseOwnProps
- * @property {boolean} [horizontal] - Sets horizontal collapsing
- * @property {boolean} [open] - Sets open state
- * @property {number} [duration] - Sets animation duration value
- * @property {boolean} [mountOnEnter] - Sets lazy mount component
- * @property {boolean} [unmountOnExit] - Sets unmount the component after it finishes exiting
- * @property {boolean} [appear] - Sets enter transition when it first mounts
- * @property {boolean} [enter] - Enable or disable enter transitions
- * @property {boolean} [exit] - Enable or disable exit transitions
- * @property {boolean} [addEndListener] - Add a custom transition end trigger
- * @property {(elem: HTMLElement) => void} [onEnter] - Callback fired before the "entering" status is applied
- * @property {(elem: HTMLElement) => void} [onEntering] - Callback fired after the "entering" status is applied
- * @property {(elem: HTMLElement) => void} [onEntered] - Callback fired after the "entered" status is applied
- * @property {(elem: HTMLElement) => void} [onExit] - Callback fired before the "exiting" status is applied
- * @property {(elem: HTMLElement) => void} [onExiting] - Callback fired after the "exiting" status is applied
- * @property {(elem: HTMLElement) => void} [onExited] - Callback fired after the "exited" status is applied
+ *
+ * @property {boolean} [horizontal=false]
+ * Enables horizontal collapsing behavior.
+ *
+ * @property {boolean} [open=false]
+ * Enables horizontal collapsing behavior.
+ *
+ * @property {number} [duration=350]
+ * Sets the transition animation duration in milliseconds.
+ *
+ * @property {boolean} [mountOnEnter=false]
+ * Lazily mounts the component when entering.
+ *
+ * @property {boolean} [unmountOnExit=false]
+ * Unmounts the component after the exit transition completes.
+ *
+ * @property {boolean} [appear=false]
+ * Enables the enter transition during the initial mount.
+ *
+ * @property {boolean} [enter=true]
+ * Enables enter transitions.
+ *
+ * @property {boolean} [exit=true]
+ * Enables exit transitions.
+ *
+ * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
+ * Adds a custom transition completion listener.
+ *
+ * @property {(element: HTMLElement) => void} [onEnter]
+ * Fired before the entering transition starts.
+ *
+ * @property {(element: HTMLElement) => void} [onEntering]
+ * Fired while the entering transition is active.
+ *
+ * @property {(element: HTMLElement) => void} [onEntered]
+ * Fired after the entering transition completes.
+ *
+ * @property {(element: HTMLElement) => void} [onExit]
+ * Fired before the exit transition starts.
+ *
+ * @property {(element: HTMLElement) => void} [onExiting]
+ * Fired while the exit transition is active.
+ *
+ * @property {(element: HTMLElement) => void} [onExited]
+ * Fired after the exit transition completes.
  *
  * @typedef {PrimeProps & CollapseOwnProps} CollapseProps
  * @param {CollapseProps} props
