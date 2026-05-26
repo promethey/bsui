@@ -51,6 +51,44 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - react-dom >= 18
 - bootstrap >= 5.1.3
 
+# Component Compatibility
+
+- `Stable` — Production-ready API
+- `Experimental` — API may change
+- `Planned` — Not implemented yet
+
+### Categories
+
+| Category     | Description                            |
+| ------------ | -------------------------------------- |
+| Control      | Interactive form and action components |
+| Feedback     | Status and user feedback components    |
+| Overlay      | Floating and layered UI elements       |
+| Disclosure   | Expandable and collapsible interfaces  |
+| Navigation   | Navigation and routing components      |
+| Layout       | Grid and layout utilities              |
+| Surface      | Content containers and visual wrappers |
+| Data Display | Informational and status indicators    |
+| Core         | Internal primitive components          |
+
+| Component   | Category     | Status       | Ver.  | Bootstrap Ver. |
+| ----------- | ------------ | ------------ | ----- | -------------- |
+| Accordion   | Disclosure   | Experimental | 1.0.0 | 5.1.3          |
+| Alert       | Feedback     | Experimental | 1.0.0 | 5.1.3          |
+| Badge       | Data Display | Experimental | 1.0.0 | 5.1.3          |
+| Button      | Control      | Experimental | 1.0.0 | 5.1.3          |
+| ButtonGroup | Control      | Experimental | 1.0.0 | 5.1.3          |
+| Card        | Surface      | Experimental | 1.0.0 | 5.1.3          |
+| CloseButton | Control      | Experimental | 1.0.0 | 5.1.3          |
+| Col         | Layout       | Experimental | 1.0.0 | 5.1.3          |
+| Collapse    | Disclosure   | Experimental | 1.0.0 | 5.1.3          |
+| Container   | Layout       | Experimental | 1.0.0 | 5.1.3          |
+| Dropdown    | Overlay      | Experimental | 1.0.0 | 5.1.3          |
+| Nav         | Navigation   | Experimental | 1.0.0 | 5.1.3          |
+| Prime       | Core         | Experimental | 1.0.0 | 5.1.3          |
+| Progress    | Feedback     | Experimental | 1.0.0 | 5.1.3          |
+| Row         | Layout       | Experimental | 1.0.0 | 5.1.3          |
+
 # Usage
 
 ```jsx
