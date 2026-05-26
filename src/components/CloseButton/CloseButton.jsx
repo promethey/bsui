@@ -1,15 +1,34 @@
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 import { Prime } from "components";
 
 const CLOSE_BUTTON_CLASS_NAME = "btn-close";
 
 const propTypes = {
+  /**
+   * Inline styles applied to the root
+   */
   style: PropTypes.shape({}),
+
+  /**
+   * Additional classes applied to the root element
+   */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+
+  /**
+   * Enables the white close button variant
+   */
   white: PropTypes.bool,
+
+  /**
+   * Disables user interaction
+   */
   disabled: PropTypes.bool,
+
+  /**
+   * Callback fired when the button is clicked
+   */
   onClick: PropTypes.func,
 };
 
@@ -22,12 +41,15 @@ const defaultProps = {
 };
 
 /**
- * Close button
+ * Dismisses or closes related content through a compact action control.
  *
+ * @component
+ *
+ * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/close-button/}
  *
  * @example
- * <CloseButton />
+ * <CloseButton onClick={(event) => {...}} />
  *
  * @example
  * <CloseButton white />
@@ -38,9 +60,15 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CloseButtonOwnProps
- * @property {boolean} [white] - Sets white variant
- * @property {boolean} [disabled] - Sets disabled state
- * @property {() => void} [onClick] - Click handler callback
+ *
+ * @property {boolean} [white=false]
+ * Enables the white close button variant.
+ *
+ * @property {boolean} [disabled=false]
+ * Disables user interaction.
+ *
+ * @property {(event: React.MouseEvent<HTMLButtonElement>) => void} [onClick]
+ * Callback fired when the button is clicked.
  *
  * @typedef {PrimeProps & CloseButtonOwnProps} CloseButtonProps
  * @param {CloseButtonProps} props
@@ -54,9 +82,8 @@ function CloseButton(props) {
   const classes = cn(
     CLOSE_BUTTON_CLASS_NAME,
     {
-      [cs(CLOSE_BUTTON_CLASS_NAME, "white")]: is("boolean", white, {
-        notFalse: true,
-      }),
+      [cs(CLOSE_BUTTON_CLASS_NAME, "white")]:
+        typeof white === "boolean" && white,
     },
     className,
   );
