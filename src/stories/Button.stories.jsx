@@ -9,7 +9,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Triggers actions, events and user interactions",
+        component:
+          "Triggers actions, events, or navigation through contextual interactive controls.",
       },
     },
   },

@@ -6,6 +6,10 @@ import { Prime } from "components";
 
 const BASE_CLASS_NAME = "btn";
 
+/**
+ * @typedef {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link"} ButtonThemes
+ * @type {Array<ButtonThemes>}
+ */
 const BUTTON_THEMES = [
   "primary",
   "secondary",
@@ -17,6 +21,10 @@ const BUTTON_THEMES = [
   "dark",
 ];
 
+/**
+ * @typedef {"sm"|"lg"} ButtonSizes
+ * @type {Array<ButtonSizes>}
+ */
 const BUTTON_SIZES = ["sm", "lg"];
 
 const propTypes = {
@@ -81,9 +89,7 @@ const defaultProps = {
 };
 
 /**
- * Button never throws.
- * Invalid props are ignored.
- * Always returns valid JSX.
+ * Triggers actions, events, or navigation through contextual interactive controls.
  *
  * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/buttons/}
