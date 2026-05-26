@@ -71,14 +71,15 @@ export function LiveExample() {
     setShow((prev) => !prev);
   };
 
+  const handleClose = (event) => {
+    event.preventDefault();
+    setShow(false);
+  };
+
   return (
     <>
       {show ? (
-        <Alert
-          theme="success"
-          dismissible
-          mb={0}
-          onClose={() => setShow(false)}>
+        <Alert theme="success" dismissible mb={0} onClose={handleClose}>
           Nice, you triggered this alert message!
         </Alert>
       ) : (
@@ -152,7 +153,7 @@ export function Icons() {
     "exclamation-triangle-fill",
   ];
 
-  const themes = [undefined, "success", "warning", "danger"];
+  const themes = ["primary", "success", "warning", "danger"];
 
   return (
     <>
@@ -164,7 +165,7 @@ export function Icons() {
           <Prime d="inline-block" me={2}>
             <i className={"bi bi-" + icon} />
           </Prime>
-          <Prime>An example {themes[index]} alert with an icon</Prime>
+          An example {themes[index]} alert with an icon
         </Alert>
       ))}
     </>

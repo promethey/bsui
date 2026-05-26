@@ -1,13 +1,17 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 import { Prime, CloseButton } from "components";
 import AlertLink from "./AlertLink";
 import AlertHeading from "./AlertHeading";
 
 const BASE_CLASS_NAME = "alert";
 
+/**
+ * @typedef {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"} AlertThemes
+ * @type {Array<AlertThemes>}
+ */
 const ALERT_THEMES = [
   "primary",
   "secondary",
@@ -96,20 +100,15 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AlertOwnProps
- * @property {object} [style] - Inline styles applied to the root element
- * @property {React.ReactNode} [children] - Content rendred inside the component
- * @property {object|string} [className] - Additional classes applied to the root element
- *
- * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"} [theme] - Sets visual style
+ * @property {AlertThemes} [theme] - Sets visual style
  * @property {boolean} [dismissible] - Enable dismiss (close) button
  * @property {boolean} [animated] - Enable animations
  * @property {() => void} [onClose] - Fired on dismiss action
  *
  * @typedef {AlertOwnProps & PrimeProps} AlertProps
- *
  * @param {AlertProps} props
  *
- * @returns {React.ReactNode}
+ * @return {React.ReactNode}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -120,7 +119,7 @@ function Alert(props) {
     children,
     className,
     theme = "primary",
-    dismissible,
+    dismissible = false,
     animated,
     onClose,
     ...rest
@@ -133,10 +132,9 @@ function Alert(props) {
     {
       [`${BASE_CLASS_NAME}-${theme}`]:
         typeof theme === "string" && ALERT_THEMES.includes(theme),
-      [cs(BASE_CLASS_NAME, "dismissible")]: is("boolean", dismissible, {
-        notFalse: true,
-      }),
-      "show fade": is("boolean", animated, { notFalse: true }),
+      [cs(BASE_CLASS_NAME, "dismissible")]:
+        typeof dismissible === "boolean" && dismissible,
+      "show fade": typeof animated === "boolean" && animated,
     },
     className,
   );

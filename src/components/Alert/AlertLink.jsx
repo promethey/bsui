@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
 
-const ALERT_LINK_CLASS_NAME = "alert-link";
+const BASE_CLASS_NAME = "alert-link";
 
 const propTypes = {
   /**
@@ -33,7 +33,7 @@ const defaultProps = {
 };
 
 /**
- * AlertLink is children component of Alert
+ * Renders a contextual link with alert-aware styling.
  *
  * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/alerts/#link-color|Official Documentation}
@@ -44,16 +44,13 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AlertLinkOwnProps
- * @property {Object} [style] - Inline styles applied to the root
- * @property {React.ReactNode} [children] - Content rendered inside the component
- * @property {Object|string} [className] - Additional classes applied to the root element
- * @property {string} [to] - Sets navigation target (alias for href)
+ * @property {string} [to]
+ * Sets navigation target (alias for href)
  *
  * @typedef {AlertLinkOwnProps & PrimeProps} AlertLinkProps
- *
  * @param {AlertLinkProps} props
  *
- * @returns {React.ReactElement}
+ * @return {React.ReactElement}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -61,7 +58,7 @@ const defaultProps = {
 function AlertLink(props) {
   const { style, children, className, to, ...rest } = props;
 
-  const classes = cn(ALERT_LINK_CLASS_NAME, className);
+  const classes = cn(BASE_CLASS_NAME, className);
 
   return (
     <Prime as="a" href={to} className={classes} style={style} {...rest}>
