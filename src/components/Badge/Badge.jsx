@@ -28,7 +28,7 @@ const defaultProps = {
 };
 
 /**
- * Badge component
+ * Displays small contextual labels, counters, or status indicators.
  * @component
  *
  * @see {@link Prime}

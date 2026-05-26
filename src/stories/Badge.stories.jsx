@@ -8,7 +8,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Highlights statuses, labels and counters",
+        component:
+          "Displays small contextual labels, counters, or status indicators",
       },
     },
   },
