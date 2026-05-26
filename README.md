@@ -71,6 +71,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 | Data Display | Informational and status indicators    |
 | Core         | Internal primitive components          |
 
+### Compatibility Matrix
+
 | Component   | Category     | Status       | Ver.  | Bootstrap Ver. |
 | ----------- | ------------ | ------------ | ----- | -------------- |
 | Accordion   | Disclosure   | Experimental | 1.0.0 | 5.1.3          |
