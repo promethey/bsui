@@ -1,9 +1,16 @@
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { classnames as cs, prefix, is } from "helpers";
+import { prefix } from "helpers";
 import { Prime } from "components";
+import React from "react";
 
 const BASE_CLASS_NAME = "btn-group";
+
+/**
+ * @typedef {"sm"|"lg"} ButtonGroupSizes
+ * @type {Array<ButtonGroupSizes>}
+ */
+const BUTTON_GROUP_SIZES = ["sm", "lg"];
 
 const propTypes = {
   /**
@@ -45,33 +52,37 @@ const defaultProps = {
 };
 
 /**
- * Button group component
+ * Groups multiple buttons into a single connected control container.
  * @component
  *
+ * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/button-group/}
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} ButtonGroupOwnProps
- * @property {object} [style] - Inline styles applied to the root.
- * @property {React.ReactNode} [children] - Content rendered inside the component.
- * @property {object|string} [className] - Additional classes applied to the root element.
+ * @property {ButtonGroupSizes} [size]
+ * Sets button group size
  *
- * @property {"lg"|"sm"} [size] - Sets button group size
- * @property {boolean} [vertical] - Sets vertical style
+ * @property {boolean} [vertical]
+ * Sets vertical style
  *
  * @typedef {ButtonGroupOwnProps & PrimeProps} ButtonGroupProps
- *
  * @param {ButtonGroupProps} props
+ *
+ * @return {React.ReactElement}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
-function ButtonGroup({ style, children, className, size, vertical, ...rest }) {
+function ButtonGroup(props) {
+  const { style, children, className, size, vertical, ...rest } = props;
+
   const classes = cn(
-    vertical ? `${BASE_CLASS_NAME}-vertical` : BASE_CLASS_NAME,
+    vertical ? prefix(BASE_CLASS_NAME, "vertical") : BASE_CLASS_NAME,
     {
-      [cs(BASE_CLASS_NAME, size)]: is("string", size, { notEmpty: true }),
+      [prefix(BASE_CLASS_NAME, size)]:
+        typeof size === "string" && BUTTON_GROUP_SIZES.includes(size),
     },
     className,
   );

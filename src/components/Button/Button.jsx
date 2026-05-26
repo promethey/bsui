@@ -106,15 +106,29 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} ButtonOwnProps
- * @property {string} [to] - Sets href
- * @property {"button"|"submit"|"reset"} [type] - Sets type
- * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link"} [theme] - Sets button theme
- * @property {boolean} [outline] - Sets button outline theme
- * @property {string} [value] - Sets input value string
- * @property {"sm"|"lg"} [size] - Sets button size
- * @property {boolean} [disabled] - Sets button disabled state
- * @property {boolean} [pressed] - Sets button pressed style
- * @property {React.MouseEventHandler<HTMLElement>} [onClick] - Event handler for click
+ * @property {string} [to]
+ * Sets href
+ *
+ * @property {"button"|"submit"|"reset"} [type]
+ * Sets type
+ *
+ * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link"} [theme]
+ * Sets button theme
+ *
+ * @property {boolean} [outline]
+ * Sets button outline theme
+ *
+ * @property {string} [value]
+ * Sets input value string
+ *
+ * @property {"sm"|"lg"} [size]
+ * Sets button size
+ *
+ * @property {boolean} [disabled]
+ * Sets button disabled state
+ *
+ * @property {boolean} [pressed]
+ * Sets button pressed style
  *
  * @typedef {ButtonOwnProps & PrimeProps} ButtonProps
  *

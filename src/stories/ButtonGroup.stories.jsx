@@ -1,14 +1,15 @@
 // @ts-nocheck
-import { Button, ButtonGroup } from "components";
+import { Button, ButtonGroup, Prime } from "components";
 
 export default {
   title: "Components/ButtonGroup",
   component: ButtonGroup,
-  subcomponents: { Button },
+  subcomponents: { Button, Prime },
   parameters: {
     docs: {
       description: {
-        component: "Organaizes related buttons into a single group",
+        component:
+          "Groups multiple buttons into a single connected control container.",
       },
     },
   },
@@ -18,47 +19,47 @@ function Template(args) {
   return <ButtonGroup {...args} />;
 }
 
-export const Default = Template.bind({});
-Default.args = {
-  children: [
-    <Button>Left</Button>,
-    <Button>Middle</Button>,
-    <Button>Right</Button>,
-  ],
-};
+export function Default() {
+  return (
+    <ButtonGroup>
+      <Button>Left</Button>
+      <Button>Middle</Button>
+      <Button>Right</Button>
+    </ButtonGroup>
+  );
+}
 
-export const Pressed = Template.bind({});
-Pressed.args = {
-  children: [
-    <Button as="a" pressed aria-current="page">
-      Active link
-    </Button>,
-    <Button as="a">Link</Button>,
-    <Button as="a">Link</Button>,
-  ],
-};
+export function Pressed() {
+  return (
+    <ButtonGroup>
+      <Button as="a" pressed aria-current="page">
+        Active link
+      </Button>
+      <Button as="a">Link</Button>
+      <Button as="a">Link</Button>
+    </ButtonGroup>
+  );
+}
 
-export const MixedStyles = Template.bind({});
-MixedStyles.args = {
-  "aria-label": "Basic mixed styles example",
-  children: [
-    <Button theme="danger">Left</Button>,
-    <Button theme="warning">Middle</Button>,
-    <Button theme="success">Right</Button>,
-  ],
-};
-MixedStyles.storyName = "Mixed styles";
+export function MixedStyles() {
+  return (
+    <ButtonGroup>
+      <Button theme="danger">Left</Button>
+      <Button theme="warning">Middle</Button>
+      <Button theme="success">Right</Button>
+    </ButtonGroup>
+  );
+}
 
-export const OutlinedStyles = Template.bind({});
-OutlinedStyles.args = {
-  "aria-label": "Basic outlined example",
-  children: [
-    <Button outline>Left</Button>,
-    <Button outline>Middle</Button>,
-    <Button outline>Right</Button>,
-  ],
-};
-OutlinedStyles.storyName = "Outlines styles";
+export function OutlinedStyles() {
+  return (
+    <ButtonGroup>
+      <Button outline>Left</Button>
+      <Button outline>Middle</Button>
+      <Button outline>Right</Button>
+    </ButtonGroup>
+  );
+}
 
 export function Sizing() {
   return (
@@ -68,13 +69,13 @@ export function Sizing() {
         <Button outline>Middle</Button>
         <Button outline>Right</Button>
       </ButtonGroup>
-      <div className="my-2" />
+      <Prime my={2} />
       <ButtonGroup>
         <Button outline>Left</Button>
         <Button outline>Middle</Button>
         <Button outline>Right</Button>
       </ButtonGroup>
-      <div className="my-2" />
+      <Prime my={2} />
       <ButtonGroup size="sm">
         <Button outline>Left</Button>
         <Button outline>Middle</Button>
@@ -84,17 +85,15 @@ export function Sizing() {
   );
 }
 
-export const Vertical = Template.bind({});
-Vertical.args = {
-  "aria-label": "Basic vertical buttons example",
-  vertical: true,
-  children: [
-    <Button outline>Button #1</Button>,
-    <Button outline>Button #2</Button>,
-    <Button outline>Button #3</Button>,
-    <Button outline>Button #4</Button>,
-    <Button outline>Button #5</Button>,
-    <Button outline>Button #6</Button>,
-  ],
-};
-Vertical.storyName = "Vertical";
+export function Vertical() {
+  return (
+    <ButtonGroup vertical>
+      <Button outline>Button #1</Button>
+      <Button outline>Button #2</Button>
+      <Button outline>Button #3</Button>
+      <Button outline>Button #4</Button>
+      <Button outline>Button #5</Button>
+      <Button outline>Button #6</Button>
+    </ButtonGroup>
+  );
+}
