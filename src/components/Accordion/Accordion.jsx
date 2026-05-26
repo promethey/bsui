@@ -8,6 +8,9 @@ import AccordionBody from "./AccordionBody";
 import AccordionCollapse from "./AccordionCollapse";
 import { AccordionContext } from "./AccordionContext";
 import { useMemo, useState } from "react";
+import { prefix } from "helpers";
+
+const BASE_CLASS_NAME = "accordion";
 
 const propTypes = {
   /**
@@ -53,8 +56,6 @@ const defaultProps = {
   alwaysOpen: false,
 };
 
-const BASE_CLASS_NAME = "accordion";
-
 /**
  * Accordion component
  * @component
@@ -63,17 +64,30 @@ const BASE_CLASS_NAME = "accordion";
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
- * <Accordion>.accordion</Accordion>
+ * <Accordion>
+ *  <Accorion.Item>
+ *    <Accordion.Header>Item #1</Accordion.Header>
+ *    <Accordion.Body>
+ *      This is the first item's accordion body
+ *    </Accordion.Body>
+ *  </Accorion.Item>
+ * </Accordion>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionOwnProps
- * @property {boolean} [flush] - Sets flush style
- * @property {string|Array<string>|Array<number>} [defaultActiveKey] - Sets default expanded item
- * @property {boolean} [alwaysOpen] - Make accordion items stay open when another item is opened
+ * @property {boolean} [flush]
+ * Sets flush style
+ *
+ * @property {Array<string>|string|null} [defaultActiveKey]
+ * Sets default expanded item
+ *
+ * @property {boolean} [alwaysOpen]
+ * Make accordion items stay open when another item is opened
  *
  * @typedef {PrimeProps & AccordionOwnProps} AccordionProps
  * @param {AccordionProps} props
+ *
  * @return {React.ReactElement}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
@@ -92,21 +106,25 @@ function Accordion(props) {
 
   const classes = cn(
     BASE_CLASS_NAME,
-    { "accordion-flush": typeof flush === "boolean" && flush },
+    {
+      [prefix(BASE_CLASS_NAME, "flush")]: typeof flush === "boolean" && flush,
+    },
     className,
   );
 
   // list of item key(s) that will be opened
   const [activeKey, setActiveKey] = useState(() => {
-    if (!alwaysOpen) {
+    if (!defaultActiveKey) return "";
+
+    // String
+    if (typeof defaultActiveKey === "string" && !alwaysOpen) {
       return defaultActiveKey;
     }
 
-    if (Array.isArray(defaultActiveKey)) {
-      return defaultActiveKey.length > 0 && [...defaultActiveKey];
+    // Array
+    if (Array.isArray(defaultActiveKey) && defaultActiveKey.length > 0) {
+      return [...defaultActiveKey];
     }
-
-    return defaultActiveKey ? [defaultActiveKey] : [];
   });
 
   const accordionValue = useMemo(
@@ -119,7 +137,7 @@ function Accordion(props) {
   );
 
   return (
-    <AccordionContext.Provider value={/** @type {any} */ (accordionValue)}>
+    <AccordionContext.Provider value={accordionValue}>
       <Prime className={classes} style={style} {...rest}>
         {children}
       </Prime>

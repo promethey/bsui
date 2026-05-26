@@ -34,7 +34,7 @@ const propTypes = {
 const defaultProps = {
   style: null,
   className: null,
-  itemKey: null,
+  itemKey: "",
 };
 
 const BASE_CLASS_NAME = "accordion-item";
@@ -47,28 +47,22 @@ const BASE_CLASS_NAME = "accordion-item";
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
- * <AccordionItem>.accordion-item</AccordionItem>
- *
- * @example
- * <Accordion.Item>.accordion-item</Accordion.Item>
- *
- * @example
- * <Accordion>
- *  <Accordion.Item itemKey={1}>
- *  <Accordion.Header>Accordion Item #1</Accordion.Header>
- *    <Accordion.Body>
- *      This is the first item's accordion body
- *    </Accordion.Body>
- *  </Accordion.Item>
- * </Accordion>
+ * <AccordionItem>
+ *  <Accordion.Header>Item #1</Accordion.Header>
+ *  <Accordion.Body>
+ *    ...
+ *  </Accordion.Body>
+ * </AccordionItem>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionItemOwnProps
- * @property {string|number} [itemKey] - Sets item key
+ * @property {string} [itemKey]
+ * Sets item key
  *
  * @typedef {PrimeProps & AccordionItemOwnProps} AccordionItemProps
  * @param {AccordionItemProps} props
+ *
  * @return {React.ReactElement}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
@@ -81,28 +75,34 @@ function AccordionItem(props) {
 
   const { activeKey, setActiveKey, alwaysOpen } = useAccordionContext();
 
+  const normalizedItemKey = /** @type {string} */ (itemKey);
+
   const expanded = Array.isArray(activeKey)
-    ? activeKey.includes(itemKey)
-    : activeKey === itemKey;
+    ? activeKey.includes(normalizedItemKey)
+    : activeKey === normalizedItemKey;
 
-  const onToggle = useCallback(() => {
+  const toggle = useCallback(() => {
     setActiveKey((previousItemKey) => {
+      // String
       if (!alwaysOpen) {
-        return previousItemKey === itemKey ? "" : itemKey;
+        return previousItemKey === normalizedItemKey ? "" : normalizedItemKey;
       }
 
-      if (Array.isArray(previousItemKey) && previousItemKey.includes(itemKey)) {
-        return previousItemKey.filter((item) => item !== itemKey);
-      }
+      // Array
+      if (Array.isArray(previousItemKey)) {
+        if (previousItemKey.includes(normalizedItemKey)) {
+          return previousItemKey.filter((item) => item !== normalizedItemKey);
+        }
 
-      return [...previousItemKey, itemKey];
+        return [...previousItemKey, normalizedItemKey];
+      }
     });
   }, [itemKey]);
 
   const accordionItemValue = useMemo(
     () => ({
       expanded,
-      onToggle,
+      toggle,
     }),
     [activeKey],
   );

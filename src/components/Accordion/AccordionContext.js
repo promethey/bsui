@@ -2,8 +2,8 @@ import { createContext, useContext } from "react";
 
 /**
  * @typedef {Object} AccordionContextValue
- * @property {(param: (prevItemKey: string) => void) => void} setActiveKey
- * @property {string | null} activeKey
+ * @property {React.Dispatch<React.SetStateAction<string | string[] | undefined>>} setActiveKey
+ * @property {Array<string>|string|undefined} activeKey
  * @property {boolean} alwaysOpen - Make accordion items stay open when another item is opened
  */
 

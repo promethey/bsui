@@ -4,6 +4,8 @@ import cn from "classnames";
 import AccordionCollapse from "./AccordionCollapse";
 import { useAccordionItemContext } from "./AccordionItemContext";
 
+const BASE_CLASS_NAME = "accordion-body";
+
 const propTypes = {
   /**
    * Inline styles applied to the root
@@ -29,8 +31,6 @@ const defaultProps = {
   style: null,
   className: null,
 };
-
-const BASE_CLASS_NAME = "accordion-body";
 
 /**
  * AccordionBody component

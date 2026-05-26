@@ -40,9 +40,9 @@ export function Default() {
   ];
 
   return (
-    <Accordion defaultActiveKey={1}>
+    <Accordion defaultActiveKey="1">
       {examples.map(({ title, body }, index) => (
-        <Accordion.Item itemKey={index + 1}>
+        <Accordion.Item itemKey={`${index + 1}`}>
           <Accordion.Header>{title}</Accordion.Header>
           <Accordion.Body>{body}</Accordion.Body>
         </Accordion.Item>

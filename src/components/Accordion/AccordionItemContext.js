@@ -3,7 +3,7 @@ import { useContext, createContext } from "react";
 /**
  * @typedef {Object} AccordionItemContextValue
  * @property {boolean} expanded
- * @property {() => void} onToggle
+ * @property {() => void} toggle
  */
 
 /** @type {React.Context<AccordionItemContextValue | null>} */

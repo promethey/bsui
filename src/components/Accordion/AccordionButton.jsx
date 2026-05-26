@@ -2,6 +2,8 @@ import { Prime } from "components";
 import PropTypes from "prop-types";
 import cn from "classnames";
 
+const BASE_CLASS_NAME = "accordion-button";
+
 const propTypes = {
   /**
    * Inline styles applied to the root
@@ -45,8 +47,6 @@ const defaultProps = {
   disabled: false,
 };
 
-const BASE_CLASS_NAME = "accordion-button";
-
 /**
  * AccordionButton component
  * @component
@@ -55,20 +55,18 @@ const BASE_CLASS_NAME = "accordion-button";
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
- * <AccordionButton>.accordion-button</AccordionButton>
- *
- * @example
  * <Accordion.Button>.accordion-button</Accordion.Button>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionButtonOwnProps
- * @property {boolean} [collapsed] - Sets collapsed style
- * @property {boolean} [disabled] - Sets disabled style
- * @property {() => void} [onClick] - Sets click handle
+ * @property {boolean} [collapsed]
+ * Sets collapsed style
+ *
+ * @property {boolean} [disabled]
+ * Sets disabled style
  *
  * @typedef {PrimeProps & AccordionButtonOwnProps} AccordionButtonProps
- *
  * @param {AccordionButtonProps} props
  *
  * @return {React.ReactElement}

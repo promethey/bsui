@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import { Collapse } from "components";
 
+const BASE_CLASS_NAME = "accordion-collapse";
+
 const propTypes = {
   /**
    * Inline styles applied to the root
@@ -41,8 +43,6 @@ const defaultProps = {
   duration: 350,
 };
 
-const BASE_CLASS_NAME = "accordion-collapse";
-
 /**
  * AccordionCollapse component
  * @component
@@ -51,19 +51,18 @@ const BASE_CLASS_NAME = "accordion-collapse";
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
- * <AccordionCollapse>.accordion-collapse</AccordionCollapse>
- *
- * @example
  * <Accordion.Collapse>.accordion-collapse</Accordion.Collapse>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionCollapseOwnProps
- * @property {boolean} [open] - Sets open state
- * @property {number} [duration] - Sets animation duration value
+ * @property {boolean} [open]
+ * Sets open state
+ *
+ * @property {number} [duration]
+ * Sets animation duration value
  *
  * @typedef {PrimeProps & AccordionCollapseOwnProps} AccordionCollapseProps
- *
  * @param {AccordionCollapseProps} props
  *
  * @return {React.ReactElement}

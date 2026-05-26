@@ -4,6 +4,8 @@ import cn from "classnames";
 import AccordionButton from "./AccordionButton";
 import { useAccordionItemContext } from "./AccordionItemContext";
 
+const BASE_CLASS_NAME = "accordion-header";
+
 const propTypes = {
   /**
    * Inline styles applied to the root
@@ -30,8 +32,6 @@ const defaultProps = {
   className: null,
 };
 
-const BASE_CLASS_NAME = "accordion-header";
-
 /**
  * AccordionHeader component
  * @component
@@ -40,18 +40,15 @@ const BASE_CLASS_NAME = "accordion-header";
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
- * <AccordionHeader>.accordion-header</AccordionHeader>
- *
- * @example
  * <Accordion.Header>.accordion-header</Accordion.Header>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionHeaderOwnProps
- * @property {boolean} [disabled] - Sets disabled state
+ * @property {boolean} [disabled]
+ * Sets disabled state
  *
  * @typedef {PrimeProps & AccordionHeaderOwnProps} AccordionHeaderProps
- *
  * @param {AccordionHeaderProps} props
  *
  * @return {React.ReactElement}
@@ -64,11 +61,11 @@ function AccordionHeader(props) {
 
   const classes = cn(BASE_CLASS_NAME, className);
 
-  const { expanded, onToggle } = useAccordionItemContext();
+  const { expanded, toggle } = useAccordionItemContext();
 
   return (
     <Prime as="h2" className={classes} style={style} {...rest}>
-      <AccordionButton collapsed={expanded} onClick={onToggle}>
+      <AccordionButton collapsed={expanded} onClick={toggle}>
         {children}
       </AccordionButton>
     </Prime>
