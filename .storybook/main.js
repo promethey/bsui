@@ -9,7 +9,7 @@ const config = {
   },
   stories: [
     "../src/**/*.mdx",
-    "../src/guides/*.mdx",
+    "../src/stories/*.mdx",
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   staticDirs: ["../public"],
@@ -28,8 +28,7 @@ const config = {
       components: path.resolve(__dirname, "../src/components"),
       utils: path.resolve(__dirname, "../src/utils"),
       helpers: path.resolve(__dirname, "../src/helpers"),
-      constants: path.resolve(__dirname, "../src/constants"),
-      core: path.resolve(__dirname, "../src/core"),
+      hooks: path.resolve(__dirname, "../src/hooks"),
     };
     return config;
   },

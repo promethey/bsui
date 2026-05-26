@@ -476,7 +476,7 @@ const propTypes = {
  * @property {string} [role] - HTML role.
  * @property {string} [type] - HTML type.
  * @property {boolean} [disabled] - HTML disabled.
- * @property {() => void} [onClick] - HTML onclick.
+ * @property {React.MouseEventHandler<HTMLElement>} [onClick] - HTML onclick.
  * @property {string} [href] - HTML href.
  * @property {Object} [style] - Inline styles applied to the root.
  * @property {React.ReactNode} [children] - Content rendered inside the component.

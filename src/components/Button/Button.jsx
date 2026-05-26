@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { classnames as cs, is, equal } from "helpers";
-import { themeResolver } from "utils";
+import { classnames as cs, prefix } from "helpers";
 import { Prime } from "components";
 
-const BUTTON_CLASS_NAME = "btn";
+const BASE_CLASS_NAME = "btn";
 
 const BUTTON_THEMES = [
   "primary",
@@ -16,15 +15,9 @@ const BUTTON_THEMES = [
   "info",
   "light",
   "dark",
-  "outline-primary",
-  "outline-secondary",
-  "outline-success",
-  "outline-danger",
-  "outline-warning",
-  "outline-info",
-  "outline-light",
-  "outline-dark",
 ];
+
+const BUTTON_SIZES = ["sm", "lg"];
 
 const propTypes = {
   /**
@@ -92,21 +85,21 @@ const defaultProps = {
  * Invalid props are ignored.
  * Always returns valid JSX.
  *
+ * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/buttons/}
  *
  * @example
  * <Button>Button</Button>
+ *
+ * @example
  * <Button theme="success">Button</Button>
- * <Button theme="danger">Button</Button>
+ *
+ * @example
+ * <Button size="lg">Button</Button>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} ButtonOwnProps
- * @property {"button"|"input"|"a"} [as] - HTML element type used for rendering.
- * @property {Object} [style] - Inline styles applied to the root.
- * @property {React.ReactNode} [children] - Content rendered inside the component.
- * @property {Object|string} [className] - Additional classes applied to the root element.
- *
  * @property {string} [to] - Sets href
  * @property {"button"|"submit"|"reset"} [type] - Sets type
  * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link"} [theme] - Sets button theme
@@ -115,18 +108,20 @@ const defaultProps = {
  * @property {"sm"|"lg"} [size] - Sets button size
  * @property {boolean} [disabled] - Sets button disabled state
  * @property {boolean} [pressed] - Sets button pressed style
- * @property {() => void} [onClick] - Event handler for click
+ * @property {React.MouseEventHandler<HTMLElement>} [onClick] - Event handler for click
  *
- * @typedef {PrimeProps & ButtonOwnProps} ButtonProps
+ * @typedef {ButtonOwnProps & PrimeProps} ButtonProps
  *
  * @param {ButtonProps} props
  *
- * @returns {React.ReactNode}
+ * @return {React.ReactNode}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
+ *
+ * @type {React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLElement>>}
  */
-function Button(props) {
+const Button = React.forwardRef((props, ref) => {
   const {
     as: ComponentType = "button",
     style,
@@ -135,28 +130,25 @@ function Button(props) {
     to = "#",
     type,
     theme = "primary",
-    outline,
+    outline = false,
     value,
     size,
-    disabled,
-    pressed,
+    disabled = false,
+    pressed = false,
     onClick,
     ...rest
   } = props;
 
   const classes = cn(
-    BUTTON_CLASS_NAME,
-    themeResolver(
-      BUTTON_CLASS_NAME,
-      outline ? `outline-${theme}` : theme,
-      BUTTON_THEMES,
-    ),
+    BASE_CLASS_NAME,
     {
+      [prefix(BASE_CLASS_NAME, outline ? `outline-${theme}` : theme)]:
+        typeof theme === "string" && BUTTON_THEMES.includes(theme),
       disabled:
-        is("boolean", disabled, { notFalse: true }) &&
-        !equal(ComponentType, "button"),
-      [cs(BUTTON_CLASS_NAME, size)]: is("string", size, { notEmpty: true }),
-      active: is("boolean", pressed, { notFalse: true }),
+        typeof disabled === "boolean" && disabled && ComponentType === "button",
+      [cs(BASE_CLASS_NAME, size)]:
+        typeof size === "string" && BUTTON_SIZES.includes(size),
+      active: typeof pressed === "boolean" && pressed,
     },
     className,
   );
@@ -204,14 +196,14 @@ function Button(props) {
 
   return (
     <Prime
+      ref={ref}
       as={ComponentType}
       {...propertyList[/** @type {"button"|"input"|"a"} */ (ComponentType)]}>
       {children}
     </Prime>
   );
-}
+});
 
 Button.propTypes = propTypes;
-Button.defaultProps = defaultProps;
 
 export default Button;

@@ -1,1 +1,0 @@
-export { themeResolver } from "./theme";

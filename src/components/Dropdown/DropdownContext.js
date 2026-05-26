@@ -3,7 +3,9 @@ import { createContext, useContext } from "react";
 /**
  * @typedef {Object} DropdownContextValue
  * @property {boolean | null} expanded
+ * @property {React.RefObject<HTMLDivElement | null>} dropdownRef
  * @property {() => void} onToggle
+ * @property {() => void} onClose
  */
 
 /** @type {React.Context<DropdownContextValue | null>} */

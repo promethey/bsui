@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Button } from "components";
@@ -60,7 +60,7 @@ const defaultProps = {
 function DropdownButton(props) {
   const { style, children, className, split, ...rest } = props;
 
-  const { expanded, onToggle } = useDropdownContext();
+  const { expanded, dropdownRef, onToggle } = useDropdownContext();
 
   const classes = cn(
     BASE_CLASS_NAME,
@@ -72,7 +72,12 @@ function DropdownButton(props) {
   );
 
   return (
-    <Button onClick={onToggle} className={classes} style={style} {...rest}>
+    <Button
+      ref={dropdownRef}
+      onClick={onToggle}
+      className={classes}
+      style={style}
+      {...rest}>
       {children}
     </Button>
   );

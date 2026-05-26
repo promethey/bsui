@@ -5,9 +5,8 @@ import { classnames as cs, is } from "helpers";
 import { Prime, CloseButton } from "components";
 import AlertLink from "./AlertLink";
 import AlertHeading from "./AlertHeading";
-import { themeResolver } from "utils";
 
-const ALERT_CLASS_NAME = "alert";
+const BASE_CLASS_NAME = "alert";
 
 const ALERT_THEMES = [
   "primary",
@@ -130,10 +129,11 @@ function Alert(props) {
   const alertRef = useRef(null);
 
   const classes = cn(
-    ALERT_CLASS_NAME,
-    themeResolver(ALERT_CLASS_NAME, theme, ALERT_THEMES),
+    BASE_CLASS_NAME,
     {
-      [cs(ALERT_CLASS_NAME, "dismissible")]: is("boolean", dismissible, {
+      [`${BASE_CLASS_NAME}-${theme}`]:
+        typeof theme === "string" && ALERT_THEMES.includes(theme),
+      [cs(BASE_CLASS_NAME, "dismissible")]: is("boolean", dismissible, {
         notFalse: true,
       }),
       "show fade": is("boolean", animated, { notFalse: true }),

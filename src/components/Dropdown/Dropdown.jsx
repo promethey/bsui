@@ -134,7 +134,7 @@ function Dropdown(props) {
 
   return (
     <DropdownContext.Provider value={dropdownValue}>
-      <Prime ref={dropdownRef} className={classes} style={style} {...rest}>
+      <Prime className={classes} style={style} {...rest}>
         {children}
       </Prime>
     </DropdownContext.Provider>
