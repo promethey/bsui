@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
@@ -9,6 +9,8 @@ import DropdownDivider from "./DropdownDivider";
 import DropdownText from "./DropdownText";
 import DropdownHeader from "./DropdownHeader";
 import { DropdownContext } from "./DropdownContext";
+import { useOutsideClick } from "hooks/useOutsideClick";
+import { useEscapeKey } from "hooks/useEscapeKey";
 
 const BASE_CLASS_NAME = "dropdown";
 
@@ -47,6 +49,14 @@ const defaultProps = {
  * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/dropdowns/}
  *
+ * @example
+ * <Dropdown>
+ *  <Dropdown.Button>Toggle</Dropdown.Button>
+ *  <Dropdown.Menu>
+ *    <Dropdown.Item>Item #1</Dropdown.Item>
+ *  </Dropdown.Menu>
+ * </Dropdown>
+ *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} DropdownOwnProps
@@ -64,17 +74,17 @@ const defaultProps = {
 function Dropdown(props) {
   /**
     const floating = useFloating({
-    open: expanded,
+      open: expanded,
 
-    placement: "bottom-start",
+      placement: "bottom-start",
 
-    middleware: [
-      offset(4),
-      flip(),
-      shift({
-        padding: 8,
-      }),
-    ],
+      middleware: [
+        offset(4),
+        flip(),
+        shift({
+          padding: 8,
+        }),
+      ],
     });
   */
 
@@ -89,19 +99,42 @@ function Dropdown(props) {
     className,
   );
 
-  const [show, setShow] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const dropdownRef = useRef(null);
+
+  const onToggle = useCallback(() => {
+    setExpanded((prev) => !prev);
+  }, []);
+
+  const onClose = useCallback(() => {
+    setExpanded(false);
+  }, []);
 
   const dropdownValue = useMemo(
     () => ({
-      show,
-      onToggle: () => setShow((prev) => !prev),
+      expanded,
+      onToggle,
+      onClose,
+      dropdownRef,
     }),
-    [show],
+    [expanded],
   );
+
+  useOutsideClick({
+    ref: dropdownRef,
+    enabled: expanded,
+    onOutsideClick: onClose,
+  });
+
+  useEscapeKey({
+    enabled: expanded,
+    onEscape: onClose,
+  });
 
   return (
     <DropdownContext.Provider value={dropdownValue}>
-      <Prime className={classes} style={style} {...rest}>
+      <Prime ref={dropdownRef} className={classes} style={style} {...rest}>
         {children}
       </Prime>
     </DropdownContext.Provider>

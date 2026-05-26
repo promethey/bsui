@@ -59,30 +59,19 @@ const defaultProps = {
 function DropdownMenu(props) {
   const { style, children, className, dark, ...rest } = props;
 
-  const { show } = useDropdownContext();
-
-  const showStyle = {
-    position: "absolute",
-    inset: "0px auto auto 0px",
-    margin: "0px",
-    transform: "translate(0px, 40px)",
-    ...style,
-  };
+  const { expanded } = useDropdownContext();
 
   const classes = cn(
     BASE_CLASS_NAME,
     {
+      show: expanded,
       [prefix(BASE_CLASS_NAME, "dark")]: typeof dark === "boolean" && dark,
-      show: show,
     },
     className,
   );
 
-  /** @type {object|undefined} */
-  const styles = show ? showStyle : style;
-
   return (
-    <Prime as="ul" className={classes} style={styles} {...rest}>
+    <Prime as="ul" className={classes} style={style} {...rest}>
       {children}
     </Prime>
   );

@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 
 /**
  * @typedef {Object} DropdownContextValue
- * @property {boolean | null} show
+ * @property {boolean | null} expanded
  * @property {() => void} onToggle
  */
 

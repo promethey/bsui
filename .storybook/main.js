@@ -9,7 +9,7 @@ const config = {
   },
   stories: [
     "../src/**/*.mdx",
-    "../src/docs/*.mdx",
+    "../src/guides/*.mdx",
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   staticDirs: ["../public"],

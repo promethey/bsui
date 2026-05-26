@@ -36,7 +36,7 @@ const defaultProps = {
 };
 
 /**
- * Dropdown button component
+ * Dropdown button (toggle) component
  * @component
  *
  * @see {@link Prime}
@@ -60,12 +60,12 @@ const defaultProps = {
 function DropdownButton(props) {
   const { style, children, className, split, ...rest } = props;
 
-  const { show, onToggle } = useDropdownContext();
+  const { expanded, onToggle } = useDropdownContext();
 
   const classes = cn(
     BASE_CLASS_NAME,
     {
-      show: show,
+      show: expanded,
       [prefix(BASE_CLASS_NAME, "split")]: typeof split === "boolean" && split,
     },
     className,
