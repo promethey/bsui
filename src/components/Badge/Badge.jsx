@@ -32,20 +32,16 @@ const defaultProps = {
  * @component
  *
  * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/badge/|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/badge/}
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} BadgeOwnProps
- * @property {Object} [style] - Inline styles applied to the root.
- * @property {React.ReactNode} [children] - Content rendered inside the component.
- * @property {Object|string} [className] - Additional classes applied to the root element.
  *
  * @typedef {BadgeOwnProps & PrimeProps} BadgeProps
- *
  * @param {BadgeProps} props
  *
- * @returns {React.ReactNode}
+ * @return {React.ReactNode}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
