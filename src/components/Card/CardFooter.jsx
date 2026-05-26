@@ -37,13 +37,20 @@ const defaultProps = {
  * @component
  *
  * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/card/#header-and-footer|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/card/#header-and-footer}
+ *
+ * @example
+ * <Card.Footer text="muted">
+ *  2 days ago
+ * </Card.Footer>
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardHeaderOwnProps
- * @property {React.ElementType} [as="div"] - HTML element type used for rendering.
+ * @property {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"|"div"} [as="div"]
+ * HTML element type used for rendering.
  *
- * @typedef {CardHeaderOwnProps & import("../Prime/Prime").PrimeProps} CardHeaderProps
- *
+ * @typedef {CardHeaderOwnProps & PrimeProps} CardHeaderProps
  * @param {CardHeaderProps} props
  *
  * @return {React.ReactNode}

@@ -33,17 +33,25 @@ const defaultProps = {
 };
 
 /**
- * CardHeader is children component of Card
+ * Renders the top section of a card, typically
+ * for titles, actions, or metadata.
  * @component
  *
  * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/card/#header-and-footer|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/card/#header-and-footer}
+ *
+ * @example
+ * <Card.Header>
+ *  Featured
+ * </Card.Header>
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardHeaderOwnProps
- * @property {React.ElementType} [as="div"] - HTML element type used for rendering.
+ * @property {React.ElementType} [as="div"]
+ * HTML element type used for rendering.
  *
- * @typedef {CardHeaderOwnProps & import("../Prime/Prime").PrimeProps} CardHeaderProps
- *
+ * @typedef {CardHeaderOwnProps & PrimeProps} CardHeaderProps
  * @param {CardHeaderProps} props
  *
  * @return {React.ReactNode}

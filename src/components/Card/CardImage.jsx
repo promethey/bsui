@@ -38,19 +38,28 @@ const defaultProps = {
 };
 
 /**
- * CardImage is children component of Card
+ * Displays media content inside the card layout.
  * @component
  *
  * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/card/#images|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/card/#images}
+ *
+ * @example
+ * <Card.Image src="..." alt="...">
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardImgOwnProps
- * @property {string} [src] - Sets image source URL.
- * @property {string} [alt] - Sets alternative text.
- * @property {"top"|"bottom"} [placement="top"] - Sets image placement inside card.
+ * @property {string} [src]
+ * Sets image source URL.
  *
- * @typedef {CardImgOwnProps & import("../Prime/Prime").PrimeProps} CardImgProps
+ * @property {string} [alt]
+ * Sets alternative text.
  *
+ * @property {"top"|"bottom"} [placement="top"]
+ * Sets image placement inside card.
+ *
+ * @typedef {CardImgOwnProps & PrimeProps} CardImgProps
  * @param {CardImgProps} props
  *
  * @return {React.ReactNode}
@@ -58,7 +67,7 @@ const defaultProps = {
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
-function CardImg(props) {
+function CardImage(props) {
   const { style, className, src, alt, placement, ...rest } = props;
 
   const classes = cn(cs(BASE_CLASS_NAME, placement), className);
@@ -68,7 +77,7 @@ function CardImg(props) {
   );
 }
 
-CardImg.propTypes = propTypes;
-CardImg.defaultProps = defaultProps;
+CardImage.propTypes = propTypes;
+CardImage.defaultProps = defaultProps;
 
-export default CardImg;
+export default CardImage;

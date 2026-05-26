@@ -27,16 +27,17 @@ const defaultProps = {
 };
 
 /**
- * CardText is children component of Card
+ * General text content within the card body.
  * @component
  *
  * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/card/#titles-text-and-links|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/card/#titles-text-and-links}
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardTextOwnProps
  *
- * @typedef {CardTextOwnProps & import("../Prime/Prime").PrimeProps} CardTextProps
- *
+ * @typedef {CardTextOwnProps & PrimeProps} CardTextProps
  * @param {CardTextProps} props
  *
  * @return {React.ReactNode}

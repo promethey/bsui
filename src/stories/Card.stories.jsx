@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Card, Button } from "components";
+import { Card, Button, Row, Col } from "components";
 
 export default {
   title: "Components/Card",
@@ -355,3 +355,72 @@ export function MixinsUtilities() {
   );
 }
 MixinsUtilities.storyName = "Mixins utilities";
+
+export function Groups() {
+  const examples = [
+    "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    "This card has supporting text below as a natural lead-in to additional content.",
+    "This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.",
+  ];
+
+  return (
+    <Card.Group w={75}>
+      {[...Array(3)].map((_, index) => (
+        <Card>
+          <Card.Body>
+            <Card.Title>Card title</Card.Title>
+            <Card.Text>{examples[index]}</Card.Text>
+          </Card.Body>
+          <Card.Footer text="muted">
+            <small>Last updated 3 mins ago</small>
+          </Card.Footer>
+        </Card>
+      ))}
+    </Card.Group>
+  );
+}
+
+export function Grid() {
+  return (
+    <Row cols={{ xs: 1, md: 2 }} g={4}>
+      {[...Array(4)].map(() => (
+        <Col>
+          <Card>
+            <Card.Body>
+              <Card.Title>Card title</Card.Title>
+              <Card.Text>
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
+  );
+}
+
+export function Height() {
+  const examples = [
+    "This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    "This is a short card.",
+    "This is a longer card with supporting text below as a natural lead-in to additional content.",
+    "This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+  ];
+
+  return (
+    <Row cols={{ xs: 1, md: 2 }} g={4}>
+      {[...Array(4)].map((_, index) => (
+        <Col>
+          <Card h={100}>
+            <Card.Body>
+              <Card.Title>Card title</Card.Title>
+              <Card.Text>{examples[index]}</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
+  );
+}

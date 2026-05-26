@@ -27,16 +27,25 @@ const defaultProps = {
 };
 
 /**
- * CardBody is children component of Card
+ * Render cards as a single, attached element
+ * with equal width and height columns
  * @component
  *
  * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/card/#body|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/card/#card-groups}
+ *
+ * @example
+ * <Card.Group>
+ *  <Card>...</Card>
+ *  <Card>...</Card>
+ *  <Card>...</Card>
+ * </Card.Group>
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardGroupOwnProps
  *
- * @typedef {CardGroupOwnProps & import("../Prime/Prime").PrimeProps} CardGroupProps
- *
+ * @typedef {CardGroupOwnProps & PrimeProps} CardGroupProps
  * @param {CardGroupProps} props
  *
  * @return {React.ReactNode}

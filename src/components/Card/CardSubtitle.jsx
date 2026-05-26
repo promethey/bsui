@@ -33,17 +33,25 @@ const defaultProps = {
 };
 
 /**
- * CardTitle is children component of Card
+ * Secondary text element providing
+ * additional context under the title.
  * @component
  *
  * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/card/#titles-text-and-links|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/card/#titles-text-and-links}
+ *
+ * @example
+ * <Card.Subtitle mb={2} text="muted">
+ *  Card subtitle
+ * </Card.Subtitle>
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardSubtitleOwnProps
- * @property {React.ElementType} [as="h6"] - HTML element type used for rendering.
+ * @property {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [as]
+ * HTML element type used for rendering.
  *
- * @typedef {CardSubtitleOwnProps & import("../Prime/Prime").PrimeProps} CardSubtitleProps
- *
+ * @typedef {CardSubtitleOwnProps & PrimeProps} CardSubtitleProps
  * @param {CardSubtitleProps} props
  *
  * @return {React.ReactNode}

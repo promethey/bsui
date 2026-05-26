@@ -27,16 +27,22 @@ const defaultProps = {
 };
 
 /**
- * CardBody is children component of Card
+ * Main content container for card information.
  * @component
  *
  * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/card/#body|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/card/#body}
+ *
+ * @example
+ * <Card.Body>
+ *  This is some text within a card body.
+ * </Card.Body>
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardBodyOwnProps
  *
- * @typedef {CardBodyOwnProps & import("../Prime/Prime").PrimeProps} CardBodyProps
- *
+ * @typedef {CardBodyOwnProps & PrimeProps} CardBodyProps
  * @param {CardBodyProps} props
  *
  * @return {React.ReactNode}

@@ -33,17 +33,22 @@ const defaultProps = {
 };
 
 /**
- * CardTitle is children component of Card
+ * Primary heading element inside a card body.
  * @component
  *
  * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/card/#titles-text-and-links|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/card/#titles-text-and-links}
+ *
+ * @example
+ * <Card.Title>Card title</Card.Title>
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardTitleOwnProps
- * @property {React.ElementType} [as="h5"] - HTML element type used for rendering.
+ * @property {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [as]
+ * HTML element type used for rendering.
  *
- * @typedef {CardTitleOwnProps & import("../Prime/Prime").PrimeProps} CardTitleProps
- *
+ * @typedef {CardTitleOwnProps & PrimeProps} CardTitleProps
  * @param {CardTitleProps} props
  *
  * @return {React.ReactNode}

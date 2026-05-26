@@ -32,17 +32,22 @@ const defaultProps = {
 };
 
 /**
- * CardLink is children component of Card
+ * Styled hyperlink adapted to card context.
  * @component
  *
  * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/card/#titles-text-and-links|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/card/#titles-text-and-links}
+ *
+ * @example
+ * <Card.Link to="/">Card link</Card.Link>
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardLinkOwnProps
- * @property {string} [to] - Sets navigation target (alias for href)
+ * @property {string} [to]
+ * Sets navigation target (alias for href)
  *
- * @typedef {CardLinkOwnProps & import("../Prime/Prime").PrimeProps} CardLinkProps
- *
+ * @typedef {CardLinkOwnProps & PrimeProps} CardLinkProps
  * @param {CardLinkProps} props
  *
  * @return {React.ReactNode}

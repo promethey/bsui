@@ -3,7 +3,7 @@ import cn from "classnames";
 import { Prime } from "components";
 import CardGroup from "./CardGroup";
 import CardHeader from "./CardHeader";
-import CardImg from "./CardImg";
+import CardImage from "./CardImage";
 import CardBody from "./CardBody";
 import CardTitle from "./CardTitle";
 import CardSubtitle from "./CardSubtitle";
@@ -36,28 +36,32 @@ const defaultProps = {
 };
 
 /**
- * Card component
+ * Flexible container for grouping related
+ * content, actions, and media.
  * @component
  *
  * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/card/|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/card/}
  *
- * Subcomponents:
- * - Header
- * - Image
- * - Body
- * - Title
- * - Subtitle
- * - Text
- * - Link
- * - Footer
- * - Group
+ * @example
+ * <Card style={{ width: "18rem" }}>
+ *  <Card.Body>
+ *    <Card.Title>Card title</Card.Title>
+ *    <Card.Text>
+ *      Some quick example text to build on the card title and make up the
+ *      bulk of the card&apos;s content.
+ *    </Card.Text>
+ *  </Card.Body>
+ * </Card>
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardOwnProps
  *
- * @typedef {CardOwnProps & import("../Prime/Prime").PrimeProps} CardProps
- *
+ * @typedef {CardOwnProps & PrimeProps} CardProps
  * @param {CardProps} props
+ *
+ * @return {React.ReactElement}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -79,7 +83,7 @@ Card.defaultProps = defaultProps;
 
 Card.Group = CardGroup;
 Card.Header = CardHeader;
-Card.Img = CardImg;
+Card.Image = CardImage;
 Card.Body = CardBody;
 Card.Title = CardTitle;
 Card.Subtitle = CardSubtitle;
