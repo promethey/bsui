@@ -107,29 +107,27 @@ const defaultProps = {
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
- * @typedef {1|2|3|4|5|6|7|8|9|10|11|12|"auto"|true} ColResponsive
- *
  * @typedef {object} ColOwnProps
  *
- * @property {ColResponsive} [xs]
+ * @property {1|2|3|4|5|6|7|8|9|10|11|12|"auto"|true} [xs]
  * Sets size for xs (default)
  *
- * @property {ColResponsive} [sm]
+ * @property {1|2|3|4|5|6|7|8|9|10|11|12|"auto"|true} [sm]
  * Sets size for sm
  *
- * @property {ColResponsive} [md]
+ * @property {1|2|3|4|5|6|7|8|9|10|11|12|"auto"|true} [md]
  * Sets size for md
  *
- * @property {ColResponsive} [lg]
+ * @property {1|2|3|4|5|6|7|8|9|10|11|12|"auto"|true} [lg]
  * Sets size for lg
  *
- * @property {ColResponsive} [xl]
+ * @property {1|2|3|4|5|6|7|8|9|10|11|12|"auto"|true} [xl]
  * Sets size for xl
  *
- * @property {ColResponsive} [xxl]
+ * @property {1|2|3|4|5|6|7|8|9|10|11|12|"auto"|true} [xxl]
  * Sets size for xxl
  *
- * @property {ColResponsive} [offset]
+ * @property {1|2|3|4|5|6|7|8|9|10|11|12|"auto"|true} [offset]
  * Sets size for xxl
  *
  * @typedef {ColOwnProps & PrimeProps} ColProps
