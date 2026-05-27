@@ -25,17 +25,17 @@ const propTypes = {
   ]),
 
   /**
-   * Sets href path
+   * Navigation target for the nav link
    */
   to: PropTypes.bool,
 
   /**
-   * Sets active style
+   * Marks the navigation item as active
    */
   active: PropTypes.bool,
 
   /**
-   * Sets disabled state
+   * Disables interaction and applies disabled styles
    */
   disabled: PropTypes.bool,
 };

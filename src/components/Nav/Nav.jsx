@@ -30,17 +30,17 @@ const propTypes = {
   as: PropTypes.oneOf(["nav", "ul"]),
 
   /**
-   * Sets tabbed or pilled interface
+   * Enables tabbed or pill-style navigation appearance
    */
   view: PropTypes.oneOf(["tabs", "pills"]),
 
   /**
-   * Sets full available width
+   * Expands navigation items to fill the available width
    */
   fill: PropTypes.bool,
 
   /**
-   * Sets equal-width elements
+   * Makes all navigation items equal width
    */
   justified: PropTypes.bool,
 };
