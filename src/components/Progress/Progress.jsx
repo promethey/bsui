@@ -29,24 +29,22 @@ const defaultProps = {
 };
 
 /**
- * Progress component
+ * Visual indicator component that displays
+ * task completion progress.
+ *
  * @component
  *
  * @see {Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/progress/|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/progress/}
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} ProgressOwnProps
- * @property {Object} [style] - Inline styles applied to the root.
- * @property {React.ReactNode} [children] - Content rendered inside the component.
- * @property {Object|string} [className] - Additional classes applied to the root element.
  *
  * @typedef {ProgressOwnProps & PrimeProps} ProgressProps
- *
  * @param {ProgressProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

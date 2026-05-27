@@ -22,35 +22,32 @@ const propTypes = {
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Edit value now
-   * Alias for HTML attribute *aria-valuenow*
-   */
-  now: PropTypes.number,
-
-  /**
-   * Edit value min
-   * Alias for HTML attribute *aria-valuemin*
+   * Minimum progress value
    */
   min: PropTypes.number,
 
   /**
-   * Edit value max
-   * Alias for HTML attribute *aria-valuemax*
+   * Maximum progress value
    */
   max: PropTypes.number,
 
   /**
-   * Displayed current progress percent
+   * Current progress value
+   */
+  now: PropTypes.number,
+
+  /**
+   * Displays progress percentage label
    */
   displayedPercent: PropTypes.bool,
 
   /**
-   * Activate striped design
+   * Applies striped visual style
    */
   striped: PropTypes.bool,
 
   /**
-   * Activate animate striped
+   * Enables animated striped effect
    */
   animated: PropTypes.bool,
 };
@@ -68,32 +65,40 @@ const defaultProps = {
 };
 
 /**
- * Progress bar component
+ * Internal visual segment used to render
+ * the filled portion of Progress.
+ *
  * @component
  *
  * @see {Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/progress/|Official Documentation}
+ * @see {@link https://getbootstrap.com/docs/5.1/components/progress/}
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} ProgressBarOwnProps
- * @property {Object} [style] - Inline styles applied to the root.
- * @property {React.ReactNode} [children] - Content rendered inside the component.
- * @property {Object|string} [className] - Additional classes applied to the root element.
  *
- * @property {number} [min] - Progress min value
- * @property {number} [max] - Progress max value
- * @property {number} [now] - Progress now value
+ * @property {number} [min=0]
+ * Minimum progress value.
  *
- * @property {boolean} [displayedPercent] - Add label with percantage
- * @property {boolean} [striped] - Sets striped design
- * @property {boolean} [animated] - Sets animated striped design
+ * @property {number} [max=100]
+ * Maximum progress value.
+ *
+ * @property {number} [now=0]
+ * Current progress value.
+ *
+ * @property {boolean} [displayedPercent=false]
+ * Displays progress percentage label.
+ *
+ * @property {boolean} [striped=false]
+ * Applies striped visual style.
+ *
+ * @property {boolean} [animated=false]
+ * Enables animated striped effect.
  *
  * @typedef {ProgressBarOwnProps & PrimeProps} ProgressBarProps
- *
  * @param {ProgressBarProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -106,9 +111,9 @@ function ProgressBar(props) {
     now = 0,
     min = 0,
     max = 100,
-    displayedPercent,
-    striped,
-    animated,
+    displayedPercent = false,
+    striped = false,
+    animated = false,
     ...rest
   } = props;
 
