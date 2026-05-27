@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { Prime } from "components";
 import { classnames as cs } from "helpers";
 
-const BASE_CLASSNAME = "container";
+const BASE_CLASS_NAME = "container";
 
 const CONTAINER_VALUES = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
@@ -39,7 +39,9 @@ const defaultProps = {
 };
 
 /**
- * Container component
+ * Centers and horizontally pads content within a responsive layout wrapper.
+ *
+ * @component
  *
  * @see {Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/buttons/}
@@ -48,16 +50,22 @@ const defaultProps = {
  * <Container>Content</Container>
  *
  * @example
+ * <Container fluid>Content</Container>
+ *
+ * @example
  * <Container fluid="xs">Content</Container>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} ContainerOwnProps
- * @property {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"|true} [fluid] - Sets fluid value
+ *
+ * @property {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"|true} [fluid]
+ * Enables fluid container behavior across all or specific breakpoints.
  *
  * @typedef {ContainerOwnProps & PrimeProps} ContainerProps
- *
  * @param {ContainerProps} props
+ *
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -67,10 +75,10 @@ function Container(props) {
 
   const classes = classNames(
     {
-      [cs(BASE_CLASSNAME, fluid)]:
+      [cs(BASE_CLASS_NAME, fluid)]:
         typeof fluid === "string" && CONTAINER_VALUES.includes(fluid),
-      [cs(BASE_CLASSNAME, "fluid")]: typeof fluid === "boolean" && fluid,
-      [BASE_CLASSNAME]: !fluid,
+      [cs(BASE_CLASS_NAME, "fluid")]: typeof fluid === "boolean" && fluid,
+      [BASE_CLASS_NAME]: !fluid,
     },
     className,
   );
