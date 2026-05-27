@@ -9,10 +9,10 @@ import { createContext, useContext } from "react";
  * @property {React.RefObject<HTMLDivElement | null>} dropdownRef
  * Reference to the root dropdown element.
  *
- * @property {() => void} onToggle
+ * @property {() => void} toggle
  * Toggles the dropdown visibility state.
  *
- * @property {() => void} onClose
+ * @property {() => void} close
  * Closes the dropdown menu.
  */
 

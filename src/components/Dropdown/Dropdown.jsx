@@ -106,19 +106,19 @@ function Dropdown(props) {
 
   const dropdownRef = useRef(null);
 
-  const onToggle = useCallback(() => {
+  const toggle = useCallback(() => {
     setExpanded((prev) => !prev);
   }, []);
 
-  const onClose = useCallback(() => {
+  const close = useCallback(() => {
     setExpanded(false);
   }, []);
 
   const dropdownValue = useMemo(
     () => ({
       expanded,
-      onToggle,
-      onClose,
+      toggle,
+      close,
       dropdownRef,
     }),
     [expanded],
@@ -127,12 +127,12 @@ function Dropdown(props) {
   useOutsideClick({
     ref: dropdownRef,
     enabled: expanded,
-    onOutsideClick: onClose,
+    onOutsideClick: close,
   });
 
   useEscapeKey({
     enabled: expanded,
-    onEscape: onClose,
+    onEscape: close,
   });
 
   return (
