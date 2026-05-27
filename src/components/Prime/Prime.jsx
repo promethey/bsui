@@ -21,37 +21,37 @@ import {
 
 const propTypes = {
   /**
-   * HTML element type used for rendering
+   * Element type used for rendering the component
    */
   as: PropTypes.elementType,
 
   /**
-   * HTML role
+   * Accessible HTML role attribute
    */
   role: PropTypes.string,
 
   /**
-   * HTML type
+   * Native HTML type attribute
    */
   type: PropTypes.string,
 
   /**
-   * HTML disabled
+   * Disables user interaction
    */
   disabled: PropTypes.bool,
 
   /**
-   * HTML onclick
+   * Callback fired when the element is clicked
    */
   onClick: PropTypes.func,
 
   /**
-   * HTML href
+   * Navigation target URL
    */
   href: PropTypes.string,
 
   /**
-   * Inline styles applied to the root
+   * Inline styles applied to the root element
    */
   style: PropTypes.shape({}),
 
@@ -61,32 +61,32 @@ const propTypes = {
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional class names applied to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Sets width
+   * Sets the width utility value
    */
   w: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
 
   /**
-   * Sets max-width
+   * Sets the max-width utility value
    */
   mw: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
 
   /**
-   * Sets height
+   * Sets the height utility value
    */
   h: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
 
   /**
-   * Sets max-height
+   * Sets the max-height utility value
    */
   mh: PropTypes.oneOf([0, 25, 50, 75, 100, "auto"]),
 
   /**
-   * Controls CSS display property
+   * Controls the CSS display utility value
    */
   d: PropTypes.oneOf([
     "none",
@@ -102,7 +102,7 @@ const propTypes = {
   ]),
 
   /**
-   * Controls display property for print media
+   * Controls the display utility value for print media
    */
   dp: PropTypes.oneOf([
     "none",
@@ -118,12 +118,12 @@ const propTypes = {
   ]),
 
   /**
-   * Controls flexbox behavior
+   * Controls flexbox alignment and layout behavior
    */
   flex: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 
   /**
-   * Sets position type
+   * Controls the CSS position utility value
    */
   pos: PropTypes.oneOf([
     "static",
@@ -137,42 +137,42 @@ const propTypes = {
   ]),
 
   /**
-   * Sets top offset
+   * Sets the top offset utility value
    */
   top: PropTypes.oneOf([0, 50, 100]),
 
   /**
-   * Sets end (right) offset
+   * Sets the end (right) offset utility value
    */
   end: PropTypes.oneOf([0, 50, 100]),
 
   /**
-   * Sets bottom offset
+   * Sets the bottom offset utility value
    */
   bottom: PropTypes.oneOf([0, 50, 100]),
 
   /**
-   * Sets start (left) offset
+   * Sets the start (left) offset utility value
    */
   start: PropTypes.oneOf([0, 50, 100]),
 
   /**
-   * Centers element using translate
+   * Centers the element using translate transforms
    */
   translateMiddle: PropTypes.bool,
 
   /**
-   * Centers element using translate axis-x
+   * Centers the element horizontally using translate transforms
    */
   translateMiddleX: PropTypes.bool,
 
   /**
-   * Centers element using translate axis-y
+   * Centers the element vertically using translate transforms
    */
   translateMiddleY: PropTypes.bool,
 
   /**
-   * Controls float behavior
+   * Controls float utility behavior
    */
   float: PropTypes.oneOfType([
     PropTypes.shape({}),
@@ -180,7 +180,7 @@ const propTypes = {
   ]),
 
   /**
-   * Sets margins
+   * Controls margin utility values
    */
   m: PropTypes.oneOfType([
     PropTypes.shape({}),
@@ -188,37 +188,37 @@ const propTypes = {
   ]),
 
   /**
-   * Sets top margin
+   * Sets the top margin utility value
    */
   mt: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
   /**
-   * Sets end (right) margin
+   * Sets the end (right) margin utility value
    */
   me: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
   /**
-   * Sets bottom margin
+   * Sets the bottom margin utility value
    */
   mb: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
   /**
-   * Sets start (left) margin
+   * Sets the start (left) margin utility value
    */
   ms: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
   /**
-   * Sets horizontal margin
+   * Sets horizontal margin utility values
    */
   mx: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
   /**
-   * Sets vertical margin
+   * Sets vertical margin utility values
    */
   my: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
   /**
-   * Sets paddings
+   * Controls padding utility values
    */
   p: PropTypes.oneOfType([
     PropTypes.shape({}),
@@ -226,37 +226,37 @@ const propTypes = {
   ]),
 
   /**
-   * Sets top padding
+   * Sets the top padding utility value
    */
   pt: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
   /**
-   * Sets end (right) padding
+   * Sets the end (right) padding utility value
    */
   pe: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
   /**
-   * Sets bottom padding
+   * Sets the bottom padding utility value
    */
   pb: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
   /**
-   * Sets start (left) padding
+   * Sets the start (left) padding utility value
    */
   ps: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
   /**
-   * Sets horizontal padding
+   * Sets horizontal padding utility values
    */
   px: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
 
   /**
-   * Sets vertical padding
+   * Sets vertical padding utility values
    */
   py: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
 
   /**
-   * Sets background color and related options
+   * Controls background color utility styles and related options
    */
   bg: PropTypes.oneOfType([
     PropTypes.shape({
@@ -292,7 +292,7 @@ const propTypes = {
   ]),
 
   /**
-   * Controls test styles
+   * Controls text color and typography utility styles
    */
   text: PropTypes.oneOfType([
     PropTypes.shape({
@@ -345,37 +345,37 @@ const propTypes = {
   ]),
 
   /**
-   * Sets font size
+   * Controls the font size utility value
    */
   fs: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
 
   /**
-   * Sets font weight
+   * Controls the font weight utility value
    */
   fw: PropTypes.oneOf(["bold", "bolder", "normal", "light", "lighter"]),
 
   /**
-   * Sets font styles
+   * Controls the font style utility value
    */
   fst: PropTypes.oneOf(["italic", "normal"]),
 
   /**
-   * Sets line height
+   * Controls the line-height utility value
    */
   lh: PropTypes.oneOf([1, "sm", "base", "lg"]),
 
   /**
-   * Enabled monospace font
+   * Enables monospace font styling
    */
   monospace: PropTypes.bool,
 
   /**
-   * Sets opacity level
+   * Controls the opacity utility value
    */
   opacity: PropTypes.oneOf([25, 50, 75, 100]),
 
   /**
-   * Controls border styles
+   * Controls border utility styles and border appearance
    */
   border: PropTypes.oneOfType([
     PropTypes.bool,
@@ -400,7 +400,7 @@ const propTypes = {
   ]),
 
   /**
-   * Controls border radius
+   * Controls border radius and rounded utility styles
    */
   rounded: PropTypes.oneOfType([
     PropTypes.oneOf(["top", "end", "bottom", "start", "circle", "pill"]),
@@ -409,12 +409,12 @@ const propTypes = {
   ]),
 
   /**
-   * Applies shadow
+   * Applies shadow utility styles
    */
   shadow: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["sm", "lg"])]),
 
   /**
-   * Controls overflow behavior
+   * Controls overflow utility behavior
    */
   overflow: PropTypes.oneOf(["auto", "hidden", "visible", "scroll"]),
 };
@@ -434,32 +434,32 @@ const propTypes = {
  */
 
 /**
- * Prime component is basic for this library
+ * Core primitive component providing shared
+ * rendering and polymorphic behavior across
+ * the library.
+ *
  * @component
  *
- * Support helpers:
- * + prefix
- * + classnames
- *
- * Support utils:
- * + sizing
- * + display
- * + displayPrint
- * + flex
- * + position
- * + float
- * + spacing
- * + bg
- * + text
- * + font
- * + opacity
- * + border
- * + rounded
- * + shadow
- * + overflow
+ * Utility systems:
+ * - sizing
+ * - display / displayPrint
+ * - flex
+ * - position
+ * - float
+ * - spacing
+ * - background
+ * - text
+ * - typography
+ * - opacity
+ * - border
+ * - rounded
+ * - shadow
+ * - overflow
  *
  * @example
- * <Prime>This is Prime component</Prime>
+ * <Prime>
+ *  This is Prime component
+ * </Prime>
  *
  * @example
  * <Prime d="inline-block">
@@ -472,75 +472,163 @@ const propTypes = {
  * </Prime>
  *
  * @typedef {Object} PrimeProps
- * @property {React.ElementType} [as="div"] - HTML element type used for rendering.
- * @property {string} [role] - HTML role.
- * @property {string} [type] - HTML type.
- * @property {boolean} [disabled] - HTML disabled.
- * @property {React.MouseEventHandler<HTMLElement>} [onClick] - HTML onclick.
- * @property {string} [href] - HTML href.
- * @property {Object} [style] - Inline styles applied to the root.
- * @property {React.ReactNode} [children] - Content rendered inside the component.
- * @property {Object|string} [className] - Additional classes applied to the root element.
  *
- * @property {25|50|75|100|"auto"} [w] - Sets width.
- * @property {25|50|75|100|"auto"} [mw] - Sets max-width.
- * @property {25|50|75|100|"auto"} [h] - Sets height.
- * @property {25|50|75|100|"auto"} [mh] - Sets max-height.
+ * @property {React.ElementType} [as="div"]
+ * Element type used for rendering the component.
  *
- * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [d] - Controls CSS display property.
- * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [dp] - Controls display property for print media.
+ * @property {string} [role]
+ * Accessible HTML role attribute.
  *
- * @property {FlexObject|FlexBreakpointsObject|FlexBreakpointsShort|"start"|"end"|"center"} [flex] - Controls flexbox behavior.
+ * @property {string} [type]
+ * Native HTML type attribute.
  *
- * @property {"static"|"relative"|"absolute"|"fixed"|"sticky"} [pos] - Sets position type.
- * @property {0|50|100} [top] - Sets top offset.
- * @property {0|50|100} [end] - Sets end (right) offset.
- * @property {0|50|100} [bottom] - Sets bottom offset.
- * @property {0|50|100} [start] - Sets start (left) offset.
- * @property {boolean} [translateMiddle=false] - Centers element using translate.
- * @property {boolean} [translateMiddleX=false] - Centers element using translate axis-x.
- * @property {boolean} [translateMiddleY=false] - Centers element using translate axis-y.
+ * @property {boolean} [disabled=false]
+ * Disables user interaction.
  *
- * @property {FloatObject|"start"|"end"|"none"} [float] - Controls float behavior.
+ * @property {React.MouseEventHandler<HTMLElement>} [onClick]
+ * Callback fired when the element is clicked.
  *
- * @property {SpacingObject|SpacingArray|SpacingValues} [m] - Sets margins.
- * @property {SpacingObject|SpacingValues} [mt] - Sets top margin.
- * @property {SpacingObject|SpacingValues} [me] - Sets end (right) margin.
- * @property {SpacingObject|SpacingValues} [mb] - Sets bottom margin.
- * @property {SpacingObject|SpacingValues} [ms] - Sets start (left) margin.
- * @property {SpacingObject|SpacingValues} [mx] - Sets horizontal margin.
- * @property {SpacingObject|SpacingValues} [my] - Sets vertical margin.
+ * @property {string} [href]
+ * Navigation target URL.
  *
- * @property {SpacingObject|SpacingArray|SpacingValues} [p] - Sets paddings.
- * @property {SpacingObject|SpacingValues} [pt] - Sets top padding.
- * @property {SpacingObject|SpacingValues} [pe] - Sets end (right) padding.
- * @property {SpacingObject|SpacingValues} [pb] - Sets bottom padding.
- * @property {SpacingObject|SpacingValues} [ps] - Sets start (left) padding.
- * @property {SpacingObject|SpacingValues} [px] - Sets horizontal padding.
- * @property {SpacingObject|SpacingValues} [py] - Sets vertical padding.
+ * @property {React.CSSProperties} [style]
+ * Inline styles applied to the root element.
  *
- * @property {BackgroundObject|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [bg] - Sets background color and related options.
+ * @property {React.ReactNode} [children]
+ * Content rendered inside the component.
  *
- * @property {TextObject|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset"} [text] - Controls test styles.
+ * @property {string|Object} [className]
+ * Additional class names applied to the root element.
  *
- * @property {1|2|3|4|5|6} [fs] - Sets font size.
- * @property {"bold"|"bolder"|"normal"|"light"|"lighter"} [fw] - Sets font weight.
- * @property {"italic"|"normal"} [fst] - Sets font styles.
- * @property {1|"sm"|"base"|"lg"} [lh] - Sets line height.
- * @property {boolean} [monospace] - Enabled monospace font.
+ * @property {25|50|75|100|"auto"} [w]
+ * Sets the width utility value.
  *
- * @property {25|50|75|100} [opacity] - Sets opacity level.
+ * @property {25|50|75|100|"auto"} [mw]
+ * Sets the max-width utility value.
  *
- * @property {BorderObject|true|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"|1|2|3|4|5} [border] - Controls border styles.
- * @property {boolean|"top"|"end"|"bottom"|"start"|"circle"|"pill"|0|1|2|3} [rounded] - Controls border radius.
+ * @property {25|50|75|100|"auto"} [h]
+ * Sets the height utility value.
  *
- * @property {true|"none"|"sm"|"lg"} [shadow] - Applies shadow.
+ * @property {25|50|75|100|"auto"} [mh]
+ * Sets the max-height utility value.
  *
- * @property {"auto"|"hidden"|"visible"|"scroll"} [overflow] - Controls overflow behavior.
+ * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [d]
+ * Controls the CSS display utility value.
+ *
+ * @property {DisplayObject|"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} [dp]
+ * Controls the display utility value for print media.
+ *
+ * @property {FlexObject|FlexBreakpointsObject|FlexBreakpointsShort|"start"|"end"|"center"} [flex]
+ * Controls flexbox alignment and layout behavior.
+ *
+ * @property {"static"|"relative"|"absolute"|"fixed"|"sticky"} [pos]
+ * Controls the CSS position utility value.
+ *
+ * @property {0|50|100} [top]
+ * Sets the top offset utility value.
+ *
+ * @property {0|50|100} [end]
+ * Sets the end (right) offset utility value.
+ *
+ * @property {0|50|100} [bottom]
+ * Sets the bottom offset utility value.
+ *
+ * @property {0|50|100} [start]
+ * Sets the start (left) offset utility value.
+ *
+ * @property {boolean} [translateMiddle=false]
+ * Centers the element using translate transforms.
+ *
+ * @property {boolean} [translateMiddleX=false]
+ * Centers the element horizontally using translate transforms.
+ *
+ * @property {boolean} [translateMiddleY=false]
+ * Centers the element vertically using translate transforms.
+ *
+ * @property {FloatObject|"start"|"end"|"none"} [float]
+ * Controls float utility behavior.
+ *
+ * @property {SpacingObject|SpacingArray|SpacingValues} [m]
+ * Controls margin utility values.
+ *
+ * @property {SpacingObject|SpacingValues} [mt]
+ * Sets the top margin utility value.
+ *
+ * @property {SpacingObject|SpacingValues} [me]
+ * Sets the end (right) margin utility value.
+ *
+ * @property {SpacingObject|SpacingValues} [mb]
+ * Sets the bottom margin utility value.
+ *
+ * @property {SpacingObject|SpacingValues} [ms]
+ * Sets the start (left) margin utility value.
+ *
+ * @property {SpacingObject|SpacingValues} [mx]
+ * Sets horizontal margin utility values.
+ *
+ * @property {SpacingObject|SpacingValues} [my]
+ * Sets vertical margin utility values.
+ *
+ * @property {SpacingObject|SpacingArray|SpacingValues} [p]
+ * Controls padding utility values.
+ *
+ * @property {SpacingObject|SpacingValues} [pt]
+ * Sets the top padding utility value.
+ *
+ * @property {SpacingObject|SpacingValues} [pe]
+ * Sets the end (right) padding utility value.
+ *
+ * @property {SpacingObject|SpacingValues} [pb]
+ * Sets the bottom padding utility value.
+ *
+ * @property {SpacingObject|SpacingValues} [ps]
+ * Sets the start (left) padding utility value.
+ *
+ * @property {SpacingObject|SpacingValues} [px]
+ * Sets horizontal padding utility values.
+ *
+ * @property {SpacingObject|SpacingValues} [py]
+ * Sets vertical padding utility values.
+ *
+ * @property {BackgroundObject|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [bg]
+ * Controls background color utility styles and related options.
+ *
+ * @property {TextObject|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"muted"|"white"|"black-50"|"white-50"|"reset"} [text]
+ * Controls text color and typography utility styles.
+ *
+ * @property {1|2|3|4|5|6} [fs]
+ * Controls the font size utility value.
+ *
+ * @property {"bold"|"bolder"|"normal"|"light"|"lighter"} [fw]
+ * Controls the font weight utility value.
+ *
+ * @property {"italic"|"normal"} [fst]
+ * Controls the font style utility value.
+ *
+ * @property {1|"sm"|"base"|"lg"} [lh]
+ * Controls the line-height utility value.
+ *
+ * @property {boolean} [monospace=false]
+ * Enables monospace font styling.
+ *
+ * @property {25|50|75|100} [opacity]
+ * Controls the opacity utility value.
+ *
+ * @property {BorderObject|true|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"|1|2|3|4|5} [border]
+ * Controls border utility styles and border appearance.
+ *
+ * @property {boolean|"top"|"end"|"bottom"|"start"|"circle"|"pill"|0|1|2|3} [rounded]
+ * Controls border radius and rounded utility styles.
+ *
+ * @property {true|"none"|"sm"|"lg"} [shadow]
+ * Applies shadow utility styles.
+ *
+ * @property {"auto"|"hidden"|"visible"|"scroll"} [overflow]
+ * Controls overflow utility behavior.
  *
  * @param {PrimeProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -552,7 +640,7 @@ const Prime = React.forwardRef((props, ref) => {
     as: ComponentType = "div",
     role,
     type,
-    disabled,
+    disabled = false,
     onClick,
     href,
     style,
@@ -594,7 +682,7 @@ const Prime = React.forwardRef((props, ref) => {
     fw,
     fst,
     lh,
-    monospace,
+    monospace = false,
     opacity,
     border,
     rounded,
@@ -666,4 +754,4 @@ const Prime = React.forwardRef((props, ref) => {
 
 Prime.propTypes = propTypes;
 
-export default Prime;
+export default React.memo(Prime);
