@@ -1,4 +1,4 @@
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 
 /**
  * @typedef {"pos"|"top"|"end"|"bottom"|"start"|"translateMiddle"|"translateMiddleX"|"translateMiddleY"} PositionKey
@@ -47,7 +47,12 @@ const POSITION_VALUES = {
 export function positionResolver(
   value = { pos: null, top: null, end: null, bottom: null, start: null },
 ) {
-  if (is("object", value, { notEmpty: true })) {
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {

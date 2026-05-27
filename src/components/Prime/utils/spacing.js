@@ -1,4 +1,4 @@
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 
 /**
  * @typedef {"m"|"mt"|"me"|"mb"|"ms"|"mx"|"my"|"p"|"pt"|"pe"|"pb"|"ps"|"px"|"py"} SpacingPropertySides
@@ -109,7 +109,7 @@ export function spacing(prfx, value) {
     for (let i = 0; i < arr.length; i += 1) {
       let prefix = prfx + sides[arr.length][i]; // mx, my or mt, me etc.
 
-      if (is("number", arr[i])) {
+      if (typeof arr[i] === "number") {
         result.push(cs(prefix, arr[i]));
       }
     }
@@ -125,7 +125,14 @@ export function spacing(prfx, value) {
  * @returns {string}
  */
 export function spacingResolver(props) {
-  if (!is("object", props, { notEmpty: true })) {
+  if (
+    !(
+      typeof props === "object" &&
+      props &&
+      !Array.isArray(props) &&
+      Object.keys(props).length > 0
+    )
+  ) {
     return "";
   }
 

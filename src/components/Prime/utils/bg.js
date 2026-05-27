@@ -1,4 +1,4 @@
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 
 /**
  * @typedef {"color"|"gradient"|"opacity"} BackgroundProperties
@@ -56,7 +56,12 @@ export function bgResolver(value) {
   }
 
   // Object
-  if (is("object", value, { notEmpty: true })) {
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {

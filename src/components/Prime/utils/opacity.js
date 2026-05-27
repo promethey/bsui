@@ -1,4 +1,4 @@
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 
 const OPACITY_CLASS_NAME = "opacity";
 const OPACITY_VALUES = [100, 75, 50, 25];
@@ -18,7 +18,7 @@ export function opacityResolver(value) {
   if (!value) return "";
 
   // Number
-  if (is("number", value) && OPACITY_VALUES.includes(value)) {
+  if (typeof value === "number" && OPACITY_VALUES.includes(value)) {
     return cs(OPACITY_CLASS_NAME, value);
   }
 

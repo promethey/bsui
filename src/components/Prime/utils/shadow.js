@@ -1,4 +1,4 @@
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 
 const SHADOW_CLASS_NAME = "shadow";
 const SHADOW_VALUES = ["none", "sm", true, "lg"];
@@ -21,12 +21,12 @@ export function shadowResolver(value) {
   if (!value) return "";
 
   // Boolean
-  if (is("boolean", value, { notFalse: true })) {
+  if (typeof value === "boolean" && value) {
     return SHADOW_CLASS_NAME;
   }
 
   // String
-  if (is("string", value, { notEmpty: true })) {
+  if (typeof value === "string" && value.length > 0) {
     if (SHADOW_VALUES.includes(value)) {
       return cs(SHADOW_CLASS_NAME, value);
     }

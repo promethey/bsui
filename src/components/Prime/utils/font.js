@@ -1,4 +1,4 @@
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 
 /**
  * @typedef {"fs"|"fw"|"fst"|"lg"|"monospace"} FontKey
@@ -43,7 +43,12 @@ export function fontResolver(value) {
   if (!value) return "";
 
   // Object
-  if (is("object", value, { notEmpty: true })) {
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     let result = [];
 
     for (let [key, val] /** @type {[FontKey, any]} */ of Object.entries(

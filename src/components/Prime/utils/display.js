@@ -1,4 +1,4 @@
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 
 /**
  * @typedef {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} DisplayValues
@@ -56,7 +56,12 @@ export function displayResolver(value, prfx = DISPLAY_CLASS_NAME) {
   }
 
   // Object
-  if (is("object", value, { notEmpty: true })) {
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     const displayFilterUnsupportedValues = Object.entries(value).filter(
       ([breakpoint, displayValue]) =>
         BREAKPOINTS.includes(/** @type {DisplayBreakpoints} */ (breakpoint)) &&

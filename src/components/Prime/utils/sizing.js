@@ -1,4 +1,4 @@
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 
 const SIZING_MAP = ["w", "mw", "h", "mh"];
 const SIZING_VALUES = [25, 50, 75, 100, "auto"];
@@ -22,7 +22,12 @@ export function sizingResolver(value) {
   if (!value) return "";
 
   // Object
-  if (is("object", value, { notEmpty: true })) {
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     let result = [];
 
     for (let [key, val] of Object.entries(value)) {

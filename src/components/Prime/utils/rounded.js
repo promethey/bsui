@@ -1,4 +1,4 @@
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 
 const ROUNDED_CLASS_NAME = "rounded";
 const ROUNDED_VALUES = [
@@ -32,19 +32,19 @@ export function roundedResolver(value) {
   if (value !== 0 && !value) return "";
 
   // Boolean
-  if (is("boolean", value, { notFalse: true })) {
+  if (typeof value === "boolean" && value) {
     return ROUNDED_CLASS_NAME;
   }
 
   // String
-  if (is("string", value, { notEmpty: true })) {
+  if (typeof value === "string" && value.length > 0) {
     if (ROUNDED_VALUES.includes(value)) {
       return cs(ROUNDED_CLASS_NAME, value);
     }
   }
 
   // Number
-  if (is("number", value) && ROUNDED_VALUES.includes(value)) {
+  if (typeof value === "number" && ROUNDED_VALUES.includes(value)) {
     return cs(ROUNDED_CLASS_NAME, value);
   }
 

@@ -1,4 +1,4 @@
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 
 /**
  * @typedef {object} FloatObject
@@ -31,14 +31,19 @@ export function floatResolver(value) {
   if (!value) return "";
 
   // String
-  if (is("string", value, { notEmpty: true })) {
+  if (typeof value === "string" && value) {
     if (FLOAT_VALUES.includes(String(value).trim())) {
       return cs(FLOAT_CLASS_NAME, String(value).trim());
     }
   }
 
   // Object
-  if (is("object", value, { notEmpty: true })) {
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     const floatFilterUnsupportedValues = Object.entries(value).filter(
       ([breakpoint, displayValue]) =>
         FLOAT_BREAKPOINTS.includes(breakpoint) &&

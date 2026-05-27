@@ -1,4 +1,4 @@
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 
 const OVERFLOW_CLASS_NAME = "overflow";
 const OVERFLOW_VALUES = ["auto", "hidden", "visible", "scroll"];
@@ -19,7 +19,7 @@ export function overflowResolver(value) {
   if (!value) return "";
 
   // String
-  if (is("string", value, { notEmpty: true })) {
+  if (typeof value === "string" && value) {
     if (OVERFLOW_VALUES.includes(value.trim())) {
       return cs(OVERFLOW_CLASS_NAME, value.trim());
     }

@@ -1,4 +1,4 @@
-import { classnames as cs, is } from "helpers";
+import { classnames as cs } from "helpers";
 
 /**
  * @typedef {"dir"|"justify"|"align"|"alignSelf"|"fill"|"grow"|"shrink"|"wrap"|"nowrap"|"wrapReverse"|"order"|"alignContent"} FlexKey
@@ -111,7 +111,12 @@ export function flexResolver(value) {
   }
 
   // Object
-  if (is("object", value, { notEmpty: true })) {
+  if (
+    typeof value === "object" &&
+    value &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  ) {
     let result = [];
 
     for (let [breakpoint, val] of Object.entries(value)) {
@@ -119,17 +124,23 @@ export function flexResolver(value) {
         BREAKPOINTS_LIST.includes(/** @type {FlexBreakpoints} */ (breakpoint))
       ) {
         // String
-        if (is("string", val, { notEmpty: true })) {
-          if (JUSTIFY_ALIGN_LIST.includes(val)) {
-            let justify = cs(FLEX_MAP.justify, { [breakpoint]: val });
-            let align = cs(FLEX_MAP.align, { [breakpoint]: val });
+        if (
+          typeof val === "string" &&
+          JUSTIFY_ALIGN_LIST.includes(/** @type {any} */ (val))
+        ) {
+          let justify = cs(FLEX_MAP.justify, { [breakpoint]: val });
+          let align = cs(FLEX_MAP.align, { [breakpoint]: val });
 
-            result.push(`${justify} ${align}`);
-          }
+          result.push(`${justify} ${align}`);
         }
 
         // Object
-        if (is("object", val, { notEmpty: true })) {
+        if (
+          typeof val === "object" &&
+          val &&
+          !Array.isArray(val) &&
+          Object.keys(val).length > 0
+        ) {
           for (let [
             flexKey,
             flexVal,
