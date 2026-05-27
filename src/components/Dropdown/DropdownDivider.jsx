@@ -28,7 +28,8 @@ const defaultProps = {
 };
 
 /**
- * Dropdown button component
+ * Separates dropdown items and content groups with a visual divider.
+ *
  * @component
  *
  * @see {@link Prime}
@@ -40,10 +41,9 @@ const defaultProps = {
  * @typedef {object} DropdownDividerOwnProps
  *
  * @typedef {ButtonProps & DropdownDividerOwnProps} DropdownDividerProps
- *
  * @param {DropdownDividerProps} props
  *
- * @returns {React.ReactNode}
+ * @returns {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

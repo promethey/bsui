@@ -28,21 +28,24 @@ const defaultProps = {
 };
 
 /**
- * Dropdown header component
+ * Displays a non-interactive header section inside the dropdown menu.
+ *
  * @component
  *
  * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/dropdowns/}
+ *
+ * @example
+ * <Dropdown.Header>Header</Dropdown.Header>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} DropdownHeaderOwnProps
  *
  * @typedef {PrimeProps & DropdownHeaderOwnProps} DropdownHeaderProps
- *
  * @param {DropdownHeaderProps} props
  *
- * @returns {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

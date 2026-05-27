@@ -28,7 +28,9 @@ const defaultProps = {
 };
 
 /**
- * Dropdown item text component
+ * Renders non-interactive text content inside the dropdown menu,
+ * typically used for descriptions or helper information.
+ *
  * @component
  *
  * @see {@link Prime}
@@ -39,10 +41,9 @@ const defaultProps = {
  * @typedef {object} DropdownItemTextOwnProps
  *
  * @typedef {PrimeProps & DropdownItemTextOwnProps} DropdownItemTextProps
- *
  * @param {DropdownItemTextProps} props
  *
- * @returns {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

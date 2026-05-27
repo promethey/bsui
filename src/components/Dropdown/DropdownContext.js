@@ -2,10 +2,18 @@ import { createContext, useContext } from "react";
 
 /**
  * @typedef {Object} DropdownContextValue
- * @property {boolean | null} expanded
+ *
+ * @property {boolean} expanded
+ * Controls the visibility state of the dropdown menu.
+ *
  * @property {React.RefObject<HTMLDivElement | null>} dropdownRef
+ * Reference to the root dropdown element.
+ *
  * @property {() => void} onToggle
+ * Toggles the dropdown visibility state.
+ *
  * @property {() => void} onClose
+ * Closes the dropdown menu.
  */
 
 /** @type {React.Context<DropdownContextValue | null>} */

@@ -31,7 +31,7 @@ const propTypes = {
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Sets direction
+   * Sets the dropdown placement direction
    */
   drop: PropTypes.oneOf(["up", "end", "start"]),
 };
@@ -43,7 +43,9 @@ const defaultProps = {
 };
 
 /**
- * Dropdown component
+ * Toggles and positions contextual
+ * overlay menus and interactive actions.
+ *
  * @component
  *
  * @see {@link Prime}
@@ -60,13 +62,14 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} DropdownOwnProps
- * @property {"up"|"end"|"start"} [drop] - Sets direction
+ *
+ * @property {"up"|"end"|"start"} [drop]
+ * Sets the dropdown placement direction.
  *
  * @typedef {PrimeProps & DropdownOwnProps} DropdownProps
- *
  * @param {DropdownProps} props
  *
- * @returns {React.ReactNode}
+ * @returns {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

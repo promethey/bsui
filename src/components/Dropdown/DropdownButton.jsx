@@ -24,7 +24,7 @@ const propTypes = {
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Sets split button dropdowns
+   * Enables split button dropdown behavior
    */
   split: PropTypes.bool,
 };
@@ -36,23 +36,28 @@ const defaultProps = {
 };
 
 /**
- * Dropdown button (toggle) component
+ * Toggles the visibility state of the associated dropdown menu.
+ *
  * @component
  *
  * @see {@link Prime}
  * @see {@link Button}
  * @see {@link https://getbootstrap.com/docs/5.1/components/dropdowns/}
  *
+ * @example
+ * <Dropdown.Button>Toggle</Dropdown.Button>
+ *
  * @typedef {import("../Button/Button").ButtonProps} ButtonProps
  *
  * @typedef {object} DropdownButtonOwnProps
- * @property {boolean} [split] - Sets split button dropdowns
+ *
+ * @property {boolean} [split=false]
+ * Enables split button dropdown behavior.
  *
  * @typedef {ButtonProps & DropdownButtonOwnProps} DropdownButtonProps
- *
  * @param {DropdownButtonProps} props
  *
- * @returns {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

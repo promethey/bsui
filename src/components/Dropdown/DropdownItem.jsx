@@ -22,17 +22,17 @@ const propTypes = {
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Sets href path
+   * Navigation target for the dropdown item
    */
   to: PropTypes.bool,
 
   /**
-   * Sets active style
+   * Marks the item as active/selected
    */
   active: PropTypes.bool,
 
   /**
-   * Sets disabled style
+   * Disables interaction and applies disabled styles
    */
   disabled: PropTypes.bool,
 };
@@ -46,24 +46,33 @@ const defaultProps = {
 };
 
 /**
- * Dropdown item component
+ * Renders an interactive action or navigation item inside the dropdown menu.
+ *
  * @component
  *
  * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/dropdowns/}
  *
+ * @example
+ * <Dropdown.Item>Action</Dropdown.Item>
+ *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} DropdownItemOwnProps
- * @property {string} to - Sets href path
- * @property {boolean} [active] - Sets active style
- * @property {boolean} [disabled] - Sets disabled style
+ *
+ * @property {string} to
+ * Navigation target for the dropdown item.
+ *
+ * @property {boolean} [active=false]
+ * Marks the item as active/selected.
+ *
+ * @property {boolean} [disabled=false]
+ * Disables interaction and applies disabled styles.
  *
  * @typedef {PrimeProps & DropdownItemOwnProps} DropdownItemProps
- *
  * @param {DropdownItemProps} props
  *
- * @returns {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

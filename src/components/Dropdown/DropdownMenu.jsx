@@ -24,7 +24,7 @@ const propTypes = {
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Sets dark theme
+   * Enables dark theme styling for the dropdown menu
    */
   dark: PropTypes.bool,
 };
@@ -36,22 +36,32 @@ const defaultProps = {
 };
 
 /**
- * Dropdown menu component
+ * Container that holds and positions
+ * dropdown items and related content.
+ *
  * @component
  *
  * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/dropdowns/}
  *
+ * @example
+ * <Dropdown.Menu>
+ *  <Dropdown.Item>Item 1</Dropdown.Item>
+ *  <Dropdown.Item>Item 2</Dropdown.Item>
+ *  <Dropdown.Item>Item 3</Dropdown.Item>
+ * </Dropdown.Menu>
+ *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} DropdownMenuOwnProps
- * @property {boolean} [dark] - Sets dark theme
+ *
+ * @property {boolean} [dark=false]
+ * Enables dark theme styling for the dropdown menu.
  *
  * @typedef {PrimeProps & DropdownMenuOwnProps} DropdownMenuProps
- *
  * @param {DropdownMenuProps} props
  *
- * @returns {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
