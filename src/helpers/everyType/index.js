@@ -1,1 +1,0 @@
-export { everyType } from "./everyType";
