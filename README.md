@@ -19,17 +19,10 @@ React • Bootstrap 5 • JavaScript • JSDoc • Storybook
 - IntelliSense in VSCode
 - Zero compilation overhead
 - Built-in runtime prop type and value validation
+- Same Bootstrap utility system
+- Immediate support for new Bootstrap releases
 
 You write **pure JavaScript**, but still get a typed ecosystem.
-
-### 🔥 Native Bootstrap compatibility
-
-Bootstrap-UI stays fully aligned with Bootstrap 5:
-
-- same utility system
-- same layout principles
-- immediate support for new Bootstrap releases
-- no abstraction lag behind upstream updates
 
 # Installation
 
@@ -50,6 +43,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - react >= 18
 - react-dom >= 18
 - bootstrap >= 5.1.3
+
+# Usage
+
+```jsx
+import { Button } from "bsui";
+
+export function Example() {
+  return (
+    <Button theme="primary" size="lg">
+      Primary
+    </Button>;
+  );
+}
+```
 
 # Component Compatibility
 
@@ -90,20 +97,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 | Prime       | Core         | Experimental | 1.0.0 | 5.1.3          |
 | Progress    | Feedback     | Experimental | 1.0.0 | 5.1.3          |
 | Row         | Layout       | Experimental | 1.0.0 | 5.1.3          |
-
-# Usage
-
-```jsx
-import { Button } from "bsui";
-
-export function Example() {
-  return (
-    <Button theme="primary" size="lg">
-      Primary
-    </Button>;
-  );
-}
-```
 
 ### Quick Example
 
