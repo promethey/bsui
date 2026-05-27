@@ -2,6 +2,8 @@ import { Prime } from "components";
 import PropTypes from "prop-types";
 import cn from "classnames";
 
+const BASE_CLASS_NAME = "nav-link";
+
 const propTypes = {
   /**
    * Inline styles applied to the root
@@ -38,36 +40,47 @@ const propTypes = {
   disabled: PropTypes.bool,
 };
 
-const defaultProps = { style: null, className: null };
+const defaultProps = {
+  style: null,
+  className: null,
+};
 
 /**
- * Navigation component
+ * Renders an interactive navigation
+ * link with contextual nav styling.
+ *
  * @component
  *
  * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/navs-tabs/}
  *
  * @example
- * <Nav.Link to="/">.nav-link</Nav.Link>
+ * <Nav.Link to="/active" active>
+ *  Active
+ * </Nav.Link>
  *
  * @example
- * <Nav.Link to="/active" active>Active</Nav.Link>
- *
- * @example
- * <Nav.Link to="/active" disabled>Disabled</Nav.Link>
+ * <Nav.Link to="/active" disabled>
+ *  Disabled
+ * </Nav.Link>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} NavItemOwnProps
- * @property {string} to - Sets href path
- * @property {boolean} [active] - Sets active style
- * @property {boolean} [disabled] - Sets disabled state
+ *
+ * @property {string} to
+ * Navigation target for the nav link.
+ *
+ * @property {boolean} [active=false]
+ * Marks the navigation item as active.
+ *
+ * @property {boolean} [disabled=false]
+ * Disables interaction and applies disabled styles.
  *
  * @typedef {PrimeProps & NavItemOwnProps} NavProps
- *
  * @param {NavProps} props
  *
- * @returns {React.ReactNode}
+ * @returns {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -84,7 +97,7 @@ function NavItem(props) {
   } = props;
 
   const classes = cn(
-    "nav-link",
+    BASE_CLASS_NAME,
     {
       active: typeof active === "boolean" && active,
       disabled: typeof disabled === "boolean" && disabled,

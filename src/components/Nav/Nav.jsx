@@ -55,40 +55,50 @@ const defaultProps = {
 };
 
 /**
- * Navigation component
+ * Organizes navigation links and actions
+ * into flexible horizontal or vertical layouts.
+ *
  * @component
  *
  * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/navs-tabs/}
  *
  * @example
- * <Nav>.nav</Nav>
- *
- * @example
  * <Nav>
  *  <Nav.Item>
- *    <Nav.Link to="/active" active>Active</Nav.Link>
- *  </Nav.Item>
- * <Nav.Item>
- *    <Nav.Link to="/link">Link</Nav.Link>
+ *    <Nav.Link to="/active" active>
+ *      Active
+ *    </Nav.Link>
  *  </Nav.Item>
  *  <Nav.Item>
- *    <Nav.Link to="/disabled" disabled>Disabled</Nav.Link>
+ *    <Nav.Link to="/link">
+ *      Link
+ *    </Nav.Link>
+ *  </Nav.Item>
+ *  <Nav.Item>
+ *    <Nav.Link to="/disabled" disabled>
+ *      Disabled
+ *    </Nav.Link>
  *  </Nav.Item>
  * </Nav>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} NavOwnProps
- * @property {"tabs"|"pills"} [view] - Sets tabbed or pilled interface
- * @property {boolean} [fill] - Sets full available width
- * @property {boolean} [justified] - Sets equal-width elements
+ *
+ * @property {"tabs"|"pills"} [view]
+ * Enables tabbed or pill-style navigation appearance.
+ *
+ * @property {boolean} [fill=false]
+ * Expands navigation items to fill the available width.
+ *
+ * @property {boolean} [justified=false]
+ * Makes all navigation items equal width.
  *
  * @typedef {NavOwnProps & PrimeProps} NavProps
- *
  * @param {NavProps} props
  *
- * @returns {React.ReactNode}
+ * @returns {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
