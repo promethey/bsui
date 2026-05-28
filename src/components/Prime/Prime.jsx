@@ -17,7 +17,7 @@ import {
   spacingResolver,
   textResolver,
   floatResolver,
-} from "./utils";
+} from "utils";
 
 const propTypes = {
   /**
@@ -420,17 +420,17 @@ const propTypes = {
 };
 
 /**
- * @typedef {import("./utils/display").DisplayObject} DisplayObject
- * @typedef {import("./utils/flex").FlexObject} FlexObject
- * @typedef {import("./utils/flex").FlexBreakpointsObject} FlexBreakpointsObject
- * @typedef {import("./utils/flex").FlexBreakpointsShort} FlexBreakpointsShort
- * @typedef {import("./utils/float").FloatObject} FloatObject
- * @typedef {import("./utils/spacing").SpacingObject} SpacingObject
- * @typedef {import("./utils/spacing").SpacingArray} SpacingArray
- * @typedef {import("./utils/spacing").SpacingValues} SpacingValues
- * @typedef {import("./utils/bg").BackgroundObject} BackgroundObject
- * @typedef {import("./utils/text").TextObject} TextObject
- * @typedef {import("./utils/border").BorderObject} BorderObject
+ * @typedef {import("../../utils/display").DisplayObject} DisplayObject
+ * @typedef {import("../../utils/flex").FlexObject} FlexObject
+ * @typedef {import("../../utils/flex").FlexBreakpointsObject} FlexBreakpointsObject
+ * @typedef {import("../../utils/flex").FlexBreakpointsShort} FlexBreakpointsShort
+ * @typedef {import("../../utils/float").FloatObject} FloatObject
+ * @typedef {import("../../utils/spacing").SpacingObject} SpacingObject
+ * @typedef {import("../../utils/spacing").SpacingArray} SpacingArray
+ * @typedef {import("../../utils/spacing").SpacingValues} SpacingValues
+ * @typedef {import("../../utils/bg").BackgroundObject} BackgroundObject
+ * @typedef {import("../../utils/text").TextObject} TextObject
+ * @typedef {import("../../utils/border").BorderObject} BorderObject
  */
 
 /**
