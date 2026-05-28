@@ -9,8 +9,8 @@ import DropdownDivider from "./DropdownDivider";
 import DropdownText from "./DropdownText";
 import DropdownHeader from "./DropdownHeader";
 import { DropdownContext } from "./DropdownContext";
-import { useOutsideClick } from "hooks/useOutsideClick";
-import { useEscapeKey } from "hooks/useEscapeKey";
+import { useOutsideClick } from "hooks";
+import { useEscapeKey } from "hooks";
 
 const BASE_CLASS_NAME = "dropdown";
 
