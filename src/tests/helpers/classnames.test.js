@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { classnames } from "./classnames";
+import { classnames } from "helpers";
 
 describe("classnames function", () => {
   describe("Invalid inputs", () => {

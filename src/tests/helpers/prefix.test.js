@@ -1,4 +1,5 @@
-import { prefix } from "./prefix";
+// @ts-nocheck
+import { prefix } from "helpers";
 
 describe("prefix function", () => {
   describe("Basic functionality", () => {
