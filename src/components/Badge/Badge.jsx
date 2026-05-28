@@ -52,7 +52,7 @@ function Badge(props) {
   const classes = cn(BASE_CLASS_NAME, className);
 
   return (
-    <Prime className={classes} style={style} {...rest}>
+    <Prime as="span" className={classes} style={style} {...rest}>
       {children}
     </Prime>
   );

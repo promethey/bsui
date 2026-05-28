@@ -86,6 +86,8 @@ const defaultProps = {
  * Provide contextual feedback messages for typical user
  * actions with the handful of available and flexible alert messages.
  *
+ * @component
+ *
  * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.3/components/alerts}
  *
@@ -120,7 +122,7 @@ function Alert(props) {
     className,
     theme = "primary",
     dismissible = false,
-    animated,
+    animated = false,
     onClose,
     ...rest
   } = props;
