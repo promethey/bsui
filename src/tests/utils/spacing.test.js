@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { spacingResolver } from "./spacing";
+import { spacingResolver } from "utils";
 
 describe("Function spacingResolver", () => {
   describe("Basic functionality", () => {

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { opacityResolver } from "./opacity";
+import { opacityResolver } from "utils";
 
 describe("opacity utility", () => {
   test("returns empty string for falsy values", () => {

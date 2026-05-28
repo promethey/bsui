@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { fontResolver } from "./font";
+import { fontResolver } from "utils";
 
 describe("font utility", () => {
   test("returns empty string for falsy values", () => {

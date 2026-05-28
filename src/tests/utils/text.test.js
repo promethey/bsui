@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { textResolver } from "./text";
+import { textResolver } from "utils";
 
 describe("textResolver utility", () => {
   test("returns empty string for falsy values", () => {

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { displayResolver, displayPrintResolver } from "./display";
+import { displayResolver, displayPrintResolver } from "utils";
 
 describe("display utility", () => {
   test("returns empty string for falsy values (display)", () => {

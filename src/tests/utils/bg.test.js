@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { bgResolver } from "./bg";
+import { bgResolver } from "utils";
 
 describe("background utility", () => {
   test("returns empty string for unsupported values", () => {

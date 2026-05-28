@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { overflowResolver } from "./overflow";
+import { overflowResolver } from "utils";
 
 describe("overflowResolver utility", () => {
   test("returns empty string for falsy values", () => {

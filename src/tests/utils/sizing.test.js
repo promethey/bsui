@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { sizingResolver } from "./sizing";
+import { sizingResolver } from "utils";
 
 describe("sizingResolver utility", () => {
   test("returns empty string for falsy values", () => {

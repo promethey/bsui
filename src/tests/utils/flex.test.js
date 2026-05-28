@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { flexResolver } from "./flex";
+import { flexResolver } from "utils";
 
 describe("Check utility", () => {
   describe("Basic function", () => {

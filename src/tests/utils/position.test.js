@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { positionResolver } from "./position";
+import { positionResolver } from "utils";
 
 describe("position utility", () => {
   test("returns empty string for falsy values", () => {

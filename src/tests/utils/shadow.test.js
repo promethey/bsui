@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { shadowResolver } from "./shadow";
+import { shadowResolver } from "utils";
 
 describe("shadowResolver utility", () => {
   test("returns empty string for falsy values", () => {

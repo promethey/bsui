@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { borderResolver } from "./border";
+import { borderResolver } from "utils";
 
 describe("border()", () => {
   test("regular border", () => {

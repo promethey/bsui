@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { floatResolver } from "./float";
+import { floatResolver } from "utils";
 
 describe("float utility", () => {
   test("returns empty string for falsy values", () => {

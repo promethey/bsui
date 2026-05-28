@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { roundedResolver } from "./rounded";
+import { roundedResolver } from "utils";
 
 describe("rounded utility", () => {
   test("returns empty string for falsy values", () => {
