@@ -134,6 +134,42 @@ Run locally:
 npm run storybook
 ```
 
+# Testing
+
+The library is tested with both Jest and Vitest.
+
+Covered areas:
+
+- Components
+- Utility resolvers
+- Internal helpers
+
+### Vitest
+
+```bash
+npm run test
+```
+
+```bash
+npm run test:watch
+```
+
+```bash
+npm run test:coverage
+```
+
+### Jest
+
+```bash
+npm run test:jest
+```
+
+```bash
+npm run test:jest:watch
+```
+
+Vitest is recommended for active development and modern Vite-based workflows.
+
 ## License
 
 MIT
