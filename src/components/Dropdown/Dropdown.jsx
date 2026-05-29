@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
@@ -11,6 +11,7 @@ import DropdownHeader from "./DropdownHeader";
 import { DropdownContext } from "./DropdownContext";
 import { useOutsideClick } from "hooks";
 import { useEscapeKey } from "hooks";
+import { useFloating, offset, flip } from "@floating-ui/react";
 
 const BASE_CLASS_NAME = "dropdown";
 
@@ -104,8 +105,6 @@ function Dropdown(props) {
 
   const [expanded, setExpanded] = useState(false);
 
-  const dropdownRef = useRef(null);
-
   const toggle = useCallback(() => {
     setExpanded((prev) => !prev);
   }, []);
@@ -114,21 +113,29 @@ function Dropdown(props) {
     setExpanded(false);
   }, []);
 
-  const dropdownValue = useMemo(
-    () => ({
-      expanded,
-      toggle,
-      close,
-      dropdownRef,
-    }),
-    [expanded],
-  );
+  const { refs, floatingStyles } = useFloating({
+    open: expanded,
 
-  useOutsideClick({
-    ref: dropdownRef,
-    enabled: expanded,
-    onOutsideClick: close,
+    placement: "right-start",
+
+    transform: false,
+
+    middleware: [offset(4), flip()],
   });
+
+  const dropdownValue = {
+    expanded,
+    refs,
+    floatingStyles,
+    toggle,
+    close,
+  };
+
+  // useOutsideClick({
+  //   ref: toggleRef,
+  //   enabled: expanded,
+  //   onOutsideClick: close,
+  // });
 
   useEscapeKey({
     enabled: expanded,

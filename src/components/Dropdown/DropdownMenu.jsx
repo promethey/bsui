@@ -61,29 +61,34 @@ const defaultProps = {
  * @typedef {PrimeProps & DropdownMenuOwnProps} DropdownMenuProps
  * @param {DropdownMenuProps} props
  *
- * @return {React.JSX.Element}
- *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
 function DropdownMenu(props) {
   const { style, children, className, dark, ...rest } = props;
 
-  const { expanded } = useDropdownContext();
+  const { expanded, refs, floatingStyles } = useDropdownContext();
 
   const classes = cn(
     BASE_CLASS_NAME,
+    "show",
     {
-      show: expanded,
       [prefix(BASE_CLASS_NAME, "dark")]: typeof dark === "boolean" && dark,
     },
     className,
   );
 
   return (
-    <Prime as="ul" className={classes} style={style} {...rest}>
-      {children}
-    </Prime>
+    expanded && (
+      <Prime
+        ref={refs.setFloating}
+        as="ul"
+        className={classes}
+        style={floatingStyles}
+        {...rest}>
+        {children}
+      </Prime>
+    )
   );
 }
 

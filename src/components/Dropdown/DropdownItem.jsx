@@ -46,7 +46,8 @@ const defaultProps = {
 };
 
 /**
- * Renders an interactive action or navigation item inside the dropdown menu.
+ * Renders an interactive action or
+ * navigationitem inside the dropdown menu.
  *
  * @component
  *

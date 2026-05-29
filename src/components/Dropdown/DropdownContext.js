@@ -6,8 +6,11 @@ import { createContext, useContext } from "react";
  * @property {boolean} expanded
  * Controls the visibility state of the dropdown menu.
  *
- * @property {React.RefObject<HTMLDivElement | null>} dropdownRef
- * Reference to the root dropdown element.
+ * @property {import("@floating-ui/react").ExtendedRefs<Element>} refs
+ * Floating UI reference and floating element refs.
+ *
+ * @property {React.CSSProperties} floatingStyles
+ * Floating UI computed positioning styles.
  *
  * @property {() => void} toggle
  * Toggles the dropdown visibility state.
