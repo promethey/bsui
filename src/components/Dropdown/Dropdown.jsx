@@ -11,9 +11,16 @@ import DropdownHeader from "./DropdownHeader";
 import { DropdownContext } from "./DropdownContext";
 import { useOutsideClick } from "hooks";
 import { useEscapeKey } from "hooks";
-import { useFloating, offset, flip } from "@floating-ui/react";
+import { useFloating, offset, flip, shift } from "@floating-ui/react";
+import { transform } from "@babel/core";
 
 const BASE_CLASS_NAME = "dropdown";
+
+const DIRECTIONS = {
+  up: "top-start",
+  end: "right-start",
+  start: "left-start",
+};
 
 const propTypes = {
   /**
@@ -34,13 +41,33 @@ const propTypes = {
   /**
    * Sets the dropdown placement direction
    */
-  drop: PropTypes.oneOf(["up", "end", "start"]),
+  placement: PropTypes.oneOf([
+    "top",
+    "top-start",
+    "top-end",
+    "right",
+    "right-start",
+    "right-end",
+    "bottom",
+    "bottom-start",
+    "bottom-end",
+    "left",
+    "left-start",
+    "left-end",
+  ]),
+
+  /**
+   * Use CSS transforms to position
+   * the floating element
+   */
+  transform: PropTypes.bool,
 };
 
 const defaultProps = {
   style: null,
   className: null,
-  drop: null,
+  placement: "border-start",
+  transform: false,
 };
 
 /**
@@ -65,8 +92,11 @@ const defaultProps = {
  *
  * @typedef {object} DropdownOwnProps
  *
- * @property {"up"|"end"|"start"} [drop]
+ * @property {"top"|"top-start"|"top-end"|"right"|"right-start"|"right-end"|"bottom"|"bottom-start"|"bottom-end"|"left"|"left-start"|"left-end"} [placement]
  * Sets the dropdown placement direction.
+ *
+ * @property {boolean} [transform=false]
+ * Use CSS transforms to position the floating element
  *
  * @typedef {PrimeProps & DropdownOwnProps} DropdownProps
  * @param {DropdownProps} props
@@ -77,16 +107,15 @@ const defaultProps = {
  * @version 1.0.0
  */
 function Dropdown(props) {
-  const { style, children, className, drop, ...rest } = props;
-
-  const classes = cn(
-    BASE_CLASS_NAME,
-    {
-      [`drop${drop}`]:
-        typeof drop === "string" && ["up", "end", "start"].includes(drop),
-    },
+  const {
+    style,
+    children,
     className,
-  );
+    placement = "bottom-start",
+    ...rest
+  } = props;
+
+  const classes = cn(BASE_CLASS_NAME, className);
 
   const [expanded, setExpanded] = useState(false);
 
@@ -100,9 +129,9 @@ function Dropdown(props) {
 
   const { refs, floatingStyles } = useFloating({
     open: expanded,
-    placement: "bottom-start",
-    transform: false,
-    middleware: [offset(4), flip()],
+    // onOpenChange: setExpanded,
+    placement: placement,
+    middleware: [offset(4), flip(), shift()],
   });
 
   const dropdownValue = {

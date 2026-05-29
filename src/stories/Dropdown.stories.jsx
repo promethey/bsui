@@ -15,7 +15,7 @@ export default {
     docs: {
       description: {
         component:
-          "A toggleable overlay menu component for displaying contextual actions, navigation, and interactive content.",
+          "Toggles and positions contextual overlay menus and interactive actions.",
       },
     },
   },
@@ -171,9 +171,12 @@ export function DarkMenu() {
 }
 DarkMenu.storyName = "Dark menu";
 
-export function Dropup() {
+export function DirectionTopStart() {
   return (
-    <Dropdown as={ButtonGroup} drop="up">
+    <Dropdown
+      as={ButtonGroup}
+      placement="top-start"
+      style={{ marginTop: "170px" }}>
       <Dropdown.Button>Dropup</Dropdown.Button>
       <Dropdown.Menu>
         <Dropdown.Item active>Action</Dropdown.Item>
@@ -185,10 +188,11 @@ export function Dropup() {
     </Dropdown>
   );
 }
+DirectionTopStart.storyName = "Direction top start";
 
-export function Dropright() {
+export function DirectionRightStart() {
   return (
-    <Dropdown as={ButtonGroup} drop="end">
+    <Dropdown as={ButtonGroup} placement="right-start">
       <Dropdown.Button>Dropright</Dropdown.Button>
       <Dropdown.Menu>
         <Dropdown.Item active>Action</Dropdown.Item>
@@ -200,10 +204,14 @@ export function Dropright() {
     </Dropdown>
   );
 }
+DirectionRightStart.storyName = "Direction right start";
 
-export function Dropleft() {
+export function PlacementLeftStart() {
   return (
-    <Dropdown as={ButtonGroup} drop="start">
+    <Dropdown
+      as={ButtonGroup}
+      placement="left-start"
+      style={{ marginLeft: "185px" }}>
       <Dropdown.Button>Dropleft</Dropdown.Button>
       <Dropdown.Menu>
         <Dropdown.Item active>Action</Dropdown.Item>
@@ -215,6 +223,7 @@ export function Dropleft() {
     </Dropdown>
   );
 }
+PlacementLeftStart.storyName = "Placement left start";
 
 export function Text() {
   return (
