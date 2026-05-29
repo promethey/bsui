@@ -8,8 +8,9 @@ import { useEffect } from "react";
  * dropdowns, popovers, modals, and context menus.
  *
  * @typedef {Object} UseOutsideClickProps
- * @property {React.RefObject<HTMLElement | null>} ref
- * Reference element used for outside click detection.
+ *
+ * @property {import("@floating-ui/react").ExtendedRefs<Element>["reference"]} ref
+ * Floating UI refs object used for outside click detection.
  *
  * @property {boolean} enabled
  * Enables or disables outside click detection.
@@ -28,7 +29,10 @@ export function useOutsideClick({ ref, enabled, onOutsideClick }) {
     const handlePointerDown = (event) => {
       if (event.button !== 0) return;
 
-      if (ref.current?.contains(/** @type {Node} */ (event.target))) {
+      if (
+        ref.current instanceof Element &&
+        ref.current?.contains(/** @type {Node} */ (event.target))
+      ) {
         return;
       }
 

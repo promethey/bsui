@@ -51,6 +51,7 @@ const defaultProps = {
  *
  * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/dropdowns/}
+ * @see {@link https://floating-ui.com/docs/useFloating}
  *
  * @example
  * <Dropdown>
@@ -76,22 +77,6 @@ const defaultProps = {
  * @version 1.0.0
  */
 function Dropdown(props) {
-  /**
-    const floating = useFloating({
-      open: expanded,
-
-      placement: "bottom-start",
-
-      middleware: [
-        offset(4),
-        flip(),
-        shift({
-          padding: 8,
-        }),
-      ],
-    });
-  */
-
   const { style, children, className, drop, ...rest } = props;
 
   const classes = cn(
@@ -115,11 +100,8 @@ function Dropdown(props) {
 
   const { refs, floatingStyles } = useFloating({
     open: expanded,
-
-    placement: "right-start",
-
+    placement: "bottom-start",
     transform: false,
-
     middleware: [offset(4), flip()],
   });
 
@@ -131,11 +113,11 @@ function Dropdown(props) {
     close,
   };
 
-  // useOutsideClick({
-  //   ref: toggleRef,
-  //   enabled: expanded,
-  //   onOutsideClick: close,
-  // });
+  useOutsideClick({
+    ref: refs.reference,
+    enabled: expanded,
+    onOutsideClick: close,
+  });
 
   useEscapeKey({
     enabled: expanded,
