@@ -65,7 +65,7 @@ const defaultProps = {
 function DropdownButton(props) {
   const { style, children, className, split, ...rest } = props;
 
-  const { expanded, refs, toggle } = useDropdownContext();
+  const { expanded, refs, getReferenceProps } = useDropdownContext();
 
   const classes = cn(
     BASE_CLASS_NAME,
@@ -79,9 +79,9 @@ function DropdownButton(props) {
   return (
     <Button
       ref={refs.setReference}
-      onClick={toggle}
-      className={classes}
       style={style}
+      className={classes}
+      {...getReferenceProps()}
       {...rest}>
       {children}
     </Button>

@@ -12,11 +12,9 @@ import { createContext, useContext } from "react";
  * @property {React.CSSProperties} floatingStyles
  * Floating UI computed positioning styles.
  *
- * @property {() => void} toggle
- * Toggles the dropdown visibility state.
+ * @property {(userProps?: Object) => Object} getReferenceProps
  *
- * @property {() => void} close
- * Closes the dropdown menu.
+ * @property {(userProps?: Object) => Object} getFloatingProps
  */
 
 /** @type {React.Context<DropdownContextValue | null>} */

@@ -35,6 +35,11 @@ const propTypes = {
    * Disables interaction and applies disabled styles
    */
   disabled: PropTypes.bool,
+
+  /**
+   * Callback fired when the element is clicked
+   */
+  onClick: PropTypes.func,
 };
 
 const defaultProps = {
@@ -43,6 +48,7 @@ const defaultProps = {
   to: "#",
   active: false,
   disabled: false,
+  onClick: null,
 };
 
 /**
@@ -70,6 +76,9 @@ const defaultProps = {
  * @property {boolean} [disabled=false]
  * Disables interaction and applies disabled styles.
  *
+ * @property {React.MouseEventHandler<HTMLElement>} [onClick]
+ * Callback fired when the element is clicked.
+ *
  * @typedef {PrimeProps & DropdownItemOwnProps} DropdownItemProps
  * @param {DropdownItemProps} props
  *
@@ -86,6 +95,7 @@ function DropdownItem(props) {
     to = "#",
     active = false,
     disabled = false,
+    onClick,
     ...rest
   } = props;
 
@@ -100,7 +110,16 @@ function DropdownItem(props) {
 
   return (
     <li>
-      <Prime as="a" href={to} className={classes} style={style} {...rest}>
+      <Prime
+        as="a"
+        href={to}
+        className={classes}
+        style={style}
+        onClick={(event) => {
+          event.preventDefault();
+          // onClick(event);
+        }}
+        {...rest}>
         {children}
       </Prime>
     </li>

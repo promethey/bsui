@@ -9,18 +9,18 @@ import DropdownDivider from "./DropdownDivider";
 import DropdownText from "./DropdownText";
 import DropdownHeader from "./DropdownHeader";
 import { DropdownContext } from "./DropdownContext";
-import { useOutsideClick } from "hooks";
-import { useEscapeKey } from "hooks";
-import { useFloating, offset, flip, shift } from "@floating-ui/react";
-import { transform } from "@babel/core";
+import {
+  useFloating,
+  offset,
+  flip,
+  shift,
+  useClick,
+  useDismiss,
+  useRole,
+  useInteractions,
+} from "@floating-ui/react";
 
 const BASE_CLASS_NAME = "dropdown";
-
-const DIRECTIONS = {
-  up: "top-start",
-  end: "right-start",
-  start: "left-start",
-};
 
 const propTypes = {
   /**
@@ -119,39 +119,43 @@ function Dropdown(props) {
 
   const [expanded, setExpanded] = useState(false);
 
-  const toggle = useCallback(() => {
-    setExpanded((prev) => !prev);
-  }, []);
-
-  const close = useCallback(() => {
-    setExpanded(false);
-  }, []);
-
-  const { refs, floatingStyles } = useFloating({
+  const { refs, context, floatingStyles } = useFloating({
     open: expanded,
-    // onOpenChange: setExpanded,
+    onOpenChange: (nextOpen, event, reason) => {
+      setExpanded(nextOpen);
+    },
+
     placement: placement,
+
     middleware: [offset(4), flip(), shift()],
   });
+
+  const click = useClick(context, {
+    enabled: true,
+  });
+
+  const dismiss = useDismiss(context, {
+    enabled: true,
+    escapeKey: true,
+    outsidePress: true,
+    ancestorScroll: true,
+  });
+
+  const role = useRole(context, { role: "menu" });
+
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    click,
+    dismiss,
+    role,
+  ]);
 
   const dropdownValue = {
     expanded,
     refs,
     floatingStyles,
-    toggle,
-    close,
+    getReferenceProps,
+    getFloatingProps,
   };
-
-  useOutsideClick({
-    ref: refs.reference,
-    enabled: expanded,
-    onOutsideClick: close,
-  });
-
-  useEscapeKey({
-    enabled: expanded,
-    onEscape: close,
-  });
 
   return (
     <DropdownContext.Provider value={dropdownValue}>
