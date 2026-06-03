@@ -112,6 +112,7 @@ function Dropdown(props) {
     children,
     className,
     placement = "bottom-start",
+    transform = false,
     ...rest
   } = props;
 
@@ -123,9 +124,12 @@ function Dropdown(props) {
     open: expanded,
     onOpenChange: (nextOpen, event, reason) => {
       setExpanded(nextOpen);
+      // API callback
     },
 
     placement: placement,
+
+    transform: transform,
 
     middleware: [offset(4), flip(), shift()],
   });
