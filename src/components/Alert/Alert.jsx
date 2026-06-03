@@ -46,7 +46,7 @@ const propTypes = {
   /**
    * Sets visual style
    */
-  theme: PropTypes.oneOf([
+  tone: PropTypes.oneOf([
     "primary",
     "secondary",
     "success",
@@ -76,7 +76,7 @@ const propTypes = {
 const defaultProps = {
   style: null,
   className: null,
-  theme: "primary",
+  tone: "primary",
   dismissible: false,
   animated: false,
   onClose: null,
@@ -95,14 +95,14 @@ const defaultProps = {
  * <Alert>.alert .alert-primary</Alert>
  *
  * @example
- * <Alert theme="secondary" mb={3} p={3}>
+ * <Alert tone="secondary" mb={3} p={3}>
  *  .alert .alert-secondary .mb-3 .p-3
  * </Alert>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AlertOwnProps
- * @property {AlertThemes} [theme] - Sets visual style
+ * @property {AlertThemes} [tone] - Sets visual style
  * @property {boolean} [dismissible] - Enable dismiss (close) button
  * @property {boolean} [animated] - Enable animations
  * @property {() => void} [onClose] - Fired on dismiss action
@@ -120,7 +120,7 @@ function Alert(props) {
     style,
     children,
     className,
-    theme = "primary",
+    tone = "primary",
     dismissible = false,
     animated = false,
     onClose,
@@ -132,8 +132,8 @@ function Alert(props) {
   const classes = cn(
     BASE_CLASS_NAME,
     {
-      [`${BASE_CLASS_NAME}-${theme}`]:
-        typeof theme === "string" && ALERT_THEMES.includes(theme),
+      [`${BASE_CLASS_NAME}-${tone}`]:
+        typeof tone === "string" && ALERT_THEMES.includes(tone),
       [cs(BASE_CLASS_NAME, "dismissible")]:
         typeof dismissible === "boolean" && dismissible,
       "show fade": typeof animated === "boolean" && animated,

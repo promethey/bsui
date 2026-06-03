@@ -96,7 +96,7 @@ const defaultProps = {
  * Sets the dropdown placement direction.
  *
  * @property {boolean} [transform=false]
- * Use CSS transforms to position the floating element
+ * Use CSS transforms to position the floating element.
  *
  * @typedef {PrimeProps & DropdownOwnProps} DropdownProps
  * @param {DropdownProps} props

@@ -31,7 +31,7 @@ Default.args = {
 };
 
 export function Themes() {
-  const themes = [
+  const tone = [
     "primary",
     "secondary",
     "danger",
@@ -44,8 +44,8 @@ export function Themes() {
 
   return (
     <>
-      {themes.map((theme) => (
-        <Alert theme={theme}>{capitalize(theme)}</Alert>
+      {tone.map((tone) => (
+        <Alert tone={tone}>{capitalize(tone)}</Alert>
       ))}
     </>
   );
@@ -54,7 +54,7 @@ Themes.storyName = "Themes";
 
 export function Headings() {
   return (
-    <Alert theme="secondary">
+    <Alert tone="secondary">
       <Alert.Heading as="h1">H1</Alert.Heading>
       <Alert.Heading as="h2">H2</Alert.Heading>
       <Alert.Heading as="h3">H3</Alert.Heading>
@@ -79,11 +79,11 @@ export function LiveExample() {
   return (
     <>
       {show ? (
-        <Alert theme="success" dismissible mb={0} onClose={handleClose}>
+        <Alert tone="success" dismissible mb={0} onClose={handleClose}>
           Nice, you triggered this alert message!
         </Alert>
       ) : (
-        <Button theme="primary" onClick={handleClick}>
+        <Button tone="primary" onClick={handleClick}>
           Live Alert
         </Button>
       )}
@@ -94,43 +94,43 @@ LiveExample.storyName = "Live example";
 
 export const Primary = Template.bind({});
 Primary.args = {
-  theme: "primary",
+  tone: "primary",
   children: "A simple primary alert—check it out!",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  theme: "secondary",
+  tone: "secondary",
   children: "A simple secondary alert—check it out!",
 };
 
 export const Success = Template.bind({});
 Success.args = {
-  theme: "success",
+  tone: "success",
   children: "A simple success alert—check it out!",
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
-  theme: "danger",
+  tone: "danger",
   children: "A simple danger alert—check it out!",
 };
 
 export const Info = Template.bind({});
 Info.args = {
-  theme: "info",
+  tone: "info",
   children: "A simple info alert—check it out!",
 };
 
 export const Light = Template.bind({});
 Light.args = {
-  theme: "light",
+  tone: "light",
   children: "A simple light alert—check it out!",
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
-  theme: "dark",
+  tone: "dark",
   children: "A simple dark alert—check it out!",
 };
 
@@ -153,19 +153,16 @@ export function Icons() {
     "exclamation-triangle-fill",
   ];
 
-  const themes = ["primary", "success", "warning", "danger"];
+  const tone = ["primary", "success", "warning", "danger"];
 
   return (
     <>
       {icons.map((icon, index) => (
-        <Alert
-          theme={themes[index]}
-          d="flex"
-          flex={{ xs: { align: "center" } }}>
+        <Alert tone={tone[index]} d="flex" flex={{ xs: { align: "center" } }}>
           <Prime d="inline-block" me={2}>
             <i className={"bi bi-" + icon} />
           </Prime>
-          An example {themes[index]} alert with an icon
+          An example {tone[index]} alert with an icon
         </Alert>
       ))}
     </>
@@ -174,7 +171,7 @@ export function Icons() {
 
 export const Dismissing = Template.bind({});
 Dismissing.args = {
-  theme: "warning",
+  tone: "warning",
   dismissible: true,
   animated: true,
   children: [
@@ -186,7 +183,7 @@ Dismissing.args = {
 
 export const AdditionalContent = Template.bind({});
 AdditionalContent.args = {
-  theme: "success",
+  tone: "success",
   children: [
     <Alert.Heading>Well done!</Alert.Heading>,
     <Prime>
