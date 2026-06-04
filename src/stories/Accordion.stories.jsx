@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Accordion, Prime } from "components";
 
 export default {
-  title: "Components/Accordion",
+  title: "Components/Content/Accordion",
   component: Accordion,
   subcomponents: {
     "Accordion.Item": Accordion.Item,

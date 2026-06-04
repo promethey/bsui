@@ -4,7 +4,7 @@ import { Alert, Button, Prime } from "components";
 import { capitalize } from "helpers";
 
 export default {
-  title: "Components/Alert",
+  title: "Components/Feedback/Alert",
   component: Alert,
   subcomponents: {
     "Alert.Heading": Alert.Heading,

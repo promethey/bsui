@@ -3,7 +3,7 @@ import { Button, Prime } from "components";
 import { capitalize } from "helpers";
 
 export default {
-  title: "Components/Button",
+  title: "Components/Control/Button",
   component: Button,
   subcomponents: { Prime },
   parameters: {

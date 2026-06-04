@@ -2,7 +2,7 @@
 import { Prime, Button } from "components";
 
 export default {
-  title: "Components/Prime",
+  title: "Components/Core/Prime",
   component: Prime,
   parameters: {
     docs: {

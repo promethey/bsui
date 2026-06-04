@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Nav, Prime } from "components";
 
 export default {
-  title: "Components/Nav",
+  title: "Components/Navigation/Nav",
   component: Nav,
   subcomponents: {
     "Nav.Item": Nav.Item,

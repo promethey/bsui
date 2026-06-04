@@ -2,7 +2,7 @@
 import { Badge, Button, Prime } from "components";
 
 export default {
-  title: "Components/Badge",
+  title: "Components/Feedback/Badge",
   component: Badge,
   subcomponents: { Prime },
   parameters: {

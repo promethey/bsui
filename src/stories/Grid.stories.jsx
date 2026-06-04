@@ -2,7 +2,7 @@
 import { Grid, Container, Row, Col, Prime } from "components";
 
 export default {
-  title: "Components/Grid",
+  title: "Components/Layout/Grid",
   component: Grid,
   subcomponents: { Container, Row, Col, Prime },
   parameters: {
