@@ -43,6 +43,9 @@ const propTypes = {
 const defaultProps = {
   style: null,
   className: null,
+  to: "#",
+  active: false,
+  disabled: false,
 };
 
 /**

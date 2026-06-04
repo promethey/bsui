@@ -27,12 +27,15 @@ const propTypes = {
    * Enables dark theme styling for the dropdown menu
    */
   dark: PropTypes.bool,
+
+  staticMenu: PropTypes.bool,
 };
 
 const defaultProps = {
   style: null,
   className: null,
   dark: false,
+  staticMenu: false,
 };
 
 /**
@@ -58,6 +61,8 @@ const defaultProps = {
  * @property {boolean} [dark=false]
  * Enables dark theme styling for the dropdown menu.
  *
+ * @property {boolean} [staticMenu=false]
+ *
  * @typedef {PrimeProps & DropdownMenuOwnProps} DropdownMenuProps
  * @param {DropdownMenuProps} props
  *
@@ -65,7 +70,7 @@ const defaultProps = {
  * @version 1.0.0
  */
 function DropdownMenu(props) {
-  const { style, children, className, dark, ...rest } = props;
+  const { style, children, className, dark, staticMenu, ...rest } = props;
 
   const { expanded, refs, floatingStyles, getFloatingProps } =
     useDropdownContext();
@@ -85,7 +90,7 @@ function DropdownMenu(props) {
         ref={refs.setFloating}
         as="ul"
         className={classes}
-        style={floatingStyles}
+        style={staticMenu ? style : floatingStyles}
         {...getFloatingProps()}
         {...rest}>
         {children}

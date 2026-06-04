@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { Button } from "components";
+import { Prime } from "components";
 import { useDropdownContext } from "./DropdownContext";
 import { prefix } from "helpers";
 
@@ -77,14 +77,18 @@ function DropdownButton(props) {
   );
 
   return (
-    <Button
+    <Prime
       ref={refs.setReference}
       style={style}
       className={classes}
-      {...getReferenceProps()}
+      {...getReferenceProps({
+        onClick(event) {
+          event.preventDefault();
+        },
+      })}
       {...rest}>
       {children}
-    </Button>
+    </Prime>
   );
 }
 
