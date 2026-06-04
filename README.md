@@ -66,37 +66,36 @@ export function Example() {
 
 ### Categories
 
-| Category     | Description                            |
-| ------------ | -------------------------------------- |
-| Control      | Interactive form and action components |
-| Feedback     | Status and user feedback components    |
-| Overlay      | Floating and layered UI elements       |
-| Disclosure   | Expandable and collapsible interfaces  |
-| Navigation   | Navigation and routing components      |
-| Layout       | Grid and layout utilities              |
-| Surface      | Content containers and visual wrappers |
-| Data Display | Informational and status indicators    |
-| Core         | Internal primitive components          |
+| Category   | Description                                  |
+| ---------- | -------------------------------------------- |
+| Control    | Interactive form and action components       |
+| Feedback   | Status and user feedback components          |
+| Navigation | Navigation and routing components            |
+| Layout     | Grid and layout utilities                    |
+| Overlay    | Floating, layered, and temporary UI elements |
+| Content    | Content organization and presentation        |
+| Core       | Internal primitive components                |
 
 ### Compatibility Matrix
 
-| Component   | Category     | Status       | Ver.  | Bootstrap Ver. |
-| ----------- | ------------ | ------------ | ----- | -------------- |
-| Accordion   | Disclosure   | Experimental | 1.0.0 | 5.1.3          |
-| Alert       | Feedback     | Experimental | 1.0.0 | 5.1.3          |
-| Badge       | Data Display | Experimental | 1.0.0 | 5.1.3          |
-| Button      | Control      | Experimental | 1.0.0 | 5.1.3          |
-| ButtonGroup | Control      | Experimental | 1.0.0 | 5.1.3          |
-| Card        | Surface      | Experimental | 1.0.0 | 5.1.3          |
-| CloseButton | Control      | Experimental | 1.0.0 | 5.1.3          |
-| Col         | Layout       | Experimental | 1.0.0 | 5.1.3          |
-| Collapse    | Disclosure   | Experimental | 1.0.0 | 5.1.3          |
-| Container   | Layout       | Experimental | 1.0.0 | 5.1.3          |
-| Dropdown    | Overlay      | Experimental | 1.0.0 | 5.1.3          |
-| Nav         | Navigation   | Experimental | 1.0.0 | 5.1.3          |
-| Prime       | Core         | Experimental | 1.0.0 | 5.1.3          |
-| Progress    | Feedback     | Experimental | 1.0.0 | 5.1.3          |
-| Row         | Layout       | Experimental | 1.0.0 | 5.1.3          |
+| Component   | Category   | Status       | Ver.  | Bootstrap Ver. |
+| ----------- | ---------- | ------------ | ----- | -------------- |
+| Accordion   | Content    | Experimental | 1.0.0 | 5.1.3          |
+| Alert       | Feedback   | Experimental | 1.0.0 | 5.1.3          |
+| Badge       | Feedback   | Experimental | 1.0.0 | 5.1.3          |
+| Button      | Control    | Experimental | 1.0.0 | 5.1.3          |
+| ButtonGroup | Control    | Experimental | 1.0.0 | 5.1.3          |
+| Card        | Content    | Experimental | 1.0.0 | 5.1.3          |
+| CloseButton | Control    | Experimental | 1.0.0 | 5.1.3          |
+| Col         | Layout     | Experimental | 1.0.0 | 5.1.3          |
+| Collapse    | Content    | Experimental | 1.0.0 | 5.1.3          |
+| Container   | Layout     | Experimental | 1.0.0 | 5.1.3          |
+| Dropdown    | Overlay    | Experimental | 1.0.0 | 5.1.3          |
+| ListGroup   | Content    | Experimental | 1.0.0 | 5.1.3          |
+| Nav         | Navigation | Experimental | 1.0.0 | 5.1.3          |
+| Prime       | Core       | Experimental | 1.0.0 | 5.1.3          |
+| Progress    | Feedback   | Experimental | 1.0.0 | 5.1.3          |
+| Row         | Layout     | Experimental | 1.0.0 | 5.1.3          |
 
 ### Quick Example
 
