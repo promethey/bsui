@@ -85,7 +85,7 @@ const defaultProps = {
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
-function NavItem(props) {
+function NavLink(props) {
   const {
     style,
     children,
@@ -112,7 +112,7 @@ function NavItem(props) {
   );
 }
 
-NavItem.propTypes = propTypes;
-NavItem.defaultProps = defaultProps;
+NavLink.propTypes = propTypes;
+NavLink.defaultProps = defaultProps;
 
-export default NavItem;
+export default NavLink;
