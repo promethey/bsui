@@ -26,7 +26,7 @@ export function Default() {
 
 export function All() {
   /** @type {Array<"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link">} */
-  const themes = [
+  const tone = [
     "primary",
     "secondary",
     "success",
@@ -39,9 +39,9 @@ export function All() {
 
   return (
     <>
-      {themes.map((theme) => (
-        <Button key={theme} me={2} theme={theme}>
-          {capitalize(theme)}
+      {tone.map((tone) => (
+        <Button key={tone} me={2} tone={tone}>
+          {capitalize(tone)}
         </Button>
       ))}
     </>
@@ -50,7 +50,7 @@ export function All() {
 
 export function Outlines() {
   /** @type {Array<"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link">} */
-  const themes = [
+  const tone = [
     "primary",
     "secondary",
     "success",
@@ -63,9 +63,9 @@ export function Outlines() {
 
   return (
     <>
-      {themes.map((theme) => (
-        <Button key={theme} me={2} theme={theme} outline>
-          {capitalize(theme)}
+      {tone.map((tone) => (
+        <Button key={tone} me={2} tone={tone} outline>
+          {capitalize(tone)}
         </Button>
       ))}
     </>
@@ -139,82 +139,82 @@ export function Tags() {
 
 export const Primary = DefaultTemplate.bind({});
 Primary.args = {
-  theme: "primary",
+  tone: "primary",
   children: "Primary",
 };
 
 export const Secondary = DefaultTemplate.bind({});
 Secondary.args = {
-  theme: "secondary",
+  tone: "secondary",
   children: "Secondary",
 };
 
 export const Success = DefaultTemplate.bind({});
 Success.args = {
-  theme: "success",
+  tone: "success",
   children: "Success",
 };
 
 export const Danger = DefaultTemplate.bind({});
 Danger.args = {
-  theme: "danger",
+  tone: "danger",
   children: "Danger",
 };
 
 export const Warning = DefaultTemplate.bind({});
 Warning.args = {
-  theme: "warning",
+  tone: "warning",
   children: "Warning",
 };
 
 export const Info = DefaultTemplate.bind({});
 Info.args = {
-  theme: "info",
+  tone: "info",
   children: "Info",
 };
 
 export const Light = DefaultTemplate.bind({});
 Light.args = {
-  theme: "light",
+  tone: "light",
   children: "Light",
 };
 
 export const Dark = DefaultTemplate.bind({});
 Dark.args = {
-  theme: "dark",
+  tone: "dark",
   children: "Dark",
 };
 
 export const Link = DefaultTemplate.bind({});
 Link.args = {
-  theme: "link",
+  tone: "link",
   children: "Link",
 };
 
 export const Outline = DefaultTemplate.bind({});
 Outline.args = {
-  theme: "primary",
+  tone: "primary",
   outline: true,
   children: "Outline",
 };
 
 export const Small = DefaultTemplate.bind({});
 Small.args = {
-  theme: "primary",
+  tone: "primary",
   size: "sm",
   children: "Small",
 };
 
 export const Large = DefaultTemplate.bind({});
 Large.args = {
-  theme: "primary",
+  tone: "primary",
   size: "lg",
   children: "Large",
 };
 
 export const Disabled = DefaultTemplate.bind({});
 Disabled.args = {
-  theme: "primary",
+  tone: "primary",
   disabled: true,
   children: "Disabled",
 };
@@ -222,7 +222,7 @@ Disabled.args = {
 export const DisabledLink = DefaultTemplate.bind({});
 DisabledLink.args = {
   as: "a",
-  theme: "primary",
+  tone: "primary",
   disabled: true,
   children: "Disabled",
 };
@@ -231,7 +231,7 @@ DisabledLink.storyName = "Disabled link";
 export const DisabledInput = DefaultTemplate.bind({});
 DisabledInput.args = {
   as: "input",
-  theme: "primary",
+  tone: "primary",
   disabled: true,
   value: "Disabled",
 };
@@ -239,7 +239,7 @@ DisabledInput.storyName = "Disabled input";
 
 export const Block = DefaultTemplate.bind({});
 Block.args = {
-  theme: "primary",
+  tone: "primary",
   w: 100,
   children: "Block",
 };

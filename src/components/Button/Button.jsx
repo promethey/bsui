@@ -51,9 +51,21 @@ const propTypes = {
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.string,
   ]),
+
+  /**
+   * Navigation target URL
+   */
   to: PropTypes.string,
+
+  /**
+   * Native button type attribute
+   */
   type: PropTypes.string,
-  theme: PropTypes.oneOf([
+
+  /**
+   * Semantic visual tone
+   */
+  tone: PropTypes.oneOf([
     "primary",
     "secondary",
     "success",
@@ -64,11 +76,35 @@ const propTypes = {
     "dark",
     "link",
   ]),
+
+  /**
+   * Applies the outline style
+   */
   outline: PropTypes.bool,
+
+  /**
+   * Form control value
+   */
   value: PropTypes.string,
+
+  /**
+   * Controls the component size
+   */
   size: PropTypes.oneOf(["sm", "lg"]),
+
+  /**
+   * Disables user interaction
+   */
   disabled: PropTypes.bool,
+
+  /**
+   * Indicates the pressed state
+   */
   pressed: PropTypes.bool,
+
+  /**
+   * Click event handler
+   */
   onClick: PropTypes.func,
 };
 
@@ -79,7 +115,7 @@ const defaultProps = {
   children: null,
   to: "#",
   type: "button",
-  theme: "primary",
+  tone: "primary",
   outline: false,
   value: null,
   size: null,
@@ -89,7 +125,8 @@ const defaultProps = {
 };
 
 /**
- * Triggers actions, events, or navigation through contextual interactive controls.
+ * Triggers actions, events, or navigation
+ * through contextual interactive controls.
  *
  * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/buttons/}
@@ -98,7 +135,7 @@ const defaultProps = {
  * <Button>Button</Button>
  *
  * @example
- * <Button theme="success">Button</Button>
+ * <Button tone="success">Button</Button>
  *
  * @example
  * <Button size="lg">Button</Button>
@@ -106,32 +143,35 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} ButtonOwnProps
+ *
  * @property {string} [to]
- * Sets href
+ * Navigation target URL.
  *
  * @property {"button"|"submit"|"reset"} [type]
- * Sets type
+ * Native button type attribute.
  *
- * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link"} [theme]
- * Sets button theme
+ * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link"} [tone]
+ * Semantic visual tone.
  *
  * @property {boolean} [outline]
- * Sets button outline theme
+ * Applies the outline style.
  *
  * @property {string} [value]
- * Sets input value string
+ * Form control value.
  *
  * @property {"sm"|"lg"} [size]
- * Sets button size
+ * Controls the component size.
  *
  * @property {boolean} [disabled]
- * Sets button disabled state
+ * Disables user interaction.
  *
  * @property {boolean} [pressed]
- * Sets button pressed style
+ * Indicates the pressed state.
+ *
+ * @property {() => void} [onClick]
+ * Click event handler.
  *
  * @typedef {ButtonOwnProps & PrimeProps} ButtonProps
- *
  * @param {ButtonProps} props
  *
  * @return {React.ReactNode}
@@ -149,7 +189,7 @@ const Button = React.forwardRef((props, ref) => {
     className,
     to = "#",
     type,
-    theme = "primary",
+    tone = "primary",
     outline = false,
     value,
     size,
@@ -162,8 +202,8 @@ const Button = React.forwardRef((props, ref) => {
   const classes = cn(
     BASE_CLASS_NAME,
     {
-      [prefix(BASE_CLASS_NAME, outline ? `outline-${theme}` : theme)]:
-        typeof theme === "string" && BUTTON_THEMES.includes(theme),
+      [prefix(BASE_CLASS_NAME, outline ? `outline-${tone}` : tone)]:
+        typeof tone === "string" && BUTTON_THEMES.includes(tone),
       disabled:
         typeof disabled === "boolean" && disabled && ComponentType === "button",
       [cs(BASE_CLASS_NAME, size)]:
@@ -173,7 +213,7 @@ const Button = React.forwardRef((props, ref) => {
     className,
   );
 
-  const baseProperties = {
+  const properties = {
     style,
     className: classes,
     onClick,
@@ -189,17 +229,17 @@ const Button = React.forwardRef((props, ref) => {
    */
   const propertyList = {
     button: {
-      ...baseProperties,
+      ...properties,
       type,
       disabled,
     },
     a: {
-      ...baseProperties,
+      ...properties,
       href: to || "#",
       role: "button",
     },
     input: {
-      ...baseProperties,
+      ...properties,
       type,
       value: value,
     },
