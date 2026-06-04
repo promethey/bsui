@@ -83,6 +83,7 @@ export function Example() {
 | Accordion   | Content    | Experimental | 1.0.0 | 5.1.3          |
 | Alert       | Feedback   | Experimental | 1.0.0 | 5.1.3          |
 | Badge       | Feedback   | Experimental | 1.0.0 | 5.1.3          |
+| Breadcrumb  | Navigation | Experimental | 1.0.0 | 5.1.3          |
 | Button      | Control    | Experimental | 1.0.0 | 5.1.3          |
 | ButtonGroup | Control    | Experimental | 1.0.0 | 5.1.3          |
 | Card        | Content    | Experimental | 1.0.0 | 5.1.3          |
