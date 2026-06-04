@@ -9,7 +9,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "",
+        component:
+          "Animates the expansion and collapsing of content visibility.",
       },
     },
   },

@@ -44,9 +44,9 @@ export function Pressed() {
 export function MixedStyles() {
   return (
     <ButtonGroup>
-      <Button theme="danger">Left</Button>
-      <Button theme="warning">Middle</Button>
-      <Button theme="success">Right</Button>
+      <Button tone="danger">Left</Button>
+      <Button tone="warning">Middle</Button>
+      <Button tone="success">Right</Button>
     </ButtonGroup>
   );
 }

@@ -24,7 +24,7 @@ export default {
 export function Default() {
   return (
     <Dropdown>
-      <Dropdown.Button theme="secondary">Dropdown button</Dropdown.Button>
+      <Dropdown.Button tone="secondary">Dropdown button</Dropdown.Button>
       <Dropdown.Menu>
         <Dropdown.Item>Action</Dropdown.Item>
         <Dropdown.Item>Another action</Dropdown.Item>
@@ -46,9 +46,9 @@ export function Themes() {
 
   return (
     <Prime d="flex">
-      {examples.map((theme) => (
+      {examples.map((tone) => (
         <Dropdown me={2}>
-          <Dropdown.Button theme={theme.toLowerCase()}>{theme}</Dropdown.Button>
+          <Dropdown.Button tone={tone.toLowerCase()}>{tone}</Dropdown.Button>
           <Dropdown.Menu>
             <Dropdown.Item>Action</Dropdown.Item>
             <Dropdown.Item>Another action</Dropdown.Item>
@@ -74,10 +74,10 @@ export function Split() {
 
   return (
     <Prime d="flex">
-      {examples.map((theme) => (
+      {examples.map((tone) => (
         <Dropdown as={ButtonGroup} me={2}>
-          <Button theme={theme.toLowerCase()}>{theme}</Button>
-          <Dropdown.Button theme={theme.toLowerCase()} split></Dropdown.Button>
+          <Button tone={tone.toLowerCase()}>{tone}</Button>
+          <Dropdown.Button tone={tone.toLowerCase()} split></Dropdown.Button>
           <Dropdown.Menu>
             <Dropdown.Item>Action</Dropdown.Item>
             <Dropdown.Item>Another action</Dropdown.Item>
@@ -95,7 +95,7 @@ export function Large() {
   return (
     <Prime d="flex">
       <Dropdown me={2}>
-        <Dropdown.Button theme="secondary" size="lg">
+        <Dropdown.Button tone="secondary" size="lg">
           Large button
         </Dropdown.Button>
         <Dropdown.Menu>
@@ -107,10 +107,10 @@ export function Large() {
         </Dropdown.Menu>
       </Dropdown>
       <Dropdown as={ButtonGroup}>
-        <Button theme="secondary" size="lg">
+        <Button tone="secondary" size="lg">
           Large split button
         </Button>
-        <Dropdown.Button theme="secondary" size="lg" />
+        <Dropdown.Button tone="secondary" size="lg" />
         <Dropdown.Menu>
           <Dropdown.Item>Action</Dropdown.Item>
           <Dropdown.Item>Another action</Dropdown.Item>
@@ -127,7 +127,7 @@ export function Small() {
   return (
     <Prime d="flex">
       <Dropdown me={2}>
-        <Dropdown.Button theme="secondary" size="sm">
+        <Dropdown.Button tone="secondary" size="sm">
           Small button
         </Dropdown.Button>
         <Dropdown.Menu>
@@ -139,10 +139,10 @@ export function Small() {
         </Dropdown.Menu>
       </Dropdown>
       <Dropdown as={ButtonGroup}>
-        <Button theme="secondary" size="sm">
+        <Button tone="secondary" size="sm">
           Small split button
         </Button>
-        <Dropdown.Button theme="secondary" size="sm" />
+        <Dropdown.Button tone="secondary" size="sm" />
         <Dropdown.Menu>
           <Dropdown.Item>Action</Dropdown.Item>
           <Dropdown.Item>Another action</Dropdown.Item>
@@ -158,7 +158,7 @@ export function Small() {
 export function DarkMenu() {
   return (
     <Dropdown>
-      <Dropdown.Button theme="secondary">Dropdown button</Dropdown.Button>
+      <Dropdown.Button tone="secondary">Dropdown button</Dropdown.Button>
       <Dropdown.Menu dark>
         <Dropdown.Item active>Action</Dropdown.Item>
         <Dropdown.Item>Another action</Dropdown.Item>
