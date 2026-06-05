@@ -17,3 +17,4 @@ export { default as Dropdown } from "./Dropdown";
 export { default as ListGroup } from "./ListGroup";
 export { default as Breadcrumb } from "./Breadcrumb";
 export { default as Navbar } from "./Navbar";
+export { default as Control } from "./Control";
