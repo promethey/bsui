@@ -47,7 +47,7 @@ const defaultProps = {
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
-function Navbar(props) {
+function NavbarNav(props) {
   const { style, children, className, ...rest } = props;
 
   const classes = cn(BASE_CLASS_NAME, className);
@@ -59,7 +59,7 @@ function Navbar(props) {
   );
 }
 
-Navbar.propTypes = propTypes;
-Navbar.defaultProps = defaultProps;
+NavbarNav.propTypes = propTypes;
+NavbarNav.defaultProps = defaultProps;
 
-export default Navbar;
+export default NavbarNav;
