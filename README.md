@@ -94,6 +94,7 @@ export function Example() {
 | Dropdown    | Overlay    | Experimental | 1.0.0 | 5.1.3          |
 | ListGroup   | Content    | Experimental | 1.0.0 | 5.1.3          |
 | Nav         | Navigation | Experimental | 1.0.0 | 5.1.3          |
+| Navbar      | Navigation | Experimental | 1.0.0 | 5.1.3          |
 | Prime       | Core       | Experimental | 1.0.0 | 5.1.3          |
 | Progress    | Feedback   | Experimental | 1.0.0 | 5.1.3          |
 | Row         | Layout     | Experimental | 1.0.0 | 5.1.3          |
