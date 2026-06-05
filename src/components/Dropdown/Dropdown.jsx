@@ -87,7 +87,7 @@ const defaultProps = {
  *
  * @example
  * <Dropdown>
- *  <Dropdown.Button>Toggle</Dropdown.Button>
+ *  <Dropdown.Toggle>Toggle</Dropdown.Toggle>
  *  <Dropdown.Menu>
  *    <Dropdown.Item>Item #1</Dropdown.Item>
  *  </Dropdown.Menu>
