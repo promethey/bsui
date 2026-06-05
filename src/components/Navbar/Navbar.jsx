@@ -7,6 +7,7 @@ import NavbarBrand from "./NavbarBrand";
 import NavbarToggler from "./NavbarToggler";
 import NavbarNav from "./NavbarNav";
 import NavbarCollapse from "./NavbarCollapse";
+import NavbarText from "./NavbarText";
 import { NavbarContext } from "./NavbarContext";
 
 const BASE_CLASS_NAME = "navbar";
@@ -27,8 +28,17 @@ const propTypes = {
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
+  /**
+   * Defines the visual appearance variant of the component
+   */
   tone: PropTypes.oneOf(["light", "dark"]),
+
+  /**
+   * Defines the responsive breakpoint for layout transition behavior
+   */
   expand: PropTypes.oneOf(["sm", "md", "lg", "xl", "xxl"]),
+
+  placement: PropTypes.oneOf(["fixed-top", "fixed-bottom", "sticky-top"]),
 };
 
 const defaultProps = {
@@ -36,6 +46,7 @@ const defaultProps = {
   className: null,
   tone: null,
   expand: null,
+  placement: null,
 };
 
 /**
@@ -50,8 +61,14 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} NavbarOwnProps
+ *
  * @property {"light"|"dark"} [tone]
+ * Defines the visual appearance variant of the component.
+ *
  * @property {"sm"|"md"|"lg"|"xl"|"xxl"} [expand]
+ * Defines the responsive breakpoint for layout transition behavior.
+ *
+ * @property {"fixed-top"|"fixed-bottom"|"sticky-top"} [placement]
  *
  * @typedef {NavbarOwnProps & PrimeProps} NavbarProps
  * @param {NavbarProps} props
@@ -62,7 +79,8 @@ const defaultProps = {
  * @version 1.0.0
  */
 function Navbar(props) {
-  const { style, children, className, tone, expand, ...rest } = props;
+  const { style, children, className, tone, expand, placement, ...rest } =
+    props;
 
   const [expanded, setExpanded] = useState(false);
 
@@ -81,6 +99,11 @@ function Navbar(props) {
       [prefix(BASE_CLASS_NAME, "expand", expand)]:
         typeof expand === "string" &&
         ["sm", "md", "lg", "xl", "xxl"].includes(expand),
+
+      // "fixed-top", "fixed-bottom", "sticky-top"
+      [`${placement}`]:
+        typeof placement === "string" &&
+        ["fixed-top", "fixed-bottom", "sticky-top"].includes(placement),
     },
     className,
   );
@@ -97,6 +120,7 @@ function Navbar(props) {
 Navbar.propTypes = propTypes;
 Navbar.defaultProps = defaultProps;
 
+Navbar.Text = NavbarText;
 Navbar.Brand = NavbarBrand;
 Navbar.Toggler = NavbarToggler;
 Navbar.Nav = NavbarNav;
