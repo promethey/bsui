@@ -38,6 +38,9 @@ const propTypes = {
    */
   expand: PropTypes.oneOf(["sm", "md", "lg", "xl", "xxl"]),
 
+  /**
+   * Navbar viewport positioning mode
+   */
   placement: PropTypes.oneOf(["fixed-top", "fixed-bottom", "sticky-top"]),
 };
 
@@ -69,6 +72,7 @@ const defaultProps = {
  * Defines the responsive breakpoint for layout transition behavior.
  *
  * @property {"fixed-top"|"fixed-bottom"|"sticky-top"} [placement]
+ * Navbar viewport positioning mode.
  *
  * @typedef {NavbarOwnProps & PrimeProps} NavbarProps
  * @param {NavbarProps} props

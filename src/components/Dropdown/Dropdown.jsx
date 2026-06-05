@@ -153,7 +153,7 @@ function Dropdown(props) {
     enabled: true,
     escapeKey: true,
     outsidePress: true,
-    ancestorScroll: true,
+    ancestorScroll: false,
   });
 
   const role = useRole(context, { role: "menu" });

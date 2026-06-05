@@ -159,3 +159,30 @@ export function StickyTop() {
     </Navbar>
   );
 }
+
+export function Scrolling() {
+  return (
+    <Navbar tone="light" bg="light" expand="lg">
+      <Container fluid>
+        <Navbar.Brand>Navbar scroll</Navbar.Brand>
+        <Navbar.Toggler />
+        <Navbar.Collapse>
+          <Navbar.Nav scroll scrollHeight="100px">
+            <Nav.Link active>Home</Nav.Link>
+            <Nav.Link>Link</Nav.Link>
+            <Dropdown nav>
+              <Dropdown.Toggle>Link</Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item>Action</Dropdown.Item>
+                <Dropdown.Item>Another action</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item>Something else here</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            <Nav.Link disabled>Link</Nav.Link>
+          </Navbar.Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
