@@ -1,5 +1,13 @@
 // @ts-nocheck
-import { Navbar, Container, Prime, Dropdown, Nav } from "components";
+import {
+  Navbar,
+  Container,
+  Prime,
+  Dropdown,
+  Nav,
+  Control,
+  Button,
+} from "components";
 
 export default {
   title: "Components/Navigation/Navbar",
@@ -20,6 +28,39 @@ export default {
     },
   },
 };
+
+export function Default() {
+  return (
+    <Navbar tone="light" bg="light" expand="lg">
+      <Container fluid>
+        <Navbar.Brand>Navbar</Navbar.Brand>
+        <Navbar.Toggler />
+        <Navbar.Collapse>
+          <Navbar.Nav me="auto" mb={{ xs: 2, lg: 0 }}>
+            <Nav.Link active>Home</Nav.Link>
+            <Nav.Link>Link</Nav.Link>
+            <Dropdown nav>
+              <Dropdown.Toggle>Dropdown</Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item>Action</Dropdown.Item>
+                <Dropdown.Item>Another action</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item>Something else here</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            <Nav.Link disabled>Disabled</Nav.Link>
+          </Navbar.Nav>
+          <Prime as="form" d="flex">
+            <Control placeholder="Search" />
+            <Button tone="success" outline ms={2}>
+              Search
+            </Button>
+          </Prime>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
 
 export function Brand() {
   return (
