@@ -13,8 +13,13 @@ import { createContext, useContext } from "react";
  * Floating UI computed positioning styles.
  *
  * @property {(userProps?: Object) => Object} getReferenceProps
+ * Merges user props with reference element interaction handlers.
  *
  * @property {(userProps?: Object) => Object} getFloatingProps
+ * Merges user props with floating element interaction handlers.
+ *
+ * @property {boolean} nav
+ * Indicates whether the dropdown is rendered within a navigation context.
  */
 
 /** @type {React.Context<DropdownContextValue | null>} */

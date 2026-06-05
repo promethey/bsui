@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
@@ -27,15 +26,12 @@ const propTypes = {
    * Enables dark theme styling for the dropdown menu
    */
   dark: PropTypes.bool,
-
-  staticMenu: PropTypes.bool,
 };
 
 const defaultProps = {
   style: null,
   className: null,
   dark: false,
-  staticMenu: false,
 };
 
 /**
@@ -61,8 +57,6 @@ const defaultProps = {
  * @property {boolean} [dark=false]
  * Enables dark theme styling for the dropdown menu.
  *
- * @property {boolean} [staticMenu=false]
- *
  * @typedef {PrimeProps & DropdownMenuOwnProps} DropdownMenuProps
  * @param {DropdownMenuProps} props
  *
@@ -70,9 +64,9 @@ const defaultProps = {
  * @version 1.0.0
  */
 function DropdownMenu(props) {
-  const { style, children, className, dark, staticMenu, ...rest } = props;
+  const { style, children, className, dark, ...rest } = props;
 
-  const { expanded, refs, floatingStyles, getFloatingProps } =
+  const { expanded, refs, floatingStyles, getFloatingProps, nav } =
     useDropdownContext();
 
   const classes = cn(
@@ -90,7 +84,7 @@ function DropdownMenu(props) {
         ref={refs.setFloating}
         as="ul"
         className={classes}
-        style={staticMenu ? style : floatingStyles}
+        style={nav ? style : floatingStyles}
         {...getFloatingProps()}
         {...rest}>
         {children}

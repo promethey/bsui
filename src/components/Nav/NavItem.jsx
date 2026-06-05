@@ -1,4 +1,4 @@
-import { Prime } from "components";
+import { Nav, Prime } from "components";
 import PropTypes from "prop-types";
 import cn from "classnames";
 

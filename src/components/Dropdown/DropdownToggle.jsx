@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { Prime } from "components";
+import { Button } from "components";
 import { useDropdownContext } from "./DropdownContext";
 import { prefix } from "helpers";
+import { Nav } from "components";
 
 const BASE_CLASS_NAME = "dropdown-toggle";
 
@@ -36,12 +37,14 @@ const defaultProps = {
 };
 
 /**
- * Toggles the visibility state of the associated dropdown menu.
+ * Toggles the visibility state
+ * of the associated dropdown menu.
  *
  * @component
  *
  * @see {@link Prime}
  * @see {@link Button}
+ * @see {@link Nav.Link}
  * @see {@link https://getbootstrap.com/docs/5.1/components/dropdowns/}
  *
  * @example
@@ -62,10 +65,10 @@ const defaultProps = {
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
-function DropdownButton(props) {
+function DropdownToggle(props) {
   const { style, children, className, split, ...rest } = props;
 
-  const { expanded, refs, getReferenceProps } = useDropdownContext();
+  const { expanded, refs, getReferenceProps, nav } = useDropdownContext();
 
   const classes = cn(
     BASE_CLASS_NAME,
@@ -76,23 +79,28 @@ function DropdownButton(props) {
     className,
   );
 
+  const ToggleComponent = nav ? Nav.Link : Button;
+
   return (
-    <Prime
+    <ToggleComponent
       ref={refs.setReference}
       style={style}
       className={classes}
       {...getReferenceProps({
+        /**
+         * @param {MouseEvent} event
+         */
         onClick(event) {
           event.preventDefault();
         },
       })}
       {...rest}>
       {children}
-    </Prime>
+    </ToggleComponent>
   );
 }
 
-DropdownButton.propTypes = propTypes;
-DropdownButton.defaultProps = defaultProps;
+DropdownToggle.propTypes = propTypes;
+DropdownToggle.defaultProps = defaultProps;
 
-export default DropdownButton;
+export default DropdownToggle;

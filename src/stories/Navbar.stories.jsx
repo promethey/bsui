@@ -74,22 +74,14 @@ export function Dropdowns() {
         <Navbar.Toggler />
         <Navbar.Collapse>
           <Navbar.Nav>
-            <Nav.Item>
-              <Nav.Link to="/home" active>
-                Home
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link to="/features">Features</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link to="/pricing">Pricing</Nav.Link>
-            </Nav.Item>
-            <Dropdown as={Nav.Item}>
-              <Dropdown.Button as={Nav.Link} href="#">
-                Dropdown link
-              </Dropdown.Button>
-              <Dropdown.Menu staticMenu>
+            <Nav.Link to="/home" active>
+              Home
+            </Nav.Link>
+            <Nav.Link to="/features">Features</Nav.Link>
+            <Nav.Link to="/pricing">Pricing</Nav.Link>
+            <Dropdown nav>
+              <Dropdown.Toggle>Dropdown link</Dropdown.Toggle>
+              <Dropdown.Menu>
                 <Dropdown.Item>Action</Dropdown.Item>
                 <Dropdown.Item>Another action</Dropdown.Item>
                 <Dropdown.Item>Something else here</Dropdown.Item>

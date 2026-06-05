@@ -5,7 +5,7 @@ export default {
   title: "Components/Overlay/Dropdown",
   component: Dropdown,
   subcomponents: {
-    "Dropdown.Button": Dropdown.Button,
+    "Dropdown.Toggle": Dropdown.Toggle,
     "Dropdown.Menu": Dropdown.Menu,
     "Dropdown.Item": Dropdown.Item,
     Button,
@@ -24,7 +24,7 @@ export default {
 export function Default() {
   return (
     <Dropdown>
-      <Dropdown.Button tone="secondary">Dropdown button</Dropdown.Button>
+      <Dropdown.Toggle tone="secondary">Dropdown button</Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item>Action</Dropdown.Item>
         <Dropdown.Item>Another action</Dropdown.Item>
@@ -48,7 +48,7 @@ export function Themes() {
     <Prime d="flex">
       {examples.map((tone) => (
         <Dropdown me={2}>
-          <Dropdown.Button tone={tone.toLowerCase()}>{tone}</Dropdown.Button>
+          <Dropdown.Toggle tone={tone.toLowerCase()}>{tone}</Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item>Action</Dropdown.Item>
             <Dropdown.Item>Another action</Dropdown.Item>
@@ -77,7 +77,7 @@ export function Split() {
       {examples.map((tone) => (
         <Dropdown as={ButtonGroup} me={2}>
           <Button tone={tone.toLowerCase()}>{tone}</Button>
-          <Dropdown.Button tone={tone.toLowerCase()} split></Dropdown.Button>
+          <Dropdown.Toggle tone={tone.toLowerCase()} split></Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item>Action</Dropdown.Item>
             <Dropdown.Item>Another action</Dropdown.Item>
@@ -95,9 +95,9 @@ export function Large() {
   return (
     <Prime d="flex">
       <Dropdown me={2}>
-        <Dropdown.Button tone="secondary" size="lg">
+        <Dropdown.Toggle tone="secondary" size="lg">
           Large button
-        </Dropdown.Button>
+        </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item>Action</Dropdown.Item>
           <Dropdown.Item>Another action</Dropdown.Item>
@@ -110,7 +110,7 @@ export function Large() {
         <Button tone="secondary" size="lg">
           Large split button
         </Button>
-        <Dropdown.Button tone="secondary" size="lg" />
+        <Dropdown.Toggle tone="secondary" size="lg" />
         <Dropdown.Menu>
           <Dropdown.Item>Action</Dropdown.Item>
           <Dropdown.Item>Another action</Dropdown.Item>
@@ -127,9 +127,9 @@ export function Small() {
   return (
     <Prime d="flex">
       <Dropdown me={2}>
-        <Dropdown.Button tone="secondary" size="sm">
+        <Dropdown.Toggle tone="secondary" size="sm">
           Small button
-        </Dropdown.Button>
+        </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item>Action</Dropdown.Item>
           <Dropdown.Item>Another action</Dropdown.Item>
@@ -142,7 +142,7 @@ export function Small() {
         <Button tone="secondary" size="sm">
           Small split button
         </Button>
-        <Dropdown.Button tone="secondary" size="sm" />
+        <Dropdown.Toggle tone="secondary" size="sm" />
         <Dropdown.Menu>
           <Dropdown.Item>Action</Dropdown.Item>
           <Dropdown.Item>Another action</Dropdown.Item>
@@ -158,7 +158,7 @@ export function Small() {
 export function DarkMenu() {
   return (
     <Dropdown>
-      <Dropdown.Button tone="secondary">Dropdown button</Dropdown.Button>
+      <Dropdown.Toggle tone="secondary">Dropdown button</Dropdown.Toggle>
       <Dropdown.Menu dark>
         <Dropdown.Item active>Action</Dropdown.Item>
         <Dropdown.Item>Another action</Dropdown.Item>
@@ -177,7 +177,7 @@ export function DirectionTopStart() {
       as={ButtonGroup}
       placement="top-start"
       style={{ marginTop: "170px" }}>
-      <Dropdown.Button>Dropup</Dropdown.Button>
+      <Dropdown.Toggle>Dropup</Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item active>Action</Dropdown.Item>
         <Dropdown.Item>Another action</Dropdown.Item>
@@ -193,7 +193,7 @@ DirectionTopStart.storyName = "Direction top start";
 export function DirectionRightStart() {
   return (
     <Dropdown as={ButtonGroup} placement="right-start">
-      <Dropdown.Button>Dropright</Dropdown.Button>
+      <Dropdown.Toggle>Dropright</Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item active>Action</Dropdown.Item>
         <Dropdown.Item>Another action</Dropdown.Item>
@@ -212,7 +212,7 @@ export function PlacementLeftStart() {
       as={ButtonGroup}
       placement="left-start"
       style={{ marginLeft: "185px" }}>
-      <Dropdown.Button>Dropleft</Dropdown.Button>
+      <Dropdown.Toggle>Dropleft</Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Item active>Action</Dropdown.Item>
         <Dropdown.Item>Another action</Dropdown.Item>
@@ -229,7 +229,7 @@ export function Text() {
   return (
     <Prime d="flex">
       <Dropdown me={2}>
-        <Dropdown.Button>Text</Dropdown.Button>
+        <Dropdown.Toggle>Text</Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Text>Dropdown item text</Dropdown.Text>
           <Dropdown.Item active>Action</Dropdown.Item>
@@ -238,7 +238,7 @@ export function Text() {
         </Dropdown.Menu>
       </Dropdown>
       <Dropdown>
-        <Dropdown.Button>Text</Dropdown.Button>
+        <Dropdown.Toggle>Text</Dropdown.Toggle>
         <Dropdown.Menu p={4} text="muted" style={{ maxWidth: "200px" }}>
           <Prime as="p">
             Some example text that's free-flowing within the dropdown menu.
@@ -255,7 +255,7 @@ export function Text() {
 export function Header() {
   return (
     <Dropdown>
-      <Dropdown.Button>Dropdown header</Dropdown.Button>
+      <Dropdown.Toggle>Dropdown header</Dropdown.Toggle>
       <Dropdown.Menu>
         <Dropdown.Header>Dropdown header</Dropdown.Header>
         <Dropdown.Item active>Action</Dropdown.Item>

@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
-import DropdownButton from "./DropdownButton";
+import DropdownToggle from "./DropdownToggle";
 import DropdownMenu from "./DropdownMenu";
 import DropdownItem from "./DropdownItem";
 import DropdownDivider from "./DropdownDivider";
@@ -23,6 +23,7 @@ import {
 const BASE_CLASS_NAME = "dropdown";
 
 const propTypes = {
+  as: PropTypes.elementType,
   /**
    * Inline styles applied to the root
    */
@@ -37,6 +38,8 @@ const propTypes = {
    * Additional classes applied to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+
+  nav: PropTypes.bool,
 
   /**
    * Sets the dropdown placement direction
@@ -64,8 +67,10 @@ const propTypes = {
 };
 
 const defaultProps = {
+  as: "div",
   style: null,
   className: null,
+  nav: false,
   placement: "border-start",
   transform: false,
 };
@@ -92,11 +97,15 @@ const defaultProps = {
  *
  * @typedef {object} DropdownOwnProps
  *
+ * @property {string|React.ComponentType<any>} [as="div"]
+ *
  * @property {"top"|"top-start"|"top-end"|"right"|"right-start"|"right-end"|"bottom"|"bottom-start"|"bottom-end"|"left"|"left-start"|"left-end"} [placement]
  * Sets the dropdown placement direction.
  *
  * @property {boolean} [transform=false]
  * Use CSS transforms to position the floating element.
+ *
+ * @property {boolean} [nav=false]
  *
  * @typedef {PrimeProps & DropdownOwnProps} DropdownProps
  * @param {DropdownProps} props
@@ -108,9 +117,11 @@ const defaultProps = {
  */
 function Dropdown(props) {
   const {
+    as: ComponentType = "div",
     style,
     children,
     className,
+    nav = false,
     placement = "bottom-start",
     transform = false,
     ...rest
@@ -159,11 +170,12 @@ function Dropdown(props) {
     floatingStyles,
     getReferenceProps,
     getFloatingProps,
+    nav,
   };
 
   return (
     <DropdownContext.Provider value={dropdownValue}>
-      <Prime className={classes} style={style} {...rest}>
+      <Prime as={ComponentType} className={classes} style={style} {...rest}>
         {children}
       </Prime>
     </DropdownContext.Provider>
@@ -173,7 +185,7 @@ function Dropdown(props) {
 Dropdown.propTypes = propTypes;
 Dropdown.defaultProps = defaultProps;
 
-Dropdown.Button = DropdownButton;
+Dropdown.Toggle = DropdownToggle;
 Dropdown.Menu = DropdownMenu;
 Dropdown.Item = DropdownItem;
 Dropdown.Divider = DropdownDivider;
