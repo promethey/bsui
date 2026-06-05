@@ -91,6 +91,7 @@ export function Example() {
 | Col         | Layout     | Experimental | 1.0.0 | 5.1.3          |
 | Collapse    | Content    | Experimental | 1.0.0 | 5.1.3          |
 | Container   | Layout     | Experimental | 1.0.0 | 5.1.3          |
+| Control     | Control    | Experimental | 1.0.0 | 5.1.3          |
 | Dropdown    | Overlay    | Experimental | 1.0.0 | 5.1.3          |
 | ListGroup   | Content    | Experimental | 1.0.0 | 5.1.3          |
 | Nav         | Navigation | Experimental | 1.0.0 | 5.1.3          |
