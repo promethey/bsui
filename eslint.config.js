@@ -35,5 +35,6 @@ export default defineConfig([{
     "**/*.config.js",
     "**/*.test.js",
     "**/*.stories.jsx",
+    "src/tests/**",
   ],
 }, ...storybook.configs["flat/recommended"]]);
