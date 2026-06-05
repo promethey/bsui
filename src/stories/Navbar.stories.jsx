@@ -6,6 +6,10 @@ export default {
   component: Navbar,
   subcomponents: {
     "Navbar.Brand": Navbar.Brand,
+    "Navbar.Collapse": Navbar.Collapse,
+    "Navbar.Nav": Navbar.Nav,
+    "Navbar.Text": Navbar.Text,
+    "Navbar.Toggler": Navbar.Toggler,
     Prime,
   },
   parameters: {
