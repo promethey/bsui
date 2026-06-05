@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from "@testing-library/react";
 import { Alert } from "components";
 
@@ -16,7 +15,7 @@ describe("Alert", () => {
   });
 
   test("applies component classes", () => {
-    render(<Alert theme="primary">Alert</Alert>);
+    render(<Alert tone="primary">Alert</Alert>);
 
     expect(screen.getByText("Alert")).toHaveClass("alert-primary");
   });
@@ -46,11 +45,11 @@ describe("Alert", () => {
   });
 
   test("updates classes on rerender", () => {
-    const { rerender } = render(<Alert theme="primary">Alert</Alert>);
+    const { rerender } = render(<Alert tone="primary">Alert</Alert>);
 
     expect(screen.getByText("Alert")).toHaveClass("alert-primary");
 
-    rerender(<Alert theme="danger">Alert</Alert>);
+    rerender(<Alert tone="danger">Alert</Alert>);
 
     expect(screen.getByText("Alert")).toHaveClass("alert-danger");
   });
