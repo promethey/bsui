@@ -7,11 +7,7 @@ const config = {
     defaultName: "Docs",
     docsMode: false,
   },
-  stories: [
-    "../src/**/*.mdx",
-    "../src/stories/*.mdx",
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-  ],
+  stories: ["../stories/*.mdx", "../stories/*.stories.@(js|jsx|mjs|ts|tsx)"],
   staticDirs: ["../public"],
   addons: [
     "@storybook/addon-webpack5-compiler-swc",
