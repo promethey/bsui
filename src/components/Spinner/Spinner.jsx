@@ -21,7 +21,7 @@ const propTypes = {
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   view: PropTypes.oneOf(["border", "grow"]),
-  size: PropTypes.oneOf(["sm", "lg"]),
+  size: PropTypes.oneOf(["sm"]),
 };
 
 const defaultProps = {
@@ -70,7 +70,7 @@ function Spinner(props) {
     {
       // 'spinner-(border|grow)-sm' or 'spinner-(border|grow)-lg'
       [prefix("spinner", view, size)]:
-        typeof size === "string" && ["sm", "lg"].includes(size),
+        typeof size === "string" && ["sm"].includes(size),
     },
     className,
   );
