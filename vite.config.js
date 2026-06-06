@@ -17,7 +17,7 @@ export default defineConfig({
     globals: true,
     setupFiles: "./vitest.setup.js",
     include: [
-      "src/tests/**/*.{test,spec}.{js,jsx,ts,tsx}",
+      "tests/**/*.{test,spec}.{js,jsx,ts,tsx}",
     ],
     exclude: [
       "node_modules",

@@ -1,5 +1,5 @@
 {
-  "include": ["src"],
+  "include": ["tests"],
   "exclude": ["node_modules", "dist"],
 
   "compilerOptions": {

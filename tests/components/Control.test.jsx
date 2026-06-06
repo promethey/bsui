@@ -19,7 +19,7 @@ describe("Control", () => {
   });
 
   it("renders value", () => {
-    render(<Control value="John" />);
+    render(<Control defaultValue="John" />);
 
     expect(screen.getByDisplayValue("John")).toBeInTheDocument();
   });
