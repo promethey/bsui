@@ -28,6 +28,11 @@ const propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
+   * Controlled default value of the input or textarea
+   */
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
    * Optional title attribute for accessibility and native browser tooltip support
    */
   title: PropTypes.string,
@@ -79,6 +84,7 @@ const defaultProps = {
   style: null,
   className: null,
   value: null,
+  defaultValue: null,
   title: null,
   size: null,
   type: "text",
@@ -113,6 +119,9 @@ const defaultProps = {
  *
  * @property {string|number} [value]
  * Controlled value of the input or textarea.
+ *
+ * @property {string|number} [defaultValue]
+ * Controlled default value of the input or textarea.
  *
  * @property {string} [title]
  * Optional title attribute for accessibility and native browser tooltip support.
