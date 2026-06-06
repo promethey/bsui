@@ -19,3 +19,4 @@ export { default as Breadcrumb } from "./Breadcrumb";
 export { default as Navbar } from "./Navbar";
 export { default as Control } from "./Control";
 export { default as Spinner } from "./Spinner";
+export { default as Placeholder } from "./Placeholder";
