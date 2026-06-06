@@ -633,7 +633,7 @@ const propTypes = {
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  *
- * @type {React.ForwardRefExoticComponent<any>}
+ * @type {React.ForwardRefExoticComponent<PrimeProps & React.RefAttributes<any>>}
  */
 const Prime = React.forwardRef((props, ref) => {
   const {
@@ -753,5 +753,7 @@ const Prime = React.forwardRef((props, ref) => {
 });
 
 Prime.propTypes = propTypes;
+
+Prime.displayName = "Prime";
 
 export default React.memo(Prime);
