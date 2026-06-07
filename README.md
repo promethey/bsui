@@ -123,6 +123,44 @@ export function Example() {
 }
 ```
 
+# Build
+
+This library uses Webpack for runtime bundling and TypeScript (declaration emit only) for type generation from JSDoc.
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Build library (production bundle)
+
+```bash
+npm run build
+```
+
+### Generate TypeScript definitions (JSDoc → .d.ts)
+
+Generates type definitions for IDE IntelliSense and autocomplete:
+
+```bash
+npm run types
+```
+
+### Local package testing
+
+Create a tarball for local npm testing:
+
+```bash
+npm pack
+```
+
+Install in another project:
+
+```bash
+npm install bsui-1.0.0.tgz
+```
+
 # Documentation
 
 Every component is documented in two layers:
