@@ -105,22 +105,23 @@ export function Example() {
 ### Quick Example
 
 ```jsx
-import { Button, Card } from "bsui";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Dropdown } from "bsui";
 
-export function Example() {
+function App() {
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Body>
-        <Card.Title>Project dashboard</Card.Title>
-        <Card.Text>
-          A scalable UI system built on Bootstrap 5 with modern React
-          composition patterns.
-        </Card.Text>
-        <Button theme="secondary">Open dashboard</Button>
-      </Card.Body>
-    </Card>
+    <Dropdown>
+      <Dropdown.Toggle>Dropdown button</Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item>Action</Dropdown.Item>
+        <Dropdown.Item>Another action</Dropdown.Item>
+        <Dropdown.Item>Something else here</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
   );
 }
+
+export default App;
 ```
 
 # Build
