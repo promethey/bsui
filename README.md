@@ -165,12 +165,3 @@ npm run test:ui
 ```bash
 npm run test:coverage
 ```
-
-```
-
-Vitest is recommended for active development and modern Vite-based workflows.
-
-## License
-
-MIT
-```
