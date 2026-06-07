@@ -4,12 +4,6 @@
   "description": "Modern Bootstrap component system for React applications",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.js"
-    }
-  },
   "files": [
     "dist",
     "types",
