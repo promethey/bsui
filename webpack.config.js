@@ -45,17 +45,14 @@ export default {
   externals: {
     react: "react",
     "react-dom": "react-dom",
+    "react/jsx-runtime": "react/jsx-runtime"
   },
 
   plugins: [
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
   ],
 
   optimization: {
-    minimize: false
-  },
-
-  performance: {
-    hints: false,
+    minimize: true,
   },
 };
