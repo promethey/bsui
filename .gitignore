@@ -3,6 +3,7 @@ node_modules
 coverage
 dist
 types
+storybook-static
 out
 *.log
 *.tgz
