@@ -1,6 +1,6 @@
 <p align="center">
   <img src="./public/bsui-logo.png" width="220" />
-  <h1 style={{ margin: "24px 0" }}>Bootstrap-UI</h1>
+  <h1 style={{ margin: "24px 0" }}>BSUI (Bootstrap-UI)</h1>
   <p style={{ margin: "0" }}>
     Modern Bootstrap component system for React applications.
   </p>
