@@ -5,7 +5,7 @@ const theme = create({
 
   brandTitle: "BSUI",
   brandUrl: "/",
-  brandImage: "/bsui-logo.png",
+  brandImage: "./bsui-logo.png",
 });
 
 export default theme;
