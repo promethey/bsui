@@ -1,4 +1,4 @@
-import { Children, useCallback, isValidElement } from "react";
+import { useState, Children, useCallback, isValidElement } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
@@ -7,6 +7,7 @@ import CarouselItem from "./CarouselItem";
 import CarouselControl from "./CarouselControl";
 import { CarouselContext } from "./CarouselContext";
 import CarouselCaption from "./CarouselCaption";
+import findCarouselInner from "./findCarouselInner";
 
 const BASE_CLASS_NAME = "carousel";
 
@@ -26,7 +27,7 @@ const propTypes = {
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
-  activeIndex: PropTypes.number,
+  defaultIndex: PropTypes.number,
   onSelect: PropTypes.func,
   controls: PropTypes.bool,
 };
@@ -34,7 +35,7 @@ const propTypes = {
 const defaultProps = {
   style: null,
   className: null,
-  activeIndex: 0,
+  defaultIndex: 0,
   onSelect: null,
   controls: false,
 };
@@ -47,19 +48,19 @@ const defaultProps = {
  * @see {@link https://getbootstrap.com/docs/5.1/components/carousel/}
  *
  * @example
- * <Carousel activeIndex={0}>
+ * <Carousel defaultIndex={0} controls>
  *  <Carousel.Inner>
  *    <Carousel.Item>
- *      <img ... />
+ *      <img src="..." alt="..." />
  *    </Carousel.Item>
  *    <Carousel.Item>
- *      <img ... />
+ *      <img src="..." alt="..." />
  *    </Carousel.Item>
  *  </Carousel.Inner>
  * </Carousel>
  *
  * @typedef {object} CarouselOwnProps
- * @property {number} [activeIndex]
+ * @property {number} [defaultIndex=0]
  * @property {React.Dispatch<React.SetStateAction<number>>} [onSelect]
  * @property {boolean} [controls=false]
  *
@@ -76,7 +77,7 @@ function Carousel(props) {
     style,
     children,
     className,
-    activeIndex = 0,
+    defaultIndex = 0,
     onSelect,
     controls = false,
     ...rest
@@ -84,43 +85,31 @@ function Carousel(props) {
 
   const classes = cn(BASE_CLASS_NAME, "slide", className);
 
-  /**
-   * @param {React.ReactNode} children
-   */
-  function findCarouselInner(children) {
-    return Children.toArray(children).find(
-      (child) => isValidElement(child) && child.type === CarouselInner,
-    );
-  }
-
   const inner = findCarouselInner(children);
 
-  if (!inner) {
-    throw new Error("Carousel requires a Carousel.Inner component.");
-  }
+  const itemsCount = Children.count(inner?.props?.children);
 
-  const itemsLength = Children.count(
-    /** @type {import("react").ReactElement | undefined} */
-    (inner)?.props?.children,
+  const [activeIndex, setActiveIndex] = useState(() =>
+    defaultIndex >= 0 && defaultIndex <= itemsCount - 1 ? defaultIndex : 0,
   );
 
-  const handleNextIndex = useCallback(() => {
-    onSelect?.((prev) => {
-      if (itemsLength <= 1) return prev;
-      return prev === itemsLength - 1 ? 0 : prev + 1;
-    });
-  }, [onSelect]);
+  const handleNextIndex = () => {
+    setActiveIndex?.((prev) => {
+      if (itemsCount <= 1) return prev;
 
-  const handlePrevIndex = useCallback(() => {
-    onSelect?.((prev) => {
-      if (itemsLength <= 1) return prev;
-      return prev === 0 ? itemsLength - 1 : prev - 1;
+      return prev === itemsCount - 1 ? 0 : prev + 1;
     });
-  }, [onSelect]);
-
-  const carouselValue = {
-    activeIndex,
   };
+
+  const handlePrevIndex = () => {
+    setActiveIndex?.((prev) => {
+      if (itemsCount <= 1) return prev;
+
+      return prev === 0 ? itemsCount - 1 : prev - 1;
+    });
+  };
+
+  const carouselValue = { activeIndex };
 
   return (
     <CarouselContext.Provider value={carouselValue}>

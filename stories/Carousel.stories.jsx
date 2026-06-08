@@ -4,9 +4,7 @@ import { Carousel, Prime } from "../src/components";
 export default {
   title: "Components/Content/Carousel",
   component: Carousel,
-  subcomponents: {
-    Prime,
-  },
+  subcomponents: { Prime },
   parameters: {
     docs: {
       description: {
@@ -21,10 +19,8 @@ export function Default() {
 
   const colors = ["primary", "secondary", "success"];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-
   return (
-    <Carousel activeIndex={activeIndex} onSelect={setActiveIndex} controls>
+    <Carousel defaultIndex={0} controls>
       <Carousel.Inner>
         {items.map((title, idx) => (
           <Carousel.Item key={title}>
