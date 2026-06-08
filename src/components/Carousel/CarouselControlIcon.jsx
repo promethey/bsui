@@ -33,7 +33,7 @@ const defaultProps = {
 };
 
 /**
- * CarouselControlIcon component
+ * Displays an icon used by carousel navigation controls.
  *
  * @component
  *

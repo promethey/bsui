@@ -28,7 +28,7 @@ const defaultProps = {
 };
 
 /**
- * CarouselInner component
+ * Wraps and manages the collection of carousel slides.
  *
  * @component
  *
@@ -63,9 +63,11 @@ function CarouselInner(props) {
           return child;
         }
 
-        return cloneElement(/** @type {React.ReactElement<any>} */ (child), {
-          index,
-        });
+        return cloneElement(
+          /** @type {React.ReactElement<any>} */
+          (child),
+          { index },
+        );
       })}
     </Prime>
   );

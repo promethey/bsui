@@ -8,7 +8,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Carousel component",
+        component:
+          "Displays a slideshow of content with support for controls and indicators.",
       },
     },
   },
@@ -20,7 +21,7 @@ export function Default() {
   const colors = ["primary", "secondary", "success"];
 
   return (
-    <Carousel defaultIndex={0} controls>
+    <Carousel defaultIndex={0} controls indicators>
       <Carousel.Inner>
         {items.map((title, idx) => (
           <Carousel.Item key={title}>

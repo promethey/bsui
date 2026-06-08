@@ -7,6 +7,7 @@ import CarouselItem from "./CarouselItem";
 import CarouselControl from "./CarouselControl";
 import { CarouselContext } from "./CarouselContext";
 import CarouselCaption from "./CarouselCaption";
+import CarouselIndicators from "./CarouselIndicators";
 import findCarouselInner from "./findCarouselInner";
 
 const BASE_CLASS_NAME = "carousel";
@@ -27,28 +28,42 @@ const propTypes = {
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
+  /**
+   * Initial active slide index when the carousel
+   * is first rendered
+   */
   defaultIndex: PropTypes.number,
-  onSelect: PropTypes.func,
+
+  /**
+   * Displays previous and next navigation controls
+   */
   controls: PropTypes.bool,
+
+  /**
+   * Displays slide indicators and enables navigation
+   * by selecting a specific slide
+   */
+  indicators: PropTypes.bool,
 };
 
 const defaultProps = {
   style: null,
   className: null,
   defaultIndex: 0,
-  onSelect: null,
   controls: false,
+  inidcators: false,
 };
 
 /**
- * Carousel component
+ * Displays a slideshow of content with support
+ * for controls and indicators.
  *
  * @component
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/carousel/}
  *
  * @example
- * <Carousel defaultIndex={0} controls>
+ * <Carousel defaultIndex={0} controls indicators>
  *  <Carousel.Inner>
  *    <Carousel.Item>
  *      <img src="..." alt="..." />
@@ -60,9 +75,15 @@ const defaultProps = {
  * </Carousel>
  *
  * @typedef {object} CarouselOwnProps
+ *
  * @property {number} [defaultIndex=0]
- * @property {React.Dispatch<React.SetStateAction<number>>} [onSelect]
+ * Initial active slide index when the carousel is first rendered.
+ *
  * @property {boolean} [controls=false]
+ * Displays previous and next navigation controls.
+ *
+ * @property {boolean} [indicators=false]
+ * Displays slide indicators and enables navigation by selecting a specific slide.
  *
  * @typedef {import("../Prime/Prime").PrimeProps & CarouselOwnProps} CarouselProps
  * @param {CarouselProps} props
@@ -78,8 +99,8 @@ function Carousel(props) {
     children,
     className,
     defaultIndex = 0,
-    onSelect,
     controls = false,
+    indicators = false,
     ...rest
   } = props;
 
@@ -109,17 +130,23 @@ function Carousel(props) {
     });
   };
 
-  const carouselValue = { activeIndex };
+  /** @param {number} index */
+  const handleControlClick = (index) => {
+    setActiveIndex?.(index);
+  };
+
+  const carouselValue = { activeIndex, itemsCount, handleControlClick };
 
   return (
     <CarouselContext.Provider value={carouselValue}>
       <Prime className={classes} style={style} {...rest}>
+        {indicators && <CarouselIndicators />}
         {children}
         {controls && (
-          <CarouselControl position="prev" onClick={handlePrevIndex} />
+          <CarouselControl position="prev" onClick={() => handlePrevIndex()} />
         )}
         {controls && (
-          <CarouselControl position="next" onClick={handleNextIndex} />
+          <CarouselControl position="next" onClick={() => handleNextIndex()} />
         )}
       </Prime>
     </CarouselContext.Provider>
@@ -131,7 +158,6 @@ Carousel.defaultProps = defaultProps;
 
 Carousel.Inner = CarouselInner;
 Carousel.Item = CarouselItem;
-Carousel.Control = CarouselControl;
 Carousel.Caption = CarouselCaption;
 
 export default Carousel;

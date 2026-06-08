@@ -29,7 +29,7 @@ const defaultProps = {
 };
 
 /**
- * CarouselControl component
+ * Renders a navigation control for moving between slides.
  *
  * @component
  *

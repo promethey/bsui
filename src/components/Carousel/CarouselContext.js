@@ -9,8 +9,8 @@ import { createContext, useContext } from "react";
  *
  * @typedef {object} CarouselContextValue
  * @property {number} activeIndex - Currently active slide index
- * @property {(index: number | ((prev: number) => number)) => void} [onSelect] - Updates active slide index
- * @property {number} [itemsLength] - Total number of slides (optional, if provided by inner layer)
+ * @property {number} [itemsCount] - Total number of slides (optional, if provided by inner layer)
+ * @property {(index: number) => void} [handleControlClick] - Updates active slide index
  */
 
 /** @type {import("react").Context<CarouselContextValue | null>} */

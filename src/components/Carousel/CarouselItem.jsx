@@ -30,7 +30,7 @@ const defaultProps = {
 };
 
 /**
- * CarouselItem component
+ * Represents an individual slide within a carousel.
  *
  * @component
  *

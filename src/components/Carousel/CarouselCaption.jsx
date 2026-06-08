@@ -28,7 +28,7 @@ const defaultProps = {
 };
 
 /**
- * CarouselCaption component
+ * Displays caption content associated with a carousel slide.
  *
  * @component
  *
