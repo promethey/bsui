@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+
+    "allowJs": true,
+    "checkJs": true,
+
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": false,
+
+    "rootDir": "src",
+    "outDir": "types",
+
+    "module": "ESNext",
+    "target": "ES2020",
+    "moduleResolution": "Bundler",
+
+    "skipLibCheck": true,
+
+    "strict": false,
+    "noEmitOnError": false,
+
+    "removeComments": false,
+
+    "jsx": "react-jsx",
+
+    "baseUrl": ".",
+
+    "paths": {
+      "components": ["src/components/index"],
+      "components/*": ["src/components/*"],
+
+      "helpers": ["src/helpers/index"],
+      "helpers/*": ["src/helpers/*"],
+
+      "hooks": ["src/hooks/index"],
+      "hooks/*": ["src/hooks/*"],
+
+      "utils": ["src/utils/index"],
+      "utils/*": ["src/utils/*"]
+    }
+  },
+
+  "include": ["src"]
+}
