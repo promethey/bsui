@@ -1,8 +1,5 @@
 node_modules
 dist
 build
-.storybook-static
-*.config.js
+storybook-static
 coverage
-package-lock.json
-yarn.lock
