@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
-import { Children, cloneElement, isValidElement } from "react";
+import { useCarouselContext } from "./CarouselContext";
 
 const BASE_CLASS_NAME = "carousel-inner";
 
@@ -56,19 +56,17 @@ function CarouselInner(props) {
 
   const classes = cn(BASE_CLASS_NAME, className);
 
-  return (
-    <Prime className={classes} style={style} {...rest}>
-      {Children.map(children, (child, index) => {
-        if (!isValidElement(child)) {
-          return child;
-        }
+  const { emblaRef } = useCarouselContext();
 
-        return cloneElement(
-          /** @type {React.ReactElement<any>} */
-          (child),
-          { index },
-        );
-      })}
+  const styles = {
+    overflow: "hidden",
+  };
+
+  return (
+    <Prime ref={emblaRef} className={classes} style={styles} {...rest}>
+      <Prime d="flex" style={{ touchAction: "pan-y pinch-zoom" }}>
+        {children}
+      </Prime>
     </Prime>
   );
 }

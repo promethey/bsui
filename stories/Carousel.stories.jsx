@@ -21,7 +21,7 @@ export function Default() {
   const colors = ["primary", "secondary", "success"];
 
   return (
-    <Carousel defaultIndex={0} controls indicators>
+    <Carousel defaultIndex={0} loop controls indicators>
       <Carousel.Inner>
         {items.map((title, idx) => (
           <Carousel.Item key={title}>

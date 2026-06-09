@@ -1,9 +1,6 @@
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
-import { useCarouselContext } from "./CarouselContext";
-
-const BASE_CLASS_NAME = "carousel-item";
 
 const propTypes = {
   /**
@@ -20,8 +17,6 @@ const propTypes = {
    * Additional classes applied to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-
-  index: PropTypes.number.isRequired,
 };
 
 const defaultProps = {
@@ -53,18 +48,18 @@ const defaultProps = {
  * @version 1.0.0
  */
 function CarouselItem(props) {
-  const { style, children, className, index, ...rest } = props;
+  const { style, children, className, ...rest } = props;
 
-  const { activeIndex } = useCarouselContext();
+  const classes = cn(className);
 
-  const classes = cn(
-    BASE_CLASS_NAME,
-    { active: index === activeIndex },
-    className,
-  );
+  const styles = {
+    flex: "0 0 100%",
+    minWidth: 0,
+    ...style,
+  };
 
   return (
-    <Prime className={classes} style={style} {...rest}>
+    <Prime d="flex" pos="relative" className={classes} style={styles} {...rest}>
       {children}
     </Prime>
   );

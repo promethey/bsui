@@ -8,9 +8,18 @@ import { createContext, useContext } from "react";
  * and navigation handlers.
  *
  * @typedef {object} CarouselContextValue
- * @property {number} activeIndex - Currently active slide index
- * @property {number} [itemsCount] - Total number of slides (optional, if provided by inner layer)
- * @property {(index: number) => void} [handleControlClick] - Updates active slide index
+ *
+ * @property {number} slidesCount
+ * Total number of slides.
+ *
+ * @property {number} slideActive
+ * Index of the currently active slide.
+ *
+ * @property {import("react").RefCallback<HTMLElement>} emblaRef
+ * Ref callback attached to the carousel viewport.
+ *
+ * @property {(index: number, jump?: boolean) => void} [scrollTo]
+ * Scrolls to a specific slide.
  */
 
 /** @type {import("react").Context<CarouselContextValue | null>} */

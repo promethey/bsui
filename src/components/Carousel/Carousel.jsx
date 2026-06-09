@@ -1,4 +1,4 @@
-import { useState, Children, useCallback, isValidElement } from "react";
+import { useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
@@ -8,7 +8,7 @@ import CarouselControl from "./CarouselControl";
 import { CarouselContext } from "./CarouselContext";
 import CarouselCaption from "./CarouselCaption";
 import CarouselIndicators from "./CarouselIndicators";
-import findCarouselInner from "./findCarouselInner";
+import useEmblaCarousel from "embla-carousel-react";
 
 const BASE_CLASS_NAME = "carousel";
 
@@ -35,6 +35,11 @@ const propTypes = {
   defaultIndex: PropTypes.number,
 
   /**
+   * Enables infinite slide looping
+   */
+  loop: PropTypes.bool,
+
+  /**
    * Displays previous and next navigation controls
    */
   controls: PropTypes.bool,
@@ -50,6 +55,7 @@ const defaultProps = {
   style: null,
   className: null,
   defaultIndex: 0,
+  loop: false,
   controls: false,
   inidcators: false,
 };
@@ -79,6 +85,9 @@ const defaultProps = {
  * @property {number} [defaultIndex=0]
  * Initial active slide index when the carousel is first rendered.
  *
+ * @property {boolean} [loop=false]
+ * Enables infinite slide looping.
+ *
  * @property {boolean} [controls=false]
  * Displays previous and next navigation controls.
  *
@@ -99,54 +108,72 @@ function Carousel(props) {
     children,
     className,
     defaultIndex = 0,
+    loop = false,
     controls = false,
     indicators = false,
     ...rest
   } = props;
 
-  const classes = cn(BASE_CLASS_NAME, "slide", className);
+  const classes = cn(BASE_CLASS_NAME, className);
 
-  const inner = findCarouselInner(children);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: loop,
+    startIndex: defaultIndex,
+  });
 
-  const itemsCount = Children.count(inner?.props?.children);
+  const [slidesCount, setSlidesCount] = useState(0);
+  const [slideActive, setSlideActive] = useState(0);
+  const [canScrollPrev, setCanScrolPrev] = useState(true);
+  const [canScrollNext, setCanScrollNext] = useState(true);
 
-  const [activeIndex, setActiveIndex] = useState(() =>
-    defaultIndex >= 0 && defaultIndex <= itemsCount - 1 ? defaultIndex : 0,
+  const handleNextIndex = () => emblaApi?.scrollNext();
+
+  const handlePrevIndex = () => emblaApi?.scrollPrev();
+
+  useEffect(() => {
+    setCanScrolPrev(emblaApi?.canScrollPrev() ?? false);
+
+    setCanScrollNext(emblaApi?.canScrollNext() ?? false);
+  });
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    setSlidesCount(emblaApi.slideNodes().length);
+
+    setSlideActive(emblaApi.selectedScrollSnap());
+
+    const onSelect = () => {
+      setSlideActive(emblaApi.selectedScrollSnap());
+    };
+
+    emblaApi.on("select", onSelect);
+
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
+
+  const carouselValue = useMemo(
+    () => ({
+      slidesCount,
+      slideActive,
+      emblaRef,
+      scrollTo: emblaApi?.scrollTo,
+    }),
+    [slidesCount, slideActive, emblaApi],
   );
-
-  const handleNextIndex = () => {
-    setActiveIndex?.((prev) => {
-      if (itemsCount <= 1) return prev;
-
-      return prev === itemsCount - 1 ? 0 : prev + 1;
-    });
-  };
-
-  const handlePrevIndex = () => {
-    setActiveIndex?.((prev) => {
-      if (itemsCount <= 1) return prev;
-
-      return prev === 0 ? itemsCount - 1 : prev - 1;
-    });
-  };
-
-  /** @param {number} index */
-  const handleControlClick = (index) => {
-    setActiveIndex?.(index);
-  };
-
-  const carouselValue = { activeIndex, itemsCount, handleControlClick };
 
   return (
     <CarouselContext.Provider value={carouselValue}>
       <Prime className={classes} style={style} {...rest}>
         {indicators && <CarouselIndicators />}
         {children}
-        {controls && (
-          <CarouselControl position="prev" onClick={() => handlePrevIndex()} />
+        {canScrollPrev && controls && (
+          <CarouselControl position="prev" onClick={handlePrevIndex} />
         )}
-        {controls && (
-          <CarouselControl position="next" onClick={() => handleNextIndex()} />
+        {canScrollNext && controls && (
+          <CarouselControl position="next" onClick={handleNextIndex} />
         )}
       </Prime>
     </CarouselContext.Provider>

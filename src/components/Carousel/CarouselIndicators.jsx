@@ -47,19 +47,18 @@ const defaultProps = {
 function CarouselControl(props) {
   const { style, className, ...rest } = props;
 
-  const classes = cn(BASE_CLASS_NAME, className);
+  const { slidesCount, slideActive, scrollTo } = useCarouselContext();
 
-  const { activeIndex, itemsCount, handleControlClick } = useCarouselContext();
+  const classes = cn(BASE_CLASS_NAME, className);
 
   return (
     <Prime className={classes} style={style} {...rest}>
-      {[...Array(itemsCount)].map((_, index) => (
+      {[...Array(slidesCount)].map((_, index) => (
         <button
           key={_}
           type="button"
-          onClick={() => handleControlClick?.(index)}
-          className={cn({ active: activeIndex === index })}
-          aria-current={activeIndex === index}
+          onClick={() => scrollTo?.(index, false)}
+          className={cn({ active: index === slideActive })}
           data-bs-target
         />
       ))}
