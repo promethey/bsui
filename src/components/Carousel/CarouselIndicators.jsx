@@ -47,7 +47,7 @@ const defaultProps = {
 function CarouselControl(props) {
   const { style, className, ...rest } = props;
 
-  const { slidesCount, slideActive, scrollTo } = useCarouselContext();
+  const { slidesCount, slideActive, handleScrollTo } = useCarouselContext();
 
   const classes = cn(BASE_CLASS_NAME, className);
 
@@ -57,7 +57,7 @@ function CarouselControl(props) {
         <button
           key={_}
           type="button"
-          onClick={() => scrollTo?.(index, false)}
+          onClick={() => handleScrollTo?.(index, false)}
           className={cn({ active: index === slideActive })}
           data-bs-target
         />

@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
-import { prefix } from "helpers";
 import CarouselControlIcon from "./CarouselControlIcon";
 
 const BASE_CLASS_NAME = {
@@ -20,6 +19,9 @@ const propTypes = {
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
+  /**
+   * Direction of the carousel control
+   */
   position: PropTypes.oneOf(["prev", "next"]),
 };
 
@@ -41,7 +43,9 @@ const defaultProps = {
  * </Carousel>
  *
  * @typedef {object} CarouselControlOwnProps
+ *
  * @property {"prev"|"next"} position
+ * Direction of the carousel control.
  *
  * @typedef {import("../Prime/Prime").PrimeProps & CarouselControlOwnProps} CarouselControlProps
  * @param {CarouselControlProps} props

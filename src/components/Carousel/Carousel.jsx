@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
@@ -9,6 +9,8 @@ import { CarouselContext } from "./CarouselContext";
 import CarouselCaption from "./CarouselCaption";
 import CarouselIndicators from "./CarouselIndicators";
 import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import Fade from "embla-carousel-fade";
 
 const BASE_CLASS_NAME = "carousel";
 
@@ -49,6 +51,16 @@ const propTypes = {
    * by selecting a specific slide
    */
   indicators: PropTypes.bool,
+
+  /**
+   * Enables autoplay animation
+   */
+  autoplay: PropTypes.bool,
+
+  /**
+   * Enables fade slides animation
+   */
+  fade: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -58,6 +70,7 @@ const defaultProps = {
   loop: false,
   controls: false,
   inidcators: false,
+  slides: false,
 };
 
 /**
@@ -67,9 +80,10 @@ const defaultProps = {
  * @component
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/carousel/}
+ * @see {@link https://www.embla-carousel.com/}
  *
  * @example
- * <Carousel defaultIndex={0} controls indicators>
+ * <Carousel defaultIndex={0} controls indicators loop>
  *  <Carousel.Inner>
  *    <Carousel.Item>
  *      <img src="..." alt="..." />
@@ -94,6 +108,12 @@ const defaultProps = {
  * @property {boolean} [indicators=false]
  * Displays slide indicators and enables navigation by selecting a specific slide.
  *
+ * @property {boolean} [autoplay=false]
+ * Enables autoplay animation.
+ *
+ * @property {boolean} [fade=false]
+ * Enables fade slides animation
+ *
  * @typedef {import("../Prime/Prime").PrimeProps & CarouselOwnProps} CarouselProps
  * @param {CarouselProps} props
  *
@@ -111,33 +131,57 @@ function Carousel(props) {
     loop = false,
     controls = false,
     indicators = false,
+    autoplay = false,
+    fade = false,
     ...rest
   } = props;
 
   const classes = cn(BASE_CLASS_NAME, className);
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({
+  const plugins = [];
+
+  const options = {
     loop: loop,
     startIndex: defaultIndex,
-  });
+  };
+
+  if (autoplay) {
+    plugins.push(
+      Autoplay({
+        delay: 4000,
+        playOnInit: false,
+        stopOnInteraction: true,
+        stopOnMouseEnter: false,
+        stopOnLastSnap: false,
+      }),
+    );
+  }
+
+  if (fade) {
+    plugins.push(Fade());
+  }
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
 
   const [slidesCount, setSlidesCount] = useState(0);
   const [slideActive, setSlideActive] = useState(0);
   const [canScrollPrev, setCanScrolPrev] = useState(true);
   const [canScrollNext, setCanScrollNext] = useState(true);
 
-  const handleNextIndex = () => emblaApi?.scrollNext();
+  const handleNextIndex = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
-  const handlePrevIndex = () => emblaApi?.scrollPrev();
+  const handlePrevIndex = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
 
-  useEffect(() => {
-    setCanScrolPrev(emblaApi?.canScrollPrev() ?? false);
-
-    setCanScrollNext(emblaApi?.canScrollNext() ?? false);
-  });
+  const handleScrollTo = useCallback(
+    /** @param {number} index */
+    (index) => emblaApi?.scrollTo(index),
+    [emblaApi],
+  );
 
   useEffect(() => {
     if (!emblaApi) return;
+
+    emblaApi.plugins().autoplay?.play();
 
     setSlidesCount(emblaApi.slideNodes().length);
 
@@ -145,6 +189,9 @@ function Carousel(props) {
 
     const onSelect = () => {
       setSlideActive(emblaApi.selectedScrollSnap());
+
+      setCanScrolPrev(emblaApi?.canScrollPrev() ?? false);
+      setCanScrollNext(emblaApi?.canScrollNext() ?? false);
     };
 
     emblaApi.on("select", onSelect);
@@ -159,7 +206,7 @@ function Carousel(props) {
       slidesCount,
       slideActive,
       emblaRef,
-      scrollTo: emblaApi?.scrollTo,
+      handleScrollTo,
     }),
     [slidesCount, slideActive, emblaApi],
   );

@@ -18,7 +18,7 @@ import { createContext, useContext } from "react";
  * @property {import("react").RefCallback<HTMLElement>} emblaRef
  * Ref callback attached to the carousel viewport.
  *
- * @property {(index: number, jump?: boolean) => void} [scrollTo]
+ * @property {(index: number, jump?: boolean) => void} [handleScrollTo]
  * Scrolls to a specific slide.
  */
 
