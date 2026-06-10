@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Carousel, Prime } from "../src/components";
+import { Carousel, Prime } from "components";
 
 export default {
   title: "Components/Content/Carousel",

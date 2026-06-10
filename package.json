@@ -4,13 +4,13 @@
   "description": "Modern Bootstrap component system for React applications",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
+  "sideEffects": true,
   "files": [
     "dist",
     "types",
     "LICENSE",
     "README.md"
   ],
-  "sideEffects": false,
   "keywords": [
     "react",
     "ui",

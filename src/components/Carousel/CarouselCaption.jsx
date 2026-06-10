@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
-import { useCallback } from "react";
 
 const BASE_CLASS_NAME = "carousel-caption";
 
