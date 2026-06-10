@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename);
 
 export default {
   mode: "production",
+  devtool: false,
 
   entry: "./src/index.jsx",
 
@@ -50,6 +51,16 @@ export default {
   plugins: [new BundleAnalyzerPlugin()],
 
   optimization: {
-    minimize: false,
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+        terserOptions: {
+          format: {
+            comments: false,
+          },
+        },
+      }),
+    ],
   },
 };
