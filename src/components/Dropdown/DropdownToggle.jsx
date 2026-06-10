@@ -9,6 +9,8 @@ import { Nav } from "components";
 const BASE_CLASS_NAME = "dropdown-toggle";
 
 const propTypes = {
+  as: PropTypes.elementType,
+
   /**
    * Inline styles applied to the root
    */
@@ -66,9 +68,16 @@ const defaultProps = {
  * @version 1.0.0
  */
 function DropdownToggle(props) {
-  const { style, children, className, split, ...rest } = props;
+  const {
+    as: Component = Button,
+    style,
+    children,
+    className,
+    split,
+    ...rest
+  } = props;
 
-  const { expanded, refs, getReferenceProps, nav } = useDropdownContext();
+  const { expanded, refs, getReferenceProps } = useDropdownContext();
 
   const classes = cn(
     BASE_CLASS_NAME,
@@ -79,10 +88,8 @@ function DropdownToggle(props) {
     className,
   );
 
-  const ToggleComponent = nav ? Nav.Link : Button;
-
   return (
-    <ToggleComponent
+    <Component
       ref={refs.setReference}
       style={style}
       className={classes}
@@ -96,7 +103,7 @@ function DropdownToggle(props) {
       })}
       {...rest}>
       {children}
-    </ToggleComponent>
+    </Component>
   );
 }
 

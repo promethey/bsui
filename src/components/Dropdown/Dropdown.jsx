@@ -39,8 +39,6 @@ const propTypes = {
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
-  nav: PropTypes.bool,
-
   /**
    * Sets the dropdown placement direction
    */
@@ -70,7 +68,6 @@ const defaultProps = {
   as: "div",
   style: null,
   className: null,
-  nav: false,
   placement: "border-start",
   transform: false,
 };
@@ -105,8 +102,6 @@ const defaultProps = {
  * @property {boolean} [transform=false]
  * Use CSS transforms to position the floating element.
  *
- * @property {boolean} [nav=false]
- *
  * @typedef {PrimeProps & DropdownOwnProps} DropdownProps
  * @param {DropdownProps} props
  *
@@ -121,7 +116,6 @@ function Dropdown(props) {
     style,
     children,
     className,
-    nav = false,
     placement = "bottom-start",
     transform = false,
     ...rest
@@ -170,7 +164,6 @@ function Dropdown(props) {
     floatingStyles,
     getReferenceProps,
     getFloatingProps,
-    nav,
   };
 
   return (

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   Navbar,
   Container,
@@ -7,7 +6,7 @@ import {
   Nav,
   Control,
   Button,
-} from "components";
+} from "../src/components";
 
 export default {
   title: "Components/Navigation/Navbar",
@@ -39,8 +38,8 @@ export function Default() {
           <Navbar.Nav me="auto" mb={{ xs: 2, lg: 0 }}>
             <Nav.Link active>Home</Nav.Link>
             <Nav.Link>Link</Nav.Link>
-            <Dropdown nav>
-              <Dropdown.Toggle>Dropdown</Dropdown.Toggle>
+            <Dropdown>
+              <Dropdown.Toggle as={Nav.Link}>Dropdown</Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item>Action</Dropdown.Item>
                 <Dropdown.Item>Another action</Dropdown.Item>
@@ -151,7 +150,7 @@ export function Dropdowns() {
             <Nav.Link to="/features">Features</Nav.Link>
             <Nav.Link to="/pricing">Pricing</Nav.Link>
             <Dropdown nav>
-              <Dropdown.Toggle>Dropdown link</Dropdown.Toggle>
+              <Dropdown.Toggle as={Nav.Link}>Dropdown link</Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item>Action</Dropdown.Item>
                 <Dropdown.Item>Another action</Dropdown.Item>
@@ -215,8 +214,8 @@ export function Scrolling() {
           <Navbar.Nav scroll scrollHeight="100px">
             <Nav.Link active>Home</Nav.Link>
             <Nav.Link>Link</Nav.Link>
-            <Dropdown nav>
-              <Dropdown.Toggle>Link</Dropdown.Toggle>
+            <Dropdown>
+              <Dropdown.Toggle as={Nav.Link}>Link</Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item>Action</Dropdown.Item>
                 <Dropdown.Item>Another action</Dropdown.Item>
@@ -227,6 +226,59 @@ export function Scrolling() {
             <Nav.Link disabled>Link</Nav.Link>
           </Navbar.Nav>
         </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
+
+export function Avatar() {
+  return (
+    <Navbar tone="light" bg="light" expand="sm">
+      <Container fluid>
+        <Prime
+          d="flex"
+          flex={{
+            xs: {
+              align: "center",
+            },
+          }}>
+          <Navbar.Brand>
+            <img src="./bsui-logo.png" alt="bsui" width="36" height="36" />
+          </Navbar.Brand>
+          <Navbar.Nav d={{ xs: "none", md: "flex" }}>
+            <Nav.Link active>Overview</Nav.Link>
+            <Nav.Link>Inventory</Nav.Link>
+            <Nav.Link>Customers</Nav.Link>
+            <Nav.Link disabled>Products</Nav.Link>
+          </Navbar.Nav>
+        </Prime>
+        <Prime
+          d="flex"
+          flex={{
+            xs: {
+              align: "center",
+            },
+          }}>
+          <Control placeholder="Search..." />
+          <Dropdown>
+            <Dropdown.Toggle as={Nav.Link} className="link-dark" p={0} ms={3}>
+              <img
+                src="https://avatars.githubusercontent.com/u/73757404?v=4"
+                alt="promethey"
+                width="32"
+                height="32"
+                className="rounded-circle"
+              />
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item active>Profile</Dropdown.Item>
+              <Dropdown.Item>Messages</Dropdown.Item>
+              <Dropdown.Item>Settings</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item disabled>Sign out</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Prime>
       </Container>
     </Navbar>
   );

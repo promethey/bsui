@@ -17,9 +17,6 @@ import { createContext, useContext } from "react";
  *
  * @property {(userProps?: Object) => Object} getFloatingProps
  * Merges user props with floating element interaction handlers.
- *
- * @property {boolean} nav
- * Indicates whether the dropdown is rendered within a navigation context.
  */
 
 /** @type {React.Context<DropdownContextValue | null>} */
