@@ -27,23 +27,70 @@ const propTypes = {
     PropTypes.string,
   ]),
 
+  /**
+   * Controls the visual size of the select element
+   */
   size: PropTypes.oneOf(["sm", "lg"]),
+
+  /**
+   * Current selected value(s)
+   */
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]),
+
+  /**
+   * Initial selected value(s)
+   */
   defaultValue: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]),
+
+  /**
+   * Allows selecting multiple options
+   */
   multiple: PropTypes.bool,
+
+  /**
+   * Prevents user interaction
+   */
   disabled: PropTypes.bool,
+
+  /**
+   * Requires a value before form submission
+   */
   required: PropTypes.bool,
+
+  /**
+   * Automatically focuses the select when mounted
+   */
   autoFocus: PropTypes.bool,
+
+  /**
+   * Form field name
+   */
   name: PropTypes.string,
+
+  /**
+   * Number of visible options displayed when rendered as a list box
+   */
   visibleOptions: PropTypes.number,
+
+  /**
+   * Fired when the selected value changes
+   */
   onChange: PropTypes.func,
+
+  /**
+   * Fired when the select receives focus
+   */
   onFocus: PropTypes.func,
+
+  /**
+   * Fired when the select loses focus
+   */
   onBlur: PropTypes.func,
 };
 

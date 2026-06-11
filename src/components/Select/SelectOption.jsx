@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { prefix } from "helpers";
 import { Prime } from "components";
 
 const propTypes = {
@@ -24,10 +23,17 @@ const propTypes = {
     PropTypes.string,
   ]),
 
+  /**
+   * Value submitted when the option is selected
+   */
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]).isRequired,
+
+  /**
+   * Marks the option as selected by default
+   */
   selected: PropTypes.bool,
 };
 
@@ -56,8 +62,12 @@ const defaultProps = {
  * </Select>
  *
  * @typedef {object} SelectOptionOwnProps
+ *
  * @property {string|string[]} value
+ * Value submitted when the option is selected.
+ *
  * @property {boolean} [selected=false]
+ * Marks the option as selected by default.
  *
  * @typedef {import("../Prime/Prime").PrimeProps & SelectOptionOwnProps} SelectOptionProps
  * @param {SelectOptionProps} props
