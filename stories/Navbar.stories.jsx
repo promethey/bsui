@@ -283,3 +283,48 @@ export function Avatar() {
     </Navbar>
   );
 }
+
+export function Login() {
+  return (
+    <Navbar tone="dark" bg="dark" expand="lg">
+      <Container fluid>
+        <Navbar.Brand>
+          <img src="./bsui-logo.png" alt="bsui" width="36" height="36" />
+        </Navbar.Brand>
+        <Navbar.Toggler />
+        <Navbar.Collapse>
+          <Prime
+            w={100}
+            d="flex"
+            flex={{
+              xs: { dir: "column" },
+              lg: { justify: "between", dir: "row" },
+            }}>
+            <Navbar.Nav>
+              <Nav.Link active>Home</Nav.Link>
+              <Nav.Link>Features</Nav.Link>
+              <Nav.Link>Pricing</Nav.Link>
+              <Nav.Link>FAQs</Nav.Link>
+              <Nav.Link disabled>About</Nav.Link>
+            </Navbar.Nav>
+            <Prime
+              d="flex"
+              flex={{
+                xs: { dir: "column" },
+                lg: { align: "center", dir: "row" },
+              }}>
+              <Control type="text" placeholder="Search..." />
+              <Button
+                tone="light"
+                outline
+                mt={{ xs: 2, lg: 0 }}
+                ms={{ xs: 0, lg: 3 }}>
+                Login
+              </Button>
+            </Prime>
+          </Prime>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
