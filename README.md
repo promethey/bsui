@@ -101,6 +101,7 @@ export function Example() {
 | Prime       | Core       | Experimental | 1.0.0 | 5.1.3          |
 | Progress    | Feedback   | Experimental | 1.0.0 | 5.1.3          |
 | Row         | Layout     | Experimental | 1.0.0 | 5.1.3          |
+| Select      | Control    | Experimental | 1.0.0 | 5.1.3          |
 | Spinner     | Feedback   | Experimental | 1.0.0 | 5.1.3          |
 
 ### Quick Example

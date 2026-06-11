@@ -633,7 +633,11 @@ const propTypes = {
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  *
- * @type {React.ForwardRefExoticComponent<PrimeProps & React.RefAttributes<any>>}
+ * @type {React.ForwardRefExoticComponent<
+ *   PrimeProps &
+ *   Record<string, any> &
+ *   React.RefAttributes<any>
+ * >}
  */
 const Prime = React.forwardRef((props, ref) => {
   const {
