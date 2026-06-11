@@ -219,7 +219,7 @@ function Select(props) {
       className={classes}
       onChange={onChange}
       onFocus={onFocus}
-      onBlue={onBlur}
+      onBlur={onBlur}
       {...rest}>
       {children}
     </Prime>
