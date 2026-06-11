@@ -206,3 +206,7 @@ npm run test:ui
 ```bash
 npm run test:coverage
 ```
+
+## License
+
+MIT © Egor Sedelkov
