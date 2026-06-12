@@ -51,7 +51,7 @@ import { Button } from "bsui";
 
 export function Example() {
   return (
-    <Button theme="primary" size="lg">
+    <Button tone="primary" size="lg">
       Primary
     </Button>;
   );
