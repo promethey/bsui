@@ -93,7 +93,7 @@ describe("Collapse", () => {
     });
   });
 
-  it("respects duration prop (timeout passed to Transition)", () => {
+  it("renders without console errors", () => {
     const spy = vi.spyOn(console, "error").mockImplementation(() => {});
 
     render(

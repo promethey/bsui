@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import classNames from "classnames";
+import cn from "classnames";
 import { Prime } from "components";
 import { classnames as cs } from "helpers";
 
@@ -39,21 +39,27 @@ const defaultProps = {
 };
 
 /**
- * Centers and horizontally pads content within a responsive layout wrapper.
+ * Centers and horizontally pads content
+ * within a responsive layout wrapper.
  *
  * @component
  *
- * @see {Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/buttons/}
  *
  * @example
- * <Container>Content</Container>
+ * <Container>
+ *  Content
+ * </Container>
  *
  * @example
- * <Container fluid>Content</Container>
+ * <Container fluid>
+ *  Content
+ * </Container>
  *
  * @example
- * <Container fluid="xs">Content</Container>
+ * <Container fluid="xs">
+ *  Content
+ * </Container>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
@@ -73,12 +79,14 @@ const defaultProps = {
 function Container(props) {
   const { style, children, className, fluid, ...rest } = props;
 
-  const classes = classNames(
+  const isBreakpoint =
+    typeof fluid === "string" && CONTAINER_VALUES.includes(fluid);
+
+  const classes = cn(
     {
-      [cs(BASE_CLASS_NAME, fluid)]:
-        typeof fluid === "string" && CONTAINER_VALUES.includes(fluid),
-      [cs(BASE_CLASS_NAME, "fluid")]: typeof fluid === "boolean" && fluid,
-      [BASE_CLASS_NAME]: !fluid,
+      [BASE_CLASS_NAME]: fluid === null || (!isBreakpoint && fluid !== true),
+      [cs(BASE_CLASS_NAME, fluid)]: isBreakpoint,
+      [cs(BASE_CLASS_NAME, "fluid")]: fluid === true,
     },
     className,
   );
