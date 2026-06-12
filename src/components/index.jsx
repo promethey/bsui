@@ -22,3 +22,4 @@ export { default as Spinner } from "./Spinner";
 export { default as Placeholder } from "./Placeholder";
 export { default as Carousel } from "./Carousel";
 export { default as Select } from "./Select";
+export { default as Modal } from "./Modal";
