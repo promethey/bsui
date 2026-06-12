@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { classnames as cs } from "helpers";
+import { prefix } from "helpers";
 import { Prime } from "components";
 
 const CLOSE_BUTTON_CLASS_NAME = "btn-close";
@@ -41,11 +41,11 @@ const defaultProps = {
 };
 
 /**
- * Dismisses or closes related content through a compact action control.
+ * Dismisses or closes related content
+ * through a compact action control.
  *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/close-button/}
  *
  * @example
@@ -82,7 +82,7 @@ function CloseButton(props) {
   const classes = cn(
     CLOSE_BUTTON_CLASS_NAME,
     {
-      [cs(CLOSE_BUTTON_CLASS_NAME, "white")]:
+      [prefix(CLOSE_BUTTON_CLASS_NAME, "white")]:
         typeof white === "boolean" && white,
     },
     className,
