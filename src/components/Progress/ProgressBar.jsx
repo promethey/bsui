@@ -126,7 +126,7 @@ function ProgressBar(props) {
     className,
   );
 
-  const progressPercent = `${(((max - min) / 100) * now).toString()}%`;
+  const progressPercent = `${((now - min) / (max - min)) * 100}%`;
 
   return (
     <Prime

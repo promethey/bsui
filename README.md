@@ -81,10 +81,10 @@ export function Example() {
 | Component   | Category   | Status       | Ver.  | Bootstrap Ver. |
 | ----------- | ---------- | ------------ | ----- | -------------- |
 | Accordion   | Content    | Experimental | 1.0.0 | 5.1.3          |
-| Alert       | Feedback   | Experimental | 1.0.0 | 5.1.3          |
-| Badge       | Feedback   | Experimental | 1.0.0 | 5.1.3          |
+| Alert       | Feedback   | Stable       | 1.0.0 | 5.1.3          |
+| Badge       | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 | Breadcrumb  | Navigation | Experimental | 1.0.0 | 5.1.3          |
-| Button      | Control    | Experimental | 1.0.0 | 5.1.3          |
+| Button      | Control    | Stable       | 1.0.0 | 5.1.3          |
 | ButtonGroup | Control    | Experimental | 1.0.0 | 5.1.3          |
 | Card        | Content    | Experimental | 1.0.0 | 5.1.3          |
 | Carousel    | Content    | Experimental | 1.0.0 | 5.1.3          |
@@ -92,17 +92,17 @@ export function Example() {
 | Col         | Layout     | Experimental | 1.0.0 | 5.1.3          |
 | Collapse    | Content    | Experimental | 1.0.0 | 5.1.3          |
 | Container   | Layout     | Experimental | 1.0.0 | 5.1.3          |
-| Control     | Control    | Experimental | 1.0.0 | 5.1.3          |
+| Control     | Control    | Stable       | 1.0.0 | 5.1.3          |
 | Dropdown    | Overlay    | Experimental | 1.0.0 | 5.1.3          |
 | ListGroup   | Content    | Experimental | 1.0.0 | 5.1.3          |
 | Nav         | Navigation | Experimental | 1.0.0 | 5.1.3          |
 | Navbar      | Navigation | Experimental | 1.0.0 | 5.1.3          |
-| Placeholder | Feedback   | Experimental | 1.0.0 | 5.1.3          |
+| Placeholder | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 | Prime       | Core       | Experimental | 1.0.0 | 5.1.3          |
-| Progress    | Feedback   | Experimental | 1.0.0 | 5.1.3          |
+| Progress    | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 | Row         | Layout     | Experimental | 1.0.0 | 5.1.3          |
-| Select      | Control    | Experimental | 1.0.0 | 5.1.3          |
-| Spinner     | Feedback   | Experimental | 1.0.0 | 5.1.3          |
+| Select      | Control    | Stable       | 1.0.0 | 5.1.3          |
+| Spinner     | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 
 ### Quick Example
 
