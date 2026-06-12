@@ -127,9 +127,6 @@ const defaultProps = {
  * @property {1|2|3|4|5|6|7|8|9|10|11|12|"auto"|true} [xxl]
  * Sets size for xxl
  *
- * @property {1|2|3|4|5|6|7|8|9|10|11|12|"auto"|true} [offset]
- * Sets size for xxl
- *
  * @typedef {ColOwnProps & PrimeProps} ColProps
  * @param {ColProps} props
  *
@@ -137,21 +134,13 @@ const defaultProps = {
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
+ *
+ * @todo
+ * - add support offset classnames
  */
 function Col(props) {
-  const {
-    style,
-    children,
-    className,
-    xs,
-    sm,
-    md,
-    lg,
-    xl,
-    xxl,
-    offset,
-    ...rest
-  } = props;
+  const { style, children, className, xs, sm, md, lg, xl, xxl, ...rest } =
+    props;
 
   const classes = cn(
     {
