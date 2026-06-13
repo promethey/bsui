@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
@@ -144,25 +143,25 @@ const defaultProps = {
  * @property {"sm"|"md"|"lg"|"xl"|"xxl"|boolean} [fullscreen=false]
  * Enables fullscreen mode or breakpoint-based fullscreen behavior.
  *
- * @property {function} [addEndListener]
+ * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
  * Custom handler to detect transition end instead of timeout.
  *
- * @property {function} [onEnter]
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEnter]
  * Called before enter transition starts.
  *
- * @property {function} [onEntering]
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntering]
  * Called when enter transition is starting.
  *
- * @property {function} [onEntered]
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntered]
  * Called after enter transition finishes.
  *
- * @property {function} [onExit]
+ * @property {(node: HTMLElement) => void} [onExit]
  * Called before exit transition starts.
  *
- * @property {function} [onExiting]
+ * @property {(node: HTMLElement) => void} [onExiting]
  * Called when exit transition is running.
  *
- * @property {function} [onExited]
+ * @property {(node: HTMLElement) => void} [onExited]
  * Called after exit transition finishes.
  *
  * @typedef {import("../Prime/Prime").PrimeProps & ModalOwnProps} ModalProps
@@ -185,6 +184,13 @@ function Modal(props) {
     centered = false,
     size,
     fullscreen = false,
+    addEndListener,
+    onEnter,
+    onEntering,
+    onEntered,
+    onExit,
+    onExiting,
+    onExited,
     ...rest
   } = props;
 
@@ -262,6 +268,13 @@ function Modal(props) {
       nodeRef={nodeRef}
       in={open}
       timeout={300}
+      addEndListener={addEndListener}
+      onEnter={onEnter}
+      onEntering={onEntering}
+      onEntered={onEntered}
+      onExit={onExit}
+      onExiting={onExiting}
+      onExited={onExited}
       mountOnEnter
       unmountOnExit>
       {(state) => (
