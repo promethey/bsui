@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
@@ -127,6 +127,9 @@ const defaultProps = {
   onExited: null,
 };
 
+/** @typedef {(node: HTMLElement, isAppearing: boolean) => void} enteringCallback */
+/** @typedef {(node: HTMLElement) => void} exitingCallback */
+
 /**
  * Displays content in a layered overlay
  * above the main interface.
@@ -164,22 +167,22 @@ const defaultProps = {
  * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
  * Custom handler to detect transition end instead of timeout.
  *
- * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEnter]
+ * @property {enteringCallback} [onEnter]
  * Called before enter transition starts.
  *
- * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntering]
+ * @property {enteringCallback} [onEntering]
  * Called when enter transition is starting.
  *
- * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntered]
+ * @property {enteringCallback} [onEntered]
  * Called after enter transition finishes.
  *
- * @property {(node: HTMLElement) => void} [onExit]
+ * @property {exitingCallback} [onExit]
  * Called before exit transition starts.
  *
- * @property {(node: HTMLElement) => void} [onExiting]
+ * @property {exitingCallback} [onExiting]
  * Called when exit transition is running.
  *
- * @property {(node: HTMLElement) => void} [onExited]
+ * @property {exitingCallback} [onExited]
  * Called after exit transition finishes.
  *
  * @typedef {import("../Prime/Prime").PrimeProps & ModalOwnProps} ModalProps
@@ -268,18 +271,68 @@ function Modal(props) {
 
   useEscapePress(open, onHide, backdrop, setStaticAnimation);
 
+  /** @type {enteringCallback} */
+  const handleEnter = useCallback(
+    (node, isAppearing) => {
+      onEnter?.(node, isAppearing);
+    },
+    [onEnter],
+  );
+
+  /** @type {enteringCallback} */
+  const handleEntering = useCallback(
+    (node, isAppearing) => {
+      onEntering?.(node, isAppearing);
+    },
+    [onEntering],
+  );
+
+  /** @type {enteringCallback} */
+  const handleEntered = useCallback(
+    (node, isAppearing) => {
+      // @ts-ignore
+      nodeRef.current?.focus();
+      onEntered?.(node, isAppearing);
+    },
+    [onEntered],
+  );
+
+  /** @type {exitingCallback} */
+  const handleExit = useCallback(
+    (node) => {
+      onExit?.(node);
+    },
+    [onExit],
+  );
+
+  /** @type {exitingCallback} */
+  const handleExiting = useCallback(
+    (node) => {
+      onExiting?.(node);
+    },
+    [onExiting],
+  );
+
+  /** @type {exitingCallback} */
+  const handleExited = useCallback(
+    (node) => {
+      onExited?.(node);
+    },
+    [onExited],
+  );
+
   return (
     <Transition
       nodeRef={nodeRef}
       in={open}
       timeout={timeout}
       addEndListener={addEndListener}
-      onEnter={onEnter}
-      onEntering={onEntering}
-      onEntered={onEntered}
-      onExit={onExit}
-      onExiting={onExiting}
-      onExited={onExited}
+      onEnter={handleEnter}
+      onEntering={handleEntering}
+      onEntered={handleEntered}
+      onExit={handleExit}
+      onExiting={handleExiting}
+      onExited={handleExited}
       mountOnEnter
       unmountOnExit>
       {(state) => (

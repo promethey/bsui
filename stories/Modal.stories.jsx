@@ -1,5 +1,13 @@
-import { useState } from "react";
-import { Modal, Button, Container, Row, Col } from "../src/components";
+import { useState, useRef } from "react";
+import {
+  Modal,
+  Button,
+  Container,
+  Row,
+  Col,
+  Control,
+  Prime,
+} from "../src/components";
 
 export default {
   title: "Components/Overlay/Modal",
@@ -11,6 +19,7 @@ export default {
     "Modal.Title": Modal.Title,
     "Modal.Body": Modal.Body,
     "Modal.Footer": Modal.Footer,
+    Prime,
   },
   parameters: {
     docs: {
@@ -257,6 +266,46 @@ export function Fullscreen() {
             </Button>
 
             <Button>Save changes</Button>
+          </Modal.Footer>
+        </Modal.Content>
+      </Modal>
+    </>
+  );
+}
+
+export function Message() {
+  const [expanded, setExpanded] = useState(false);
+
+  const messageRef = useRef(null);
+
+  return (
+    <>
+      <Button onClick={() => setExpanded(true)}>Send message</Button>
+      <Modal
+        open={expanded}
+        onEntered={() => messageRef.current?.focus()}
+        onHide={() => setExpanded(false)}>
+        <Modal.Content>
+          <Modal.Header closeButton>
+            <Modal.Title>New message to @promethey</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form>
+              <Prime mb={3}>
+                <label>Recipient:</label>
+                <Control type="text" defaultValue="@promethey" disabled />
+              </Prime>
+              <Prime>
+                <label>Message:</label>
+                <Control ref={messageRef} as="textarea" rows={3} type="text" />
+              </Prime>
+            </form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button tone="secondary" onClick={() => setExpanded(false)}>
+              Close
+            </Button>
+            <Button>Send message</Button>
           </Modal.Footer>
         </Modal.Content>
       </Modal>
