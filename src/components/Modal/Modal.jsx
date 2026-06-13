@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
@@ -69,6 +69,8 @@ const propTypes = {
     PropTypes.oneOf(["sm", "md", "lg", "xl", "xxl"]),
   ]),
 
+  backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["static"])]),
+
   /**
    * Custom handler to detect transition end instead of timeout
    */
@@ -115,6 +117,7 @@ const defaultProps = {
   centered: false,
   size: null,
   fullscreen: false,
+  backdrop: true,
   addEndListener: null,
   onEnter: null,
   onEntering: null,
@@ -155,6 +158,8 @@ const defaultProps = {
  *
  * @property {"sm"|"md"|"lg"|"xl"|"xxl"|boolean} [fullscreen=false]
  * Enables fullscreen mode or breakpoint-based fullscreen behavior.
+ *
+ * @property {boolean|"static"} [backdrop=true]
  *
  * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
  * Custom handler to detect transition end instead of timeout.
@@ -197,6 +202,7 @@ function Modal(props) {
     centered = false,
     size,
     fullscreen = false,
+    backdrop = true,
     addEndListener,
     onEnter,
     onEntering,
@@ -208,6 +214,8 @@ function Modal(props) {
   } = props;
 
   const nodeRef = useRef(null);
+
+  const [staticAnimation, setStaticAnimation] = useState(false);
 
   const dialogClasses = cn({
     [prefix("modal-dialog", "scrollable")]:
@@ -239,14 +247,26 @@ function Modal(props) {
    * @param {React.MouseEvent<HTMLElement>} event
    */
   const handleBackdropClick = (event) => {
-    if (event.target === event.currentTarget) {
-      onHide?.(event, "backdrop");
+    if (event.target !== event.currentTarget) {
+      return;
     }
+
+    if (backdrop === "static") {
+      setStaticAnimation(true);
+
+      setTimeout(() => {
+        setStaticAnimation(false);
+      }, 300);
+
+      return;
+    }
+
+    onHide?.(event, "backdrop");
   };
 
   useModalBodyOpen(open);
 
-  useEscapePress(open, onHide);
+  useEscapePress(open, onHide, backdrop, setStaticAnimation);
 
   return (
     <Transition
@@ -268,6 +288,7 @@ function Modal(props) {
             ref={nodeRef}
             className={cn(BASE_CLASS_NAME, "fade", {
               show: state === "entering" || state === "entered",
+              "modal-static": staticAnimation,
             })}
             onClick={handleBackdropClick}
             style={{

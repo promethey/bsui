@@ -3,8 +3,10 @@ import { useEffect } from "react";
 /**
  * @param {boolean} open
  * @param {function} [onHide]
+ * @param {boolean|"static"} [backdrop=false]
+ * @param {function} [setStaticAnimation]
  */
-export function useEscapePress(open, onHide) {
+export function useEscapePress(open, onHide, backdrop, setStaticAnimation) {
   return useEffect(() => {
     if (!open) return;
 
@@ -14,8 +16,18 @@ export function useEscapePress(open, onHide) {
      * @param {KeyboardEvent} event
      */
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && backdrop !== "static") {
         onHide?.(event, "escape");
+      }
+
+      if (event.key === "Escape" && backdrop === "static") {
+        setStaticAnimation?.(true);
+
+        setTimeout(() => {
+          setStaticAnimation?.(false);
+        }, 300);
+
+        return;
       }
     };
 

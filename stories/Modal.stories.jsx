@@ -35,7 +35,8 @@ export function Default() {
           setOpen(false);
           console.log(event);
           console.log(closeType);
-        }}>
+        }}
+        backdrop="static">
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Modal title</Modal.Title>
