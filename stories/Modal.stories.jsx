@@ -1,5 +1,5 @@
-import { Modal, Button, Container, Row, Col } from "../src/components";
 import { useState } from "react";
+import { Modal, Button, Container, Row, Col } from "../src/components";
 
 export default {
   title: "Components/Overlay/Modal",
@@ -22,108 +22,118 @@ export default {
   },
 };
 
-function useModal() {
+export function Default() {
   const [open, setOpen] = useState(false);
-  const toggle = () => setOpen((v) => !v);
-  return { open, toggle };
-}
 
-function ModalStory({ open, toggle, children, label = "Show modal" }) {
   return (
     <>
-      <Button onClick={toggle}>{label}</Button>
-      <Modal open={open} onHide={toggle}>
-        {children}
+      <Button onClick={() => setOpen(true)}>Show modal</Button>
+
+      <Modal
+        open={open}
+        onHide={(event, closeType) => {
+          setOpen(false);
+          console.log(event);
+          console.log(closeType);
+        }}>
+        <Modal.Content>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal title</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+            <p>Modal body text goes here.</p>
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button tone="secondary" onClick={() => setOpen(false)}>
+              Close
+            </Button>
+
+            <Button>Save changes</Button>
+          </Modal.Footer>
+        </Modal.Content>
       </Modal>
     </>
   );
 }
 
-export function Default() {
-  const { open, toggle } = useModal();
-
-  return (
-    <ModalStory open={open} toggle={toggle}>
-      <Modal.Content>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Modal body text goes here.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button tone="secondary" onClick={toggle}>
-            Close
-          </Button>
-          <Button>Save changes</Button>
-        </Modal.Footer>
-      </Modal.Content>
-    </ModalStory>
-  );
-}
-
 export function Scrollable() {
-  const { open, toggle } = useModal();
+  const [open, setOpen] = useState(false);
 
   return (
-    <ModalStory open={open} toggle={toggle}>
-      <Modal scrollable open={open} onHide={toggle}>
+    <>
+      <Button onClick={() => setOpen(true)}>Show scrollable modal</Button>
+
+      <Modal scrollable open={open} onHide={() => setOpen(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
-            <Modal.Title>Modal title</Modal.Title>
+            <Modal.Title>Scrollable modal</Modal.Title>
           </Modal.Header>
+
           <Modal.Body>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+            <p key={index}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
           </Modal.Body>
+
           <Modal.Footer>
-            <Button tone="secondary" onClick={toggle}>
+            <Button tone="secondary" onClick={() => setOpen(false)}>
               Close
             </Button>
-            <Button>Save changes</Button>
           </Modal.Footer>
         </Modal.Content>
       </Modal>
-    </ModalStory>
+    </>
   );
 }
 
 export function VerticallyCentered() {
-  const { open, toggle } = useModal();
+  const [open, setOpen] = useState(false);
 
   return (
-    <ModalStory open={open} toggle={toggle}>
-      <Modal centered open={open} onHide={toggle}>
+    <>
+      <Button onClick={() => setOpen(true)}>Show centered modal</Button>
+
+      <Modal centered open={open} onHide={() => setOpen(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
-            <Modal.Title>Modal Title</Modal.Title>
+            <Modal.Title>Centered modal</Modal.Title>
           </Modal.Header>
+
           <Modal.Body>Modal body text goes here.</Modal.Body>
+
           <Modal.Footer>
-            <Button tone="secondary" onClick={toggle}>
+            <Button tone="secondary" onClick={() => setOpen(false)}>
               Close
             </Button>
+
             <Button>Save changes</Button>
           </Modal.Footer>
         </Modal.Content>
       </Modal>
-    </ModalStory>
+    </>
   );
 }
 
 export function Grid() {
-  const { open, toggle } = useModal();
+  const [open, setOpen] = useState(false);
 
   return (
-    <ModalStory open={open} toggle={toggle}>
-      <Modal open={open} onHide={toggle}>
+    <>
+      <Button onClick={() => setOpen(true)}>Launch grid modal</Button>
+
+      <Modal open={open} onHide={() => setOpen(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
-            <Modal.Title>Modal Title</Modal.Title>
+            <Modal.Title>Grid in modal</Modal.Title>
           </Modal.Header>
+
           <Modal.Body>
             <Container fluid>
               <Row>
                 <Col md={4}>.col-md-4</Col>
+
                 <Col md={4} ms="auto">
                   .col-md-4 .ms-auto
                 </Col>
@@ -131,6 +141,7 @@ export function Grid() {
 
               <Row>
                 <Col md={3}>.col-md-3</Col>
+
                 <Col md={2} ms="auto">
                   .col-md-2 .ms-auto
                 </Col>
@@ -149,6 +160,7 @@ export function Grid() {
                     <Col xs={8} sm={6}>
                       Level 2
                     </Col>
+
                     <Col xs={4} sm={6}>
                       Level 2
                     </Col>
@@ -159,58 +171,94 @@ export function Grid() {
           </Modal.Body>
         </Modal.Content>
       </Modal>
-    </ModalStory>
+    </>
   );
 }
 
-const makeSized = (size, label) => {
-  return function SizedModal() {
-    const { open, toggle } = useModal();
-
-    return (
-      <ModalStory open={open} toggle={toggle} label={label}>
-        <Modal size={size} open={open} onHide={toggle}>
-          <Modal.Content>
-            <Modal.Header closeButton>
-              <Modal.Title>{label}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>Modal body text goes here.</Modal.Body>
-            <Modal.Footer>
-              <Button tone="secondary" onClick={toggle}>
-                Close
-              </Button>
-              <Button>Save changes</Button>
-            </Modal.Footer>
-          </Modal.Content>
-        </Modal>
-      </ModalStory>
-    );
-  };
-};
-
-export const Small = makeSized("sm", "Small modal");
-export const Large = makeSized("lg", "Large modal");
-export const ExtraLarge = makeSized("xl", "Extra large modal");
-
-export function Fullscreen() {
-  const { open, toggle } = useModal();
+export function Small() {
+  const [open, setOpen] = useState(false);
 
   return (
-    <ModalStory open={open} toggle={toggle}>
-      <Modal fullscreen open={open} onHide={toggle}>
+    <>
+      <Button onClick={() => setOpen(true)}>Small modal</Button>
+
+      <Modal size="sm" open={open} onHide={() => setOpen(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
-            <Modal.Title>Fullscreen Modal</Modal.Title>
+            <Modal.Title>Small modal</Modal.Title>
           </Modal.Header>
+
           <Modal.Body>Modal body text goes here.</Modal.Body>
+        </Modal.Content>
+      </Modal>
+    </>
+  );
+}
+
+export function Large() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Large modal</Button>
+
+      <Modal size="lg" open={open} onHide={() => setOpen(false)}>
+        <Modal.Content>
+          <Modal.Header closeButton>
+            <Modal.Title>Large modal</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>Modal body text goes here.</Modal.Body>
+        </Modal.Content>
+      </Modal>
+    </>
+  );
+}
+
+export function ExtraLarge() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Extra large modal</Button>
+
+      <Modal size="xl" open={open} onHide={() => setOpen(false)}>
+        <Modal.Content>
+          <Modal.Header closeButton>
+            <Modal.Title>Extra large modal</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>Modal body text goes here.</Modal.Body>
+        </Modal.Content>
+      </Modal>
+    </>
+  );
+}
+
+export function Fullscreen() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Fullscreen modal</Button>
+
+      <Modal fullscreen open={open} onHide={() => setOpen(false)}>
+        <Modal.Content>
+          <Modal.Header closeButton>
+            <Modal.Title>Fullscreen modal</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>Modal body text goes here.</Modal.Body>
+
           <Modal.Footer>
-            <Button tone="secondary" onClick={toggle}>
+            <Button tone="secondary" onClick={() => setOpen(false)}>
               Close
             </Button>
+
             <Button>Save changes</Button>
           </Modal.Footer>
         </Modal.Content>
       </Modal>
-    </ModalStory>
+    </>
   );
 }
