@@ -13,6 +13,8 @@ import { ModalContext } from "./ModalContext";
 import { Transition } from "react-transition-group";
 import ModalBackdrop from "./ModalBackdrop";
 import { useRef } from "react";
+import { useModalBodyOpen } from "./useModalBodyOpen";
+import { useEscapePress } from "./useEscapePress";
 
 const BASE_CLASS_NAME = "modal";
 
@@ -62,7 +64,10 @@ const propTypes = {
   /**
    * Enables fullscreen mode or breakpoint-based fullscreen behavior
    */
-  fullscreen: PropTypes.bool,
+  fullscreen: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf(["sm", "md", "lg", "xl", "xxl"]),
+  ]),
 
   /**
    * Custom handler to detect transition end instead of timeout
@@ -110,6 +115,13 @@ const defaultProps = {
   centered: false,
   size: null,
   fullscreen: false,
+  addEndListener: null,
+  onEnter: null,
+  onEntering: null,
+  onEntered: null,
+  onExit: null,
+  onExiting: null,
+  onExited: null,
 };
 
 /**
@@ -128,8 +140,9 @@ const defaultProps = {
  *
  * @property {number} [timeout=300]
  *
- * @property {() => {}} [onHide]
+ * @property {(event?: React.SyntheticEvent, closeType?: string) => void} [onHide]
  * Callback fired when the modal requests to be closed.
+ * closeType: ["backdrop", "escape", "close-button"]
  *
  * @property {boolean} [scrollable=false]
  * Enables vertical scrolling inside the modal body.
@@ -194,20 +207,21 @@ function Modal(props) {
     ...rest
   } = props;
 
-  const styles = {
-    display: "block",
-    ...style,
-  };
+  const nodeRef = useRef(null);
 
   const dialogClasses = cn({
     [prefix("modal-dialog", "scrollable")]:
       typeof scrollable === "boolean" && scrollable,
+
     [prefix("modal-dialog", "centered")]:
       typeof centered === "boolean" && centered,
+
     [prefix(BASE_CLASS_NAME, size)]:
       typeof size === "string" && ["sm", "lg", "xl"].includes(size),
+
     [prefix(BASE_CLASS_NAME, "fullscreen")]:
       typeof fullscreen === "boolean" && fullscreen,
+
     [prefix(
       BASE_CLASS_NAME,
       "fullscreen",
@@ -218,16 +232,6 @@ function Modal(props) {
       ["sm", "md", "lg", "xl", "xxl"].includes(fullscreen),
   });
 
-  useEffect(() => {
-    if (!open) return;
-
-    document.body.classList.add("modal-open", "overflow-hidden", "pe-0");
-
-    return () => {
-      document.body.classList.remove("modal-open", "overflow-hidden", "pe-0");
-    };
-  }, [open]);
-
   /**
    * Handles clicks on the modal backdrop and closes
    * the modal when the backdrop itself is clicked.
@@ -236,38 +240,19 @@ function Modal(props) {
    */
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
-      onHide?.();
+      onHide?.(event, "backdrop");
     }
   };
 
-  useEffect(() => {
-    if (!open) return;
+  useModalBodyOpen(open);
 
-    /**
-     * Handles keyboard interactions for the modal.
-     *
-     * @param {KeyboardEvent} event
-     */
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        onHide?.();
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [open, onHide]);
-
-  const nodeRef = useRef(null);
+  useEscapePress(open, onHide);
 
   return (
     <Transition
       nodeRef={nodeRef}
       in={open}
-      timeout={300}
+      timeout={timeout}
       addEndListener={addEndListener}
       onEnter={onEnter}
       onEntering={onEntering}
@@ -285,7 +270,10 @@ function Modal(props) {
               show: state === "entering" || state === "entered",
             })}
             onClick={handleBackdropClick}
-            style={styles}
+            style={{
+              display: "block",
+              ...style,
+            }}
             tabIndex="-1"
             {...rest}>
             <ModalBackdrop state={state} />

@@ -61,7 +61,9 @@ function ModalHeader(props) {
   return (
     <Prime style={style} className={classes} {...rest}>
       {children}
-      {closeButton && <CloseButton onClick={(event) => onHide?.(event)} />}
+      {closeButton && (
+        <CloseButton onClick={(event) => onHide?.(event, "close-button")} />
+      )}
     </Prime>
   );
 }
