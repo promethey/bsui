@@ -339,10 +339,15 @@ function Modal(props) {
         <ModalContext.Provider value={{ onHide }}>
           <Prime
             ref={nodeRef}
-            className={cn(BASE_CLASS_NAME, "fade", {
-              show: state === "entering" || state === "entered",
-              "modal-static": staticAnimation,
-            })}
+            className={cn(
+              BASE_CLASS_NAME,
+              "fade",
+              {
+                show: state === "entering" || state === "entered",
+                "modal-static": staticAnimation,
+              },
+              className,
+            )}
             onClick={handleBackdropClick}
             style={{
               display: "block",
