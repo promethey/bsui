@@ -1,11 +1,4 @@
-import {
-  Modal,
-  Button,
-  CloseButton,
-  Container,
-  Row,
-  Col,
-} from "../src/components";
+import { Modal, Button, Container, Row, Col } from "../src/components";
 import { useState } from "react";
 
 export default {
@@ -29,231 +22,195 @@ export default {
   },
 };
 
-export function Default() {
-  const [expanded, setExpanded] = useState(false);
+function useModal() {
+  const [open, setOpen] = useState(false);
+  const toggle = () => setOpen((v) => !v);
+  return { open, toggle };
+}
 
-  const handleExpanded = (event) => {
-    setExpanded((prev) => !prev);
-  };
-
+function ModalStory({ open, toggle, children, label = "Show modal" }) {
   return (
     <>
-      <Button onClick={handleExpanded}>
-        {expanded ? "Close" : "Open"} modal
-      </Button>
-      <Modal open={expanded} onHide={handleExpanded}>
+      <Button onClick={toggle}>{label}</Button>
+      <Modal open={open} onHide={toggle}>
+        {children}
+      </Modal>
+    </>
+  );
+}
+
+export function Default() {
+  const { open, toggle } = useModal();
+
+  return (
+    <ModalStory open={open} toggle={toggle}>
+      <Modal.Content>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal title</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Modal body text goes here.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button tone="secondary" onClick={toggle}>
+            Close
+          </Button>
+          <Button>Save changes</Button>
+        </Modal.Footer>
+      </Modal.Content>
+    </ModalStory>
+  );
+}
+
+export function Scrollable() {
+  const { open, toggle } = useModal();
+
+  return (
+    <ModalStory open={open} toggle={toggle}>
+      <Modal scrollable open={open} onHide={toggle}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Modal title</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>Modal body text goes here.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
           </Modal.Body>
           <Modal.Footer>
-            <Button tone="secondary" onClick={handleExpanded}>
+            <Button tone="secondary" onClick={toggle}>
               Close
             </Button>
             <Button>Save changes</Button>
           </Modal.Footer>
         </Modal.Content>
       </Modal>
-    </>
-  );
-}
-
-export function Scrollable() {
-  return (
-    <Modal scrollable d="block">
-      <Modal.Content>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Exercitationem fuga, quae dolorem animi id facilis! Quidem numquam
-            quaerat impedit labore sit qui nulla, accusamus laboriosam corporis
-            perferendis esse at beatae neque. Autem maxime repellat accusamus?
-            Ipsa cupiditate excepturi at mollitia beatae amet aliquid aperiam
-            in! Praesentium, blanditiis cupiditate minima obcaecati repellendus
-            nulla. Aspernatur at laboriosam et placeat incidunt vitae, aliquid
-            nostrum! Quibusdam pariatur accusantium adipisci. Praesentium
-            facilis ratione id eos asperiores magnam deleniti suscipit inventore
-            sed autem vitae molestiae ipsam, earum esse pariatur doloribus ab
-            magni sint eaque corporis! Sequi animi quo consequuntur velit
-            doloribus laboriosam quibusdam soluta dolores ex debitis. Nisi,
-            doloremque. Quaerat nam voluptas ratione eius repellendus ea porro
-            consequatur ullam rerum fugit dicta obcaecati, quam explicabo!
-            Nostrum dignissimos reiciendis, vel perspiciatis ipsam veritatis
-            modi recusandae, dolorem a dolorum nobis id? Iste cum sequi ea
-            itaque autem modi iusto repellendus doloribus at? Et itaque
-            possimus, consequuntur, commodi voluptatem, maxime sequi doloribus
-            dolores vel porro consequatur facilis voluptatum placeat
-            perspiciatis accusamus magni! Perferendis omnis inventore veniam
-            neque vitae. Voluptate soluta qui saepe esse odio aliquid nisi unde
-            optio dolorum perferendis! Et illum eius perferendis iure, neque
-            voluptate asperiores blanditiis alias, nesciunt quaerat impedit
-            possimus at veniam hic ipsa doloribus tenetur. Sint consequatur
-            distinctio laudantium illo. Distinctio aspernatur cupiditate unde
-            natus, nemo debitis culpa velit? Quia quasi minus labore laboriosam
-            eius deserunt sequi laborum, sapiente nobis ipsum commodi iure autem
-            veritatis necessitatibus quis molestias voluptatem praesentium
-            obcaecati. Illo magnam tempora quae inventore quibusdam eum cumque
-            totam placeat!
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button tone="secondary">Close</Button>
-          <Button>Save changes</Button>
-        </Modal.Footer>
-      </Modal.Content>
-    </Modal>
+    </ModalStory>
   );
 }
 
 export function VerticallyCentered() {
+  const { open, toggle } = useModal();
+
   return (
-    <Modal centered d="block">
-      <Modal.Content>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal Title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Modal body text goes here.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button tone="secondary">Close</Button>
-          <Button>Save changes</Button>
-        </Modal.Footer>
-      </Modal.Content>
-    </Modal>
+    <ModalStory open={open} toggle={toggle}>
+      <Modal centered open={open} onHide={toggle}>
+        <Modal.Content>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal Title</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Modal body text goes here.</Modal.Body>
+          <Modal.Footer>
+            <Button tone="secondary" onClick={toggle}>
+              Close
+            </Button>
+            <Button>Save changes</Button>
+          </Modal.Footer>
+        </Modal.Content>
+      </Modal>
+    </ModalStory>
   );
 }
-VerticallyCentered.storyName = "Vertically centered";
 
 export function Grid() {
+  const { open, toggle } = useModal();
+
   return (
-    <Modal d="block">
-      <Modal.Content>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal Title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Container fluid>
-            <Row>
-              <Col md={4}>.col-md-4</Col>
-              <Col md={4} ms="auto">
-                .col-md-4 .ms-auto
-              </Col>
-            </Row>
-            <Row>
-              <Col md={3}>.col-md-4</Col>
-              <Col md={2} ms="auto">
-                .col-md-4 .ms-auto
-              </Col>
-            </Row>
-            <Row>
-              <Col md={6} ms="auto">
-                .col-md-6 .ms-auto
-              </Col>
-            </Row>
-            <Row>
-              <Col sm={9}>
-                Level 1: .col-sm-9
-                <Row>
-                  <Col xs={8} sm={6}>
-                    Level 2: .col-8 .col-sm-6
-                  </Col>
-                  <Col xs={4} sm={6}>
-                    Level 2: .col-4 .col-sm-6
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-          </Container>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button tone="secondary">Close</Button>
-          <Button>Save changes</Button>
-        </Modal.Footer>
-      </Modal.Content>
-    </Modal>
+    <ModalStory open={open} toggle={toggle}>
+      <Modal open={open} onHide={toggle}>
+        <Modal.Content>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal Title</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Container fluid>
+              <Row>
+                <Col md={4}>.col-md-4</Col>
+                <Col md={4} ms="auto">
+                  .col-md-4 .ms-auto
+                </Col>
+              </Row>
+
+              <Row>
+                <Col md={3}>.col-md-3</Col>
+                <Col md={2} ms="auto">
+                  .col-md-2 .ms-auto
+                </Col>
+              </Row>
+
+              <Row>
+                <Col md={6} ms="auto">
+                  .col-md-6 .ms-auto
+                </Col>
+              </Row>
+
+              <Row>
+                <Col sm={9}>
+                  Level 1
+                  <Row>
+                    <Col xs={8} sm={6}>
+                      Level 2
+                    </Col>
+                    <Col xs={4} sm={6}>
+                      Level 2
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+            </Container>
+          </Modal.Body>
+        </Modal.Content>
+      </Modal>
+    </ModalStory>
   );
 }
 
-export function Small() {
-  return (
-    <Modal size="sm" d="block">
-      <Modal.Content>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal Title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Modal body text goes here.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button tone="secondary">Close</Button>
-          <Button>Save changes</Button>
-        </Modal.Footer>
-      </Modal.Content>
-    </Modal>
-  );
-}
+const makeSized = (size, label) => {
+  return function SizedModal() {
+    const { open, toggle } = useModal();
 
-export function Large() {
-  return (
-    <Modal size="lg" d="block">
-      <Modal.Content>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal Title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Modal body text goes here.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button tone="secondary">Close</Button>
-          <Button>Save changes</Button>
-        </Modal.Footer>
-      </Modal.Content>
-    </Modal>
-  );
-}
+    return (
+      <ModalStory open={open} toggle={toggle} label={label}>
+        <Modal size={size} open={open} onHide={toggle}>
+          <Modal.Content>
+            <Modal.Header closeButton>
+              <Modal.Title>{label}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Modal body text goes here.</Modal.Body>
+            <Modal.Footer>
+              <Button tone="secondary" onClick={toggle}>
+                Close
+              </Button>
+              <Button>Save changes</Button>
+            </Modal.Footer>
+          </Modal.Content>
+        </Modal>
+      </ModalStory>
+    );
+  };
+};
 
-export function ExtraLarge() {
-  return (
-    <Modal size="xl" d="block">
-      <Modal.Content>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal Title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Modal body text goes here.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button tone="secondary">Close</Button>
-          <Button>Save changes</Button>
-        </Modal.Footer>
-      </Modal.Content>
-    </Modal>
-  );
-}
-ExtraLarge.storyName = "Extra large";
+export const Small = makeSized("sm", "Small modal");
+export const Large = makeSized("lg", "Large modal");
+export const ExtraLarge = makeSized("xl", "Extra large modal");
 
 export function Fullscreen() {
+  const { open, toggle } = useModal();
+
   return (
-    <Modal fullscreen d="block">
-      <Modal.Content>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal Title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Modal body text goes here.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button tone="secondary">Close</Button>
-          <Button>Save changes</Button>
-        </Modal.Footer>
-      </Modal.Content>
-    </Modal>
+    <ModalStory open={open} toggle={toggle}>
+      <Modal fullscreen open={open} onHide={toggle}>
+        <Modal.Content>
+          <Modal.Header closeButton>
+            <Modal.Title>Fullscreen Modal</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Modal body text goes here.</Modal.Body>
+          <Modal.Footer>
+            <Button tone="secondary" onClick={toggle}>
+              Close
+            </Button>
+            <Button>Save changes</Button>
+          </Modal.Footer>
+        </Modal.Content>
+      </Modal>
+    </ModalStory>
   );
 }

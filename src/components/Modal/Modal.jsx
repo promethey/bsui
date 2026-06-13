@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
@@ -10,6 +11,9 @@ import ModalBody from "./ModalBody";
 import ModalFooter from "./ModalFooter";
 import { prefix } from "helpers";
 import { ModalContext } from "./ModalContext";
+import { Transition } from "react-transition-group";
+import ModalBackdrop from "./ModalBackdrop";
+import { useRef } from "react";
 
 const BASE_CLASS_NAME = "modal";
 
@@ -29,18 +33,79 @@ const propTypes = {
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
+  /**
+   * Controls whether the modal is visible
+   */
   open: PropTypes.bool,
+
+  timeout: PropTypes.number,
+
+  /**
+   * Callback fired when the modal requests to be closed
+   */
   onHide: PropTypes.func,
+
+  /**
+   * Enables vertical scrolling inside the modal body
+   */
   scrollable: PropTypes.bool,
+
+  /**
+   * Vertically centers the modal in the viewport
+   */
   centered: PropTypes.bool,
+
+  /**
+   * Sets the modal size variant
+   */
   size: PropTypes.oneOf(["sm", "lg", "xl"]),
+
+  /**
+   * Enables fullscreen mode or breakpoint-based fullscreen behavior
+   */
   fullscreen: PropTypes.bool,
+
+  /**
+   * Custom handler to detect transition end instead of timeout
+   */
+  addEndListener: PropTypes.func,
+
+  /**
+   * Called before enter transition starts
+   */
+  onEnter: PropTypes.func,
+
+  /**
+   * Called when enter transition is starting
+   */
+  onEntering: PropTypes.func,
+
+  /**
+   * Called after enter transition finishes
+   */
+  onEntered: PropTypes.func,
+
+  /**
+   * Called before exit transition starts
+   */
+  onExit: PropTypes.func,
+
+  /**
+   * Called when exit transition is running
+   */
+  onExiting: PropTypes.func,
+
+  /**
+   * Called after exit transition finishes
+   */
+  onExited: PropTypes.func,
 };
 
 const defaultProps = {
   className: null,
   style: null,
   open: false,
+  timeout: 300,
   onHide: null,
   scrollable: false,
   centered: false,
@@ -55,14 +120,50 @@ const defaultProps = {
  * @component
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/modal/}
+ * @see {@link https://reactcommunity.org/react-transition-group/transition}
  *
  * @typedef {object} ModalOwnProps
+ *
  * @property {boolean} [open=false]
+ * Controls whether the modal is visible.
+ *
+ * @property {number} [timeout=300]
+ *
  * @property {() => {}} [onHide]
+ * Callback fired when the modal requests to be closed.
+ *
  * @property {boolean} [scrollable=false]
+ * Enables vertical scrolling inside the modal body.
+ *
  * @property {boolean} [centered=false]
+ * Vertically centers the modal in the viewport.
+ *
  * @property {"sm"|"lg"|"xl"} [size]
+ * Sets the modal size variant.
+ *
  * @property {"sm"|"md"|"lg"|"xl"|"xxl"|boolean} [fullscreen=false]
+ * Enables fullscreen mode or breakpoint-based fullscreen behavior.
+ *
+ * @property {function} [addEndListener]
+ * Custom handler to detect transition end instead of timeout.
+ *
+ * @property {function} [onEnter]
+ * Called before enter transition starts.
+ *
+ * @property {function} [onEntering]
+ * Called when enter transition is starting.
+ *
+ * @property {function} [onEntered]
+ * Called after enter transition finishes.
+ *
+ * @property {function} [onExit]
+ * Called before exit transition starts.
+ *
+ * @property {function} [onExiting]
+ * Called when exit transition is running.
+ *
+ * @property {function} [onExited]
+ * Called after exit transition finishes.
  *
  * @typedef {import("../Prime/Prime").PrimeProps & ModalOwnProps} ModalProps
  * @param {ModalProps} props
@@ -78,6 +179,7 @@ function Modal(props) {
     children,
     className,
     open = false,
+    timeout = 300,
     onHide,
     scrollable = false,
     centered = false,
@@ -86,7 +188,10 @@ function Modal(props) {
     ...rest
   } = props;
 
-  const classes = cn(BASE_CLASS_NAME, className);
+  const styles = {
+    display: "block",
+    ...style,
+  };
 
   const dialogClasses = cn({
     [prefix("modal-dialog", "scrollable")]:
@@ -107,25 +212,81 @@ function Modal(props) {
       ["sm", "md", "lg", "xl", "xxl"].includes(fullscreen),
   });
 
-  /** @type {React.CSSProperties} */
-  const styles = {
-    display: open ? "block" : "",
-    ...style,
+  useEffect(() => {
+    if (!open) return;
+
+    document.body.classList.add("modal-open", "overflow-hidden", "pe-0");
+
+    return () => {
+      document.body.classList.remove("modal-open", "overflow-hidden", "pe-0");
+    };
+  }, [open]);
+
+  /**
+   * Handles clicks on the modal backdrop and closes
+   * the modal when the backdrop itself is clicked.
+   *
+   * @param {React.MouseEvent<HTMLElement>} event
+   */
+  const handleBackdropClick = (event) => {
+    if (event.target === event.currentTarget) {
+      onHide?.();
+    }
   };
 
+  useEffect(() => {
+    if (!open) return;
+
+    /**
+     * Handles keyboard interactions for the modal.
+     *
+     * @param {KeyboardEvent} event
+     */
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onHide?.();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open, onHide]);
+
+  const nodeRef = useRef(null);
+
   return (
-    <ModalContext.Provider value={{ onHide }}>
-      <Prime style={styles} className={classes} {...rest}>
-        <ModalDialog className={dialogClasses}>{children}</ModalDialog>
-      </Prime>
-    </ModalContext.Provider>
+    <Transition
+      nodeRef={nodeRef}
+      in={open}
+      timeout={300}
+      mountOnEnter
+      unmountOnExit>
+      {(state) => (
+        <ModalContext.Provider value={{ onHide }}>
+          <Prime
+            ref={nodeRef}
+            className={cn(BASE_CLASS_NAME, "fade", {
+              show: state === "entering" || state === "entered",
+            })}
+            onClick={handleBackdropClick}
+            style={styles}
+            tabIndex="-1"
+            {...rest}>
+            <ModalBackdrop state={state} />
+            <ModalDialog className={dialogClasses}>{children}</ModalDialog>
+          </Prime>
+        </ModalContext.Provider>
+      )}
+    </Transition>
   );
 }
 
 Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
 
-Modal.Dialog = ModalDialog;
 Modal.Content = ModalContent;
 Modal.Header = ModalHeader;
 Modal.Title = ModalTitle;
