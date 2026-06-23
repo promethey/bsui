@@ -50,6 +50,9 @@ const defaultProps = {
  *
  * @param {ComponentProps} props
  * @return {React.JSX.Element}
+ *
+ * @author Lastname Firstname [github username] <example@email.com>
+ * @version 1.0.0
  */
 function Component(props) {
   const { style, children, className, ...rest } = props;
@@ -89,3 +92,21 @@ tests/
 stories/
 └── CustomComponent.stories.jsx
 ```
+
+## Component Registration
+
+To include a component in the package build, it must be exported from the components entry point.
+
+Add the component export to:
+
+```
+src/components/index.js;
+```
+
+Example:
+
+```js
+export { default as CustomComponent } from "./CustomComponent";
+```
+
+Components that are not exported from `src/components/index.js` will not be available through the public library API and cannot be imported by consumers of the library.
