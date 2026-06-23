@@ -88,6 +88,7 @@ export function Example() {
 | ButtonGroup | Control    | Stable       | 1.0.0 | 5.1.3          |
 | Card        | Content    | Stable       | 1.0.0 | 5.1.3          |
 | Carousel    | Content    | Experimental | 1.0.0 | 5.1.3          |
+| Check       | Content    | Experimental | 1.0.0 | 5.1.3          |
 | CloseButton | Control    | Stable       | 1.0.0 | 5.1.3          |
 | Col         | Layout     | Experimental | 1.0.0 | 5.1.3          |
 | Collapse    | Content    | Stable       | 1.0.0 | 5.1.3          |
