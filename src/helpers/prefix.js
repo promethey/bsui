@@ -1,36 +1,51 @@
 /**
- * Function for creating classnames like Bootstrap
+ * Generates Bootstrap-style class names by combining
+ * a prefix with one or more modifier values.
  *
  * @example
- * prefix("m", 0) // 'm-0'
- * prefix("mt", 3) // 'mt-3'
- * prefix("bg", "opacity", 25) // 'bg-opacity-25'
- * prefix("bg-gradient", true) // 'bg-gradient'
+ * prefix("m", 0)
+ * // "m-0"
  *
- * @param {string} prfx - prefix
- * @param  {...(string|number)|undefined} values - classnames
+ * @example
+ * prefix("bg", "opacity", 25)
+ * // "bg-opacity-25"
  *
- * @returns {string} classnames
+ * @example
+ * prefix("border", true)
+ * // "border"
+ *
+ * @param {string} prfx
+ * Base Bootstrap class prefix.
+ *
+ * @param {...(string|number|boolean|null|undefined)} values
+ * Optional modifier values appended to the prefix.
+ * Boolean true preserves the prefix, while falsy values
+ * are ignored.
+ *
+ * @returns {string}
+ * Generated Bootstrap class name.
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
  */
 export function prefix(prfx, ...values) {
-  if (typeof prfx !== "string" || !prfx) return "";
-
-  // prefix("border", true) -> "border"
-  if (typeof values === "boolean" && values) return prfx;
-
-  if (values.length === 0) return prfx;
+  if (typeof prfx !== "string" || !prfx) {
+    return "";
+  }
 
   const result = [prfx];
 
-  for (let i = 0; i < values.length; i += 1) {
-    let className = values[i];
+  for (const value of values) {
+    if (value === true) {
+      continue;
+    }
 
-    // String Number
-    if (
-      (typeof className === "string" && className) ||
-      typeof className === "number"
-    ) {
-      String(className).trim().length > 0 && result.push("-" + className);
+    if (typeof value === "string" || typeof value === "number") {
+      const normalized = String(value).trim();
+
+      if (normalized) {
+        result.push(`-${normalized}`);
+      }
     }
   }
 
