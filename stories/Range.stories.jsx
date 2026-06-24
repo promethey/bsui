@@ -1,4 +1,5 @@
-import { Range, Prime } from "../src/components";
+import { useState } from "react";
+import { Range, Prime, Control, Button } from "../src/components";
 
 export default {
   title: "Components/Forms/Range",
@@ -17,6 +18,48 @@ export default {
 
 export function Default() {
   return <Range />;
+}
+
+export function Contollable() {
+  const defaultValue = 10;
+
+  const [value, setValue] = useState(defaultValue);
+
+  const min = 0;
+  const max = 100;
+  const step = 1;
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const handleReset = () => {
+    setValue(defaultValue);
+  };
+
+  return (
+    <>
+      <Prime d="flex" flex="center">
+        <Range
+          min={min}
+          max={max}
+          step={step}
+          value={value}
+          onChange={handleChange}
+        />
+        <Control
+          text={{ align: "center" }}
+          ms={3}
+          value={value}
+          disabled
+          style={{ maxWidth: "56px" }}
+        />
+      </Prime>
+      <Button onClick={handleReset} disabled={value == defaultValue}>
+        Reset value
+      </Button>
+    </>
+  );
 }
 
 export function Disabled() {
