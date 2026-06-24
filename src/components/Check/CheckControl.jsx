@@ -75,7 +75,8 @@ const defaultProps = {
 };
 
 /**
- * Check input component
+ * Provides the underlying selectable form control
+ * used by the Check component.
  *
  * @component
  *
@@ -115,7 +116,7 @@ const defaultProps = {
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
-function CheckInput(props) {
+function CheckControl(props) {
   const {
     style,
     className,
@@ -150,7 +151,7 @@ function CheckInput(props) {
   );
 }
 
-CheckInput.propTypes = propTypes;
-CheckInput.defaultProps = defaultProps;
+CheckControl.propTypes = propTypes;
+CheckControl.defaultProps = defaultProps;
 
-export default CheckInput;
+export default CheckControl;

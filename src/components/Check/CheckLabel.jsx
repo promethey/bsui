@@ -33,7 +33,8 @@ const defaultProps = {
 };
 
 /**
- * Check label component
+ * Displays the label associated
+ * with a Check control.
  *
  * @component
  *

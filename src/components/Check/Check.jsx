@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import { prefix } from "helpers";
 import { Prime } from "components";
-import CheckInput from "./CheckInput";
+import CheckControl from "./CheckControl";
 import CheckLabel from "./CheckLabel";
 import { useId } from "react";
 
@@ -94,7 +94,8 @@ const defaultProps = {
 };
 
 /**
- * Check component
+ * Renders a checkbox, radio button, or switch control
+ * with an associated label and Bootstrap styling.
  *
  * @component
  *
@@ -103,7 +104,7 @@ const defaultProps = {
  * @example
  * <Check label="Default checkbox" />
  *
- * @example
+ * @exampleCheck component
  * <Check label="Default checked checkbox" defaultChecked />
  *
  * @typedef {object} CheckOwnProps
@@ -179,7 +180,7 @@ function Check(props) {
 
   return (
     <Prime className={classes} style={style} {...rest}>
-      <CheckInput
+      <CheckControl
         id={controlId}
         type={type === "switch" ? "checkbox" : type}
         name={name}
@@ -189,7 +190,7 @@ function Check(props) {
         value={value}
         onChange={onChange}
       />
-      <CheckLabel htmlFor={id}>{label}</CheckLabel>
+      <CheckLabel htmlFor={controlId}>{label}</CheckLabel>
     </Prime>
   );
 }
