@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Check, Prime } from "../src/components";
 
 export default {
-  title: "Components/Forms/Check",
+  title: "Components/Form/Check",
   component: Check,
   subcomponents: {
     "Check.Label": Check.Label,
@@ -12,7 +12,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Check component",
+        component:
+          "Renders a checkbox, radio button, or switch control with an associated label and Bootstrap styling.",
       },
     },
   },

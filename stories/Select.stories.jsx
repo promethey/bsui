@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Select, Prime } from "../src/components";
 
 export default {
-  title: "Components/Control/Select",
+  title: "Components/Form/Select",
   component: Select,
   subcomponents: {
     "Select.Option": Select.Option,
@@ -11,7 +11,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Select component",
+        component:
+          "Provides a dropdown selection control for choosing one or more options from a predefined list.",
       },
     },
   },

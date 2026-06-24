@@ -112,7 +112,8 @@ const defaultProps = {
 };
 
 /**
- * Select component
+ * Provides a dropdown selection control for choosing
+ * one or more options from a predefined list.
  *
  * @see {@link https://getbootstrap.com/docs/5.1/forms/select/}
  *

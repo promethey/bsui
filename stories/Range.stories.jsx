@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Range, Prime, Control, Button } from "../src/components";
 
 export default {
-  title: "Components/Forms/Range",
+  title: "Components/Form/Range",
   component: Range,
   subcomponents: {
     Prime,
@@ -10,7 +10,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Range component",
+        component:
+          "Allows users to select a numeric value within a specified range using a slider control.",
       },
     },
   },

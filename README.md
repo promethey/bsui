@@ -68,6 +68,7 @@ export function Example() {
 
 | Category   | Description                                  |
 | ---------- | -------------------------------------------- |
+| Form       | Form controls and data input components      |
 | Control    | Interactive form and action components       |
 | Feedback   | Status and user feedback components          |
 | Navigation | Navigation and routing components            |
@@ -88,22 +89,23 @@ export function Example() {
 | ButtonGroup | Control    | Stable       | 1.0.0 | 5.1.3          |
 | Card        | Content    | Stable       | 1.0.0 | 5.1.3          |
 | Carousel    | Content    | Experimental | 1.0.0 | 5.1.3          |
-| Check       | Content    | Experimental | 1.0.0 | 5.1.3          |
+| Check       | Form       | Stable       | 1.0.0 | 5.1.3          |
 | CloseButton | Control    | Stable       | 1.0.0 | 5.1.3          |
 | Col         | Layout     | Experimental | 1.0.0 | 5.1.3          |
 | Collapse    | Content    | Stable       | 1.0.0 | 5.1.3          |
 | Container   | Layout     | Stable       | 1.0.0 | 5.1.3          |
-| Control     | Control    | Stable       | 1.0.0 | 5.1.3          |
+| Control     | Form       | Stable       | 1.0.0 | 5.1.3          |
 | Dropdown    | Overlay    | Experimental | 1.0.0 | 5.1.3          |
 | ListGroup   | Content    | Experimental | 1.0.0 | 5.1.3          |
-| Modal       | Content    | Planned      | 1.0.0 | 5.1.3          |
+| Modal       | Content    | Experimental | 1.0.0 | 5.1.3          |
 | Nav         | Navigation | Experimental | 1.0.0 | 5.1.3          |
 | Navbar      | Navigation | Experimental | 1.0.0 | 5.1.3          |
 | Placeholder | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 | Prime       | Core       | Experimental | 1.0.0 | 5.1.3          |
 | Progress    | Feedback   | Stable       | 1.0.0 | 5.1.3          |
+| Range       | Form       | Stable       | 1.0.0 | 5.1.3          |
 | Row         | Layout     | Experimental | 1.0.0 | 5.1.3          |
-| Select      | Control    | Stable       | 1.0.0 | 5.1.3          |
+| Select      | Form       | Stable       | 1.0.0 | 5.1.3          |
 | Spinner     | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 
 ### Quick Example

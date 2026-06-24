@@ -2,7 +2,7 @@
 import { Control, Prime } from "components";
 
 export default {
-  title: "Components/Forms/Control",
+  title: "Components/Form/Control",
   component: Control,
   subcomponents: {
     Prime,
