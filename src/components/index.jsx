@@ -26,3 +26,4 @@ export { default as Modal } from "./Modal";
 export { default as Check } from "./Check";
 export { default as Range } from "./Range";
 export { default as InputGroup } from "./InputGroup";
+export { default as FloatingLabel } from "./FloatingLabel";
