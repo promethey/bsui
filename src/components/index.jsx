@@ -25,3 +25,4 @@ export { default as Select } from "./Select";
 export { default as Modal } from "./Modal";
 export { default as Check } from "./Check";
 export { default as Range } from "./Range";
+export { default as InputGroup } from "./InputGroup";

@@ -96,6 +96,7 @@ export function Example() {
 | Container   | Layout     | Stable       | 1.0.0 | 5.1.3          |
 | Control     | Form       | Stable       | 1.0.0 | 5.1.3          |
 | Dropdown    | Overlay    | Experimental | 1.0.0 | 5.1.3          |
+| InputGroup  | Form       | Experimental | 1.0.0 | 5.1.3          |
 | ListGroup   | Content    | Experimental | 1.0.0 | 5.1.3          |
 | Modal       | Content    | Experimental | 1.0.0 | 5.1.3          |
 | Nav         | Navigation | Experimental | 1.0.0 | 5.1.3          |

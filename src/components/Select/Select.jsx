@@ -106,7 +106,7 @@ const defaultProps = {
   autoFocus: false,
   name: null,
   visibleOptions: 0,
-  onClick: null,
+  onChange: null,
   onFocus: null,
   onBlur: null,
 };

@@ -190,7 +190,7 @@ function Check(props) {
         value={value}
         onChange={onChange}
       />
-      <CheckLabel htmlFor={controlId}>{label}</CheckLabel>
+      {label && <CheckLabel htmlFor={controlId}>{label}</CheckLabel>}
     </Prime>
   );
 }
