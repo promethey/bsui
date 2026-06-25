@@ -12,17 +12,79 @@ React • Bootstrap 5 • JavaScript • JSDoc • Storybook
 
 ---
 
-# Features
+## Why BSUI?
 
-- React components built on Bootstrap 5
-- Fully JSDoc-typed (no TypeScript)
-- IntelliSense in VSCode
-- Zero compilation overhead
-- Built-in runtime prop type and value validation
-- Same Bootstrap utility system
-- Immediate support for new Bootstrap releases
+BSUI brings Bootstrap's design system to React with a modern architecture, rich documentation, runtime validation, and a consistent developer experience.
 
-You write **pure JavaScript**, but still get a typed ecosystem.
+### Prime Architecture
+
+All components are built on top of a single primitive: `<Prime />`.
+
+Features:
+
+- Polymorphic rendering via as
+- Bootstrap utility props
+- Native HTML attributes forwarding
+- Consistent API across the library
+
+```jsx
+<Prime as="button" m={2} px={3} fw="bold" />
+```
+
+### Bootstrap Utility Props
+
+Generate Bootstrap utility classes directly from React props.
+
+```jsx
+<Prime d="flex" flex="center" mt={3} />
+```
+
+Responsive values are supported:
+
+```jsx
+<Prime d={{ xs: "block", md: "flex" }} />
+```
+
+### Rich Documentation
+
+Every public component includes:
+
+- JSDoc descriptions
+- Usage examples
+- Bootstrap documentation links
+- IDE autocomplete and hover help
+
+### Runtime Validation
+
+Public APIs are validated with PropTypes, providing runtime checks even after the application is built.
+
+### Built on Proven Libraries
+
+- React Transition Group — animations and transitions
+- Embla Carousel — carousel engine
+- Floating UI — dropdown, tooltips, popovers, and positioning
+
+### Storybook & Testing
+
+Every public component includes:
+
+- Storybook documentation
+- Vitest tests
+- Usage examples
+
+### No Bootstrap JavaScript
+
+BSUI uses Bootstrap styles only. All interactive behavior is implemented in React.
+
+### Contributor Friendly
+
+The project follows a consistent architecture based on:
+
+- Prime foundation
+- Shared utility system
+- JSDoc standards
+- Storybook stories
+- Vitest coverage
 
 # Installation
 
