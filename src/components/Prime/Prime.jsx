@@ -696,6 +696,7 @@ const Prime = React.forwardRef((props, ref) => {
   } = props;
 
   const classes = [
+    className,
     sizingResolver({ w, mw, h, mh }),
     displayResolver(d),
     displayPrintResolver(dp),
@@ -735,7 +736,6 @@ const Prime = React.forwardRef((props, ref) => {
     roundedResolver(rounded),
     shadowResolver(shadow),
     overflowResolver(overflow),
-    className,
   ]
     .join(" ")
     .trim();
