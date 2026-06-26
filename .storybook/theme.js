@@ -2,8 +2,7 @@ import { create } from "storybook/theming";
 
 const theme = create({
   base: "light",
-
-  brandTitle: "BSUI",
+  brandTitle: "Bootstrap UI",
   brandUrl: "/",
   brandImage: "./bsui-logo.png",
 });
