@@ -8,6 +8,8 @@
 
 [![CI](https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg)](https://github.com/promethey/bsui/actions/workflows/ci.yml)
 
+[![Deploy Storybook](https://github.com/promethey/bsui/actions/workflows/storybook.yml/badge.svg)](https://github.com/promethey/bsui/actions/workflows/storybook.yml)
+
 ```text
 React • Bootstrap 5 • JavaScript • JSDoc • Storybook
 ```
