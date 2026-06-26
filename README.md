@@ -6,6 +6,8 @@
   </p>
 </p>
 
+[![CI](https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg)](https://github.com/promethey/bsui/actions/workflows/ci.yml)
+
 ```text
 React • Bootstrap 5 • JavaScript • JSDoc • Storybook
 ```
