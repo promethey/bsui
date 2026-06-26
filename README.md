@@ -90,7 +90,7 @@ The project follows a consistent architecture based on:
 - Storybook stories
 - Vitest coverage
 
-# Installation
+## Installation
 
 ```bash
 npm install bsui
@@ -110,7 +110,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - react-dom >= 18
 - bootstrap >= 5.1.3
 
-# Usage
+## Usage
 
 ```jsx
 import { Button } from "bsui";
@@ -124,7 +124,7 @@ export function Example() {
 }
 ```
 
-# Component Compatibility
+## Component Compatibility
 
 - `Stable` — Production-ready API
 - `Experimental` — API may change
