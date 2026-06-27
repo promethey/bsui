@@ -176,7 +176,7 @@ The project follows a consistent architecture based on:
 | Select      | Form       | Stable       | 1.0.0 | 5.1.3          |
 | Spinner     | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 
-# Build
+## Build
 
 This library uses Webpack for runtime bundling and TypeScript (declaration emit only) for type generation from JSDoc.
 
@@ -214,7 +214,7 @@ Install in another project:
 npm install bsui-1.0.0.tgz
 ```
 
-# Documentation
+## Documentation
 
 Every component is documented in two layers:
 
@@ -229,7 +229,7 @@ Run locally:
 npm run storybook
 ```
 
-# Testing
+## Testing
 
 The library is tested with Vitest.
 
