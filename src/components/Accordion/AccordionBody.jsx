@@ -33,17 +33,15 @@ const defaultProps = {
 };
 
 /**
- * AccordionBody component
+ * Displays the content of
+ * an accordion section.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
- * <AccordionBody>.accordion-body</AccordionBody>
- *
- * @example
- * <Accordion.Body>.accordion-body</Accordion.Body>
+ * <Accordion.Body>Content</Accordion.Body>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
@@ -53,7 +51,7 @@ const defaultProps = {
  *
  * @param {AccordionBodyProps} props
  *
- * @return {React.ReactElement}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

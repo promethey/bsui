@@ -57,10 +57,11 @@ const defaultProps = {
 };
 
 /**
- * Accordion component
+ * Organizes collapsible content
+ * into vertically stacked sections.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
@@ -76,6 +77,7 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionOwnProps
+ *
  * @property {boolean} [flush]
  * Sets flush style
  *
@@ -86,9 +88,10 @@ const defaultProps = {
  * Make accordion items stay open when another item is opened
  *
  * @typedef {PrimeProps & AccordionOwnProps} AccordionProps
+ *
  * @param {AccordionProps} props
  *
- * @return {React.ReactElement}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

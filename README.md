@@ -1,17 +1,61 @@
 <p align="center">
   <img src="./public/bsui-logo.png" width="220" />
-  <h1 style={{ margin: "24px 0" }}>BSUI (Bootstrap-UI)</h1>
-  <p style={{ margin: "0" }}>
-    Modern Bootstrap component system for React applications.
-  </p>
 </p>
 
-[![CI](https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg)](https://github.com/promethey/bsui/actions/workflows/ci.yml)
+<p align="center">
+  <a href="https://github.com/promethey/bsui/actions/workflows/ci.yml">
+    <img src="https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg" alt="CI">
+  </a>
+  <a href="https://github.com/promethey/bsui/actions/workflows/storybook.yml">
+    <img src="https://github.com/promethey/bsui/actions/workflows/storybook.yml/badge.svg" alt="Storybook Deploy">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/github/license/promethey/bsui" alt="License">
+  </a>
+  <a href="https://github.com/promethey/bsui/stargazers">
+    <img src="https://img.shields.io/github/stars/promethey/bsui?style=social" alt="GitHub Stars">
+  </a>
+  <a href="https://promethey.github.io/bsui/">
+    <img src="https://img.shields.io/badge/Storybook-Live-FF4785?logo=storybook&logoColor=white" alt="Storybook">
+  </a>
+</p>
 
-[![Deploy Storybook](https://github.com/promethey/bsui/actions/workflows/storybook.yml/badge.svg)](https://github.com/promethey/bsui/actions/workflows/storybook.yml)
+# BSUI (Bootstrap-UI)
 
-```text
-React • Bootstrap 5 • JavaScript • JSDoc • Storybook
+Modern Bootstrap component system for React applications.
+
+## Installation
+
+```bash
+npm install bsui
+```
+
+### Styling
+
+Import Bootstrap styles in your project:
+
+```js
+import "bootstrap/dist/css/bootstrap.min.css";
+```
+
+### Peer Dependencies
+
+- react >= 18
+- react-dom >= 18
+- bootstrap >= 5.1.3
+
+## Usage
+
+```jsx
+import { Button } from "bsui";
+
+export function Example() {
+  return (
+    <Button tone="primary" size="lg">
+      Primary
+    </Button>;
+  );
+}
 ```
 
 ---
@@ -90,40 +134,6 @@ The project follows a consistent architecture based on:
 - Storybook stories
 - Vitest coverage
 
-## Installation
-
-```bash
-npm install bsui
-```
-
-### Styling
-
-Import Bootstrap styles in your project:
-
-```js
-import "bootstrap/dist/css/bootstrap.min.css";
-```
-
-### Peer Dependencies
-
-- react >= 18
-- react-dom >= 18
-- bootstrap >= 5.1.3
-
-## Usage
-
-```jsx
-import { Button } from "bsui";
-
-export function Example() {
-  return (
-    <Button tone="primary" size="lg">
-      Primary
-    </Button>;
-  );
-}
-```
-
 ## Component Compatibility
 
 - `Stable` — Production-ready API
@@ -147,7 +157,7 @@ export function Example() {
 
 | Component   | Category   | Status       | Ver.  | Bootstrap Ver. |
 | ----------- | ---------- | ------------ | ----- | -------------- |
-| Accordion   | Content    | Experimental | 1.0.0 | 5.1.3          |
+| Accordion   | Content    | Stable       | 1.0.0 | 5.1.3          |
 | Alert       | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 | Badge       | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 | Breadcrumb  | Navigation | Stable       | 1.0.0 | 5.1.3          |
@@ -162,10 +172,10 @@ export function Example() {
 | Container   | Layout     | Stable       | 1.0.0 | 5.1.3          |
 | Control     | Form       | Stable       | 1.0.0 | 5.1.3          |
 | Dropdown    | Overlay    | Experimental | 1.0.0 | 5.1.3          |
-| InputGroup  | Form       | Experimental | 1.0.0 | 5.1.3          |
-| Label       | Form       | Experimental | 1.0.0 | 5.1.3          |
+| InputGroup  | Form       | Stable       | 1.0.0 | 5.1.3          |
+| Label       | Form       | Stable       | 1.0.0 | 5.1.3          |
 | ListGroup   | Content    | Experimental | 1.0.0 | 5.1.3          |
-| Modal       | Content    | Experimental | 1.0.0 | 5.1.3          |
+| Modal       | Content    | Stable       | 1.0.0 | 5.1.3          |
 | Nav         | Navigation | Experimental | 1.0.0 | 5.1.3          |
 | Navbar      | Navigation | Experimental | 1.0.0 | 5.1.3          |
 | Placeholder | Feedback   | Stable       | 1.0.0 | 5.1.3          |
@@ -175,28 +185,6 @@ export function Example() {
 | Row         | Layout     | Experimental | 1.0.0 | 5.1.3          |
 | Select      | Form       | Stable       | 1.0.0 | 5.1.3          |
 | Spinner     | Feedback   | Stable       | 1.0.0 | 5.1.3          |
-
-### Quick Example
-
-```jsx
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Dropdown } from "bsui";
-
-function App() {
-  return (
-    <Dropdown>
-      <Dropdown.Toggle>Dropdown button</Dropdown.Toggle>
-      <Dropdown.Menu>
-        <Dropdown.Item>Action</Dropdown.Item>
-        <Dropdown.Item>Another action</Dropdown.Item>
-        <Dropdown.Item>Something else here</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-  );
-}
-
-export default App;
-```
 
 # Build
 

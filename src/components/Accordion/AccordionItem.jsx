@@ -40,15 +40,18 @@ const defaultProps = {
 const BASE_CLASS_NAME = "accordion-item";
 
 /**
- * AccordionItem component
+ * Defines a single collapsible
+ * section within an accordion.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
  * <AccordionItem>
- *  <Accordion.Header>Item #1</Accordion.Header>
+ *  <Accordion.Header>
+ *    Item #1
+ *  </Accordion.Header>
  *  <Accordion.Body>
  *    ...
  *  </Accordion.Body>
@@ -57,13 +60,15 @@ const BASE_CLASS_NAME = "accordion-item";
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionItemOwnProps
+ *
  * @property {string} [itemKey]
  * Sets item key
  *
  * @typedef {PrimeProps & AccordionItemOwnProps} AccordionItemProps
+ *
  * @param {AccordionItemProps} props
  *
- * @return {React.ReactElement}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

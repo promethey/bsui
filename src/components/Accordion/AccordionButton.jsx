@@ -48,18 +48,22 @@ const defaultProps = {
 };
 
 /**
- * AccordionButton component
+ * Toggles the visibility of the
+ * associated accordion content.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
- * <Accordion.Button>.accordion-button</Accordion.Button>
+ * <Accordion.Button>
+ *  Button
+ * </Accordion.Button>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionButtonOwnProps
+ *
  * @property {boolean} [collapsed]
  * Sets collapsed style
  *
@@ -67,9 +71,10 @@ const defaultProps = {
  * Sets disabled style
  *
  * @typedef {PrimeProps & AccordionButtonOwnProps} AccordionButtonProps
+ *
  * @param {AccordionButtonProps} props
  *
- * @return {React.ReactElement}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

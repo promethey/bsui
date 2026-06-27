@@ -4,26 +4,34 @@ All notable changes to Bootstrap-UI will be documented in this file.
 
 The format is based on Keep a Changelog and Semantic Versioning.
 
----
-
 ## [Unreleased]
 
 ### Added
 
-- Initial Bootstrap-UI setup
-- Core React component architecture
-- JSDoc-based IntelliSense system (pure JavaScript)
-- Storybook documentation environment
-- Bootstrap 5 integration layer
+- Layout: Container, Grid, Row, Col
+- Forms: Control, Label, Check, Range, Select, FloatingLabel, InputGroup
+- Navigation: Nav, Navbar, Breadcrumb, Dropdown
+- Feedback: Alert, Badge, Progress, Spinner, Placeholder
+- Content: Accordion, Card, ListGroup
+- Overlay: Modal, Collapse, Carousel
+- Buttons: Button, ButtonGroup, CloseButton
+- Core: Prime
+- Storybook documentation
+- JSDoc-based IntelliSense system
+- Vitest test suite
+- GitHub Actions
+- GitHub Pages
 
 ### Changed
 
-- Standardized component API around `theme` prop system
+- Replaced `theme` and `variant` with `tone`
+- Standardized component architecture and public API
+- Unified JSDoc documentation across components
 
 ### Fixed
 
-- —
+-
 
 ### Removed
 
-- —
+-

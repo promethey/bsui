@@ -1,4 +1,3 @@
-import { Prime } from "components";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Collapse } from "components";
@@ -44,18 +43,17 @@ const defaultProps = {
 };
 
 /**
- * AccordionCollapse component
+ * Shows and hides the accordion
+ * content with a collapse animation.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
- *
- * @example
- * <Accordion.Collapse>.accordion-collapse</Accordion.Collapse>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionCollapseOwnProps
+ *
  * @property {boolean} [open]
  * Sets open state
  *
@@ -63,9 +61,10 @@ const defaultProps = {
  * Sets animation duration value
  *
  * @typedef {PrimeProps & AccordionCollapseOwnProps} AccordionCollapseProps
+ *
  * @param {AccordionCollapseProps} props
  *
- * @return {React.ReactElement}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

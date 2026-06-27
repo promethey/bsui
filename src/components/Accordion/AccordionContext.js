@@ -2,9 +2,18 @@ import { createContext, useContext } from "react";
 
 /**
  * @typedef {Object} AccordionContextValue
+ *
  * @property {React.Dispatch<React.SetStateAction<string | string[] | undefined>>} setActiveKey
+ * Updates the currently active
+ * accordion item or items.
+ *
  * @property {Array<string>|string|undefined} activeKey
- * @property {boolean} alwaysOpen - Make accordion items stay open when another item is opened
+ * Stores the key of the currently
+ * expanded item or items.
+ *
+ * @property {boolean} alwaysOpen
+ * Indicates whether multiple accordion items
+ * can remain expanded simultaneously.
  */
 
 /** @type {React.Context<AccordionContextValue | null>} */

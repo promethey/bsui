@@ -33,25 +33,30 @@ const defaultProps = {
 };
 
 /**
- * AccordionHeader component
+ * Wraps the accordion toggle
+ * button for a single section.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
- * <Accordion.Header>.accordion-header</Accordion.Header>
+ * <Accordion.Header>
+ *  Item 1
+ * </Accordion.Header>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionHeaderOwnProps
+ *
  * @property {boolean} [disabled]
  * Sets disabled state
  *
  * @typedef {PrimeProps & AccordionHeaderOwnProps} AccordionHeaderProps
+ *
  * @param {AccordionHeaderProps} props
  *
- * @return {React.ReactElement}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
