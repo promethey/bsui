@@ -3,21 +3,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/promethey/bsui/actions/workflows/ci.yml">
-    <img src="https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg" alt="CI">
-  </a>
-  <a href="https://github.com/promethey/bsui/actions/workflows/storybook.yml">
-    <img src="https://github.com/promethey/bsui/actions/workflows/storybook.yml/badge.svg" alt="Storybook Deploy">
-  </a>
-  <a href="LICENSE">
-    <img src="https://img.shields.io/github/license/promethey/bsui" alt="License">
-  </a>
-  <a href="https://github.com/promethey/bsui/stargazers">
-    <img src="https://img.shields.io/github/stars/promethey/bsui?style=social" alt="GitHub Stars">
-  </a>
-  <a href="https://promethey.github.io/bsui/">
-    <img src="https://img.shields.io/badge/Storybook-Live-FF4785?logo=storybook&logoColor=white" alt="Storybook">
-  </a>
+  <a href="https://github.com/promethey/bsui/actions/workflows/ci.yml"><img src="https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/promethey/bsui/actions/workflows/storybook.yml"><img src="https://github.com/promethey/bsui/actions/workflows/storybook.yml/badge.svg" alt="Storybook Deploy"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/promethey/bsui" alt="License"></a>
+  <a href="https://github.com/promethey/bsui/stargazers"><img src="https://img.shields.io/github/stars/promethey/bsui?style=social" alt="GitHub Stars"></a>
+  <a href="https://promethey.github.io/bsui/"><img src="https://img.shields.io/badge/Storybook-Live-FF4785?logo=storybook&logoColor=white" alt="Storybook"></a>
 </p>
 
 # BSUI (Bootstrap-UI)
