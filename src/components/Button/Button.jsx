@@ -29,22 +29,26 @@ const BUTTON_SIZES = ["sm", "lg"];
 
 const propTypes = {
   /**
-   * HTML element type used for rendering
+   * HTML element type used
+   * for rendering
    */
   as: PropTypes.elementType,
 
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([
     PropTypes.object,
@@ -168,20 +172,19 @@ const defaultProps = {
  * @property {boolean} [pressed]
  * Indicates the pressed state.
  *
- * @property {() => void} [onClick]
+ * @property {(event: React.MouseEvent<HTMLButtonElement>) => void} [onClick]
  * Click event handler.
  *
  * @typedef {ButtonOwnProps & PrimeProps} ButtonProps
+ *
  * @param {ButtonProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
- *
- * @type {React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLElement>>}
  */
-const Button = React.forwardRef((props, ref) => {
+function Button(props) {
   const {
     as: ComponentType = "button",
     style,
@@ -256,14 +259,14 @@ const Button = React.forwardRef((props, ref) => {
 
   return (
     <Prime
-      ref={ref}
       as={ComponentType}
       {...propertyList[/** @type {"button"|"input"|"a"} */ (ComponentType)]}>
       {children}
     </Prime>
   );
-});
+}
 
 Button.propTypes = propTypes;
+Button.defaultProps = defaultProps;
 
 export default Button;

@@ -6,17 +6,20 @@ const BASE_CLASS_NAME = "card-text";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
@@ -27,10 +30,11 @@ const defaultProps = {
 };
 
 /**
- * General text content within the card body.
+ * Renders the main text content inside
+ * the Card component.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/card/#titles-text-and-links}
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
@@ -38,9 +42,10 @@ const defaultProps = {
  * @typedef {object} CardTextOwnProps
  *
  * @typedef {CardTextOwnProps & PrimeProps} CardTextProps
+ *
  * @param {CardTextProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

@@ -6,17 +6,20 @@ const BASE_CLASS_NAME = "card-group";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
@@ -27,11 +30,11 @@ const defaultProps = {
 };
 
 /**
- * Render cards as a single, attached element
- * with equal width and height columns
+ * Groups multiple Card components
+ * into a unified layout container.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/card/#card-groups}
  *
  * @example
@@ -46,9 +49,10 @@ const defaultProps = {
  * @typedef {object} CardGroupOwnProps
  *
  * @typedef {CardGroupOwnProps & PrimeProps} CardGroupProps
+ *
  * @param {CardGroupProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

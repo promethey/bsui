@@ -6,22 +6,26 @@ const BASE_CLASS_NAME = "card-subtitle";
 
 const propTypes = {
   /**
-   * HTML element type used for rendering
+   * HTML element type used
+   * for rendering
    */
   as: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"]),
 
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
@@ -33,28 +37,30 @@ const defaultProps = {
 };
 
 /**
- * Secondary text element providing
- * additional context under the title.
+ * Renders a secondary text element
+ * inside the Card component.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/card/#titles-text-and-links}
  *
  * @example
  * <Card.Subtitle mb={2} text="muted">
- *  Card subtitle
+ *  ...
  * </Card.Subtitle>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardSubtitleOwnProps
+ *
  * @property {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [as]
  * HTML element type used for rendering.
  *
  * @typedef {CardSubtitleOwnProps & PrimeProps} CardSubtitleProps
+ *
  * @param {CardSubtitleProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

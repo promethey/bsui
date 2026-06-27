@@ -33,26 +33,28 @@ const defaultProps = {
 };
 
 /**
- * Displays a styled heading inside the alert component.
+ * Displays a styled heading inside
+ * the alert component.
  *
- * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/alerts/#additional-content|Official Documentation}
- *
- * @example
- * <AlertHeading>Title</AlertHeading>
+ * @see {@link https://getbootstrap.com/docs/5.1/components/alerts/#additional-content}
  *
  * @example
- * <AlertHeading as="h1">Title H1</AlertHeading>
+ * <Alert.Heading>
+ *  Well done!
+ * </Alert.Heading>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {Object} AlertHeadingOwnProps
- * @property {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [as] - HTML element type used for rendering
+ *
+ * @property {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [as]
+ * HTML element type used for rendering.
  *
  * @typedef {AlertHeadingOwnProps & PrimeProps} AlertHeadingProps
+ *
  * @param {AlertHeadingProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

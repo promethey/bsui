@@ -6,22 +6,26 @@ const BASE_CLASS_NAME = "card-link";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Sets navigation target (alias for href)
+   * Sets navigation target
+   * (alias for href)
    */
   to: PropTypes.string,
 };
@@ -32,10 +36,10 @@ const defaultProps = {
 };
 
 /**
- * Styled hyperlink adapted to card context.
+ * Renders a styled link inside the Card component.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/card/#titles-text-and-links}
  *
  * @example
@@ -44,13 +48,14 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardLinkOwnProps
+ *
  * @property {string} [to]
  * Sets navigation target (alias for href)
  *
  * @typedef {CardLinkOwnProps & PrimeProps} CardLinkProps
  * @param {CardLinkProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

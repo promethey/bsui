@@ -38,10 +38,10 @@ const defaultProps = {
 };
 
 /**
- * Displays media content inside the card layout.
+ * Displays an image inside the Card component.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/card/#images}
  *
  * @example
@@ -50,6 +50,7 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardImgOwnProps
+ *
  * @property {string} [src]
  * Sets image source URL.
  *
@@ -60,9 +61,10 @@ const defaultProps = {
  * Sets image placement inside card.
  *
  * @typedef {CardImgOwnProps & PrimeProps} CardImgProps
+ *
  * @param {CardImgProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

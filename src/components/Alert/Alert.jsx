@@ -44,7 +44,8 @@ const propTypes = {
   ]),
 
   /**
-   * Sets visual style
+   * Controls the visual appearance
+   * of the alert
    */
   tone: PropTypes.oneOf([
     "primary",
@@ -58,17 +59,18 @@ const propTypes = {
   ]),
 
   /**
-   * Enable dismiss (close) button
+   * Displays a close button
    */
   dismissible: PropTypes.bool,
 
   /**
-   * Enable animations
+   * Enables dismiss animations
    */
   animated: PropTypes.bool,
 
   /**
-   * Fired on dismiss action
+   * Invoked when the alert
+   * is dismissed
    */
   onClose: PropTypes.func,
 };
@@ -83,34 +85,43 @@ const defaultProps = {
 };
 
 /**
- * Provide contextual feedback messages for typical user
- * actions with the handful of available and flexible alert messages.
+ * Displays contextual feedback and status messages.
  *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.3/components/alerts}
  *
  * @example
- * <Alert>.alert .alert-primary</Alert>
+ * <Alert>
+ *  A simple primary alert—check it out!
+ * </Alert>
  *
  * @example
  * <Alert tone="secondary" mb={3} p={3}>
- *  .alert .alert-secondary .mb-3 .p-3
+ *  A simple secondary alert—check it out!
  * </Alert>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AlertOwnProps
- * @property {AlertThemes} [tone] - Sets visual style
- * @property {boolean} [dismissible] - Enable dismiss (close) button
- * @property {boolean} [animated] - Enable animations
- * @property {() => void} [onClose] - Fired on dismiss action
+ *
+ * @property {AlertThemes} [tone]
+ * Controls the visual appearance of the alert.
+ *
+ * @property {boolean} [dismissible]
+ * Displays a close button.
+ *
+ * @property {boolean} [animated]
+ * Enables dismiss animations.
+ *
+ * @property {(event: React.MouseEvent<HTMLButtonElement>) => void} [onClose]
+ * Invoked when the alert is dismissed.
  *
  * @typedef {AlertOwnProps & PrimeProps} AlertProps
+ *
  * @param {AlertProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -127,8 +138,6 @@ function Alert(props) {
     ...rest
   } = props;
 
-  const alertRef = useRef(null);
-
   const classes = cn(
     BASE_CLASS_NAME,
     {
@@ -142,12 +151,7 @@ function Alert(props) {
   );
 
   return (
-    <Prime
-      role="alert"
-      ref={alertRef}
-      className={classes}
-      style={style}
-      {...rest}>
+    <Prime role="alert" className={classes} style={style} {...rest}>
       {children}
       {dismissible && <CloseButton onClick={onClose} />}
     </Prime>
