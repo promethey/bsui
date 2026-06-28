@@ -8,6 +8,7 @@ The format is based on Keep a Changelog and Semantic Versioning.
 
 ### Added
 
+- Utils: bg, border, display, flex, float, font, opacity
 - Layout: Container, Grid, Row, Col
 - Forms: Control, Label, Check, Range, Select, FloatingLabel, InputGroup
 - Navigation: Nav, Navbar, Breadcrumb, Dropdown

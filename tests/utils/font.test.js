@@ -11,6 +11,15 @@ describe("font utility", () => {
     expect(fontResolver(false)).toBe("");
   });
 
+  test("applies fs from number", () => {
+    expect(fontResolver(1)).toBe("fs-1");
+    expect(fontResolver(2)).toBe("fs-2");
+    expect(fontResolver(3)).toBe("fs-3");
+    expect(fontResolver(4)).toBe("fs-4");
+    expect(fontResolver(5)).toBe("fs-5");
+    expect(fontResolver(6)).toBe("fs-6");
+  });
+
   test("applies fs from object", () => {
     expect(fontResolver({ fs: 1 })).toBe("fs-1");
     expect(fontResolver({ fs: 2 })).toBe("fs-2");

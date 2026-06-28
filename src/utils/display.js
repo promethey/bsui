@@ -2,10 +2,14 @@ import { classnames as cs } from "helpers";
 
 /**
  * @typedef {"none"|"inline"|"inline-block"|"block"|"grid"|"inline-grid"|"table"|"table-cell"|"table-row"|"flex"|"inline-flex"} DisplayValues
+ *
  * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} DisplayBreakpoints
+ *
+ * @typedef {Partial<Record<DisplayBreakpoints, DisplayValues>>} DisplayObject
  */
 
 const DISPLAY_CLASS_NAME = "d";
+
 const DISPLAY_PRINT_CLASS_NAME = "d-print";
 
 /** @type {Array<DisplayValues>} */
@@ -27,23 +31,43 @@ const DISPLAY_VALUES = [
 const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
 /**
- * @typedef {Partial<Record<DisplayBreakpoints, DisplayValues>>} DisplayObject
- */
-
-/**
- * Display function
+ * Resolves Bootstrap display utility classes.
+ *
+ * Supports both a single display value and
+ * responsive breakpoint-based configuration.
+ *
+ * Unsupported values and breakpoints are ignored.
  *
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/display/}
  *
  * @example
- * display("flex") // 'd-flex'
- * display("inline") // 'd-inline'
- * display({ xs: "inline", md: "flex" }) // 'd-inline d-md-flex'
+ * displayResolver("flex")
+ * // "d-flex"
  *
- * @param {DisplayObject|string} [value]
- * @param {string} prfx - default 'd'
+ * @example
+ * displayResolver("inline")
+ * // "d-inline"
+ *
+ * @example
+ * displayResolver({ xs: "inline", md: "flex" })
+ * // "d-inline d-md-flex"
+ *
+ * @example
+ * displayResolver({ xs: "flex", foo: "block", lg: "grid" })
+ * // "d-flex d-lg-grid"
+ *
+ * @param {DisplayObject|DisplayValues} [value]
+ * Display utility configuration.
+ *
+ * @param {string} [prfx="d"]
+ * Utility class prefix.
+ * Intended for internal reuse.
  *
  * @returns {string}
+ * Space-separated Bootstrap display utility classes.
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
  */
 export function displayResolver(value, prfx = DISPLAY_CLASS_NAME) {
   if (!value) return "";
@@ -62,31 +86,50 @@ export function displayResolver(value, prfx = DISPLAY_CLASS_NAME) {
     !Array.isArray(value) &&
     Object.keys(value).length > 0
   ) {
-    const displayFilterUnsupportedValues = Object.entries(value).filter(
+    const validEntries = Object.entries(value).filter(
       ([breakpoint, displayValue]) =>
         BREAKPOINTS.includes(/** @type {DisplayBreakpoints} */ (breakpoint)) &&
         DISPLAY_VALUES.includes(/** @type {DisplayValues} */ (displayValue)),
     );
 
-    return cs(prfx, Object.fromEntries(displayFilterUnsupportedValues));
+    return cs(prfx, Object.fromEntries(validEntries));
   }
 
   return "";
 }
 
 /**
- * Display print function
+ * Resolves Bootstrap print display utility classes.
  *
- * @see {@link https://getbootstrap.com/docs/5.1/utilities/display/}
+ * Behaves identically to {@link displayResolver},
+ * but generates `d-print-*` classes instead.
+ *
+ * @see {@link https://getbootstrap.com/docs/5.1/utilities/display/#display-in-print}
  *
  * @example
- * displayPrint("flex") // 'd-print-flex'
- * displayPrint("inline") // 'd-print-inline'
+ * displayPrintResolver("flex")
+ * // "d-print-flex"
  *
- * @param {DisplayObject|string} [value]
- * @param {string} prfx - default 'd-print'
+ * @example
+ * displayPrintResolver("inline")
+ * // "d-print-inline"
+ *
+ * @example
+ * displayPrintResolver({ xs: "none", lg: "block" })
+ * // "d-print-none d-print-lg-block"
+ *
+ * @param {DisplayObject|DisplayValues} [value]
+ * Print display utility configuration.
+ *
+ * @param {string} [prfx="d-print"]
+ * Utility class prefix.
+ * Intended for internal reuse.
  *
  * @returns {string}
+ * Space-separated Bootstrap print display utility classes.
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
  */
 export function displayPrintResolver(value, prfx = DISPLAY_PRINT_CLASS_NAME) {
   return displayResolver(value, prfx);

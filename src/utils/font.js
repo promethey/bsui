@@ -1,12 +1,27 @@
 import { classnames as cs } from "helpers";
 
 /**
- * @typedef {"fs"|"fw"|"fst"|"lg"|"monospace"} FontKey
+ * @typedef {"fs"|"fw"|"fst"|"lh"|"monospace"} FontKey
+ *
+ * @typedef {Object} FontObject
+ *
+ * @property {1|2|3|4|5|6} [fs]
+ * Sets font size.
+ *
+ * @property {"bold"|"bolder"|"normal"|"light"|"lighter"} [fw]
+ * Sets font weight.
+ *
+ * @property {"italic"|"normal"} [fst]
+ * Sets font style.
+ *
+ * @property {1|"sm"|"base"|"lg"} [lh]
+ * Sets line height.
+ *
+ * @property {boolean} [monospace]
+ * Enables monospace font.
  */
 
-/**
- * @type {Object<FontKey, string>}
- */
+/** @type {Object<FontKey, string>} */
 const FONT_MAP = {
   fs: "fs",
   fw: "fw",
@@ -15,9 +30,7 @@ const FONT_MAP = {
   monospace: "font-monospace",
 };
 
-/**
- * @type {Object<FontKey, string>}
- */
+/** @type {Object<FontKey, any[]>} */
 const FONT_VALUES_MAP = {
   fs: [1, 2, 3, 4, 5, 6],
   fw: ["bold", "bolder", "normal", "light", "lighter"],
@@ -27,20 +40,60 @@ const FONT_VALUES_MAP = {
 };
 
 /**
- * Font function
+ * Resolves Bootstrap font utility classes.
+ *
+ * Supports font size, weight, style,
+ * line height, and monospace utilities.
+ *
+ * Unsupported properties and values are ignored.
  *
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/text/}
  *
  * @example
- * font(3) // "fs-1"
- * font({ size: 3, weight: "bold" }) // 'fs-3 fw-bold'
+ * fontResolver(3)
+ * // "fs-3"
  *
- * @param {number|Object} value - default number is size
+ * @example
+ * fontResolver({ fs: 3 })
+ * // "fs-3"
  *
- * @return {string} classnames
+ * @example
+ * fontResolver({ fw: "bold", fst: "italic" })
+ * // "fw-bold fst-italic"
+ *
+ * @example
+ * fontResolver({ fs: 4, fw: "bold", lh: "lg" })
+ * // "fs-4 fw-bold lh-lg"
+ *
+ * @example
+ * fontResolver({
+ *   fs: 2,
+ *   fw: "bolder",
+ *   monospace: true,
+ * })
+ * // "fs-2 fw-bolder font-monospace"
+ *
+ * @example
+ * fontResolver({ fs: 3, foo: "bar" })
+ * // "fs-3"
+ *
+ * @param {FontObject} [value]
+ * Font utility configuration.
+ *
+ * @returns {string}
+ * Space-separated Bootstrap font utility classes.
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
  */
 export function fontResolver(value) {
   if (!value) return "";
+
+  // Number
+  if (typeof value === "number" && value) {
+    // example: return "fs-3"
+    return cs(FONT_MAP.fs, value);
+  }
 
   // Object
   if (
