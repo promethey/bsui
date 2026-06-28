@@ -82,9 +82,7 @@ export function Scrollable() {
           </Modal.Header>
 
           <Modal.Body>
-            <p key={index}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </Modal.Body>
 
           <Modal.Footer>
