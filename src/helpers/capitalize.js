@@ -1,11 +1,36 @@
 /**
  * Capitalizes the first character of a string.
  *
- * @param {string} [str=""] - String to transform.
- * @returns {string} Transformed string with an uppercase first character.
+ * Returns an empty string if the provided value
+ * is not a string.
+ *
+ * @example
+ * capitalize("hello")
+ * // "Hello"
+ *
+ * @example
+ * capitalize("bootstrap")
+ * // "Bootstrap"
+ *
+ * @example
+ * capitalize("")
+ * // ""
+ *
+ * @example
+ * capitalize(123)
+ * // ""
+ *
+ * @param {string} [text=""]
+ * String to capitalize.
+ *
+ * @returns {string}
+ * String with the first character converted to uppercase.
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
  */
-export function capitalize(str = "") {
-  if (typeof str !== "string") return "";
+export function capitalize(text = "") {
+  if (typeof text !== "string") return "";
 
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
