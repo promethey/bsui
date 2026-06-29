@@ -13,3 +13,6 @@ export { shadowResolver } from "./shadow";
 export { sizingResolver } from "./sizing";
 export { spacingResolver } from "./spacing";
 export { textResolver } from "./text";
+export { offsetResolver } from "./offset";
+export { columnsResolver } from "./columns";
+export { gutterResolver } from "./gutter";

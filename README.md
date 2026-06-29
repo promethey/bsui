@@ -157,11 +157,11 @@ The project follows a consistent architecture based on:
 | Carousel    | Content    | Experimental | 1.0.0 | 5.1.3          |
 | Check       | Form       | Stable       | 1.0.0 | 5.1.3          |
 | CloseButton | Control    | Stable       | 1.0.0 | 5.1.3          |
-| Col         | Layout     | Experimental | 1.0.0 | 5.1.3          |
+| Col         | Layout     | Stable       | 1.0.0 | 5.1.3          |
 | Collapse    | Content    | Stable       | 1.0.0 | 5.1.3          |
 | Container   | Layout     | Stable       | 1.0.0 | 5.1.3          |
 | Control     | Form       | Stable       | 1.0.0 | 5.1.3          |
-| Dropdown    | Overlay    | Experimental | 1.0.0 | 5.1.3          |
+| Dropdown    | Overlay    | Stable       | 1.0.0 | 5.1.3          |
 | InputGroup  | Form       | Stable       | 1.0.0 | 5.1.3          |
 | Label       | Form       | Stable       | 1.0.0 | 5.1.3          |
 | ListGroup   | Content    | Stable       | 1.0.0 | 5.1.3          |

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
-import { gutterResolver, columnsResolver } from "./utils";
+import { columnsResolver, gutterResolver } from "utils";
 
 const BASE_CLASS_NAME = "row";
 
@@ -82,21 +82,23 @@ const defaultProps = {
  * </Row>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
- * @typedef {import("./utils/columns").ColumnsObject} ColumnsObject
- * @typedef {import("./utils/gutter").GutterObject} GutterObject
+ * @typedef {import("../../utils/columns").ColumnsValues} ColumnsValues
+ * @typedef {import("../../utils/columns").ColumnsObject} ColumnsObject
+ * @typedef {import("../../utils/gutter").GutterValues} GutterValues
+ * @typedef {import("../../utils/gutter").GutterObject} GutterObject
  *
  * @typedef {object} RowOwnProps
  *
- * @property {1|2|3|4|5|6|7|8|9|10|11|12|"auto"|ColumnsObject} [cols]
+ * @property {ColumnsValues|ColumnsObject} [cols]
  * Defines the number of columns in the row layout.
  *
- * @property {0|1|2|3|4|5|GutterObject} [g]
+ * @property {GutterValues|GutterObject} [g]
  * Controls the gap between columns (both axes).
  *
- * @property {0|1|2|3|4|5|GutterObject} [gx]
+ * @property {GutterValues|GutterObject} [gx]
  * Controls horizontal gap between columns.
  *
- * @property {0|1|2|3|4|5|GutterObject} [gy]
+ * @property {GutterValues|GutterObject} [gy]
  * Controls vertical gap between columns.
  *
  * @typedef {RowOwnProps & PrimeProps} RowProps
