@@ -70,15 +70,6 @@ const defaultProps = {
  *      Active
  *    </Nav.Link>
  *  </Nav.Item>
- *  <Nav.Item>
- *    <Nav.Link to="/link">
- *      Link
- *    </Nav.Link>
- *  </Nav.Item>
- *  <Nav.Item>
- *    <Nav.Link to="/disabled" disabled>
- *      Disabled
- *    </Nav.Link>
  *  </Nav.Item>
  * </Nav>
  *

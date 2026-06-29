@@ -780,7 +780,7 @@ const propTypes = {
  * @property {"auto"|"hidden"|"visible"|"scroll"} [overflow]
  * Controls overflow utility behavior.
  *
- * @param {PrimeProps} props
+ * @param {PrimeProps & Record<string, any>} props
  *
  * @return {React.JSX.Element}
  *

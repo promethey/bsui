@@ -166,7 +166,7 @@ The project follows a consistent architecture based on:
 | Label       | Form       | Stable       | 1.0.0 | 5.1.3          |
 | ListGroup   | Content    | Experimental | 1.0.0 | 5.1.3          |
 | Modal       | Content    | Stable       | 1.0.0 | 5.1.3          |
-| Nav         | Navigation | Experimental | 1.0.0 | 5.1.3          |
+| Nav         | Navigation | Stable       | 1.0.0 | 5.1.3          |
 | Navbar      | Navigation | Experimental | 1.0.0 | 5.1.3          |
 | Placeholder | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 | Prime       | Core       | Stable       | 1.0.0 | 5.1.3          |
