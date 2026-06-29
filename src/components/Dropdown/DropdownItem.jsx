@@ -76,7 +76,7 @@ const defaultProps = {
  * @property {boolean} [disabled=false]
  * Disables interaction and applies disabled styles.
  *
- * @property {React.MouseEventHandler<HTMLElement>} [onClick]
+ * @property {(event: React.MouseEvent<HTMLAnchorElement>) => void} [onClick]
  * Callback fired when the element is clicked.
  *
  * @typedef {PrimeProps & DropdownItemOwnProps} DropdownItemProps
@@ -108,6 +108,17 @@ function DropdownItem(props) {
     className,
   );
 
+  /**
+   * @param {React.MouseEvent<HTMLAnchorElement>} event
+   */
+  const handleClick = (event) => {
+    event.preventDefault();
+
+    if (onClick) {
+      onClick(event);
+    }
+  };
+
   return (
     <li>
       <Prime
@@ -115,10 +126,7 @@ function DropdownItem(props) {
         href={to}
         className={classes}
         style={style}
-        onClick={(event) => {
-          event.preventDefault();
-          // onClick(event);
-        }}
+        onClick={handleClick}
         {...rest}>
         {children}
       </Prime>
