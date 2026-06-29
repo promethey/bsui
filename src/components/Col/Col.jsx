@@ -148,9 +148,6 @@ const defaultProps = {
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
- *
- * @todo
- * - add support offset classnames
  */
 function Col(props) {
   const {
