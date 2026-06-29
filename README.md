@@ -172,7 +172,7 @@ The project follows a consistent architecture based on:
 | Prime       | Core       | Stable       | 1.0.0 | 5.1.3          |
 | Progress    | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 | Range       | Form       | Stable       | 1.0.0 | 5.1.3          |
-| Row         | Layout     | Experimental | 1.0.0 | 5.1.3          |
+| Row         | Layout     | Stable       | 1.0.0 | 5.1.3          |
 | Select      | Form       | Stable       | 1.0.0 | 5.1.3          |
 | Spinner     | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 

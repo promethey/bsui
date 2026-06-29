@@ -7,37 +7,44 @@ const BASE_CLASS_NAME = "row";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Defines the number of columns in the row layout
+   * Defines the number of columns
+   * in the row layout
    */
   cols: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, "auto"]),
 
   /**
-   * Controls the gap between columns (both axes)
+   * Controls the gap between
+   * columns (both axes)
    */
   g: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
 
   /**
-   * Controls horizontal gap between columns
+   * Controls horizontal gap
+   * between columns
    */
   gx: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
 
   /**
-   * Controls vertical gap between columns
+   * Controls vertical gap
+   * between columns
    */
   gy: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
 };
@@ -57,7 +64,6 @@ const defaultProps = {
  * flex/grid row used to structure columns
  * in a responsive grid system.
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/layout/grid/}
  *
  * @example
