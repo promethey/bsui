@@ -1,4 +1,4 @@
-import PropTypes, { number } from "prop-types";
+import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
 import ListGroupItem from "./ListGroupItem";

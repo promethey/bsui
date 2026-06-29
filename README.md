@@ -164,7 +164,7 @@ The project follows a consistent architecture based on:
 | Dropdown    | Overlay    | Experimental | 1.0.0 | 5.1.3          |
 | InputGroup  | Form       | Stable       | 1.0.0 | 5.1.3          |
 | Label       | Form       | Stable       | 1.0.0 | 5.1.3          |
-| ListGroup   | Content    | Experimental | 1.0.0 | 5.1.3          |
+| ListGroup   | Content    | Stable       | 1.0.0 | 5.1.3          |
 | Modal       | Content    | Stable       | 1.0.0 | 5.1.3          |
 | Nav         | Navigation | Stable       | 1.0.0 | 5.1.3          |
 | Navbar      | Navigation | Stable       | 1.0.0 | 5.1.3          |
