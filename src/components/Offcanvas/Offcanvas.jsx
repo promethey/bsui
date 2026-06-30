@@ -1,0 +1,200 @@
+import { useRef } from "react";
+import PropTypes from "prop-types";
+import cn from "classnames";
+import { classnames as cs } from "helpers";
+import { Prime } from "components";
+import OffcanvasHeader from "./OffcanvasHeader";
+import OffcanvasTitle from "./OffcanvasTitle";
+import OffcanvasBody from "./OffcanvasBody";
+import OffcanvasBackdrop from "./OffcanvasBackdrop";
+import { OffcanvasContext } from "./OffcanvasContext";
+import { Transition } from "react-transition-group";
+import { useOffcanvasBodyOpen } from "./useOffcanvasBodyOpen";
+import { useEscapePress } from "./useEscapePress";
+
+const BASE_CLASS_NAME = "offcanvas";
+
+const propTypes = {
+  /**
+   * Inline styles applied
+   * to the root element
+   */
+  style: PropTypes.shape({}),
+
+  /**
+   * Content rendered inside
+   * the component
+   */
+  children: PropTypes.node.isRequired,
+
+  /**
+   * Additional class names applied
+   * to the root element
+   */
+  className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+
+  /**
+   * Controls component visibility state
+   */
+  open: PropTypes.bool,
+
+  /**
+   * Defines the placement of the component
+   * relative to the viewport
+   */
+  placement: PropTypes.oneOf(["start", "end", "top", "bottom"]),
+
+  /**
+   * Toggles rendering of a backdrop
+   * layer behind the component
+   */
+  backdrop: PropTypes.bool,
+
+  /**
+   * Enables scrolling of background content
+   * while the component is open
+   */
+  scrollable: PropTypes.bool,
+
+  /**
+   * Enables closing via Escape
+   * key interaction
+   */
+  keyboard: PropTypes.bool,
+
+  /**
+   * Transition duration
+   * in milliseconds
+   */
+  timeout: PropTypes.number,
+
+  /**
+   * Callback invoked when the component
+   * requests to be closed
+   */
+  onHide: PropTypes.func,
+};
+
+const defaultProps = {
+  style: null,
+  className: null,
+  open: false,
+  placement: "start",
+  backdrop: true,
+  scrollable: false,
+  keyboard: true,
+  timeout: 300,
+  onHide: null,
+};
+
+/**
+ * Sliding overlay panel anchored to the viewport
+ * edge for secondary content and actions.
+ *
+ * @component
+ *
+ * @typedef {object} OffcanvasOwnProps
+ *
+ * @property {boolean} [open=false]
+ * Controls component visibility state.
+ *
+ * @property {"start"|"end"|"top"|"bottom"} [placement="start"]
+ * Defines the placement of the component relative to the viewport.
+ *
+ * @property {boolean} [backdrop=true]
+ * Toggles rendering of a backdrop layer behind the component.
+ *
+ * @property {boolean} [scrollable=false]
+ * Enables scrolling of background content while the component is open.
+ *
+ * @property {boolean} [keyboard=false]
+ * Enables closing via Escape key interaction.
+ *
+ * @property {number} [timeout=300]
+ * Transition duration in milliseconds.
+ *
+ * @property {(event?: React.SyntheticEvent|KeyboardEvent, closeType?: string) => void} [onHide]
+ * Callback invoked when the component requests to be closed.
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps & OffcanvasOwnProps} OffcanvasProps
+ *
+ * @param {OffcanvasProps} props
+ * @return {React.JSX.Element}
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
+ */
+function Offcanvas(props) {
+  const {
+    style,
+    children,
+    className,
+    open = false,
+    placement = "start",
+    backdrop = true,
+    scrollable = false,
+    keyboard = true,
+    timeout = 300,
+    onHide,
+    ...rest
+  } = props;
+
+  const nodeRef = useRef(null);
+
+  if (typeof backdrop === "boolean" && backdrop && !scrollable) {
+    useOffcanvasBodyOpen(open);
+  }
+
+  useEscapePress(open, keyboard, onHide);
+
+  return (
+    <Transition
+      nodeRef={nodeRef}
+      in={open}
+      timeout={timeout}
+      mountOnEnter
+      unmountOnExit>
+      {(state) => (
+        <OffcanvasContext.Provider value={{ onHide }}>
+          <Prime
+            ref={nodeRef}
+            tabIndex={-1}
+            className={cn(
+              BASE_CLASS_NAME,
+              {
+                [cs(BASE_CLASS_NAME, placement)]:
+                  typeof placement === "string" &&
+                  ["start", "end", "top", "bottom"].includes(placement),
+                show: state === "entering" || state === "entered",
+              },
+              className,
+            )}
+            style={{
+              visibility: state === "exited" ? "hidden" : "visible",
+              ...style,
+            }}
+            {...rest}>
+            {children}
+            {backdrop && (
+              <OffcanvasBackdrop
+                state={state}
+                onClick={(event) => {
+                  onHide?.(event, "backdrop");
+                }}
+              />
+            )}
+          </Prime>
+        </OffcanvasContext.Provider>
+      )}
+    </Transition>
+  );
+}
+
+Offcanvas.propTypes = propTypes;
+Offcanvas.defaultProps = defaultProps;
+
+Offcanvas.Header = OffcanvasHeader;
+Offcanvas.Title = OffcanvasTitle;
+Offcanvas.Body = OffcanvasBody;
+
+export default Offcanvas;

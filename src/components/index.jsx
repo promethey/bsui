@@ -28,3 +28,4 @@ export { default as Range } from "./Range";
 export { default as InputGroup } from "./InputGroup";
 export { default as FloatingLabel } from "./FloatingLabel";
 export { default as Label } from "./Label";
+export { default as Offcanvas } from "./Offcanvas";
