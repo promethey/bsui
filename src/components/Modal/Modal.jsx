@@ -137,6 +137,7 @@ const defaultProps = {
  * @component
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/modal/}
+ *
  * @see {@link https://reactcommunity.org/react-transition-group/transition}
  *
  * @typedef {object} ModalOwnProps

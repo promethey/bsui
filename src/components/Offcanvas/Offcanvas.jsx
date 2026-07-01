@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { classnames as cs } from "helpers";
@@ -73,6 +73,46 @@ const propTypes = {
    * requests to be closed
    */
   onHide: PropTypes.func,
+
+  /**
+   * Custom handler to detect transition end instead of timeout
+   */
+  addEndListener: PropTypes.func,
+
+  /**
+   * Called before enter transition starts
+   */
+  onEnter: PropTypes.func,
+
+  /**
+   * Called when enter transition
+   * is starting
+   */
+  onEntering: PropTypes.func,
+
+  /**
+   * Called after enter
+   * transition finishes
+   */
+  onEntered: PropTypes.func,
+
+  /**
+   * Called before exit
+   * transition starts
+   */
+  onExit: PropTypes.func,
+
+  /**
+   * Called when exit
+   * transition is running
+   */
+  onExiting: PropTypes.func,
+
+  /**
+   * Called after exit
+   * transition finishes
+   */
+  onExited: PropTypes.func,
 };
 
 const defaultProps = {
@@ -85,13 +125,37 @@ const defaultProps = {
   keyboard: true,
   timeout: 300,
   onHide: null,
+  addEndListener: null,
+  onEnter: null,
+  onEntering: null,
+  onEntered: null,
+  onExit: null,
+  onExiting: null,
+  onExited: null,
 };
+
+/** @typedef {(node: HTMLElement, isAppearing: boolean) => void} enteringCallback */
+/** @typedef {(node: HTMLElement) => void} exitingCallback */
 
 /**
  * Sliding overlay panel anchored to the viewport
  * edge for secondary content and actions.
  *
  * @component
+ *
+ * @see {@link https://getbootstrap.com/docs/5.1/components/offcanvas/}
+ *
+ * @example
+ * <Offcanvas>
+ *  <Offcanvas.Header>
+ *    <Offcanvas.Title>Title</Offcanvas.Title>
+ *  </Offcanvas.Header>
+ *  <Offcanvas.Body>
+ *    Content for the offcanvas goes here.
+ *    You can place just about any Bootstrap
+ *    component or custom elements here.
+ *  </Offcanvas.Body>
+ * </Offcanvas>
  *
  * @typedef {object} OffcanvasOwnProps
  *
@@ -116,9 +180,31 @@ const defaultProps = {
  * @property {(event?: React.SyntheticEvent|KeyboardEvent, closeType?: string) => void} [onHide]
  * Callback invoked when the component requests to be closed.
  *
+ * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
+ * Custom handler to detect transition end instead of timeout.
+ *
+ * @property {enteringCallback} [onEnter]
+ * Called before enter transition starts.
+ *
+ * @property {enteringCallback} [onEntering]
+ * Called when enter transition is starting.
+ *
+ * @property {enteringCallback} [onEntered]
+ * Called after enter transition finishes.
+ *
+ * @property {exitingCallback} [onExit]
+ * Called before exit transition starts.
+ *
+ * @property {exitingCallback} [onExiting]
+ * Called when exit transition is running.
+ *
+ * @property {exitingCallback} [onExited]
+ * Called after exit transition finishes.
+ *
  * @typedef {import("../Prime/Prime").PrimeProps & OffcanvasOwnProps} OffcanvasProps
  *
  * @param {OffcanvasProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
@@ -136,6 +222,13 @@ function Offcanvas(props) {
     keyboard = true,
     timeout = 300,
     onHide,
+    addEndListener,
+    onEnter,
+    onEntering,
+    onEntered,
+    onExit,
+    onExiting,
+    onExited,
     ...rest
   } = props;
 
@@ -147,11 +240,68 @@ function Offcanvas(props) {
 
   useEscapePress(open, keyboard, onHide);
 
+  /** @type {enteringCallback} */
+  const handleEnter = useCallback(
+    (node, isAppearing) => {
+      onEnter?.(node, isAppearing);
+    },
+    [onEnter],
+  );
+
+  /** @type {enteringCallback} */
+  const handleEntering = useCallback(
+    (node, isAppearing) => {
+      onEntering?.(node, isAppearing);
+    },
+    [onEntering],
+  );
+
+  /** @type {enteringCallback} */
+  const handleEntered = useCallback(
+    (node, isAppearing) => {
+      // @ts-ignore
+      nodeRef.current?.focus();
+      onEntered?.(node, isAppearing);
+    },
+    [onEntered],
+  );
+
+  /** @type {exitingCallback} */
+  const handleExit = useCallback(
+    (node) => {
+      onExit?.(node);
+    },
+    [onExit],
+  );
+
+  /** @type {exitingCallback} */
+  const handleExiting = useCallback(
+    (node) => {
+      onExiting?.(node);
+    },
+    [onExiting],
+  );
+
+  /** @type {exitingCallback} */
+  const handleExited = useCallback(
+    (node) => {
+      onExited?.(node);
+    },
+    [onExited],
+  );
+
   return (
     <Transition
       nodeRef={nodeRef}
       in={open}
       timeout={timeout}
+      addEndListener={addEndListener}
+      onEnter={handleEnter}
+      onEntering={handleEntering}
+      onEntered={handleEntered}
+      onExit={handleExit}
+      onExiting={handleExiting}
+      onExited={handleExited}
       mountOnEnter
       unmountOnExit>
       {(state) => (

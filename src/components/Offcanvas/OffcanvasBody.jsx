@@ -35,11 +35,19 @@ const defaultProps = {
  *
  * @component
  *
+ * @example
+ * <Offcanvas.Body>
+ *  Content for the offcanvas goes here.
+ *  You can place just about any Bootstrap
+ *  component or custom elements here.
+ * </Offcanvas.Body>
+ *
  * @typedef {object} OffcanvasBodyOwnProps
  *
  * @typedef {import("../Prime/Prime").PrimeProps & OffcanvasBodyOwnProps} OffcanvasBodyProps
  *
  * @param {OffcanvasBodyProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>

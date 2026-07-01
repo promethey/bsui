@@ -43,6 +43,11 @@ const defaultProps = {
  *
  * @component
  *
+ * @example
+ * <Offcanvas.Header closeButton>
+ *  <Offcanvas.Title>Title</Offcanvas.Title>
+ * </Offcanvas.Header>
+ *
  * @typedef {object} OffcanvasHeaderOwnProps
  *
  * @property {boolean} [closeButton=false]
@@ -51,6 +56,7 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps & OffcanvasHeaderOwnProps} OffcanvasHeaderProps
  *
  * @param {OffcanvasHeaderProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
