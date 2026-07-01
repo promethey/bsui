@@ -29,8 +29,22 @@ import { Prime } from "components";
 const BASE_CLASS_NAME = "";
 
 const propTypes = {
+  /**
+   * Inline styles applied
+   * to the root element
+   */
   style: PropTypes.shape({}),
+
+  /**
+   * Content rendered inside
+   * the component
+   */
   children: PropTypes.node.isRequired,
+
+  /**
+   * Additional class names applied
+   * to the root element
+   */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
@@ -49,9 +63,10 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps & ComponentOwnProps} ComponentProps
  *
  * @param {ComponentProps} props
+ *
  * @return {React.JSX.Element}
  *
- * @author Lastname Firstname [github username] <example@email.com>
+ * @author Lastname Firstname [github_username] <john_doe@gmail.com>
  * @version 1.0.0
  */
 function Component(props) {

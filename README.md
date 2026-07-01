@@ -169,6 +169,7 @@ The project follows a consistent architecture based on:
 | Nav         | Navigation | Stable       | 1.0.0 | 5.1.3          |
 | Navbar      | Navigation | Stable       | 1.0.0 | 5.1.3          |
 | Offcanvas   | Overlay    | Experimental | 1.0.0 | 5.1.3          |
+| Pagination  | Navigation | Experimental | 1.0.0 | 5.1.3          |
 | Placeholder | Feedback   | Stable       | 1.0.0 | 5.1.3          |
 | Prime       | Core       | Stable       | 1.0.0 | 5.1.3          |
 | Progress    | Feedback   | Stable       | 1.0.0 | 5.1.3          |
