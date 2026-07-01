@@ -21,7 +21,7 @@ export default {
 export function Default() {
   const [show, setShow] = useState(false);
 
-  const [placement, setPlacement] = useState("top");
+  const [placement, setPlacement] = useState("start");
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -41,6 +41,7 @@ export function Default() {
       <div>
         <Label>Select placement:</Label>
         <Select
+          defaultValue="start"
           onChange={(event) => setPlacement(event.target.value)}
           style={{ maxWidth: "150px" }}>
           <Select.Option value="start">Start</Select.Option>
