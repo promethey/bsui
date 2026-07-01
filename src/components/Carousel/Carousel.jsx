@@ -80,6 +80,7 @@ const defaultProps = {
  * @component
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/carousel/}
+ *
  * @see {@link https://www.embla-carousel.com/}
  *
  * @example
@@ -115,6 +116,7 @@ const defaultProps = {
  * Enables fade slides animation
  *
  * @typedef {import("../Prime/Prime").PrimeProps & CarouselOwnProps} CarouselProps
+ *
  * @param {CarouselProps} props
  *
  * @return {React.JSX.Element}

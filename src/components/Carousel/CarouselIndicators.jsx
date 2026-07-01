@@ -23,20 +23,21 @@ const defaultProps = {
 };
 
 /**
- * Renders slide indicators for direct carousel navigation.
+ * Renders slide indicators for direct
+ * carousel navigation.
  *
  * @component
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/carousel/}
  *
  * @example
- * <Carousel indicators>
- *  ...
- * </Carousel>
+ * <Carousel.Indicators />
  *
  * @typedef {object} CarouselIndicatorsOwnProps
+ * No public props.
  *
  * @typedef {import("../Prime/Prime").PrimeProps & CarouselIndicatorsOwnProps} CarouselIndicatorsProps
+ *
  * @param {CarouselIndicatorsProps} props
  *
  * @return {React.JSX.Element}
@@ -44,7 +45,7 @@ const defaultProps = {
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
-function CarouselControl(props) {
+function CarouselIndicators(props) {
   const { style, className, ...rest } = props;
 
   const { slidesCount, slideActive, handleScrollTo } = useCarouselContext();
@@ -55,7 +56,7 @@ function CarouselControl(props) {
     <Prime className={classes} style={style} {...rest}>
       {[...Array(slidesCount)].map((_, index) => (
         <button
-          key={_}
+          key={index}
           type="button"
           onClick={() => handleScrollTo?.(index, false)}
           className={cn({ active: index === slideActive })}
@@ -66,7 +67,7 @@ function CarouselControl(props) {
   );
 }
 
-CarouselControl.propTypes = propTypes;
-CarouselControl.defaultProps = defaultProps;
+CarouselIndicators.propTypes = propTypes;
+CarouselIndicators.defaultProps = defaultProps;
 
-export default CarouselControl;
+export default CarouselIndicators;

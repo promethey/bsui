@@ -145,38 +145,38 @@ The project follows a consistent architecture based on:
 
 ### Compatibility Matrix
 
-| Component   | Category   | Status       | Ver.  | Bootstrap Ver. |
-| ----------- | ---------- | ------------ | ----- | -------------- |
-| Accordion   | Content    | Stable       | 1.0.0 | 5.1.3          |
-| Alert       | Feedback   | Stable       | 1.0.0 | 5.1.3          |
-| Badge       | Feedback   | Stable       | 1.0.0 | 5.1.3          |
-| Breadcrumb  | Navigation | Stable       | 1.0.0 | 5.1.3          |
-| Button      | Control    | Stable       | 1.0.0 | 5.1.3          |
-| ButtonGroup | Control    | Stable       | 1.0.0 | 5.1.3          |
-| Card        | Content    | Stable       | 1.0.0 | 5.1.3          |
-| Carousel    | Content    | Experimental | 1.0.0 | 5.1.3          |
-| Check       | Form       | Stable       | 1.0.0 | 5.1.3          |
-| CloseButton | Control    | Stable       | 1.0.0 | 5.1.3          |
-| Col         | Layout     | Stable       | 1.0.0 | 5.1.3          |
-| Collapse    | Content    | Stable       | 1.0.0 | 5.1.3          |
-| Container   | Layout     | Stable       | 1.0.0 | 5.1.3          |
-| Control     | Form       | Stable       | 1.0.0 | 5.1.3          |
-| Dropdown    | Overlay    | Stable       | 1.0.0 | 5.1.3          |
-| InputGroup  | Form       | Stable       | 1.0.0 | 5.1.3          |
-| Label       | Form       | Stable       | 1.0.0 | 5.1.3          |
-| ListGroup   | Content    | Stable       | 1.0.0 | 5.1.3          |
-| Modal       | Overlay    | Stable       | 1.0.0 | 5.1.3          |
-| Nav         | Navigation | Stable       | 1.0.0 | 5.1.3          |
-| Navbar      | Navigation | Stable       | 1.0.0 | 5.1.3          |
-| Offcanvas   | Overlay    | Stable       | 1.0.0 | 5.1.3          |
-| Pagination  | Navigation | Stable       | 1.0.0 | 5.1.3          |
-| Placeholder | Feedback   | Stable       | 1.0.0 | 5.1.3          |
-| Prime       | Core       | Stable       | 1.0.0 | 5.1.3          |
-| Progress    | Feedback   | Stable       | 1.0.0 | 5.1.3          |
-| Range       | Form       | Stable       | 1.0.0 | 5.1.3          |
-| Row         | Layout     | Stable       | 1.0.0 | 5.1.3          |
-| Select      | Form       | Stable       | 1.0.0 | 5.1.3          |
-| Spinner     | Feedback   | Stable       | 1.0.0 | 5.1.3          |
+| Component   | Category   | Status | Ver.  | Bootstrap Ver. |
+| ----------- | ---------- | ------ | ----- | -------------- |
+| Accordion   | Content    | Stable | 1.0.0 | 5.1.3          |
+| Alert       | Feedback   | Stable | 1.0.0 | 5.1.3          |
+| Badge       | Feedback   | Stable | 1.0.0 | 5.1.3          |
+| Breadcrumb  | Navigation | Stable | 1.0.0 | 5.1.3          |
+| Button      | Control    | Stable | 1.0.0 | 5.1.3          |
+| ButtonGroup | Control    | Stable | 1.0.0 | 5.1.3          |
+| Card        | Content    | Stable | 1.0.0 | 5.1.3          |
+| Carousel    | Content    | Stable | 1.0.0 | 5.1.3          |
+| Check       | Form       | Stable | 1.0.0 | 5.1.3          |
+| CloseButton | Control    | Stable | 1.0.0 | 5.1.3          |
+| Col         | Layout     | Stable | 1.0.0 | 5.1.3          |
+| Collapse    | Content    | Stable | 1.0.0 | 5.1.3          |
+| Container   | Layout     | Stable | 1.0.0 | 5.1.3          |
+| Control     | Form       | Stable | 1.0.0 | 5.1.3          |
+| Dropdown    | Overlay    | Stable | 1.0.0 | 5.1.3          |
+| InputGroup  | Form       | Stable | 1.0.0 | 5.1.3          |
+| Label       | Form       | Stable | 1.0.0 | 5.1.3          |
+| ListGroup   | Content    | Stable | 1.0.0 | 5.1.3          |
+| Modal       | Overlay    | Stable | 1.0.0 | 5.1.3          |
+| Nav         | Navigation | Stable | 1.0.0 | 5.1.3          |
+| Navbar      | Navigation | Stable | 1.0.0 | 5.1.3          |
+| Offcanvas   | Overlay    | Stable | 1.0.0 | 5.1.3          |
+| Pagination  | Navigation | Stable | 1.0.0 | 5.1.3          |
+| Placeholder | Feedback   | Stable | 1.0.0 | 5.1.3          |
+| Prime       | Core       | Stable | 1.0.0 | 5.1.3          |
+| Progress    | Feedback   | Stable | 1.0.0 | 5.1.3          |
+| Range       | Form       | Stable | 1.0.0 | 5.1.3          |
+| Row         | Layout     | Stable | 1.0.0 | 5.1.3          |
+| Select      | Form       | Stable | 1.0.0 | 5.1.3          |
+| Spinner     | Feedback   | Stable | 1.0.0 | 5.1.3          |
 
 ## Build
 

@@ -37,9 +37,11 @@ const defaultProps = {
  * </Carousel.Item>
  *
  * @typedef {object} CarouselItemOwnProps
+ *
  * @property {number} index
  *
  * @typedef {import("../Prime/Prime").PrimeProps & CarouselItemOwnProps} CarouselItemProps
+ *
  * @param {CarouselItemProps} props
  *
  * @return {React.JSX.Element}
