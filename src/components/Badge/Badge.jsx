@@ -36,6 +36,12 @@ const defaultProps = {
  *
  * @component
  *
+ * @example
+ * <Badge bg="secondary">New</Badge>
+ *
+ * @example
+ * <Badge bg="primary" text="light">Primary</Badge>
+ *
  * @see {@link https://getbootstrap.com/docs/5.1/components/badge/}
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps

@@ -16,7 +16,7 @@ Modern Bootstrap component system for React applications.
 
 | Library ver. | Bootstrap Ver. | Status  |
 | ------------ | -------------- | ------- |
-| 1.X.X        | 5.1.X          | Current |
+| 1.X.X        | 5.1.X          | Latest  |
 | 2.X.X        | 5.2.X          | Planned |
 
 ## Installation
@@ -91,6 +91,36 @@ Every component is built on top of `Prime`, so all utility props are available e
 
 ### Rich Documentation
 
+```jsx
+/**
+ * Displays small contextual labels,
+ * counters, or status indicators.
+ *
+ * @component
+ *
+ * @example
+ * <Badge bg="secondary">New</Badge>
+ *
+ * @example
+ * <Badge bg="primary" text="light">Primary</Badge>
+ *
+ * @see {@link https://getbootstrap.com/docs/5.1/components/badge/}
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
+ * @typedef {object} BadgeOwnProps
+ *
+ * @typedef {BadgeOwnProps & PrimeProps} BadgeProps
+ *
+ * @param {BadgeProps} props
+ *
+ * @return {React.JSX.Element}
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
+ */
+```
+
 Every public component includes:
 
 - JSDoc descriptions
@@ -105,9 +135,9 @@ Public APIs are validated with PropTypes, providing runtime checks even after th
 
 ### Built on Proven Libraries
 
-- React Transition Group — animations and transitions
-- Embla Carousel — carousel engine
-- Floating UI — dropdown, tooltips, popovers, and positioning
+- [React Transition Group](https://reactcommunity.org/react-transition-group/) — animations and transitions
+- [Embla Carousel](https://www.embla-carousel.com/) — carousel engine
+- [Floating UI](https://floating-ui.com/) — dropdowns, tooltips, popovers, and positioning
 
 ### Storybook & Testing
 
@@ -152,38 +182,39 @@ The project follows a consistent architecture based on:
 
 ### Compatibility Matrix
 
-| Component   | Category   | Status |
-| ----------- | ---------- | ------ |
-| Accordion   | Content    | Stable |
-| Alert       | Feedback   | Stable |
-| Badge       | Feedback   | Stable |
-| Breadcrumb  | Navigation | Stable |
-| Button      | Control    | Stable |
-| ButtonGroup | Control    | Stable |
-| Card        | Content    | Stable |
-| Carousel    | Content    | Stable |
-| Check       | Form       | Stable |
-| CloseButton | Control    | Stable |
-| Col         | Layout     | Stable |
-| Collapse    | Content    | Stable |
-| Container   | Layout     | Stable |
-| Control     | Form       | Stable |
-| Dropdown    | Overlay    | Stable |
-| InputGroup  | Form       | Stable |
-| Label       | Form       | Stable |
-| ListGroup   | Content    | Stable |
-| Modal       | Overlay    | Stable |
-| Nav         | Navigation | Stable |
-| Navbar      | Navigation | Stable |
-| Offcanvas   | Overlay    | Stable |
-| Pagination  | Navigation | Stable |
-| Placeholder | Feedback   | Stable |
-| Prime       | Core       | Stable |
-| Progress    | Feedback   | Stable |
-| Range       | Form       | Stable |
-| Row         | Layout     | Stable |
-| Select      | Form       | Stable |
-| Spinner     | Feedback   | Stable |
+| Component   | Category   | Status  |
+| ----------- | ---------- | ------- |
+| Accordion   | Content    | Stable  |
+| Alert       | Feedback   | Stable  |
+| Badge       | Feedback   | Stable  |
+| Breadcrumb  | Navigation | Stable  |
+| Button      | Control    | Stable  |
+| ButtonGroup | Control    | Stable  |
+| Card        | Content    | Stable  |
+| Carousel    | Content    | Stable  |
+| Check       | Form       | Stable  |
+| CloseButton | Control    | Stable  |
+| Col         | Layout     | Stable  |
+| Collapse    | Content    | Stable  |
+| Container   | Layout     | Stable  |
+| Control     | Form       | Stable  |
+| Dropdown    | Overlay    | Stable  |
+| InputGroup  | Form       | Stable  |
+| Label       | Form       | Stable  |
+| ListGroup   | Content    | Stable  |
+| Modal       | Overlay    | Stable  |
+| Nav         | Navigation | Stable  |
+| Navbar      | Navigation | Stable  |
+| Offcanvas   | Overlay    | Stable  |
+| Pagination  | Navigation | Stable  |
+| Placeholder | Feedback   | Stable  |
+| Prime       | Core       | Stable  |
+| Progress    | Feedback   | Stable  |
+| Range       | Form       | Stable  |
+| Row         | Layout     | Stable  |
+| Select      | Form       | Stable  |
+| Spinner     | Feedback   | Stable  |
+| Toast       | Feedback   | Planned |
 
 ## Build
 
