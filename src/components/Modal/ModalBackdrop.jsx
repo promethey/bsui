@@ -8,20 +8,27 @@ const BASE_CLASS_NAME = "modal-backdrop";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root element
+   * Inline styles applied
+   * to the root element
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional class names applied to the root element
+   * Additional class names applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
+  /**
+   * Current transition state used to
+   * control backdrop visibility
+   */
   state: PropTypes.string.isRequired,
 };
 

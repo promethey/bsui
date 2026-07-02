@@ -40,7 +40,7 @@ export function Default() {
 
       <Modal
         open={open}
-        onHide={(event, closeType) => {
+        onClose={(event, closeType) => {
           setOpen(false);
           console.log(event);
           console.log(closeType);
@@ -56,7 +56,7 @@ export function Default() {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button tone="secondary" onClick={() => setOpen(false)}>
+            <Button tone="secondary" onClose={() => setOpen(false)}>
               Close
             </Button>
 
@@ -75,7 +75,7 @@ export function Scrollable() {
     <>
       <Button onClick={() => setOpen(true)}>Show scrollable modal</Button>
 
-      <Modal scrollable open={open} onHide={() => setOpen(false)}>
+      <Modal scrollable open={open} onClose={() => setOpen(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Scrollable modal</Modal.Title>
@@ -86,7 +86,7 @@ export function Scrollable() {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button tone="secondary" onClick={() => setOpen(false)}>
+            <Button tone="secondary" onClose={() => setOpen(false)}>
               Close
             </Button>
           </Modal.Footer>
@@ -103,7 +103,7 @@ export function VerticallyCentered() {
     <>
       <Button onClick={() => setOpen(true)}>Show centered modal</Button>
 
-      <Modal centered open={open} onHide={() => setOpen(false)}>
+      <Modal centered open={open} onClose={() => setOpen(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Centered modal</Modal.Title>
@@ -112,7 +112,7 @@ export function VerticallyCentered() {
           <Modal.Body>Modal body text goes here.</Modal.Body>
 
           <Modal.Footer>
-            <Button tone="secondary" onClick={() => setOpen(false)}>
+            <Button tone="secondary" onClose={() => setOpen(false)}>
               Close
             </Button>
 
@@ -131,7 +131,7 @@ export function Grid() {
     <>
       <Button onClick={() => setOpen(true)}>Launch grid modal</Button>
 
-      <Modal open={open} onHide={() => setOpen(false)}>
+      <Modal open={open} onClose={() => setOpen(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Grid in modal</Modal.Title>
@@ -190,7 +190,7 @@ export function Small() {
     <>
       <Button onClick={() => setOpen(true)}>Small modal</Button>
 
-      <Modal size="sm" open={open} onHide={() => setOpen(false)}>
+      <Modal size="sm" open={open} onClose={() => setOpen(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Small modal</Modal.Title>
@@ -210,7 +210,7 @@ export function Large() {
     <>
       <Button onClick={() => setOpen(true)}>Large modal</Button>
 
-      <Modal size="lg" open={open} onHide={() => setOpen(false)}>
+      <Modal size="lg" open={open} onClose={() => setOpen(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Large modal</Modal.Title>
@@ -230,7 +230,7 @@ export function ExtraLarge() {
     <>
       <Button onClick={() => setOpen(true)}>Extra large modal</Button>
 
-      <Modal size="xl" open={open} onHide={() => setOpen(false)}>
+      <Modal size="xl" open={open} onClose={() => setOpen(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Extra large modal</Modal.Title>
@@ -250,7 +250,7 @@ export function Fullscreen() {
     <>
       <Button onClick={() => setOpen(true)}>Fullscreen modal</Button>
 
-      <Modal fullscreen open={open} onHide={() => setOpen(false)}>
+      <Modal fullscreen open={open} onClose={() => setOpen(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Fullscreen modal</Modal.Title>
@@ -259,7 +259,7 @@ export function Fullscreen() {
           <Modal.Body>Modal body text goes here.</Modal.Body>
 
           <Modal.Footer>
-            <Button tone="secondary" onClick={() => setOpen(false)}>
+            <Button tone="secondary" onClose={() => setOpen(false)}>
               Close
             </Button>
 
@@ -282,7 +282,7 @@ export function Message() {
       <Modal
         open={expanded}
         onEntered={() => messageRef.current?.focus()}
-        onHide={() => setExpanded(false)}>
+        onClose={() => setExpanded(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>New message to @promethey</Modal.Title>
@@ -300,7 +300,7 @@ export function Message() {
             </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button tone="secondary" onClick={() => setExpanded(false)}>
+            <Button tone="secondary" onClose={() => setExpanded(false)}>
               Close
             </Button>
             <Button>Send message</Button>
