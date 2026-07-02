@@ -34,15 +34,20 @@ const defaultProps = {
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/modal/}
  *
+ * @example
+ * <Modal.Title>Modal title</Modal.Title>
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} ModalTitleOwnProps
  *
- * @typedef {import("../Prime/Prime").PrimeProps & ModalTitleOwnProps} ModalTitleProps
+ * @typedef {PrimeProps & ModalTitleOwnProps} ModalTitleProps
  * @param {ModalTitleProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function ModalTitle(props) {
   const { style, children, className, ...rest } = props;

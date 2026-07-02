@@ -31,22 +31,28 @@ const defaultProps = {
 };
 
 /**
- * ModalBackdrop
+ * Renders the modal backdrop behind
+ * the modal dialog.
  *
  * @component
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/modal/}
  *
- * @typedef {object} ModalBackdropOwnProps
- * @property {string} [state]
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
- * @typedef {import("../Prime/Prime").PrimeProps & ModalBackdropOwnProps} ModalBackdropProps
+ * @typedef {object} ModalBackdropOwnProps
+ *
+ * @property {string} [state]
+ * Current transition state used to
+ * control backdrop visibility.
+ *
+ * @typedef {PrimeProps & ModalBackdropOwnProps} ModalBackdropProps
  * @param {ModalBackdropProps} props
  *
  * @return {React.JSX.Element}
  *
- * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @author Egor Sedelkov [promethey] <sedelkovegor@gmail.com>
+ * @since 1.0.0
  */
 function ModalBackdrop(props) {
   const { style, children, className, state, ...rest } = props;

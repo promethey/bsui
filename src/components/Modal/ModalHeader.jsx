@@ -41,7 +41,9 @@ const defaultProps = {
  * @see {@link https://getbootstrap.com/docs/5.1/components/modal/}
  *
  * @typedef {object} ModalHeaderOwnProps
+ *
  * @property {boolean} [closeButton=false]
+ * Sets close button
  *
  * @typedef {import("../Prime/Prime").PrimeProps & ModalHeaderOwnProps} ModalHeaderProps
  * @param {ModalHeaderProps} props
@@ -49,21 +51,26 @@ const defaultProps = {
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function ModalHeader(props) {
   const { style, children, className, closeButton = false, ...rest } = props;
 
   const classes = cn(BASE_CLASS_NAME, className);
 
-  const { onHide } = useModalContext();
+  const { onClose } = useModalContext();
+
+  /**
+   * @param {React.MouseEvent<HTMLElement>} event
+   */
+  const handleClose = (event) => {
+    onClose?.(event, "close-button");
+  };
 
   return (
     <Prime style={style} className={classes} {...rest}>
       {children}
-      {closeButton && (
-        <CloseButton onClick={(event) => onHide?.(event, "close-button")} />
-      )}
+      {closeButton && <CloseButton onClick={handleClose} />}
     </Prime>
   );
 }

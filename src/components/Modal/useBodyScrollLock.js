@@ -1,9 +1,15 @@
 import { useEffect } from "react";
 
 /**
+ * Locks body scroll and applies modal
+ * classes while open is true.
+ *
  * @param {boolean} open
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @since 1.0.0
  */
-export function useModalBodyOpen(open) {
+export function useBodyScrollLock(open) {
   return useEffect(() => {
     if (!open) return;
 

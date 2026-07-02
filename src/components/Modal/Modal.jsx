@@ -13,46 +13,57 @@ import { ModalContext } from "./ModalContext";
 import { Transition } from "react-transition-group";
 import ModalBackdrop from "./ModalBackdrop";
 import { useRef } from "react";
-import { useModalBodyOpen } from "./useModalBodyOpen";
+import { useBodyScrollLock } from "./useBodyScrollLock";
 import { useEscapePress } from "./useEscapePress";
 
 const BASE_CLASS_NAME = "modal";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root element
+   * Inline styles applied
+   * to the root element
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional class names applied to the root element
+   * Additional class names applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Controls whether the modal is visible
+   * Controls whether the modal
+   * is visible
    */
   open: PropTypes.bool,
 
+  /**
+   * Transition duration
+   * in milliseconds
+   */
   timeout: PropTypes.number,
 
   /**
-   * Callback fired when the modal requests to be closed
+   * Callback fired when the modal
+   * requests to be closed
    */
-  onHide: PropTypes.func,
+  onClose: PropTypes.func,
 
   /**
-   * Enables vertical scrolling inside the modal body
+   * Enables vertical scrolling
+   * inside the modal body
    */
   scrollable: PropTypes.bool,
 
   /**
-   * Vertically centers the modal in the viewport
+   * Vertically centers the modal
+   * in the viewport
    */
   centered: PropTypes.bool,
 
@@ -62,7 +73,8 @@ const propTypes = {
   size: PropTypes.oneOf(["sm", "lg", "xl"]),
 
   /**
-   * Enables fullscreen mode or breakpoint-based fullscreen behavior
+   * Enables fullscreen mode or
+   * breakpoint-based fullscreen behavior
    */
   fullscreen: PropTypes.oneOfType([
     PropTypes.bool,
@@ -72,37 +84,44 @@ const propTypes = {
   backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["static"])]),
 
   /**
-   * Custom handler to detect transition end instead of timeout
+   * Custom handler to detect transition
+   * end instead of timeout
    */
   addEndListener: PropTypes.func,
 
   /**
-   * Called before enter transition starts
+   * Called before enter
+   * transition starts
    */
   onEnter: PropTypes.func,
 
   /**
-   * Called when enter transition is starting
+   * Called when enter
+   * transition is starting
    */
   onEntering: PropTypes.func,
 
   /**
-   * Called after enter transition finishes
+   * Called after enter
+   * transition finishes
    */
   onEntered: PropTypes.func,
 
   /**
-   * Called before exit transition starts
+   * Called before exit
+   * transition starts
    */
   onExit: PropTypes.func,
 
   /**
-   * Called when exit transition is running
+   * Called when exit transition
+   * is running
    */
   onExiting: PropTypes.func,
 
   /**
-   * Called after exit transition finishes
+   * Called after exit transition
+   * finishes
    */
   onExited: PropTypes.func,
 };
@@ -127,9 +146,6 @@ const defaultProps = {
   onExited: null,
 };
 
-/** @typedef {(node: HTMLElement, isAppearing: boolean) => void} enteringCallback */
-/** @typedef {(node: HTMLElement) => void} exitingCallback */
-
 /**
  * Displays content in a layered overlay
  * above the main interface.
@@ -140,6 +156,8 @@ const defaultProps = {
  *
  * @see {@link https://reactcommunity.org/react-transition-group/transition}
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} ModalOwnProps
  *
  * @property {boolean} [open=false]
@@ -147,7 +165,7 @@ const defaultProps = {
  *
  * @property {number} [timeout=300]
  *
- * @property {(event?: React.SyntheticEvent, closeType?: string) => void} [onHide]
+ * @property {(event?: React.SyntheticEvent, closeType?: string) => void} [onClose]
  * Callback fired when the modal requests to be closed.
  * closeType: ["backdrop", "escape", "close-button"]
  *
@@ -168,31 +186,31 @@ const defaultProps = {
  * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
  * Custom handler to detect transition end instead of timeout.
  *
- * @property {enteringCallback} [onEnter]
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEnter]
  * Called before enter transition starts.
  *
- * @property {enteringCallback} [onEntering]
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntering]
  * Called when enter transition is starting.
  *
- * @property {enteringCallback} [onEntered]
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntered]
  * Called after enter transition finishes.
  *
- * @property {exitingCallback} [onExit]
+ * @property {(node: HTMLElement) => void} [onExit]
  * Called before exit transition starts.
  *
- * @property {exitingCallback} [onExiting]
+ * @property {(node: HTMLElement) => void} [onExiting]
  * Called when exit transition is running.
  *
- * @property {exitingCallback} [onExited]
+ * @property {(node: HTMLElement) => void} [onExited]
  * Called after exit transition finishes.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & ModalOwnProps} ModalProps
+ * @typedef {PrimeProps & ModalOwnProps} ModalProps
  * @param {ModalProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Modal(props) {
   const {
@@ -201,7 +219,7 @@ function Modal(props) {
     className,
     open = false,
     timeout = 300,
-    onHide,
+    onClose,
     scrollable = false,
     centered = false,
     size,
@@ -222,18 +240,23 @@ function Modal(props) {
   const [staticAnimation, setStaticAnimation] = useState(false);
 
   const dialogClasses = cn({
+    // "modal-dialog-srollable"
     [prefix("modal-dialog", "scrollable")]:
       typeof scrollable === "boolean" && scrollable,
 
+    // "modal-dialog-centered"
     [prefix("modal-dialog", "centered")]:
       typeof centered === "boolean" && centered,
 
+    // "modal-{["sm", "lg", "xl"]}"
     [prefix(BASE_CLASS_NAME, size)]:
       typeof size === "string" && ["sm", "lg", "xl"].includes(size),
 
+    // "modal-fullscreen"
     [prefix(BASE_CLASS_NAME, "fullscreen")]:
       typeof fullscreen === "boolean" && fullscreen,
 
+    // "modal-fullscreen-{["sm", "md", "lg", "xl", "xxl"]}-down"
     [prefix(
       BASE_CLASS_NAME,
       "fullscreen",
@@ -265,14 +288,14 @@ function Modal(props) {
       return;
     }
 
-    onHide?.(event, "backdrop");
+    onClose?.(event, "backdrop");
   };
 
-  useModalBodyOpen(open);
+  useBodyScrollLock(open);
 
-  useEscapePress(open, onHide, backdrop, setStaticAnimation);
+  useEscapePress(open, onClose, backdrop, setStaticAnimation);
 
-  /** @type {enteringCallback} */
+  /** @type {(node: HTMLElement, isAppearing: boolean) => void} */
   const handleEnter = useCallback(
     (node, isAppearing) => {
       onEnter?.(node, isAppearing);
@@ -280,7 +303,7 @@ function Modal(props) {
     [onEnter],
   );
 
-  /** @type {enteringCallback} */
+  /** @type {(node: HTMLElement, isAppearing: boolean) => void} */
   const handleEntering = useCallback(
     (node, isAppearing) => {
       onEntering?.(node, isAppearing);
@@ -288,7 +311,7 @@ function Modal(props) {
     [onEntering],
   );
 
-  /** @type {enteringCallback} */
+  /** @type {(node: HTMLElement, isAppearing: boolean) => void} */
   const handleEntered = useCallback(
     (node, isAppearing) => {
       // @ts-ignore
@@ -298,7 +321,7 @@ function Modal(props) {
     [onEntered],
   );
 
-  /** @type {exitingCallback} */
+  /** @type {(node: HTMLElement) => void} */
   const handleExit = useCallback(
     (node) => {
       onExit?.(node);
@@ -306,7 +329,7 @@ function Modal(props) {
     [onExit],
   );
 
-  /** @type {exitingCallback} */
+  /** @type {(node: HTMLElement) => void} */
   const handleExiting = useCallback(
     (node) => {
       onExiting?.(node);
@@ -314,7 +337,7 @@ function Modal(props) {
     [onExiting],
   );
 
-  /** @type {exitingCallback} */
+  /** @type {(node: HTMLElement) => void} */
   const handleExited = useCallback(
     (node) => {
       onExited?.(node);
@@ -337,7 +360,7 @@ function Modal(props) {
       mountOnEnter
       unmountOnExit>
       {(state) => (
-        <ModalContext.Provider value={{ onHide }}>
+        <ModalContext.Provider value={{ onClose }}>
           <Prime
             ref={nodeRef}
             className={cn(

@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 
 /**
  * @typedef {Object} ModalContextValue
- * @property {(event?: React.SyntheticEvent, closeType?: string) => void} [onHide]
+ * @property {(event?: React.SyntheticEvent, closeType?: string) => void} [onClose]
  */
 
 /** @type {React.Context<ModalContextValue | null>} */

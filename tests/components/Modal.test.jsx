@@ -75,12 +75,12 @@ describe("Modal (full API + structure)", () => {
     expect(backdrop).toBeTruthy();
   });
 
-  it("renders header and close button and triggers onHide", async () => {
+  it("renders header and close button and triggers onClose", async () => {
     const user = userEvent.setup();
-    const onHide = vi.fn();
+    const onClose = vi.fn();
 
     render(
-      <Modal open onHide={onHide}>
+      <Modal open onClose={onClose}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>title</Modal.Title>
@@ -93,7 +93,7 @@ describe("Modal (full API + structure)", () => {
 
     await user.click(btn);
 
-    expect(onHide).toHaveBeenCalledTimes(1);
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 
   it("applies size modifiers", () => {

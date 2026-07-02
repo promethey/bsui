@@ -1,12 +1,29 @@
 import { useEffect } from "react";
 
 /**
+ * Handles closing the modal when
+ * the Escape key is pressed.
+ *
  * @param {boolean} open
- * @param {function} [onHide]
+ * Determines whether the modal
+ * is currently open.
+ *
+ * @param {function} [onClose]
+ * Called when the Escape key requests
+ * the modal to close.
+ *
  * @param {boolean|"static"} [backdrop=false]
- * @param {function} [setStaticAnimation]
+ * Controls whether the modal can be
+ * dismissed with the Escape key.
+ *
+ * @param {React.Dispatch<React.SetStateAction<boolean>>} [setStaticAnimation]
+ * Updates the temporary static
+ * backdrop animation state.
+ *
+ * @author Egor Sedelkov [promethey] <sedelkovegor@gmail.com>
+ * @since 1.0.0
  */
-export function useEscapePress(open, onHide, backdrop, setStaticAnimation) {
+export function useEscapePress(open, onClose, backdrop, setStaticAnimation) {
   return useEffect(() => {
     if (!open) return;
 
@@ -17,7 +34,7 @@ export function useEscapePress(open, onHide, backdrop, setStaticAnimation) {
      */
     const handleKeyDown = (event) => {
       if (event.key === "Escape" && backdrop !== "static") {
-        onHide?.(event, "escape");
+        onClose?.(event, "escape");
       }
 
       if (event.key === "Escape" && backdrop === "static") {
@@ -36,5 +53,5 @@ export function useEscapePress(open, onHide, backdrop, setStaticAnimation) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [open, onHide]);
+  }, [open, onClose]);
 }
