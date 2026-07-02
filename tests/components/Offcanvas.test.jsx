@@ -143,10 +143,10 @@ describe("OffcanvasHeader API", () => {
   });
 
   it("renders close button when enabled", () => {
-    const onHide = vi.fn();
+    const onClose = vi.fn();
 
     const { container } = render(
-      <OffcanvasContext.Provider value={{ onHide }}>
+      <OffcanvasContext.Provider value={{ onClose }}>
         <Offcanvas.Header closeButton>
           <div />
         </Offcanvas.Header>
@@ -156,11 +156,11 @@ describe("OffcanvasHeader API", () => {
     expect(container.querySelector("button")).not.toBeNull();
   });
 
-  it("calls onHide when close button clicked", () => {
-    const onHide = vi.fn();
+  it("calls onClose when close button clicked", () => {
+    const onClose = vi.fn();
 
     const { container } = render(
-      <OffcanvasContext.Provider value={{ onHide }}>
+      <OffcanvasContext.Provider value={{ onClose }}>
         <Offcanvas.Header closeButton>
           <div />
         </Offcanvas.Header>
@@ -172,7 +172,7 @@ describe("OffcanvasHeader API", () => {
 
     fireEvent.click(button);
 
-    expect(onHide).toHaveBeenCalledWith(expect.any(Object), "close-button");
+    expect(onClose).toHaveBeenCalledWith(expect.any(Object), "close-button");
   });
 });
 

@@ -291,6 +291,10 @@ function Modal(props) {
     onClose?.(event, "backdrop");
   };
 
+  if (backdrop && !scrollable) {
+    useBodyScrollLock(open);
+  }
+
   useBodyScrollLock(open);
 
   useEscapePress(open, onClose, backdrop, setStaticAnimation);

@@ -45,22 +45,24 @@ const defaultProps = {
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/offcanvas/}
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} OffcanvasBackdropOwnProps
  *
  * @property {string} [state]
  * Backdrop visual/animation state.
  *
  * @property {(event?: React.MouseEvent<HTMLElement>) => void} [onClick]
- * Handles backdrop click to trigger outside interaction (e.g. close).
+ * Handles backdrop click to trigger
+ * outside interaction (e.g. close).
  *
- * @typedef {import("../Prime/Prime").PrimeProps & OffcanvasBackdropOwnProps} OffcanvasBackdropProps
+ * @typedef {PrimeProps & OffcanvasBackdropOwnProps} OffcanvasBackdropProps
  *
  * @param {OffcanvasBackdropProps} props
- *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function OffcanvasBackdrop(props) {
   const { style, className, state, onClick, ...rest } = props;

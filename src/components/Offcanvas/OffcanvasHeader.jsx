@@ -48,32 +48,33 @@ const defaultProps = {
  *  <Offcanvas.Title>Title</Offcanvas.Title>
  * </Offcanvas.Header>
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} OffcanvasHeaderOwnProps
  *
  * @property {boolean} [closeButton=false]
  * Sets close button
  *
- * @typedef {import("../Prime/Prime").PrimeProps & OffcanvasHeaderOwnProps} OffcanvasHeaderProps
- *
+ * @typedef {PrimeProps & OffcanvasHeaderOwnProps} OffcanvasHeaderProps
  * @param {OffcanvasHeaderProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function OffcanvasHeader(props) {
   const { style, children, className, closeButton = false, ...rest } = props;
 
   const classes = cn(BASE_CLASS_NAME, className);
 
-  const { onHide } = useOffcanvasContext();
+  const { onClose } = useOffcanvasContext();
 
   /**
    * @param {React.MouseEvent<HTMLElement>} event
    */
   const handleClose = (event) => {
-    onHide?.(event, "close-button");
+    onClose?.(event, "close-button");
   };
 
   return (

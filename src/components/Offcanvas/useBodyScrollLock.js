@@ -8,9 +8,9 @@ import { useEffect } from "react";
  * Controls whether body scroll locking is applied.
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
-export function useOffcanvasBodyOpen(open) {
+export function useBodyScrollLock(open) {
   return useEffect(() => {
     if (!open) return;
 

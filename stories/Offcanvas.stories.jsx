@@ -12,7 +12,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Offcanvas component",
+        component:
+          "Sliding overlay panel anchored to the viewport edge for secondary content and actions.",
       },
     },
   },
@@ -33,16 +34,23 @@ export function Default() {
     setShow(false);
   };
 
+  const handleChangePlacement = (event) => {
+    const value = event.target.value;
+
+    setPlacement(value);
+  };
+
   return (
     <>
       <Button mb={3} onClick={handleClick}>
         Show Offcanvas
       </Button>
       <div>
-        <Label>Select placement:</Label>
+        <Label htmlFor="placement_select">Select placement:</Label>
         <Select
-          defaultValue="start"
-          onChange={(event) => setPlacement(event.target.value)}
+          id="placement_select"
+          value={placement}
+          onChange={handleChangePlacement}
           style={{ maxWidth: "150px" }}>
           <Select.Option value="start">Start</Select.Option>
           <Select.Option value="end">End</Select.Option>
@@ -50,7 +58,7 @@ export function Default() {
           <Select.Option value="bottom">Bottom</Select.Option>
         </Select>
       </div>
-      <Offcanvas placement={placement} open={show} onHide={handleClose}>
+      <Offcanvas placement={placement} open={show} onClose={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
@@ -81,7 +89,7 @@ export function WithoutBackdrop() {
       <Button mb={3} onClick={handleClick}>
         Show Offcanvas
       </Button>
-      <Offcanvas backdrop={false} open={show} onHide={handleClose}>
+      <Offcanvas backdrop={false} open={show} onClose={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
@@ -113,7 +121,7 @@ export function Scrollable() {
       <Button mb={3} onClick={handleClick}>
         Show Offcanvas
       </Button>
-      <Offcanvas scrollable open={show} onHide={handleClose}>
+      <Offcanvas scrollable open={show} onClose={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>

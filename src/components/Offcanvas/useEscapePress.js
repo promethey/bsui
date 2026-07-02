@@ -10,13 +10,13 @@ import { useEffect } from "react";
  * @param {boolean} keyboard
  * Enables Escape key interaction.
  *
- * @param {(event?: KeyboardEvent, closeType?: string) => void} [onHide]
+ * @param {(event?: KeyboardEvent, closeType?: string) => void} [onClose]
  * Close handler invoked on Escape press.
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
-export function useEscapePress(open, keyboard, onHide) {
+export function useEscapePress(open, keyboard, onClose) {
   useEffect(() => {
     if (!open || !keyboard) return;
 
@@ -28,7 +28,7 @@ export function useEscapePress(open, keyboard, onHide) {
      */
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
-        onHide?.(event, "escape");
+        onClose?.(event, "escape");
       }
     };
 
@@ -37,5 +37,5 @@ export function useEscapePress(open, keyboard, onHide) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [open, keyboard, onHide]);
+  }, [open, keyboard, onClose]);
 }

@@ -1,11 +1,14 @@
 import { createContext, useContext } from "react";
 
 /**
- * Offcanvas context providing internal control API for nested components.
- * Used to manage Offcanvas lifecycle actions such as closing from child components.
+ * Offcanvas context providing internal
+ * control API for nested components.
+ *
+ * Used to manage Offcanvas lifecycle actions
+ * such as closing from child components.
  *
  * @typedef {Object} OffcanvasContextValue
- * @property {(event?: React.MouseEvent<HTMLElement>, closeType?: string) => void} [onHide]
+ * @property {(event?: React.MouseEvent<HTMLElement>, closeType?: string) => void} [onClose]
  */
 
 /** @type {React.Context<OffcanvasContextValue | null>} */
@@ -21,7 +24,7 @@ export const OffcanvasContext = createContext(
  * @returns {OffcanvasContextValue}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 export function useOffcanvasContext() {
   const context = useContext(OffcanvasContext);

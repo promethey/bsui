@@ -9,7 +9,7 @@ import OffcanvasBody from "./OffcanvasBody";
 import OffcanvasBackdrop from "./OffcanvasBackdrop";
 import { OffcanvasContext } from "./OffcanvasContext";
 import { Transition } from "react-transition-group";
-import { useOffcanvasBodyOpen } from "./useOffcanvasBodyOpen";
+import { useBodyScrollLock } from "./useBodyScrollLock";
 import { useEscapePress } from "./useEscapePress";
 
 const BASE_CLASS_NAME = "offcanvas";
@@ -72,7 +72,7 @@ const propTypes = {
    * Callback invoked when the component
    * requests to be closed
    */
-  onHide: PropTypes.func,
+  onClose: PropTypes.func,
 
   /**
    * Custom handler to detect transition end instead of timeout
@@ -124,7 +124,7 @@ const defaultProps = {
   scrollable: false,
   keyboard: true,
   timeout: 300,
-  onHide: null,
+  onClose: null,
   addEndListener: null,
   onEnter: null,
   onEntering: null,
@@ -163,52 +163,63 @@ const defaultProps = {
  * Controls component visibility state.
  *
  * @property {"start"|"end"|"top"|"bottom"} [placement="start"]
- * Defines the placement of the component relative to the viewport.
+ * Defines the placement of the component
+ * relative to the viewport.
  *
  * @property {boolean} [backdrop=true]
- * Toggles rendering of a backdrop layer behind the component.
+ * Toggles rendering of a backdrop layer
+ * behind the component.
  *
  * @property {boolean} [scrollable=false]
- * Enables scrolling of background content while the component is open.
+ * Enables scrolling of background content
+ * while the component is open.
  *
  * @property {boolean} [keyboard=false]
- * Enables closing via Escape key interaction.
+ * Enables closing via Escape
+ * key interaction.
  *
  * @property {number} [timeout=300]
  * Transition duration in milliseconds.
  *
- * @property {(event?: React.SyntheticEvent|KeyboardEvent, closeType?: string) => void} [onHide]
- * Callback invoked when the component requests to be closed.
+ * @property {(event?: React.SyntheticEvent|KeyboardEvent, closeType?: string) => void} [onClose]
+ * Callback invoked when the component
+ * requests to be closed.
  *
  * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
- * Custom handler to detect transition end instead of timeout.
+ * Custom handler to detect transition
+ * end instead of timeout.
  *
  * @property {enteringCallback} [onEnter]
- * Called before enter transition starts.
+ * Called before enter
+ * transition starts.
  *
  * @property {enteringCallback} [onEntering]
- * Called when enter transition is starting.
+ * Called when enter
+ * transition is starting.
  *
  * @property {enteringCallback} [onEntered]
- * Called after enter transition finishes.
+ * Called after enter
+ * transition finishes.
  *
  * @property {exitingCallback} [onExit]
- * Called before exit transition starts.
+ * Called before exit
+ * transition starts.
  *
  * @property {exitingCallback} [onExiting]
- * Called when exit transition is running.
+ * Called when exit
+ * transition is running.
  *
  * @property {exitingCallback} [onExited]
- * Called after exit transition finishes.
+ * Called after exit
+ * transition finishes.
  *
  * @typedef {import("../Prime/Prime").PrimeProps & OffcanvasOwnProps} OffcanvasProps
- *
  * @param {OffcanvasProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Offcanvas(props) {
   const {
@@ -221,7 +232,7 @@ function Offcanvas(props) {
     scrollable = false,
     keyboard = true,
     timeout = 300,
-    onHide,
+    onClose,
     addEndListener,
     onEnter,
     onEntering,
@@ -235,10 +246,10 @@ function Offcanvas(props) {
   const nodeRef = useRef(null);
 
   if (typeof backdrop === "boolean" && backdrop && !scrollable) {
-    useOffcanvasBodyOpen(open);
+    useBodyScrollLock(open);
   }
 
-  useEscapePress(open, keyboard, onHide);
+  useEscapePress(open, keyboard, onClose);
 
   /** @type {enteringCallback} */
   const handleEnter = useCallback(
@@ -305,7 +316,7 @@ function Offcanvas(props) {
       mountOnEnter
       unmountOnExit>
       {(state) => (
-        <OffcanvasContext.Provider value={{ onHide }}>
+        <OffcanvasContext.Provider value={{ onClose }}>
           <Prime
             ref={nodeRef}
             tabIndex={-1}
@@ -329,7 +340,7 @@ function Offcanvas(props) {
               <OffcanvasBackdrop
                 state={state}
                 onClick={(event) => {
-                  onHide?.(event, "backdrop");
+                  onClose?.(event, "backdrop");
                 }}
               />
             )}
