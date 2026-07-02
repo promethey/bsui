@@ -14,6 +14,11 @@
 
 Modern Bootstrap component system for React applications.
 
+| Library ver. | Bootstrap Ver. | Status  |
+| ------------ | -------------- | ------- |
+| 1.X.X        | 5.1.X          | Current |
+| 2.X.X        | 5.2.X          | Planned |
+
 ## Installation
 
 ```bash
@@ -28,11 +33,10 @@ Import Bootstrap styles in your project:
 import "bootstrap/dist/css/bootstrap.min.css";
 ```
 
-### Peer Dependencies
+### Requirements
 
-- react >= 18
-- react-dom >= 18
-- bootstrap >= 5.1.3
+- React 19+
+- Bootstrap 5.1.3
 
 ## Usage
 
@@ -52,7 +56,7 @@ export function Example() {
 
 ## Why BSUI?
 
-BSUI brings Bootstrap's design system to React with a modern architecture, rich documentation, runtime validation, and a consistent developer experience.
+BSUI brings Bootstrap design system to React with a modern architecture, rich documentation, runtime validation, and a consistent developer experience.
 
 ### Prime Architecture
 
@@ -67,20 +71,22 @@ Features:
 
 ```jsx
 <Prime as="button" m={2} px={3} fw="bold" />
+
+<button class="m-2 px-3 fw-bold" />
 ```
 
 ### Bootstrap Utility Props
 
-Generate Bootstrap utility classes directly from React props.
+Every component is built on top of `Prime`, so all utility props are available everywhere.
 
 ```jsx
-<Prime d="flex" flex="center" mt={3} />
-```
+<Prime d={{ xs: "block", md: "flex" }} mt={3} />
 
-Responsive values are supported:
+// is equivalent to
 
-```jsx
-<Prime d={{ xs: "block", md: "flex" }} />
+<Button d={{ xs: "block", md: "flex" }} mt={3} />
+<Card d={{ xs: "block", md: "flex" }} mt={3} />
+<Modal d={{ xs: "block", md: "flex" }} mt={3} />
 ```
 
 ### Rich Documentation
@@ -91,6 +97,7 @@ Every public component includes:
 - Usage examples
 - Bootstrap documentation links
 - IDE autocomplete and hover help
+- Author and version
 
 ### Runtime Validation
 
@@ -145,38 +152,38 @@ The project follows a consistent architecture based on:
 
 ### Compatibility Matrix
 
-| Component   | Category   | Status | Ver.  | Bootstrap Ver. |
-| ----------- | ---------- | ------ | ----- | -------------- |
-| Accordion   | Content    | Stable | 1.0.0 | 5.1.3          |
-| Alert       | Feedback   | Stable | 1.0.0 | 5.1.3          |
-| Badge       | Feedback   | Stable | 1.0.0 | 5.1.3          |
-| Breadcrumb  | Navigation | Stable | 1.0.0 | 5.1.3          |
-| Button      | Control    | Stable | 1.0.0 | 5.1.3          |
-| ButtonGroup | Control    | Stable | 1.0.0 | 5.1.3          |
-| Card        | Content    | Stable | 1.0.0 | 5.1.3          |
-| Carousel    | Content    | Stable | 1.0.0 | 5.1.3          |
-| Check       | Form       | Stable | 1.0.0 | 5.1.3          |
-| CloseButton | Control    | Stable | 1.0.0 | 5.1.3          |
-| Col         | Layout     | Stable | 1.0.0 | 5.1.3          |
-| Collapse    | Content    | Stable | 1.0.0 | 5.1.3          |
-| Container   | Layout     | Stable | 1.0.0 | 5.1.3          |
-| Control     | Form       | Stable | 1.0.0 | 5.1.3          |
-| Dropdown    | Overlay    | Stable | 1.0.0 | 5.1.3          |
-| InputGroup  | Form       | Stable | 1.0.0 | 5.1.3          |
-| Label       | Form       | Stable | 1.0.0 | 5.1.3          |
-| ListGroup   | Content    | Stable | 1.0.0 | 5.1.3          |
-| Modal       | Overlay    | Stable | 1.0.0 | 5.1.3          |
-| Nav         | Navigation | Stable | 1.0.0 | 5.1.3          |
-| Navbar      | Navigation | Stable | 1.0.0 | 5.1.3          |
-| Offcanvas   | Overlay    | Stable | 1.0.0 | 5.1.3          |
-| Pagination  | Navigation | Stable | 1.0.0 | 5.1.3          |
-| Placeholder | Feedback   | Stable | 1.0.0 | 5.1.3          |
-| Prime       | Core       | Stable | 1.0.0 | 5.1.3          |
-| Progress    | Feedback   | Stable | 1.0.0 | 5.1.3          |
-| Range       | Form       | Stable | 1.0.0 | 5.1.3          |
-| Row         | Layout     | Stable | 1.0.0 | 5.1.3          |
-| Select      | Form       | Stable | 1.0.0 | 5.1.3          |
-| Spinner     | Feedback   | Stable | 1.0.0 | 5.1.3          |
+| Component   | Category   | Status |
+| ----------- | ---------- | ------ |
+| Accordion   | Content    | Stable |
+| Alert       | Feedback   | Stable |
+| Badge       | Feedback   | Stable |
+| Breadcrumb  | Navigation | Stable |
+| Button      | Control    | Stable |
+| ButtonGroup | Control    | Stable |
+| Card        | Content    | Stable |
+| Carousel    | Content    | Stable |
+| Check       | Form       | Stable |
+| CloseButton | Control    | Stable |
+| Col         | Layout     | Stable |
+| Collapse    | Content    | Stable |
+| Container   | Layout     | Stable |
+| Control     | Form       | Stable |
+| Dropdown    | Overlay    | Stable |
+| InputGroup  | Form       | Stable |
+| Label       | Form       | Stable |
+| ListGroup   | Content    | Stable |
+| Modal       | Overlay    | Stable |
+| Nav         | Navigation | Stable |
+| Navbar      | Navigation | Stable |
+| Offcanvas   | Overlay    | Stable |
+| Pagination  | Navigation | Stable |
+| Placeholder | Feedback   | Stable |
+| Prime       | Core       | Stable |
+| Progress    | Feedback   | Stable |
+| Range       | Form       | Stable |
+| Row         | Layout     | Stable |
+| Select      | Form       | Stable |
+| Spinner     | Feedback   | Stable |
 
 ## Build
 
@@ -204,15 +211,10 @@ npm run types
 
 ### Local package testing
 
-Create a tarball for local npm testing:
-
-```bash
-npm pack
-```
-
 Install in another project:
 
 ```bash
+npm pack
 npm install bsui-1.0.0.tgz
 ```
 
@@ -241,22 +243,8 @@ Covered areas:
 - Utility resolvers
 - Internal helpers
 
-### Vitest
-
 ```bash
 npm run test
-```
-
-```bash
-npm run test:watch
-```
-
-```bash
-npm run test:ui
-```
-
-```bash
-npm run test:coverage
 ```
 
 ## License
