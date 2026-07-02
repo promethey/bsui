@@ -58,9 +58,16 @@ const defaultProps = {
  *
  * @component
  *
+ * @see {@link link_documentation}
+ *
+ * @example
+ * <Component />
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} ComponentOwnProps
  *
- * @typedef {import("../Prime/Prime").PrimeProps & ComponentOwnProps} ComponentProps
+ * @typedef {PrimeProps & ComponentOwnProps} ComponentProps
  *
  * @param {ComponentProps} props
  *
