@@ -16,8 +16,8 @@ Modern Bootstrap component system for React applications.
 
 | BSUI Version | Bootstrap Version | Status  |
 | ------------ | ----------------- | ------- |
-| 1.X.X        | 5.1.X             | Latest  |
-| 2.X.X        | 5.2.X             | Planned |
+| 1.0.X        | 5.1.X             | Latest  |
+| 1.1.X        | 5.2.X             | Planned |
 
 ## Installation
 
