@@ -37,9 +37,11 @@ const defaultProps = {
  * @example
  * <Offcanvas.Title>Title</Offcanvas.Title>
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} OffcanvasTitleOwnProps
  *
- * @typedef {import("../Prime/Prime").PrimeProps & OffcanvasTitleOwnProps} OffcanvasTitleProps
+ * @typedef {PrimeProps & OffcanvasTitleOwnProps} OffcanvasTitleProps
  * @param {OffcanvasTitleProps} props
  *
  * @return {React.JSX.Element}

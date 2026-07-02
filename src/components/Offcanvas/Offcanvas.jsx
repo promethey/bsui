@@ -134,9 +134,6 @@ const defaultProps = {
   onExited: null,
 };
 
-/** @typedef {(node: HTMLElement, isAppearing: boolean) => void} enteringCallback */
-/** @typedef {(node: HTMLElement) => void} exitingCallback */
-
 /**
  * Sliding overlay panel anchored to the viewport
  * edge for secondary content and actions.
@@ -156,6 +153,8 @@ const defaultProps = {
  *    component or custom elements here.
  *  </Offcanvas.Body>
  * </Offcanvas>
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} OffcanvasOwnProps
  *
@@ -189,31 +188,31 @@ const defaultProps = {
  * Custom handler to detect transition
  * end instead of timeout.
  *
- * @property {enteringCallback} [onEnter]
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEnter]
  * Called before enter
  * transition starts.
  *
- * @property {enteringCallback} [onEntering]
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntering]
  * Called when enter
  * transition is starting.
  *
- * @property {enteringCallback} [onEntered]
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntered]
  * Called after enter
  * transition finishes.
  *
- * @property {exitingCallback} [onExit]
+ * @property {(node: HTMLElement) => void} [onExit]
  * Called before exit
  * transition starts.
  *
- * @property {exitingCallback} [onExiting]
+ * @property {(node: HTMLElement) => void} [onExiting]
  * Called when exit
  * transition is running.
  *
- * @property {exitingCallback} [onExited]
+ * @property {(node: HTMLElement) => void} [onExited]
  * Called after exit
  * transition finishes.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & OffcanvasOwnProps} OffcanvasProps
+ * @typedef {PrimeProps & OffcanvasOwnProps} OffcanvasProps
  * @param {OffcanvasProps} props
  *
  * @return {React.JSX.Element}
@@ -251,7 +250,7 @@ function Offcanvas(props) {
 
   useEscapePress(open, keyboard, onClose);
 
-  /** @type {enteringCallback} */
+  /** @type {(node: HTMLElement, isAppearing: boolean) => void} */
   const handleEnter = useCallback(
     (node, isAppearing) => {
       onEnter?.(node, isAppearing);
@@ -259,7 +258,7 @@ function Offcanvas(props) {
     [onEnter],
   );
 
-  /** @type {enteringCallback} */
+  /** @type {(node: HTMLElement, isAppearing: boolean) => void} */
   const handleEntering = useCallback(
     (node, isAppearing) => {
       onEntering?.(node, isAppearing);
@@ -267,7 +266,7 @@ function Offcanvas(props) {
     [onEntering],
   );
 
-  /** @type {enteringCallback} */
+  /** @type {(node: HTMLElement, isAppearing: boolean) => void} */
   const handleEntered = useCallback(
     (node, isAppearing) => {
       // @ts-ignore
@@ -277,7 +276,7 @@ function Offcanvas(props) {
     [onEntered],
   );
 
-  /** @type {exitingCallback} */
+  /** @type {(node: HTMLElement) => void} */
   const handleExit = useCallback(
     (node) => {
       onExit?.(node);
@@ -285,7 +284,7 @@ function Offcanvas(props) {
     [onExit],
   );
 
-  /** @type {exitingCallback} */
+  /** @type {(node: HTMLElement) => void} */
   const handleExiting = useCallback(
     (node) => {
       onExiting?.(node);
@@ -293,7 +292,7 @@ function Offcanvas(props) {
     [onExiting],
   );
 
-  /** @type {exitingCallback} */
+  /** @type {(node: HTMLElement) => void} */
   const handleExited = useCallback(
     (node) => {
       onExited?.(node);
