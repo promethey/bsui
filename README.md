@@ -14,10 +14,10 @@
 
 Modern Bootstrap component system for React applications.
 
-| Library ver. | Bootstrap Ver. | Status  |
-| ------------ | -------------- | ------- |
-| 1.X.X        | 5.1.X          | Latest  |
-| 2.X.X        | 5.2.X          | Planned |
+| BSUI Version | Bootstrap Version | Status  |
+| ------------ | ----------------- | ------- |
+| 1.X.X        | 5.1.X             | Latest  |
+| 2.X.X        | 5.2.X             | Planned |
 
 ## Installation
 
