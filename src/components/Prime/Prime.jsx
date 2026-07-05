@@ -565,7 +565,7 @@ const propTypes = {
         "dark",
         "white",
       ]),
-      width: PropTypes.oneOf([1, 2, 3, 4, 5]),
+      width: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
       top: PropTypes.oneOf([true, 0]),
       end: PropTypes.oneOf([true, 0]),
       bottom: PropTypes.oneOf([true, 0]),
@@ -768,7 +768,7 @@ const propTypes = {
  * @property {25|50|75|100} [opacity]
  * Controls the opacity utility value.
  *
- * @property {BorderObject|true|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"|1|2|3|4|5} [border]
+ * @property {BorderObject|true|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"|0|1|2|3|4|5} [border]
  * Controls border utility styles and border appearance.
  *
  * @property {boolean|"top"|"end"|"bottom"|"start"|"circle"|"pill"|0|1|2|3} [rounded]

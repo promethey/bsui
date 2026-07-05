@@ -8,7 +8,7 @@ import { classnames as cs } from "helpers";
  * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"} [color]
  * Sets border color
  *
- * @property {1|2|3|4|5} [width]
+ * @property {0|1|2|3|4|5} [width]
  * Sets border width
  *
  * @property {true|0} [top]
@@ -47,7 +47,7 @@ const BORDER_VALUES_MAP = {
     "dark",
     "white",
   ],
-  width: [1, 2, 3, 4, 5],
+  width: [0, 1, 2, 3, 4, 5],
   top: [true, 0],
   end: [true, 0],
   bottom: [true, 0],
@@ -104,7 +104,7 @@ const BORDER_VALUES_MAP = {
  * })
  * // "border-primary border-1 border-top-0"
  *
- * @param {BorderObject|boolean|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"|1|2|3|4|5} [value]
+ * @param {BorderObject|boolean|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"|0|1|2|3|4|5} [value]
  * Border utility configuration.
  *
  * @returns {string}
