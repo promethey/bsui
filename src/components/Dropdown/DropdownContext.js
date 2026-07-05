@@ -29,7 +29,7 @@ export function useDropdownContext() {
 
   if (!context) {
     throw new Error(
-      "AccordionItem components must be used within AccordionItem.",
+      "useDropdownContext must be used within a Dropdown provider.",
     );
   }
 

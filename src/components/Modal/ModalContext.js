@@ -14,9 +14,7 @@ export function useModalContext() {
   const context = useContext(ModalContext);
 
   if (!context) {
-    throw new Error(
-      "AccordionItem components must be used within AccordionItem.",
-    );
+    throw new Error("useModalContext must be used within a Modal provider.");
   }
 
   return context;

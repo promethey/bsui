@@ -31,7 +31,7 @@ export function useOffcanvasContext() {
 
   if (!context) {
     throw new Error(
-      "AccordionItem components must be used within AccordionItem.",
+      "useOffcanvasContext must be used within an Offcanvas provider.",
     );
   }
 
