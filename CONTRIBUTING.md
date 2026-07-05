@@ -68,13 +68,12 @@ const defaultProps = {
  * @typedef {object} ComponentOwnProps
  *
  * @typedef {PrimeProps & ComponentOwnProps} ComponentProps
- *
  * @param {ComponentProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Lastname Firstname [github_username] <john_doe@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Component(props) {
   const { style, children, className, ...rest } = props;
