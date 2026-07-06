@@ -1,6 +1,7 @@
 import { useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
+import { Transition } from "react-transition-group";
 import { classnames as cs } from "helpers";
 import { Prime } from "components";
 import OffcanvasHeader from "./OffcanvasHeader";
@@ -8,9 +9,7 @@ import OffcanvasTitle from "./OffcanvasTitle";
 import OffcanvasBody from "./OffcanvasBody";
 import OffcanvasBackdrop from "./OffcanvasBackdrop";
 import { OffcanvasContext } from "./OffcanvasContext";
-import { Transition } from "react-transition-group";
-import { useBodyScrollLock } from "hooks";
-import { useEscapePress } from "./useEscapePress";
+import { useBodyScrollLock, useEscapePress } from "hooks";
 
 const BASE_CLASS_NAME = "offcanvas";
 
@@ -75,7 +74,8 @@ const propTypes = {
   onClose: PropTypes.func,
 
   /**
-   * Custom handler to detect transition end instead of timeout
+   * Custom handler to detect transition
+   * end instead of timeout
    */
   addEndListener: PropTypes.func,
 

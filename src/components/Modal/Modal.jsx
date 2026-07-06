@@ -1,6 +1,8 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useRef } from "react";
 import PropTypes from "prop-types";
+import { Transition } from "react-transition-group";
 import cn from "classnames";
+import { prefix } from "helpers";
 import { Prime } from "components";
 import ModalDialog from "./ModalDialog";
 import ModalContent from "./ModalContent";
@@ -8,13 +10,9 @@ import ModalHeader from "./ModalHeader";
 import ModalTitle from "./ModalTitle";
 import ModalBody from "./ModalBody";
 import ModalFooter from "./ModalFooter";
-import { prefix } from "helpers";
-import { ModalContext } from "./ModalContext";
-import { Transition } from "react-transition-group";
 import ModalBackdrop from "./ModalBackdrop";
-import { useRef } from "react";
-import { useBodyScrollLock } from "hooks";
-import { useEscapePress } from "./useEscapePress";
+import { useBodyScrollLock, useEscapePress } from "hooks";
+import { ModalContext } from "./ModalContext";
 
 const BASE_CLASS_NAME = "modal";
 
@@ -83,6 +81,8 @@ const propTypes = {
 
   backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["static"])]),
 
+  keyboard: PropTypes.bool,
+
   /**
    * Custom handler to detect transition
    * end instead of timeout
@@ -137,6 +137,7 @@ const defaultProps = {
   size: null,
   fullscreen: false,
   backdrop: true,
+  keyboard: true,
   addEndListener: null,
   onEnter: null,
   onEntering: null,
@@ -165,7 +166,7 @@ const defaultProps = {
  *
  * @property {number} [timeout=300]
  *
- * @property {(event?: React.SyntheticEvent, closeType?: string) => void} [onClose]
+ * @property {(event?: React.SyntheticEvent | KeyboardEvent, closeType?: string) => void} [onClose]
  * Callback fired when the modal requests to be closed.
  * closeType: ["backdrop", "escape", "close-button"]
  *
@@ -182,6 +183,8 @@ const defaultProps = {
  * Enables fullscreen mode or breakpoint-based fullscreen behavior.
  *
  * @property {boolean|"static"} [backdrop=true]
+ *
+ * @property {boolean} [keyboard=true]
  *
  * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
  * Custom handler to detect transition end instead of timeout.
@@ -225,6 +228,7 @@ function Modal(props) {
     size,
     fullscreen = false,
     backdrop = true,
+    keyboard = true,
     addEndListener,
     onEnter,
     onEntering,
@@ -267,6 +271,14 @@ function Modal(props) {
       ["sm", "md", "lg", "xl", "xxl"].includes(fullscreen),
   });
 
+  const onStaticEscape = () => {
+    setStaticAnimation(true);
+
+    setTimeout(() => {
+      setStaticAnimation(false);
+    }, 300);
+  };
+
   /**
    * Handles clicks on the modal backdrop and closes
    * the modal when the backdrop itself is clicked.
@@ -279,12 +291,7 @@ function Modal(props) {
     }
 
     if (backdrop === "static") {
-      setStaticAnimation(true);
-
-      setTimeout(() => {
-        setStaticAnimation(false);
-      }, 300);
-
+      onStaticEscape?.();
       return;
     }
 
@@ -295,7 +302,10 @@ function Modal(props) {
     useBodyScrollLock(open, "modal-open");
   }
 
-  useEscapePress(open, onClose, backdrop, setStaticAnimation);
+  useEscapePress(open, keyboard, onClose, {
+    backdrop,
+    onStaticEscape,
+  });
 
   /** @type {(node: HTMLElement, isAppearing: boolean) => void} */
   const handleEnter = useCallback(
