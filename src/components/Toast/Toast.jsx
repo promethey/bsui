@@ -58,9 +58,45 @@ const propTypes = {
    * Called when the toast requests
    * to be closed. The `closeType`
    * argument indicates what
-   * triggered the close request.
+   * triggered the close request
    */
   onClose: PropTypes.func,
+
+  /**
+   * Delays mounting the component until
+   * the enter transition begins
+   */
+  mountOnEnter: PropTypes.bool,
+
+  /**
+   * Removes the component from the DOM after
+   * the exit transition finishes
+   */
+  unmountOnExit: PropTypes.bool,
+
+  /**
+   * Runs the enter transition
+   * on the initial component mount
+   */
+  appear: PropTypes.bool,
+
+  /**
+   * Enables the enter transition
+   * when the component becomes visible
+   */
+  enter: PropTypes.bool,
+
+  /**
+   * Enables the exit transition
+   * when the component becomes hidden
+   */
+  exit: PropTypes.bool,
+
+  /**
+   * Specifies transition duration
+   * in milliseconds
+   */
+  timeout: PropTypes.number,
 
   /**
    * Custom handler to detect transition
@@ -112,6 +148,12 @@ const defaultProps = {
   autohide: false,
   delay: 3000,
   onClose: null,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: true,
+  enter: true,
+  exit: true,
+  timeout: 350,
   addEndListener: null,
   onEnter: null,
   onEntering: null,
@@ -159,6 +201,30 @@ const defaultProps = {
  * Called when the toast requests to be closed. The `closeType` argument
  * indicates what triggered the close request.
  *
+ * @property {boolean} [mountOnEnter=false]
+ * Delays mounting the component until
+ * the enter transition begins.
+ *
+ * @property {boolean} [unmountOnExit=false]
+ * Removes the component from the DOM after
+ * the exit transition finishes.
+ *
+ * @property {boolean} [appear=true]
+ * Runs the enter transition
+ * on the initial component mount.
+ *
+ * @property {boolean} [enter=true]
+ * Enables the enter transition
+ * when the component becomes visible.
+ *
+ * @property {boolean} [exit=true]
+ * Enables the exit transition
+ * when the component becomes hidden.
+ *
+ * @property {number} [timeout=350]
+ * Specifies transition duration
+ * in milliseconds.
+ *
  * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
  * Custom handler to detect transition
  * end instead of timeout.
@@ -205,6 +271,12 @@ function Toast(props) {
     autohide = false,
     delay = 3000,
     onClose,
+    mountOnEnter = false,
+    unmountOnExit = false,
+    appear = true,
+    enter = true,
+    exit = true,
+    timeout = 350,
     addEndListener,
     onEnter,
     onEntering,
@@ -271,8 +343,12 @@ function Toast(props) {
     <Transition
       nodeRef={nodeRef}
       in={open}
-      timeout={350}
-      appear
+      mountOnEnter={mountOnEnter}
+      unmountOnExit={unmountOnExit}
+      appear={appear}
+      enter={enter}
+      exit={exit}
+      timeout={timeout}
       addEndListener={addEndListener}
       onEnter={handleEnter}
       onEntering={handleEntering}
