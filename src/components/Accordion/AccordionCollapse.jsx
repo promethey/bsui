@@ -32,14 +32,14 @@ const propTypes = {
   /**
    * Sets animation duration value
    */
-  duration: PropTypes.number,
+  timeout: PropTypes.number,
 };
 
 const defaultProps = {
   style: null,
   className: null,
   open: false,
-  duration: 350,
+  timeout: 350,
 };
 
 /**
@@ -57,7 +57,7 @@ const defaultProps = {
  * @property {boolean} [open]
  * Sets open state
  *
- * @property {number} [duration]
+ * @property {number} [timeout=350]
  * Sets animation duration value
  *
  * @typedef {PrimeProps & AccordionCollapseOwnProps} AccordionCollapseProps
@@ -75,7 +75,7 @@ function AccordionCollapse(props) {
     children,
     className,
     open = false,
-    duration = 350,
+    timeout = 350,
     ...rest
   } = props;
 
@@ -84,7 +84,7 @@ function AccordionCollapse(props) {
   return (
     <Collapse
       open={open}
-      duration={duration}
+      timeout={timeout}
       className={classes}
       style={style}
       {...rest}>
