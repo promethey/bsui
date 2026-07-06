@@ -11,8 +11,8 @@ import ModalTitle from "./ModalTitle";
 import ModalBody from "./ModalBody";
 import ModalFooter from "./ModalFooter";
 import ModalBackdrop from "./ModalBackdrop";
-import { useBodyScrollLock, useEscapePress } from "hooks";
 import { ModalContext } from "./ModalContext";
+import { useBodyScrollLock, useEscapePress } from "hooks";
 
 const BASE_CLASS_NAME = "modal";
 
@@ -42,18 +42,6 @@ const propTypes = {
   open: PropTypes.bool,
 
   /**
-   * Transition duration
-   * in milliseconds
-   */
-  timeout: PropTypes.number,
-
-  /**
-   * Callback fired when the modal
-   * requests to be closed
-   */
-  onClose: PropTypes.func,
-
-  /**
    * Enables vertical scrolling
    * inside the modal body
    */
@@ -79,9 +67,59 @@ const propTypes = {
     PropTypes.oneOf(["sm", "md", "lg", "xl", "xxl"]),
   ]),
 
+  /**
+   * Toggles rendering of a backdrop
+   * layer behind the component
+   */
   backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["static"])]),
 
+  /**
+   * Enables closing via Escape
+   * key interaction
+   */
   keyboard: PropTypes.bool,
+
+  /**
+   * Callback fired when the modal
+   * requests to be closed
+   */
+  onClose: PropTypes.func,
+
+  /**
+   * Delays mounting the component until
+   * the enter transition begins
+   */
+  mountOnEnter: PropTypes.bool,
+
+  /**
+   * Removes the component from the DOM after
+   * the exit transition finishes
+   */
+  unmountOnExit: PropTypes.bool,
+
+  /**
+   * Runs the enter transition
+   * on the initial component mount
+   */
+  appear: PropTypes.bool,
+
+  /**
+   * Enables the enter transition
+   * when the component becomes visible
+   */
+  enter: PropTypes.bool,
+
+  /**
+   * Enables the exit transition
+   * when the component becomes hidden
+   */
+  exit: PropTypes.bool,
+
+  /**
+   * Specifies transition duration
+   * in milliseconds
+   */
+  timeout: PropTypes.number,
 
   /**
    * Custom handler to detect transition
@@ -130,7 +168,6 @@ const defaultProps = {
   className: null,
   style: null,
   open: false,
-  timeout: 300,
   onHide: null,
   scrollable: false,
   centered: false,
@@ -138,6 +175,12 @@ const defaultProps = {
   fullscreen: false,
   backdrop: true,
   keyboard: true,
+  mountOnEnter: true,
+  unmountOnExit: true,
+  appear: false,
+  enter: true,
+  exit: true,
+  timeout: 300,
   addEndListener: null,
   onEnter: null,
   onEntering: null,
@@ -186,6 +229,30 @@ const defaultProps = {
  *
  * @property {boolean} [keyboard=true]
  *
+ * @property {boolean} [mountOnEnter=true]
+ * Delays mounting the component until
+ * the enter transition begins.
+ *
+ * @property {boolean} [unmountOnExit=true]
+ * Removes the component from the DOM after
+ * the exit transition finishes.
+ *
+ * @property {boolean} [appear=false]
+ * Runs the enter transition
+ * on the initial component mount.
+ *
+ * @property {boolean} [enter=true]
+ * Enables the enter transition
+ * when the component becomes visible.
+ *
+ * @property {boolean} [exit=true]
+ * Enables the exit transition
+ * when the component becomes hidden.
+ *
+ * @property {number} [timeout=300]
+ * Specifies transition duration
+ * in milliseconds.
+ *
  * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
  * Custom handler to detect transition end instead of timeout.
  *
@@ -221,14 +288,19 @@ function Modal(props) {
     children,
     className,
     open = false,
-    timeout = 300,
-    onClose,
     scrollable = false,
     centered = false,
     size,
     fullscreen = false,
     backdrop = true,
     keyboard = true,
+    onClose,
+    mountOnEnter = true,
+    unmountOnExit = true,
+    appear = false,
+    enter = true,
+    exit = true,
+    timeout = 300,
     addEndListener,
     onEnter,
     onEntering,
@@ -361,6 +433,11 @@ function Modal(props) {
     <Transition
       nodeRef={nodeRef}
       in={open}
+      mountOnEnter={mountOnEnter}
+      unmountOnExit={unmountOnExit}
+      appear={appear}
+      enter={enter}
+      exit={exit}
       timeout={timeout}
       addEndListener={addEndListener}
       onEnter={handleEnter}
@@ -368,13 +445,12 @@ function Modal(props) {
       onEntered={handleEntered}
       onExit={handleExit}
       onExiting={handleExiting}
-      onExited={handleExited}
-      mountOnEnter
-      unmountOnExit>
+      onExited={handleExited}>
       {(state) => (
         <ModalContext.Provider value={{ onClose }}>
           <Prime
             ref={nodeRef}
+            tabIndex="-1"
             className={cn(
               BASE_CLASS_NAME,
               "fade",
@@ -389,7 +465,6 @@ function Modal(props) {
               display: "block",
               ...style,
             }}
-            tabIndex="-1"
             {...rest}>
             <ModalBackdrop state={state} />
             <ModalDialog className={dialogClasses}>{children}</ModalDialog>
