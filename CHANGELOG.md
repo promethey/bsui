@@ -12,7 +12,7 @@ The format is based on Keep a Changelog and Semantic Versioning.
 - Helpers: capitalize, classnames, prefix;
 - Hooks: useAutohide, useBodyScrollLock, useEscapePress;
 - Layout: Container, Grid, Row, Col;
-- Forms: Control, Label, Check, Range, Select, FloatingLabel, InputGroup;
+- Forms: Form, Control, Label, Check, Range, Select, FloatingLabel, InputGroup;
 - Navigation: Nav, Navbar, Breadcrumb, Dropdown;
 - Feedback: Alert, Badge, Progress, Spinner, Placeholder;
 - Content: Accordion, Card, ListGroup;
