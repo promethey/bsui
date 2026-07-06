@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
@@ -61,6 +61,47 @@ const propTypes = {
    * triggered the close request.
    */
   onClose: PropTypes.func,
+
+  /**
+   * Custom handler to detect transition
+   * end instead of timeout
+   */
+  addEndListener: PropTypes.func,
+
+  /**
+   * Called before enter transition starts
+   */
+  onEnter: PropTypes.func,
+
+  /**
+   * Called when enter transition
+   * is starting
+   */
+  onEntering: PropTypes.func,
+
+  /**
+   * Called after enter
+   * transition finishes
+   */
+  onEntered: PropTypes.func,
+
+  /**
+   * Called before exit
+   * transition starts
+   */
+  onExit: PropTypes.func,
+
+  /**
+   * Called when exit
+   * transition is running
+   */
+  onExiting: PropTypes.func,
+
+  /**
+   * Called after exit
+   * transition finishes
+   */
+  onExited: PropTypes.func,
 };
 
 const defaultProps = {
@@ -71,6 +112,13 @@ const defaultProps = {
   autohide: false,
   delay: 3000,
   onClose: null,
+  addEndListener: null,
+  onEnter: null,
+  onEntering: null,
+  onEntered: null,
+  onExit: null,
+  onExiting: null,
+  onExited: null,
 };
 
 /**
@@ -111,6 +159,34 @@ const defaultProps = {
  * Called when the toast requests to be closed. The `closeType` argument
  * indicates what triggered the close request.
  *
+ * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
+ * Custom handler to detect transition
+ * end instead of timeout.
+ *
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEnter]
+ * Called before enter
+ * transition starts.
+ *
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntering]
+ * Called when enter
+ * transition is starting.
+ *
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntered]
+ * Called after enter
+ * transition finishes.
+ *
+ * @property {(node: HTMLElement) => void} [onExit]
+ * Called before exit
+ * transition starts.
+ *
+ * @property {(node: HTMLElement) => void} [onExiting]
+ * Called when exit
+ * transition is running.
+ *
+ * @property {(node: HTMLElement) => void} [onExited]
+ * Called after exit
+ * transition finishes.
+ *
  * @typedef {PrimeProps & ToastOwnProps} ToastProps
  * @param {ToastProps} props
  *
@@ -129,6 +205,13 @@ function Toast(props) {
     autohide = false,
     delay = 3000,
     onClose,
+    addEndListener,
+    onEnter,
+    onEntering,
+    onEntered,
+    onExit,
+    onExiting,
+    onExited,
     ...rest
   } = props;
 
@@ -136,8 +219,67 @@ function Toast(props) {
 
   useAutohide(open, autohide, delay, onClose);
 
+  /** @type {(node: HTMLElement, isAppearing: boolean) => void} */
+  const handleEnter = useCallback(
+    (node, isAppearing) => {
+      onEnter?.(node, isAppearing);
+    },
+    [onEnter],
+  );
+
+  /** @type {(node: HTMLElement, isAppearing: boolean) => void} */
+  const handleEntering = useCallback(
+    (node, isAppearing) => {
+      onEntering?.(node, isAppearing);
+    },
+    [onEntering],
+  );
+
+  /** @type {(node: HTMLElement, isAppearing: boolean) => void} */
+  const handleEntered = useCallback(
+    (node, isAppearing) => {
+      onEntered?.(node, isAppearing);
+    },
+    [onEntered],
+  );
+
+  /** @type {(node: HTMLElement) => void} */
+  const handleExit = useCallback(
+    (node) => {
+      onExit?.(node);
+    },
+    [onExit],
+  );
+
+  /** @type {(node: HTMLElement) => void} */
+  const handleExiting = useCallback(
+    (node) => {
+      onExiting?.(node);
+    },
+    [onExiting],
+  );
+
+  /** @type {(node: HTMLElement) => void} */
+  const handleExited = useCallback(
+    (node) => {
+      onExited?.(node);
+    },
+    [onExited],
+  );
+
   return (
-    <Transition nodeRef={nodeRef} in={open} timeout={350} appear>
+    <Transition
+      nodeRef={nodeRef}
+      in={open}
+      timeout={350}
+      appear
+      addEndListener={addEndListener}
+      onEnter={handleEnter}
+      onEntering={handleEntering}
+      onEntered={handleEntered}
+      onExit={handleExit}
+      onExiting={handleExiting}
+      onExited={handleExited}>
       {(state) => (
         <ToastContext.Provider value={{ onClose }}>
           <Prime
