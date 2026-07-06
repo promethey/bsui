@@ -93,28 +93,98 @@ Every component is built on top of `Prime`, so all utility props are available e
 
 ```jsx
 /**
- * Displays small contextual labels,
- * counters, or status indicators.
+ * Animates the expansion and
+ * collapsing of content visibility.
  *
  * @component
  *
- * @example
- * <Badge bg="secondary">New</Badge>
+ * @see {@link https://reactcommunity.org/react-transition-group/transition}
+ *
+ * @see {@link https://getbootstrap.com/docs/5.1/components/collapse/}
  *
  * @example
- * <Badge bg="primary" text="light">Primary</Badge>
+ * const [show, setShow] = useState(false);
  *
- * @see {@link https://getbootstrap.com/docs/5.1/components/badge/}
+ * return (
+ *  <>
+ *    <Button onClick={() => setShow((prev) => !prev)}>
+ *      Button
+ *    </Button>
+ *
+ *    <Collapse open={show}>
+ *      Some placeholder content for the collapse component.
+ *      This panel is hidden by default but revealed when
+ *      the user activates the relevant trigger.
+ *    </Collapse>
+ *  </>
+ * )
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
- * @typedef {object} BadgeOwnProps
+ * @typedef {object} CollapseOwnProps
  *
- * @typedef {BadgeOwnProps & PrimeProps} BadgeProps
+ * @property {boolean} [horizontal=false]
+ * Enables horizontal collapsing behavior.
  *
- * @param {BadgeProps} props
+ * @property {boolean} [open=false]
+ * Enables horizontal collapsing behavior.
  *
- * @return {React.JSX.Element}
+ * @property {boolean} [mountOnEnter=false]
+ * Delays mounting the component until
+ * the enter transition begins.
+ *
+ * @property {boolean} [unmountOnExit=false]
+ * Removes the component from the DOM after
+ * the exit transition finishes.
+ *
+ * @property {boolean} [appear=false]
+ * Runs the enter transition
+ * on the initial component mount.
+ *
+ * @property {boolean} [enter=true]
+ * Enables the enter transition
+ * when the component becomes visible.
+ *
+ * @property {boolean} [exit=true]
+ * Enables the exit transition
+ * when the component becomes hidden.
+ *
+ * @property {number} [timeout=350]
+ * Specifies transition duration
+ * in milliseconds.
+ *
+ * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
+ * Custom handler to detect transition
+ * end instead of timeout.
+ *
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEnter]
+ * Called before enter
+ * transition starts.
+ *
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntering]
+ * Called when enter
+ * transition is starting.
+ *
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntered]
+ * Called after enter
+ * transition finishes.
+ *
+ * @property {(node: HTMLElement) => void} [onExit]
+ * Called before exit
+ * transition starts.
+ *
+ * @property {(node: HTMLElement) => void} [onExiting]
+ * Called when exit
+ * transition is running.
+ *
+ * @property {(node: HTMLElement) => void} [onExited]
+ * Called after exit
+ * transition finishes.
+ *
+ * @typedef {PrimeProps & CollapseOwnProps} CollapseProps
+ * @param {CollapseProps} props
+ *
+ * @return {React.ReactElement}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @since 1.0.0
