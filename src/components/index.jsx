@@ -31,3 +31,4 @@ export { default as Label } from "./Label";
 export { default as Offcanvas } from "./Offcanvas";
 export { default as Pagination } from "./Pagination";
 export { default as Toast } from "./Toast";
+export { default as Form } from "./Form";

@@ -182,39 +182,41 @@ The project follows a consistent architecture based on:
 
 ### Compatibility Matrix
 
-| Component   | Category   | Status |
-| ----------- | ---------- | ------ |
-| Accordion   | Content    | Stable |
-| Alert       | Feedback   | Stable |
-| Badge       | Feedback   | Stable |
-| Breadcrumb  | Navigation | Stable |
-| Button      | Control    | Stable |
-| ButtonGroup | Control    | Stable |
-| Card        | Content    | Stable |
-| Carousel    | Content    | Stable |
-| Check       | Form       | Stable |
-| CloseButton | Control    | Stable |
-| Col         | Layout     | Stable |
-| Collapse    | Content    | Stable |
-| Container   | Layout     | Stable |
-| Control     | Form       | Stable |
-| Dropdown    | Overlay    | Stable |
-| InputGroup  | Form       | Stable |
-| Label       | Form       | Stable |
-| ListGroup   | Content    | Stable |
-| Modal       | Overlay    | Stable |
-| Nav         | Navigation | Stable |
-| Navbar      | Navigation | Stable |
-| Offcanvas   | Overlay    | Stable |
-| Pagination  | Navigation | Stable |
-| Placeholder | Feedback   | Stable |
-| Prime       | Core       | Stable |
-| Progress    | Feedback   | Stable |
-| Range       | Form       | Stable |
-| Row         | Layout     | Stable |
-| Select      | Form       | Stable |
-| Spinner     | Feedback   | Stable |
-| Toast       | Feedback   | Stable |
+| Component     | Category   | Status |
+| ------------- | ---------- | ------ |
+| Accordion     | Content    | Stable |
+| Alert         | Feedback   | Stable |
+| Badge         | Feedback   | Stable |
+| Breadcrumb    | Navigation | Stable |
+| Button        | Control    | Stable |
+| ButtonGroup   | Control    | Stable |
+| Card          | Content    | Stable |
+| Carousel      | Content    | Stable |
+| Check         | Form       | Stable |
+| CloseButton   | Control    | Stable |
+| Col           | Layout     | Stable |
+| Collapse      | Content    | Stable |
+| Container     | Layout     | Stable |
+| Control       | Form       | Stable |
+| Dropdown      | Overlay    | Stable |
+| FloatingLabel | Form       | Stable |
+| Form          | Form       | Stable |
+| InputGroup    | Form       | Stable |
+| Label         | Form       | Stable |
+| ListGroup     | Content    | Stable |
+| Modal         | Overlay    | Stable |
+| Nav           | Navigation | Stable |
+| Navbar        | Navigation | Stable |
+| Offcanvas     | Overlay    | Stable |
+| Pagination    | Navigation | Stable |
+| Placeholder   | Feedback   | Stable |
+| Prime         | Core       | Stable |
+| Progress      | Feedback   | Stable |
+| Range         | Form       | Stable |
+| Row           | Layout     | Stable |
+| Select        | Form       | Stable |
+| Spinner       | Feedback   | Stable |
+| Toast         | Feedback   | Stable |
 
 ## Build
 
