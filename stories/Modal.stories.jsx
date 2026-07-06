@@ -32,16 +32,24 @@ export default {
 };
 
 export function Default() {
-  const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleModalOpen = () => {
+    setExpanded(true);
+  };
+
+  const handleModalClose = () => {
+    setExpanded(false);
+  };
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Show modal</Button>
+      <Button onClick={handleModalOpen}>Show modal</Button>
 
       <Modal
-        open={open}
+        open={expanded}
         onClose={(event, closeType) => {
-          setOpen(false);
+          handleModalClose();
           console.log(event);
           console.log(closeType);
         }}
@@ -56,7 +64,7 @@ export function Default() {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button tone="secondary" onClose={() => setOpen(false)}>
+            <Button tone="secondary" onClick={handleModalClose}>
               Close
             </Button>
 
@@ -69,13 +77,21 @@ export function Default() {
 }
 
 export function Scrollable() {
-  const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleModalOpen = () => {
+    setExpanded(true);
+  };
+
+  const handleModalClose = () => {
+    setExpanded(false);
+  };
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Show scrollable modal</Button>
+      <Button onClick={handleModalOpen}>Show scrollable modal</Button>
 
-      <Modal scrollable open={open} onClose={() => setOpen(false)}>
+      <Modal scrollable open={expanded} onClose={handleModalClose}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Scrollable modal</Modal.Title>
@@ -86,7 +102,7 @@ export function Scrollable() {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button tone="secondary" onClose={() => setOpen(false)}>
+            <Button tone="secondary" onClick={handleModalClose}>
               Close
             </Button>
           </Modal.Footer>
@@ -97,13 +113,21 @@ export function Scrollable() {
 }
 
 export function VerticallyCentered() {
-  const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleModalOpen = () => {
+    setExpanded(true);
+  };
+
+  const handleModalClose = () => {
+    setExpanded(false);
+  };
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Show centered modal</Button>
+      <Button onClick={handleModalOpen}>Show centered modal</Button>
 
-      <Modal centered open={open} onClose={() => setOpen(false)}>
+      <Modal centered open={expanded} onClose={handleModalClose}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Centered modal</Modal.Title>
@@ -112,7 +136,7 @@ export function VerticallyCentered() {
           <Modal.Body>Modal body text goes here.</Modal.Body>
 
           <Modal.Footer>
-            <Button tone="secondary" onClose={() => setOpen(false)}>
+            <Button tone="secondary" onClick={handleModalClose}>
               Close
             </Button>
 
@@ -125,13 +149,21 @@ export function VerticallyCentered() {
 }
 
 export function Grid() {
-  const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleModalOpen = () => {
+    setExpanded(true);
+  };
+
+  const handleModalClose = () => {
+    setExpanded(false);
+  };
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Launch grid modal</Button>
+      <Button onClick={handleModalOpen}>Launch grid modal</Button>
 
-      <Modal open={open} onClose={() => setOpen(false)}>
+      <Modal open={expanded} onClose={handleModalClose}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Grid in modal</Modal.Title>
@@ -184,13 +216,21 @@ export function Grid() {
 }
 
 export function Small() {
-  const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleModalOpen = () => {
+    setExpanded(true);
+  };
+
+  const handleModalClose = () => {
+    setExpanded(false);
+  };
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Small modal</Button>
+      <Button onClick={handleModalOpen}>Small modal</Button>
 
-      <Modal size="sm" open={open} onClose={() => setOpen(false)}>
+      <Modal open={expanded} size="sm" onClose={handleModalClose}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Small modal</Modal.Title>
@@ -204,13 +244,21 @@ export function Small() {
 }
 
 export function Large() {
-  const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleModalOpen = () => {
+    setExpanded(true);
+  };
+
+  const handleModalClose = () => {
+    setExpanded(false);
+  };
 
   return (
     <>
       <Button onClick={() => setOpen(true)}>Large modal</Button>
 
-      <Modal size="lg" open={open} onClose={() => setOpen(false)}>
+      <Modal open={expanded} size="lg" onClose={() => setOpen(false)}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Large modal</Modal.Title>
@@ -224,13 +272,21 @@ export function Large() {
 }
 
 export function ExtraLarge() {
-  const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleModalOpen = () => {
+    setExpanded(true);
+  };
+
+  const handleModalClose = () => {
+    setExpanded(false);
+  };
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Extra large modal</Button>
+      <Button onClick={handleModalOpen}>Extra large modal</Button>
 
-      <Modal size="xl" open={open} onClose={() => setOpen(false)}>
+      <Modal open={expanded} size="xl" onClose={handleModalClose}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Extra large modal</Modal.Title>
@@ -244,13 +300,21 @@ export function ExtraLarge() {
 }
 
 export function Fullscreen() {
-  const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleModalOpen = () => {
+    setExpanded(true);
+  };
+
+  const handleModalClose = () => {
+    setExpanded(false);
+  };
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Fullscreen modal</Button>
+      <Button onClick={handleModalOpen}>Fullscreen modal</Button>
 
-      <Modal fullscreen open={open} onClose={() => setOpen(false)}>
+      <Modal fullscreen open={expanded} onClose={handleModalClose}>
         <Modal.Content>
           <Modal.Header closeButton>
             <Modal.Title>Fullscreen modal</Modal.Title>
@@ -259,7 +323,7 @@ export function Fullscreen() {
           <Modal.Body>Modal body text goes here.</Modal.Body>
 
           <Modal.Footer>
-            <Button tone="secondary" onClose={() => setOpen(false)}>
+            <Button tone="secondary" onClick={handleModalClose}>
               Close
             </Button>
 
@@ -276,9 +340,17 @@ export function Message() {
 
   const messageRef = useRef(null);
 
+  const handleModalOpen = () => {
+    setExpanded(true);
+  };
+
+  const handleModalClose = () => {
+    setExpanded(false);
+  };
+
   return (
     <>
-      <Button onClick={() => setExpanded(true)}>Send message</Button>
+      <Button onClick={handleModalOpen}>Send message</Button>
       <Modal
         open={expanded}
         onEntered={() => messageRef.current?.focus()}
@@ -300,7 +372,7 @@ export function Message() {
             </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button tone="secondary" onClose={() => setExpanded(false)}>
+            <Button tone="secondary" onClick={handleModalClose}>
               Close
             </Button>
             <Button>Send message</Button>
