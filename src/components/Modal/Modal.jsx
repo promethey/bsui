@@ -13,7 +13,7 @@ import { ModalContext } from "./ModalContext";
 import { Transition } from "react-transition-group";
 import ModalBackdrop from "./ModalBackdrop";
 import { useRef } from "react";
-import { useBodyScrollLock } from "./useBodyScrollLock";
+import { useBodyScrollLock } from "hooks";
 import { useEscapePress } from "./useEscapePress";
 
 const BASE_CLASS_NAME = "modal";
@@ -292,10 +292,8 @@ function Modal(props) {
   };
 
   if (backdrop && !scrollable) {
-    useBodyScrollLock(open);
+    useBodyScrollLock(open, "modal-open");
   }
-
-  useBodyScrollLock(open);
 
   useEscapePress(open, onClose, backdrop, setStaticAnimation);
 

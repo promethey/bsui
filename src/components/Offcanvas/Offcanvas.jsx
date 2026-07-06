@@ -9,7 +9,7 @@ import OffcanvasBody from "./OffcanvasBody";
 import OffcanvasBackdrop from "./OffcanvasBackdrop";
 import { OffcanvasContext } from "./OffcanvasContext";
 import { Transition } from "react-transition-group";
-import { useBodyScrollLock } from "./useBodyScrollLock";
+import { useBodyScrollLock } from "hooks";
 import { useEscapePress } from "./useEscapePress";
 
 const BASE_CLASS_NAME = "offcanvas";
