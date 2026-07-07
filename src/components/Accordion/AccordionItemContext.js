@@ -10,6 +10,9 @@ import { useContext, createContext } from "react";
  * @property {() => void} toggle
  * Toggles the expanded state
  * of the accordion item.
+ *
+ * @property {boolean} [disabled=false]
+ * Sets disabled state for item button
  */
 
 /** @type {React.Context<AccordionItemContextValue | null>} */

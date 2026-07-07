@@ -6,17 +6,20 @@ const BASE_CLASS_NAME = "accordion-collapse";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([
     PropTypes.object,
@@ -25,12 +28,14 @@ const propTypes = {
   ]),
 
   /**
-   * Sets open state
+   * Controls whether the collapse
+   * content is expanded
    */
   open: PropTypes.bool,
 
   /**
-   * Sets animation duration value
+   * Specifies the collapse transition
+   * duration in milliseconds
    */
   timeout: PropTypes.number,
 };
@@ -44,21 +49,32 @@ const defaultProps = {
 
 /**
  * Shows and hides the accordion
- * content with a collapse animation.
+ * content using a collapse transition.
  *
  * @component
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
+ * @example
+ * <Accordion.Collapse open>
+ *
+ *   <Accordion.Body>
+ *     Accordion content
+ *   </Accordion.Body>
+ *
+ * </Accordion.Collapse>
+ *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionCollapseOwnProps
  *
- * @property {boolean} [open]
- * Sets open state
+ * @property {boolean} [open=false]
+ * Controls whether the collapse
+ * content is expanded.
  *
  * @property {number} [timeout=350]
- * Sets animation duration value
+ * Specifies the collapse transition
+ * duration in milliseconds.
  *
  * @typedef {PrimeProps & AccordionCollapseOwnProps} AccordionCollapseProps
  *
@@ -67,7 +83,7 @@ const defaultProps = {
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function AccordionCollapse(props) {
   const {
