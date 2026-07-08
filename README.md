@@ -88,7 +88,9 @@ Every component is built on top of `Prime`, so all utility props are available e
 <Prime d={{ xs: "block", md: "flex" }} mt={3} />
 
 <div class="d-block d-md-flex" mt-3 />
+```
 
+```jsx
 <Button d={{ xs: "block", md: "flex" }} mt={3} />
 
 <button class="btn btn-primary d-block d-md-flex mt-3" />
