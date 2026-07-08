@@ -116,15 +116,13 @@ Every public component includes:
 
 BSUI currently provides 30+ Bootstrap-compatible components.
 
-See the complete list:
-
-[COMPONENTS.md](docs/COMPONENTS.md)
+See COMPONENTS.md
 
 ## Contributing
 
 Contributions are welcome.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+See CONTRIBUTING.md
 
 ## License
 
