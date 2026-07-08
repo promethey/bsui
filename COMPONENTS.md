@@ -1,73 +1,13 @@
 # Component Compatibility
 
-- `Stable` — Production-ready API
-- `Experimental` — API may change
-- `Planned` — Not implemented yet
-
-### Categories
-
-| Category   | Description                                  |
-| ---------- | -------------------------------------------- |
-| Form       | Form controls and data input components      |
-| Control    | Interactive form and action components       |
-| Feedback   | Status and user feedback components          |
-| Navigation | Navigation and routing components            |
-| Layout     | Grid and layout utilities                    |
-| Overlay    | Floating, layered, and temporary UI elements |
-| Content    | Content organization and presentation        |
-| Core       | Internal primitive components                |
-
-### Compatibility Matrix
-
-| Component     | Category   | Status |
-| ------------- | ---------- | ------ |
-| Accordion     | Content    | Stable |
-| Alert         | Feedback   | Stable |
-| Badge         | Feedback   | Stable |
-| Breadcrumb    | Navigation | Stable |
-| Button        | Control    | Stable |
-| ButtonGroup   | Control    | Stable |
-| Card          | Content    | Stable |
-| Carousel      | Content    | Stable |
-| Check         | Form       | Stable |
-| CloseButton   | Control    | Stable |
-| Col           | Layout     | Stable |
-| Collapse      | Content    | Stable |
-| Container     | Layout     | Stable |
-| Control       | Form       | Stable |
-| Dropdown      | Overlay    | Stable |
-| FloatingLabel | Form       | Stable |
-| Form          | Form       | Stable |
-| InputGroup    | Form       | Stable |
-| Label         | Form       | Stable |
-| ListGroup     | Content    | Stable |
-| Modal         | Overlay    | Stable |
-| Nav           | Navigation | Stable |
-| Navbar        | Navigation | Stable |
-| Offcanvas     | Overlay    | Stable |
-| Pagination    | Navigation | Stable |
-| Placeholder   | Feedback   | Stable |
-| Prime         | Core       | Stable |
-| Progress      | Feedback   | Stable |
-| Range         | Form       | Stable |
-| Row           | Layout     | Stable |
-| Select        | Form       | Stable |
-| Spinner       | Feedback   | Stable |
-| Toast         | Feedback   | Stable |
-
-# Component Compatibility
-
 This document tracks the implementation status of all public BSUI components.
 
 ## Status Legend
 
-| Status           | Description                                                |
-| ---------------- | ---------------------------------------------------------- |
-| 📋 Planned       | Component is planned but not yet implemented.              |
-| 🛠 In Progress   | Component is currently under development.                  |
-| 🧪 Testing       | Implementation is complete and currently being tested.     |
-| 📚 Documentation | Documentation and examples are being finalized.            |
-| ✅ Stable        | Production-ready component included in the latest release. |
+| Status     | Description                                                |
+| ---------- | ---------------------------------------------------------- |
+| 📋 Planned | Component is planned but not yet implemented.              |
+| ✅ Stable  | Production-ready component included in the latest release. |
 
 ## Categories
 
@@ -130,6 +70,6 @@ This document tracks the implementation status of all public BSUI components.
 
 ## Notes
 
-- `Target` indicates the planned release version for the component.
+- `Since` indicates the planned release version for the component.
 - Component status is updated on the `develop` branch during development.
 - Only **Stable** components are included in official production releases.
