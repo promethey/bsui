@@ -3,11 +3,12 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/github/license/promethey/bsui" alt="License">
+  <img src="https://img.shields.io/npm/v/bsui" alt="npm">
   <img src="https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg" alt="CI">
   <img src="https://github.com/promethey/bsui/actions/workflows/storybook.yml/badge.svg" alt="Storybook Deploy">
-  <img src="https://img.shields.io/github/license/promethey/bsui" alt="License">
-  <img src="https://img.shields.io/github/stars/promethey/bsui?style=social" alt="GitHub Stars">
   <img src="https://img.shields.io/badge/Storybook-Live-FF4785?logo=storybook&logoColor=white" alt="Storybook">
+  <img src="https://img.shields.io/github/stars/promethey/bsui?style=social" alt="GitHub Stars">
 </p>
 
 # BSUI (Bootstrap-UI)
@@ -15,22 +16,21 @@
 Modern Bootstrap component system for React applications.
 Build Bootstrap 5 applications with composable React components, utility props, and JSDoc-powered IntelliSense.
 
-| BSUI Version  | Bootstrap Version |
-| ------------- | ----------------- |
-| 1.X           | 5.1               |
-| 1.2 (planned) | 5.2               |
+| BSUI Version | Bootstrap Version |
+| ------------ | ----------------- |
+| 1.X          | 5.1               |
 
-## Featues
+## Features
 
-- Bootstrap 5 components
-- Shared Utility API across all components
-- JSDoc-powered IntelliSense
-- Storybook documentation
-- Zero Bootstrap JavaScript
+- React-first Bootstrap 5 component system
+- Consistent Utility API across all components
+- JSDoc-powered IntelliSense without TypeScript
+- Zero Bootstrap JavaScript dependency
+- Storybook component documentation
 
 ## Installation
 
-Peer Dependencies:
+Requirements:
 
 - React 19+
 - Bootstrap 5.1.3
@@ -40,6 +40,10 @@ npm install bsui
 ```
 
 Import Bootstrap styles in your project:
+
+```bash
+npm install bootstrap
+```
 
 ```js
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -57,15 +61,13 @@ export function Example() {
     </Button>
   );
 }
-```
 
-```jsx
-<button class="btn btn-primary btn-lg">Primary</button>
+// <button class="btn btn-primary btn-lg">Primary</button>
 ```
 
 ## Prime Architecture
 
-Every public component extends the `Prime` primitive.
+Every public component is built on top of the `Prime` primitive.
 
 Prime provides:
 
@@ -77,7 +79,7 @@ Prime provides:
 ```jsx
 <Prime as="button" m={2} px={3} fw="bold" />
 
-<button class="m-2 px-3 fw-bold" />
+// <button class="m-2 px-3 fw-bold" />
 ```
 
 ## Utility Props
@@ -87,14 +89,26 @@ Every component is built on top of `Prime`, so all utility props are available e
 ```jsx
 <Prime d={{ xs: "block", md: "flex" }} mt={3} />
 
-<div class="d-block d-md-flex" mt-3 />
+// <div class="d-block d-md-flex" mt-3 />
 ```
 
 ```jsx
 <Button d={{ xs: "block", md: "flex" }} mt={3} />
 
-<button class="btn btn-primary d-block d-md-flex mt-3" />
+// <button class="btn btn-primary d-block d-md-flex mt-3" />
 ```
+
+## Type Safety without TypeScript
+
+Write React components with strong editor support without adding TypeScript to your project.
+
+BSUI combines JSDoc annotations and PropTypes to provide:
+
+- Autocomplete and IntelliSense
+- Inline API documentation
+- Development-time type hints
+- Runtime prop validation
+- No additional TypeScript tooling required
 
 ## Why tone?
 
@@ -104,21 +118,17 @@ Unlike `variant`, the name **tone** is shorter, easier to type, and better refle
 
 ```jsx
 <Button tone="primary" />
+
+// <button class="btn btn-primary" />
+```
+
+```jsx
 <Alert tone="danger" />
-<Badge tone="success" />
+
+<div class="alert alert-danger" />
 ```
 
 The same API is shared across all components, providing a predictable and consistent developer experience.
-
-## Documentation
-
-Every public component includes:
-
-- JSDoc descriptions
-- Bootstrap documentation links
-- Usage examples
-- IDE autocomplete and hover help
-- Author and since
 
 ## External Libraries
 
@@ -131,7 +141,7 @@ Every public component includes:
 BSUI currently provides 30+ Bootstrap-compatible components.
 
 See the full component list and compatibility matrix in
-[COMPONENTS.md](COMPONENTS.md).
+[Components](COMPONENTS.md).
 
 ## Contributing
 
