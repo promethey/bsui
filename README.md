@@ -96,6 +96,20 @@ Every component is built on top of `Prime`, so all utility props are available e
 <button class="btn btn-primary d-block d-md-flex mt-3" />
 ```
 
+## Why tone?
+
+BSUI uses the `tone` prop to control the visual appearance of components.
+
+Unlike `variant`, the name **tone** is shorter, easier to type, and better reflects the semantic purpose of the prop.
+
+```jsx
+<Button tone="primary" />
+<Alert tone="danger" />
+<Badge tone="success" />
+```
+
+The same API is shared across all components, providing a predictable and consistent developer experience.
+
 ## Documentation
 
 Every public component includes:
@@ -116,13 +130,15 @@ Every public component includes:
 
 BSUI currently provides 30+ Bootstrap-compatible components.
 
-See COMPONENTS.md
+See the full component list and compatibility matrix in
+[COMPONENTS.md](COMPONENTS.md).
 
 ## Contributing
 
-Contributions are welcome.
+Contributions are welcome!
 
-See CONTRIBUTING.md
+Before opening a pull request, please read the
+[Contributing Guide](CONTRIBUTING.md).
 
 ## License
 
