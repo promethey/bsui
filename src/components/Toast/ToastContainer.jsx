@@ -50,6 +50,7 @@ const defaultProps = {
  * @typedef {object} ToastContainerOwnProps
  *
  * @typedef {PrimeProps & ToastContainerOwnProps} ToastContainerProps
+ *
  * @param {ToastContainerProps} props
  *
  * @return {React.JSX.Element}

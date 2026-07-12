@@ -48,6 +48,7 @@ const defaultProps = {
  * @typedef {object} ToastBodyOwnProps
  *
  * @typedef {PrimeProps & ToastBodyOwnProps} ToastBodyProps
+ *
  * @param {ToastBodyProps} props
  *
  * @return {React.JSX.Element}

@@ -105,7 +105,7 @@ const defaultProps = {
  * @param {RowProps} props
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Row(props) {
   const { style, children, className, cols, g, gx, gy, ...rest } = props;

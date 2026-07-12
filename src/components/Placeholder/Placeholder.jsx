@@ -10,12 +10,14 @@ const BASE_CLASS_NAME = "placeholder";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
@@ -26,7 +28,8 @@ const propTypes = {
   col: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
 
   /**
-   * Controls the visual size variant of the placeholder.
+   * Controls the visual size
+   * variant of the placeholder.
    */
   size: PropTypes.oneOf(["xs", "sm", "lg"]),
 };
@@ -39,12 +42,12 @@ const defaultProps = {
 };
 
 /**
- * Displays a skeleton placeholder that represents content
- * before it has been loaded.
+ * Displays a skeleton placeholder
+ * that represents content before it
+ * has been loaded.
  *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/placeholders/}
  *
  * @example
@@ -61,12 +64,13 @@ const defaultProps = {
  * Controls the visual size variant of the placeholder.
  *
  * @typedef {PrimeProps & PlaceholderOwnProps} PlaceholderProps
+ *
  * @param {PlaceholderProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Placeholder(props) {
   const { style, className, col, size, ...rest } = props;

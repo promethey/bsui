@@ -11,16 +11,26 @@ const BASE_CLASS_NAME = {
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
+  /**
+   * Specifies the spinner
+   * animation style
+   */
   view: PropTypes.oneOf(["border", "grow"]),
+
+  /**
+   * Controls the spinner size
+   */
   size: PropTypes.oneOf(["sm"]),
 };
 
@@ -32,11 +42,12 @@ const defaultProps = {
 };
 
 /**
- * Indicates loading, processing, or background activity.
+ * Displays a loading indicator to
+ * communicate ongoing processing
+ * or background activity.
  *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/spinners/}
  *
  * @example
@@ -46,21 +57,26 @@ const defaultProps = {
  * <Spinner text="primary" />
  *
  * @example
- * <Spinner text="danger" size="sm" />
+ * <Spinner view="grow" text="danger" size="sm" />
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} SpinnerOwnProps
+ *
  * @property {"border"|"grow"} [view="border"]
+ * Specifies the spinner animation style.
+ *
  * @property {"sm"|"lg"} [size]
+ * Controls the spinner size.
  *
  * @typedef {PrimeProps & SpinnerOwnProps} SpinnerProps
+ *
  * @param {SpinnerProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Spinner(props) {
   const { style, className, view = "border", size, ...rest } = props;

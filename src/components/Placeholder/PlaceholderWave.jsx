@@ -7,12 +7,14 @@ const BASE_CLASS_NAME = "placeholder-wave";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
@@ -23,11 +25,11 @@ const defaultProps = {
 };
 
 /**
- * Adds a wave animation to nested placeholder elements.
+ * Adds a wave animation to nested
+ * placeholder elements.
  *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/placeholders/}
  *
  * @example
@@ -38,12 +40,13 @@ const defaultProps = {
  * @typedef {object} PlaceholderWaveOwnProps
  *
  * @typedef {PrimeProps & PlaceholderWaveOwnProps} PlaceholderWaveProps
+ *
  * @param {PlaceholderWaveProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function PlaceholderWave(props) {
   const { style, className, ...rest } = props;

@@ -59,6 +59,7 @@ const defaultProps = {
  * Sets close button
  *
  * @typedef {PrimeProps & ToastHeaderOwnProps} ToastHeaderProps
+ *
  * @param {ToastHeaderProps} props
  *
  * @return {React.JSX.Element}

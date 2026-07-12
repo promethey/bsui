@@ -254,6 +254,7 @@ const defaultProps = {
  * transition finishes.
  *
  * @typedef {PrimeProps & ToastOwnProps} ToastProps
+ *
  * @param {ToastProps} props
  *
  * @return {React.JSX.Element}
