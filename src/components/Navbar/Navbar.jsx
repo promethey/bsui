@@ -14,32 +14,38 @@ const BASE_CLASS_NAME = "navbar";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Defines the visual appearance variant of the component
+   * Defines the visual appearance
+   * variant of the component
    */
   tone: PropTypes.oneOf(["light", "dark"]),
 
   /**
-   * Defines the responsive breakpoint for layout transition behavior
+   * Defines the responsive breakpoint
+   * for layout transition behavior
    */
   expand: PropTypes.oneOf(["sm", "md", "lg", "xl", "xxl"]),
 
   /**
-   * Navbar viewport positioning mode
+   * Navbar viewport
+   * positioning mode
    */
   placement: PropTypes.oneOf(["fixed-top", "fixed-bottom", "sticky-top"]),
 };
@@ -66,21 +72,24 @@ const defaultProps = {
  * @typedef {object} NavbarOwnProps
  *
  * @property {"light"|"dark"} [tone]
- * Defines the visual appearance variant of the component.
+ * Defines the visual appearance
+ * variant of the component.
  *
  * @property {"sm"|"md"|"lg"|"xl"|"xxl"} [expand]
- * Defines the responsive breakpoint for layout transition behavior.
+ * Defines the responsive breakpoint
+ * for layout transition behavior.
  *
  * @property {"fixed-top"|"fixed-bottom"|"sticky-top"} [placement]
  * Navbar viewport positioning mode.
  *
  * @typedef {NavbarOwnProps & PrimeProps} NavbarProps
+ *
  * @param {NavbarProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Navbar(props) {
   const { style, children, className, tone, expand, placement, ...rest } =

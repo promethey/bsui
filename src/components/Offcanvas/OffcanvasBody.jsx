@@ -47,6 +47,7 @@ const defaultProps = {
  * @typedef {object} OffcanvasBodyOwnProps
  *
  * @typedef {PrimeProps & OffcanvasBodyOwnProps} OffcanvasBodyProps
+ *
  * @param {OffcanvasBodyProps} props
  *
  * @return {React.JSX.Element}

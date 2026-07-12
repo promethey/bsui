@@ -43,6 +43,7 @@ const defaultProps = {
  * @typedef {object} ModalFooterOwnProps
  *
  * @typedef {PrimeProps & ModalFooterOwnProps} ModalFooterProps
+ *
  * @param {ModalFooterProps} props
  *
  * @return {React.JSX.Element}

@@ -59,6 +59,7 @@ const defaultProps = {
  * @typedef {PrimeProps & OffcanvasBackdropOwnProps} OffcanvasBackdropProps
  *
  * @param {OffcanvasBackdropProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>

@@ -49,18 +49,21 @@ const defaultProps = {
  *   2
  * </Pagination.Link>
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} PaginationLinkOwnProps
  *
  * @property {string} [to="#"]
  * Destination URL.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & PaginationLinkOwnProps} PaginationLinkProps
+ * @typedef {PrimeProps & PaginationLinkOwnProps} PaginationLinkProps
  *
  * @param {PaginationLinkProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function PaginationLink(props) {
   const { style, children, className, to = "#", ...rest } = props;

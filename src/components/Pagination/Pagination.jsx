@@ -58,18 +58,21 @@ const defaultProps = {
  *   </Pagination.Item>
  * </Pagination>
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} PaginationOwnProps
  *
  * @property {"sm"|"lg"} [size]
  * Controls the size of the pagination component.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & PaginationOwnProps} PaginationProps
+ * @typedef {PrimeProps & PaginationOwnProps} PaginationProps
  *
  * @param {PaginationProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Pagination(props) {
   const { style, children, className, size, ...rest } = props;

@@ -56,6 +56,7 @@ const defaultProps = {
  * Sets close button
  *
  * @typedef {PrimeProps & OffcanvasHeaderOwnProps} OffcanvasHeaderProps
+ *
  * @param {OffcanvasHeaderProps} props
  *
  * @return {React.JSX.Element}

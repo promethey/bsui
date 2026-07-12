@@ -9,20 +9,26 @@ const BASE_CLASS_NAME = "modal-header";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root element
+   * Inline styles applied
+   * to the root element
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional class names applied to the root element
+   * Additional class names applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
+  /**
+   * Sets close button
+   */
   closeButton: PropTypes.bool,
 };
 
@@ -40,12 +46,15 @@ const defaultProps = {
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/modal/}
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} ModalHeaderOwnProps
  *
  * @property {boolean} [closeButton=false]
  * Sets close button
  *
- * @typedef {import("../Prime/Prime").PrimeProps & ModalHeaderOwnProps} ModalHeaderProps
+ * @typedef {PrimeProps & ModalHeaderOwnProps} ModalHeaderProps
+ *
  * @param {ModalHeaderProps} props
  *
  * @return {React.JSX.Element}

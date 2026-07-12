@@ -7,17 +7,20 @@ const BASE_CLASS_NAME = "modal-title";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root element
+   * Inline styles applied
+   * to the root element
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional class names applied to the root element
+   * Additional class names applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
@@ -42,6 +45,7 @@ const defaultProps = {
  * @typedef {object} ModalTitleOwnProps
  *
  * @typedef {PrimeProps & ModalTitleOwnProps} ModalTitleProps
+ *
  * @param {ModalTitleProps} props
  *
  * @return {React.JSX.Element}

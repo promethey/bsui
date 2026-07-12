@@ -43,6 +43,7 @@ const defaultProps = {
  * @typedef {object} ModalDialogOwnProps
  *
  * @typedef {PrimeProps & ModalDialogOwnProps} ModalDialogProps
+ *
  * @param {ModalDialogProps} props
  *
  * @return {React.JSX.Element}

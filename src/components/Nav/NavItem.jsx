@@ -6,17 +6,20 @@ const BASE_CLASS_NAME = "nav-item";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([
     PropTypes.object,
@@ -49,12 +52,13 @@ const defaultProps = {
  * @typedef {object} NavItemOwnProps
  *
  * @typedef {NavItemOwnProps & PrimeProps} NavProps
+ *
  * @param {NavProps} props
  *
  * @returns {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function NavItem(props) {
   const { style, children, className, ...rest } = props;

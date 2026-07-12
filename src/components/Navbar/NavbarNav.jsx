@@ -8,22 +8,26 @@ const BASE_CLASS_NAME = "navbar-nav";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Enables scrollable overflow behavior for the Navbar nav
+   * Enables scrollable overflow
+   * behavior for the Navbar nav
    */
   scroll: PropTypes.bool,
 
@@ -42,7 +46,8 @@ const defaultProps = {
 };
 
 /**
- * Navbar nav
+ * Groups navigation links and related
+ * items inside the navbar.
  *
  * @component
  *
@@ -54,18 +59,21 @@ const defaultProps = {
  * @typedef {object} NavbarNavOwnProps
  *
  * @property {boolean} [scroll=false]
- * Enables scrollable overflow behavior for the Navbar nav.
+ * Enables scrollable overflow behavior
+ * for the Navbar nav.
  *
  * @property {string} [scrollHeight]
- * Defines the maximum height of the scrollable Navbar nav area (e.g. "100px", "50vh").
+ * Defines the maximum height of the scrollable
+ * Navbar nav area (e.g. "100px", "50vh").
  *
  * @typedef {NavbarNavOwnProps & PrimeProps} NavbarNavProps
+ *
  * @param {NavbarNavProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function NavbarNav(props) {
   const {

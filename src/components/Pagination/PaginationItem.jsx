@@ -62,6 +62,8 @@ const defaultProps = {
  *   <Pagination.Link>1</Pagination.Link>
  * </Pagination.Item>
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} PaginationItemOwnProps
  *
  * @property {string} [to="#"]
@@ -73,13 +75,14 @@ const defaultProps = {
  * @property {boolean} [disabled=false]
  * Prevents user interaction.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & PaginationItemOwnProps} PaginationItemProps
+ * @typedef {PrimeProps & PaginationItemOwnProps} PaginationItemProps
  *
  * @param {PaginationItemProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function PaginationItem(props) {
   const {

@@ -269,6 +269,7 @@ const defaultProps = {
  * transition finishes.
  *
  * @typedef {PrimeProps & OffcanvasOwnProps} OffcanvasProps
+ *
  * @param {OffcanvasProps} props
  *
  * @return {React.JSX.Element}
