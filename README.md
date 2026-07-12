@@ -32,7 +32,7 @@ Build Bootstrap 5 applications with composable React components, utility props, 
 
 Requirements:
 
-- React 19+
+- React 18+
 - Bootstrap 5.1.3
 
 ```bash
@@ -125,7 +125,7 @@ Unlike `variant`, the name **tone** is shorter, easier to type, and better refle
 ```jsx
 <Alert tone="danger" />
 
-<div class="alert alert-danger" />
+// <div class="alert alert-danger" />
 ```
 
 The same API is shared across all components, providing a predictable and consistent developer experience.
