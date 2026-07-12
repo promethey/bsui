@@ -51,7 +51,7 @@ const defaultProps = {
  *
  * @typedef {object} AlertLinkOwnProps
  *
- * @property {string} [to]
+ * @property {string} [to="#"]
  * Sets navigation target (alias for href)
  *
  * @typedef {AlertLinkOwnProps & PrimeProps} AlertLinkProps
@@ -61,10 +61,10 @@ const defaultProps = {
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function AlertLink(props) {
-  const { style, children, className, to, ...rest } = props;
+  const { style, children, className, to = "#", ...rest } = props;
 
   const classes = cn(BASE_CLASS_NAME, className);
 

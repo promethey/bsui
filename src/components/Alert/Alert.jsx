@@ -25,17 +25,20 @@ const ALERT_THEMES = [
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([
     PropTypes.object,
@@ -64,11 +67,6 @@ const propTypes = {
   dismissible: PropTypes.bool,
 
   /**
-   * Enables dismiss animations
-   */
-  animated: PropTypes.bool,
-
-  /**
    * Invoked when the alert
    * is dismissed
    */
@@ -80,12 +78,12 @@ const defaultProps = {
   className: null,
   tone: "primary",
   dismissible: false,
-  animated: false,
   onClose: null,
 };
 
 /**
- * Displays contextual feedback and status messages.
+ * Displays contextual feedback
+ * and status messages.
  *
  * @component
  *
@@ -105,14 +103,12 @@ const defaultProps = {
  *
  * @typedef {object} AlertOwnProps
  *
- * @property {AlertThemes} [tone]
- * Controls the visual appearance of the alert.
+ * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"} [tone="primary"]
+ * Controls the visual appearance
+ * of the alert.
  *
  * @property {boolean} [dismissible]
  * Displays a close button.
- *
- * @property {boolean} [animated]
- * Enables dismiss animations.
  *
  * @property {(event: React.MouseEvent<HTMLButtonElement>) => void} [onClose]
  * Invoked when the alert is dismissed.
@@ -124,7 +120,7 @@ const defaultProps = {
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Alert(props) {
   const {
@@ -133,7 +129,6 @@ function Alert(props) {
     className,
     tone = "primary",
     dismissible = false,
-    animated = false,
     onClose,
     ...rest
   } = props;
@@ -141,11 +136,13 @@ function Alert(props) {
   const classes = cn(
     BASE_CLASS_NAME,
     {
+      // "alert-{"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"}"
       [`${BASE_CLASS_NAME}-${tone}`]:
         typeof tone === "string" && ALERT_THEMES.includes(tone),
+
+      // "alert-dismissible"
       [cs(BASE_CLASS_NAME, "dismissible")]:
         typeof dismissible === "boolean" && dismissible,
-      "show fade": typeof animated === "boolean" && animated,
     },
     className,
   );

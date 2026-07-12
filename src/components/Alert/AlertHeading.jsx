@@ -6,22 +6,26 @@ const BASE_CLASS_NAME = "alert-heading";
 
 const propTypes = {
   /**
-   * HTML element type used for rendering
+   * HTML element type used
+   * for rendering
    */
   as: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"]),
 
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
@@ -47,7 +51,7 @@ const defaultProps = {
  *
  * @typedef {Object} AlertHeadingOwnProps
  *
- * @property {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [as]
+ * @property {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [as="h4"]
  * HTML element type used for rendering.
  *
  * @typedef {AlertHeadingOwnProps & PrimeProps} AlertHeadingProps
@@ -57,7 +61,7 @@ const defaultProps = {
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function AlertHeading(props) {
   const { as: Component = "h4", style, children, className, ...rest } = props;
