@@ -69,7 +69,7 @@ const defaultProps = {
  * @property {ButtonGroupSizes} [size]
  * Sets button group size
  *
- * @property {boolean} [vertical]
+ * @property {boolean} [vertical=false]
  * Sets vertical style
  *
  * @typedef {ButtonGroupOwnProps & PrimeProps} ButtonGroupProps
@@ -79,10 +79,10 @@ const defaultProps = {
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function ButtonGroup(props) {
-  const { style, children, className, size, vertical, ...rest } = props;
+  const { style, children, className, size, vertical = false, ...rest } = props;
 
   const classes = cn(
     vertical ? prefix(BASE_CLASS_NAME, "vertical") : BASE_CLASS_NAME,

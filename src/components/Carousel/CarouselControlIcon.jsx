@@ -39,20 +39,22 @@ const defaultProps = {
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/carousel/}
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} CarouselControlIconOwnProps
  *
  * @property {"prev"|"next"} position
  * Specifies whether the previous or next
  * control icon is rendered.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & CarouselControlIconOwnProps} CarouselControlIconProps
+ * @typedef {PrimeProps & CarouselControlIconOwnProps} CarouselControlIconProps
  *
  * @param {CarouselControlIconProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function CarouselControl(props) {
   const { style, children, className, position, ...rest } = props;

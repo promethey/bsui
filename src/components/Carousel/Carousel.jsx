@@ -16,23 +16,26 @@ const BASE_CLASS_NAME = "carousel";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Initial active slide index when the carousel
-   * is first rendered
+   * Initial active slide index when
+   * the carousel is first rendered
    */
   defaultIndex: PropTypes.number,
 
@@ -42,7 +45,8 @@ const propTypes = {
   loop: PropTypes.bool,
 
   /**
-   * Displays previous and next navigation controls
+   * Displays previous and next
+   * navigation controls
    */
   controls: PropTypes.bool,
 
@@ -95,6 +99,8 @@ const defaultProps = {
  *  </Carousel.Inner>
  * </Carousel>
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} CarouselOwnProps
  *
  * @property {number} [defaultIndex=0]
@@ -115,14 +121,14 @@ const defaultProps = {
  * @property {boolean} [fade=false]
  * Enables fade slides animation
  *
- * @typedef {import("../Prime/Prime").PrimeProps & CarouselOwnProps} CarouselProps
+ * @typedef {PrimeProps & CarouselOwnProps} CarouselProps
  *
  * @param {CarouselProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Carousel(props) {
   const {

@@ -47,6 +47,8 @@ const defaultProps = {
  *   onClick={handlePrevious}
  * />
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} CarouselControlOwnProps
  *
  * @property {"prev"|"next"} position
@@ -56,14 +58,14 @@ const defaultProps = {
  * @property {(event: React.MouseEvent<HTMLElement>) => void} [onClick]
  * Called when the control is clicked.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & CarouselControlOwnProps} CarouselControlProps
+ * @typedef {PrimeProps & CarouselControlOwnProps} CarouselControlProps
  *
  * @param {CarouselControlProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function CarouselControl(props) {
   const { style, className, position, onClick, ...rest } = props;

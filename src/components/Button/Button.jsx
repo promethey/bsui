@@ -148,16 +148,16 @@ const defaultProps = {
  *
  * @typedef {object} ButtonOwnProps
  *
- * @property {string} [to]
+ * @property {string} [to="#"]
  * Navigation target URL.
  *
- * @property {"button"|"submit"|"reset"} [type]
+ * @property {"button"|"submit"|"reset"} [type="button"]
  * Native button type attribute.
  *
- * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link"} [tone]
+ * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"link"} [tone="primary"]
  * Semantic visual tone.
  *
- * @property {boolean} [outline]
+ * @property {boolean} [outline=false]
  * Applies the outline style.
  *
  * @property {string} [value]
@@ -166,10 +166,10 @@ const defaultProps = {
  * @property {"sm"|"lg"} [size]
  * Controls the component size.
  *
- * @property {boolean} [disabled]
+ * @property {boolean} [disabled=false]
  * Disables user interaction.
  *
- * @property {boolean} [pressed]
+ * @property {boolean} [pressed=false]
  * Indicates the pressed state.
  *
  * @property {(event: React.MouseEvent<HTMLButtonElement>) => void} [onClick]
@@ -182,7 +182,7 @@ const defaultProps = {
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Button(props) {
   const {
@@ -207,10 +207,13 @@ function Button(props) {
     {
       [prefix(BASE_CLASS_NAME, outline ? `outline-${tone}` : tone)]:
         typeof tone === "string" && BUTTON_THEMES.includes(tone),
+
       disabled:
         typeof disabled === "boolean" && disabled && ComponentType === "button",
+
       [cs(BASE_CLASS_NAME, size)]:
         typeof size === "string" && BUTTON_SIZES.includes(size),
+
       active: typeof pressed === "boolean" && pressed,
     },
     className,
@@ -223,13 +226,7 @@ function Button(props) {
     ...rest,
   };
 
-  /**
-   * @type {{
-   *  button: React.ButtonHTMLAttributes<HTMLButtonElement>,
-   *  a: React.AnchorHTMLAttributes<HTMLAnchorElement>,
-   *  input: React.InputHTMLAttributes<HTMLInputElement>
-   * }}
-   */
+  /** @type {Record<string, any>} */
   const propertyList = {
     button: {
       ...properties,

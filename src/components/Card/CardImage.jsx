@@ -1,17 +1,20 @@
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { classnames as cs } from "helpers";
+import { Prime } from "components";
 
 const BASE_CLASS_NAME = "card-img";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
@@ -26,7 +29,8 @@ const propTypes = {
   alt: PropTypes.string.isRequired,
 
   /**
-   * Sets image placement inside card
+   * Sets image placement
+   * inside card
    */
   placement: PropTypes.oneOf(["top", "bottom"]),
 };
@@ -38,7 +42,8 @@ const defaultProps = {
 };
 
 /**
- * Displays an image inside the Card component.
+ * Displays an image inside
+ * the Card component.
  *
  * @component
  *
@@ -67,7 +72,7 @@ const defaultProps = {
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function CardImage(props) {
   const { style, className, src, alt, placement, ...rest } = props;
@@ -75,7 +80,14 @@ function CardImage(props) {
   const classes = cn(cs(BASE_CLASS_NAME, placement), className);
 
   return (
-    <img src={src} alt={alt} className={classes} style={style} {...rest} />
+    <Prime
+      as="img"
+      src={src}
+      alt={alt}
+      className={classes}
+      style={style}
+      {...rest}
+    />
   );
 }
 
