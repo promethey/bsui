@@ -9,17 +9,20 @@ const BASE_CLASS_NAME = "col";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
@@ -141,13 +144,14 @@ const defaultProps = {
  * @property {0|1|2|3|4|5|6|7|8|9|10|11|OffsetObject} [offset]
  * Controls offset
  *
- * @typedef {ColOwnProps & PrimeProps} ColProps
+ * @typedef {PrimeProps & ColOwnProps} ColProps
+ *
  * @param {ColProps} props
  *
  * @return {React.ReactElement}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Col(props) {
   const {

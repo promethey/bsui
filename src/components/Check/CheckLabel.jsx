@@ -40,18 +40,21 @@ const defaultProps = {
  *
  * @see {@link https://getbootstrap.com/docs/5.1/forms/checks-radios/}
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} CheckLabelOwnProps
  *
  * @property {string} [htmlFor]
  * Associates the label with a form control by its id.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & CheckLabelOwnProps} CheckLabelProps
+ * @typedef {PrimeProps & CheckLabelOwnProps} CheckLabelProps
  *
  * @param {CheckLabelProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function CheckLabel(props) {
   const { style, children, className, htmlFor, ...rest } = props;

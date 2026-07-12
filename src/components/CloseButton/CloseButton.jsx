@@ -7,17 +7,20 @@ const CLOSE_BUTTON_CLASS_NAME = "btn-close";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Enables the white close button variant
+   * Enables the white close
+   * button variant
    */
   white: PropTypes.bool,
 
@@ -27,7 +30,8 @@ const propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * Callback fired when the button is clicked
+   * Callback fired when the
+   * button is clicked
    */
   onClick: PropTypes.func,
 };
@@ -71,13 +75,21 @@ const defaultProps = {
  * Callback fired when the button is clicked.
  *
  * @typedef {PrimeProps & CloseButtonOwnProps} CloseButtonProps
+ *
  * @param {CloseButtonProps} props
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function CloseButton(props) {
-  const { style, className, white, disabled, onClick, ...rest } = props;
+  const {
+    style,
+    className,
+    white = false,
+    disabled = false,
+    onClick,
+    ...rest
+  } = props;
 
   const classes = cn(
     CLOSE_BUTTON_CLASS_NAME,

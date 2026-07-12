@@ -23,7 +23,12 @@ import {
 const BASE_CLASS_NAME = "dropdown";
 
 const propTypes = {
+  /**
+   * HTML element used to render
+   * the component.
+   */
   as: PropTypes.elementType,
+
   /**
    * Inline styles applied
    * to the root
@@ -105,12 +110,13 @@ const defaultProps = {
  * Use CSS transforms to position the floating element.
  *
  * @typedef {PrimeProps & DropdownOwnProps} DropdownProps
+ *
  * @param {DropdownProps} props
  *
  * @returns {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Dropdown(props) {
   const {

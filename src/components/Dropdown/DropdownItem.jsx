@@ -7,37 +7,44 @@ const BASE_CLASS_NAME = "dropdown-item";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Navigation target for the dropdown item
+   * Navigation target for
+   * the dropdown item
    */
   to: PropTypes.bool,
 
   /**
-   * Marks the item as active/selected
+   * Marks the item as
+   * active/selected
    */
   active: PropTypes.bool,
 
   /**
-   * Disables interaction and applies disabled styles
+   * Disables interaction and
+   * applies disabled styles
    */
   disabled: PropTypes.bool,
 
   /**
-   * Callback fired when the element is clicked
+   * Callback fired when the
+   * element is clicked
    */
   onClick: PropTypes.func,
 };
@@ -57,7 +64,6 @@ const defaultProps = {
  *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/dropdowns/}
  *
  * @example
@@ -68,24 +74,29 @@ const defaultProps = {
  * @typedef {object} DropdownItemOwnProps
  *
  * @property {string} to
- * Navigation target for the dropdown item.
+ * Navigation target for
+ * the dropdown item.
  *
  * @property {boolean} [active=false]
- * Marks the item as active/selected.
+ * Marks the item as
+ * active/selected.
  *
  * @property {boolean} [disabled=false]
- * Disables interaction and applies disabled styles.
+ * Disables interaction and
+ * applies disabled styles.
  *
  * @property {(event: React.MouseEvent<HTMLAnchorElement>) => void} [onClick]
- * Callback fired when the element is clicked.
+ * Callback fired when the
+ * element is clicked.
  *
  * @typedef {PrimeProps & DropdownItemOwnProps} DropdownItemProps
+ *
  * @param {DropdownItemProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function DropdownItem(props) {
   const {

@@ -8,22 +8,26 @@ const BASE_CLASS_NAME = "dropdown-menu";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Enables dark theme styling for the dropdown menu
+   * Enables dark theme styling
+   * for the dropdown menu
    */
   dark: PropTypes.bool,
 };
@@ -40,7 +44,6 @@ const defaultProps = {
  *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/dropdowns/}
  *
  * @example
@@ -58,13 +61,14 @@ const defaultProps = {
  * Enables dark theme styling for the dropdown menu.
  *
  * @typedef {PrimeProps & DropdownMenuOwnProps} DropdownMenuProps
+ *
  * @param {DropdownMenuProps} props
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function DropdownMenu(props) {
-  const { style, children, className, dark, ...rest } = props;
+  const { style, children, className, dark = false, ...rest } = props;
 
   const { expanded, refs, floatingStyles, getFloatingProps } =
     useDropdownContext();
