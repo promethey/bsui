@@ -69,10 +69,11 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps & InputGroupOwnProps} InputGroupProps
  *
  * @param {InputGroupProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function InputGroup(props) {
   const { style, children, className, size, ...rest } = props;

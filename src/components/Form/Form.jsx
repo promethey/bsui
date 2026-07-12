@@ -138,11 +138,11 @@ const defaultProps = {
  * URL where the form data
  * is submitted.
  *
- * @property {"get"|"post"|"dialog"} [method]
+ * @property {"get"|"post"|"dialog"} [method="get"]
  * HTTP method used to
  * submit the form.
  *
- * @property {"application/x-www-form-urlencoded"|"multipart/form-data"|"text/plain"} [encType]
+ * @property {"application/x-www-form-urlencoded"|"multipart/form-data"|"text/plain"} [encType="application/x-www-form-urlencoded"]
  * Encoding type used when
  * submitting the form.
  *
@@ -165,14 +165,17 @@ const defaultProps = {
  * Disables native browser validation.
  *
  * @property {(event: React.FormEvent<HTMLFormElement>) => void} [onSubmit]
- * Called when the form is submitted.
+ * Called when the form
+ * is submitted.
  *
  * @property {(event: React.FormEvent<HTMLFormElement>) => void} [onReset]
- * Called when the form is reset.
+ * Called when the form
+ * is reset.
  *
  * @typedef {PrimeProps & FormOwnProps} FormProps
  *
  * @param {FormProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
@@ -190,7 +193,7 @@ function Form(props) {
     acceptCharset,
     autoComplete,
     name,
-    noValidate,
+    noValidate = false,
     onSubmit,
     onReset,
     ...rest

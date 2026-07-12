@@ -69,7 +69,7 @@ const defaultProps = {
  * @param {FloatingLabelProps} props
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function FloatingLabel(props) {
   const { style, children, className, label, ...rest } = props;

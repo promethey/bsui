@@ -7,32 +7,38 @@ const BASE_CLASS_NAME = "list-group-item";
 
 const propTypes = {
   /**
-   * Element type used to render the list group item.
+   * Element type used to render
+   * the list group item.
    */
   as: PropTypes.elementType,
 
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Navigation target for link-based items
+   * Navigation target for
+   * link-based items
    */
   to: PropTypes.string,
 
   /**
-   * Visual tone applied to the item
+   * Visual tone applied
+   * to the item
    */
   tone: PropTypes.oneOf([
     "primary",
@@ -51,7 +57,8 @@ const propTypes = {
   active: PropTypes.bool,
 
   /**
-   * Disables user interaction with the item
+   * Disables user interaction
+   * with the item
    */
   disabled: PropTypes.bool,
 };
@@ -65,7 +72,8 @@ const defaultProps = {
 };
 
 /**
- * Displays an individual item within a list group.
+ * Displays an individual item
+ * within a list group.
  *
  * @component
  *
@@ -92,15 +100,17 @@ const defaultProps = {
  * Marks the item as active.
  *
  * @property {boolean} [disabled=false]
- * Disables user interaction with the item.
+ * Disables user interaction
+ * with the item.
  *
  * @typedef {PrimeProps & ListGroupOwnProps} ListGroupProps
+ *
  * @param {ListGroupProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function ListGroupItem(props) {
   const {
@@ -141,7 +151,7 @@ function ListGroupItem(props) {
     className,
   );
 
-  const properties = {
+  const propertyList = {
     as: ComponentType,
     className: classes,
     style: style,
@@ -157,7 +167,7 @@ function ListGroupItem(props) {
     }),
   };
 
-  return <Prime {...properties}>{children}</Prime>;
+  return <Prime {...propertyList}>{children}</Prime>;
 }
 
 ListGroupItem.propTypes = propTypes;

@@ -49,14 +49,17 @@ const defaultProps = {
  *  Email:
  * </Label>
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} LabelOwnProps
  *
  * @property {string} htmlFor
  * Associates the label with a form control by its id.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & LabelOwnProps} LabelProps
+ * @typedef {PrimeProps & LabelOwnProps} LabelProps
  *
  * @param {LabelProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
