@@ -4,7 +4,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/github/license/promethey/bsui" alt="License">
-  <img src="https://img.shields.io/npm/v/bsui" alt="npm">
+  <img src="https://img.shields.io/npm/v/@promethey/bsui.svg" alt="npm">
   <img src="https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg" alt="CI">
   <img src="https://github.com/promethey/bsui/actions/workflows/storybook.yml/badge.svg" alt="Storybook Deploy">
   <img src="https://img.shields.io/badge/Storybook-Live-FF4785?logo=storybook&logoColor=white" alt="Storybook">
