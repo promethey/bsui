@@ -4,7 +4,6 @@ import cn from "classnames";
 import { Button } from "components";
 import { useDropdownContext } from "./DropdownContext";
 import { prefix } from "helpers";
-import { Nav } from "components";
 
 const BASE_CLASS_NAME = "dropdown-toggle";
 

@@ -32,7 +32,7 @@ Build Bootstrap 5 applications with composable React components, utility props, 
 
 Requirements:
 
-- React 18+
+- React 19+
 - Bootstrap 5.1.3
 
 ```bash
