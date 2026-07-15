@@ -3,27 +3,43 @@ import { prefix } from "helpers";
 const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
 /**
- * Generates Bootstrap utility classes from primitive values
- * or responsive breakpoint objects.
+ * Generates Bootstrap utility class names from primitive values
+ * or responsive breakpoint maps.
+ *
+ * Supports:
+ * - primitive values (string, number, boolean)
+ * - responsive breakpoint objects
+ * - utilities with breakpoint inserted inside the class name
+ *   (for example: `flex-md-wrap`)
+ *
+ * Invalid prefixes, breakpoints and values are ignored.
  *
  * @example
- * classnames("justify-content", "center");
+ * classnames("justify-content", "center")
  * // "justify-content-center"
  *
  * @example
- * classnames("justify-content", { xs: "center", md: "start" });
+ * classnames("justify-content", {
+ *   xs: "center",
+ *   md: "start"
+ * })
  * // "justify-content-center justify-content-md-start"
  *
  * @example
- * classnames("flex-wrap-reverse", true, { prefixInsertBetween: true });
+ * classnames("flex-wrap-reverse", true)
  * // "flex-wrap-reverse"
  *
  * @example
  * classnames(
  *   "flex-wrap-reverse",
- *   { xs: true, md: true },
- *   { prefixInsertBetween: true }
- * );
+ *   {
+ *     xs: true,
+ *     md: true
+ *   },
+ *   {
+ *     prefixInsertBetween: true
+ *   }
+ * )
  * // "flex-wrap-reverse flex-md-wrap-reverse"
  *
  * @param {string} prfx
@@ -32,11 +48,15 @@ const BREAKPOINTS = ["xs", "sm", "md", "lg", "xl", "xxl"];
  * @param {string|number|boolean|Object<string, string|number|boolean>} [value]
  * Utility value or responsive breakpoint map.
  *
- * @param {{ prefixInsertBetween?: boolean }} [options]
+ * @param {Object} [options]
  * Configuration options.
  *
+ * @param {boolean} [options.prefixInsertBetween=false]
+ * Inserts responsive breakpoint between the first and remaining
+ * parts of the prefix.
+ *
  * @returns {string}
- * Generated Bootstrap class names.
+ * Bootstrap utility class names.
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
@@ -55,19 +75,10 @@ export function classnames(
     return value ? prfx : "";
   }
 
-  /**
-   * Convert prefix to array.
-   * @example
-   * 'justify-content'.split('-') // ['justify', 'content']
-   */
+  // Split the utility prefix once for responsive insertion.
   const prfxArray = prfx.split("-");
 
-  /**
-   * Copy prefix array and drop first elem in prefix array.
-   * for prefixInsertBetween = true
-   * @example
-   * ['flex', 'wrap', 'reverse'].shift() // ['wrap', 'reverse']
-   */
+  // ['flex', 'wrap', 'reverse'].shift() -> ['wrap', 'reverse']
   const shiftPrfxArray = [...prfxArray];
   shiftPrfxArray.shift();
 
@@ -98,7 +109,6 @@ export function classnames(
         if (options.prefixInsertBetween) {
           result.push(
             /**
-             * @example
              * prefix('flex', 'md', 'wrap', 'reverse')
              * // 'flex-md-wrap-reverse'
              */
@@ -108,7 +118,7 @@ export function classnames(
               shiftPrfxArray.join("-"),
               /**
                * Fix if val is boolean
-               * @example
+               *
                * classnames('flex-fill', { xs: true, sm: false, md: true }, { prefixInsertBetween: true }))
                * // 'flex-fill flex-md-fill'
                */

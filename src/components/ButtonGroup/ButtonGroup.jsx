@@ -14,17 +14,20 @@ const BUTTON_GROUP_SIZES = ["sm", "lg"];
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
@@ -52,31 +55,34 @@ const defaultProps = {
 };
 
 /**
- * Groups multiple buttons into a single connected control container.
+ * Groups multiple buttons into a single
+ * connected control container.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/button-group/}
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} ButtonGroupOwnProps
+ *
  * @property {ButtonGroupSizes} [size]
  * Sets button group size
  *
- * @property {boolean} [vertical]
+ * @property {boolean} [vertical=false]
  * Sets vertical style
  *
  * @typedef {ButtonGroupOwnProps & PrimeProps} ButtonGroupProps
+ *
  * @param {ButtonGroupProps} props
  *
- * @return {React.ReactElement}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function ButtonGroup(props) {
-  const { style, children, className, size, vertical, ...rest } = props;
+  const { style, children, className, size, vertical = false, ...rest } = props;
 
   const classes = cn(
     vertical ? prefix(BASE_CLASS_NAME, "vertical") : BASE_CLASS_NAME,

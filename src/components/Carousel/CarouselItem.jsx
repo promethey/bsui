@@ -4,17 +4,20 @@ import { Prime } from "components";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
@@ -36,16 +39,20 @@ const defaultProps = {
  *  <img src="..." alt="..." />
  * </Carousel.Item>
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} CarouselItemOwnProps
+ *
  * @property {number} index
  *
- * @typedef {import("../Prime/Prime").PrimeProps & CarouselItemOwnProps} CarouselItemProps
+ * @typedef {PrimeProps & CarouselItemOwnProps} CarouselItemProps
+ *
  * @param {CarouselItemProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function CarouselItem(props) {
   const { style, children, className, ...rest } = props;

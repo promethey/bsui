@@ -7,56 +7,62 @@ const BASE_CLASS_NAME = "form-range";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root element
+   * Inline styles applied
+   * to the root element
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional class names applied to the root element
+   * Additional class names applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
    * Controls the current value when used
-   * as a controlled component.
+   * as a controlled component
    */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * Sets the initial value when used
-   * as an uncontrolled component.
+   * as an uncontrolled component
    */
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
    * Invoked whenever the slider
-   * value changes.
+   * value changes
    */
   onChange: PropTypes.func,
 
   /**
    * Indicates whether the control
-   * is non-interactive.
+   * is non-interactive
    */
   disabled: PropTypes.bool,
 
   /**
-   * Defines the minimum selectable value.
+   * Defines the minimum
+   * selectable value
    */
   min: PropTypes.number,
 
   /**
-   * Defines the maximum selectable value.
+   * Defines the maximum
+   * selectable value
    */
   max: PropTypes.number,
 
   /**
-   * Specifies the increment between allowed values.
+   * Specifies the increment
+   * between allowed values
    */
   step: PropTypes.number,
 };
@@ -82,36 +88,46 @@ const defaultProps = {
  * @example
  * <Range min={0} max={100} defaultValue={10} />
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} RangeOwnProps
  *
  * @property {number|string} [value]
- * Controls the current value when used as a controlled component.
+ * Controls the current value when
+ * used as a controlled component.
  *
  * @property {number|string} [defaultValue]
- * Sets the initial value when used as an uncontrolled component.
+ * Sets the initial value when used
+ * as an uncontrolled component.
  *
  * @property {(event: React.ChangeEvent<HTMLInputElement>) => void} [onChange]
- * Invoked whenever the slider value changes.
+ * Invoked whenever the
+ * slider value changes.
  *
  * @property {boolean} [disabled=false]
- * Indicates whether the control is non-interactive.
+ * Indicates whether the control
+ * is non-interactive.
  *
  * @property {number} [min=0]
- * Defines the minimum selectable value.
+ * Defines the minimum
+ * selectable value.
  *
  * @property {number} [max=100]
- * Defines the maximum selectable value.
+ * Defines the maximum
+ * selectable value.
  *
  * @property {number} [step=1]
- * Specifies the increment between allowed values.
+ * Specifies the increment
+ * between allowed values.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & RangeOwnProps} RangeProps
+ * @typedef {PrimeProps & RangeOwnProps} RangeProps
  *
  * @param {RangeProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Range(props) {
   const {

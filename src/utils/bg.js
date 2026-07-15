@@ -4,9 +4,15 @@ import { classnames as cs } from "helpers";
  * @typedef {"color"|"gradient"|"opacity"} BackgroundProperties
  *
  * @typedef {object} BackgroundObject
- * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [color] - Sets background color
- * @property {boolean} [gradient] - Sets background gradient
- * @property {10|25|50|75} [opacity] - Sets background opacity
+ *
+ * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [color]
+ * Sets background color.
+ *
+ * @property {boolean} [gradient]
+ * Enables the Bootstrap background gradient.
+ *
+ * @property {10|25|50|75} [opacity]
+ * Sets background opacity.
  */
 
 const BG_MAP = {
@@ -34,18 +40,57 @@ const BG_VALUES_MAP = {
 };
 
 /**
- * Background function
+ * Resolves Bootstrap-like background
+ * utility classes.
+ *
+ * Unsupported properties and invalid
+ * values are silently ignored.
+ *
+ * If no valid utility can be resolved,
+ * an empty string is returned.
  *
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/background/}
  *
  * @example
- * bg("primary") // return "bg-primary"
- * bg({ color: "primary", gradient: true, opacity: 10 }) // "bg-primary bg-gradient bg-opacity-10"
- * bg({ color: "danger", grdnt: true }) // "bg-danger", grdnt was igrnored
+ * bgResolver("primary")
+ * // "bg-primary"
  *
- * @param {BackgroundObject|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"body"|"white"|"transparent"} [value]
+ * @example
+ * bgResolver({
+ *   color: "primary",
+ *   gradient: true,
+ *   opacity: 10,
+ * })
+ * // "bg-primary bg-gradient bg-opacity-10"
  *
- * @returns {string} bg
+ * @example
+ * bgResolver({
+ *   color: "danger",
+ *   grdnt: true,
+ * })
+ * // "bg-danger"
+ * // Unknown properties are ignored.
+ *
+ * @param {BackgroundObject|
+ * "primary"|
+ * "secondary"|
+ * "success"|
+ * "danger"|
+ * "warning"|
+ * "info"|
+ * "light"|
+ * "dark"|
+ * "body"|
+ * "white"|
+ * "transparent"} [value]
+ * Background utility configuration.
+ *
+ * @returns {string}
+ * Space-separated Bootstrap-compatible
+ * background utility classes.
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
  */
 export function bgResolver(value) {
   if (!value) return "";

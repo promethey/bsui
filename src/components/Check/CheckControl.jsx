@@ -6,12 +6,14 @@ const BASE_CLASS_NAME = "form-check-input";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root element
+   * Inline styles applied
+   * to the root element
    */
   style: PropTypes.shape({}),
 
   /**
-   * Additional class names applied to the root element
+   * Additional class names applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
@@ -82,6 +84,8 @@ const defaultProps = {
  *
  * @see {@link https://getbootstrap.com/docs/5.1/forms/checks-radios/}
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} CheckInputOwnProps
  *
  * @property {string} [id]
@@ -108,13 +112,14 @@ const defaultProps = {
  * @property {function} [onChange]
  * Invoked whenever the checked state changes.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & CheckInputOwnProps} CheckInputProps
+ * @typedef {PrimeProps & CheckInputOwnProps} CheckInputProps
  *
  * @param {CheckInputProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function CheckControl(props) {
   const {

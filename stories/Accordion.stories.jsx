@@ -79,6 +79,37 @@ export function Flush() {
   );
 }
 
+export function Disabled() {
+  const examples = [
+    {
+      title: "Accordion Item #1 (disabled)",
+      body: "This is the first item's accordion body",
+      disabled: true,
+    },
+    {
+      title: "Accordion Item #2",
+      body: "This is the second item's accordion body",
+      disabled: false,
+    },
+    {
+      title: "Accordion Item #3",
+      body: "This is the third item's accordion body",
+      disabled: false,
+    },
+  ];
+
+  return (
+    <Accordion defaultActiveKey="2" flush>
+      {examples.map(({ title, body, disabled }, index) => (
+        <Accordion.Item itemKey={`${index + 1}`} disabled={disabled}>
+          <Accordion.Header>{title}</Accordion.Header>
+          <Accordion.Body>{body}</Accordion.Body>
+        </Accordion.Item>
+      ))}
+    </Accordion>
+  );
+}
+
 export function AlwaysOpen() {
   const examples = [
     {

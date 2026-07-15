@@ -9,17 +9,20 @@ const BASE_CLASS_NAME = "form-select";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([
     PropTypes.object,
@@ -28,7 +31,8 @@ const propTypes = {
   ]),
 
   /**
-   * Controls the visual size of the select element
+   * Controls the visual size
+   * of the select element
    */
   size: PropTypes.oneOf(["sm", "lg"]),
 
@@ -59,12 +63,14 @@ const propTypes = {
   disabled: PropTypes.bool,
 
   /**
-   * Requires a value before form submission
+   * Requires a value before
+   * form submission
    */
   required: PropTypes.bool,
 
   /**
-   * Automatically focuses the select when mounted
+   * Automatically focuses the
+   * select when mounted
    */
   autoFocus: PropTypes.bool,
 
@@ -74,22 +80,26 @@ const propTypes = {
   name: PropTypes.string,
 
   /**
-   * Number of visible options displayed when rendered as a list box
+   * Number of visible options displayed
+   * when rendered as a list box
    */
   visibleOptions: PropTypes.number,
 
   /**
-   * Fired when the selected value changes
+   * Fired when the selected
+   * value changes
    */
   onChange: PropTypes.func,
 
   /**
-   * Fired when the select receives focus
+   * Fired when the select
+   * receives focus
    */
   onFocus: PropTypes.func,
 
   /**
-   * Fired when the select loses focus
+   * Fired when the select
+   * loses focus
    */
   onBlur: PropTypes.func,
 };
@@ -130,6 +140,8 @@ const defaultProps = {
  *  </Select.Option>
  * </Select>
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} SelectOwnProps
  *
  * @property {"sm"|"lg"} [size]
@@ -168,13 +180,14 @@ const defaultProps = {
  * @property {React.FocusEventHandler<HTMLSelectElement>} [onBlur]
  * Fired when the select loses focus.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & SelectOwnProps} SelectProps
+ * @typedef {PrimeProps & SelectOwnProps} SelectProps
+ *
  * @param {SelectProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Select(props) {
   const {

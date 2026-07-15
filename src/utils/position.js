@@ -1,52 +1,95 @@
 import { classnames as cs } from "helpers";
 
 /**
- * @typedef {"pos"|"top"|"end"|"bottom"|"start"|"translateMiddle"|"translateMiddleX"|"translateMiddleY"} PositionKey
+ * @typedef {"pos"|"top"|"end"|"bottom"|"start"|"translate"} PositionKey
+ *
+ * @typedef {Object} PositionObject
+ *
+ * @property {"static"|"relative"|"absolute"|"fixed"|"sticky"} [pos]
+ * Sets the CSS position utility.
+ *
+ * @property {0|50|100} [top]
+ * Sets the top offset utility.
+ *
+ * @property {0|50|100} [end]
+ * Sets the end (right) offset utility.
+ *
+ * @property {0|50|100} [bottom]
+ * Sets the bottom offset utility.
+ *
+ * @property {0|50|100} [start]
+ * Sets the start (left) offset utility.
+ *
+ * @property {"middle"|"middle-x"|"middle-y"} [translate]
+ * Applies translate utility classes for centering.
  */
 
-/**
- * @type {Object<PositionKey, string>}
- */
+/** @type {Object<PositionKey, string>} */
 const POSITION_MAP = {
   pos: "position",
   top: "top",
   end: "end",
   bottom: "bottom",
   start: "start",
-  translateMiddle: "translate-middle",
-  translateMiddleX: "translate-middle-x",
-  translateMiddleY: "translate-middle-y",
+  translate: "translate",
 };
 
-/**
- * @type {Object<PositionKey, any>}
- */
+/** @type {Object<PositionKey, any[]>} */
 const POSITION_VALUES = {
   pos: ["static", "relative", "absolute", "fixed", "sticky"],
   top: [0, 50, 100],
   end: [0, 50, 100],
   bottom: [0, 50, 100],
   start: [0, 50, 100],
-  translateMiddle: [true],
-  translateMiddleX: [true],
-  translateMiddleY: [true],
+  translate: ["middle", "middle-x", "middle-y"],
 };
 
 /**
- * Position function
+ * Resolves Bootstrap position utility classes.
+ *
+ * Supports CSS position, inset offsets,
+ * and translate utilities.
+ *
+ * Unsupported properties and values are ignored.
  *
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/position/}
  *
  * @example
- * position({ pos: "absolute" }) // 'position-absolute'
- * position({ pos: "static", top: 0, end: 0 }) // 'top-0 end-0'
+ * positionResolver({ pos: "absolute" })
+ * // "position-absolute"
  *
- * @param {Object} value
- * @returns {string} classnames
+ * @example
+ * positionResolver({
+ *   pos: "absolute",
+ *   top: 0,
+ *   end: 0,
+ * })
+ * // "position-absolute top-0 end-0"
+ *
+ * @example
+ * positionResolver({
+ *   top: 50,
+ *   start: 50,
+ *   translate: "middle",
+ * })
+ * // "top-50 start-50 translate-middle"
+ *
+ * @example
+ * positionResolver({ foo: "bar", top: 0 })
+ * // "top-0"
+ *
+ * @param {PositionObject} [value]
+ * Position utility configuration.
+ *
+ * @returns {string}
+ * Space-separated Bootstrap position utility classes.
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
  */
-export function positionResolver(
-  value = { pos: null, top: null, end: null, bottom: null, start: null },
-) {
+export function positionResolver(value) {
+  if (!value) return "";
+
   if (
     typeof value === "object" &&
     value &&

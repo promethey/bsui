@@ -23,40 +23,52 @@ const propTypes = {
    * Direction of the carousel control
    */
   position: PropTypes.oneOf(["prev", "next"]),
+
+  onClick: PropTypes.func,
 };
 
 const defaultProps = {
   style: null,
   className: null,
+  onClick: null,
 };
 
 /**
- * Renders a navigation control for moving between slides.
+ * Renders a previous or next
+ * navigation button for the carousel.
  *
  * @component
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/carousel/}
  *
  * @example
- * <Carousel controls>
- *  ...
- * </Carousel>
+ * <Carousel.Control
+ *   position="prev"
+ *   onClick={handlePrevious}
+ * />
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CarouselControlOwnProps
  *
  * @property {"prev"|"next"} position
- * Direction of the carousel control.
+ * Specifies whether the control navigates
+ * to the previous or next slide.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & CarouselControlOwnProps} CarouselControlProps
+ * @property {(event: React.MouseEvent<HTMLElement>) => void} [onClick]
+ * Called when the control is clicked.
+ *
+ * @typedef {PrimeProps & CarouselControlOwnProps} CarouselControlProps
+ *
  * @param {CarouselControlProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function CarouselControl(props) {
-  const { style, className, position, ...rest } = props;
+  const { style, className, position, onClick, ...rest } = props;
 
   const classes = cn(BASE_CLASS_NAME[position], className);
 
@@ -66,6 +78,7 @@ function CarouselControl(props) {
       type="button"
       className={classes}
       style={style}
+      onClick={onClick}
       {...rest}>
       <CarouselControlIcon position={position} />
     </Prime>

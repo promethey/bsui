@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { columnsResolver } from "./columns";
+import { columnsResolver } from "utils";
 
 describe("gutterResolver utility", () => {
   test("returns empty string for falsy values", () => {

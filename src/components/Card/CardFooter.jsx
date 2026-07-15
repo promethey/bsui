@@ -6,22 +6,26 @@ const BASE_CLASS_NAME = "card-footer";
 
 const propTypes = {
   /**
-   * HTML element type used for rendering
+   * HTML element type used
+   * for rendering
    */
   as: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6", "div"]),
 
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
@@ -33,10 +37,10 @@ const defaultProps = {
 };
 
 /**
- * CardHeader is children component of Card
+ * Renders the footer section of the Card component.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/card/#header-and-footer}
  *
  * @example
@@ -47,16 +51,18 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} CardHeaderOwnProps
+ *
  * @property {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"|"div"} [as="div"]
  * HTML element type used for rendering.
  *
  * @typedef {CardHeaderOwnProps & PrimeProps} CardHeaderProps
+ *
  * @param {CardHeaderProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function CardFooter(props) {
   const {

@@ -4,12 +4,24 @@ import { classnames as cs } from "helpers";
  * @typedef {"color"|"width"|"top"|"end"|"bottom"|"start"} BorderProperties
  *
  * @typedef {object} BorderObject
- * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"} [color] - Sets border color
- * @property {1|2|3|4|5} [width] - Sets border width
- * @property {true|0} [top] - Sets top border
- * @property {true|0} [end] - Sets top border
- * @property {true|0} [bottom] - Sets top border
- * @property {true|0} [start] - Sets top border
+ *
+ * @property {"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"} [color]
+ * Sets border color
+ *
+ * @property {0|1|2|3|4|5} [width]
+ * Sets border width
+ *
+ * @property {true|0} [top]
+ * Sets top border
+ *
+ * @property {true|0} [end]
+ * Sets end border
+ *
+ * @property {true|0} [bottom]
+ * Sets bottom border
+ *
+ * @property {true|0} [start]
+ * Sets start border
  */
 
 const BORDER_CLASS_NAME = "border";
@@ -35,7 +47,7 @@ const BORDER_VALUES_MAP = {
     "dark",
     "white",
   ],
-  width: [1, 2, 3, 4, 5],
+  width: [0, 1, 2, 3, 4, 5],
   top: [true, 0],
   end: [true, 0],
   bottom: [true, 0],
@@ -43,20 +55,64 @@ const BORDER_VALUES_MAP = {
 };
 
 /**
- * Border function
+ * Resolves Bootstrap-like border
+ * utility classes.
+ *
+ * Side-specific border utilities
+ * (`top`, `end`, `bottom`, `start`)
+ * automatically replace the default
+ * `border` class.
+ *
+ * Unsupported properties and invalid
+ * values are silently ignored.
+ *
+ * If no valid utility can be resolved,
+ * an empty string is returned.
  *
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/borders/}
  *
  * @example
- * border={true} // "border"
- * border={1} // "border border-1"
- * border="primary" // "border border-primary"
- * border={{ color: "success" }} // "border border-success"
- * border={{ top: true, color: "primary" }} // "border-top border-primary"
- * border={{ color: "primary", width: 1, top: 0 }} // "border border-primary border-1 border-top-0"
+ * borderResolver(true)
+ * // "border"
  *
- * @param {BorderObject|boolean|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"|1|2|3|4|5} [value]
+ * @example
+ * borderResolver(1)
+ * // "border border-1"
+ *
+ * @example
+ * borderResolver("primary")
+ * // "border border-primary"
+ *
+ * @example
+ * borderResolver({
+ *   color: "success",
+ * })
+ * // "border border-success"
+ *
+ * @example
+ * borderResolver({
+ *   top: true,
+ *   color: "primary",
+ * })
+ * // "border-top border-primary"
+ *
+ * @example
+ * borderResolver({
+ *   color: "primary",
+ *   width: 1,
+ *   top: 0,
+ * })
+ * // "border-primary border-1 border-top-0"
+ *
+ * @param {BorderObject|boolean|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"|0|1|2|3|4|5} [value]
+ * Border utility configuration.
+ *
  * @returns {string}
+ * Space-separated Bootstrap-compatible
+ * border utility classes.
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
  */
 export function borderResolver(value) {
   if (!value) return "";
@@ -69,6 +125,7 @@ export function borderResolver(value) {
   // String
   if (typeof value === "string" && value.length > 0) {
     if (BORDER_VALUES_MAP.color.includes(value.trim())) {
+      // example: return "border border-primary"
       return `${BORDER_CLASS_NAME} ${cs(BORDER_CLASS_NAME, value.trim())}`;
     }
 
@@ -78,6 +135,7 @@ export function borderResolver(value) {
   // Number
   if (typeof value === "number") {
     if (BORDER_VALUES_MAP["width"].includes(value)) {
+      // example: return "border border-1"
       return `${BORDER_CLASS_NAME} ${cs(BORDER_MAP["width"], value)}`;
     }
 
@@ -91,9 +149,7 @@ export function borderResolver(value) {
     !Array.isArray(value) &&
     Object.keys(value).length > 0
   ) {
-    /**
-     * @type {Array<string>}
-     */
+    /** @type {Array<string>} */
     let result = [BORDER_CLASS_NAME];
 
     for (let [key, val] of Object.entries(value)) {
@@ -103,7 +159,8 @@ export function borderResolver(value) {
           /** @type {never} */ (val),
         )
       ) {
-        // drop default 'border' class if top, end, bottom, start is true
+        // Remove the default border class
+        // if top, end, bottom, start is true
         if (
           ["top", "end", "bottom", "start"].includes(key) &&
           (val === true || val === 0)
@@ -115,12 +172,12 @@ export function borderResolver(value) {
       }
     }
 
-    // if all key or values in object incorrect
+    // Remove the default border class
+    // when no valid utilities were resolved.
     if (result.length === 1 && result[0] === BORDER_CLASS_NAME) {
       result.shift();
     }
 
-    // if result contains only 'border' than return empty string
     return result.join(" ").trim();
   }
 

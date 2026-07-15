@@ -49,9 +49,9 @@ export function PricingCard() {
         d="flex"
         flex={{
           xs: {
-            dir: "column",
-            justify: "center",
-            align: "center",
+            direction: "column",
+            justifyContent: "center",
+            alignItems: "center",
           },
         }}
         p={3}>
@@ -65,7 +65,7 @@ export function PricingCard() {
           d="flex"
           flex={{
             xs: {
-              dir: "row",
+              direction: "row",
             },
           }}
           py={4}
@@ -1001,7 +1001,7 @@ export function PositionProgress() {
           theme={theme}
           size="sm"
           pos="absolute"
-          translateMiddle
+          translate="middle"
           top={0}
           start={start}
           rounded="pill"
@@ -1038,7 +1038,7 @@ export function CenterElements() {
           bg="dark"
           border
           rounded={3}
-          translateMiddle
+          translate="middle"
         />
       ))}
     </Prime>

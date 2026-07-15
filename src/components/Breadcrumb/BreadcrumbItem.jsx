@@ -7,27 +7,32 @@ const BASE_CLASS_NAME = "breadcrumb-item";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   /**
-   * Navigation target for the breadcrumb item
+   * Navigation target for
+   * the breadcrumb item
    */
   to: PropTypes.string,
 
   /**
-   * Marks the item as the current page
+   * Marks the item as
+   * the current page
    */
   active: PropTypes.bool,
 };
@@ -40,11 +45,11 @@ const defaultProps = {
 };
 
 /**
- * Represents a single breadcrumb navigation item.
+ * Represents a single breadcrumb
+ * navigation item.
  *
  * @component
  *
- * @see {Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/breadcrumb/}
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
@@ -58,12 +63,13 @@ const defaultProps = {
  * Marks the item as the current page.
  *
  * @typedef {BreadcrumbItemOwnProps & PrimeProps} BreadcrumbItemProps
+ *
  * @param {BreadcrumbItemProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function BreadcrumbItem(props) {
   const {

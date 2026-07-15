@@ -57,20 +57,16 @@ describe("position utility", () => {
   });
 
   test("translate middle", () => {
-    expect(positionResolver({ translateMiddle: true })).toBe(
-      "translate-middle",
-    );
-    expect(positionResolver({ translateMiddleX: true })).toBe(
+    expect(positionResolver({ translate: "middle" })).toBe("translate-middle");
+    expect(positionResolver({ translate: "middle-x" })).toBe(
       "translate-middle-x",
     );
-    expect(positionResolver({ translateMiddleY: true })).toBe(
+    expect(positionResolver({ translate: "middle-y" })).toBe(
       "translate-middle-y",
     );
   });
 
   test("translate middle false", () => {
     expect(positionResolver({ translateMiddle: false })).toBe("");
-    expect(positionResolver({ translateMiddleX: false })).toBe("");
-    expect(positionResolver({ translateMiddleY: false })).toBe("");
   });
 });

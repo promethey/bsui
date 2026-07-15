@@ -1,6 +1,8 @@
 import { classnames as cs } from "helpers";
 
 const ROUNDED_CLASS_NAME = "rounded";
+
+/** @type {Array<true|"top"|"end"|"bottom"|"start"|"circle"|"pill"|0|1|2|3>} */
 const ROUNDED_VALUES = [
   true,
   "top",
@@ -16,17 +18,44 @@ const ROUNDED_VALUES = [
 ];
 
 /**
- * Rounded function
+ * Resolves Bootstrap rounded utility classes.
  *
- * @see {@link https://getbootstrap.com/docs/5.1/utilities/borders/}
+ * Supports border radius utilities including
+ * directional, circular, pill, and size variants.
+ *
+ * Unsupported values are ignored.
+ *
+ * @see {@link https://getbootstrap.com/docs/5.1/utilities/borders/#border-radius}
  *
  * @example
- * rounded(true) // 'rounded'
- * rounded("top") // 'rounded-top'
- * rounded(0) // 'rounded-0'
+ * roundedResolver(true)
+ * // "rounded"
  *
- * @param {boolean|string|number|undefined} value
- * @returns {string} classnames
+ * @example
+ * roundedResolver("top")
+ * // "rounded-top"
+ *
+ * @example
+ * roundedResolver("circle")
+ * // "rounded-circle"
+ *
+ * @example
+ * roundedResolver(2)
+ * // "rounded-2"
+ *
+ * @example
+ * roundedResolver("foo")
+ * // ""
+ * // ignore
+ *
+ * @param {boolean|"top"|"end"|"bottom"|"start"|"circle"|"pill"|0|1|2|3} [value]
+ * Rounded utility value.
+ *
+ * @returns {string}
+ * Bootstrap rounded utility class.
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
  */
 export function roundedResolver(value) {
   if (value !== 0 && !value) return "";

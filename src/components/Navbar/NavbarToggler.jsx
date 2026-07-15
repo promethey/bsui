@@ -8,17 +8,20 @@ const BASE_CLASS_NAME = "navbar-toggler";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
@@ -32,25 +35,28 @@ const defaultProps = {
 };
 
 /**
- * Navbar Toggler
+ * Provides a button that expands
+ * or collapses the responsive
+ * navbar content.
  *
  * @component
  *
- * @see {Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/navbar/}
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} NavbarTogglerOwnProps
+ *
  * @property {(event: React.MouseEvent<HTMLElement>) => void} [onClick]
  *
  * @typedef {NavbarTogglerOwnProps & PrimeProps} NavbarTogglerProps
+ *
  * @param {NavbarTogglerProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function NavbarToggler(props) {
   const { style, children, className, onClick, ...rest } = props;

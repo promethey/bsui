@@ -21,47 +21,26 @@ import {
 
 const propTypes = {
   /**
-   * Element type used for rendering the component
+   * Element type used for rendering
+   * the component
    */
   as: PropTypes.elementType,
 
   /**
-   * Accessible HTML role attribute
-   */
-  role: PropTypes.string,
-
-  /**
-   * Native HTML type attribute
-   */
-  type: PropTypes.string,
-
-  /**
-   * Disables user interaction
-   */
-  disabled: PropTypes.bool,
-
-  /**
-   * Callback fired when the element is clicked
-   */
-  onClick: PropTypes.func,
-
-  /**
-   * Navigation target URL
-   */
-  href: PropTypes.string,
-
-  /**
-   * Inline styles applied to the root element
+   * Inline styles applied
+   * to the root element
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional class names applied to the root element
+   * Additional class names applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
@@ -88,42 +67,220 @@ const propTypes = {
   /**
    * Controls the CSS display utility value
    */
-  d: PropTypes.oneOf([
-    "none",
-    "inline",
-    "inline-block",
-    "block",
-    "grid",
-    "table",
-    "table-cell",
-    "table-row",
-    "flex",
-    "inline-flex",
+  d: PropTypes.oneOfType([
+    PropTypes.oneOf([
+      "none",
+      "inline",
+      "inline-block",
+      "block",
+      "grid",
+      "table",
+      "table-cell",
+      "table-row",
+      "flex",
+      "inline-flex",
+    ]),
+    PropTypes.shape({
+      xs: PropTypes.oneOf([
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "grid",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex",
+      ]),
+      sm: PropTypes.oneOf([
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "grid",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex",
+      ]),
+      md: PropTypes.oneOf([
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "grid",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex",
+      ]),
+      lg: PropTypes.oneOf([
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "grid",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex",
+      ]),
+      xl: PropTypes.oneOf([
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "grid",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex",
+      ]),
+    }),
   ]),
 
   /**
-   * Controls the display utility value for print media
+   * Controls the display utility
+   * value for print media
    */
-  dp: PropTypes.oneOf([
-    "none",
-    "inline",
-    "inline-block",
-    "block",
-    "grid",
-    "table",
-    "table-cell",
-    "table-row",
-    "flex",
-    "inline-flex",
+  dp: PropTypes.oneOfType([
+    PropTypes.oneOf([
+      "none",
+      "inline",
+      "inline-block",
+      "block",
+      "grid",
+      "table",
+      "table-cell",
+      "table-row",
+      "flex",
+      "inline-flex",
+    ]),
+    PropTypes.shape({
+      xs: PropTypes.oneOf([
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "grid",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex",
+      ]),
+      sm: PropTypes.oneOf([
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "grid",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex",
+      ]),
+      md: PropTypes.oneOf([
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "grid",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex",
+      ]),
+      lg: PropTypes.oneOf([
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "grid",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex",
+      ]),
+      xl: PropTypes.oneOf([
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "grid",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex",
+      ]),
+    }),
   ]),
 
   /**
-   * Controls flexbox alignment and layout behavior
+   * Controls flexbox alignment
+   * and layout behavior
    */
-  flex: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  flex: PropTypes.oneOfType([
+    PropTypes.oneOf(["start", "end", "center"]),
+    PropTypes.shape({
+      direction: PropTypes.oneOf([
+        "row",
+        "row-reverse",
+        "column",
+        "column-reverse",
+      ]),
+      justifyContent: PropTypes.oneOf([
+        "start",
+        "end",
+        "center",
+        "between",
+        "around",
+        "evenly",
+      ]),
+      alignItems: PropTypes.oneOf([
+        "start",
+        "end",
+        "center",
+        "baseline",
+        "stretch",
+      ]),
+      alignSelf: PropTypes.oneOf([
+        "start",
+        "end",
+        "center",
+        "baseline",
+        "stretch",
+      ]),
+      fill: PropTypes.bool,
+      grow: PropTypes.oneOf([0, 1]),
+      shrink: PropTypes.oneOf([0, 1]),
+      wrap: PropTypes.bool,
+      nowrap: PropTypes.bool,
+      wrapReverse: PropTypes.bool,
+      order: PropTypes.oneOf([0, 1, 2, 3, 4, 5, 6, "first", "last"]),
+      alignContent: PropTypes.oneOf([
+        "start",
+        "end",
+        "center",
+        "between",
+        "around",
+        "stretch",
+      ]),
+    }),
+  ]),
 
   /**
-   * Controls the CSS position utility value
+   * Controls the CSS position
+   * utility value
    */
   pos: PropTypes.oneOf([
     "static",
@@ -157,34 +314,39 @@ const propTypes = {
   start: PropTypes.oneOf([0, 50, 100]),
 
   /**
-   * Centers the element using translate transforms
+   * Centers the element using
+   * translate transforms
    */
-  translateMiddle: PropTypes.bool,
+  translate: PropTypes.oneOf(["middle", "middle-x", "middle-y"]),
 
   /**
-   * Centers the element horizontally using translate transforms
-   */
-  translateMiddleX: PropTypes.bool,
-
-  /**
-   * Centers the element vertically using translate transforms
-   */
-  translateMiddleY: PropTypes.bool,
-
-  /**
-   * Controls float utility behavior
+   * Controls float utility behavior.
    */
   float: PropTypes.oneOfType([
-    PropTypes.shape({}),
-    PropTypes.oneOf(["start, end, none"]),
+    PropTypes.oneOf(["start", "end", "none"]),
+    PropTypes.shape({
+      xs: PropTypes.oneOf(["start", "end", "none"]),
+      sm: PropTypes.oneOf(["start", "end", "none"]),
+      md: PropTypes.oneOf(["start", "end", "none"]),
+      lg: PropTypes.oneOf(["start", "end", "none"]),
+      xl: PropTypes.oneOf(["start", "end", "none"]),
+      xxl: PropTypes.oneOf(["start", "end", "none"]),
+    }),
   ]),
 
   /**
-   * Controls margin utility values
+   * Controls margin utility values.
    */
   m: PropTypes.oneOfType([
-    PropTypes.shape({}),
     PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+    PropTypes.shape({
+      xs: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+      sm: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+      md: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+      lg: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+      xl: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+      xxl: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+    }),
   ]),
 
   /**
@@ -221,7 +383,14 @@ const propTypes = {
    * Controls padding utility values
    */
   p: PropTypes.oneOfType([
-    PropTypes.shape({}),
+    PropTypes.shape({
+      xs: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+      sm: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+      md: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+      lg: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+      xl: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+      xxl: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+    }),
     PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
   ]),
 
@@ -248,17 +417,31 @@ const propTypes = {
   /**
    * Sets horizontal padding utility values
    */
-  px: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+  px: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
   /**
    * Sets vertical padding utility values
    */
-  py: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+  py: PropTypes.oneOf([0, 1, 2, 3, 4, 5, "auto"]),
 
   /**
-   * Controls background color utility styles and related options
+   * Controls background color utility
+   * styles and related options
    */
   bg: PropTypes.oneOfType([
+    PropTypes.oneOf([
+      "primary",
+      "secondary",
+      "success",
+      "danger",
+      "warning",
+      "info",
+      "light",
+      "dark",
+      "body",
+      "white",
+      "transparent",
+    ]),
     PropTypes.shape({
       color: PropTypes.oneOf([
         "primary",
@@ -276,6 +459,13 @@ const propTypes = {
       gradient: PropTypes.bool,
       opacity: PropTypes.oneOf([10, 25, 50, 75]),
     }),
+  ]),
+
+  /**
+   * Controls text color and
+   * typography utility styles
+   */
+  text: PropTypes.oneOfType([
     PropTypes.oneOf([
       "primary",
       "secondary",
@@ -286,15 +476,12 @@ const propTypes = {
       "light",
       "dark",
       "body",
+      "muted",
       "white",
-      "transparent",
+      "black-50",
+      "white-50",
+      "reset",
     ]),
-  ]),
-
-  /**
-   * Controls text color and typography utility styles
-   */
-  text: PropTypes.oneOfType([
     PropTypes.shape({
       color: PropTypes.oneOf([
         "primary",
@@ -313,6 +500,7 @@ const propTypes = {
         "reset",
       ]),
       align: PropTypes.oneOfType([
+        PropTypes.oneOf(["start", "center", "end"]),
         PropTypes.shape({
           xs: PropTypes.oneOf(["start", "center", "end"]),
           sm: PropTypes.oneOf(["start", "center", "end"]),
@@ -320,28 +508,14 @@ const propTypes = {
           lg: PropTypes.oneOf(["start", "center", "end"]),
           xl: PropTypes.oneOf(["start", "center", "end"]),
         }),
-        PropTypes.oneOf(["start", "center", "end"]),
       ]),
       wordBreak: PropTypes.bool,
       transform: PropTypes.oneOf(["lowercase", "uppercase", "capitalize"]),
       decoration: PropTypes.oneOf(["underline", "line-through", "none"]),
+      wrap: PropTypes.bool,
+      nowrap: PropTypes.bool,
+      select: PropTypes.oneOf(["all", "auto", "none"]),
     }),
-    PropTypes.oneOf([
-      "primary",
-      "secondary",
-      "success",
-      "danger",
-      "warning",
-      "info",
-      "light",
-      "dark",
-      "body",
-      "muted",
-      "white",
-      "black-50",
-      "white-50",
-      "reset",
-    ]),
   ]),
 
   /**
@@ -391,21 +565,22 @@ const propTypes = {
         "dark",
         "white",
       ]),
-      width: PropTypes.oneOf([1, 2, 3, 4, 5]),
-      top: PropTypes.oneOf([1, 2, 3, 4, 5]),
-      end: PropTypes.oneOf([1, 2, 3, 4, 5]),
-      bottom: PropTypes.oneOf([1, 2, 3, 4, 5]),
-      start: PropTypes.oneOf([1, 2, 3, 4, 5]),
+      width: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+      top: PropTypes.oneOf([true, 0]),
+      end: PropTypes.oneOf([true, 0]),
+      bottom: PropTypes.oneOf([true, 0]),
+      start: PropTypes.oneOf([true, 0]),
     }),
   ]),
 
   /**
-   * Controls border radius and rounded utility styles
+   * Controls border radius and
+   * rounded utility styles
    */
   rounded: PropTypes.oneOfType([
+    PropTypes.bool,
     PropTypes.oneOf(["top", "end", "bottom", "start", "circle", "pill"]),
     PropTypes.oneOf([0, 1, 2, 3]),
-    PropTypes.bool,
   ]),
 
   /**
@@ -434,27 +609,27 @@ const propTypes = {
  */
 
 /**
- * Core primitive component providing shared
- * rendering and polymorphic behavior across
- * the library.
+ * Core primitive component that provides the foundational
+ * layer for implementing Bootstrap-style utility behavior
+ * across the entire component library.
  *
  * @component
  *
  * Utility systems:
- * - sizing
- * - display / displayPrint
- * - flex
- * - position
- * - float
- * - spacing
- * - background
- * - text
- * - typography
- * - opacity
+ * - bg
  * - border
+ * - display/displayPrint
+ * - flex
+ * - float
+ * - font
+ * - opacity
+ * - overflow
+ * - position
  * - rounded
  * - shadow
- * - overflow
+ * - sizing
+ * - spacing
+ * - text
  *
  * @example
  * <Prime>
@@ -467,29 +642,14 @@ const propTypes = {
  * </Prime>
  *
  * @example
- * <Prime d="flex" text="primary">
- *  Flex and primary color
+ * <Prime text="primary">
+ *  Primary text color
  * </Prime>
  *
  * @typedef {Object} PrimeProps
  *
  * @property {React.ElementType} [as="div"]
  * Element type used for rendering the component.
- *
- * @property {string} [role]
- * Accessible HTML role attribute.
- *
- * @property {string} [type]
- * Native HTML type attribute.
- *
- * @property {boolean} [disabled=false]
- * Disables user interaction.
- *
- * @property {React.MouseEventHandler<HTMLElement>} [onClick]
- * Callback fired when the element is clicked.
- *
- * @property {string} [href]
- * Navigation target URL.
  *
  * @property {React.CSSProperties} [style]
  * Inline styles applied to the root element.
@@ -536,14 +696,8 @@ const propTypes = {
  * @property {0|50|100} [start]
  * Sets the start (left) offset utility value.
  *
- * @property {boolean} [translateMiddle=false]
+ * @property {"middle"|"middle-x"|"middle-y"} [translate]
  * Centers the element using translate transforms.
- *
- * @property {boolean} [translateMiddleX=false]
- * Centers the element horizontally using translate transforms.
- *
- * @property {boolean} [translateMiddleY=false]
- * Centers the element vertically using translate transforms.
  *
  * @property {FloatObject|"start"|"end"|"none"} [float]
  * Controls float utility behavior.
@@ -614,7 +768,7 @@ const propTypes = {
  * @property {25|50|75|100} [opacity]
  * Controls the opacity utility value.
  *
- * @property {BorderObject|true|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"|1|2|3|4|5} [border]
+ * @property {BorderObject|true|"primary"|"secondary"|"success"|"danger"|"warning"|"info"|"light"|"dark"|"white"|0|1|2|3|4|5} [border]
  * Controls border utility styles and border appearance.
  *
  * @property {boolean|"top"|"end"|"bottom"|"start"|"circle"|"pill"|0|1|2|3} [rounded]
@@ -626,27 +780,16 @@ const propTypes = {
  * @property {"auto"|"hidden"|"visible"|"scroll"} [overflow]
  * Controls overflow utility behavior.
  *
- * @param {PrimeProps} props
+ * @param {PrimeProps & Record<string, any>} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
- *
- * @type {React.ForwardRefExoticComponent<
- *   PrimeProps &
- *   Record<string, any> &
- *   React.RefAttributes<any>
- * >}
+ * @since 1.0.0
  */
-const Prime = React.forwardRef((props, ref) => {
+function Prime(props) {
   const {
-    as: ComponentType = "div",
-    role,
-    type,
-    disabled = false,
-    onClick,
-    href,
+    as: Component = "div",
     style,
     children,
     className,
@@ -662,9 +805,7 @@ const Prime = React.forwardRef((props, ref) => {
     end,
     bottom,
     start,
-    translateMiddle,
-    translateMiddleX,
-    translateMiddleY,
+    translate,
     float,
     m,
     mx,
@@ -707,9 +848,7 @@ const Prime = React.forwardRef((props, ref) => {
       end,
       bottom,
       start,
-      translateMiddle,
-      translateMiddleX,
-      translateMiddleY,
+      translate,
     }),
     floatResolver(float),
     spacingResolver({
@@ -737,24 +876,16 @@ const Prime = React.forwardRef((props, ref) => {
     shadowResolver(shadow),
     overflowResolver(overflow),
   ]
+    .filter(Boolean)
     .join(" ")
     .trim();
 
   return (
-    <ComponentType
-      ref={ref}
-      role={role}
-      type={type}
-      disabled={disabled}
-      onClick={onClick}
-      href={href}
-      style={style}
-      className={classes ? classes : null}
-      {...rest}>
+    <Component style={style} className={classes || undefined} {...rest}>
       {children}
-    </ComponentType>
+    </Component>
   );
-});
+}
 
 Prime.propTypes = propTypes;
 

@@ -1,114 +1,53 @@
 <p align="center">
   <img src="./public/bsui-logo.png" width="220" />
-  <h1 style={{ margin: "24px 0" }}>BSUI (Bootstrap-UI)</h1>
-  <p style={{ margin: "0" }}>
-    Modern Bootstrap component system for React applications.
-  </p>
 </p>
 
-[![CI](https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg)](https://github.com/promethey/bsui/actions/workflows/ci.yml)
+<p align="center">
+  <img src="https://img.shields.io/github/license/promethey/bsui" alt="License">
+  <img src="https://img.shields.io/npm/v/bsui" alt="npm">
+  <img src="https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg" alt="CI">
+  <img src="https://github.com/promethey/bsui/actions/workflows/storybook.yml/badge.svg" alt="Storybook Deploy">
+  <img src="https://img.shields.io/badge/Storybook-Live-FF4785?logo=storybook&logoColor=white" alt="Storybook">
+  <img src="https://img.shields.io/github/stars/promethey/bsui?style=social" alt="GitHub Stars">
+</p>
 
-[![Deploy Storybook](https://github.com/promethey/bsui/actions/workflows/storybook.yml/badge.svg)](https://github.com/promethey/bsui/actions/workflows/storybook.yml)
+# BSUI (Bootstrap-UI)
 
-```text
-React • Bootstrap 5 • JavaScript • JSDoc • Storybook
-```
+Modern Bootstrap component system for React applications.
+Build Bootstrap 5 applications with composable React components, utility props, and JSDoc-powered IntelliSense.
 
----
+| BSUI Version | Bootstrap Version |
+| ------------ | ----------------- |
+| 1.X          | 5.1               |
 
-## Why BSUI?
+## Features
 
-BSUI brings Bootstrap's design system to React with a modern architecture, rich documentation, runtime validation, and a consistent developer experience.
-
-### Prime Architecture
-
-All components are built on top of a single primitive: `<Prime />`.
-
-Features:
-
-- Polymorphic rendering via as
-- Bootstrap utility props
-- Native HTML attributes forwarding
-- Consistent API across the library
-
-```jsx
-<Prime as="button" m={2} px={3} fw="bold" />
-```
-
-### Bootstrap Utility Props
-
-Generate Bootstrap utility classes directly from React props.
-
-```jsx
-<Prime d="flex" flex="center" mt={3} />
-```
-
-Responsive values are supported:
-
-```jsx
-<Prime d={{ xs: "block", md: "flex" }} />
-```
-
-### Rich Documentation
-
-Every public component includes:
-
-- JSDoc descriptions
-- Usage examples
-- Bootstrap documentation links
-- IDE autocomplete and hover help
-
-### Runtime Validation
-
-Public APIs are validated with PropTypes, providing runtime checks even after the application is built.
-
-### Built on Proven Libraries
-
-- React Transition Group — animations and transitions
-- Embla Carousel — carousel engine
-- Floating UI — dropdown, tooltips, popovers, and positioning
-
-### Storybook & Testing
-
-Every public component includes:
-
-- Storybook documentation
-- Vitest tests
-- Usage examples
-
-### No Bootstrap JavaScript
-
-BSUI uses Bootstrap styles only. All interactive behavior is implemented in React.
-
-### Contributor Friendly
-
-The project follows a consistent architecture based on:
-
-- Prime foundation
-- Shared utility system
-- JSDoc standards
-- Storybook stories
-- Vitest coverage
+- React-first Bootstrap 5 component system
+- Consistent Utility API across all components
+- JSDoc-powered IntelliSense without TypeScript
+- Zero Bootstrap JavaScript dependency
+- Storybook component documentation
 
 ## Installation
+
+Requirements:
+
+- React 19+
+- Bootstrap 5.1.3
 
 ```bash
 npm install bsui
 ```
 
-### Styling
-
 Import Bootstrap styles in your project:
+
+```bash
+npm install bootstrap
+```
 
 ```js
 import "bootstrap/dist/css/bootstrap.min.css";
 ```
-
-### Peer Dependencies
-
-- react >= 18
-- react-dom >= 18
-- bootstrap >= 5.1.3
 
 ## Usage
 
@@ -119,165 +58,97 @@ export function Example() {
   return (
     <Button tone="primary" size="lg">
       Primary
-    </Button>;
+    </Button>
   );
 }
+
+// <button class="btn btn-primary btn-lg">Primary</button>
 ```
 
-## Component Compatibility
+## Prime Architecture
 
-- `Stable` — Production-ready API
-- `Experimental` — API may change
-- `Planned` — Not implemented yet
+Every public component is built on top of the `Prime` primitive.
 
-### Categories
+Prime provides:
 
-| Category   | Description                                  |
-| ---------- | -------------------------------------------- |
-| Form       | Form controls and data input components      |
-| Control    | Interactive form and action components       |
-| Feedback   | Status and user feedback components          |
-| Navigation | Navigation and routing components            |
-| Layout     | Grid and layout utilities                    |
-| Overlay    | Floating, layered, and temporary UI elements |
-| Content    | Content organization and presentation        |
-| Core       | Internal primitive components                |
-
-### Compatibility Matrix
-
-| Component   | Category   | Status       | Ver.  | Bootstrap Ver. |
-| ----------- | ---------- | ------------ | ----- | -------------- |
-| Accordion   | Content    | Experimental | 1.0.0 | 5.1.3          |
-| Alert       | Feedback   | Stable       | 1.0.0 | 5.1.3          |
-| Badge       | Feedback   | Stable       | 1.0.0 | 5.1.3          |
-| Breadcrumb  | Navigation | Stable       | 1.0.0 | 5.1.3          |
-| Button      | Control    | Stable       | 1.0.0 | 5.1.3          |
-| ButtonGroup | Control    | Stable       | 1.0.0 | 5.1.3          |
-| Card        | Content    | Stable       | 1.0.0 | 5.1.3          |
-| Carousel    | Content    | Experimental | 1.0.0 | 5.1.3          |
-| Check       | Form       | Stable       | 1.0.0 | 5.1.3          |
-| CloseButton | Control    | Stable       | 1.0.0 | 5.1.3          |
-| Col         | Layout     | Experimental | 1.0.0 | 5.1.3          |
-| Collapse    | Content    | Stable       | 1.0.0 | 5.1.3          |
-| Container   | Layout     | Stable       | 1.0.0 | 5.1.3          |
-| Control     | Form       | Stable       | 1.0.0 | 5.1.3          |
-| Dropdown    | Overlay    | Experimental | 1.0.0 | 5.1.3          |
-| InputGroup  | Form       | Experimental | 1.0.0 | 5.1.3          |
-| Label       | Form       | Experimental | 1.0.0 | 5.1.3          |
-| ListGroup   | Content    | Experimental | 1.0.0 | 5.1.3          |
-| Modal       | Content    | Experimental | 1.0.0 | 5.1.3          |
-| Nav         | Navigation | Experimental | 1.0.0 | 5.1.3          |
-| Navbar      | Navigation | Experimental | 1.0.0 | 5.1.3          |
-| Placeholder | Feedback   | Stable       | 1.0.0 | 5.1.3          |
-| Prime       | Core       | Experimental | 1.0.0 | 5.1.3          |
-| Progress    | Feedback   | Stable       | 1.0.0 | 5.1.3          |
-| Range       | Form       | Stable       | 1.0.0 | 5.1.3          |
-| Row         | Layout     | Experimental | 1.0.0 | 5.1.3          |
-| Select      | Form       | Stable       | 1.0.0 | 5.1.3          |
-| Spinner     | Feedback   | Stable       | 1.0.0 | 5.1.3          |
-
-### Quick Example
+- polymorphic rendering
+- utility props
+- HTML attributes
+- shared API
 
 ```jsx
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Dropdown } from "bsui";
+<Prime as="button" m={2} px={3} fw="bold" />
 
-function App() {
-  return (
-    <Dropdown>
-      <Dropdown.Toggle>Dropdown button</Dropdown.Toggle>
-      <Dropdown.Menu>
-        <Dropdown.Item>Action</Dropdown.Item>
-        <Dropdown.Item>Another action</Dropdown.Item>
-        <Dropdown.Item>Something else here</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-  );
-}
-
-export default App;
+// <button class="m-2 px-3 fw-bold" />
 ```
 
-# Build
+## Utility Props
 
-This library uses Webpack for runtime bundling and TypeScript (declaration emit only) for type generation from JSDoc.
+Every component is built on top of `Prime`, so all utility props are available everywhere.
 
-### Install dependencies
+```jsx
+<Prime d={{ xs: "block", md: "flex" }} mt={3} />
 
-```bash
-npm install
+// <div class="d-block d-md-flex" mt-3 />
 ```
 
-### Build library (production bundle)
+```jsx
+<Button d={{ xs: "block", md: "flex" }} mt={3} />
 
-```bash
-npm run build
+// <button class="btn btn-primary d-block d-md-flex mt-3" />
 ```
 
-### Generate TypeScript definitions (JSDoc → .d.ts)
+## Type Safety without TypeScript
 
-Generates type definitions for IDE IntelliSense and autocomplete:
+Write React components with strong editor support without adding TypeScript to your project.
 
-```bash
-npm run types
+BSUI combines JSDoc annotations and PropTypes to provide:
+
+- Autocomplete and IntelliSense
+- Inline API documentation
+- Development-time type hints
+- Runtime prop validation
+- No additional TypeScript tooling required
+
+## Why tone?
+
+BSUI uses the `tone` prop to control the visual appearance of components.
+
+Unlike `variant`, the name **tone** is shorter, easier to type, and better reflects the semantic purpose of the prop.
+
+```jsx
+<Button tone="primary" />
+
+// <button class="btn btn-primary" />
 ```
 
-### Local package testing
+```jsx
+<Alert tone="danger" />
 
-Create a tarball for local npm testing:
-
-```bash
-npm pack
+// <div class="alert alert-danger" />
 ```
 
-Install in another project:
+The same API is shared across all components, providing a predictable and consistent developer experience.
 
-```bash
-npm install bsui-1.0.0.tgz
-```
+## External Libraries
 
-# Documentation
+- [React Transition Group](https://reactcommunity.org/react-transition-group/) - animations and transitions
+- [Embla Carousel](https://www.embla-carousel.com/) - carousel engine
+- [Floating UI](https://floating-ui.com/) - dropdowns, tooltips, popovers, and positioning
 
-Every component is documented in two layers:
+## Components
 
-- Storybook (interactive usage)
-- JSDoc (inline code documentation)
+BSUI currently provides 30+ Bootstrap-compatible components.
 
-### Storybook
+See the full component list and compatibility matrix in
+[Components](COMPONENTS.md).
 
-Run locally:
+## Contributing
 
-```bash
-npm run storybook
-```
+Contributions are welcome!
 
-# Testing
-
-The library is tested with Vitest.
-
-Covered areas:
-
-- Components
-- Utility resolvers
-- Internal helpers
-
-### Vitest
-
-```bash
-npm run test
-```
-
-```bash
-npm run test:watch
-```
-
-```bash
-npm run test:ui
-```
-
-```bash
-npm run test:coverage
-```
+Before opening a pull request, please read the
+[Contributing Guide](CONTRIBUTING.md).
 
 ## License
 

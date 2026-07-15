@@ -5,19 +5,24 @@ import { AccordionItemContext } from "./AccordionItemContext";
 import { useCallback, useMemo } from "react";
 import { useAccordionContext } from "./AccordionContext";
 
+const BASE_CLASS_NAME = "accordion-item";
+
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([
     PropTypes.object,
@@ -29,47 +34,70 @@ const propTypes = {
    * Sets item key
    */
   itemKey: PropTypes.string,
+
+  /**
+   * Sets disabled state
+   * for item button
+   */
+  disabled: PropTypes.bool,
 };
 
 const defaultProps = {
   style: null,
   className: null,
   itemKey: "",
+  disabled: false,
 };
 
-const BASE_CLASS_NAME = "accordion-item";
-
 /**
- * AccordionItem component
+ * Defines a single collapsible
+ * section within an accordion.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
  * <AccordionItem>
- *  <Accordion.Header>Item #1</Accordion.Header>
+ *
+ *  <Accordion.Header>
+ *    Item #1
+ *  </Accordion.Header>
+ *
  *  <Accordion.Body>
  *    ...
  *  </Accordion.Body>
+ *
  * </AccordionItem>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionItemOwnProps
+ *
  * @property {string} [itemKey]
  * Sets item key
  *
+ * @property {boolean} [disabled=false]
+ * Sets disabled state for item button
+ *
  * @typedef {PrimeProps & AccordionItemOwnProps} AccordionItemProps
+ *
  * @param {AccordionItemProps} props
  *
- * @return {React.ReactElement}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0
  */
 function AccordionItem(props) {
-  const { style, children, className, itemKey, ...rest } = props;
+  const {
+    style,
+    children,
+    className,
+    itemKey,
+    disabled = false,
+    ...rest
+  } = props;
 
   const classes = cn(BASE_CLASS_NAME, className);
 
@@ -103,6 +131,7 @@ function AccordionItem(props) {
     () => ({
       expanded,
       toggle,
+      disabled,
     }),
     [activeKey],
   );

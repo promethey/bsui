@@ -62,32 +62,34 @@ describe("Check utility", () => {
 
     /** Object */
     test("Check object justify xs center", () => {
-      expect(flexResolver({ xs: { justify: "center" } })).toBe(
+      expect(flexResolver({ xs: { justifyContent: "center" } })).toBe(
         "justify-content-center",
       );
     });
 
     test("Check object justify md start", () => {
-      expect(flexResolver({ md: { justify: "start" } })).toBe(
+      expect(flexResolver({ md: { justifyContent: "start" } })).toBe(
         "justify-content-md-start",
       );
     });
 
     /** Direction */
     test("Check row direction", () => {
-      expect(flexResolver({ xs: { dir: "row" } })).toBe("flex-row");
+      expect(flexResolver({ xs: { direction: "row" } })).toBe("flex-row");
     });
 
     test("Check row md direction", () => {
-      expect(flexResolver({ md: { dir: "row" } })).toBe("flex-md-row");
+      expect(flexResolver({ md: { direction: "row" } })).toBe("flex-md-row");
     });
 
     test("Check column direction", () => {
-      expect(flexResolver({ xs: { dir: "column" } })).toBe("flex-column");
+      expect(flexResolver({ xs: { direction: "column" } })).toBe("flex-column");
     });
 
     test("Check column md direction", () => {
-      expect(flexResolver({ md: { dir: "column" } })).toBe("flex-md-column");
+      expect(flexResolver({ md: { direction: "column" } })).toBe(
+        "flex-md-column",
+      );
     });
 
     /** Align self */
@@ -192,6 +194,16 @@ describe("Check utility", () => {
       expect(flexResolver({ xl: { alignContent: "end" } })).toBe(
         "align-content-xl-end",
       );
+    });
+
+    test("Check regular object", () => {
+      expect(flexResolver({ alignContent: "start" })).toBe(
+        "align-content-start",
+      );
+      expect(flexResolver({ justifyContent: "start" })).toBe(
+        "justify-content-start",
+      );
+      expect(flexResolver({ direction: "row" })).toBe("flex-row");
     });
   });
 });

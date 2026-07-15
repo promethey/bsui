@@ -1,6 +1,10 @@
 /**
- * Generates Bootstrap-style class names by combining
+ * Generates Bootstrap utility class names by combining
  * a prefix with one or more modifier values.
+ *
+ * Strings and numbers are appended as class modifiers,
+ * while `true` preserves the base prefix. All other
+ * values are ignored.
  *
  * @example
  * prefix("m", 0)
@@ -14,16 +18,22 @@
  * prefix("border", true)
  * // "border"
  *
+ * @example
+ * prefix("justify-content", "md", "center")
+ * // "justify-content-md-center"
+ *
+ * @example
+ * prefix("text", undefined, "center", null)
+ * // "text-center"
+ *
  * @param {string} prfx
- * Base Bootstrap class prefix.
+ * Base Bootstrap utility prefix.
  *
  * @param {...(string|number|boolean|null|undefined)} values
- * Optional modifier values appended to the prefix.
- * Boolean true preserves the prefix, while falsy values
- * are ignored.
+ * Additional modifier values appended to the prefix.
  *
  * @returns {string}
- * Generated Bootstrap class name.
+ * Generated Bootstrap utility class name.
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
  * @version 1.0.0

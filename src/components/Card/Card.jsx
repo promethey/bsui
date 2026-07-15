@@ -15,17 +15,20 @@ const BASE_CLASS_NAME = "card";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
@@ -38,9 +41,9 @@ const defaultProps = {
 /**
  * Flexible container for grouping related
  * content, actions, and media.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/card/}
  *
  * @example
@@ -59,12 +62,13 @@ const defaultProps = {
  * @typedef {object} CardOwnProps
  *
  * @typedef {CardOwnProps & PrimeProps} CardProps
+ *
  * @param {CardProps} props
  *
- * @return {React.ReactElement}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Card(props) {
   const { style, children, className, ...rest } = props;

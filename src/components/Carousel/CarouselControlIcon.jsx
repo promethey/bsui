@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
-import { prefix } from "helpers";
 
 const BASE_CLASS_NAME = {
   prev: "carousel-control-prev-icon",
@@ -33,22 +32,29 @@ const defaultProps = {
 };
 
 /**
- * Displays an icon used by carousel navigation controls.
+ * Displays the icon for a carousel
+ * navigation control.
  *
  * @component
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/carousel/}
  *
- * @typedef {object} CarouselControlIconOwnProps
- * @property {"prev"|"next"} position
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
- * @typedef {import("../Prime/Prime").PrimeProps & CarouselControlIconOwnProps} CarouselIconControlProps
- * @param {CarouselIconControlProps} props
+ * @typedef {object} CarouselControlIconOwnProps
+ *
+ * @property {"prev"|"next"} position
+ * Specifies whether the previous or next
+ * control icon is rendered.
+ *
+ * @typedef {PrimeProps & CarouselControlIconOwnProps} CarouselControlIconProps
+ *
+ * @param {CarouselControlIconProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function CarouselControl(props) {
   const { style, children, className, position, ...rest } = props;

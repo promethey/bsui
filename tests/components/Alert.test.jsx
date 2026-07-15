@@ -1,57 +1,109 @@
 // @ts-nocheck
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Alert } from "components";
 
-describe("Alert", () => {
-  test("renders correctly", () => {
-    render(<Alert>Alert</Alert>);
+describe("Alert integration (API + children + classes)", () => {
+  it("renders base alert with role and children", () => {
+    render(<Alert>HELLO</Alert>);
 
-    expect(screen.getByText("Alert")).toBeInTheDocument();
+    const el = screen.getByRole("alert");
+
+    expect(el).toBeInTheDocument();
+    expect(el).toHaveTextContent("HELLO");
+    expect(el.className).toContain("alert");
   });
 
-  test("renders children", () => {
-    render(<Alert>Alert Content</Alert>);
+  it("applies tone class", () => {
+    render(<Alert tone="danger">x</Alert>);
 
-    expect(screen.getByText("Alert Content")).toBeVisible();
+    const el = screen.getByRole("alert");
+
+    expect(el.className).toContain("alert-danger");
   });
 
-  test("applies component classes", () => {
-    render(<Alert tone="primary">Alert</Alert>);
+  it("applies invalid tone safely (no crash, no class)", () => {
+    render(<Alert tone="invalid">x</Alert>);
 
-    expect(screen.getByText("Alert")).toHaveClass("alert-primary");
+    const el = screen.getByRole("alert");
+
+    expect(el.className).not.toContain("alert-invalid");
   });
 
-  test("renders default element", () => {
-    render(<Alert>Alert</Alert>);
+  it("applies className and style", () => {
+    render(
+      <Alert className="custom-class" style={{ marginTop: "10px" }}>
+        x
+      </Alert>,
+    );
 
-    expect(screen.getByText("Alert").tagName).toBe("DIV");
+    const el = screen.getByRole("alert");
+
+    expect(el.className).toContain("custom-class");
+    expect(el).toHaveStyle({ marginTop: "10px" });
   });
 
-  test("renders custom element", () => {
-    render(<Alert as="section">Alert</Alert>);
+  it("applies dismissible and renders CloseButton", () => {
+    render(<Alert dismissible>x</Alert>);
 
-    expect(screen.getByText("Alert").tagName).toBe("SECTION");
+    const el = screen.getByRole("alert");
+
+    expect(el.className).toContain("dismissible");
+    expect(screen.getByRole("button")).toBeInTheDocument();
   });
 
-  test("merges custom className", () => {
-    render(<Alert className="custom-alert">Alert</Alert>);
+  it("does NOT render CloseButton when not dismissible", () => {
+    render(<Alert>x</Alert>);
 
-    expect(screen.getByText("Alert")).toHaveClass("custom-alert");
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
 
-  test("passes native attributes", () => {
-    render(<Alert title="alert-title">Alert</Alert>);
+  it("renders Alert.Heading correctly inside Alert", () => {
+    render(
+      <Alert>
+        <Alert.Heading as="h2">TITLE</Alert.Heading>
+      </Alert>,
+    );
 
-    expect(screen.getByTitle("alert-title")).toBeInTheDocument();
+    const heading = screen.getByText("TITLE");
+
+    expect(heading).toBeInTheDocument();
+    expect(heading.tagName.toLowerCase()).toBe("h2");
+    expect(heading.className).toContain("alert-heading");
   });
 
-  test("updates classes on rerender", () => {
-    const { rerender } = render(<Alert tone="primary">Alert</Alert>);
+  it("renders Alert.Link correctly inside Alert", () => {
+    render(
+      <Alert>
+        <Alert.Link to="/home">HOME</Alert.Link>
+      </Alert>,
+    );
 
-    expect(screen.getByText("Alert")).toHaveClass("alert-primary");
+    const link = screen.getByText("HOME");
 
-    rerender(<Alert tone="danger">Alert</Alert>);
+    expect(link.tagName.toLowerCase()).toBe("a");
+    expect(link).toHaveAttribute("href", "/home");
+    expect(link.className).toContain("alert-link");
+  });
 
-    expect(screen.getByText("Alert")).toHaveClass("alert-danger");
+  it("supports full composition (Heading + Link + Alert)", () => {
+    render(
+      <Alert dismissible tone="success">
+        <Alert.Heading>OK</Alert.Heading>
+        <Alert.Link to="/docs">Docs</Alert.Link>
+        BODY TEXT
+      </Alert>,
+    );
+
+    const alert = screen.getByRole("alert");
+
+    expect(alert).toHaveTextContent("OK");
+    expect(alert).toHaveTextContent("Docs");
+    expect(alert).toHaveTextContent("BODY TEXT");
+
+    expect(alert.className).toContain("alert-success");
+    expect(alert.className).toContain("dismissible");
+
+    expect(screen.getByRole("button")).toBeInTheDocument();
   });
 });

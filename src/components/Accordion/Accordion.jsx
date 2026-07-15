@@ -33,17 +33,23 @@ const propTypes = {
   ]),
 
   /**
-   * Sets flush style
+   * Removes the default background,
+   * borders, and rounded corners
    */
   flush: PropTypes.bool,
 
   /**
-   * Sets default expanded item
+   * Initially expanded accordion
+   * item key or keys
    */
-  defaultActiveKey: PropTypes.string,
+  defaultActiveKey: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
 
   /**
-   * Make accordion items stay open when another item is opened
+   * Allows multiple accordion
+   * items to remain expanded
    */
   alwaysOpen: PropTypes.bool,
 };
@@ -57,41 +63,50 @@ const defaultProps = {
 };
 
 /**
- * Accordion component
+ * Displays vertically stacked
+ * collapsible content panels.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
- * <Accordion>
- *  <Accorion.Item>
+ * <Accordion defaultItemKey="1">
+ *
+ *  <Accordion.Item itemKey="1">
  *    <Accordion.Header>Item #1</Accordion.Header>
+ *
  *    <Accordion.Body>
  *      This is the first item's accordion body
  *    </Accordion.Body>
- *  </Accorion.Item>
+ *  </Accordion.Item>
+ *
  * </Accordion>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionOwnProps
- * @property {boolean} [flush]
- * Sets flush style
  *
- * @property {Array<string>|string|null} [defaultActiveKey]
- * Sets default expanded item
+ * @property {boolean} [flush=false]
+ * Removes the default background,
+ * borders, and rounded corners.
  *
- * @property {boolean} [alwaysOpen]
- * Make accordion items stay open when another item is opened
+ * @property {string|string[]} [defaultActiveKey=""]
+ * Initially expanded accordion
+ * item key or keys.
+ *
+ * @property {boolean} [alwaysOpen=false]
+ * Allows multiple accordion
+ * items to remain expanded.
  *
  * @typedef {PrimeProps & AccordionOwnProps} AccordionProps
+ *
  * @param {AccordionProps} props
  *
- * @return {React.ReactElement}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Accordion(props) {
   const {
@@ -133,7 +148,7 @@ function Accordion(props) {
       setActiveKey,
       alwaysOpen,
     }),
-    [activeKey],
+    [activeKey, alwaysOpen],
   );
 
   return (

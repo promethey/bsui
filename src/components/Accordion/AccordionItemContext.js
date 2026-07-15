@@ -2,8 +2,17 @@ import { useContext, createContext } from "react";
 
 /**
  * @typedef {Object} AccordionItemContextValue
+ *
  * @property {boolean} expanded
+ * Indicates whether the accordion item
+ * is currently expanded.
+ *
  * @property {() => void} toggle
+ * Toggles the expanded state
+ * of the accordion item.
+ *
+ * @property {boolean} [disabled=false]
+ * Sets disabled state for item button
  */
 
 /** @type {React.Context<AccordionItemContextValue | null>} */

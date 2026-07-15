@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { Prime } from "components";
 import PropTypes from "prop-types";
 import { Transition } from "react-transition-group";
@@ -6,17 +6,20 @@ import cn from "classnames";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
@@ -31,64 +34,82 @@ const propTypes = {
   open: PropTypes.bool,
 
   /**
-   * Sets animation duration value
-   */
-  duration: PropTypes.number,
-
-  /**
-   * Sets lazy mount component
+   * Delays mounting the component until
+   * the enter transition begins
    */
   mountOnEnter: PropTypes.bool,
 
   /**
-   * Sets unmount the component after it finishes exiting
+   * Removes the component from the DOM after
+   * the exit transition finishes
    */
   unmountOnExit: PropTypes.bool,
 
   /**
-   * Sets enter transition when it first mounts
+   * Runs the enter transition
+   * on the initial component mount
    */
   appear: PropTypes.bool,
 
   /**
-   * Enable or disable enter transitions
+   * Enables the enter transition
+   * when the component becomes visible
    */
   enter: PropTypes.bool,
 
   /**
-   * Enable or disable exit transitions
+   * Enables the exit transition
+   * when the component becomes hidden
    */
   exit: PropTypes.bool,
 
   /**
-   * Add a custom transition end trigger
+   * Specifies transition duration
+   * in milliseconds
+   */
+  timeout: PropTypes.number,
+
+  /**
+   * Custom handler to detect transition
+   * end instead of timeout
    */
   addEndListener: PropTypes.func,
 
   /**
-   * Callback fired before the "entering" status is applied
+   * Callback fired before the
+   * "enter" status is applied
    */
   onEnter: PropTypes.func,
 
   /**
-   * Callback fired after the "entering" status is applied
+   * Callback fired after the
+   * "entering" status is applied
    */
   onEntering: PropTypes.func,
 
   /**
-   * Callback fired after the "entered" status is applied
+   * Callback fired after the
+   * "entered" status is applied
    */
   onEntered: PropTypes.func,
 
   /**
-   * Callback fired before the "exiting" status is applied
+   * Callback fired before the
+   * "exit" status is applied
    */
   onExit: PropTypes.func,
 
   /**
-   * Callback fired after the "exiting" status is applied
+   * Callback fired after the
+   * "exiting" status is applied
    */
   onExiting: PropTypes.func,
+
+  /**
+   * Callback fired after the
+   * "exited" status is applied
+   */
+  onExited: PropTypes.func,
 };
 
 const defaultProps = {
@@ -96,37 +117,45 @@ const defaultProps = {
   className: null,
   horizontal: false,
   open: false,
-  duration: 350,
   mountOnEnter: false,
   unmountOnExit: false,
   appear: false,
   enter: true,
   exit: true,
+  timeout: 350,
   addEndListener: null,
   onEnter: null,
   onEntering: null,
   onEntered: null,
   onExit: null,
   onExiting: null,
+  onExited: null,
 };
 
 /**
- * Animates the expansion and collapsing of content visibility.
+ * Animates the expansion and
+ * collapsing of content visibility.
  *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://reactcommunity.org/react-transition-group/transition}
+ *
  * @see {@link https://getbootstrap.com/docs/5.1/components/collapse/}
  *
  * @example
  * const [show, setShow] = useState(false);
+ *
  * return (
  *  <>
- *  <Button onClick={() => setShow((prev) => !prev)}>{show ? "Close" : "Show"}</Button>
- *  <Collapse open={show} duration={350}>
- *    Hidden content
- *  </Collapse>
+ *    <Button onClick={() => setShow((prev) => !prev)}>
+ *      Button
+ *    </Button>
+ *
+ *    <Collapse open={show}>
+ *      Some placeholder content for the collapse component.
+ *      This panel is hidden by default but revealed when
+ *      the user activates the relevant trigger.
+ *    </Collapse>
  *  </>
  * )
  *
@@ -140,44 +169,57 @@ const defaultProps = {
  * @property {boolean} [open=false]
  * Enables horizontal collapsing behavior.
  *
- * @property {number} [duration=350]
- * Sets the transition animation duration in milliseconds.
- *
  * @property {boolean} [mountOnEnter=false]
- * Lazily mounts the component when entering.
+ * Delays mounting the component until
+ * the enter transition begins.
  *
  * @property {boolean} [unmountOnExit=false]
- * Unmounts the component after the exit transition completes.
+ * Removes the component from the DOM after
+ * the exit transition finishes.
  *
  * @property {boolean} [appear=false]
- * Enables the enter transition during the initial mount.
+ * Runs the enter transition
+ * on the initial component mount.
  *
  * @property {boolean} [enter=true]
- * Enables enter transitions.
+ * Enables the enter transition
+ * when the component becomes visible.
  *
  * @property {boolean} [exit=true]
- * Enables exit transitions.
+ * Enables the exit transition
+ * when the component becomes hidden.
+ *
+ * @property {number} [timeout=350]
+ * Specifies transition duration
+ * in milliseconds.
  *
  * @property {(node: HTMLElement, done: () => void) => void} [addEndListener]
- * Adds a custom transition completion listener.
+ * Custom handler to detect transition
+ * end instead of timeout.
  *
- * @property {(element: HTMLElement) => void} [onEnter]
- * Fired before the entering transition starts.
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEnter]
+ * Called before enter
+ * transition starts.
  *
- * @property {(element: HTMLElement) => void} [onEntering]
- * Fired while the entering transition is active.
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntering]
+ * Called when enter
+ * transition is starting.
  *
- * @property {(element: HTMLElement) => void} [onEntered]
- * Fired after the entering transition completes.
+ * @property {(node: HTMLElement, isAppearing: boolean) => void} [onEntered]
+ * Called after enter
+ * transition finishes.
  *
- * @property {(element: HTMLElement) => void} [onExit]
- * Fired before the exit transition starts.
+ * @property {(node: HTMLElement) => void} [onExit]
+ * Called before exit
+ * transition starts.
  *
- * @property {(element: HTMLElement) => void} [onExiting]
- * Fired while the exit transition is active.
+ * @property {(node: HTMLElement) => void} [onExiting]
+ * Called when exit
+ * transition is running.
  *
- * @property {(element: HTMLElement) => void} [onExited]
- * Fired after the exit transition completes.
+ * @property {(node: HTMLElement) => void} [onExited]
+ * Called after exit
+ * transition finishes.
  *
  * @typedef {PrimeProps & CollapseOwnProps} CollapseProps
  * @param {CollapseProps} props
@@ -185,10 +227,7 @@ const defaultProps = {
  * @return {React.ReactElement}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
- *
- * @todo
- * - refactor event handles
+ * @since 1.0.0
  */
 function Collapse(props) {
   const {
@@ -197,7 +236,7 @@ function Collapse(props) {
     className,
     horizontal = false,
     open = false,
-    duration = 350,
+    timeout = 350,
     mountOnEnter = false,
     unmountOnExit = false,
     appear = false,
@@ -209,6 +248,7 @@ function Collapse(props) {
     onEntered,
     onExit,
     onExiting,
+    onExited,
     ...rest
   } = props;
 
@@ -225,39 +265,43 @@ function Collapse(props) {
 
   const quantity = horizontal ? "width" : "height";
 
-  const handleEnter = () => {
+  /** @type {(isAppearing: boolean) => void} */
+  const handleEnter = (isAppearing) => {
     const elem = nodeRef.current;
 
     if (!elem) return;
 
     elem.style[quantity] = "0";
 
-    onEnter?.(elem);
+    onEnter?.(elem, isAppearing);
   };
 
-  const handleEntering = () => {
+  /** @type {(isAppearing: boolean) => void} */
+  const handleEntering = (isAppearing) => {
     const elem = nodeRef.current;
 
     if (!elem) return;
 
     /** @type {"scrollHeight"|"scrollWidth"} */
-    let scroll = horizontal ? "scrollWidth" : "scrollHeight";
+    const scroll = horizontal ? "scrollWidth" : "scrollHeight";
 
     elem.style[quantity] = `${elem[scroll]}px`;
 
-    onEntering?.(elem);
+    onEntering?.(elem, isAppearing);
   };
 
-  const handleEntered = () => {
+  /** @type {(isAppearing: boolean) => void} */
+  const handleEntered = (isAppearing) => {
     const elem = nodeRef.current;
 
     if (!elem) return;
 
     elem.style[quantity] = "";
 
-    onEntered?.(elem);
+    onEntered?.(elem, isAppearing);
   };
 
+  /** @type {() => void} */
   const handleExit = () => {
     const elem = nodeRef.current;
 
@@ -267,11 +311,14 @@ function Collapse(props) {
     const offset = horizontal ? "offsetWidth" : "offsetHeight";
 
     elem.style[quantity] = `${elem[offset]}px`;
-    elem[offset]; // force update
+
+    // Force browser reflow
+    elem[offset];
 
     onExit?.(elem);
   };
 
+  /** @type {() => void} */
   const handleExiting = () => {
     const elem = nodeRef.current;
 
@@ -282,11 +329,20 @@ function Collapse(props) {
     onExiting?.(elem);
   };
 
+  /** @type {() => void} */
+  const handleExited = () => {
+    const elem = nodeRef.current;
+
+    if (!elem) return;
+
+    onExited?.(elem);
+  };
+
   return (
     <Transition
       nodeRef={nodeRef}
       in={open}
-      timeout={duration}
+      timeout={timeout}
       mountOnEnter={mountOnEnter}
       unmountOnExit={unmountOnExit}
       appear={appear}
@@ -296,7 +352,8 @@ function Collapse(props) {
       onEntering={handleEntering}
       onEntered={handleEntered}
       onExit={handleExit}
-      onExiting={handleExiting}>
+      onExiting={handleExiting}
+      onExited={handleExited}>
       {(state) => (
         <Prime
           ref={nodeRef}

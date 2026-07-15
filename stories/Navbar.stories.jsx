@@ -38,8 +38,8 @@ export function Default() {
           <Navbar.Nav me="auto" mb={{ xs: 2, lg: 0 }}>
             <Nav.Link active>Home</Nav.Link>
             <Nav.Link>Link</Nav.Link>
-            <Dropdown>
-              <Dropdown.Toggle as={Nav.Link}>Dropdown</Dropdown.Toggle>
+            <Dropdown navbar>
+              <Dropdown.Toggle>Dropdown</Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item>Action</Dropdown.Item>
                 <Dropdown.Item>Another action</Dropdown.Item>

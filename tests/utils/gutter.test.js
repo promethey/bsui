@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { gutterResolver } from "./gutter";
+import { gutterResolver } from "utils";
 
 describe("gutterResolver utility", () => {
   test("returns empty string for falsy values", () => {

@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 
 /**
  * @typedef {Object} ModalContextValue
- * @property {(event?: React.SyntheticEvent, closeType?: string) => void} [onHide]
+ * @property {(event?: React.SyntheticEvent, closeType?: string) => void} [onClose]
  */
 
 /** @type {React.Context<ModalContextValue | null>} */
@@ -14,9 +14,7 @@ export function useModalContext() {
   const context = useContext(ModalContext);
 
   if (!context) {
-    throw new Error(
-      "AccordionItem components must be used within AccordionItem.",
-    );
+    throw new Error("useModalContext must be used within a Modal provider.");
   }
 
   return context;

@@ -7,17 +7,20 @@ const BASE_CLASS_NAME = "modal-footer";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root element
+   * Inline styles applied
+   * to the root element
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional class names applied to the root element
+   * Additional class names applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
@@ -35,15 +38,18 @@ const defaultProps = {
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/modal/}
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} ModalFooterOwnProps
  *
- * @typedef {import("../Prime/Prime").PrimeProps & ModalFooterOwnProps} ModalFooterProps
+ * @typedef {PrimeProps & ModalFooterOwnProps} ModalFooterProps
+ *
  * @param {ModalFooterProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function ModalFooter(props) {
   const { style, children, className, ...rest } = props;

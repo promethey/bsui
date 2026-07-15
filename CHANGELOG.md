@@ -1,29 +1,52 @@
 # Changelog
 
-All notable changes to Bootstrap-UI will be documented in this file.
+All notable changes to BSUI will be documented in this file.
 
 The format is based on Keep a Changelog and Semantic Versioning.
-
----
 
 ## [Unreleased]
 
 ### Added
 
-- Initial Bootstrap-UI setup
-- Core React component architecture
-- JSDoc-based IntelliSense system (pure JavaScript)
-- Storybook documentation environment
-- Bootstrap 5 integration layer
+-
 
 ### Changed
 
-- Standardized component API around `theme` prop system
+-
 
 ### Fixed
 
-- —
+-
 
 ### Removed
 
-- —
+-
+
+## [1.0.0] - 2026-07-15
+
+[1.0.0]: https://github.com/promethey/bsui/releases/tag/v1.0.0
+
+### Added
+
+- Utils: bg, border, columns, display, flex, float, font, gutter, offset, opacity, overflow, position, rounded, shadow, sizing, spacing, text;
+- Helpers: capitalize, classnames, prefix;
+- Hooks: useAutohide, useBodyScrollLock, useEscapePress;
+- Layout: Container, Grid, Row, Col;
+- Forms: Form, Control, Label, Check, Range, Select, FloatingLabel, InputGroup;
+- Navigation: Nav, Navbar, Breadcrumb, Dropdown;
+- Feedback: Alert, Badge, Progress, Spinner, Placeholder;
+- Content: Accordion, Card, ListGroup;
+- Overlay: Modal, Collapse, Carousel, Offcanvas;
+- Buttons: Button, ButtonGroup, CloseButton;
+- Core: Prime;
+- Storybook documentation;
+- JSDoc-based IntelliSense system;
+- Vitest test suite;
+- GitHub Actions;
+- GitHub Pages;
+
+### Changed
+
+- Replaced `theme` and `variant` with `tone`;
+- Standardized component architecture and public API;
+- Unified JSDoc documentation across components;

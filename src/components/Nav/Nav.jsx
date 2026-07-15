@@ -6,17 +6,20 @@ import NavLink from "./NavLink";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([
     PropTypes.object,
@@ -25,22 +28,26 @@ const propTypes = {
   ]),
 
   /**
-   * HTML element type used for rendering
+   * HTML element type used
+   * for rendering
    */
   as: PropTypes.oneOf(["nav", "ul"]),
 
   /**
-   * Enables tabbed or pill-style navigation appearance
+   * Enables tabbed or pill-style
+   * navigation appearance
    */
   view: PropTypes.oneOf(["tabs", "pills"]),
 
   /**
-   * Expands navigation items to fill the available width
+   * Expands navigation items to
+   * fill the available width
    */
   fill: PropTypes.bool,
 
   /**
-   * Makes all navigation items equal width
+   * Makes all navigation
+   * items equal width
    */
   justified: PropTypes.bool,
 };
@@ -60,7 +67,6 @@ const defaultProps = {
  *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/navs-tabs/}
  *
  * @example
@@ -70,15 +76,6 @@ const defaultProps = {
  *      Active
  *    </Nav.Link>
  *  </Nav.Item>
- *  <Nav.Item>
- *    <Nav.Link to="/link">
- *      Link
- *    </Nav.Link>
- *  </Nav.Item>
- *  <Nav.Item>
- *    <Nav.Link to="/disabled" disabled>
- *      Disabled
- *    </Nav.Link>
  *  </Nav.Item>
  * </Nav>
  *
@@ -96,12 +93,13 @@ const defaultProps = {
  * Makes all navigation items equal width.
  *
  * @typedef {NavOwnProps & PrimeProps} NavProps
+ *
  * @param {NavProps} props
  *
  * @returns {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  *
  * @todo
  * - add dropdown support (https://getbootstrap.com/docs/5.1/components/navs-tabs/#using-dropdowns)

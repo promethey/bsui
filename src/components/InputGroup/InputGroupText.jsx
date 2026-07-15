@@ -46,10 +46,11 @@ const defaultProps = {
  * @typedef {import("../Prime/Prime").PrimeProps & InputGroupTextOwnProps} InputGroupTextProps
  *
  * @param {InputGroupTextProps} props
+ *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function InputGroupText(props) {
   const { style, children, className, ...rest } = props;

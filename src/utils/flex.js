@@ -1,41 +1,80 @@
 import { classnames as cs } from "helpers";
 
 /**
- * @typedef {"dir"|"justify"|"align"|"alignSelf"|"fill"|"grow"|"shrink"|"wrap"|"nowrap"|"wrapReverse"|"order"|"alignContent"} FlexKey
+ * @typedef {object} FlexObject
+ *
+ * @property {"row"|"row-reverse"|"column"|"column-reverse"} [direction]
+ * Sets flex direction
+ *
+ * @property {"start"|"end"|"center"|"between"|"around"|"evenly"} [justifyContent]
+ * Sets flex justify-content
+ *
+ * @property {"start"|"end"|"center"|"baseline"|"stretch"} [alignItems]
+ * Sets flex align-items
+ *
+ * @property {"start"|"end"|"center"|"baseline"|"stretch"} [alignSelf]
+ * Sets flex align-self
+ *
+ * @property {boolean} [fill]
+ * Sets flex fill
+ *
+ * @property {0|1} [grow]
+ * Sets flex grow
+ *
+ * @property {0|1} [shrink]
+ * Sets flex grow
+ *
+ * @property {boolean} [wrap]
+ * Sets flex wrap
+ *
+ * @property {boolean} [nowrap]
+ * Sets flex nowrap
+ *
+ * @property {boolean} [wrapReverse]
+ * Sets flex wrapReverse
+ *
+ * @property {0|1|2|3|4|5|6|"first"|"last"} [order]
+ * Sets flex order
+ *
+ * @property {"start"|"end"|"center"|"between"|"around"|"stretch"} [alignContent]
+ * Sets flex align content
+ */
+
+/**
+ * @typedef {Object} FlexBreakpointsValue
+ *
+ * @property {FlexObject} [xs]
+ * X-Small breakpoint
+ *
+ * @property {FlexObject} [sm]
+ * Small breakpoint
+ *
+ * @property {FlexObject} [md]
+ * Medium breakpoint
+ *
+ * @property {FlexObject} [lg]
+ * Large breakpoint
+ *
+ * @property {FlexObject} [xl]
+ * Extra large breakpoint
+ *
+ * @property {FlexObject} [xxl]
+ * Extra extra breakpoint
+ */
+
+/**
+ * @typedef {"direction"|"justifyContent"|"alignItems"|"alignSelf"|"fill"|"grow"|"shrink"|"wrap"|"nowrap"|"wrapReverse"|"order"|"alignContent"} FlexKey
  * @typedef {"start"|"end"|"center"} FlexShortValues
  * @typedef {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"} FlexBreakpoints
- *
- * @typedef {Object} FlexBreakpointsValue
- * @property {FlexObject} [xs] - X-Small breakpoint
- * @property {FlexObject} [sm] - Small breakpoint
- * @property {FlexObject} [md] - Medium breakpoint
- * @property {FlexObject} [lg] - Large breakpoint
- * @property {FlexObject} [xl] - Extra large breakpoint
- * @property {FlexObject} [xxl] - Extra extra breakpoint
- *
- * @typedef {object} FlexObject
- * @property {"row"|"row-reverse"|"column"|"column-reverse"} [dir] - Sets flex direction
- * @property {"start"|"end"|"center"|"between"|"around"|"evenly"} [justify] - Sets flex justify-content
- * @property {"start"|"end"|"center"|"baseline"|"stretch"} [align] - Sets flex align-items
- * @property {"start"|"end"|"center"|"baseline"|"stretch"} [alignSelf] - Sets flex align-self
- * @property {boolean} [fill] - Sets flex fill
- * @property {0|1} [grow] - Sets flex grow
- * @property {0|1} [shrink] - Sets flex grow
- * @property {boolean} [wrap] - Sets flex wrap
- * @property {boolean} [nowrap] - Sets flex nowrap
- * @property {boolean} [wrapReverse] - Sets flex wrapReverse
- * @property {0|1|2|3|4|5|6|"first"|"last"} [order] - Sets flex order
- * @property {"start"|"end"|"center"|"between"|"around"|"stretch"} [alignContent] - Sets flex align content
- *
  * @typedef {Partial<FlexBreakpointsValue>} FlexBreakpointsObject
  * @typedef {Partial<Record<FlexBreakpoints, FlexShortValues>>} FlexBreakpointsShort
  */
 
 /** @type {Object<FlexKey, string>} */
 const FLEX_MAP = {
-  dir: "flex",
-  justify: "justify-content",
-  align: "align-items",
+  direction: "flex",
+  justifyContent: "justify-content",
+  alignItems: "align-items",
   alignSelf: "align-self",
   fill: "flex-fill",
   grow: "flex-grow",
@@ -49,9 +88,9 @@ const FLEX_MAP = {
 
 /** @type {Object<FlexKey, any[]>} */
 const FLEX_VALUES_MAP = {
-  dir: ["row", "row-reverse", "column", "column-reverse"],
-  justify: ["start", "end", "center", "between", "around", "evenly"],
-  align: ["start", "end", "center", "baseline", "stretch"],
+  direction: ["row", "row-reverse", "column", "column-reverse"],
+  justifyContent: ["start", "end", "center", "between", "around", "evenly"],
+  alignItems: ["start", "end", "center", "baseline", "stretch"],
   alignSelf: ["start", "end", "center", "baseline", "stretch"],
   fill: [true],
   grow: [0, 1],
@@ -65,9 +104,9 @@ const FLEX_VALUES_MAP = {
 
 /** @type {Object<FlexKey, boolean>} */
 const FLEX_OPTIONS_MAP = {
-  dir: true,
-  justify: false,
-  align: false,
+  direction: true,
+  justifyContent: false,
+  alignItems: false,
   alignSelf: false,
   fill: true,
   grow: true,
@@ -79,26 +118,57 @@ const FLEX_OPTIONS_MAP = {
   alignContent: false,
 };
 
-/** @type {Array<FlexShortValues>} */
 const JUSTIFY_ALIGN_LIST = ["start", "end", "center"];
 
-/** @type {Array<FlexBreakpoints>} */
 const BREAKPOINTS_LIST = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
+const KEYS_LIST = [
+  "direction",
+  "justifyContent",
+  "alignItems",
+  "alignSelf",
+  "fill",
+  "grow",
+  "shrink",
+  "wrap",
+  "nowrap",
+  "wrapReverse",
+  "order",
+  "alignContent",
+];
+
 /**
- * Flex function
+ * Resolves Bootstrap-like flexbox
+ * utility classes.
  *
  * @see {@link https://getbootstrap.com/docs/5.1/utilities/flex/}
  *
  * @example
- * flex("center"); // 'justify-content-center align-items-center'
- * flex("start"); // 'justify-content-start align-items-start'
- * flex({ justify: "center", align: "start" }); // 'justify-content-center align-items-start'
- * flex({ xs: { justify: "center" }, lg: { justify: "start" } }); // 'justify-content-center justify-content-lg-start'
+ * flex("center")
+ * // "justify-content-center align-items-center"
+ *
+ * @example
+ * flex("start")
+ * // "justify-content-start align-items-start"
+ *
+ * @example
+ * flex({ justifyContent: "center", alignItems: "start" })
+ * // "justify-content-center align-items-start"
+ *
+ * @example
+ * flex({ xs: { justifyContent: "center" }, lg: { justifyContent: "start" } })
+ * // "justify-content-center justify-content-lg-start"
  *
  * @param {FlexObject|FlexBreakpointsObject|FlexBreakpointsShort|string} [value]
+ * Input flex configuration in string,
+ * object, or responsive.
  *
  * @returns {string}
+ * Space-separated Bootstrap-compatible
+ * flex utility classes.
+ *
+ * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
+ * @version 1.0.0
  */
 export function flexResolver(value) {
   if (!value) return "";
@@ -106,7 +176,7 @@ export function flexResolver(value) {
   // String
   if (typeof value === "string" && value.length > 0) {
     if (JUSTIFY_ALIGN_LIST.includes(/** @type {FlexShortValues} */ (value))) {
-      return `${cs(FLEX_MAP.justify, value)} ${cs(FLEX_MAP.align, value)}`;
+      return `${cs(FLEX_MAP.justifyContent, value)} ${cs(FLEX_MAP.alignItems, value)}`;
     }
   }
 
@@ -119,19 +189,28 @@ export function flexResolver(value) {
   ) {
     let result = [];
 
-    for (let [breakpoint, val] of Object.entries(value)) {
-      if (
-        BREAKPOINTS_LIST.includes(/** @type {FlexBreakpoints} */ (breakpoint))
-      ) {
+    for (let [key, val] of Object.entries(value)) {
+      if (KEYS_LIST.includes(key)) {
+        if (key in FLEX_MAP && FLEX_VALUES_MAP[key].includes(val)) {
+          result.push(
+            cs(FLEX_MAP[key], val, {
+              prefixInsertBetween: FLEX_OPTIONS_MAP[key],
+            }),
+          );
+        }
+      }
+
+      // Responsive object
+      if (BREAKPOINTS_LIST.includes(key)) {
         // String
         if (
           typeof val === "string" &&
           JUSTIFY_ALIGN_LIST.includes(/** @type {any} */ (val))
         ) {
-          let justify = cs(FLEX_MAP.justify, { [breakpoint]: val });
-          let align = cs(FLEX_MAP.align, { [breakpoint]: val });
+          let justifyContent = cs(FLEX_MAP.justifyContent, { [key]: val });
+          let alignItems = cs(FLEX_MAP.alignItems, { [key]: val });
 
-          result.push(`${justify} ${align}`);
+          result.push(`${justifyContent} ${alignItems}`);
         }
 
         // Object
@@ -152,7 +231,7 @@ export function flexResolver(value) {
               result.push(
                 cs(
                   FLEX_MAP[flexKey],
-                  { [breakpoint]: flexVal },
+                  { [key]: flexVal },
                   { prefixInsertBetween: FLEX_OPTIONS_MAP[flexKey] },
                 ),
               );

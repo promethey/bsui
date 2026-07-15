@@ -6,22 +6,26 @@ const BASE_CLASS_NAME = "alert-heading";
 
 const propTypes = {
   /**
-   * HTML element type used for rendering
+   * HTML element type used
+   * for rendering
    */
   as: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"]),
 
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
@@ -33,29 +37,31 @@ const defaultProps = {
 };
 
 /**
- * Displays a styled heading inside the alert component.
+ * Displays a styled heading inside
+ * the alert component.
  *
- * @see {@link Prime}
- * @see {@link https://getbootstrap.com/docs/5.1/components/alerts/#additional-content|Official Documentation}
- *
- * @example
- * <AlertHeading>Title</AlertHeading>
+ * @see {@link https://getbootstrap.com/docs/5.1/components/alerts/#additional-content}
  *
  * @example
- * <AlertHeading as="h1">Title H1</AlertHeading>
+ * <Alert.Heading>
+ *  Well done!
+ * </Alert.Heading>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {Object} AlertHeadingOwnProps
- * @property {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [as] - HTML element type used for rendering
+ *
+ * @property {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} [as="h4"]
+ * HTML element type used for rendering.
  *
  * @typedef {AlertHeadingOwnProps & PrimeProps} AlertHeadingProps
+ *
  * @param {AlertHeadingProps} props
  *
- * @return {React.ReactNode}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function AlertHeading(props) {
   const { as: Component = "h4", style, children, className, ...rest } = props;

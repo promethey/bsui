@@ -7,17 +7,20 @@ const BASE_CLASS_NAME = "modal-body";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root element
+   * Inline styles applied
+   * to the root element
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional class names applied to the root element
+   * Additional class names applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
@@ -34,15 +37,22 @@ const defaultProps = {
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/modal/}
  *
+ * @example
+ * <Modal.Body>
+ *  Modal body text goes here.
+ * </Modal.Body>
+ *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} ModalBodyOwnProps
  *
- * @typedef {import("../Prime/Prime").PrimeProps & ModalBodyOwnProps} ModalBodyProps
+ * @typedef {PrimeProps & ModalBodyOwnProps} ModalBodyProps
  * @param {ModalBodyProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function ModalBody(props) {
   const { style, children, className, ...rest } = props;

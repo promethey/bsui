@@ -9,17 +9,20 @@ const CONTAINER_VALUES = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
@@ -66,15 +69,17 @@ const defaultProps = {
  * @typedef {object} ContainerOwnProps
  *
  * @property {"xs"|"sm"|"md"|"lg"|"xl"|"xxl"|true} [fluid]
- * Enables fluid container behavior across all or specific breakpoints.
+ * Enables fluid container behavior
+ * across all or specific breakpoints.
  *
  * @typedef {ContainerOwnProps & PrimeProps} ContainerProps
+ *
  * @param {ContainerProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Container(props) {
   const { style, children, className, fluid, ...rest } = props;

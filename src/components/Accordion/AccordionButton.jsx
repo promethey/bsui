@@ -6,17 +6,20 @@ const BASE_CLASS_NAME = "accordion-button";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([
     PropTypes.object,
@@ -25,17 +28,19 @@ const propTypes = {
   ]),
 
   /**
-   * Sets collapsed style
+   * Indicates whether the associated
+   * accordion item is collapsed
    */
   collapsed: PropTypes.bool,
 
   /**
-   * Sets disabled state
+   * Disables the button
    */
   disabled: PropTypes.bool,
 
   /**
-   * Sets click handle
+   * Called when the button
+   * is clicked
    */
   onClick: PropTypes.func.isRequired,
 };
@@ -48,38 +53,47 @@ const defaultProps = {
 };
 
 /**
- * AccordionButton component
+ * Toggles the visibility of the
+ * associated accordion content.
+ *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/accordion/}
  *
  * @example
- * <Accordion.Button>.accordion-button</Accordion.Button>
+ * <Accordion.Button>
+ *  Button
+ * </Accordion.Button>
  *
  * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
  *
  * @typedef {object} AccordionButtonOwnProps
- * @property {boolean} [collapsed]
- * Sets collapsed style
  *
- * @property {boolean} [disabled]
- * Sets disabled style
+ * @property {boolean} [collapsed=true]
+ * Indicates whether the associated
+ * accordion item is collapsed.
+ *
+ * @property {boolean} [disabled=false]
+ * Disables the button.
+ *
+ * @property {(event: React.MouseEvent<HTMLButtonElement>) => void} onClick
+ * Called when the button is clicked.
  *
  * @typedef {PrimeProps & AccordionButtonOwnProps} AccordionButtonProps
+ *
  * @param {AccordionButtonProps} props
  *
- * @return {React.ReactElement}
+ * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function AccordionButton(props) {
   const {
     style,
     children,
     className,
-    collapsed = false,
+    collapsed = true,
     disabled = false,
     onClick,
     ...rest

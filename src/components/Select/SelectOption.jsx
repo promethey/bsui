@@ -5,17 +5,20 @@ import { Prime } from "components";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([
     PropTypes.object,
@@ -24,7 +27,8 @@ const propTypes = {
   ]),
 
   /**
-   * Value submitted when the option is selected
+   * Value submitted when
+   * the option is selected
    */
   value: PropTypes.oneOfType([
     PropTypes.string,
@@ -32,7 +36,8 @@ const propTypes = {
   ]).isRequired,
 
   /**
-   * Marks the option as selected by default
+   * Marks the option as
+   * selected by default
    */
   selected: PropTypes.bool,
 };
@@ -44,7 +49,8 @@ const defaultProps = {
 };
 
 /**
- * Select component
+ * Represents a selectable option
+ * within a select control.
  *
  * @see {@link https://getbootstrap.com/docs/5.1/forms/select/}
  *
@@ -61,6 +67,8 @@ const defaultProps = {
  *  </Select.Option>
  * </Select>
  *
+ * @typedef {import("../Prime/Prime").PrimeProps} PrimeProps
+ *
  * @typedef {object} SelectOptionOwnProps
  *
  * @property {string|string[]} value
@@ -69,13 +77,14 @@ const defaultProps = {
  * @property {boolean} [selected=false]
  * Marks the option as selected by default.
  *
- * @typedef {import("../Prime/Prime").PrimeProps & SelectOptionOwnProps} SelectOptionProps
+ * @typedef {PrimeProps & SelectOptionOwnProps} SelectOptionProps
+ *
  * @param {SelectOptionProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function SelectOption(props) {
   const {

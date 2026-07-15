@@ -23,19 +23,27 @@ import {
 const BASE_CLASS_NAME = "dropdown";
 
 const propTypes = {
-  as: PropTypes.elementType,
   /**
-   * Inline styles applied to the root
+   * HTML element used to render
+   * the component.
+   */
+  as: PropTypes.elementType,
+
+  /**
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
@@ -62,6 +70,11 @@ const propTypes = {
    * the floating element
    */
   transform: PropTypes.bool,
+
+  /**
+   * Enables navbar mode
+   */
+  navbar: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -70,6 +83,7 @@ const defaultProps = {
   className: null,
   placement: "border-start",
   transform: false,
+  navbar: false,
 };
 
 /**
@@ -78,8 +92,8 @@ const defaultProps = {
  *
  * @component
  *
- * @see {@link Prime}
  * @see {@link https://getbootstrap.com/docs/5.1/components/dropdowns/}
+ *
  * @see {@link https://floating-ui.com/docs/useFloating}
  *
  * @example
@@ -102,13 +116,17 @@ const defaultProps = {
  * @property {boolean} [transform=false]
  * Use CSS transforms to position the floating element.
  *
+ * @property {boolean} [navbar=false]
+ * Enables navbar mode.
+ *
  * @typedef {PrimeProps & DropdownOwnProps} DropdownProps
+ *
  * @param {DropdownProps} props
  *
  * @returns {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function Dropdown(props) {
   const {
@@ -118,6 +136,7 @@ function Dropdown(props) {
     className,
     placement = "bottom-start",
     transform = false,
+    navbar = false,
     ...rest
   } = props;
 
@@ -164,6 +183,7 @@ function Dropdown(props) {
     floatingStyles,
     getReferenceProps,
     getFloatingProps,
+    navbar,
   };
 
   return (

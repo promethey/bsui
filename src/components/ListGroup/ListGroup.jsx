@@ -1,4 +1,4 @@
-import PropTypes, { number } from "prop-types";
+import PropTypes from "prop-types";
 import cn from "classnames";
 import { Prime } from "components";
 import ListGroupItem from "./ListGroupItem";
@@ -8,22 +8,26 @@ const BASE_CLASS_NAME = "list-group";
 
 const propTypes = {
   /**
-   * Element type used to render the list group.
+   * Element type used to
+   * render the list group.
    */
   as: PropTypes.elementType,
 
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
@@ -53,7 +57,8 @@ const defaultProps = {
 };
 
 /**
- * Displays a grouped collection of related items.
+ * Displays a grouped collection
+ * of related items.
  *
  * @component
  *
@@ -90,12 +95,13 @@ const defaultProps = {
  * Displays items horizontally at the specified breakpoint.
  *
  * @typedef {PrimeProps & ListGroupOwnProps} ListGroupProps
+ *
  * @param {ListGroupProps} props
  *
  * @return {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function ListGroup(props) {
   const {

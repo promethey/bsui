@@ -6,17 +6,20 @@ const BASE_CLASS_NAME = "nav-link";
 
 const propTypes = {
   /**
-   * Inline styles applied to the root
+   * Inline styles applied
+   * to the root
    */
   style: PropTypes.shape({}),
 
   /**
-   * Content rendered inside the component
+   * Content rendered inside
+   * the component
    */
   children: PropTypes.node.isRequired,
 
   /**
-   * Additional classes applied to the root element
+   * Additional classes applied
+   * to the root element
    */
   className: PropTypes.oneOfType([
     PropTypes.object,
@@ -25,17 +28,20 @@ const propTypes = {
   ]),
 
   /**
-   * Navigation target for the nav link
+   * Navigation target for
+   * the nav link
    */
   to: PropTypes.bool,
 
   /**
-   * Marks the navigation item as active
+   * Marks the navigation
+   * item as active
    */
   active: PropTypes.bool,
 
   /**
-   * Disables interaction and applies disabled styles
+   * Disables interaction and
+   * applies disabled styles
    */
   disabled: PropTypes.bool,
 };
@@ -72,21 +78,25 @@ const defaultProps = {
  * @typedef {object} NavItemOwnProps
  *
  * @property {string} to
- * Navigation target for the nav link.
+ * Navigation target for
+ * the nav link.
  *
  * @property {boolean} [active=false]
- * Marks the navigation item as active.
+ * Marks the navigation
+ * item as active.
  *
  * @property {boolean} [disabled=false]
- * Disables interaction and applies disabled styles.
+ * Disables interaction and
+ * applies disabled styles.
  *
  * @typedef {PrimeProps & NavItemOwnProps} NavProps
+ *
  * @param {NavProps} props
  *
  * @returns {React.JSX.Element}
  *
  * @author Sedelkov Egor [promethey] <sedelkovegor@gmail.com>
- * @version 1.0.0
+ * @since 1.0.0
  */
 function NavLink(props) {
   const {
