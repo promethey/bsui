@@ -70,8 +70,7 @@ const defaultProps = {
 function DropdownMenu(props) {
   const { style, children, className, dark = false, ...rest } = props;
 
-  const { expanded, refs, floatingStyles, getFloatingProps } =
-    useDropdownContext();
+  const { expanded, refs, getFloatingProps } = useDropdownContext();
 
   const classes = cn(
     BASE_CLASS_NAME,
@@ -88,7 +87,6 @@ function DropdownMenu(props) {
         ref={refs.setFloating}
         as="ul"
         className={classes}
-        style={floatingStyles}
         {...getFloatingProps()}
         {...rest}>
         {children}

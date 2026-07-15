@@ -70,6 +70,11 @@ const propTypes = {
    * the floating element
    */
   transform: PropTypes.bool,
+
+  /**
+   * Enables navbar mode
+   */
+  navbar: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -78,6 +83,7 @@ const defaultProps = {
   className: null,
   placement: "border-start",
   transform: false,
+  navbar: false,
 };
 
 /**
@@ -87,6 +93,7 @@ const defaultProps = {
  * @component
  *
  * @see {@link https://getbootstrap.com/docs/5.1/components/dropdowns/}
+ *
  * @see {@link https://floating-ui.com/docs/useFloating}
  *
  * @example
@@ -109,6 +116,9 @@ const defaultProps = {
  * @property {boolean} [transform=false]
  * Use CSS transforms to position the floating element.
  *
+ * @property {boolean} [navbar=false]
+ * Enables navbar mode.
+ *
  * @typedef {PrimeProps & DropdownOwnProps} DropdownProps
  *
  * @param {DropdownProps} props
@@ -126,6 +136,7 @@ function Dropdown(props) {
     className,
     placement = "bottom-start",
     transform = false,
+    navbar = false,
     ...rest
   } = props;
 
@@ -172,6 +183,7 @@ function Dropdown(props) {
     floatingStyles,
     getReferenceProps,
     getFloatingProps,
+    navbar,
   };
 
   return (

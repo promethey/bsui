@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { Button } from "components";
+import { Button, Nav } from "components";
 import { useDropdownContext } from "./DropdownContext";
 import { prefix } from "helpers";
 
@@ -83,7 +83,7 @@ function DropdownToggle(props) {
     ...rest
   } = props;
 
-  const { expanded, refs, getReferenceProps } = useDropdownContext();
+  const { expanded, refs, getReferenceProps, navbar } = useDropdownContext();
 
   const classes = cn(
     BASE_CLASS_NAME,
@@ -94,23 +94,27 @@ function DropdownToggle(props) {
     className,
   );
 
-  return (
-    <Component
-      ref={refs.setReference}
-      style={style}
-      className={classes}
-      {...getReferenceProps({
-        /**
-         * @param {MouseEvent} event
-         */
-        onClick(event) {
-          event.preventDefault();
-        },
-      })}
-      {...rest}>
-      {children}
-    </Component>
-  );
+  const propertyList = {
+    ref: refs.setReference,
+    style,
+    className: classes,
+    children,
+    ...getReferenceProps({
+      /**
+       * @param {MouseEvent} event
+       */
+      onClick(event) {
+        event.preventDefault();
+      },
+    }),
+    ...rest,
+  };
+
+  if (navbar) {
+    return <Nav.Link {...propertyList} />;
+  }
+
+  return <Component {...propertyList} />;
 }
 
 DropdownToggle.propTypes = propTypes;

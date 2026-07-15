@@ -17,6 +17,9 @@ import { createContext, useContext } from "react";
  *
  * @property {(userProps?: Object) => Object} getFloatingProps
  * Merges user props with floating element interaction handlers.
+ *
+ * @property {boolean} [navbar=false]
+ * Enables navbar mode.
  */
 
 /** @type {React.Context<DropdownContextValue | null>} */
