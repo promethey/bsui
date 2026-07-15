@@ -22,7 +22,7 @@ The format is based on Keep a Changelog and Semantic Versioning.
 
 -
 
-## [1.0.0]
+## [1.0.0] 07-15-2026
 
 ### Added
 
