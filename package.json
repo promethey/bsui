@@ -1,6 +1,9 @@
 {
-  "name": "bsui",
+  "name": "@promethey/bsui",
   "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Modern Bootstrap component system for React applications",
   "license": "MIT",
   "homepage": "https://github.com/promethey/bsui#readme",

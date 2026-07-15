@@ -36,7 +36,7 @@ Requirements:
 - Bootstrap 5.1.3
 
 ```bash
-npm install bsui
+npm install @promethey/bsui
 ```
 
 Import Bootstrap styles in your project:
