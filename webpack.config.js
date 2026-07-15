@@ -48,8 +48,6 @@ export default {
     "react-dom": "react-dom",
   },
 
-  plugins: [new BundleAnalyzerPlugin()],
-
   optimization: {
     minimize: true,
     minimizer: [
