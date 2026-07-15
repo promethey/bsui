@@ -22,7 +22,9 @@ The format is based on Keep a Changelog and Semantic Versioning.
 
 -
 
-## [1.0.0] 07-15-2026
+## [1.0.0] - 2026-07-15
+
+[1.0.0]: https://github.com/promethey/bsui/releases/tag/v1.0.0
 
 ### Added
 
