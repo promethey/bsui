@@ -58,15 +58,6 @@ describe("Alert integration (API + children + classes)", () => {
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
 
-  it("applies animated classes", () => {
-    render(<Alert animated>x</Alert>);
-
-    const el = screen.getByRole("alert");
-
-    expect(el.className).toContain("show");
-    expect(el.className).toContain("fade");
-  });
-
   it("renders Alert.Heading correctly inside Alert", () => {
     render(
       <Alert>

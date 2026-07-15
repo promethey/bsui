@@ -1,10 +1,28 @@
 # Changelog
 
-All notable changes to Bootstrap-UI will be documented in this file.
+All notable changes to BSUI will be documented in this file.
 
 The format is based on Keep a Changelog and Semantic Versioning.
 
 ## [Unreleased]
+
+### Added
+
+-
+
+### Changed
+
+-
+
+### Fixed
+
+-
+
+### Removed
+
+-
+
+## [1.0.0]
 
 ### Added
 
@@ -30,11 +48,3 @@ The format is based on Keep a Changelog and Semantic Versioning.
 - Replaced `theme` and `variant` with `tone`;
 - Standardized component architecture and public API;
 - Unified JSDoc documentation across components;
-
-### Fixed
-
--
-
-### Removed
-
--
