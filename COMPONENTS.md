@@ -63,10 +63,10 @@ This document tracks the implementation status of all public BSUI components.
 | Popover       | Overlay    | 📋 Planned | 1.1.0 |
 | ScrollSpy     | Navigation | 📋 Planned | 1.1.0 |
 | Tab           | Navigation | 📋 Planned | 1.1.0 |
-| Table         | Content    | 📋 Planned | 1.2.0 |
-| Figure        | Content    | 📋 Planned | 1.2.0 |
-| Image         | Content    | 📋 Planned | 1.2.0 |
-| Ratio         | Layout     | 📋 Planned | 1.2.0 |
+| Table         | Content    | 📋 Planned | 1.1.0 |
+| Figure        | Content    | 📋 Planned | 1.1.0 |
+| Image         | Content    | 📋 Planned | 1.1.0 |
+| Ratio         | Layout     | 📋 Planned | 1.1.0 |
 
 ## Notes
 
