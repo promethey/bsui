@@ -6,7 +6,7 @@
   },
   "description": "Modern Bootstrap component system for React applications",
   "license": "MIT",
-  "homepage": "https://github.com/promethey/bsui#readme",
+  "homepage": "https://github.com/promethey/bsui",
   "author": {
     "name": "Egor Sedelkov"
   },
@@ -25,10 +25,12 @@
   ],
   "keywords": [
     "react",
-    "ui",
-    "bootstrap",
-    "components",
-    "design-system"
+    "bootstrap5",
+    "component-library",
+    "design-system",
+    "storybook",
+    "jsdoc",
+    "react-ui"
   ],
   "peerDependencies": {
     "bootstrap": ">=5.1.3",
