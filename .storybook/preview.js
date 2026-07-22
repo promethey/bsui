@@ -12,7 +12,7 @@ const preview = {
         format: true, // Set to false to disable auto-formatting
         language: "jsx",
       },
-      toc: true,
+      toc: false,
     },
     controls: {
       matchers: {
