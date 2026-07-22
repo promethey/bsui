@@ -2,7 +2,6 @@
 <p align="center">
   <img src="./public/bsui-logo.png" width="220" />
 </p>
-<br>
 
 <p align="center">
   <img src="https://img.shields.io/github/license/promethey/bsui" alt="License">
@@ -18,7 +17,7 @@
     href="https://www.npmjs.com/package/@promethey/bsui"
     target="_blank"
     rel="noreferrer">
-    <img src="./public/npm-logo.png" height="20" alt="npm package" />
+    <img src="./public/npm-logo.png" height="24" alt="npm package" />
   </a>
 </div>
 
