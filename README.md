@@ -1,6 +1,8 @@
+<br>
 <p align="center">
   <img src="./public/bsui-logo.png" width="220" />
 </p>
+<br>
 
 <p align="center">
   <img src="https://img.shields.io/github/license/promethey/bsui" alt="License">
@@ -11,9 +13,19 @@
   <img src="https://img.shields.io/github/stars/promethey/bsui?style=social" alt="GitHub Stars">
 </p>
 
-# BSUI (Bootstrap-UI)
+<div align="center">
+  <a
+    href="https://www.npmjs.com/package/@promethey/bsui"
+    target="_blank"
+    rel="noreferrer">
+    <img src="./public/npm-logo.png" height="20" alt="npm package" />
+  </a>
+</div>
 
-Modern Bootstrap component system for React applications.
+# BSUI
+
+> Modern Bootstrap component system for React applications.
+
 Build Bootstrap 5 applications with composable React components, utility props, and JSDoc-powered IntelliSense.
 
 | BSUI Version | Bootstrap Version |
@@ -36,33 +48,37 @@ Requirements:
 - Bootstrap 5.1.3
 
 ```bash
-npm install @promethey/bsui
+npm i @promethey/bsui
 ```
 
 Import Bootstrap styles in your project:
 
 ```bash
-npm install bootstrap
+npm i bootstrap
 ```
 
 ```js
 import "bootstrap/dist/css/bootstrap.min.css";
 ```
 
-## Usage
+### Usage
 
 ```jsx
-import { Button } from "bsui";
+import { Button } from "@promethey/bsui";
 
 export function Example() {
   return (
     <Button tone="primary" size="lg">
-      Primary
+      Hello BSUI
     </Button>
   );
 }
 
-// <button class="btn btn-primary btn-lg">Primary</button>
+/**
+ * <button class="btn btn-primary btn-lg">
+ *    Hello BSUI
+ * </button>
+ */
 ```
 
 ## Prime Architecture
