@@ -2,17 +2,31 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Introduction" docType="none" />
 
-<div className="h-100 text-center d-flex flex-column justify-content-center align-items-center">
+<div
+  className="h-100 text-center d-flex flex-column justify-content-center align-items-center mx-auto"
+  style={{ maxWidth: 450 }}>
   <img src="./bsui-logo.png" width="220" alt="Bootstrap-UI logo" />
-  <h1 className="mt-5 mb-0">Bootstrap UI</h1>
-  <p>Modern Bootstrap component system for React applications.</p>
-  <div className="mt-4">
+  <h1 className="mt-5 mb-0">BSUI</h1>
+  <p class="fs-5">Modern Bootstrap component system for React applications.</p>
+  <div className="container mt-2">
+    <pre className="bg-dark text-light p-3 rounded user-select-all">
+      <code>npm i @promethey/bsui</code>
+    </pre>
+  </div>
+  <div className="mt-5">
     <a
-      className="text-decoration-none"
-      href="https://github.com/promethey/bootstrap-ui/"
+      className="text-decoration-none me-5"
+      href="https://github.com/promethey/bsui/"
       target="_blank"
       rel="noreferrer">
-      <img src="./github.png" width="70" alt="github rep" />
+      <img src="./github.png" height="20" alt="github rep" />
+    </a>
+    <a
+      className="text-decoration-none"
+      href="https://www.npmjs.com/package/@promethey/bsui"
+      target="_blank"
+      rel="noreferrer">
+      <img src="./npm-logo.png" height="20" alt="npm package" />
     </a>
   </div>
 </div>
