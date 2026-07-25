@@ -9,7 +9,6 @@
   <img src="https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg" alt="CI">
   <img src="https://github.com/promethey/bsui/actions/workflows/storybook.yml/badge.svg" alt="Storybook Deploy">
   <img src="https://img.shields.io/badge/Storybook-Live-FF4785?logo=storybook&logoColor=white" alt="Storybook">
-  <img src="https://img.shields.io/github/stars/promethey/bsui?style=social" alt="GitHub Stars">
 </p>
 
 <div align="center">
