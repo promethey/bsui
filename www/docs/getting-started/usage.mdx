@@ -1,0 +1,93 @@
+---
+sidebar_position: 3
+---
+
+# Usage
+
+BSUI provides reusable React components built on top of Bootstrap 5.
+
+Import components from the package and use them directly in your application:
+
+```jsx
+import { Button, Alert } from "@promethey/bsui";
+
+function App() {
+  return (
+    <>
+      <Button tone="primary">Save</Button>
+
+      <Alert tone="success">Changes saved successfully.</Alert>
+    </>
+  );
+}
+```
+
+## Component API
+
+BSUI components share a consistent API across the library.
+
+Common properties include:
+
+- `tone` — controls the component appearance.
+- `size` — changes the component size.
+- Utility props — apply Bootstrap utility classes directly.
+- Native HTML attributes — supported by underlying elements.
+
+Example:
+
+```jsx
+<Button tone="primary" size="lg" mt={3}>
+  Submit
+</Button>
+```
+
+This generates Bootstrap-compatible classes:
+
+```html
+<button class="btn btn-primary btn-lg mt-3">Submit</button>
+```
+
+## Utility Props
+
+All components are built on top of the `Prime` primitive, which provides access to Bootstrap utility classes.
+
+Example:
+
+```jsx
+<Alert tone="info" d={{ xs: "block", md: "flex" }} mt={3}>
+  Responsive alert
+</Alert>
+```
+
+The utility API allows you to style components without writing additional CSS.
+
+## Using Refs
+
+Components support React refs where applicable:
+
+```jsx
+import { Button } from "@promethey/bsui";
+
+function App() {
+  const buttonRef = useRef(null);
+
+  return <Button ref={buttonRef}>Focus Button</Button>;
+}
+```
+
+## Type Support
+
+BSUI uses JSDoc annotations to provide editor support without requiring TypeScript.
+
+You get:
+
+- Autocomplete
+- Inline documentation
+- Prop hints
+- Development-time validation
+
+No additional TypeScript configuration is required.
+
+## Next Steps
+
+Learn more about individual components and their APIs in the Components section.
