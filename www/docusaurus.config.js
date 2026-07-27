@@ -14,6 +14,8 @@ const config = {
   tagline: "Modern Bootstrap component system for React applications",
   favicon: "img/bsui-favicon.ico",
 
+  // plugins: ["@docusaurus/theme-live-codeblock"],
+
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
@@ -64,7 +66,15 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      liveCodeBlock: {
+        /**
+         * The position of the live playground, above or under the editor
+         * Possible values: "top" | "bottom"
+         */
+        playgroundPosition: "bottom",
+      },
       colorMode: {
+        defaultMode: "light",
         disableSwitch: false,
         respectPrefersColorScheme: true,
       },

@@ -1,24 +1,23 @@
 ---
-slug: first-blog-post
-title: Release v1.0.0
+slug: release-v1-0-0
+title: BSUI v1.0.0
 authors: [promethey]
-tags: []
+tags:
+  - release
+  - bsui
+  - react
 ---
 
-# Release v1.0.0
+Today we are releasing **BSUI v1.0.0**, the first stable release of the Bootstrap-powered React component system.
 
-BSUI v1.0.0 is now available.
-
-This is the first stable release of BSUI. It establishes the initial public API, component architecture, documentation, and development infrastructure.
+This release establishes the initial public API, component architecture, documentation, and development infrastructure.
 
 <iframe
   width="100%"
   height="480"
   src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-  title="Release soundtrack"
+  title="BSUI v1.0.0 Release"
   frameBorder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  referrerPolicy="strict-origin-when-cross-origin"
   allowFullScreen
 />
 
@@ -26,38 +25,99 @@ This is the first stable release of BSUI. It establishes the initial public API,
 
 ## Overview
 
-- Introduced 30+ Bootstrap-compatible React components.
-- Added the Prime primitive and shared Utility API.
-- Added JSDoc-powered IntelliSense without TypeScript.
-- Published the initial Docusaurus documentation and Storybook.
-- Added automated testing and CI workflows.
+BSUI v1.0.0 introduces:
 
-## Changelog
-
-### Added
-
-- Utility props: bg, border, columns, display, flex, float, font, gutter, offset, opacity, overflow, position, rounded, shadow, sizing, spacing, text.
-- Helpers: capitalize, classnames, prefix.
-- Hooks: useAutohide, useBodyScrollLock, useEscapePress.
-- Layout: Container, Grid, Row, Col.
-- Forms: Form, Control, Label, Check, Range, Select, FloatingLabel, InputGroup.
-- Navigation: Nav, Navbar, Breadcrumb, Dropdown.
-- Feedback: Alert, Badge, Progress, Spinner, Placeholder.
-- Content: Accordion, Card, ListGroup.
-- Overlay: Modal, Collapse, Carousel, Offcanvas.
-- Buttons: Button, ButtonGroup, CloseButton.
-- Prime primitive.
+- 30+ reusable React components.
+- Bootstrap 5 powered styling.
+- The `Prime` component foundation.
+- Utility props for common Bootstrap utilities.
+- JSDoc-powered IntelliSense without TypeScript.
 - Storybook documentation.
-- JSDoc-powered IntelliSense.
-- Vitest test suite.
-- GitHub Actions workflows.
-- GitHub Pages deployment.
+- Interactive React playgrounds.
+- Vitest testing infrastructure.
+- Automated CI workflows.
 
-### Changed
+---
 
-- Replaced `theme` and `variant` with `tone`.
-- Standardized the public component architecture and API.
-- Unified JSDoc documentation across all components.
+## Component Library
+
+The first stable release includes:
+
+### Layout
+
+- Container
+- Grid
+- Row
+- Col
+
+### Forms
+
+- Form
+- Control
+- Label
+- Check
+- Range
+- Select
+- FloatingLabel
+- InputGroup
+
+### Navigation
+
+- Nav
+- Navbar
+- Breadcrumb
+- Dropdown
+
+### Feedback
+
+- Alert
+- Badge
+- Progress
+- Spinner
+- Placeholder
+
+### Content
+
+- Accordion
+- Card
+- ListGroup
+
+### Overlay
+
+- Modal
+- Collapse
+- Carousel
+- Offcanvas
+
+### Buttons
+
+- Button
+- ButtonGroup
+- CloseButton
+
+---
+
+## Architecture
+
+BSUI follows a consistent component architecture:
+
+- React composition over inheritance.
+- Bootstrap CSS without Bootstrap JavaScript.
+- Shared component APIs.
+- Runtime validation using PropTypes.
+- JSDoc documentation for editor support.
+
+---
+
+## API Changes
+
+The stable release introduced:
+
+- Unified component API.
+- `tone` prop replacing previous theme-related naming.
+- Shared utility prop system.
+
+---
 
 ## Links
 
