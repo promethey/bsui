@@ -1,0 +1,126 @@
+---
+title: Badge
+description: Display small labels, counters, and status indicators.
+sidebar_position: 1
+---
+
+# Badge
+
+The `Badge` component displays small contextual labels, counters, and status indicators. It is built on top of Bootstrap 5 and supports all utility props provided by the `Prime` primitive.
+
+## Import
+
+```jsx
+import { Badge } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { Badge } from "@promethey/bsui";
+
+export default function Basic() {
+  return <Badge bg="secondary">New</Badge>;
+}
+```
+
+## Tones
+
+Use Bootstrap background utilities to change the appearance.
+
+```jsx live
+import { Badge } from "@promethey/bsui";
+
+const tones = [
+  "primary",
+  "secondary",
+  "success",
+  "danger",
+  "warning",
+  "info",
+  "light",
+  "dark",
+];
+
+export default function Backgrounds() {
+  return tones.map((bg) => (
+    <Badge key={bg} bg={bg} text={bg === "light" ? "dark" : "light"}>
+      {bg}
+    </Badge>
+  ));
+}
+```
+
+## Pill Badge
+
+Use the `rounded="pill"` utility to create pill-shaped badges.
+
+```jsx live
+import { Badge } from "@promethey/bsui";
+
+export default function Pill() {
+  return (
+    <>
+      <Badge bg="primary" rounded="pill">
+        Primary
+      </Badge>
+
+      <Badge bg="success" rounded="pill">
+        Success
+      </Badge>
+
+      <Badge bg="danger" rounded="pill">
+        Danger
+      </Badge>
+    </>
+  );
+}
+```
+
+## Notification Badge
+
+Badges can be used inside buttons to display counters.
+
+```jsx live
+import { Button, Badge } from "@promethey/bsui";
+
+export default function Notification() {
+  return (
+    <Button tone="primary">
+      Notifications
+      <Badge bg="light" text="dark" rounded="pill" ms={2}>
+        12
+      </Badge>
+    </Button>
+  );
+}
+```
+
+## Utility Props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { Badge } from "@promethey/bsui";
+
+export default function Utilities() {
+  return (
+    <Badge bg="success" text="light" px={3} py={2} rounded="pill" fw="bold">
+      Utility Props
+    </Badge>
+  );
+}
+```
+
+## API
+
+| Prop        | Type          | Default  | Description                      |
+| ----------- | ------------- | -------- | -------------------------------- |
+| `as`        | `elementType` | `"span"` | HTML element used for rendering. |
+| `children`  | `ReactNode`   | —        | Component content.               |
+| `className` | `string`      | —        | Additional CSS classes.          |
+| `style`     | `object`      | —        | Inline styles.                   |
