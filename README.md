@@ -11,15 +11,6 @@
   <img src="https://img.shields.io/badge/Storybook-Live-FF4785?logo=storybook&logoColor=white" alt="Storybook">
 </p>
 
-<div align="center">
-  <a
-    href="https://www.npmjs.com/package/@promethey/bsui"
-    target="_blank"
-    rel="noreferrer">
-    <img src="./public/npm-logo.png" height="24" alt="npm package" />
-  </a>
-</div>
-
 # BSUI
 
 > Modern Bootstrap component system for React applications.
