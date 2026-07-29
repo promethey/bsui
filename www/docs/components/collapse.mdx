@@ -1,0 +1,198 @@
+---
+title: Collapse
+description: Animate the expansion and collapsing of content visibility with smooth transitions.
+---
+
+# Collapse
+
+The `Collapse` component provides animated show and hide transitions for content blocks.
+
+It is based on Bootstrap 5 collapse behavior and uses `react-transition-group` internally to control transition states.
+
+## Import
+
+```jsx
+import { Collapse } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+Use the `open` prop to control the visibility state.
+
+```jsx live
+import { useState } from "react";
+import { Collapse, Button } from "@promethey/bsui";
+
+export default function Basic() {
+  const [show, setShow] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setShow((prev) => !prev)}>Toggle Content</Button>
+
+      <Collapse open={show} mt={3}>
+        <div>This content can be expanded and collapsed.</div>
+      </Collapse>
+    </>
+  );
+}
+```
+
+## Controlled State
+
+`Collapse` is a controlled component. The visibility state must be managed by the parent component.
+
+```jsx live
+import { useState } from "react";
+import { Collapse, Button } from "@promethey/bsui";
+
+export default function Controlled() {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(!open)}>{open ? "Hide" : "Show"}</Button>
+
+      <Collapse open={open}>
+        <p>The collapse state is controlled externally.</p>
+      </Collapse>
+    </>
+  );
+}
+```
+
+## Horizontal Collapse
+
+Enable horizontal animation using the `horizontal` prop.
+
+The component will animate the element width instead of height.
+
+:::important
+When using horizontal collapse, the child element must have an explicit `width`.
+
+The width should be applied to the collapsing content element. Without it, the animation may not have a visible effect.
+:::
+
+```jsx live
+import { useState } from "react";
+import { Collapse, Button, Prime } from "@promethey/bsui";
+
+export default function Horizontal() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(!open)}>Toggle Width</Button>
+
+      <Collapse horizontal open={open} mt={3}>
+        <Prime
+          p={3}
+          bg="light"
+          style={{
+            width: "300px",
+          }}>
+          Horizontal collapsing content.
+        </Prime>
+      </Collapse>
+    </>
+  );
+}
+```
+
+## Mount On Enter
+
+Use `mountOnEnter` to delay rendering until the enter transition begins.
+
+```jsx live
+import { useState } from "react";
+import { Collapse, Button } from "@promethey/bsui";
+
+export default function MountOnEnter() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open</Button>
+
+      <Collapse open={open} mountOnEnter>
+        Content is mounted when opening starts.
+      </Collapse>
+    </>
+  );
+}
+```
+
+## Unmount On Exit
+
+Use `unmountOnExit` to remove collapsed content from the DOM after the exit animation completes.
+
+```jsx live
+import { useState } from "react";
+import { Collapse, Button } from "@promethey/bsui";
+
+export default function UnmountOnExit() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(!open)}>Toggle</Button>
+
+      <Collapse open={open} unmountOnExit>
+        This content is removed from the DOM when closed.
+      </Collapse>
+    </>
+  );
+}
+```
+
+## Transition Duration
+
+Customize animation duration using the `timeout` prop.
+
+The value is specified in milliseconds.
+
+```jsx live
+import { useState } from "react";
+import { Collapse, Button } from "@promethey/bsui";
+
+export default function Timeout() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(!open)}>Toggle Slow Animation</Button>
+
+      <Collapse open={open} timeout={1000}>
+        Slow transition content.
+      </Collapse>
+    </>
+  );
+}
+```
+
+## API
+
+| Prop             | Type                                                | Default | Description                                                              |
+| ---------------- | --------------------------------------------------- | ------- | ------------------------------------------------------------------------ |
+| `children`       | `ReactNode`                                         | —       | Content rendered inside the collapse container.                          |
+| `className`      | `string \| object`                                  | `null`  | Additional CSS classes applied to the root element.                      |
+| `style`          | `object`                                            | `null`  | Inline styles applied to the root element.                               |
+| `horizontal`     | `boolean`                                           | `false` | Enables horizontal collapsing animation using width instead of height.   |
+| `open`           | `boolean`                                           | `false` | Controls whether the content is expanded or collapsed.                   |
+| `mountOnEnter`   | `boolean`                                           | `false` | Delays mounting the component until the enter transition begins.         |
+| `unmountOnExit`  | `boolean`                                           | `false` | Removes the component from the DOM after the exit transition finishes.   |
+| `appear`         | `boolean`                                           | `false` | Runs the enter transition when the component is mounted initially.       |
+| `enter`          | `boolean`                                           | `true`  | Enables the enter transition when the component becomes visible.         |
+| `exit`           | `boolean`                                           | `true`  | Enables the exit transition when the component becomes hidden.           |
+| `timeout`        | `number`                                            | `350`   | Transition duration in milliseconds.                                     |
+| `addEndListener` | `(node: HTMLElement, done: () => void) => void`     | `null`  | Custom callback used to detect transition completion instead of timeout. |
+| `onEnter`        | `(node: HTMLElement, isAppearing: boolean) => void` | `null`  | Callback fired before the enter transition starts.                       |
+| `onEntering`     | `(node: HTMLElement, isAppearing: boolean) => void` | `null`  | Callback fired while the enter transition is running.                    |
+| `onEntered`      | `(node: HTMLElement, isAppearing: boolean) => void` | `null`  | Callback fired after the enter transition completes.                     |
+| `onExit`         | `(node: HTMLElement) => void`                       | `null`  | Callback fired before the exit transition starts.                        |
+| `onExiting`      | `(node: HTMLElement) => void`                       | `null`  | Callback fired while the exit transition is running.                     |
+| `onExited`       | `(node: HTMLElement) => void`                       | `null`  | Callback fired after the exit transition completes.                      |

@@ -1,0 +1,146 @@
+---
+title: Spinner
+description: Indicate loading states and background activity with animated spinners.
+---
+
+# Spinner
+
+The `Spinner` component provides a visual loading indicator to communicate ongoing processing or background activity. It supports both Bootstrap spinner styles and a compact size variant.
+
+## Import
+
+```jsx
+import { Spinner } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { Spinner } from "@promethey/bsui";
+
+export default function Basic() {
+  return <Spinner />;
+}
+```
+
+## Variants
+
+Use the `view` prop to switch between the available spinner animations.
+
+```jsx live
+import { Prime, Spinner } from "@promethey/bsui";
+
+export default function Variants() {
+  return (
+    <>
+      <Spinner me={3} />
+      <Spinner view="grow" />
+    </>
+  );
+}
+```
+
+## Colors
+
+Use utility props to change the spinner color.
+
+```jsx live
+import { Prime, Spinner } from "@promethey/bsui";
+
+const tones = [
+  "primary",
+  "secondary",
+  "success",
+  "danger",
+  "warning",
+  "info",
+  "dark",
+];
+
+export default function Colors() {
+  return (
+    <>
+      {tones.map((tone) => (
+        <Spinner key={tone} view="border" text={tone} me={3} mb={3} />
+      ))}
+    </>
+  );
+}
+```
+
+## Grow Spinner
+
+Use `view="grow"` to render the grow animation.
+
+```jsx live
+import { Spinner } from "@promethey/bsui";
+
+export default function Grow() {
+  return (
+    <>
+      <Spinner view="grow" text="primary" me={3} />
+      <Spinner view="grow" text="success" me={3} />
+      <Spinner view="grow" text="danger" />
+    </>
+  );
+}
+```
+
+## Small Size
+
+Use the `size` prop to render a compact spinner.
+
+```jsx live
+import { Prime, Spinner } from "@promethey/bsui";
+
+export default function Sizes() {
+  return (
+    <>
+      <Spinner me={3} />
+      <Spinner size="sm" />
+    </>
+  );
+}
+```
+
+## Buttons
+
+Spinners are commonly used inside buttons to indicate loading.
+
+```jsx live
+import { Button, Spinner } from "@promethey/bsui";
+
+export default function LoadingButton() {
+  return (
+    <Button disabled>
+      <Spinner size="sm" me={2} />
+      Loading...
+    </Button>
+  );
+}
+```
+
+## Utility Props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { Spinner } from "@promethey/bsui";
+
+export default function Utilities() {
+  return <Spinner text="primary" mt={3} mx="auto" d="block" />;
+}
+```
+
+## API
+
+| Prop        | Type                 | Default    | Description                           |
+| ----------- | -------------------- | ---------- | ------------------------------------- |
+| `className` | `string`             | —          | Additional CSS classes.               |
+| `style`     | `object`             | —          | Inline styles.                        |
+| `view`      | `"border" \| "grow"` | `"border"` | Spinner animation style.              |
+| `size`      | `"sm"`               | —          | Displays the compact spinner variant. |

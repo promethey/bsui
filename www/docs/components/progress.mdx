@@ -1,0 +1,222 @@
+---
+title: Progress
+description: Display the completion progress of a task with customizable progress bars.
+---
+
+# Progress
+
+The `Progress` component displays the completion status of a task or process. It supports determinate progress, striped styles, animations, labels, and utility props.
+
+## Import
+
+```jsx
+import { Progress } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { Progress } from "@promethey/bsui";
+
+export default function Basic() {
+  return (
+    <Progress>
+      <Progress.Bar now={25} />
+    </Progress>
+  );
+}
+```
+
+---
+
+## Progress Values
+
+Control the progress using the `now`, `min`, and `max` props.
+
+```jsx live
+import { Progress } from "@promethey/bsui";
+
+export default function Values() {
+  return (
+    <>
+      <Progress mb={3}>
+        <Progress.Bar now={25} />
+      </Progress>
+
+      <Progress mb={3}>
+        <Progress.Bar now={50} />
+      </Progress>
+
+      <Progress>
+        <Progress.Bar now={100} />
+      </Progress>
+    </>
+  );
+}
+```
+
+---
+
+## Labels
+
+Display the progress percentage automatically.
+
+```jsx live
+import { Progress } from "@promethey/bsui";
+
+export default function Labels() {
+  return (
+    <Progress>
+      <Progress.Bar now={65} displayedPercent />
+    </Progress>
+  );
+}
+```
+
+---
+
+## Custom Content
+
+Render custom content inside the progress bar.
+
+```jsx live
+import { Progress } from "@promethey/bsui";
+
+export default function CustomContent() {
+  return (
+    <Progress>
+      <Progress.Bar now={40}>40%</Progress.Bar>
+    </Progress>
+  );
+}
+```
+
+---
+
+## Colors
+
+Use utility props to customize the progress bar color.
+
+```jsx live
+import { Progress } from "@promethey/bsui";
+
+const tones = ["primary", "success", "danger", "warning", "info"];
+
+export default function Colors() {
+  return (
+    <>
+      {tones.map((tone) => (
+        <Progress key={tone} mb={3}>
+          <Progress.Bar now={75} bg={tone} />
+        </Progress>
+      ))}
+    </>
+  );
+}
+```
+
+---
+
+## Striped
+
+Apply a striped appearance.
+
+```jsx live
+import { Progress } from "@promethey/bsui";
+
+export default function Striped() {
+  return (
+    <Progress>
+      <Progress.Bar now={60} striped />
+    </Progress>
+  );
+}
+```
+
+---
+
+## Animated
+
+Animate the striped background.
+
+```jsx live
+import { Progress } from "@promethey/bsui";
+
+export default function Animated() {
+  return (
+    <Progress>
+      <Progress.Bar now={75} striped animated />
+    </Progress>
+  );
+}
+```
+
+---
+
+## Multiple Bars
+
+Combine multiple progress bars within a single progress container.
+
+```jsx live
+import { Progress } from "@promethey/bsui";
+
+export default function Multiple() {
+  return (
+    <Progress>
+      <Progress.Bar now={25} bg="success" />
+
+      <Progress.Bar now={35} bg="warning" />
+
+      <Progress.Bar now={15} bg="danger" />
+    </Progress>
+  );
+}
+```
+
+---
+
+## Utility Props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { Progress } from "@promethey/bsui";
+
+export default function Utilities() {
+  return (
+    <Progress>
+      <Progress.Bar now={80} fw="bolder" displayedPercent bg="primary" />
+    </Progress>
+  );
+}
+```
+
+---
+
+## API
+
+### Progress
+
+| Prop        | Type        | Default | Description                            |
+| ----------- | ----------- | ------- | -------------------------------------- |
+| `children`  | `ReactNode` | —       | One or more `Progress.Bar` components. |
+| `className` | `string`    | —       | Additional CSS classes.                |
+| `style`     | `object`    | —       | Inline styles.                         |
+
+### Progress.Bar
+
+| Prop               | Type        | Default | Description                               |
+| ------------------ | ----------- | ------- | ----------------------------------------- |
+| `children`         | `ReactNode` | —       | Custom content displayed inside the bar.  |
+| `className`        | `string`    | —       | Additional CSS classes.                   |
+| `style`            | `object`    | —       | Inline styles.                            |
+| `now`              | `number`    | `0`     | Current progress value.                   |
+| `min`              | `number`    | `0`     | Minimum progress value.                   |
+| `max`              | `number`    | `100`   | Maximum progress value.                   |
+| `displayedPercent` | `boolean`   | `false` | Displays the computed percentage as text. |
+| `striped`          | `boolean`   | `false` | Applies a striped appearance.             |
+| `animated`         | `boolean`   | `false` | Animates the striped background.          |

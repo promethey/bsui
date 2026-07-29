@@ -1,0 +1,197 @@
+---
+title: Alert
+description: Display contextual feedback messages for typical user actions with optional headings, links, and dismiss functionality.
+---
+
+# Alert
+
+The `Alert` component displays contextual feedback messages for common user actions. It supports multiple visual styles, optional headings, contextual links, and dismissible alerts.
+
+## Import
+
+```jsx
+import { Alert } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { Alert } from "@promethey/bsui";
+
+export default function Basic() {
+  return <Alert>A simple primary alert—check it out!</Alert>;
+}
+```
+
+---
+
+## Tones
+
+Use the `tone` prop to change the visual appearance.
+
+```jsx live
+import { Alert } from "@promethey/bsui";
+
+const tones = [
+  "primary",
+  "secondary",
+  "success",
+  "danger",
+  "warning",
+  "info",
+  "light",
+  "dark",
+];
+
+export default function Tones() {
+  return (
+    <>
+      {tones.map((tone) => (
+        <Alert key={tone} tone={tone} mb={3}>
+          {tone} alert
+        </Alert>
+      ))}
+    </>
+  );
+}
+```
+
+---
+
+## Dismissible
+
+Enable the built-in close button with the `dismissible` prop.
+
+```jsx live
+import { Alert } from "@promethey/bsui";
+
+export default function Dismissible() {
+  return (
+    <Alert tone="warning" dismissible onClose={() => alert("Alert dismissed")}>
+      Click the close button.
+    </Alert>
+  );
+}
+```
+
+---
+
+## Heading
+
+Use `Alert.Heading` to create a heading inside the alert.
+
+```jsx live
+import { Alert } from "@promethey/bsui";
+
+export default function Heading() {
+  return (
+    <Alert tone="success">
+      <Alert.Heading>Well done!</Alert.Heading>
+      You successfully read this important alert message.
+    </Alert>
+  );
+}
+```
+
+---
+
+## Links
+
+Use `Alert.Link` to display links with alert-aware styling.
+
+```jsx live
+import { Alert } from "@promethey/bsui";
+
+export default function Links() {
+  return (
+    <Alert tone="primary">
+      Visit the{" "}
+      <Alert.Link to="https://github.com/promethey/bsui">
+        GitHub repository
+      </Alert.Link>
+      .
+    </Alert>
+  );
+}
+```
+
+---
+
+## Complete Example
+
+Alerts can combine headings, content, links, and a dismiss button.
+
+```jsx live
+import { Alert } from "@promethey/bsui";
+
+export default function Complete() {
+  return (
+    <Alert tone="success" dismissible onClose={() => alert("Closed")}>
+      <Alert.Heading>Success</Alert.Heading>
+      Everything completed successfully.{" "}
+      <Alert.Link to="https://github.com/promethey/bsui">Learn more</Alert.Link>
+    </Alert>
+  );
+}
+```
+
+---
+
+## Utility Props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { Alert } from "@promethey/bsui";
+
+export default function Utilities() {
+  return (
+    <Alert
+      tone="info"
+      p={4}
+      fw="bolder"
+      text={{ transform: "uppercase" }}
+      shadow="lg"
+      mt={3}>
+      Utility props work on alerts too.
+    </Alert>
+  );
+}
+```
+
+---
+
+## API
+
+### Alert
+
+| Prop          | Type                                                                                            | Default     | Description                              |
+| ------------- | ----------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------- |
+| `children`    | `ReactNode`                                                                                     | —           | Alert content.                           |
+| `className`   | `string`                                                                                        | —           | Additional CSS classes.                  |
+| `style`       | `object`                                                                                        | —           | Inline styles.                           |
+| `tone`        | `"primary" \| "secondary" \| "success" \| "danger" \| "warning" \| "info" \| "light" \| "dark"` | `"primary"` | Visual appearance.                       |
+| `dismissible` | `boolean`                                                                                       | `false`     | Displays a close button.                 |
+| `onClose`     | `function`                                                                                      | —           | Called when the close button is clicked. |
+
+### Alert.Heading
+
+| Prop        | Type                                           | Default | Description             |
+| ----------- | ---------------------------------------------- | ------- | ----------------------- |
+| `as`        | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h4"`  | Heading element.        |
+| `children`  | `ReactNode`                                    | —       | Heading content.        |
+| `className` | `string`                                       | —       | Additional CSS classes. |
+| `style`     | `object`                                       | —       | Inline styles.          |
+
+### Alert.Link
+
+| Prop        | Type        | Default | Description             |
+| ----------- | ----------- | ------- | ----------------------- |
+| `children`  | `ReactNode` | —       | Link content.           |
+| `to`        | `string`    | `"#"`   | Navigation target.      |
+| `className` | `string`    | —       | Additional CSS classes. |
+| `style`     | `object`    | —       | Inline styles.          |
