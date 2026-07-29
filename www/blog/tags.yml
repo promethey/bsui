@@ -1,0 +1,19 @@
+release:
+  label: Release
+  permalink: /release
+  description: Release announcements, version updates, and important changes in BSUI.
+
+bsui:
+  label: BSUI
+  permalink: /bsui
+  description: News, updates, and articles related to the BSUI React component library.
+
+react:
+  label: React
+  permalink: /react
+  description: Articles about React components, patterns, and development practices.
+
+patch:
+  label: Patch
+  permalink: /patch
+  description: Patch releases containing bug fixes, stability improvements, and minor updates.

@@ -1,0 +1,59 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: www
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: www/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build documentation
+        run: npm run build
+
+      - name: Build Storybook
+        run: npm run build-storybook -- --output-dir storybook --base /bsui/storybook
+
+      - name: Merge Storybook
+        run: |
+          mkdir -p build/storybook
+          cp -r storybook/* build/storybook/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: www/build
+
+  deploy:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

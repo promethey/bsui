@@ -1,0 +1,270 @@
+---
+title: ListGroup
+description: Display grouped collections of related items with support for active states, tones, links, numbering, and horizontal layouts.
+---
+
+# ListGroup
+
+The `ListGroup` component displays a collection of related items in a structured list. It supports active states, contextual tones, disabled items, links, numbered lists, flush styling, and responsive horizontal layouts.
+
+## Import
+
+```jsx
+import { ListGroup } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { ListGroup } from "@promethey/bsui";
+
+export default function Basic() {
+  return (
+    <ListGroup>
+      <ListGroup.Item>First item</ListGroup.Item>
+
+      <ListGroup.Item>Second item</ListGroup.Item>
+
+      <ListGroup.Item>Third item</ListGroup.Item>
+    </ListGroup>
+  );
+}
+```
+
+## Active Items
+
+Use the `active` prop to highlight an item.
+
+```jsx live
+import { ListGroup } from "@promethey/bsui";
+
+export default function Active() {
+  return (
+    <ListGroup>
+      <ListGroup.Item active>Active item</ListGroup.Item>
+
+      <ListGroup.Item>Regular item</ListGroup.Item>
+    </ListGroup>
+  );
+}
+```
+
+## Disabled Items
+
+Use the `disabled` prop to disable interaction.
+
+```jsx live
+import { ListGroup } from "@promethey/bsui";
+
+export default function Disabled() {
+  return (
+    <ListGroup>
+      <ListGroup.Item>Available item</ListGroup.Item>
+
+      <ListGroup.Item disabled>Disabled item</ListGroup.Item>
+    </ListGroup>
+  );
+}
+```
+
+## Tones
+
+Use the `tone` prop to apply contextual colors.
+
+```jsx live
+import { ListGroup } from "@promethey/bsui";
+
+const tones = [
+  "primary",
+  "secondary",
+  "success",
+  "danger",
+  "warning",
+  "info",
+  "light",
+  "dark",
+];
+
+export default function Tones() {
+  return (
+    <ListGroup>
+      {tones.map((tone) => (
+        <ListGroup.Item key={tone} tone={tone}>
+          {tone} item
+        </ListGroup.Item>
+      ))}
+    </ListGroup>
+  );
+}
+```
+
+## Flush
+
+Remove outer borders with the `flush` prop.
+
+```jsx live
+import { ListGroup } from "@promethey/bsui";
+
+export default function Flush() {
+  return (
+    <ListGroup flush>
+      <ListGroup.Item>First item</ListGroup.Item>
+
+      <ListGroup.Item>Second item</ListGroup.Item>
+    </ListGroup>
+  );
+}
+```
+
+## Numbered List
+
+Use the `numbered` prop to render ordered list items.
+
+```jsx live
+import { ListGroup } from "@promethey/bsui";
+
+export default function Numbered() {
+  return (
+    <ListGroup numbered>
+      <ListGroup.Item>First item</ListGroup.Item>
+
+      <ListGroup.Item>Second item</ListGroup.Item>
+
+      <ListGroup.Item>Third item</ListGroup.Item>
+    </ListGroup>
+  );
+}
+```
+
+## Horizontal Layout
+
+Use the `horizontal` prop to display items horizontally.
+
+```jsx live
+import { ListGroup } from "@promethey/bsui";
+
+export default function Horizontal() {
+  return (
+    <ListGroup horizontal>
+      <ListGroup.Item>First item</ListGroup.Item>
+
+      <ListGroup.Item>Second item</ListGroup.Item>
+
+      <ListGroup.Item>Third item</ListGroup.Item>
+    </ListGroup>
+  );
+}
+```
+
+## Link Items
+
+Use `as="a"` and to `to` create navigation items.
+
+```jsx live
+import { ListGroup } from "@promethey/bsui";
+
+export default function Links() {
+  return (
+    <ListGroup>
+      <ListGroup.Item as="a" to="#profile">
+        Profile
+      </ListGroup.Item>
+
+      <ListGroup.Item as="a" to="#settings">
+        Settings
+      </ListGroup.Item>
+    </ListGroup>
+  );
+}
+```
+
+## Button Items
+
+Use `as="button"` for interactive items.
+
+```jsx live
+import { ListGroup } from "@promethey/bsui";
+
+export default function Buttons() {
+  return (
+    <ListGroup>
+      <ListGroup.Item as="button">Click me</ListGroup.Item>
+
+      <ListGroup.Item as="button" disabled>
+        Disabled button
+      </ListGroup.Item>
+    </ListGroup>
+  );
+}
+```
+
+## Complete Example
+
+```jsx live
+import { ListGroup } from "@promethey/bsui";
+
+export default function Complete() {
+  return (
+    <ListGroup flush horizontal="md" shadow="sm" rounded={3}>
+      <ListGroup.Item tone="success" active>
+        Active item
+      </ListGroup.Item>
+
+      <ListGroup.Item as="a" to="#profile">
+        Profile
+      </ListGroup.Item>
+
+      <ListGroup.Item disabled>Disabled item</ListGroup.Item>
+    </ListGroup>
+  );
+}
+```
+
+## Utility Props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { ListGroup } from "@promethey/bsui";
+
+export default function Utilities() {
+  return (
+    <ListGroup>
+      <ListGroup.Item fw="bolder" fst="italic">
+        Utility props work on list groups too.
+      </ListGroup.Item>
+    </ListGroup>
+  );
+}
+```
+
+## API
+
+### ListGroup
+
+| Prop         | Type                                               | Default | Description                                 |
+| ------------ | -------------------------------------------------- | ------- | ------------------------------------------- |
+| `children`   | `ReactNode`                                        | —       | List group content.                         |
+| `as`         | `"ul" \| "div"`                                    | `"ul"`  | Element type used to render the list group. |
+| `className`  | `string \| object`                                 | —       | Additional CSS classes.                     |
+| `style`      | `object`                                           | —       | Inline styles.                              |
+| `flush`      | `boolean`                                          | `false` | Removes outer borders.                      |
+| `numbered`   | `boolean`                                          | `false` | Displays items with numbering.              |
+| `horizontal` | `boolean \| "sm" \| "md" \| "lg" \| "xl" \| "xxl"` | `false` | Displays items horizontally.                |
+
+### ListGroup.Item
+
+| Prop        | Type                                                                                            | Default | Description                           |
+| ----------- | ----------------------------------------------------------------------------------------------- | ------- | ------------------------------------- |
+| `children`  | `ReactNode`                                                                                     | —       | Item content.                         |
+| `as`        | `"li" \| "a" \| "button"`                                                                       | `"li"`  | Element type used to render the item. |
+| `className` | `string \| object`                                                                              | —       | Additional CSS classes.               |
+| `style`     | `object`                                                                                        | —       | Inline styles.                        |
+| `to`        | `string`                                                                                        | `"#"`   | Navigation target.                    |
+| `tone`      | `"primary" \| "secondary" \| "success" \| "danger" \| "warning" \| "info" \| "light" \| "dark"` | —       | Visual tone.                          |
+| `active`    | `boolean`                                                                                       | `false` | Marks the item as active.             |
+| `disabled`  | `boolean`                                                                                       | `false` | Disables interaction.                 |

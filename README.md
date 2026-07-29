@@ -9,17 +9,7 @@
   <img src="https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg" alt="CI">
   <img src="https://github.com/promethey/bsui/actions/workflows/storybook.yml/badge.svg" alt="Storybook Deploy">
   <img src="https://img.shields.io/badge/Storybook-Live-FF4785?logo=storybook&logoColor=white" alt="Storybook">
-  <img src="https://img.shields.io/github/stars/promethey/bsui?style=social" alt="GitHub Stars">
 </p>
-
-<div align="center">
-  <a
-    href="https://www.npmjs.com/package/@promethey/bsui"
-    target="_blank"
-    rel="noreferrer">
-    <img src="./public/npm-logo.png" height="24" alt="npm package" />
-  </a>
-</div>
 
 # BSUI
 
@@ -33,11 +23,12 @@ Build Bootstrap 5 applications with composable React components, utility props, 
 
 ## Features
 
-- React-first Bootstrap 5 component system
-- Consistent Utility API across all components
-- JSDoc-powered IntelliSense without TypeScript
-- Zero Bootstrap JavaScript dependency
-- Storybook component documentation
+- React components built with Bootstrap 5.
+- Consistent component APIs across the library.
+- Bootstrap utility classes through component props.
+- JSDoc-powered IntelliSense without TypeScript.
+- Fully documented components with interactive examples.
+- No dependency on Bootstrap JavaScript.
 
 ## Installation
 

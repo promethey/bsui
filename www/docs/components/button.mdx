@@ -1,0 +1,197 @@
+---
+title: Button
+description: Trigger actions, events, or navigation through contextual interactive controls.
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+import Playground from "../../src/components/Playground";
+
+# Button
+
+The `Button` component is used to trigger actions, submit forms, or navigate between pages. It provides a consistent API built on top of Bootstrap 5 and supports utility props through the `Prime` primitive.
+
+## Import
+
+```jsx
+import { Button } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { Button } from "@promethey/bsui";
+
+export default function Basic() {
+  return <Button tone="primary">Hello BSUI</Button>;
+}
+```
+
+## Tones
+
+Use the `tone` prop to change the visual appearance of the button.
+
+```jsx live
+import { Button } from "@promethey/bsui";
+
+const tones = [
+  "primary",
+  "secondary",
+  "success",
+  "danger",
+  "warning",
+  "info",
+  "light",
+  "dark",
+  "link",
+];
+
+export default function Tones() {
+  return tones.map((tone) => (
+    <Button key={tone} tone={tone}>
+      {tone}
+    </Button>
+  ));
+}
+```
+
+## Outline Buttons
+
+Set `outline` to render the outline variant.
+
+```jsx live
+import { Button } from "@promethey/bsui";
+
+const tones = [
+  "Primary",
+  "Secondary",
+  "Success",
+  "Danger",
+  "Warning",
+  "Info",
+  "Light",
+  "Dark",
+  "Link",
+];
+
+export default function Outlines() {
+  return (
+    <>
+      {tones.map((tone) => (
+        <Button key={tone} tone={tone.toLowerCase()} outline>
+          {tone}
+        </Button>
+      ))}
+    </>
+  );
+}
+```
+
+## Sizes
+
+Use the `size` prop to change the button size.
+
+```jsx live
+import { Button } from "@promethey/bsui";
+
+export default function Sizes() {
+  return (
+    <>
+      <Button size="sm">Small</Button>
+      <Button>Default</Button>
+      <Button size="lg">Large</Button>
+    </>
+  );
+}
+```
+
+## Disabled State
+
+Disable user interaction with the `disabled` prop.
+
+```jsx live
+import { Button } from "@promethey/bsui";
+
+export default function Disabled() {
+  return <Button disabled>Disabled</Button>;
+}
+```
+
+## Active State
+
+Use `pressed` to indicate the active state.
+
+```jsx live
+import { Button } from "@promethey/bsui";
+
+export default function Pressed() {
+  return <Button pressed>Active</Button>;
+}
+```
+
+## Link Button
+
+Render the component as an anchor element.
+
+```jsx live
+import { Button } from "@promethey/bsui";
+
+export default function LinkButton() {
+  return (
+    <Button as="a" to="https://github.com/promethey/bsui">
+      GitHub
+    </Button>
+  );
+}
+```
+
+## Input Button
+
+Render the component as an input element.
+
+```jsx live
+import { Button } from "@promethey/bsui";
+
+export default function InputButton() {
+  return <Button as="input" type="button" value="Input Button" />;
+}
+```
+
+## Utility Props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { Button } from "@promethey/bsui";
+
+export default function UtilButton() {
+  return (
+    <Button tone="primary" mt={3} px={4} fw="bold">
+      Utility Props
+    </Button>
+  );
+}
+```
+
+## API
+
+| Prop        | Type                                                                                                      | Default     | Description                            |
+| ----------- | --------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------- |
+| `as`        | `elementType`                                                                                             | `"button"`  | HTML element used for rendering.       |
+| `children`  | `ReactNode`                                                                                               | —           | Component content.                     |
+| `className` | `string`                                                                                                  | —           | Additional CSS classes.                |
+| `style`     | `object`                                                                                                  | —           | Inline styles.                         |
+| `to`        | `string`                                                                                                  | `"#"`       | Navigation target for anchor elements. |
+| `type`      | `"button" \| "submit" \| "reset"`                                                                         | `"button"`  | Native button type.                    |
+| `tone`      | `"primary" \| "secondary" \| "success" \| "danger" \| "warning" \| "info" \| "light" \| "dark" \| "link"` | `"primary"` | Visual appearance.                     |
+| `outline`   | `boolean`                                                                                                 | `false`     | Enables the outline style.             |
+| `value`     | `string`                                                                                                  | —           | Input value.                           |
+| `size`      | `"sm" \| "lg"`                                                                                            | —           | Button size.                           |
+| `disabled`  | `boolean`                                                                                                 | `false`     | Disables user interaction.             |
+| `pressed`   | `boolean`                                                                                                 | `false`     | Indicates the active state.            |
+| `onClick`   | `function`                                                                                                | —           | Click event handler.                   |

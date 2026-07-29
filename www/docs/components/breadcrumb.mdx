@@ -1,0 +1,147 @@
+---
+title: Breadcrumb
+description: Display the current page location within a navigational hierarchy.
+---
+
+# Breadcrumb
+
+The `Breadcrumb` component displays the current page location within a hierarchical navigation structure. It helps users understand where they are and provides quick navigation back to previous sections.
+
+The component is composed of `Breadcrumb` and `Breadcrumb.Item`.
+
+## Import
+
+```jsx
+import { Breadcrumb } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { Breadcrumb } from "@promethey/bsui";
+
+export default function Basic() {
+  return (
+    <Breadcrumb>
+      <Breadcrumb.Item to="/">Home</Breadcrumb.Item>
+      <Breadcrumb.Item to="/docs">Documentation</Breadcrumb.Item>
+      <Breadcrumb.Item active>Breadcrumb</Breadcrumb.Item>
+    </Breadcrumb>
+  );
+}
+```
+
+## Custom Divider
+
+Use the `divider` prop to replace the default separator.
+
+```jsx live
+import { Breadcrumb } from "@promethey/bsui";
+
+export default function Divider() {
+  return (
+    <Breadcrumb divider=">">
+      <Breadcrumb.Item to="/">Home</Breadcrumb.Item>
+      <Breadcrumb.Item to="/library">Library</Breadcrumb.Item>
+      <Breadcrumb.Item active>Components</Breadcrumb.Item>
+    </Breadcrumb>
+  );
+}
+```
+
+## Different Divider Symbols
+
+Any string may be used as a divider.
+
+```jsx live
+import { Breadcrumb, Prime } from "@promethey/bsui";
+
+export default function Dividers() {
+  return (
+    <>
+      <Prime mb={3}>
+        <Breadcrumb divider="/">
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>Docs</Breadcrumb.Item>
+          <Breadcrumb.Item active>API</Breadcrumb.Item>
+        </Breadcrumb>
+      </Prime>
+
+      <Prime mb={3}>
+        <Breadcrumb divider="›">
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>Docs</Breadcrumb.Item>
+          <Breadcrumb.Item active>API</Breadcrumb.Item>
+        </Breadcrumb>
+      </Prime>
+
+      <Breadcrumb divider="→">
+        <Breadcrumb.Item>Home</Breadcrumb.Item>
+        <Breadcrumb.Item>Docs</Breadcrumb.Item>
+        <Breadcrumb.Item active>API</Breadcrumb.Item>
+      </Breadcrumb>
+    </>
+  );
+}
+```
+
+## Active Item
+
+Mark the current page using the `active` prop.
+
+```jsx live
+import { Breadcrumb } from "@promethey/bsui";
+
+export default function ActiveItem() {
+  return (
+    <Breadcrumb>
+      <Breadcrumb.Item to="/">Home</Breadcrumb.Item>
+      <Breadcrumb.Item to="/products">Products</Breadcrumb.Item>
+      <Breadcrumb.Item active>Details</Breadcrumb.Item>
+    </Breadcrumb>
+  );
+}
+```
+
+## Utility Props
+
+All utility props inherited from `Prime` are fully supported.
+
+```jsx live
+import { Breadcrumb } from "@promethey/bsui";
+
+export default function Utilities() {
+  return (
+    <Breadcrumb divider=">" bg="light" rounded border px={3} py={2} shadow="sm">
+      <Breadcrumb.Item>Home</Breadcrumb.Item>
+      <Breadcrumb.Item>Components</Breadcrumb.Item>
+      <Breadcrumb.Item active>Breadcrumb</Breadcrumb.Item>
+    </Breadcrumb>
+  );
+}
+```
+
+## API
+
+### Breadcrumb
+
+| Prop        | Type               | Default | Description                                          |
+| ----------- | ------------------ | ------- | ---------------------------------------------------- |
+| `children`  | `ReactNode`        | —       | Breadcrumb items rendered inside the component.      |
+| `className` | `string \| object` | —       | Additional CSS classes applied to the root element.  |
+| `style`     | `object`           | —       | Inline styles applied to the root element.           |
+| `divider`   | `string`           | `"/"`   | Custom separator displayed between breadcrumb items. |
+
+### Breadcrumb.Item
+
+| Prop        | Type               | Default | Description                                                 |
+| ----------- | ------------------ | ------- | ----------------------------------------------------------- |
+| `children`  | `ReactNode`        | —       | Content rendered inside the breadcrumb item.                |
+| `className` | `string \| object` | —       | Additional CSS classes applied to the item.                 |
+| `style`     | `object`           | —       | Inline styles applied to the item.                          |
+| `to`        | `string`           | `"#"`   | Navigation target used for non-active items.                |
+| `active`    | `boolean`          | `false` | Marks the item as the current page and disables navigation. |

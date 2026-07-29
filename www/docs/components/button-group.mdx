@@ -1,0 +1,149 @@
+---
+title: ButtonGroup
+description: Group multiple buttons together into a single connected control.
+---
+
+# ButtonGroup
+
+The `ButtonGroup` component groups a series of buttons into a single connected control. It can be rendered horizontally or vertically and supports multiple sizes.
+
+## Import
+
+```jsx
+import { Button, ButtonGroup } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { Button, ButtonGroup } from "@promethey/bsui";
+
+export default function Basic() {
+  return (
+    <ButtonGroup>
+      <Button>Left</Button>
+      <Button>Middle</Button>
+      <Button>Right</Button>
+    </ButtonGroup>
+  );
+}
+```
+
+## Sizes
+
+Use the `size` prop to change the size of every button inside the group.
+
+```jsx live
+import { Prime, Button, ButtonGroup } from "@promethey/bsui";
+
+export default function Sizes() {
+  return (
+    <>
+      <ButtonGroup size="sm" mb={3}>
+        <Button>Left</Button>
+        <Button>Middle</Button>
+        <Button>Right</Button>
+      </ButtonGroup>
+
+      <ButtonGroup mb={3}>
+        <Button>Left</Button>
+        <Button>Middle</Button>
+        <Button>Right</Button>
+      </ButtonGroup>
+
+      <ButtonGroup size="lg">
+        <Button>Left</Button>
+        <Button>Middle</Button>
+        <Button>Right</Button>
+      </ButtonGroup>
+    </>
+  );
+}
+```
+
+## Vertical
+
+Set `vertical` to stack buttons vertically.
+
+```jsx live
+import { Button, ButtonGroup } from "@promethey/bsui";
+
+export default function Vertical() {
+  return (
+    <ButtonGroup vertical>
+      <Button>Top</Button>
+      <Button>Middle</Button>
+      <Button>Bottom</Button>
+    </ButtonGroup>
+  );
+}
+```
+
+## Different Button Styles
+
+Button groups work with any button appearance.
+
+```jsx live
+import { Button, ButtonGroup } from "@promethey/bsui";
+
+export default function Tones() {
+  return (
+    <ButtonGroup>
+      <Button tone="primary">Primary</Button>
+      <Button tone="success">Success</Button>
+      <Button tone="danger">Danger</Button>
+    </ButtonGroup>
+  );
+}
+```
+
+## Outline Buttons
+
+Button groups also support outline buttons.
+
+```jsx live
+import { Button, ButtonGroup } from "@promethey/bsui";
+
+export default function Outline() {
+  return (
+    <ButtonGroup>
+      <Button outline>Left</Button>
+      <Button outline>Middle</Button>
+      <Button outline>Right</Button>
+    </ButtonGroup>
+  );
+}
+```
+
+## Utility Props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { Button, ButtonGroup } from "@promethey/bsui";
+
+export default function Utilities() {
+  return (
+    <ButtonGroup shadow mt={3}>
+      <Button>One</Button>
+      <Button>Two</Button>
+      <Button>Three</Button>
+    </ButtonGroup>
+  );
+}
+```
+
+## API
+
+| Prop        | Type                       | Default | Description                                                  |
+| ----------- | -------------------------- | ------- | ------------------------------------------------------------ |
+| `children`  | `ReactNode`                | —       | Content rendered inside the button group.                    |
+| `className` | `string`                   | —       | Additional CSS classes.                                      |
+| `style`     | `object`                   | —       | Inline styles.                                               |
+| `size`      | `"sm" \| "lg"`             | —       | Changes the size of the button group.                        |
+| `vertical`  | `boolean`                  | `false` | Renders the buttons vertically instead of horizontally.      |
+| `drop`      | `"up" \| "end" \| "start"` | —       | Changes the dropdown direction for grouped dropdown buttons. |

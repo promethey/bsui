@@ -1,0 +1,408 @@
+---
+title: Card
+description: Flexible content container for displaying related information, media, and actions.
+---
+
+# Card
+
+The `Card` component provides a flexible container for displaying related content, media, links, and actions.
+
+Cards are built from several composable subcomponents that can be combined to create simple or highly customized layouts.
+
+## Import
+
+```jsx
+import { Card } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { Card } from "@promethey/bsui";
+
+export default function BasicCard() {
+  return (
+    <Card style={{ width: "18rem" }}>
+      <Card.Body>
+        <Card.Title>Card title</Card.Title>
+
+        <Card.Text>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  );
+}
+```
+
+---
+
+## Images
+
+Display an image above or below the card body.
+
+```jsx live
+import { Card } from "@promethey/bsui";
+
+export default function CardImageExample() {
+  return (
+    <Card style={{ width: "18rem" }}>
+      <Card.Image
+        placement="top"
+        src="https://picsum.photos/400/200"
+        alt="Example"
+      />
+
+      <Card.Body>
+        <Card.Title>Card with image</Card.Title>
+
+        <Card.Text>
+          Images help present visual information alongside content.
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  );
+}
+```
+
+## Bottom Image
+
+Use the `placement` prop to move the image below the content.
+
+```jsx live
+import { Card } from "@promethey/bsui";
+
+export default function BottomImage() {
+  return (
+    <Card style={{ width: "18rem" }}>
+      <Card.Body>
+        <Card.Title>Bottom image</Card.Title>
+
+        <Card.Text>The image is rendered after the content.</Card.Text>
+      </Card.Body>
+
+      <Card.Image
+        placement="bottom"
+        src="https://picsum.photos/400/200"
+        alt="Example"
+      />
+    </Card>
+  );
+}
+```
+
+---
+
+## Header & Footer
+
+Cards may include optional header and footer sections.
+
+```jsx live
+import { Card } from "@promethey/bsui";
+
+export default function HeaderFooter() {
+  return (
+    <Card style={{ width: "18rem" }}>
+      <Card.Header>Featured</Card.Header>
+
+      <Card.Body>
+        <Card.Title>Card title</Card.Title>
+
+        <Card.Text>Supporting text inside the card body.</Card.Text>
+      </Card.Body>
+
+      <Card.Footer text="muted">Last updated 3 mins ago</Card.Footer>
+    </Card>
+  );
+}
+```
+
+## Semantic Headers
+
+The `as` prop allows semantic heading elements.
+
+```jsx live
+import { Card } from "@promethey/bsui";
+
+export default function SemanticHeader() {
+  return (
+    <Card>
+      <Card.Header as="h2">Documentation</Card.Header>
+
+      <Card.Body>Card content...</Card.Body>
+    </Card>
+  );
+}
+```
+
+## Images
+
+Use `Card.Image` to display an image at the top or bottom of the card.
+
+```jsx live
+import { Card, Button } from "@promethey/bsui";
+
+export default function ImageCard() {
+  return (
+    <Card style={{ width: "20rem" }}>
+      <Card.Image
+        placement="top"
+        src="https://picsum.photos/400/220"
+        alt="Example"
+      />
+      <Card.Body>
+        <Card.Title>Card with Image</Card.Title>
+        <Card.Text>
+          Cards can include images together with text and actions.
+        </Card.Text>
+        <Button tone="primary">Learn more</Button>
+      </Card.Body>
+    </Card>
+  );
+}
+```
+
+Image placement can be changed using the `placement` prop.
+
+```jsx live
+import { Card } from "@promethey/bsui";
+
+export default function BottomImage() {
+  return (
+    <Card style={{ width: "20rem" }}>
+      <Card.Body>
+        <Card.Title>Bottom Image</Card.Title>
+        <Card.Text>
+          Images may also be rendered after the card content.
+        </Card.Text>
+      </Card.Body>
+
+      <Card.Image
+        placement="bottom"
+        src="https://picsum.photos/400/220"
+        alt="Example"
+      />
+    </Card>
+  );
+}
+```
+
+## Header and Footer
+
+Cards support optional header and footer sections.
+
+```jsx live
+import { Card } from "@promethey/bsui";
+
+export default function HeaderFooter() {
+  return (
+    <Card style={{ width: "20rem" }}>
+      <Card.Header>Featured</Card.Header>
+
+      <Card.Body>
+        <Card.Title>Card title</Card.Title>
+
+        <Card.Text>Header and footer provide additional structure.</Card.Text>
+      </Card.Body>
+
+      <Card.Footer text="muted">Last updated 2 days ago</Card.Footer>
+    </Card>
+  );
+}
+```
+
+## Titles and Subtitle
+
+Use `Card.Title` and `Card.Subtitle` to organize textual content.
+
+```jsx live
+import { Card } from "@promethey/bsui";
+
+export default function Titles() {
+  return (
+    <Card style={{ width: "20rem" }}>
+      <Card.Body>
+        <Card.Title>Card title</Card.Title>
+
+        <Card.Subtitle mb={2} text="muted">
+          Card subtitle
+        </Card.Subtitle>
+
+        <Card.Text>
+          Additional descriptive text can follow the subtitle.
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  );
+}
+```
+
+## Links
+
+Use `Card.Link` to create Bootstrap-styled links inside card content.
+
+```jsx live
+import { Card } from "@promethey/bsui";
+
+export default function Links() {
+  return (
+    <Card style={{ width: "20rem" }}>
+      <Card.Body>
+        <Card.Title>Useful Links</Card.Title>
+
+        <Card.Text>Multiple links may be displayed together.</Card.Text>
+
+        <Card.Link to="https://github.com/promethey/bsui">GitHub</Card.Link>
+
+        <Card.Link to="https://promethey.github.io/bsui">
+          Documentation
+        </Card.Link>
+      </Card.Body>
+    </Card>
+  );
+}
+```
+
+## Utility Props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { Card } from "@promethey/bsui";
+
+export default function Utilities() {
+  return (
+    <Card
+      bg="dark"
+      text="light"
+      rounded={3}
+      shadow="lg"
+      style={{ width: "18rem" }}>
+      <Card.Body>
+        <Card.Title>Utility Props</Card.Title>
+
+        <Card.Text>
+          Every Card component supports the complete Prime utility API.
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  );
+}
+```
+
+---
+
+## API
+
+### Card
+
+| Prop        | Type          | Default | Description                      |
+| ----------- | ------------- | ------- | -------------------------------- |
+| `children`  | `ReactNode`   | —       | Card content.                    |
+| `className` | `string`      | —       | Additional CSS classes.          |
+| `style`     | `object`      | —       | Inline styles.                   |
+| `as`        | `elementType` | `"div"` | HTML element used for rendering. |
+
+---
+
+### Card.Body
+
+| Prop        | Type          | Default | Description                      |
+| ----------- | ------------- | ------- | -------------------------------- |
+| `children`  | `ReactNode`   | —       | Body content.                    |
+| `className` | `string`      | —       | Additional CSS classes.          |
+| `style`     | `object`      | —       | Inline styles.                   |
+| `as`        | `elementType` | `"div"` | HTML element used for rendering. |
+
+---
+
+### Card.Header
+
+| Prop        | Type                                                    | Default | Description                      |
+| ----------- | ------------------------------------------------------- | ------- | -------------------------------- |
+| `children`  | `ReactNode`                                             | —       | Header content.                  |
+| `className` | `string`                                                | —       | Additional CSS classes.          |
+| `style`     | `object`                                                | —       | Inline styles.                   |
+| `as`        | `"div" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"div"` | HTML element used for rendering. |
+
+---
+
+### Card.Footer
+
+| Prop        | Type                                                    | Default | Description                      |
+| ----------- | ------------------------------------------------------- | ------- | -------------------------------- |
+| `children`  | `ReactNode`                                             | —       | Footer content.                  |
+| `className` | `string`                                                | —       | Additional CSS classes.          |
+| `style`     | `object`                                                | —       | Inline styles.                   |
+| `as`        | `"div" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"div"` | HTML element used for rendering. |
+
+---
+
+### Card.Image
+
+| Prop        | Type                | Default | Description                      |
+| ----------- | ------------------- | ------- | -------------------------------- |
+| `src`       | `string`            | —       | Image source.                    |
+| `alt`       | `string`            | —       | Alternative text.                |
+| `placement` | `"top" \| "bottom"` | `"top"` | Image placement inside the card. |
+| `className` | `string`            | —       | Additional CSS classes.          |
+| `style`     | `object`            | —       | Inline styles.                   |
+
+---
+
+### Card.Title
+
+| Prop        | Type                                           | Default | Description                      |
+| ----------- | ---------------------------------------------- | ------- | -------------------------------- |
+| `children`  | `ReactNode`                                    | —       | Title content.                   |
+| `className` | `string`                                       | —       | Additional CSS classes.          |
+| `style`     | `object`                                       | —       | Inline styles.                   |
+| `as`        | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h5"`  | HTML element used for rendering. |
+
+---
+
+### Card.Subtitle
+
+| Prop        | Type                                           | Default | Description                      |
+| ----------- | ---------------------------------------------- | ------- | -------------------------------- |
+| `children`  | `ReactNode`                                    | —       | Subtitle content.                |
+| `className` | `string`                                       | —       | Additional CSS classes.          |
+| `style`     | `object`                                       | —       | Inline styles.                   |
+| `as`        | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h6"`  | HTML element used for rendering. |
+
+---
+
+### Card.Text
+
+| Prop        | Type        | Default | Description             |
+| ----------- | ----------- | ------- | ----------------------- |
+| `children`  | `ReactNode` | —       | Text content.           |
+| `className` | `string`    | —       | Additional CSS classes. |
+| `style`     | `object`    | —       | Inline styles.          |
+
+---
+
+### Card.Link
+
+| Prop        | Type        | Default | Description             |
+| ----------- | ----------- | ------- | ----------------------- |
+| `children`  | `ReactNode` | —       | Link content.           |
+| `to`        | `string`    | `"#"`   | Navigation target.      |
+| `className` | `string`    | —       | Additional CSS classes. |
+| `style`     | `object`    | —       | Inline styles.          |
+
+---
+
+### Card.Group
+
+| Prop        | Type          | Default | Description                      |
+| ----------- | ------------- | ------- | -------------------------------- |
+| `children`  | `ReactNode`   | —       | Card collection.                 |
+| `className` | `string`      | —       | Additional CSS classes.          |
+| `style`     | `object`      | —       | Inline styles.                   |
+| `as`        | `elementType` | `"div"` | HTML element used for rendering. |
