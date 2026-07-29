@@ -22,6 +22,13 @@ The format is based on Keep a Changelog and Semantic Versioning.
 
 -
 
+## [1.1.1] - 2026-07-29
+
+### Fixed
+
+- Fixed incorrect GitHub Actions badge reference in the npm README.
+- Updated package documentation metadata to correctly reflect the current documentation deployment workflow.
+
 ## [1.1.0] - 2026-07-29
 
 ### Added
