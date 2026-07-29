@@ -66,6 +66,14 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        id: "development-status",
+        content:
+          '🚧 Documentation is actively under development. For complete interactive examples, visit <a href="https://promethey.github.io/bsui/storybook/" target="_blank">Storybook</a>.',
+        backgroundColor: "#fff3cd",
+        textColor: "#664d03",
+        isCloseable: true,
+      },
       liveCodeBlock: {
         /**
          * The position of the live playground, above or under the editor
@@ -74,7 +82,7 @@ const config = {
         playgroundPosition: "bottom",
       },
       colorMode: {
-        defaultMode: "light",
+        defaultMode: "dark",
         disableSwitch: false,
         respectPrefersColorScheme: true,
       },
@@ -91,12 +99,12 @@ const config = {
             position: "left",
           },
           {
-            to: "/docs/components/button",
+            to: "/docs/components/alert",
             label: "Components",
             position: "left",
           },
           {
-            href: "https://promethey.github.io/bsui/storybook",
+            href: "https://promethey.github.io/bsui/storybook/",
             label: "Storybook",
             position: "left",
           },
@@ -132,8 +140,8 @@ const config = {
                 to: "/docs/components/button",
               },
               {
-                label: "Storybook",
-                href: "https://promethey.github.io/bsui/storybook",
+                label: "Blog",
+                to: "/blog",
               },
             ],
           },
@@ -150,12 +158,12 @@ const config = {
             title: "More",
             items: [
               {
-                label: "Blog",
-                to: "/blog",
-              },
-              {
                 label: "GitHub",
                 href: "https://github.com/promethey/bsui",
+              },
+              {
+                label: "Storybook",
+                href: "https://promethey.github.io/bsui/storybook",
               },
               {
                 label: "npm",

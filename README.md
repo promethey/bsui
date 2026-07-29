@@ -23,11 +23,12 @@ Build Bootstrap 5 applications with composable React components, utility props, 
 
 ## Features
 
-- React-first Bootstrap 5 component system
-- Consistent Utility API across all components
-- JSDoc-powered IntelliSense without TypeScript
-- Zero Bootstrap JavaScript dependency
-- Storybook component documentation
+- React components built with Bootstrap 5.
+- Consistent component APIs across the library.
+- Bootstrap utility classes through component props.
+- JSDoc-powered IntelliSense without TypeScript.
+- Fully documented components with interactive examples.
+- No dependency on Bootstrap JavaScript.
 
 ## Installation
 

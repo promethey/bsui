@@ -3,7 +3,6 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
-import packageJson from "../../../package.json";
 
 import Heading from "@theme/Heading";
 import styles from "./index.module.css";
@@ -28,8 +27,6 @@ function HomepageHeader() {
             Getting Started
           </Link>
         </div>
-        <br />
-        <p>v{packageJson.version}</p>
       </div>
     </header>
   );
@@ -39,7 +36,7 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title="BSUI - Modern Bootstrap Component System"
+      title="BSUI — Modern Bootstrap Component System"
       description="Modern Bootstrap component system for React applications">
       <HomepageHeader />
       <main>

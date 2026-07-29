@@ -22,6 +22,27 @@ The format is based on Keep a Changelog and Semantic Versioning.
 
 -
 
+## [1.1.0] - 2026-07-29
+
+### Added
+
+- Added Docusaurus-based documentation website.
+- Added component documentation pages with API references and live examples.
+- Added documentation navigation and structured component guides.
+- Added GitHub Pages deployment for documentation and Storybook.
+- Added integrated Storybook preview under `/storybook`.
+
+### Changed
+
+- Improved project documentation structure.
+- Separated API documentation and interactive component examples:
+  - Docusaurus for guides and API references;
+  - Storybook for live component previews.
+
+### Fixed
+
+- Improved documentation links and project navigation.
+
 ## [1.0.2] - 2026-07-22
 
 ### Documentation
