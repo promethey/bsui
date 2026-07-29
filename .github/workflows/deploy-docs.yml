@@ -14,32 +14,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: www
-
     steps:
       - uses: actions/checkout@v4
 
+      # Root project (BSUI + Storybook)
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: www/package-lock.json
 
-      - name: Install dependencies
+      - name: Install BSUI dependencies
+        run: npm ci
+
+      - name: Build Storybook
+        run: npm run build-storybook -- --output-dir storybook
+
+      # Docusaurus
+      - name: Install documentation dependencies
+        working-directory: www
         run: npm ci
 
       - name: Build documentation
+        working-directory: www
         run: npm run build
-
-      - name: Build Storybook
-        run: npm run build-storybook -- --output-dir storybook --base /bsui/storybook
 
       - name: Merge Storybook
         run: |
-          mkdir -p build/storybook
-          cp -r storybook/* build/storybook/
+          mkdir -p www/build/storybook
+          cp -r storybook/* www/build/storybook/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
