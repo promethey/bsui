@@ -5,6 +5,9 @@
 
 <p align="center">
   <img src="https://img.shields.io/github/license/promethey/bsui" alt="License">
+  <img src="https://img.shields.io/badge/node-24-339933?logo=node.js">
+  <img src="https://img.shields.io/badge/react-19-61DAFB?logo=react">
+  <img src="https://img.shields.io/badge/bootstrap-5.1.3-7952B3?logo=bootstrap">
   <img src="https://img.shields.io/npm/v/@promethey/bsui.svg" alt="npm">
   <img src="https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg" alt="CI">
   <img src="https://github.com/promethey/bsui/actions/workflows/deploy-docs.yml/badge.svg" alt="Documentation Deploy">
