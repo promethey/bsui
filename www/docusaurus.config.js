@@ -83,7 +83,7 @@ const config = {
         title: "BSUI",
         logo: {
           alt: "BSUI Logo",
-          src: "img/bsui-logo.png",
+          src: "img/bsui.png",
         },
         items: [
           {

@@ -1,5 +1,5 @@
 {
-  "name": "www",
+  "name": "bsui-docusaurus",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -46,6 +46,6 @@
     ]
   },
   "engines": {
-    "node": ">=20.0"
+    "node": ">=24.0"
   }
 }

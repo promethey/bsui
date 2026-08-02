@@ -2,12 +2,11 @@ import React from "react";
 import styles from "./styles.module.css";
 import Link from "@docusaurus/Link";
 
-export default function HomepageFeatureBlock({
+export default function HomepageHighlight({
   Svg,
   title,
   description,
   background,
-  button,
 }) {
   return (
     <section
@@ -23,7 +22,7 @@ export default function HomepageFeatureBlock({
               <img
                 src={Svg}
                 alt="Logo"
-                width={100}
+                width={80}
                 style={{ marginBottom: "1.5rem" }}
               />
               <div>
@@ -44,14 +43,6 @@ export default function HomepageFeatureBlock({
                   }}>
                   {description}
                 </p>
-                {button && (
-                  <Link
-                    className="button button--secondary button--lg"
-                    to="https://promethey.github.io/bsui/storybook"
-                    style={{ marginTop: "2rem" }}>
-                    {button}
-                  </Link>
-                )}
               </div>
             </div>
           </div>
