@@ -11,15 +11,13 @@
   <img src="https://img.shields.io/badge/Storybook-Live-FF4785?logo=storybook&logoColor=white" alt="Storybook">
 </p>
 
+<div align="center">
+
 # BSUI
 
-> Modern Bootstrap component system for React applications.
+Modern Bootstrap component system for React applications. Build Bootstrap 5 applications with composable React components, utility props, and JSDoc-powered IntelliSense.
 
-Build Bootstrap 5 applications with composable React components, utility props, and JSDoc-powered IntelliSense.
-
-| BSUI Version | Bootstrap Version |
-| ------------ | ----------------- |
-| 1.X          | 5.1               |
+</div>
 
 ## Features
 
