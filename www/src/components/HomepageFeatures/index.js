@@ -5,7 +5,6 @@ import styles from "./styles.module.css";
 const FeatureList = [
   {
     title: "Component System",
-    // Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
         Build modern <code>React</code> interfaces with <code>Bootstrap 5</code>{" "}
@@ -15,7 +14,6 @@ const FeatureList = [
   },
   {
     title: "Developer Experience",
-    // Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
         Enjoy powerful editor support with <code>JSDoc</code> IntelliSense,
@@ -26,7 +24,6 @@ const FeatureList = [
   },
   {
     title: "Bootstrap Powered",
-    // Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
         Use the <code>Bootstrap</code> ecosystem with reusable React components,
@@ -36,7 +33,7 @@ const FeatureList = [
   },
 ];
 
-function Feature({ Svg, title, description }) {
+function Feature({ icon, title, description }) {
   return (
     <div className={clsx("col col--4")}>
       <div className="padding-horiz--md">

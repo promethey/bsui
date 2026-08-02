@@ -72,14 +72,7 @@ const config = {
           '🚧 Documentation is actively under development. For complete interactive examples, visit <a href="https://promethey.github.io/bsui/storybook/" target="_blank">Storybook</a>.',
         backgroundColor: "#fff3cd",
         textColor: "#664d03",
-        isCloseable: true,
-      },
-      liveCodeBlock: {
-        /**
-         * The position of the live playground, above or under the editor
-         * Possible values: "top" | "bottom"
-         */
-        playgroundPosition: "bottom",
+        isCloseable: false,
       },
       colorMode: {
         defaultMode: "dark",
