@@ -27,6 +27,7 @@ const preview = {
           "Installation",
           "Foundation",
           "Form",
+          "Layout",
           "Core",
           "Components",
         ],
