@@ -69,7 +69,7 @@ const config = {
       announcementBar: {
         id: "development-status",
         content:
-          '🚧 Documentation is actively under development. For complete interactive examples, visit <a href="https://promethey.github.io/bsui/storybook/" target="_blank">Storybook</a>.',
+          '🚧 <strong>Documentation is under active development.</strong> For complete component examples and live previews, visit <a href="https://promethey.github.io/bsui/storybook/" target="_blank">Storybook</a>.',
         backgroundColor: "#fff3cd",
         textColor: "#664d03",
         isCloseable: false,
