@@ -1,6 +1,6 @@
 <br>
 <p align="center">
-  <img src="./public/bsui-logo.png" width="220" />
+  <img src="./public/bsui-logo.png" width="200" />
 </p>
 
 <p align="center">
