@@ -70,7 +70,8 @@ const defaultProps = {
 function DropdownMenu(props) {
   const { style, children, className, dark = false, ...rest } = props;
 
-  const { expanded, refs, getFloatingProps } = useDropdownContext();
+  const { expanded, refs, floatingStyles, getFloatingProps, navbar } =
+    useDropdownContext();
 
   const classes = cn(
     BASE_CLASS_NAME,
@@ -81,18 +82,22 @@ function DropdownMenu(props) {
     className,
   );
 
-  return (
-    expanded && (
-      <Prime
-        ref={refs.setFloating}
-        as="ul"
-        className={classes}
-        {...getFloatingProps()}
-        {...rest}>
-        {children}
-      </Prime>
-    )
-  );
+  /** @type {React.ComponentProps<typeof Prime>} */
+  const propertyList = {
+    ref: refs.setFloating,
+    as: "ul",
+    className: classes,
+    style: {},
+    children: children,
+    ...getFloatingProps(),
+    ...rest,
+  };
+
+  if (!navbar) {
+    propertyList.style = { ...floatingStyles, ...style };
+  }
+
+  return expanded && <Prime {...propertyList} />;
 }
 
 DropdownMenu.propTypes = propTypes;
