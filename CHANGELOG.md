@@ -22,6 +22,33 @@ The format is based on Keep a Changelog and Semantic Versioning.
 
 -
 
+## [1.1.2] - 2026-08-03
+
+### Added
+
+- Added documentation for `Accordion`, `Check`, `CloseButton`, `Navbar`, `Nav`, and `FloatingLabel` components.
+- Added new Storybook component categories with separated `Foundation`, `Form`, `Core`, and `Components` sections.
+- Added floating style support for `Dropdown.Menu` properties.
+- Added updated homepage layout and styling for documentation.
+- Added new navigation and navbar examples in documentation.
+
+### Changed
+
+- Reorganized Storybook component structure and documentation hierarchy.
+- Updated README layout, badges, logo size, and project version information.
+- Updated repository documentation with Node.js version and compatibility requirements.
+- Improved navbar and dropdown stories to match the updated component API.
+
+### Fixed
+
+- Fixed Dropdown floating behavior configuration.
+- Fixed Storybook component category ordering and organization.
+- Fixed navbar stories with updated dropdown integration.
+
+### Removed
+
+- Removed previous component category grouping structure in Storybook.
+
 ## [1.1.1] - 2026-07-29
 
 ### Fixed
