@@ -9,7 +9,7 @@ import {
 } from "../src/components";
 
 export default {
-  title: "Components/Navigation/Navbar",
+  title: "Components/Navbar",
   component: Navbar,
   subcomponents: {
     "Navbar.Brand": Navbar.Brand,

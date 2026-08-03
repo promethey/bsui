@@ -12,7 +12,7 @@ import {
 import { v4 as uuid } from "uuid";
 
 export default {
-  title: "Components/Feedback/Toast",
+  title: "Components/Toast",
   component: Toast,
   subcomponents: {
     "Toast.Header": Toast.Header,

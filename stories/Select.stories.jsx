@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Select, Prime } from "../src/components";
 
 export default {
-  title: "Components/Form/Select",
+  title: "Form/Select",
   component: Select,
   subcomponents: {
     "Select.Option": Select.Option,

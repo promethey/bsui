@@ -10,7 +10,7 @@ import {
 } from "../src/components";
 
 export default {
-  title: "Components/Form/InputGroup",
+  title: "Form/InputGroup",
   component: InputGroup,
   subomponents: {
     "InputGroup.Text": InputGroup.Text,

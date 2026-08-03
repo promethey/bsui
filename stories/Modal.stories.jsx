@@ -10,7 +10,7 @@ import {
 } from "../src/components";
 
 export default {
-  title: "Components/Overlay/Modal",
+  title: "Components/Modal",
   component: Modal,
   subcomponents: {
     "Modal.Dialog": Modal.Dialog,

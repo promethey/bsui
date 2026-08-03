@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button, Collapse, Prime } from "components";
 
 export default {
-  title: "Components/Content/Collapse",
+  title: "Components/Collapse",
   component: Collapse,
   subcomponents: { Prime },
   parameters: {

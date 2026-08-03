@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Carousel, Prime } from "components";
 
 export default {
-  title: "Components/Content/Carousel",
+  title: "Components/Carousel",
   component: Carousel,
   subcomponents: { Prime },
   parameters: {

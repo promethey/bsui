@@ -1,7 +1,7 @@
 import { FloatingLabel, Control, Prime, Select } from "../src/components";
 
 export default {
-  title: "Components/Form/FloatingLabel",
+  title: "Form/FloatingLabel",
   component: FloatingLabel,
   subcomponents: {
     Prime,

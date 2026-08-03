@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Range, Prime, Control, Button } from "../src/components";
 
 export default {
-  title: "Components/Form/Range",
+  title: "Form/Range",
   component: Range,
   subcomponents: {
     Prime,

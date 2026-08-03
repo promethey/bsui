@@ -2,7 +2,7 @@
 import { Card, Button, Row, Col } from "components";
 
 export default {
-  title: "Components/Content/Card",
+  title: "Components/Card",
   component: Card,
   subcomponents: {
     "Card.Group": Card.Group,

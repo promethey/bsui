@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Placeholder, Card, Button, Prime } from "components";
 
 export default {
-  title: "Components/Feedback/Placeholder",
+  title: "Components/Placeholder",
   component: Placeholder,
   subcomponents: {
     Prime,
