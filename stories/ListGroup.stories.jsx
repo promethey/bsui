@@ -2,7 +2,7 @@
 import { ListGroup, Prime, Badge } from "components";
 
 export default {
-  title: "Components/Content/ListGroup",
+  title: "Components/ListGroup",
   component: ListGroup,
   subcomponents: {
     "ListGroup.Item": ListGroup.Item,

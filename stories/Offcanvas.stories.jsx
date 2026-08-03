@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Offcanvas, Button, Prime, Label, Select } from "../src/components";
 
 export default {
-  title: "Components/Overlay/Offcanvas",
+  title: "Components/Offcanvas",
   component: Offcanvas,
   subcomponents: {
     "Offcanvas.Header": Offcanvas.Header,

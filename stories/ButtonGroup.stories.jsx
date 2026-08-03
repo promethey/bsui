@@ -2,7 +2,7 @@
 import { Button, ButtonGroup, Prime } from "components";
 
 export default {
-  title: "Components/Control/ButtonGroup",
+  title: "Components/ButtonGroup",
   component: ButtonGroup,
   subcomponents: { Button, Prime },
   parameters: {

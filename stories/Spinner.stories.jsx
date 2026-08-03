@@ -2,7 +2,7 @@
 import { Spinner, Button, Prime } from "components";
 
 export default {
-  title: "Components/Feedback/Spinner",
+  title: "Components/Spinner",
   component: Spinner,
   subcomponents: {
     Prime,

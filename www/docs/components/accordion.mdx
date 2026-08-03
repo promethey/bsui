@@ -1,0 +1,227 @@
+---
+title: Accordion
+description: Build vertically stacked collapsible content panels with support for single or multiple expanded items.
+---
+
+# Accordion
+
+The `Accordion` component displays vertically stacked collapsible panels. It supports single or multiple expanded items, disabled sections, flush styling, and Bootstrap-compatible utility props.
+
+## Import
+
+```jsx
+import { Accordion } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { Accordion } from "@promethey/bsui";
+
+export default function Basic() {
+  return (
+    <Accordion defaultActiveKey="1">
+      <Accordion.Item itemKey="1">
+        <Accordion.Header>Item #1</Accordion.Header>
+
+        <Accordion.Body>
+          This is the first accordion item content.
+        </Accordion.Body>
+      </Accordion.Item>
+
+      <Accordion.Item itemKey="2">
+        <Accordion.Header>Item #2</Accordion.Header>
+
+        <Accordion.Body>
+          This is the second accordion item content.
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+  );
+}
+```
+
+## Default Active Item
+
+Use `defaultActiveKey` to specify which item should be expanded initially.
+
+```jsx live
+import { Accordion } from "@promethey/bsui";
+
+export default function DefaultActive() {
+  return (
+    <Accordion defaultActiveKey="2">
+      <Accordion.Item itemKey="1">
+        <Accordion.Header>First item</Accordion.Header>
+
+        <Accordion.Body>First item content.</Accordion.Body>
+      </Accordion.Item>
+
+      <Accordion.Item itemKey="2">
+        <Accordion.Header>Second item</Accordion.Header>
+
+        <Accordion.Body>
+          Second item content is expanded by default.
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+  );
+}
+```
+
+## Multiple Open Items
+
+Enable multiple expanded panels with the `alwaysOpen` prop.
+
+```jsx live
+import { Accordion } from "@promethey/bsui";
+
+export default function AlwaysOpen() {
+  return (
+    <Accordion alwaysOpen defaultActiveKey={["1", "2"]}>
+      <Accordion.Item itemKey="1">
+        <Accordion.Header>Item #1</Accordion.Header>
+
+        <Accordion.Body>This item is expanded.</Accordion.Body>
+      </Accordion.Item>
+
+      <Accordion.Item itemKey="2">
+        <Accordion.Header>Item #2</Accordion.Header>
+
+        <Accordion.Body>This item is also expanded.</Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+  );
+}
+```
+
+## Flush
+
+Remove background, borders, and rounded corners with the `flush` prop.
+
+```jsx live
+import { Accordion } from "@promethey/bsui";
+
+export default function Flush() {
+  return (
+    <Accordion flush defaultActiveKey="1">
+      <Accordion.Item itemKey="1">
+        <Accordion.Header>Flush accordion</Accordion.Header>
+
+        <Accordion.Body>
+          The default accordion styling has been removed.
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+  );
+}
+```
+
+## Disabled Item
+
+Disable interaction for specific accordion sections using the `disabled` prop.
+
+```jsx live
+import { Accordion } from "@promethey/bsui";
+
+export default function Disabled() {
+  return (
+    <Accordion>
+      <Accordion.Item itemKey="1">
+        <Accordion.Header>Active item</Accordion.Header>
+
+        <Accordion.Body>This section can be expanded.</Accordion.Body>
+      </Accordion.Item>
+
+      <Accordion.Item itemKey="2" disabled>
+        <Accordion.Header>Disabled item</Accordion.Header>
+
+        <Accordion.Body>This section cannot be expanded.</Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+  );
+}
+```
+
+## Utility Props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { Accordion } from "@promethey/bsui";
+
+export default function Utilities() {
+  return (
+    <Accordion shadow="lg" rounded={3} mt={3}>
+      <Accordion.Item itemKey="1">
+        <Accordion.Header>Utility props work on accordion.</Accordion.Header>
+
+        <Accordion.Body>
+          Accordion supports Prime styling utilities.
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+  );
+}
+```
+
+## API
+
+### Accordion
+
+| Prop               | Type                        | Default | Description                                               |
+| ------------------ | --------------------------- | ------- | --------------------------------------------------------- |
+| `children`         | `ReactNode`                 | —       | Accordion content.                                        |
+| `className`        | `string \| object \| array` | —       | Additional CSS classes.                                   |
+| `style`            | `object`                    | —       | Inline styles.                                            |
+| `flush`            | `boolean`                   | `false` | Removes default background, borders, and rounded corners. |
+| `defaultActiveKey` | `string \| string[]`        | `""`    | Initially expanded item key or keys.                      |
+| `alwaysOpen`       | `boolean`                   | `false` | Allows multiple items to remain expanded.                 |
+
+### Accordion.Item
+
+| Prop        | Type        | Default | Description             |
+| ----------- | ----------- | ------- | ----------------------- |
+| `children`  | `ReactNode` | —       | Item content.           |
+| `itemKey`   | `string`    | `""`    | Unique item identifier. |
+| `disabled`  | `boolean`   | `false` | Disables expansion.     |
+| `className` | `string`    | —       | Additional CSS classes. |
+| `style`     | `object`    | —       | Inline styles.          |
+
+### Accordion.Header
+
+| Prop        | Type        | Default | Description             |
+| ----------- | ----------- | ------- | ----------------------- |
+| `children`  | `ReactNode` | —       | Header content.         |
+| `className` | `string`    | —       | Additional CSS classes. |
+| `style`     | `object`    | —       | Inline styles.          |
+
+### Accordion.Body
+
+| Prop        | Type        | Default | Description             |
+| ----------- | ----------- | ------- | ----------------------- |
+| `children`  | `ReactNode` | —       | Body content.           |
+| `className` | `string`    | —       | Additional CSS classes. |
+| `style`     | `object`    | —       | Inline styles.          |
+
+### Accordion.Button
+
+| Prop        | Type        | Default | Description                       |
+| ----------- | ----------- | ------- | --------------------------------- |
+| `children`  | `ReactNode` | —       | Button content.                   |
+| `collapsed` | `boolean`   | `true`  | Controls collapsed state styling. |
+| `disabled`  | `boolean`   | `false` | Disables the button.              |
+| `onClick`   | `function`  | —       | Click callback.                   |
+| `className` | `string`    | —       | Additional CSS classes.           |
+
+### Accordion.Collapse
+
+| Prop       | Type        | Default | Description                  |
+| ---------- | ----------- | ------- | ---------------------------- |
+| `children` | `ReactNode` | —       | Collapsible content.         |
+| `open`     | `boolean`   | `false` | Controls expanded state.     |
+| `timeout`  | `number`    | `350`   | Collapse animation duration. |

@@ -29,3 +29,13 @@
 
   --docusaurus-highlighted-code-line-bg: rgba(110, 168, 254, 0.15);
 }
+
+.hero-logo {
+  width: 200px;
+}
+
+@media (max-width: 996px) {
+  .hero-logo {
+    width: 120px;
+  }
+}

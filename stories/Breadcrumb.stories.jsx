@@ -1,7 +1,7 @@
 import { Breadcrumb, Prime } from "components";
 
 export default {
-  title: "Components/Navigation/Breadcrumb",
+  title: "Components/Breadcrumb",
   component: Breadcrumb,
   subcomponents: {
     "Breadcrumb.Item": Breadcrumb.Item,

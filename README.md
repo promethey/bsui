@@ -1,25 +1,26 @@
 <br>
 <p align="center">
-  <img src="./public/bsui-logo.png" width="220" />
+  <img src="./public/bsui-logo.png" width="200" />
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/github/license/promethey/bsui" alt="License">
+  <img src="https://img.shields.io/badge/node-24-339933?logo=node.js">
+  <img src="https://img.shields.io/badge/react-19-61DAFB?logo=react">
+  <img src="https://img.shields.io/badge/bootstrap-5.1.3-7952B3?logo=bootstrap">
   <img src="https://img.shields.io/npm/v/@promethey/bsui.svg" alt="npm">
   <img src="https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg" alt="CI">
   <img src="https://github.com/promethey/bsui/actions/workflows/deploy-docs.yml/badge.svg" alt="Documentation Deploy">
   <img src="https://img.shields.io/badge/Storybook-Live-FF4785?logo=storybook&logoColor=white" alt="Storybook">
 </p>
 
+<div align="center">
+
 # BSUI
 
-> Modern Bootstrap component system for React applications.
+Modern Bootstrap component system for React applications. Build Bootstrap 5 applications with composable React components, utility props, and JSDoc-powered IntelliSense.
 
-Build Bootstrap 5 applications with composable React components, utility props, and JSDoc-powered IntelliSense.
-
-| BSUI Version | Bootstrap Version |
-| ------------ | ----------------- |
-| 1.X          | 5.1               |
+</div>
 
 ## Features
 

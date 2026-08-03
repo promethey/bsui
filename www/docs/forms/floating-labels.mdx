@@ -1,0 +1,163 @@
+---
+title: Floating label
+description: Create Bootstrap floating labels for form controls with automatic control ID handling and Prime utility support.
+---
+
+# FloatingLabel
+
+The `FloatingLabel` component provides Bootstrap floating label support for form controls. It automatically connects the label with the wrapped control, generates a unique `id` when needed, and preserves all utility props inherited from the `Prime` component.
+
+The wrapped control must support the `id` and `placeholder` attributes for Bootstrap floating labels to work correctly.
+
+## Import
+
+```jsx
+import { FloatingLabel } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `FloatingLabel` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { FloatingLabel } from "@promethey/bsui";
+import { Control } from "@promethey/bsui";
+
+export default function Basic() {
+  return (
+    <FloatingLabel label="Email address">
+      <Control type="email" placeholder="name@example.com" />
+    </FloatingLabel>
+  );
+}
+```
+
+## Text Input
+
+`FloatingLabel` works with regular text inputs.
+
+```jsx live
+import { FloatingLabel, Control } from "@promethey/bsui";
+
+export default function TextInput() {
+  return (
+    <FloatingLabel label="Username">
+      <Control type="text" placeholder="Enter username" />
+    </FloatingLabel>
+  );
+}
+```
+
+## Password
+
+Use `type="password"` for password fields.
+
+```jsx live
+import { FloatingLabel, Control } from "@promethey/bsui";
+
+export default function Password() {
+  return (
+    <FloatingLabel label="Password">
+      <Control type="password" placeholder="Enter password" />
+    </FloatingLabel>
+  );
+}
+```
+
+## Custom ID
+
+The component automatically generates an identifier using `useId`. You can provide your own `id` when required.
+
+```jsx live
+import { FloatingLabel, Control } from "@promethey/bsui";
+
+export default function CustomId() {
+  return (
+    <FloatingLabel label="Email">
+      <Control id="user-email" type="email" placeholder="name@example.com" />
+    </FloatingLabel>
+  );
+}
+```
+
+## Multiple Controls
+
+Each control receives its own generated identifier.
+
+```jsx live
+import { FloatingLabel, Control } from "@promethey/bsui";
+
+export default function Multiple() {
+  return (
+    <>
+      <FloatingLabel label="First name">
+        <Control type="text" placeholder="John" />
+      </FloatingLabel>
+
+      <FloatingLabel label="Last name">
+        <Control type="text" placeholder="Doe" />
+      </FloatingLabel>
+    </>
+  );
+}
+```
+
+## API
+
+### FloatingLabel
+
+| Prop        | Type               | Default | Description                                 |
+| ----------- | ------------------ | ------- | ------------------------------------------- |
+| `children`  | `ReactElement`     | —       | Form control rendered inside the component. |
+| `label`     | `string`           | —       | Text displayed as the floating label.       |
+| `className` | `string \| object` | `null`  | Additional CSS classes.                     |
+| `style`     | `object`           | `null`  | Inline styles applied to the root element.  |
+
+## Behavior
+
+### Automatic ID Generation
+
+If the wrapped control does not have an `id`, `FloatingLabel` generates one automatically using React's `useId` hook.
+
+```jsx live
+import { FloatingLabel, Control } from "@promethey/bsui";
+
+export default function GeneratedId() {
+  return (
+    <FloatingLabel label="Generated identifier">
+      <Control type="text" placeholder="Automatic id" />
+    </FloatingLabel>
+  );
+}
+```
+
+### Label Association
+
+The generated or provided control `id` is automatically assigned to the label's `htmlFor` attribute.
+
+Equivalent HTML output:
+
+```html
+<div class="form-floating">
+  <input id="example-id" />
+  <label for="example-id"> Label text </label>
+</div>
+```
+
+## Requirements
+
+For Bootstrap floating labels to work correctly:
+
+- The child component must render a native form control.
+- The control must support the `placeholder` attribute.
+- The placeholder value should not be empty.
+
+Example:
+
+```jsx
+<FloatingLabel label="Email">
+  <Control type="email" placeholder="name@example.com" />
+</FloatingLabel>
+```

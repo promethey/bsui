@@ -1,7 +1,7 @@
 import { Control, Label, Prime } from "components";
 
 export default {
-  title: "Components/Form/Label",
+  title: "Form/Label",
   component: Label,
   subcomponents: {
     Prime,

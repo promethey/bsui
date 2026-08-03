@@ -155,7 +155,7 @@ function Dropdown(props) {
 
     transform: transform,
 
-    middleware: [offset(4), flip(), shift()],
+    middleware: [offset(2), flip(), shift()],
   });
 
   const click = useClick(context, {

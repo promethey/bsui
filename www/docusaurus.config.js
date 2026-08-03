@@ -69,17 +69,10 @@ const config = {
       announcementBar: {
         id: "development-status",
         content:
-          '🚧 Documentation is actively under development. For complete interactive examples, visit <a href="https://promethey.github.io/bsui/storybook/" target="_blank">Storybook</a>.',
+          '🚧 <strong>Documentation is under active development.</strong> For complete component examples and live previews, visit <a href="https://promethey.github.io/bsui/storybook/" target="_blank">Storybook</a>.',
         backgroundColor: "#fff3cd",
         textColor: "#664d03",
-        isCloseable: true,
-      },
-      liveCodeBlock: {
-        /**
-         * The position of the live playground, above or under the editor
-         * Possible values: "top" | "bottom"
-         */
-        playgroundPosition: "bottom",
+        isCloseable: false,
       },
       colorMode: {
         defaultMode: "dark",
@@ -90,7 +83,7 @@ const config = {
         title: "BSUI",
         logo: {
           alt: "BSUI Logo",
-          src: "img/bsui-logo.png",
+          src: "img/bsui.png",
         },
         items: [
           {

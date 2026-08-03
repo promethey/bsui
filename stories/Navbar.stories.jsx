@@ -9,7 +9,7 @@ import {
 } from "../src/components";
 
 export default {
-  title: "Components/Navigation/Navbar",
+  title: "Components/Navbar",
   component: Navbar,
   subcomponents: {
     "Navbar.Brand": Navbar.Brand,
@@ -149,8 +149,8 @@ export function Dropdowns() {
             </Nav.Link>
             <Nav.Link to="/features">Features</Nav.Link>
             <Nav.Link to="/pricing">Pricing</Nav.Link>
-            <Dropdown nav>
-              <Dropdown.Toggle as={Nav.Link}>Dropdown link</Dropdown.Toggle>
+            <Dropdown navbar>
+              <Dropdown.Toggle>Dropdown link</Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item>Action</Dropdown.Item>
                 <Dropdown.Item>Another action</Dropdown.Item>
@@ -260,7 +260,7 @@ export function Avatar() {
             },
           }}>
           <Control placeholder="Search..." />
-          <Dropdown>
+          <Dropdown placement="bottom-end">
             <Dropdown.Toggle as={Nav.Link} className="link-dark" p={0} ms={3}>
               <img
                 src="https://avatars.githubusercontent.com/u/73757404?v=4"
@@ -286,19 +286,17 @@ export function Avatar() {
 
 export function Login() {
   return (
-    <Navbar tone="dark" bg="dark" expand="lg">
+    <Navbar tone="dark" bg="dark" expand="md">
       <Container fluid>
-        <Navbar.Brand>
-          <img src="./bsui-logo.png" alt="bsui" width="36" height="36" />
-        </Navbar.Brand>
+        <Navbar.Brand fw="bolder">BSUI</Navbar.Brand>
         <Navbar.Toggler />
         <Navbar.Collapse>
           <Prime
             w={100}
             d="flex"
             flex={{
-              xs: { dir: "column" },
-              lg: { justify: "between", dir: "row" },
+              xs: { direction: "column" },
+              md: { direction: "row", justifyContent: "between" },
             }}>
             <Navbar.Nav>
               <Nav.Link active>Home</Nav.Link>
@@ -310,15 +308,16 @@ export function Login() {
             <Prime
               d="flex"
               flex={{
-                xs: { dir: "column" },
-                lg: { align: "center", dir: "row" },
-              }}>
+                xs: { direction: "column" },
+                md: { direction: "row", alignItems: "center" },
+              }}
+              mt={{ xs: 3, md: 0 }}>
               <Control type="text" placeholder="Search..." />
               <Button
                 tone="light"
                 outline
-                mt={{ xs: 2, lg: 0 }}
-                ms={{ xs: 0, lg: 3 }}>
+                mt={{ xs: 3, md: 0 }}
+                ms={{ xs: 0, md: 3 }}>
                 Login
               </Button>
             </Prime>

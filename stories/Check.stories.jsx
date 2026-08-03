@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Check, Prime } from "../src/components";
 
 export default {
-  title: "Components/Form/Check",
+  title: "Form/Check",
   component: Check,
   subcomponents: {
     "Check.Label": Check.Label,

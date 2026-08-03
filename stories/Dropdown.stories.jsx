@@ -2,7 +2,7 @@
 import { Dropdown, Button, ButtonGroup, Prime } from "components";
 
 export default {
-  title: "Components/Overlay/Dropdown",
+  title: "Components/Dropdown",
   component: Dropdown,
   subcomponents: {
     "Dropdown.Toggle": Dropdown.Toggle,

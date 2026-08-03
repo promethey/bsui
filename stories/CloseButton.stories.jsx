@@ -2,7 +2,7 @@
 import { CloseButton, Prime } from "components";
 
 export default {
-  title: "Components/Control/CloseButton",
+  title: "Components/CloseButton",
   component: CloseButton,
   subcomponents: {
     Prime,

@@ -1,13 +1,20 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 15%, #a855f7 0%, transparent 35%),
+    radial-gradient(circle at 85% 80%, #38bdf8 0%, transparent 35%), #ffffff;
+  color: black;
+}
+
+[data-theme="dark"] .heroBanner {
+  background:
+    radial-gradient(circle at top left, #8b5cf6 0%, transparent 45%),
+    radial-gradient(circle at bottom right, #60a5fa 0%, transparent 40%),
+    #18181b;
+  color: white;
 }
 
 @media screen and (max-width: 996px) {

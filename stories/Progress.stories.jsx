@@ -2,7 +2,7 @@
 import { Progress, Prime } from "components";
 
 export default {
-  title: "Components/Feedback/Progress",
+  title: "Components/Progress",
   component: Progress,
   subcomponents: { "Progress.Bar": Progress.Bar },
   parameters: {

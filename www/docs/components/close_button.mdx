@@ -1,0 +1,134 @@
+---
+title: CloseButton
+description: Provide a compact button for dismissing or closing content with Bootstrap styling.
+---
+
+# CloseButton
+
+The `CloseButton` component renders a compact dismiss control commonly used for closing alerts, modals, and other interactive elements. It supports white variant styling, disabled state, click handling, and Bootstrap-compatible utility props.
+
+## Import
+
+```jsx
+import { CloseButton } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `CloseButton` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { CloseButton } from "@promethey/bsui";
+
+export default function Basic() {
+  return <CloseButton />;
+}
+```
+
+---
+
+## Click Handler
+
+Use `onClick` to handle close actions.
+
+```jsx live
+import { CloseButton } from "@promethey/bsui";
+
+export default function ClickHandler() {
+  return <CloseButton onClick={() => alert("Closed")} />;
+}
+```
+
+---
+
+## White Variant
+
+Use the `white` prop when displaying the close button on dark backgrounds.
+
+```jsx live
+import { CloseButton } from "@promethey/bsui";
+
+export default function White() {
+  return (
+    <div
+      style={{
+        background: "#212529",
+        padding: "1rem",
+      }}>
+      <CloseButton white />
+    </div>
+  );
+}
+```
+
+---
+
+## Disabled
+
+Use the `disabled` prop to prevent interaction.
+
+```jsx live
+import { CloseButton } from "@promethey/bsui";
+
+export default function Disabled() {
+  return <CloseButton disabled />;
+}
+```
+
+---
+
+## Usage With Content
+
+`CloseButton` can be combined with other components that require dismiss functionality.
+
+```jsx live
+import { CloseButton } from "@promethey/bsui";
+
+export default function Content() {
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "1rem",
+        border: "1px solid #dee2e6",
+        borderRadius: "0.375rem",
+      }}>
+      <span>Notification message</span>
+
+      <CloseButton />
+    </div>
+  );
+}
+```
+
+---
+
+## Utility Props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { CloseButton } from "@promethey/bsui";
+
+export default function Utilities() {
+  return <CloseButton mt={3} p={2} />;
+}
+```
+
+---
+
+## API
+
+### CloseButton
+
+| Prop        | Type                                             | Default | Description                                |
+| ----------- | ------------------------------------------------ | ------- | ------------------------------------------ |
+| `white`     | `boolean`                                        | `false` | Enables the white close button variant.    |
+| `disabled`  | `boolean`                                        | `false` | Disables user interaction.                 |
+| `onClick`   | `(event: MouseEvent<HTMLButtonElement>) => void` | `null`  | Callback fired when the button is clicked. |
+| `className` | `string \| object`                               | `null`  | Additional CSS classes.                    |
+| `style`     | `object`                                         | `null`  | Inline styles.                             |

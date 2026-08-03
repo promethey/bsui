@@ -1,0 +1,261 @@
+---
+title: Nav
+description: Create flexible navigation components with links, tabs, pills, fill, and justified layouts.
+---
+
+# Nav
+
+The `Nav` component provides a flexible navigation system for grouping links and actions. It supports standard navigation layouts, tab and pill styles, filled navigation items, justified widths, and Bootstrap-compatible utility props.
+
+## Import
+
+```jsx
+import { Nav } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Nav` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+```jsx live
+import { Nav } from "@promethey/bsui";
+
+export default function Basic() {
+  return (
+    <Nav>
+      <Nav.Item>
+        <Nav.Link to="#" active>
+          Active
+        </Nav.Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Nav.Link to="#">Link</Nav.Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Nav.Link to="#">Another Link</Nav.Link>
+      </Nav.Item>
+    </Nav>
+  );
+}
+```
+
+---
+
+## Tabs
+
+Use `view="tabs"` to create tab-style navigation.
+
+```jsx live
+import { Nav } from "@promethey/bsui";
+
+export default function Tabs() {
+  return (
+    <Nav view="tabs">
+      <Nav.Item>
+        <Nav.Link active>Active</Nav.Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Nav.Link>Profile</Nav.Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Nav.Link>Settings</Nav.Link>
+      </Nav.Item>
+    </Nav>
+  );
+}
+```
+
+---
+
+## Pills
+
+Use `view="pills"` to create pill-style navigation.
+
+```jsx live
+import { Nav } from "@promethey/bsui";
+
+export default function Pills() {
+  return (
+    <Nav view="pills">
+      <Nav.Item>
+        <Nav.Link active>Home</Nav.Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Nav.Link>Profile</Nav.Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Nav.Link>Contact</Nav.Link>
+      </Nav.Item>
+    </Nav>
+  );
+}
+```
+
+---
+
+## Fill
+
+Use `fill` to expand navigation items to occupy available space.
+
+```jsx live
+import { Nav } from "@promethey/bsui";
+
+export default function Fill() {
+  return (
+    <Nav view="tabs" fill>
+      <Nav.Item>
+        <Nav.Link active>Home</Nav.Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Nav.Link>Profile</Nav.Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Nav.Link>Contact</Nav.Link>
+      </Nav.Item>
+    </Nav>
+  );
+}
+```
+
+---
+
+## Justified
+
+Use `justified` to make all navigation items equal width.
+
+```jsx live
+import { Nav } from "@promethey/bsui";
+
+export default function Justified() {
+  return (
+    <Nav view="pills" justified>
+      <Nav.Item>
+        <Nav.Link active>Home</Nav.Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Nav.Link>Profile</Nav.Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Nav.Link>Settings</Nav.Link>
+      </Nav.Item>
+    </Nav>
+  );
+}
+```
+
+---
+
+## Disabled Link
+
+Use `disabled` to disable navigation items.
+
+```jsx live
+import { Nav } from "@promethey/bsui";
+
+export default function Disabled() {
+  return (
+    <Nav>
+      <Nav.Item>
+        <Nav.Link active>Active</Nav.Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Nav.Link disabled>Disabled</Nav.Link>
+      </Nav.Item>
+    </Nav>
+  );
+}
+```
+
+---
+
+## Custom Navigation Target
+
+Use the `to` prop to specify the link destination.
+
+```jsx live
+import { Nav } from "@promethey/bsui";
+
+export default function Links() {
+  return (
+    <Nav>
+      <Nav.Item>
+        <Nav.Link to="https://github.com/promethey/bsui">GitHub</Nav.Link>
+      </Nav.Item>
+
+      <Nav.Item>
+        <Nav.Link to="https://www.npmjs.com/package/@promethey/bsui">
+          npm
+        </Nav.Link>
+      </Nav.Item>
+    </Nav>
+  );
+}
+```
+
+---
+
+## Utility Props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { Nav } from "@promethey/bsui";
+
+export default function Utilities() {
+  return (
+    <Nav p={3} mt={3} fst="italic">
+      <Nav.Item>
+        <Nav.Link active>Styled navigation</Nav.Link>
+      </Nav.Item>
+    </Nav>
+  );
+}
+```
+
+---
+
+## API
+
+### Nav
+
+| Prop        | Type                        | Default | Description                            |
+| ----------- | --------------------------- | ------- | -------------------------------------- |
+| `children`  | `ReactNode`                 | —       | Navigation content.                    |
+| `as`        | `"nav" \| "ul"`             | `"ul"`  | HTML element used for rendering.       |
+| `view`      | `"tabs" \| "pills"`         | `null`  | Navigation appearance style.           |
+| `fill`      | `boolean`                   | `false` | Expands items to fill available width. |
+| `justified` | `boolean`                   | `false` | Makes items equal width.               |
+| `className` | `string \| object \| array` | `null`  | Additional CSS classes.                |
+| `style`     | `object`                    | `null`  | Inline styles.                         |
+
+### Nav.Item
+
+| Prop        | Type                        | Default | Description              |
+| ----------- | --------------------------- | ------- | ------------------------ |
+| `children`  | `ReactNode`                 | —       | Navigation link content. |
+| `className` | `string \| object \| array` | `null`  | Additional CSS classes.  |
+| `style`     | `object`                    | `null`  | Inline styles.           |
+
+### Nav.Link
+
+| Prop        | Type               | Default | Description             |
+| ----------- | ------------------ | ------- | ----------------------- |
+| `children`  | `ReactNode`        | —       | Link content.           |
+| `to`        | `string`           | `"#"`   | Navigation target URL.  |
+| `active`    | `boolean`          | `false` | Marks link as active.   |
+| `disabled`  | `boolean`          | `false` | Disables interaction.   |
+| `className` | `string \| object` | `null`  | Additional CSS classes. |
+| `style`     | `object`           | `null`  | Inline styles.          |

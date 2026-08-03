@@ -10,8 +10,6 @@ This document tracks the development progress and planned releases of BSUI compo
 | 🚧 In Progress | Component is currently under development. |
 | ✅ Stable      | Component is production-ready.            |
 
-## Version 1.0.0
-
 ### Released Components
 
 | Component     | Category   | Status    | Since |
@@ -50,17 +48,15 @@ This document tracks the development progress and planned releases of BSUI compo
 | Spinner       | Feedback   | ✅ Stable | 1.0.0 |
 | Toast         | Feedback   | ✅ Stable | 1.0.0 |
 
-## Version 1.1.0
-
 ### Planned Components
 
 | Component | Category   | Status     | Since |
 | --------- | ---------- | ---------- | ----- |
-| Tooltip   | Overlay    | 📋 Planned | 1.1.0 |
-| Popover   | Overlay    | 📋 Planned | 1.1.0 |
-| ScrollSpy | Navigation | 📋 Planned | 1.1.0 |
-| Tab       | Navigation | 📋 Planned | 1.1.0 |
-| Table     | Content    | 📋 Planned | 1.1.0 |
-| Figure    | Content    | 📋 Planned | 1.1.0 |
-| Image     | Content    | 📋 Planned | 1.1.0 |
-| Ratio     | Layout     | 📋 Planned | 1.1.0 |
+| Tooltip   | Overlay    | 📋 Planned | 1.2.0 |
+| Popover   | Overlay    | 📋 Planned | 1.2.0 |
+| ScrollSpy | Navigation | 📋 Planned | 1.2.0 |
+| Tab       | Navigation | 📋 Planned | 1.2.0 |
+| Table     | Content    | 📋 Planned | 1.2.0 |
+| Figure    | Content    | 📋 Planned | 1.2.0 |
+| Image     | Content    | 📋 Planned | 1.2.0 |
+| Ratio     | Layout     | 📋 Planned | 1.2.0 |

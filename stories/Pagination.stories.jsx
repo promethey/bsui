@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Pagination, Prime, Select } from "../src/components";
 
 export default {
-  title: "Components/Navigation/Pagination",
+  title: "Components/Pagination",
   component: Pagination,
   subcomponents: {
     "Pagination.Item": Pagination.Item,

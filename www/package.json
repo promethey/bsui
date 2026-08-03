@@ -1,5 +1,5 @@
 {
-  "name": "www",
+  "name": "bsui-docusaurus",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -22,6 +22,7 @@
     "@mdx-js/react": "^3.0.0",
     "@promethey/bsui": "^1.0.2",
     "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
     "clsx": "^2.0.0",
     "prettier": "^3.9.6",
     "prism-react-renderer": "^2.3.0",
@@ -45,6 +46,6 @@
     ]
   },
   "engines": {
-    "node": ">=20.0"
+    "node": ">=24.0"
   }
 }
