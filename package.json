@@ -42,7 +42,6 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.19",
-    "bootstrap-icons": "^1.13.1",
     "classnames": "^2.5.1",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-fade": "^8.6.0",

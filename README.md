@@ -57,6 +57,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 ### Usage
 
 ```jsx
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "@promethey/bsui";
 
 export function Example() {
