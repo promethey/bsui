@@ -21,12 +21,13 @@
 
 ## Features
 
-- React components built with Bootstrap 5.
-- Consistent component APIs across the library.
-- Bootstrap utility classes through component props.
-- JSDoc-powered IntelliSense without TypeScript.
-- Fully documented components with interactive examples.
-- No dependency on Bootstrap JavaScript.
+- Bootstrap 5 Components
+- Validated Bootstrap Utility Props
+- Consistent Component API
+- Bootstrap-Compatible Architecture
+- Zero Bootstrap JavaScript Dependency
+- JSDoc-Powered IntelliSense
+- Interactive Documentation
 
 ## Installation
 
