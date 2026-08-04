@@ -36,15 +36,19 @@ Requirements:
 - React 19+
 - Bootstrap 5.1.3
 
+Install BSUI:
+
 ```bash
 npm i @promethey/bsui
 ```
 
-Import Bootstrap styles in your project:
+Install Bootstrap:
 
 ```bash
 npm i bootstrap
 ```
+
+Import Bootstrap styles in your application entry point:
 
 ```js
 import "bootstrap/dist/css/bootstrap.min.css";
