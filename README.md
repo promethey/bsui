@@ -110,7 +110,7 @@ the same `Prime` API is available throughout the library.
 As a result, developers learn the `Prime` API once and use
 the same patterns consistently throughout the library.
 
-## Type Safety without TypeScript
+## Developer Experience without TypeScript
 
 Build React applications with rich editor support without requiring TypeScript.
 
@@ -122,9 +122,14 @@ BSUI combines JSDoc annotations and PropTypes to provide:
 - Runtime prop validation
 - No additional TypeScript tooling required
 
-<img src="./public/autocomplete.png" alt="BSUI IntelliSense" />
+<img src="./public/autocomplete.png" alt="Autocomplete suggestions for the tone prop" />
 
-<img src="./public/typecheck.png" alt="BSUI IntelliSense" />
+Autocomplete provides valid values directly in the editor.
+
+<img src="./public/typecheck.png" alt="Editor diagnostics for an invalid tone value" />
+
+Invalid prop values are detected during development
+with detailed editor diagnostics.
 
 ## Why tone?
 
