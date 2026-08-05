@@ -75,42 +75,57 @@ export function Example() {
  */
 ```
 
-## Prime Architecture
+## Prime-Based Architecture
 
-Every public component is built on top of the `Prime` primitive.
+Every BSUI component is built on top of `Prime`, the
+foundation component of the library.
 
-Prime provides:
-
-- polymorphic rendering
-- utility props
-- HTML attributes
-- shared API
+Bootstrap utility props, responsive object syntax,
+and common styling capabilities are inherited by every
+BSUI component through the `Prime` foundation.
 
 ```jsx
-<Prime as="button" m={2} px={3} fw="bold" />
-
-// <button class="m-2 px-3 fw-bold" />
+<Prime
+  d="flex"
+  bg={{ color: "primary", opacity: 25 }}
+  flex={{
+    xs: {
+      justifyContent: "center",
+      alignItems: "end",
+    },
+    md: {
+      justifyContent: "start",
+      alignItems: "start",
+    },
+  }}
+  mt={{ xs: 3, md: 0 }}
+  p={{ xs: 3, md: 4 }}
+/>
 ```
-
-## Utility Props
-
-Every component is built on top of `Prime`, so all utility props are available everywhere.
 
 ```jsx
-<Prime d={{ xs: "block", md: "flex" }} mt={3} />
-
-// <div class="d-block d-md-flex" mt-3 />
+<Card
+  d="flex"
+  bg={{ color: "primary", opacity: 75 }}
+  text="light"
+  flex={{ justifyContent: "center", alignItems: "start" }}
+  mt={{ xs: 2, md: 4 }}>
+  <Card.Body>
+    <Card.Title fw="bolder">Card title</Card.Title>
+    <Card.Text>Some quick example text</Card.Text>
+  </Card.Body>
+</Card>
 ```
 
-```jsx
-<Button d={{ xs: "block", md: "flex" }} mt={3} />
+Whether working with `Card`, `Button`, `Navbar`, or any other component,
+the same `Prime` API is available throughout the library.
 
-// <button class="btn btn-primary d-block d-md-flex mt-3" />
-```
+As a result, developers learn the `Prime` API once and use
+the same patterns consistently throughout the library.
 
 ## Type Safety without TypeScript
 
-Write React components with strong editor support without adding TypeScript to your project.
+Build React applications with rich editor support without requiring TypeScript.
 
 BSUI combines JSDoc annotations and PropTypes to provide:
 
@@ -120,6 +135,8 @@ BSUI combines JSDoc annotations and PropTypes to provide:
 - Runtime prop validation
 - No additional TypeScript tooling required
 
+<img src="./public/autocomplete.png" width={200} alt="BSUI IntelliSense" />
+
 ## Why tone?
 
 BSUI uses the `tone` prop to control the visual appearance of components.
@@ -128,30 +145,19 @@ Unlike `variant`, the name **tone** is shorter, easier to type, and better refle
 
 ```jsx
 <Button tone="primary" />
-
-// <button class="btn btn-primary" />
 ```
 
 ```jsx
 <Alert tone="danger" />
-
-// <div class="alert alert-danger" />
 ```
 
-The same API is shared across all components, providing a predictable and consistent developer experience.
+Using a single semantic prop across the component library provides a more consistent and predictable API.
 
 ## External Libraries
 
 - [React Transition Group](https://reactcommunity.org/react-transition-group/) - animations and transitions
 - [Embla Carousel](https://www.embla-carousel.com/) - carousel engine
 - [Floating UI](https://floating-ui.com/) - dropdowns, tooltips, popovers, and positioning
-
-## Components
-
-BSUI currently provides 30+ Bootstrap-compatible components.
-
-See the full component list and compatibility matrix in
-[Components](COMPONENTS.md).
 
 ## Contributing
 
