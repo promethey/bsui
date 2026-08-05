@@ -28,7 +28,6 @@ function Playground({ children, height = 340 }) {
 
   return (
     <Sandpack
-      key="bootstrap-5.1.3"
       theme="auto"
       template="react"
       customSetup={{
@@ -36,7 +35,7 @@ function Playground({ children, height = 340 }) {
           react: "^19.2.0",
           "react-dom": "^19.2.0",
           bootstrap: "5.1.3",
-          "@promethey/bsui": "latest",
+          "@promethey/bsui": "1.1.2",
         },
       }}
       files={{

@@ -1,0 +1,26 @@
+{
+  "id": "components/badge",
+  "title": "Badge",
+  "description": "Display small labels, counters, and status indicators.",
+  "source": "@site/docs/components/badge.mdx",
+  "sourceDirName": "components",
+  "slug": "/components/badge",
+  "permalink": "/bsui/docs/components/badge",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Badge",
+    "description": "Display small labels, counters, and status indicators."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Alert",
+    "permalink": "/bsui/docs/components/alert"
+  },
+  "next": {
+    "title": "Breadcrumb",
+    "permalink": "/bsui/docs/components/breadcrumb"
+  }
+}

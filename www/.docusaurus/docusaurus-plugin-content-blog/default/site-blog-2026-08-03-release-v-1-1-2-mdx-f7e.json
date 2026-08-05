@@ -1,0 +1,61 @@
+{
+  "permalink": "/bsui/blog/release-v1-1-2",
+  "source": "@site/blog/2026-08-03-release-v1-1-2.mdx",
+  "title": "v1.1.2",
+  "description": "Today we are releasing BSUI v1.1.2, a documentation and component organization update focused on improving the developer experience, Storybook structure, and form component documentation.",
+  "date": "2026-08-03T00:00:00.000Z",
+  "tags": [
+    {
+      "inline": false,
+      "label": "Release",
+      "permalink": "/bsui/blog/tags/release",
+      "description": "Release announcements, version updates, and important changes in BSUI."
+    },
+    {
+      "inline": false,
+      "label": "Patch",
+      "permalink": "/bsui/blog/tags/patch",
+      "description": "Patch releases containing bug fixes, stability improvements, and minor updates."
+    },
+    {
+      "inline": false,
+      "label": "BSUI",
+      "permalink": "/bsui/blog/tags/bsui",
+      "description": "News, updates, and articles related to the BSUI React component library."
+    }
+  ],
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Egor Sedelkov",
+      "title": "Software Developer · Creator of BSUI",
+      "url": "https://github.com/promethey",
+      "page": {
+        "permalink": "/bsui/blog/authors/promethey"
+      },
+      "socials": {
+        "github": "https://github.com/promethey"
+      },
+      "imageURL": "https://github.com/promethey.png",
+      "key": "promethey"
+    }
+  ],
+  "frontMatter": {
+    "slug": "release-v1-1-2",
+    "title": "v1.1.2",
+    "authors": [
+      "promethey"
+    ],
+    "tags": [
+      "release",
+      "patch",
+      "bsui"
+    ],
+    "date": "2026-08-03T00:00:00.000Z"
+  },
+  "unlisted": false,
+  "nextItem": {
+    "title": "v1.1.1",
+    "permalink": "/bsui/blog/release-v1-1-1"
+  }
+}

@@ -46,7 +46,16 @@
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-fade": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "@codesandbox/sandpack-react": "^2.20.0",
+    "@docusaurus/core": "3.10.2",
+    "@docusaurus/faster": "3.10.2",
+    "@docusaurus/preset-classic": "3.10.2",
+    "@docusaurus/theme-live-codeblock": "^3.10.2",
+    "@mdx-js/react": "^3.0.0",
+    "clsx": "^2.0.0",
+    "prettier": "^3.9.6",
+    "prism-react-renderer": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
@@ -82,7 +91,9 @@
     "vitest": "^4.1.7",
     "webpack": "^5.104.1",
     "webpack-bundle-analyzer": "^5.3.0",
-    "webpack-cli": "^6.0.1"
+    "webpack-cli": "^6.0.1",
+    "@docusaurus/module-type-aliases": "3.10.2",
+    "@docusaurus/types": "3.10.2"
   },
   "scripts": {
     "test": "vitest",
@@ -96,6 +107,14 @@
     "storybook-docs": "storybook dev --docs",
     "build-storybook-docs": "storybook build --docs",
     "build-storybook": "storybook build",
-    "types": "tsc -p tsconfig.types.json"
+    "types": "tsc -p tsconfig.types.json",
+    "www:start": "docusaurus start www --host 0.0.0.0",
+    "www:build": "docusaurus build www",
+    "www:swizzle": "docusaurus swizzle www",
+    "www:deploy": "docusaurus deploy www",
+    "www:clear": "docusaurus clear www",
+    "www:serve": "docusaurus serve www",
+    "www:write-translations": "docusaurus write-translations www",
+    "www:write-heading-ids": "docusaurus write-heading-ids www"
   }
 }

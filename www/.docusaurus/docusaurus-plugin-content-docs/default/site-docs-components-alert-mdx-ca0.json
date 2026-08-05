@@ -1,0 +1,26 @@
+{
+  "id": "components/alert",
+  "title": "Alert",
+  "description": "Display contextual feedback messages for typical user actions with optional headings, links, and dismiss functionality.",
+  "source": "@site/docs/components/alert.mdx",
+  "sourceDirName": "components",
+  "slug": "/components/alert",
+  "permalink": "/bsui/docs/components/alert",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Alert",
+    "description": "Display contextual feedback messages for typical user actions with optional headings, links, and dismiss functionality."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Accordion",
+    "permalink": "/bsui/docs/components/accordion"
+  },
+  "next": {
+    "title": "Badge",
+    "permalink": "/bsui/docs/components/badge"
+  }
+}

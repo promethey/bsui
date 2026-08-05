@@ -1,0 +1,26 @@
+{
+  "id": "components/button",
+  "title": "Button",
+  "description": "Trigger actions, events, or navigation through contextual interactive controls.",
+  "source": "@site/docs/components/button.mdx",
+  "sourceDirName": "components",
+  "slug": "/components/button",
+  "permalink": "/bsui/docs/components/button",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Button",
+    "description": "Trigger actions, events, or navigation through contextual interactive controls."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ButtonGroup",
+    "permalink": "/bsui/docs/components/button-group"
+  },
+  "next": {
+    "title": "Card",
+    "permalink": "/bsui/docs/components/card"
+  }
+}

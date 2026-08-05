@@ -1,0 +1,57 @@
+{
+  "permalink": "/bsui/blog/release-v1-0-2",
+  "source": "@site/blog/2026-07-22-release-v1-0-2.mdx",
+  "title": "v1.0.2",
+  "description": "BSUI v1.0.2 is now available.",
+  "date": "2026-07-22T00:00:00.000Z",
+  "tags": [
+    {
+      "inline": false,
+      "label": "Release",
+      "permalink": "/bsui/blog/tags/release",
+      "description": "Release announcements, version updates, and important changes in BSUI."
+    },
+    {
+      "inline": false,
+      "label": "Patch",
+      "permalink": "/bsui/blog/tags/patch",
+      "description": "Patch releases containing bug fixes, stability improvements, and minor updates."
+    }
+  ],
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Egor Sedelkov",
+      "title": "Software Developer · Creator of BSUI",
+      "url": "https://github.com/promethey",
+      "page": {
+        "permalink": "/bsui/blog/authors/promethey"
+      },
+      "socials": {
+        "github": "https://github.com/promethey"
+      },
+      "imageURL": "https://github.com/promethey.png",
+      "key": "promethey"
+    }
+  ],
+  "frontMatter": {
+    "slug": "release-v1-0-2",
+    "title": "v1.0.2",
+    "authors": [
+      "promethey"
+    ],
+    "tags": [
+      "release",
+      "patch"
+    ]
+  },
+  "unlisted": false,
+  "prevItem": {
+    "title": "v1.1.0",
+    "permalink": "/bsui/blog/release-v1-1-0"
+  },
+  "nextItem": {
+    "title": "v1.0.1",
+    "permalink": "/bsui/blog/release-v1-0-1"
+  }
+}

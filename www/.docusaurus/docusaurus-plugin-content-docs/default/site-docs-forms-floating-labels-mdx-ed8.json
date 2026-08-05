@@ -1,0 +1,26 @@
+{
+  "id": "forms/floating-labels",
+  "title": "Floating label",
+  "description": "Create Bootstrap floating labels for form controls with automatic control ID handling and Prime utility support.",
+  "source": "@site/docs/forms/floating-labels.mdx",
+  "sourceDirName": "forms",
+  "slug": "/forms/floating-labels",
+  "permalink": "/bsui/docs/forms/floating-labels",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Floating label",
+    "description": "Create Bootstrap floating labels for form controls with automatic control ID handling and Prime utility support."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Controls",
+    "permalink": "/bsui/docs/forms/controls"
+  },
+  "next": {
+    "title": "Accordion",
+    "permalink": "/bsui/docs/components/accordion"
+  }
+}

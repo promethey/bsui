@@ -1,0 +1,26 @@
+{
+  "id": "components/nav",
+  "title": "Nav",
+  "description": "Create flexible navigation components with links, tabs, pills, fill, and justified layouts.",
+  "source": "@site/docs/components/nav.mdx",
+  "sourceDirName": "components",
+  "slug": "/components/nav",
+  "permalink": "/bsui/docs/components/nav",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Nav",
+    "description": "Create flexible navigation components with links, tabs, pills, fill, and justified layouts."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ListGroup",
+    "permalink": "/bsui/docs/components/list-group"
+  },
+  "next": {
+    "title": "Navbar",
+    "permalink": "/bsui/docs/components/navbar"
+  }
+}

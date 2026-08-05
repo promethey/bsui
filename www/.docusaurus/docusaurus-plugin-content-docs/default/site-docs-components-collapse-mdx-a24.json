@@ -1,0 +1,26 @@
+{
+  "id": "components/collapse",
+  "title": "Collapse",
+  "description": "Animate the expansion and collapsing of content visibility with smooth transitions.",
+  "source": "@site/docs/components/collapse.mdx",
+  "sourceDirName": "components",
+  "slug": "/components/collapse",
+  "permalink": "/bsui/docs/components/collapse",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Collapse",
+    "description": "Animate the expansion and collapsing of content visibility with smooth transitions."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "CloseButton",
+    "permalink": "/bsui/docs/components/close_button"
+  },
+  "next": {
+    "title": "ListGroup",
+    "permalink": "/bsui/docs/components/list-group"
+  }
+}

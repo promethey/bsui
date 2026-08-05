@@ -1,0 +1,118 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/bsui/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/bsui/docs",
+          "mainDocId": "getting-started/introduction",
+          "docs": [
+            {
+              "id": "components/accordion",
+              "path": "/bsui/docs/components/accordion",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/alert",
+              "path": "/bsui/docs/components/alert",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/badge",
+              "path": "/bsui/docs/components/badge",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/breadcrumb",
+              "path": "/bsui/docs/components/breadcrumb",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/button",
+              "path": "/bsui/docs/components/button",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/button-group",
+              "path": "/bsui/docs/components/button-group",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/card",
+              "path": "/bsui/docs/components/card",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/close_button",
+              "path": "/bsui/docs/components/close_button",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/collapse",
+              "path": "/bsui/docs/components/collapse",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/list-group",
+              "path": "/bsui/docs/components/list-group",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/nav",
+              "path": "/bsui/docs/components/nav",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/navbar",
+              "path": "/bsui/docs/components/navbar",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/progress",
+              "path": "/bsui/docs/components/progress",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "components/spinner",
+              "path": "/bsui/docs/components/spinner",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "forms/check",
+              "path": "/bsui/docs/forms/check",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "forms/controls",
+              "path": "/bsui/docs/forms/controls",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "forms/floating-labels",
+              "path": "/bsui/docs/forms/floating-labels",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "getting-started/introduction",
+              "path": "/bsui/docs/getting-started/introduction",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/bsui/docs/getting-started/introduction",
+                "label": "getting-started/introduction"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}
