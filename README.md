@@ -122,9 +122,9 @@ BSUI combines JSDoc annotations and PropTypes to provide:
 - Runtime prop validation
 - No additional TypeScript tooling required
 
-<img src="./public/autocomplete.png" width={200} alt="BSUI IntelliSense" />
+<img src="./public/autocomplete.png" alt="BSUI IntelliSense" />
 
-<img src="./public/autocomplete2.png" width={200} alt="BSUI IntelliSense" />
+<img src="./public/typecheck.png" alt="BSUI IntelliSense" />
 
 ## Why tone?
 

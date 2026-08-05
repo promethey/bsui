@@ -1,5 +1,4 @@
-// @ts-nocheck
-import { Button, Prime } from "components";
+import { Button, Prime } from "../src/components";
 import { capitalize } from "helpers";
 
 export default {
