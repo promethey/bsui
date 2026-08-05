@@ -67,12 +67,6 @@ export function Example() {
     </Button>
   );
 }
-
-/**
- * <button class="btn btn-primary btn-lg">
- *    Hello BSUI
- * </button>
- */
 ```
 
 ## Prime-Based Architecture
@@ -87,19 +81,10 @@ BSUI component through the `Prime` foundation.
 ```jsx
 <Prime
   d="flex"
-  bg={{ color: "primary", opacity: 25 }}
-  flex={{
-    xs: {
-      justifyContent: "center",
-      alignItems: "end",
-    },
-    md: {
-      justifyContent: "start",
-      alignItems: "start",
-    },
-  }}
+  bg={{ color: "primary", opacity: 75 }}
+  text={{ color: "light", align: "start" }}
+  flex={{ justifyContent: "center", alignItems: "end" }}
   mt={{ xs: 3, md: 0 }}
-  p={{ xs: 3, md: 4 }}
 />
 ```
 
@@ -107,11 +92,13 @@ BSUI component through the `Prime` foundation.
 <Card
   d="flex"
   bg={{ color: "primary", opacity: 75 }}
-  text="light"
+  text={{ color: "light", align: "start" }}
   flex={{ justifyContent: "center", alignItems: "start" }}
-  mt={{ xs: 2, md: 4 }}>
+  mt={{ xs: 3, md: 0 }}>
   <Card.Body>
-    <Card.Title fw="bolder">Card title</Card.Title>
+    <Card.Title fw="bolder" mb={1}>
+      Card title
+    </Card.Title>
     <Card.Text>Some quick example text</Card.Text>
   </Card.Body>
 </Card>
@@ -137,6 +124,8 @@ BSUI combines JSDoc annotations and PropTypes to provide:
 
 <img src="./public/autocomplete.png" width={200} alt="BSUI IntelliSense" />
 
+<img src="./public/autocomplete2.png" width={200} alt="BSUI IntelliSense" />
+
 ## Why tone?
 
 BSUI uses the `tone` prop to control the visual appearance of components.
@@ -144,11 +133,9 @@ BSUI uses the `tone` prop to control the visual appearance of components.
 Unlike `variant`, the name **tone** is shorter, easier to type, and better reflects the semantic purpose of the prop.
 
 ```jsx
-<Button tone="primary" />
-```
-
-```jsx
 <Alert tone="danger" />
+<Button tone="primary" />
+<Navbar tone="dark" />
 ```
 
 Using a single semantic prop across the component library provides a more consistent and predictable API.
