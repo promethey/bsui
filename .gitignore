@@ -8,3 +8,5 @@ out
 *.log
 *.tgz
 .docusaurus/
+build
+storybook
