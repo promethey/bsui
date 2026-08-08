@@ -1,0 +1,45 @@
+---
+slug: release-v1-2-3
+title: v1.2.3
+authors: [promethey]
+tags:
+  - release
+  - patch
+  - bsui
+date: 2026-08-08
+---
+
+Today we are releasing **BSUI v1.2.3**, a patch release that fixes the contents of the published npm package.
+
+This release addresses an issue introduced in v1.2.2 where the compiled package files and generated type declarations were not included in the npm tarball.
+
+{/* truncate */}
+
+## Overview
+
+BSUI v1.2.3 includes:
+
+- Restored the compiled `dist` directory in the npm package.
+- Restored the generated `types` directory in the npm package.
+- Ensured the published package contains all files required for normal BSUI usage.
+- Preserved TypeScript declaration files for editor and IDE support.
+
+## Fixed
+
+### npm Package Contents
+
+Fixed the package publishing configuration and build process so that the npm package contains the expected compiled files:
+
+```text
+dist/
+types/
+LICENSE
+README.md
+```
+
+## Links
+
+- [GitHub Release](https://github.com/promethey/bsui/releases/tag/v1.2.3)
+- [npm Package](https://www.npmjs.com/package/@promethey/bsui)
+- [Documentation](https://promethey.github.io/bsui/)
+- [Storybook](https://promethey.github.io/bsui/storybook/)

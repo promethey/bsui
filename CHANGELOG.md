@@ -22,6 +22,14 @@ The format is based on Keep a Changelog and Semantic Versioning.
 
 -
 
+## [1.2.3] - 2026-08-08
+
+### Fixed
+
+- Fixed npm package contents by ensuring compiled `dist` files are included in the published package.
+- Fixed npm package type declarations by ensuring the generated `types` directory is included in the published package.
+- Restored the complete package structure required for consuming BSUI from npm.
+
 ## [1.2.2] - 2026-08-08
 
 ### Fixed
