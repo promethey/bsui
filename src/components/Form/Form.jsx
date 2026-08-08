@@ -9,6 +9,7 @@ import {
   FloatingLabel,
   InputGroup,
 } from "components";
+import FormText from "../FormText";
 
 const propTypes = {
   /**
@@ -230,5 +231,6 @@ Form.Range = Range;
 Form.Select = Select;
 Form.FloatingLabel = FloatingLabel;
 Form.InputGroup = InputGroup;
+Form.Text = FormText;
 
 export default Form;

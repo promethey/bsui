@@ -1,0 +1,170 @@
+---
+title: Range
+description: Render a Bootstrap-styled range slider for selecting numeric values.
+---
+
+# Range
+
+The `Range` component renders a Bootstrap-styled range slider for selecting a numeric value within a configurable range.
+
+It supports controlled and uncontrolled values, custom minimum and maximum values, configurable steps, disabled state, and all utility props inherited from `Prime`.
+
+## Import
+
+```jsx
+import { Range } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Range` inherits all utility props supported by the `Prime` component, including spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic Usage
+
+By default, `Range` allows values from `0` to `10` with a step of `1`.
+
+```jsx live
+import { Range } from "@promethey/bsui";
+
+export default function Basic() {
+  return <Range />;
+}
+```
+
+## Default Value
+
+Use `defaultValue` to specify the initial value of an uncontrolled range.
+
+```jsx live
+import { Range } from "@promethey/bsui";
+
+export default function DefaultValue() {
+  return <Range min={0} max={100} defaultValue={25} />;
+}
+```
+
+The value can be changed by moving the slider.
+
+## Minimum and Maximum
+
+Use `min` and `max` to define the selectable range.
+
+```jsx live
+import { Range } from "@promethey/bsui";
+
+export default function MinMax() {
+  return <Range min={0} max={100} defaultValue={50} />;
+}
+```
+
+In this example, the slider accepts values from `0` through `100`.
+
+## Step
+
+Use `step` to control the increment between selectable values.
+
+```jsx live
+import { Range } from "@promethey/bsui";
+
+export default function Step() {
+  return <Range min={0} max={100} step={10} defaultValue={50} />;
+}
+```
+
+The slider can now select values such as `0`, `10`, `20`, `30`, and so on.
+
+## Controlled
+
+Use `value` together with `onChange` to control the range value from React state.
+
+```jsx live
+import { useState } from "react";
+import { Range } from "@promethey/bsui";
+
+export default function Controlled() {
+  const [value, setValue] = useState(50);
+
+  return (
+    <div>
+      <Range
+        min={0}
+        max={100}
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+      />
+
+      <div className="mt-2">Current value: {value}</div>
+    </div>
+  );
+}
+```
+
+The `value` prop determines the current position of the slider, while `onChange` updates the state when the user moves it.
+
+## Disabled
+
+Use `disabled` to prevent interaction with the range control.
+
+```jsx live
+import { Range } from "@promethey/bsui";
+
+export default function Disabled() {
+  return <Range min={0} max={100} defaultValue={40} disabled />;
+}
+```
+
+## Custom Range
+
+`Range` can be configured for any numeric range.
+
+```jsx live
+import { Range } from "@promethey/bsui";
+
+export default function CustomRange() {
+  return <Range min={10} max={50} step={5} defaultValue={30} />;
+}
+```
+
+## Utility Props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { Range } from "@promethey/bsui";
+
+export default function Utilities() {
+  return <Range min={0} max={100} defaultValue={70} mt={3} mb={3} />;
+}
+```
+
+## API
+
+### Range
+
+| Prop           | Type               | Default | Description                                                     |
+| -------------- | ------------------ | ------- | --------------------------------------------------------------- |
+| `value`        | `string \| number` | `null`  | Controls the current value when used as a controlled component. |
+| `defaultValue` | `string \| number` | `null`  | Sets the initial value when used as an uncontrolled component.  |
+| `onChange`     | `function`         | `null`  | Invoked whenever the slider value changes.                      |
+| `disabled`     | `boolean`          | `false` | Prevents interaction with the control.                          |
+| `min`          | `number`           | `0`     | Defines the minimum selectable value.                           |
+| `max`          | `number`           | `10`    | Defines the maximum selectable value.                           |
+| `step`         | `number`           | `1`     | Specifies the increment between allowed values.                 |
+| `className`    | `string \| object` | `null`  | Additional class names applied to the control.                  |
+| `style`        | `object`           | `null`  | Inline styles applied to the control.                           |
+
+`Range` also supports all props provided by `Prime`.
+
+## Controlled vs. Uncontrolled
+
+Use `defaultValue` when the component should manage its own value:
+
+```jsx
+<Range defaultValue={25} />
+```
+
+Use `value` and `onChange` when the value needs to be managed by React:
+
+```jsx
+<Range value={value} onChange={(event) => setValue(event.target.value)} />
+```

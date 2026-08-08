@@ -1,0 +1,45 @@
+---
+title: Overview
+description: asdasdasd
+---
+
+The Form component provides a Bootstrap-based container for building forms with BSUI form controls.
+It can be combined with Label, Control, Check, Button, and other form components.
+
+## Import
+
+```jsx
+import { Form } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Form` inherits all utility props supported by the `Prime` component, including spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+# Basic Usage
+
+```jsx live
+import { Form, Button, Prime } from "@promethey/bsui";
+
+export default function BasicUsage() {
+  return (
+    <Form>
+      <Prime mb={3}>
+        <Form.Label htmlFor="emailControl">Email address</Form.Label>
+        <Form.Control
+          id="emailControl"
+          type="email"
+          placeholder="example@email.com"
+        />
+        <Form.Text>We'll never share your email with anyone else.</Form.Text>
+      </Prime>
+      <Prime mb={3}>
+        <Form.Label htmlFor="passwordControl">Password</Form.Label>
+        <Form.Control id="passwordControl" type="password" />
+      </Prime>
+      <Form.Check label="Check me out" mb={3} />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
