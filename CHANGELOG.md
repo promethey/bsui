@@ -22,6 +22,18 @@ The format is based on Keep a Changelog and Semantic Versioning.
 
 -
 
+## [1.2.1] - 2026-08-08
+
+### Changed
+
+- Moved documentation-only dependencies from `dependencies` to `devDependencies` to prevent unnecessary packages from being installed by consumers.
+- Updated the documentation Sandbox dependency to `@promethey/bsui@^1.1.2`, allowing it to use the latest compatible BSUI release within the `1.x` version range.
+
+### Fixed
+
+- Reduced the runtime dependency footprint of the published package.
+- Fixed the Sandbox dependency configuration to allow newer compatible BSUI versions to be resolved.
+
 ## [1.1.3] - 2026-08-08
 
 ### ⚠️ Breaking Changes
