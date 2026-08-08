@@ -1,0 +1,75 @@
+---
+slug: release-v1-2-1
+title: v1.2.1
+authors: [promethey]
+tags:
+  - release
+  - patch
+  - bsui
+date: 2026-08-09
+---
+
+Today we are releasing **BSUI v1.2.1**, a maintenance release focused on improving package dependencies and the documentation Sandbox setup.
+
+This release reduces the number of dependencies installed by BSUI consumers and improves how the documentation Sandbox resolves BSUI versions.
+
+{/* truncate */}
+
+## Overview
+
+BSUI v1.2.1 includes:
+
+- Moved documentation-only dependencies from `dependencies` to `devDependencies`.
+- Reduced the runtime dependency footprint of the published package.
+- Updated the documentation Sandbox to use `@promethey/bsui` with a compatible version range.
+- Improved dependency configuration for the documentation environment.
+
+## Dependency Improvements
+
+This release separates development and runtime dependencies more accurately.
+
+Documentation and development tools such as Docusaurus, Sandpack, Prettier, and related packages are no longer included in the package's runtime dependencies.
+
+This prevents BSUI users from unnecessarily installing packages that are only required to develop, build, or document the library.
+
+The runtime dependency set now contains only packages required by BSUI itself.
+
+## Documentation Sandbox
+
+The documentation Sandbox dependency has been updated to use:
+
+```json
+"@promethey/bsui": "latest"
+```
+
+This allows the Sandbox to use the latest compatible BSUI release within the `1.x` version range while maintaining compatibility with the minimum supported version.
+
+As new compatible versions of BSUI are published, the documentation environment can resolve them without requiring a hardcoded package version.
+
+## Package Improvements
+
+The published package now has a cleaner dependency structure:
+
+- Runtime dependencies remain in `dependencies`.
+- Documentation and development tooling are kept in `devDependencies`.
+- Consumers no longer need to install Docusaurus, Sandpack, Prettier, or other documentation tooling as part of BSUI.
+
+This makes the package installation smaller and more focused on the actual component library.
+
+## Maintenance
+
+Additional improvements include:
+
+- Cleaned up package dependency configuration.
+- Improved dependency boundaries between the library and documentation project.
+- Improved the development and documentation workflow.
+- Updated Sandbox package resolution.
+
+BSUI v1.2.1 is a maintenance release that keeps the package leaner for consumers while making the documentation environment easier to maintain.
+
+## Links
+
+- [GitHub Release](https://github.com/promethey/bsui/releases/tag/v1.2.1)
+- [npm Package](https://www.npmjs.com/package/@promethey/bsui)
+- [Documentation](https://promethey.github.io/bsui/)
+- [Storybook](https://promethey.github.io/bsui/storybook/)
