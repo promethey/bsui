@@ -22,6 +22,12 @@ The format is based on Keep a Changelog and Semantic Versioning.
 
 -
 
+## [1.2.4] - 2026-08-08
+
+### Fixed
+
+- Corrected package version Sandbox for `@promethey/bsui`.
+
 ## [1.2.3] - 2026-08-08
 
 ### Fixed
