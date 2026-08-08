@@ -17,7 +17,7 @@ import { Accordion } from "@promethey/bsui";
 >
 > `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
 
-## Basic Usage
+## Basic usage
 
 ```jsx live
 import { Accordion } from "@promethey/bsui";
@@ -26,16 +26,13 @@ export default function Basic() {
   return (
     <Accordion defaultActiveKey="1">
       <Accordion.Item itemKey="1">
-        <Accordion.Header>Item #1</Accordion.Header>
-
+        <Accordion.Header>Accordion Item #1</Accordion.Header>
         <Accordion.Body>
           This is the first accordion item content.
         </Accordion.Body>
       </Accordion.Item>
-
       <Accordion.Item itemKey="2">
-        <Accordion.Header>Item #2</Accordion.Header>
-
+        <Accordion.Header>Accordion Item #2</Accordion.Header>
         <Accordion.Body>
           This is the second accordion item content.
         </Accordion.Body>
@@ -45,7 +42,7 @@ export default function Basic() {
 }
 ```
 
-## Default Active Item
+## Default active item
 
 Use `defaultActiveKey` to specify which item should be expanded initially.
 
@@ -57,13 +54,10 @@ export default function DefaultActive() {
     <Accordion defaultActiveKey="2">
       <Accordion.Item itemKey="1">
         <Accordion.Header>First item</Accordion.Header>
-
         <Accordion.Body>First item content.</Accordion.Body>
       </Accordion.Item>
-
       <Accordion.Item itemKey="2">
         <Accordion.Header>Second item</Accordion.Header>
-
         <Accordion.Body>
           Second item content is expanded by default.
         </Accordion.Body>
@@ -73,7 +67,7 @@ export default function DefaultActive() {
 }
 ```
 
-## Multiple Open Items
+## Multiple open items
 
 Enable multiple expanded panels with the `alwaysOpen` prop.
 
@@ -84,14 +78,11 @@ export default function AlwaysOpen() {
   return (
     <Accordion alwaysOpen defaultActiveKey={["1", "2"]}>
       <Accordion.Item itemKey="1">
-        <Accordion.Header>Item #1</Accordion.Header>
-
+        <Accordion.Header>Accordion Item #1</Accordion.Header>
         <Accordion.Body>This item is expanded.</Accordion.Body>
       </Accordion.Item>
-
       <Accordion.Item itemKey="2">
-        <Accordion.Header>Item #2</Accordion.Header>
-
+        <Accordion.Header>Accordion Item #2</Accordion.Header>
         <Accordion.Body>This item is also expanded.</Accordion.Body>
       </Accordion.Item>
     </Accordion>
@@ -111,7 +102,6 @@ export default function Flush() {
     <Accordion flush defaultActiveKey="1">
       <Accordion.Item itemKey="1">
         <Accordion.Header>Flush accordion</Accordion.Header>
-
         <Accordion.Body>
           The default accordion styling has been removed.
         </Accordion.Body>
@@ -121,7 +111,7 @@ export default function Flush() {
 }
 ```
 
-## Disabled Item
+## Disabled item
 
 Disable interaction for specific accordion sections using the `disabled` prop.
 
@@ -133,13 +123,10 @@ export default function Disabled() {
     <Accordion>
       <Accordion.Item itemKey="1">
         <Accordion.Header>Active item</Accordion.Header>
-
         <Accordion.Body>This section can be expanded.</Accordion.Body>
       </Accordion.Item>
-
       <Accordion.Item itemKey="2" disabled>
         <Accordion.Header>Disabled item</Accordion.Header>
-
         <Accordion.Body>This section cannot be expanded.</Accordion.Body>
       </Accordion.Item>
     </Accordion>
@@ -147,7 +134,7 @@ export default function Disabled() {
 }
 ```
 
-## Utility Props
+## Utility props
 
 All utility props provided by `Prime` are supported.
 
@@ -159,8 +146,7 @@ export default function Utilities() {
     <Accordion shadow="lg" rounded={3} mt={3}>
       <Accordion.Item itemKey="1">
         <Accordion.Header>Utility props work on accordion.</Accordion.Header>
-
-        <Accordion.Body>
+        <Accordion.Body fw="bolder" fst="italic">
           Accordion supports Prime styling utilities.
         </Accordion.Body>
       </Accordion.Item>

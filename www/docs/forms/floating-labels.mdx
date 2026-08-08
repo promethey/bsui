@@ -3,7 +3,7 @@ title: Floating label
 description: Create Bootstrap floating labels for form controls with automatic control ID handling and Prime utility support.
 ---
 
-# FloatingLabel
+# Floating label
 
 The `FloatingLabel` component provides Bootstrap floating label support for form controls. It automatically connects the label with the wrapped control, generates a unique `id` when needed, and preserves all utility props inherited from the `Prime` component.
 
@@ -95,7 +95,6 @@ export default function Multiple() {
       <FloatingLabel label="First name">
         <Control type="text" placeholder="John" />
       </FloatingLabel>
-
       <FloatingLabel label="Last name">
         <Control type="text" placeholder="Doe" />
       </FloatingLabel>
@@ -131,33 +130,4 @@ export default function GeneratedId() {
     </FloatingLabel>
   );
 }
-```
-
-### Label Association
-
-The generated or provided control `id` is automatically assigned to the label's `htmlFor` attribute.
-
-Equivalent HTML output:
-
-```html
-<div class="form-floating">
-  <input id="example-id" />
-  <label for="example-id"> Label text </label>
-</div>
-```
-
-## Requirements
-
-For Bootstrap floating labels to work correctly:
-
-- The child component must render a native form control.
-- The control must support the `placeholder` attribute.
-- The placeholder value should not be empty.
-
-Example:
-
-```jsx
-<FloatingLabel label="Email">
-  <Control type="email" placeholder="name@example.com" />
-</FloatingLabel>
 ```

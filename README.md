@@ -22,12 +22,12 @@
 ## Features
 
 - Bootstrap 5 Components
-- Validated Bootstrap Utility Props
-- Consistent Component API
-- Bootstrap-Compatible Architecture
-- Zero Bootstrap JavaScript Dependency
-- JSDoc-Powered IntelliSense
-- Interactive Documentation
+- Validated utility props
+- Consistent component API
+- Bootstrap-compatible architecture
+- No Bootstrap JavaScript dependency
+- JSDoc-powered IntelliSense
+- Interactive documentation
 
 ## Installation
 
