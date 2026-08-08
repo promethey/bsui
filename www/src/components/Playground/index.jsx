@@ -35,7 +35,7 @@ function Playground({ children, height = 340 }) {
           react: "^19.2.0",
           "react-dom": "^19.2.0",
           bootstrap: "5.1.3",
-          "@promethey/bsui": "1.1.2",
+          "@promethey/bsui": "latest",
         },
       }}
       files={{
