@@ -1,0 +1,39 @@
+---
+slug: release-v1-2-2
+title: v1.2.2
+authors: [promethey]
+tags:
+  - release
+  - patch
+  - bsui
+date: 2026-08-10
+---
+
+Today we are releasing **BSUI v1.2.2**, a small patch release focused on improving the reliability of the interactive Sandbox.
+
+This release contains a targeted fix to the Sandbox dependency configuration, ensuring that the documentation environment uses a stable BSUI version instead of resolving the `latest` dist-tag.
+
+{/* truncate */}
+
+## Overview
+
+BSUI v1.2.2 includes:
+
+- Fixed Sandbox dependency resolution.
+- Updated the Sandbox to use a stable BSUI version.
+- Improved the reliability of interactive documentation examples.
+
+## Fixed
+
+### Sandbox
+
+Updated the Sandbox dependency configuration to use a specific compatible BSUI version instead of `latest`.
+
+This prevents dependency resolution issues that could cause the Sandbox to hang while initializing.
+
+## Links
+
+- [GitHub Release](https://github.com/promethey/bsui/releases/tag/v1.2.2)
+- [npm Package](https://www.npmjs.com/package/@promethey/bsui)
+- [Documentation](https://promethey.github.io/bsui/)
+- [Storybook](https://promethey.github.io/bsui/storybook/)

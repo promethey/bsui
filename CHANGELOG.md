@@ -22,6 +22,12 @@ The format is based on Keep a Changelog and Semantic Versioning.
 
 -
 
+## [1.2.2] - 2026-08-08
+
+### Fixed
+
+- Fixed the Sandbox dependency configuration to use a stable BSUI version instead of resolving `1.2.2`.
+
 ## [1.2.1] - 2026-08-08
 
 ### Changed
