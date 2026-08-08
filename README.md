@@ -5,12 +5,9 @@
 
 <p align="center">
   <img src="https://img.shields.io/github/license/promethey/bsui" alt="License">
-  <img src="https://img.shields.io/badge/node-24-339933?logo=node.js">
-  <img src="https://img.shields.io/badge/react-19-61DAFB?logo=react">
   <img src="https://img.shields.io/badge/bootstrap-5.1.3-7952B3?logo=bootstrap">
   <img src="https://img.shields.io/npm/v/@promethey/bsui.svg" alt="npm">
   <img src="https://github.com/promethey/bsui/actions/workflows/ci.yml/badge.svg" alt="CI">
-  <img src="https://github.com/promethey/bsui/actions/workflows/deploy-docs.yml/badge.svg" alt="Documentation Deploy">
   <img src="https://img.shields.io/badge/Storybook-Live-FF4785?logo=storybook&logoColor=white" alt="Storybook">
 </p>
 
@@ -18,18 +15,19 @@
 
 # BSUI
 
-Modern Bootstrap component system for React applications. Build Bootstrap 5 applications with composable React components, utility props, and JSDoc-powered IntelliSense.
+**Modern Bootstrap component system for React applications. Build Bootstrap 5 applications with composable React components, utility props, and JSDoc-powered IntelliSense.**
 
 </div>
 
 ## Features
 
-- React components built with Bootstrap 5.
-- Consistent component APIs across the library.
-- Bootstrap utility classes through component props.
-- JSDoc-powered IntelliSense without TypeScript.
-- Fully documented components with interactive examples.
-- No dependency on Bootstrap JavaScript.
+- Bootstrap 5 Components
+- Validated utility props
+- Consistent component API
+- Bootstrap-compatible architecture
+- No Bootstrap JavaScript dependency
+- JSDoc-powered IntelliSense
+- Interactive documentation
 
 ## Installation
 
@@ -38,15 +36,19 @@ Requirements:
 - React 19+
 - Bootstrap 5.1.3
 
+Install BSUI:
+
 ```bash
 npm i @promethey/bsui
 ```
 
-Import Bootstrap styles in your project:
+Install Bootstrap:
 
 ```bash
 npm i bootstrap
 ```
+
+Import Bootstrap styles in your application entry point:
 
 ```js
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -55,6 +57,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 ### Usage
 
 ```jsx
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "@promethey/bsui";
 
 export function Example() {
@@ -64,50 +67,52 @@ export function Example() {
     </Button>
   );
 }
-
-/**
- * <button class="btn btn-primary btn-lg">
- *    Hello BSUI
- * </button>
- */
 ```
 
-## Prime Architecture
+## Prime-Based Architecture
 
-Every public component is built on top of the `Prime` primitive.
+Every BSUI component is built on top of `Prime`, the
+foundation component of the library.
 
-Prime provides:
-
-- polymorphic rendering
-- utility props
-- HTML attributes
-- shared API
+Bootstrap utility props, responsive object syntax,
+and common styling capabilities are inherited by every
+BSUI component through the `Prime` foundation.
 
 ```jsx
-<Prime as="button" m={2} px={3} fw="bold" />
-
-// <button class="m-2 px-3 fw-bold" />
-```
-
-## Utility Props
-
-Every component is built on top of `Prime`, so all utility props are available everywhere.
-
-```jsx
-<Prime d={{ xs: "block", md: "flex" }} mt={3} />
-
-// <div class="d-block d-md-flex" mt-3 />
+<Prime
+  d="flex"
+  bg={{ color: "primary", opacity: 75 }}
+  text={{ color: "light", align: "start" }}
+  flex={{ justifyContent: "center", alignItems: "end" }}
+  mt={{ xs: 3, md: 0 }}
+/>
 ```
 
 ```jsx
-<Button d={{ xs: "block", md: "flex" }} mt={3} />
-
-// <button class="btn btn-primary d-block d-md-flex mt-3" />
+<Card
+  d="flex"
+  bg={{ color: "primary", opacity: 75 }}
+  text={{ color: "light", align: "start" }}
+  flex={{ justifyContent: "center", alignItems: "start" }}
+  mt={{ xs: 3, md: 0 }}>
+  <Card.Body>
+    <Card.Title fw="bolder" mb={1}>
+      Card title
+    </Card.Title>
+    <Card.Text>Some quick example text</Card.Text>
+  </Card.Body>
+</Card>
 ```
 
-## Type Safety without TypeScript
+Whether working with `Card`, `Button`, `Navbar`, or any other component,
+the same `Prime` API is available throughout the library.
 
-Write React components with strong editor support without adding TypeScript to your project.
+As a result, developers learn the `Prime` API once and use
+the same patterns consistently throughout the library.
+
+## Developer Experience without TypeScript
+
+Build React applications with rich editor support without requiring TypeScript.
 
 BSUI combines JSDoc annotations and PropTypes to provide:
 
@@ -117,6 +122,15 @@ BSUI combines JSDoc annotations and PropTypes to provide:
 - Runtime prop validation
 - No additional TypeScript tooling required
 
+<img src="./public/autocomplete.png" alt="Autocomplete suggestions for the tone prop" />
+
+Autocomplete provides valid values directly in the editor.
+
+<img src="./public/typecheck.png" alt="Editor diagnostics for an invalid tone value" />
+
+Invalid prop values are detected during development
+with detailed editor diagnostics.
+
 ## Why tone?
 
 BSUI uses the `tone` prop to control the visual appearance of components.
@@ -124,31 +138,18 @@ BSUI uses the `tone` prop to control the visual appearance of components.
 Unlike `variant`, the name **tone** is shorter, easier to type, and better reflects the semantic purpose of the prop.
 
 ```jsx
-<Button tone="primary" />
-
-// <button class="btn btn-primary" />
-```
-
-```jsx
 <Alert tone="danger" />
-
-// <div class="alert alert-danger" />
+<Button tone="primary" />
+<Navbar tone="dark" />
 ```
 
-The same API is shared across all components, providing a predictable and consistent developer experience.
+Using a single semantic prop across the component library provides a more consistent and predictable API.
 
 ## External Libraries
 
 - [React Transition Group](https://reactcommunity.org/react-transition-group/) - animations and transitions
 - [Embla Carousel](https://www.embla-carousel.com/) - carousel engine
 - [Floating UI](https://floating-ui.com/) - dropdowns, tooltips, popovers, and positioning
-
-## Components
-
-BSUI currently provides 30+ Bootstrap-compatible components.
-
-See the full component list and compatibility matrix in
-[Components](COMPONENTS.md).
 
 ## Contributing
 

@@ -1,14 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { Select } from "components";
+import { Form } from "components";
 
-describe("Select", () => {
+describe("Form.Select", () => {
   it("renders select element", () => {
     render(
-      <Select>
-        <Select.Option value="1">Option 1</Select.Option>
-      </Select>,
+      <Form.Select>
+        <Form.Select.Option value="1">Option 1</Form.Select.Option>
+      </Form.Select>,
     );
 
     expect(screen.getByRole("combobox")).toBeInTheDocument();
@@ -16,10 +16,10 @@ describe("Select", () => {
 
   it("renders options", () => {
     render(
-      <Select>
-        <Select.Option value="1">Option 1</Select.Option>
-        <Select.Option value="2">Option 2</Select.Option>
-      </Select>,
+      <Form.Select>
+        <Form.Select.Option value="1">Option 1</Form.Select.Option>
+        <Form.Select.Option value="2">Option 2</Form.Select.Option>
+      </Form.Select>,
     );
 
     expect(
@@ -32,9 +32,9 @@ describe("Select", () => {
 
   it("applies bootstrap size class", () => {
     render(
-      <Select size="lg">
-        <Select.Option value="1">Option 1</Select.Option>
-      </Select>,
+      <Form.Select size="lg">
+        <Form.Select.Option value="1">Option 1</Form.Select.Option>
+      </Form.Select>,
     );
 
     expect(screen.getByRole("combobox")).toHaveClass("form-select-lg");
@@ -42,9 +42,9 @@ describe("Select", () => {
 
   it("supports disabled state", () => {
     render(
-      <Select disabled>
-        <Select.Option value="1">Option 1</Select.Option>
-      </Select>,
+      <Form.Select disabled>
+        <Form.Select.Option value="1">Option 1</Form.Select.Option>
+      </Form.Select>,
     );
 
     expect(screen.getByRole("combobox")).toBeDisabled();
@@ -52,9 +52,9 @@ describe("Select", () => {
 
   it("supports required state", () => {
     render(
-      <Select required>
-        <Select.Option value="1">Option 1</Select.Option>
-      </Select>,
+      <Form.Select required>
+        <Form.Select.Option value="1">Option 1</Form.Select.Option>
+      </Form.Select>,
     );
 
     expect(screen.getByRole("combobox")).toBeRequired();
@@ -62,10 +62,10 @@ describe("Select", () => {
 
   it("supports controlled value", () => {
     render(
-      <Select value="2" onChange={() => {}}>
-        <Select.Option value="1">Option 1</Select.Option>
-        <Select.Option value="2">Option 2</Select.Option>
-      </Select>,
+      <Form.Select value="2" onChange={() => {}}>
+        <Form.Select.Option value="1">Option 1</Form.Select.Option>
+        <Form.Select.Option value="2">Option 2</Form.Select.Option>
+      </Form.Select>,
     );
 
     expect(screen.getByRole("combobox")).toHaveValue("2");
@@ -76,10 +76,10 @@ describe("Select", () => {
     const handleChange = vi.fn();
 
     render(
-      <Select onChange={handleChange}>
-        <Select.Option value="1">Option 1</Select.Option>
-        <Select.Option value="2">Option 2</Select.Option>
-      </Select>,
+      <Form.Select onChange={handleChange}>
+        <Form.Select.Option value="1">Option 1</Form.Select.Option>
+        <Form.Select.Option value="2">Option 2</Form.Select.Option>
+      </Form.Select>,
     );
 
     await user.selectOptions(screen.getByRole("combobox"), "2");
@@ -92,9 +92,9 @@ describe("Select", () => {
     const handleFocus = vi.fn();
 
     render(
-      <Select onFocus={handleFocus}>
-        <Select.Option value="1">Option 1</Select.Option>
-      </Select>,
+      <Form.Select onFocus={handleFocus}>
+        <Form.Select.Option value="1">Option 1</Form.Select.Option>
+      </Form.Select>,
     );
 
     await user.tab();
@@ -108,9 +108,9 @@ describe("Select", () => {
 
     render(
       <>
-        <Select onBlur={handleBlur}>
-          <Select.Option value="1">Option 1</Select.Option>
-        </Select>
+        <Form.Select onBlur={handleBlur}>
+          <Form.Select.Option value="1">Option 1</Form.Select.Option>
+        </Form.Select>
 
         <button>Next</button>
       </>,
@@ -124,10 +124,10 @@ describe("Select", () => {
 
   it("supports multiple selection", () => {
     render(
-      <Select multiple>
-        <Select.Option value="1">Option 1</Select.Option>
-        <Select.Option value="2">Option 2</Select.Option>
-      </Select>,
+      <Form.Select multiple>
+        <Form.Select.Option value="1">Option 1</Form.Select.Option>
+        <Form.Select.Option value="2">Option 2</Form.Select.Option>
+      </Form.Select>,
     );
 
     expect(screen.getByRole("listbox")).toHaveAttribute("multiple");
@@ -135,9 +135,9 @@ describe("Select", () => {
 
   it("supports visibleOptions", () => {
     render(
-      <Select visibleOptions={5}>
-        <Select.Option value="1">Option 1</Select.Option>
-      </Select>,
+      <Form.Select visibleOptions={5}>
+        <Form.Select.Option value="1">Option 1</Form.Select.Option>
+      </Form.Select>,
     );
 
     expect(screen.getByRole("listbox")).toHaveAttribute("size", "5");
@@ -146,7 +146,7 @@ describe("Select", () => {
   it("renders option", () => {
     render(
       <select>
-        <Select.Option value="1">Option 1</Select.Option>
+        <Form.Select.Option value="1">Option 1</Form.Select.Option>
       </select>,
     );
 
@@ -156,7 +156,7 @@ describe("Select", () => {
   it("sets value", () => {
     render(
       <select>
-        <Select.Option value="1">Option 1</Select.Option>
+        <Form.Select.Option value="1">Option 1</Form.Select.Option>
       </select>,
     );
 
@@ -166,9 +166,9 @@ describe("Select", () => {
   it("passes custom className", () => {
     render(
       <select>
-        <Select.Option value="1" className="custom-option">
+        <Form.Select.Option value="1" className="custom-option">
           Option 1
-        </Select.Option>
+        </Form.Select.Option>
       </select>,
     );
 

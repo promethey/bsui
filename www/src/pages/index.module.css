@@ -4,9 +4,9 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 15% 15%, #a855f7 0%, transparent 35%),
-    radial-gradient(circle at 85% 80%, #38bdf8 0%, transparent 35%), #ffffff;
-  color: black;
+    radial-gradient(circle at 0% 0%, #8b5cf6 0%, transparent 45%),
+    radial-gradient(circle at 100% 100%, #06b6d4 0%, transparent 45%), #ffffff;
+  color: black !important;
 }
 
 [data-theme="dark"] .heroBanner {
@@ -14,7 +14,7 @@
     radial-gradient(circle at top left, #8b5cf6 0%, transparent 45%),
     radial-gradient(circle at bottom right, #60a5fa 0%, transparent 40%),
     #18181b;
-  color: white;
+  color: white !important;
 }
 
 @media screen and (max-width: 996px) {

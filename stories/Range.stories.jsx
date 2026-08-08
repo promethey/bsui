@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Range, Prime, Control, Button } from "../src/components";
+import { Form, Prime, Button } from "../src/components";
 
 export default {
   title: "Form/Range",
-  component: Range,
+  component: Form.Range,
   subcomponents: {
     Prime,
   },
@@ -18,7 +18,7 @@ export default {
 };
 
 export function Default() {
-  return <Range />;
+  return <Form.Range />;
 }
 
 export function Contollable() {
@@ -41,14 +41,14 @@ export function Contollable() {
   return (
     <>
       <Prime d="flex" flex="center">
-        <Range
+        <Form.Range
           min={min}
           max={max}
           step={step}
           value={value}
           onChange={handleChange}
         />
-        <Control
+        <Form.Control
           text={{ align: "center" }}
           ms={3}
           value={value}
@@ -64,14 +64,14 @@ export function Contollable() {
 }
 
 export function Disabled() {
-  return <Range disabled />;
+  return <Form.Range disabled />;
 }
 
 export function MinAndMax() {
-  return <Range min={0} max={5} />;
+  return <Form.Range min={0} max={5} />;
 }
 MinAndMax.storyName = "Min and max";
 
 export function Steps() {
-  return <Range min={0} max={5} step={0.5} />;
+  return <Form.Range min={0} max={5} step={0.5} />;
 }

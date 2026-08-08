@@ -19,7 +19,7 @@ import { Card } from "@promethey/bsui";
 >
 > `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
 
-## Basic Usage
+## Basic usage
 
 ```jsx live
 import { Card } from "@promethey/bsui";
@@ -39,8 +39,6 @@ export default function BasicCard() {
   );
 }
 ```
-
----
 
 ## Images
 
@@ -70,7 +68,7 @@ export default function CardImageExample() {
 }
 ```
 
-## Bottom Image
+## Bottom image
 
 Use the `placement` prop to move the image below the content.
 
@@ -96,33 +94,7 @@ export default function BottomImage() {
 }
 ```
 
----
-
-## Header & Footer
-
-Cards may include optional header and footer sections.
-
-```jsx live
-import { Card } from "@promethey/bsui";
-
-export default function HeaderFooter() {
-  return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Header>Featured</Card.Header>
-
-      <Card.Body>
-        <Card.Title>Card title</Card.Title>
-
-        <Card.Text>Supporting text inside the card body.</Card.Text>
-      </Card.Body>
-
-      <Card.Footer text="muted">Last updated 3 mins ago</Card.Footer>
-    </Card>
-  );
-}
-```
-
-## Semantic Headers
+## Semantic headers
 
 The `as` prop allows semantic heading elements.
 
@@ -268,7 +240,7 @@ export default function Links() {
 }
 ```
 
-## Utility Props
+## Utility props
 
 All utility props provided by `Prime` are supported.
 
@@ -295,8 +267,6 @@ export default function Utilities() {
 }
 ```
 
----
-
 ## API
 
 ### Card
@@ -308,8 +278,6 @@ export default function Utilities() {
 | `style`     | `object`      | —       | Inline styles.                   |
 | `as`        | `elementType` | `"div"` | HTML element used for rendering. |
 
----
-
 ### Card.Body
 
 | Prop        | Type          | Default | Description                      |
@@ -318,8 +286,6 @@ export default function Utilities() {
 | `className` | `string`      | —       | Additional CSS classes.          |
 | `style`     | `object`      | —       | Inline styles.                   |
 | `as`        | `elementType` | `"div"` | HTML element used for rendering. |
-
----
 
 ### Card.Header
 
@@ -330,8 +296,6 @@ export default function Utilities() {
 | `style`     | `object`                                                | —       | Inline styles.                   |
 | `as`        | `"div" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"div"` | HTML element used for rendering. |
 
----
-
 ### Card.Footer
 
 | Prop        | Type                                                    | Default | Description                      |
@@ -340,8 +304,6 @@ export default function Utilities() {
 | `className` | `string`                                                | —       | Additional CSS classes.          |
 | `style`     | `object`                                                | —       | Inline styles.                   |
 | `as`        | `"div" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"div"` | HTML element used for rendering. |
-
----
 
 ### Card.Image
 
@@ -353,8 +315,6 @@ export default function Utilities() {
 | `className` | `string`            | —       | Additional CSS classes.          |
 | `style`     | `object`            | —       | Inline styles.                   |
 
----
-
 ### Card.Title
 
 | Prop        | Type                                           | Default | Description                      |
@@ -363,8 +323,6 @@ export default function Utilities() {
 | `className` | `string`                                       | —       | Additional CSS classes.          |
 | `style`     | `object`                                       | —       | Inline styles.                   |
 | `as`        | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h5"`  | HTML element used for rendering. |
-
----
 
 ### Card.Subtitle
 
@@ -375,8 +333,6 @@ export default function Utilities() {
 | `style`     | `object`                                       | —       | Inline styles.                   |
 | `as`        | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h6"`  | HTML element used for rendering. |
 
----
-
 ### Card.Text
 
 | Prop        | Type        | Default | Description             |
@@ -384,8 +340,6 @@ export default function Utilities() {
 | `children`  | `ReactNode` | —       | Text content.           |
 | `className` | `string`    | —       | Additional CSS classes. |
 | `style`     | `object`    | —       | Inline styles.          |
-
----
 
 ### Card.Link
 
@@ -395,8 +349,6 @@ export default function Utilities() {
 | `to`        | `string`    | `"#"`   | Navigation target.      |
 | `className` | `string`    | —       | Additional CSS classes. |
 | `style`     | `object`    | —       | Inline styles.          |
-
----
 
 ### Card.Group
 

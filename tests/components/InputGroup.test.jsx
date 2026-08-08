@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import { InputGroup } from "components";
+import { Form } from "components";
 
 describe("InputGroup", () => {
   it("renders children", () => {
     render(
-      <InputGroup>
-        <InputGroup.Text>@</InputGroup.Text>
-      </InputGroup>,
+      <Form.InputGroup>
+        <Form.InputGroup.Text>@</Form.InputGroup.Text>
+      </Form.InputGroup>,
     );
 
     expect(screen.getByText("@")).toBeInTheDocument();
@@ -15,9 +15,9 @@ describe("InputGroup", () => {
 
   it("applies base class", () => {
     const { container } = render(
-      <InputGroup>
-        <InputGroup.Text>@</InputGroup.Text>
-      </InputGroup>,
+      <Form.InputGroup>
+        <Form.InputGroup.Text>@</Form.InputGroup.Text>
+      </Form.InputGroup>,
     );
 
     expect(container.firstChild).toHaveClass("input-group");
@@ -25,9 +25,9 @@ describe("InputGroup", () => {
 
   it("applies custom className", () => {
     const { container } = render(
-      <InputGroup className="custom-class">
-        <InputGroup.Text>@</InputGroup.Text>
-      </InputGroup>,
+      <Form.InputGroup className="custom-class">
+        <Form.InputGroup.Text>@</Form.InputGroup.Text>
+      </Form.InputGroup>,
     );
 
     expect(container.firstChild).toHaveClass("custom-class");
@@ -35,9 +35,9 @@ describe("InputGroup", () => {
 
   it("applies small size class", () => {
     const { container } = render(
-      <InputGroup size="sm">
-        <InputGroup.Text>@</InputGroup.Text>
-      </InputGroup>,
+      <Form.InputGroup size="sm">
+        <Form.InputGroup.Text>@</Form.InputGroup.Text>
+      </Form.InputGroup>,
     );
 
     expect(container.firstChild).toHaveClass("input-group-sm");
@@ -45,9 +45,9 @@ describe("InputGroup", () => {
 
   it("applies large size class", () => {
     const { container } = render(
-      <InputGroup size="lg">
-        <InputGroup.Text>@</InputGroup.Text>
-      </InputGroup>,
+      <Form.InputGroup size="lg">
+        <Form.InputGroup.Text>@</Form.InputGroup.Text>
+      </Form.InputGroup>,
     );
 
     expect(container.firstChild).toHaveClass("input-group-lg");
@@ -55,46 +55,48 @@ describe("InputGroup", () => {
 
   it("forwards additional props", () => {
     render(
-      <InputGroup data-testid="group">
-        <InputGroup.Text>@</InputGroup.Text>
-      </InputGroup>,
+      <Form.InputGroup data-testid="group">
+        <Form.InputGroup.Text>@</Form.InputGroup.Text>
+      </Form.InputGroup>,
     );
 
     expect(screen.getByTestId("group")).toBeInTheDocument();
   });
 
   it("exposes Text subcomponent", () => {
-    expect(InputGroup.Text).toBeDefined();
+    expect(Form.InputGroup.Text).toBeDefined();
   });
 });
 
 describe("InputGroup.Text", () => {
   it("renders children", () => {
-    render(<InputGroup.Text>$</InputGroup.Text>);
+    render(<Form.InputGroup.Text>$</Form.InputGroup.Text>);
 
     expect(screen.getByText("$")).toBeInTheDocument();
   });
 
   it("renders as span", () => {
-    render(<InputGroup.Text>$</InputGroup.Text>);
+    render(<Form.InputGroup.Text>$</Form.InputGroup.Text>);
 
     expect(screen.getByText("$").tagName).toBe("SPAN");
   });
 
   it("applies base class", () => {
-    render(<InputGroup.Text>$</InputGroup.Text>);
+    render(<Form.InputGroup.Text>$</Form.InputGroup.Text>);
 
     expect(screen.getByText("$")).toHaveClass("input-group-text");
   });
 
   it("applies custom className", () => {
-    render(<InputGroup.Text className="custom-class">$</InputGroup.Text>);
+    render(
+      <Form.InputGroup.Text className="custom-class">$</Form.InputGroup.Text>,
+    );
 
     expect(screen.getByText("$")).toHaveClass("custom-class");
   });
 
   it("forwards additional props", () => {
-    render(<InputGroup.Text data-testid="addon">$</InputGroup.Text>);
+    render(<Form.InputGroup.Text data-testid="addon">$</Form.InputGroup.Text>);
 
     expect(screen.getByTestId("addon")).toBeInTheDocument();
   });

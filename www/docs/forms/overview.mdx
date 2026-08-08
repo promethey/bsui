@@ -1,0 +1,83 @@
+---
+title: Overview
+description: Build flexible and accessible forms with Bootstrap-based BSUI components.
+sidebar_position: 1
+---
+
+# Overview
+
+The `Form` component provides a Bootstrap-based container for building forms with BSUI form controls.
+
+It can be combined with `Form.Label`, `Form.Control`, `Form.Check`, `Form.Text`, and other form components to create structured and accessible forms.
+
+## Import
+
+```jsx
+import { Form } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Form` inherits all utility props supported by the `Prime` component, including spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic usage
+
+A basic form can combine labels, controls, validation or help text, checkboxes, and buttons.
+
+Use `Prime` utility props to control spacing between form elements without introducing additional CSS.
+
+```jsx live
+import { Form, Button, Prime } from "@promethey/bsui";
+
+export default function BasicUsage() {
+  return (
+    <Form>
+      <Prime mb={3}>
+        <Form.Label htmlFor="emailControl">Email address</Form.Label>
+        <Form.Control
+          id="emailControl"
+          type="email"
+          placeholder="example@email.com"
+          aria-describedby="emailHelpBlock"
+        />
+        <Form.Text id="emailHelpBlock">
+          We'll never share your email with anyone else.
+        </Form.Text>
+      </Prime>
+      <Prime mb={3}>
+        <Form.Label htmlFor="passwordControl">Password</Form.Label>
+        <Form.Control id="passwordControl" type="password" />
+      </Prime>
+      <Form.Check label="Check me out" mb={3} />
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+}
+```
+
+## Form text
+
+`Form.Text` displays additional information or guidance associated with a form control.
+
+Use the `id` of `Form.Text` together with `aria-describedby` on the corresponding control to make the help text available to assistive technologies.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function FormText() {
+  return (
+    <Form>
+      <Form.Label htmlFor="passwordControl">Password</Form.Label>
+      <Form.Control
+        id="passwordControl"
+        type="password"
+        aria-describedby="passwordHelpBlock"
+      />
+      <Form.Text id="passwordHelpBlock">
+        Your password must be 8-20 characters long, contain letters and numbers,
+        and must not contain spaces, special characters, or emoji.
+      </Form.Text>
+    </Form>
+  );
+}
+```

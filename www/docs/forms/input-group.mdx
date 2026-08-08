@@ -1,0 +1,223 @@
+---
+title: Input group
+description: Group controls and supplementary content with Bootstrap styling and shared utility props.
+---
+
+# Input group
+
+The `InputGroup` component groups form controls and supplementary content into a single Bootstrap input group. It supports text addons, multiple controls, sizing, and all utility props inherited from `Prime`.
+
+## Import
+
+```jsx
+import { Form } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `InputGroup` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic usage
+
+Use `InputGroup` to combine a `Control` with supplementary content.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Basic() {
+  return (
+    <Form.InputGroup>
+      <Form.InputGroup.Text>@</Form.InputGroup.Text>
+      <Form.Control placeholder="Username" />
+    </Form.InputGroup>
+  );
+}
+```
+
+## Text addon
+
+Use `InputGroup.Text` to render text or other content as an input group addon.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function TextAddon() {
+  return (
+    <Form.InputGroup>
+      <Form.InputGroup.Text>https://</Form.InputGroup.Text>
+      <Form.Control placeholder="example.com" />
+    </Form.InputGroup>
+  );
+}
+```
+
+`InputGroup.Text` can contain text, icons, or other React content.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Content() {
+  return (
+    <Form.InputGroup>
+      <Form.InputGroup.Text>$</Form.InputGroup.Text>
+      <Form.Control type="number" placeholder="Amount" />
+      <Form.InputGroup.Text>.00</Form.InputGroup.Text>
+    </Form.InputGroup>
+  );
+}
+```
+
+## Multiple Controls
+
+An input group can contain multiple controls and addons.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Multiple() {
+  return (
+    <Form.InputGroup>
+      <Form.InputGroup.Text>First and last name</Form.InputGroup.Text>
+      <Form.Control placeholder="First name" />
+      <Form.Control placeholder="Last name" />
+    </Form.InputGroup>
+  );
+}
+```
+
+## Size
+
+Use the `size` prop to change the size of the input group and its child controls.
+
+Supported values are:
+
+- `sm` — small
+- `lg` — large
+
+### Small
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Small() {
+  return (
+    <Form.InputGroup size="sm">
+      <Form.InputGroup.Text>@</Form.InputGroup.Text>
+      <Form.Control placeholder="Username" />
+    </Form.InputGroup>
+  );
+}
+```
+
+### Large
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Large() {
+  return (
+    <Form.InputGroup size="lg">
+      <Form.InputGroup.Text>@</Form.InputGroup.Text>
+      <Form.Control placeholder="Username" />
+    </Form.InputGroup>
+  );
+}
+```
+
+## Button
+
+`InputGroup` can be combined with other BSUI components such as `Button`.
+
+```jsx live
+import { Form, Button } from "@promethey/bsui";
+
+export default function ButtonGroup() {
+  return (
+    <Form.InputGroup>
+      <Form.Control placeholder="Search..." />
+      <Button tone="primary">Search</Button>
+    </Form.InputGroup>
+  );
+}
+```
+
+## Controlled
+
+`Control` can be used as a controlled input inside an `InputGroup`.
+
+```jsx live
+import { useState } from "react";
+import { Form } from "@promethey/bsui";
+
+export default function Controlled() {
+  const [value, setValue] = useState("");
+
+  return (
+    <Form.InputGroup>
+      <Form.InputGroup.Text>Search</Form.InputGroup.Text>
+      <Form.Control
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+        placeholder="Search..."
+      />
+    </Form.InputGroup>
+  );
+}
+```
+
+## Utility props
+
+`InputGroup` inherits all utility props provided by `Prime`.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Utilities() {
+  return (
+    <Form.InputGroup mt={3} shadow="sm" rounded={2}>
+      <Form.InputGroup.Text>Search</Form.InputGroup.Text>
+      <Form.Control placeholder="Enter a search term" />
+    </Form.InputGroup>
+  );
+}
+```
+
+`InputGroup.Text` also supports the utility props provided by `Prime`.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function TextUtilities() {
+  return (
+    <Form.InputGroup>
+      <Form.InputGroup.Text fw="bolder" px={3}>
+        $
+      </Form.InputGroup.Text>
+      <Form.Control type="number" placeholder="Amount" />
+    </Form.InputGroup>
+  );
+}
+```
+
+## API
+
+### InputGroup
+
+| Prop        | Type               | Default | Description                                                  |
+| ----------- | ------------------ | ------- | ------------------------------------------------------------ |
+| `children`  | `ReactNode`        | —       | Content rendered inside the input group.                     |
+| `size`      | `"sm" \| "lg"`     | `null`  | Controls the size of the input group and its child controls. |
+| `className` | `string \| object` | `null`  | Additional class names applied to the root element.          |
+| `style`     | `object`           | `null`  | Inline styles applied to the root element.                   |
+
+`InputGroup` also supports all props provided by `Prime`.
+
+### InputGroup.Text
+
+| Prop        | Type               | Default | Description                                              |
+| ----------- | ------------------ | ------- | -------------------------------------------------------- |
+| `children`  | `ReactNode`        | —       | Text, icons, or other content rendered inside the addon. |
+| `className` | `string \| object` | `null`  | Additional class names applied to the addon.             |
+| `style`     | `object`           | `null`  | Inline styles applied to the addon.                      |
+
+`InputGroup.Text` also supports all props provided by `Prime` and renders a `<span>` element by default.

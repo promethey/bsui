@@ -3,7 +3,7 @@ title: Floating label
 description: Create Bootstrap floating labels for form controls with automatic control ID handling and Prime utility support.
 ---
 
-# FloatingLabel
+# Floating label
 
 The `FloatingLabel` component provides Bootstrap floating label support for form controls. It automatically connects the label with the wrapped control, generates a unique `id` when needed, and preserves all utility props inherited from the `Prime` component.
 
@@ -12,24 +12,23 @@ The wrapped control must support the `id` and `placeholder` attributes for Boots
 ## Import
 
 ```jsx
-import { FloatingLabel } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 ```
 
 > **Note**
 >
 > `FloatingLabel` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
 
-## Basic Usage
+## Basic usage
 
 ```jsx live
-import { FloatingLabel } from "@promethey/bsui";
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Basic() {
   return (
-    <FloatingLabel label="Email address">
-      <Control type="email" placeholder="name@example.com" />
-    </FloatingLabel>
+    <Form.FloatingLabel label="Email address">
+      <Form.Control type="email" placeholder="name@example.com" />
+    </Form.FloatingLabel>
   );
 }
 ```
@@ -39,13 +38,13 @@ export default function Basic() {
 `FloatingLabel` works with regular text inputs.
 
 ```jsx live
-import { FloatingLabel, Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function TextInput() {
   return (
-    <FloatingLabel label="Username">
-      <Control type="text" placeholder="Enter username" />
-    </FloatingLabel>
+    <Form.FloatingLabel label="Username">
+      <Form.Control type="text" placeholder="Enter username" />
+    </Form.FloatingLabel>
   );
 }
 ```
@@ -55,13 +54,13 @@ export default function TextInput() {
 Use `type="password"` for password fields.
 
 ```jsx live
-import { FloatingLabel, Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Password() {
   return (
-    <FloatingLabel label="Password">
-      <Control type="password" placeholder="Enter password" />
-    </FloatingLabel>
+    <Form.FloatingLabel label="Password">
+      <Form.Control type="password" placeholder="Enter password" />
+    </Form.FloatingLabel>
   );
 }
 ```
@@ -71,13 +70,17 @@ export default function Password() {
 The component automatically generates an identifier using `useId`. You can provide your own `id` when required.
 
 ```jsx live
-import { FloatingLabel, Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function CustomId() {
   return (
-    <FloatingLabel label="Email">
-      <Control id="user-email" type="email" placeholder="name@example.com" />
-    </FloatingLabel>
+    <Form.FloatingLabel label="Email">
+      <Form.Control
+        id="user-email"
+        type="email"
+        placeholder="name@example.com"
+      />
+    </Form.FloatingLabel>
   );
 }
 ```
@@ -87,18 +90,17 @@ export default function CustomId() {
 Each control receives its own generated identifier.
 
 ```jsx live
-import { FloatingLabel, Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Multiple() {
   return (
     <>
-      <FloatingLabel label="First name">
-        <Control type="text" placeholder="John" />
-      </FloatingLabel>
-
-      <FloatingLabel label="Last name">
-        <Control type="text" placeholder="Doe" />
-      </FloatingLabel>
+      <Form.FloatingLabel label="First name">
+        <Form.Control type="text" placeholder="John" />
+      </Form.FloatingLabel>
+      <Form.FloatingLabel label="Last name">
+        <Form.Control type="text" placeholder="Doe" />
+      </Form.FloatingLabel>
     </>
   );
 }
@@ -126,38 +128,9 @@ import { FloatingLabel, Control } from "@promethey/bsui";
 
 export default function GeneratedId() {
   return (
-    <FloatingLabel label="Generated identifier">
-      <Control type="text" placeholder="Automatic id" />
-    </FloatingLabel>
+    <Form.FloatingLabel label="Generated identifier">
+      <Form.Control type="text" placeholder="Automatic id" />
+    </Form.FloatingLabel>
   );
 }
-```
-
-### Label Association
-
-The generated or provided control `id` is automatically assigned to the label's `htmlFor` attribute.
-
-Equivalent HTML output:
-
-```html
-<div class="form-floating">
-  <input id="example-id" />
-  <label for="example-id"> Label text </label>
-</div>
-```
-
-## Requirements
-
-For Bootstrap floating labels to work correctly:
-
-- The child component must render a native form control.
-- The control must support the `placeholder` attribute.
-- The placeholder value should not be empty.
-
-Example:
-
-```jsx
-<FloatingLabel label="Email">
-  <Control type="email" placeholder="name@example.com" />
-</FloatingLabel>
 ```

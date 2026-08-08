@@ -1,13 +1,13 @@
 // @ts-nocheck
 import { render, screen } from "@testing-library/react";
-import { FloatingLabel } from "components";
+import { Form } from "components";
 
 describe("FloatingLabel", () => {
   it("renders floating label container", () => {
     const { container } = render(
-      <FloatingLabel label="Email">
+      <Form.FloatingLabel label="Email">
         <input placeholder="Email" />
-      </FloatingLabel>,
+      </Form.FloatingLabel>,
     );
 
     expect(container.firstChild).toHaveClass("form-floating");
@@ -15,9 +15,9 @@ describe("FloatingLabel", () => {
 
   it("renders child control", () => {
     render(
-      <FloatingLabel label="Email">
+      <Form.FloatingLabel label="Email">
         <input placeholder="Email" />
-      </FloatingLabel>,
+      </Form.FloatingLabel>,
     );
 
     expect(screen.getByRole("textbox")).toBeInTheDocument();
@@ -25,9 +25,9 @@ describe("FloatingLabel", () => {
 
   it("renders label", () => {
     render(
-      <FloatingLabel label="Email">
+      <Form.FloatingLabel label="Email">
         <input placeholder="Email" />
-      </FloatingLabel>,
+      </Form.FloatingLabel>,
     );
 
     expect(screen.getByText("Email")).toBeInTheDocument();
@@ -35,9 +35,9 @@ describe("FloatingLabel", () => {
 
   it("applies custom className", () => {
     const { container } = render(
-      <FloatingLabel label="Email" className="custom-class">
+      <Form.FloatingLabel label="Email" className="custom-class">
         <input placeholder="Email" />
-      </FloatingLabel>,
+      </Form.FloatingLabel>,
     );
 
     expect(container.firstChild).toHaveClass("form-floating", "custom-class");
@@ -45,9 +45,9 @@ describe("FloatingLabel", () => {
 
   it("applies custom styles", () => {
     const { container } = render(
-      <FloatingLabel label="Email" style={{ marginTop: "10px" }}>
+      <Form.FloatingLabel label="Email" style={{ marginTop: "10px" }}>
         <input placeholder="Email" />
-      </FloatingLabel>,
+      </Form.FloatingLabel>,
     );
 
     expect(container.firstChild).toHaveStyle({
@@ -57,9 +57,9 @@ describe("FloatingLabel", () => {
 
   it("generates id when child does not provide one", () => {
     render(
-      <FloatingLabel label="Email">
+      <Form.FloatingLabel label="Email">
         <input placeholder="Email" />
-      </FloatingLabel>,
+      </Form.FloatingLabel>,
     );
 
     const input = screen.getByRole("textbox");
@@ -71,9 +71,9 @@ describe("FloatingLabel", () => {
 
   it("uses existing child id", () => {
     render(
-      <FloatingLabel label="Email">
+      <Form.FloatingLabel label="Email">
         <input id="email-input" placeholder="Email" />
-      </FloatingLabel>,
+      </Form.FloatingLabel>,
     );
 
     const input = screen.getByRole("textbox");
@@ -85,9 +85,9 @@ describe("FloatingLabel", () => {
 
   it("links label with control", () => {
     render(
-      <FloatingLabel label="Email">
+      <Form.FloatingLabel label="Email">
         <input id="email" placeholder="Email" />
-      </FloatingLabel>,
+      </Form.FloatingLabel>,
     );
 
     expect(screen.getByLabelText("Email")).toBeInTheDocument();
@@ -95,7 +95,7 @@ describe("FloatingLabel", () => {
 
   it("returns null for invalid child", () => {
     const { container } = render(
-      <FloatingLabel label="Email">{"invalid child"}</FloatingLabel>,
+      <Form.FloatingLabel label="Email">{"invalid child"}</Form.FloatingLabel>,
     );
 
     expect(container.firstChild).toBeNull();

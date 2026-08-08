@@ -5,7 +5,7 @@ import {
   Container,
   Row,
   Col,
-  Control,
+  Form,
   Prime,
 } from "../src/components";
 
@@ -363,11 +363,16 @@ export function Message() {
             <form>
               <Prime mb={3}>
                 <label>Recipient:</label>
-                <Control type="text" defaultValue="@promethey" disabled />
+                <Form.Control type="text" defaultValue="@promethey" disabled />
               </Prime>
               <Prime>
                 <label>Message:</label>
-                <Control ref={messageRef} as="textarea" rows={3} type="text" />
+                <Form.Control
+                  ref={messageRef}
+                  as="textarea"
+                  rows={3}
+                  type="text"
+                />
               </Prime>
             </form>
           </Modal.Body>

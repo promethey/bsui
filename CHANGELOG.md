@@ -22,6 +22,39 @@ The format is based on Keep a Changelog and Semantic Versioning.
 
 -
 
+## [1.1.3] - 2026-08-08
+
+### ⚠️ Breaking Changes
+
+- Form child components are no longer exported from the package root.
+- Direct imports of Form child components are no longer supported and will not be available after this release.
+
+### Added
+
+- Added compound `Form` components for building form interfaces.
+- Added documentation for `InputGroup` and `Label`.
+- Added an interactive Sandbox example to the documentation landing page.
+- Added architecture and API design documentation.
+
+### Changed
+
+- Restructured and cleaned up the Docusaurus documentation.
+- Improved the introduction, installation, usage, and architecture documentation.
+- Improved README content and developer experience.
+- Updated documentation examples to use the `Form` compound component API.
+- Removed Bootstrap Icons from the Storybook setup.
+
+### Fixed
+
+- Fixed Form component imports and Storybook documentation.
+- Fixed Storybook component tests.
+- Fixed the Docusaurus overview page.
+
+### Removed
+
+- Removed direct root-level exports for Form child components.
+- Removed automatic npm package publishing from CI/CD.
+
 ## [1.1.2] - 2026-08-03
 
 ### Added
@@ -119,3 +152,7 @@ The format is based on Keep a Changelog and Semantic Versioning.
 - Replaced `theme` and `variant` with `tone`;
 - Standardized component architecture and public API;
 - Unified JSDoc documentation across components;
+
+```
+
+```

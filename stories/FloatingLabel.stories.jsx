@@ -1,8 +1,8 @@
-import { FloatingLabel, Control, Prime, Select } from "../src/components";
+import { Form, Prime } from "../src/components";
 
 export default {
   title: "Form/FloatingLabel",
-  component: FloatingLabel,
+  component: Form.FloatingLabel,
   subcomponents: {
     Prime,
   },
@@ -18,38 +18,46 @@ export default {
 export function Default() {
   return (
     <>
-      <FloatingLabel label="Email address" mb={3}>
-        <Control id="input_email" type="email" placeholder="name@example.com" />
-      </FloatingLabel>
-      <FloatingLabel label="Password">
-        <Control id="input_password" type="password" placeholder="Password" />
-      </FloatingLabel>
+      <Form.FloatingLabel label="Email address" mb={3}>
+        <Form.Control
+          id="input_email"
+          type="email"
+          placeholder="name@example.com"
+        />
+      </Form.FloatingLabel>
+      <Form.FloatingLabel label="Password">
+        <Form.Control
+          id="input_password"
+          type="password"
+          placeholder="Password"
+        />
+      </Form.FloatingLabel>
     </>
   );
 }
 
 export function Value() {
   return (
-    <FloatingLabel label="Email address">
-      <Control
+    <Form.FloatingLabel label="Email address">
+      <Form.Control
         id="email"
         type="email"
         value="test@example.com"
         placeholder="name@example.com"
       />
-    </FloatingLabel>
+    </Form.FloatingLabel>
   );
 }
 
 export function Selects() {
   return (
-    <FloatingLabel label="Works with selects">
-      <Select defaultValue="">
-        <Select.Option value="">Open this select menu</Select.Option>
-        <Select.Option value="1">One</Select.Option>
-        <Select.Option value="2">Two</Select.Option>
-        <Select.Option value="3">Three</Select.Option>
-      </Select>
-    </FloatingLabel>
+    <Form.FloatingLabel label="Works with selects">
+      <Form.Select defaultValue="">
+        <Form.Select.Option value="">Open this select menu</Form.Select.Option>
+        <Form.Select.Option value="1">One</Form.Select.Option>
+        <Form.Select.Option value="2">Two</Form.Select.Option>
+        <Form.Select.Option value="3">Three</Form.Select.Option>
+      </Form.Select>
+    </Form.FloatingLabel>
   );
 }

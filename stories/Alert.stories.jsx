@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { useState } from "react";
-import { Alert, Button, Prime } from "components";
+import { Alert, Button, Prime } from "../src/components";
 import { capitalize } from "helpers";
 
 export default {
@@ -199,3 +199,5 @@ AdditionalContent.args = {
   ],
 };
 AdditionalContent.storyName = "Additional content";
+
+<Alert flex={{ justifyContent: "" }}>A simple alert—check it out!</Alert>;

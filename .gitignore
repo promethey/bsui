@@ -7,3 +7,4 @@ storybook-static
 out
 *.log
 *.tgz
+.docusaurus/

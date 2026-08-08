@@ -1,0 +1,199 @@
+---
+slug: release-v1-2-0
+title: v1.2.0
+authors: [promethey]
+tags:
+  - release
+  - bsui
+  - react
+date: 2026-08-08
+---
+
+Today we are releasing **BSUI v1.2.0**, a significant update focused on improving the Form component architecture, documentation experience, and overall developer workflow.
+
+This release introduces a new compound `Form` API, a substantially reorganized documentation site, an interactive Sandbox on the landing page, improved Storybook integration, and several developer experience improvements.
+
+<iframe
+  width="100%"
+  height="480"
+  src="https://www.youtube.com/embed/uSu6tcbMOu0"
+  frameborder="0"
+  title="BSUI v1.2.0 Release"
+  allowfullscreen
+/>
+
+> **Important:** v1.2.0 introduces a breaking change to the Form API. Form child components are no longer exported directly from the package root. Existing applications using direct imports should migrate to the new compound `Form` API.
+
+{/* truncate */}
+
+## Overview
+
+BSUI v1.2.0 includes:
+
+- Introduced the compound `Form` component API.
+- Moved Form child components under the `Form` namespace.
+- Added and improved documentation for Form components, including `InputGroup` and `Label`.
+- Reorganized and cleaned up the entire Docusaurus documentation.
+- Added an interactive Sandbox to the documentation landing page.
+- Added architecture and API design documentation.
+- Improved Storybook documentation and component tests.
+- Removed automatic npm publishing from CI/CD.
+
+## Breaking Changes
+
+### Form Compound API
+
+Form child components are no longer exported directly from the package root.
+
+The following import pattern is no longer supported:
+
+```jsx
+import { Form, Label, Control, Check, Select } from "@promethey/bsui";
+```
+
+Use the compound `Form` API instead:
+
+```jsx
+import { Form } from "@promethey/bsui";
+
+<Form.Label htmlFor="email">Email</Form.Label>
+<Form.Control id="email" />
+<Form.Check label="Remember me" />
+<Form.Select />
+```
+
+The following components are now accessed through `Form`:
+
+- `Form.Label`
+- `Form.Control`
+- `Form.Check`
+- `Form.Range`
+- `Form.Select`
+- `Form.FloatingLabel`
+- `Form.InputGroup`
+- `Form.Text`
+
+This change keeps the root package API smaller and makes the relationship between the `Form` container and its child components explicit.
+
+### Migration
+
+If your application currently imports Form child components directly, update your imports when upgrading to v1.2.0.
+
+**Before:**
+
+```jsx
+import { Label, Control, Check } from "@promethey/bsui";
+```
+
+**After:**
+
+```jsx
+import { Form } from "@promethey/bsui";
+```
+
+Then replace direct component usage:
+
+```jsx
+<Label />
+<Control />
+<Check />
+```
+
+with:
+
+```jsx
+<Form.Label />
+<Form.Control />
+<Form.Check />
+```
+
+## Form Improvements
+
+The new compound component API provides a more structured approach to building forms with BSUI.
+
+Form controls can now be discovered directly through the `Form` component, resulting in a more cohesive API:
+
+```jsx
+<Form>
+  <Form.Label htmlFor="email">Email address</Form.Label>
+  <Form.Control id="email" type="email" placeholder="example@email.com" />
+  <Form.Check label="Remember me" />
+</Form>
+```
+
+This API is also reflected throughout the documentation and Storybook examples.
+
+## Documentation
+
+v1.2.0 includes a major restructuring of the Docusaurus documentation.
+
+The documentation has been reviewed and reorganized to improve consistency, navigation, and discoverability.
+
+Improvements include:
+
+- Restructured documentation sections.
+- Cleaner component documentation.
+- Improved installation and usage guides.
+- Updated Form documentation.
+- Consistent examples across the documentation.
+- Added architecture and API design documentation.
+- Improved overview and navigation pages.
+- Updated README and project documentation.
+
+The documentation now follows the same component organization and API conventions as the library itself.
+
+## Interactive Sandbox
+
+The documentation landing page now includes an interactive Sandbox demonstrating BSUI components in a live React environment.
+
+The Sandbox provides an immediate way to explore the library, inspect examples, and understand how BSUI components can be composed together.
+
+## Storybook
+
+Storybook has also been updated to reflect the new API and documentation structure.
+
+Changes include:
+
+- Updated Form stories to use compound components.
+- Improved component documentation.
+- Fixed component tests.
+- Removed the unnecessary Bootstrap Icons dependency.
+- Improved consistency between Storybook and Docusaurus examples.
+
+## Developer Experience
+
+This release includes several improvements to the development and release workflow.
+
+### Documentation
+
+The README, introduction, installation documentation, architecture documentation, and API documentation have all been improved and made more consistent.
+
+### Testing
+
+Component tests have been updated and fixed to reflect the current component API.
+
+### Release Workflow
+
+Automatic npm publishing has been removed from CI/CD.
+
+npm releases are now published manually, providing greater control over package versions and release timing.
+
+## Maintenance
+
+Additional fixes and cleanup include:
+
+- Fixed Form component imports after restructuring the Form API.
+- Updated Storybook documentation after the Form API changes.
+- Fixed the Docusaurus overview page.
+- Cleaned up documentation structure and navigation.
+- Updated examples to use the current public API.
+- Removed unnecessary Storybook dependencies.
+
+BSUI v1.2.0 represents an important step toward a more consistent and maintainable component architecture. The new compound Form API, improved documentation, and enhanced development workflow provide a stronger foundation for future BSUI releases.
+
+## Links
+
+- [GitHub Release](https://github.com/promethey/bsui/releases/tag/v1.2.0)
+- [npm Package](https://www.npmjs.com/package/@promethey/bsui)
+- [Documentation](https://promethey.github.io/bsui/)
+- [Storybook](https://promethey.github.io/bsui/storybook/)

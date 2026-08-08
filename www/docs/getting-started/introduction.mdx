@@ -5,20 +5,25 @@ sidebar_position: 1
 
 # Introduction
 
-BSUI is a modern React component system built on Bootstrap 5.
+## What is BSUI?
 
-It provides reusable components with a consistent API, utility props, and the flexibility of the Bootstrap ecosystem.
+**BSUI** (<i><strong>B</strong>oot<strong>S</strong>trap <strong>U</strong>ser <strong>I</strong>nterface</i>, pronounced /ˌbiː ˌɛs ˌjuː ˈaɪ/)
+is an open-source component system for building React applications with Bootstrap 5.
+
+BSUI provides composable React components, a consistent component API, Bootstrap utility
+props, and JSDoc-based IntelliSense support. The library is designed to simplify the
+development of Bootstrap-based interfaces while preserving Bootstrap's conventions
+and utility system.
 
 ## Features
 
-BSUI provides:
-
-- React components built with Bootstrap 5.
-- Consistent component APIs across the library.
-- Bootstrap utility classes through component props.
-- JSDoc-powered IntelliSense without TypeScript.
-- Fully documented components with interactive examples.
-- No dependency on Bootstrap JavaScript.
+- Bootstrap 5 Components
+- Validated utility props
+- Consistent component API
+- Bootstrap-compatible architecture
+- No Bootstrap JavaScript dependency
+- JSDoc-powered IntelliSense
+- Interactive documentation
 
 ## Requirements
 
@@ -41,11 +46,10 @@ Import Bootstrap styles in your application entry point:
 import "bootstrap/dist/css/bootstrap.min.css";
 ```
 
-## Basic Usage
-
-Import components directly from BSUI:
+## Usage
 
 ```jsx live
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "@promethey/bsui";
 
 export default function App() {

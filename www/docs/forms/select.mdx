@@ -1,0 +1,312 @@
+---
+title: Select
+description: Render Bootstrap-styled select controls with single or multiple option selection.
+---
+
+# Select
+
+The `Select` component renders a Bootstrap-styled dropdown control for selecting one or more options.
+
+It supports single and multiple selection, controlled and uncontrolled values, custom sizing, disabled and required states, visible option lists, and all utility props inherited from `Prime`.
+
+Options are defined using the `Select.Option` subcomponent.
+
+## Import
+
+```jsx
+import { Form } from "@promethey/bsui";
+```
+
+> **Note**
+>
+> `Select` inherits all utility props supported by the `Prime` component, including spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
+
+## Basic usage
+
+Use `Select.Option` to define the available options.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Basic() {
+  return (
+    <Form.Select>
+      <Form.Select.Option value="option-1">Option 1</Form.Select.Option>
+      <Form.Select.Option value="option-2">Option 2</Form.Select.Option>
+      <Form.Select.Option value="option-3">Option 3</Form.Select.Option>
+    </Form.Select>
+  );
+}
+```
+
+## Selected option
+
+Use the `selected` prop on `Select.Option` to define the initially selected option.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Selected() {
+  return (
+    <Form.Select>
+      <Form.Select.Option value="option-1">Option 1</Form.Select.Option>
+      <Form.Select.Option value="option-2" selected>
+        Option 2
+      </Form.Select.Option>
+      <Form.Select.Option value="option-3">Option 3</Form.Select.Option>
+    </Form.Select>
+  );
+}
+```
+
+For controlled selects, use the `value` prop on `Select` instead.
+
+## Size
+
+Use the `size` prop to control the visual size of the select.
+
+Supported values are:
+
+- `sm` — small
+- `lg` — large
+
+### Small
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Small() {
+  return (
+    <Form.Select size="sm">
+      <Form.Select.Option value="small">Small select</Form.Select.Option>
+      <Form.Select.Option value="medium">Medium select</Form.Select.Option>
+      <Form.Select.Option value="large">Large select</Form.Select.Option>
+    </Form.Select>
+  );
+}
+```
+
+### Large
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Large() {
+  return (
+    <Form.Select size="lg">
+      <Form.Select.Option value="small">Small select</Form.Select.Option>
+      <Form.Select.Option value="medium">Medium select</Form.Select.Option>
+      <Form.Select.Option value="large">Large select</Form.Select.Option>
+    </Form.Select>
+  );
+}
+```
+
+## Controlled
+
+Use `value` and `onChange` to control the selected value with React state.
+
+```jsx live
+import { useState } from "react";
+import { Form, Prime } from "@promethey/bsui";
+
+export default function Controlled() {
+  const [value, setValue] = useState("react");
+
+  return (
+    <>
+      <Form.Select
+        value={value}
+        onChange={(event) => setValue(event.target.value)}>
+        <Form.Select.Option value="react">React</Form.Select.Option>
+        <Form.Select.Option value="vue">Vue</Form.Select.Option>
+        <Form.Select.Option value="angular">Angular</Form.Select.Option>
+      </Form.Select>
+      <Prime mt={2}>Selected: {value}</Prime>
+    </>
+  );
+}
+```
+
+## Uncontrolled
+
+Use `defaultValue` when the select should manage its own state.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Uncontrolled() {
+  return (
+    <Form.Select defaultValue="react">
+      <Form.Select.Option value="react">React</Form.Select.Option>
+      <Form.Select.Option value="vue">Vue</Form.Select.Option>
+      <Form.Select.Option value="angular">Angular</Form.Select.Option>
+    </Form.Select>
+  );
+}
+```
+
+## Multiple selection
+
+Use the `multiple` prop to allow selecting multiple options.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Multiple() {
+  return (
+    <Form.Select multiple defaultValue={["react", "vue"]}>
+      <Form.Select.Option value="react">React</Form.Select.Option>
+      <Form.Select.Option value="vue">Vue</Form.Select.Option>
+      <Form.Select.Option value="angular">Angular</Form.Select.Option>
+      <Form.Select.Option value="svelte">Svelte</Form.Select.Option>
+    </Form.Select>
+  );
+}
+```
+
+For a multiple select, `value` and `defaultValue` can contain an array of strings.
+
+## Visible options
+
+Use `visibleOptions` to render the select as a list box with multiple visible options.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function VisibleOptions() {
+  return (
+    <Form.Select visibleOptions={4}>
+      <Form.Select.Option value="react">React</Form.Select.Option>
+      <Form.Select.Option value="vue">Vue</Form.Select.Option>
+      <Form.Select.Option value="angular">Angular</Form.Select.Option>
+      <Form.Select.Option value="svelte">Svelte</Form.Select.Option>
+      <Form.Select.Option value="solid">Solid</Form.Select.Option>
+    </Form.Select>
+  );
+}
+```
+
+`visibleOptions` controls the native `size` attribute of the underlying `<select>` element.
+
+## Disabled
+
+Use `disabled` to prevent user interaction.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Disabled() {
+  return (
+    <Form.Select disabled defaultValue="react">
+      <Form.Select.Option value="react">React</Form.Select.Option>
+      <Form.Select.Option value="vue">Vue</Form.Select.Option>
+      <Form.Select.Option value="angular">Angular</Form.Select.Option>
+    </Form.Select>
+  );
+}
+```
+
+## Required
+
+Use `required` when the user must select a value before submitting a form.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Required() {
+  return (
+    <Form.Select required defaultValue="">
+      <Form.Select.Option value="" disabled>
+        Select a framework
+      </Form.Select.Option>
+      <Form.Select.Option value="react">React</Form.Select.Option>
+      <Form.Select.Option value="vue">Vue</Form.Select.Option>
+      <Form.Select.Option value="angular">Angular</Form.Select.Option>
+    </Form.Select>
+  );
+}
+```
+
+## Form example
+
+`Select` can be combined with `Label` and other BSUI form components.
+
+```jsx live
+import { Form, Prime } from "@promethey/bsui";
+
+export default function FormExample() {
+  return (
+    <Form>
+      <Prime mb={3}>
+        <Form.Label htmlFor="framework">Framework</Form.Label>
+        <Form.Select id="framework" defaultValue="react">
+          <Form.Select.Option value="react">React</Form.Select.Option>
+          <Form.Select.Option value="vue">Vue</Form.Select.Option>
+          <Form.Select.Option value="angular">Angular</Form.Select.Option>
+        </Form.Select>
+      </Prime>
+      <>
+        <Form.Label htmlFor="name">Name</Form.Label>
+        <Form.Control id="name" placeholder="Enter your name" />
+      </>
+    </Form>
+  );
+}
+```
+
+## Utility props
+
+All utility props provided by `Prime` are supported.
+
+```jsx live
+import { Form } from "@promethey/bsui";
+
+export default function Utilities() {
+  return (
+    <Form.Select defaultValue="react" mt={3} shadow="sm" rounded={2}>
+      <Form.Select.Option value="react">React</Form.Select.Option>
+      <Form.Select.Option value="vue">Vue</Form.Select.Option>
+      <Form.Select.Option value="angular">Angular</Form.Select.Option>
+    </Form.Select>
+  );
+}
+```
+
+## API
+
+### Select
+
+| Prop             | Type                           | Default | Description                                            |
+| ---------------- | ------------------------------ | ------- | ------------------------------------------------------ |
+| `children`       | `ReactNode`                    | —       | Select options rendered inside the control.            |
+| `size`           | `"sm" \| "lg"`                 | `null`  | Controls the visual size of the select.                |
+| `value`          | `string \| string[]`           | `null`  | Controls the currently selected value or values.       |
+| `defaultValue`   | `string \| string[]`           | `null`  | Sets the initial selected value or values.             |
+| `multiple`       | `boolean`                      | `false` | Allows multiple options to be selected.                |
+| `disabled`       | `boolean`                      | `false` | Prevents user interaction.                             |
+| `required`       | `boolean`                      | `false` | Requires a value before form submission.               |
+| `autoFocus`      | `boolean`                      | `false` | Automatically focuses the select when mounted.         |
+| `name`           | `string`                       | `null`  | Form field name.                                       |
+| `visibleOptions` | `number`                       | `0`     | Number of visible options when rendered as a list box. |
+| `onChange`       | `function`                     | `null`  | Called when the selected value changes.                |
+| `onFocus`        | `function`                     | `null`  | Called when the select receives focus.                 |
+| `onBlur`         | `function`                     | `null`  | Called when the select loses focus.                    |
+| `className`      | `string \| object \| string[]` | `null`  | Additional class names applied to the select.          |
+| `style`          | `object`                       | `null`  | Inline styles applied to the select.                   |
+
+`Select` also supports all props provided by `Prime`.
+
+### Select.Option
+
+`Select.Option` represents an individual selectable option within `Select`.
+
+| Prop        | Type                           | Default | Description                                   |
+| ----------- | ------------------------------ | ------- | --------------------------------------------- |
+| `children`  | `ReactNode`                    | —       | Content displayed for the option.             |
+| `value`     | `string \| string[]`           | —       | Value submitted when the option is selected.  |
+| `selected`  | `boolean`                      | `false` | Marks the option as selected by default.      |
+| `className` | `string \| object \| string[]` | `null`  | Additional class names applied to the option. |
+| `style`     | `object`                       | `null`  | Inline styles applied to the option.          |
+
+`Select.Option` also supports the props provided by `Prime`.

@@ -3,11 +3,9 @@ import {
   Toast,
   Button,
   Prime,
-  Select,
   CloseButton,
   Spinner,
-  Control,
-  Label,
+  Form,
 } from "../src/components";
 import { v4 as uuid } from "uuid";
 
@@ -233,7 +231,7 @@ export function Placement() {
 
   return (
     <>
-      <Select
+      <Form.Select
         value={JSON.stringify(selectedValue)}
         onChange={handleChange}
         mb={3}
@@ -243,7 +241,7 @@ export function Placement() {
             {title}
           </Select.Option>
         ))}
-      </Select>
+      </Form.Select>
       <Prime pos="relative" bg="dark" w={100} style={{ height: "300px" }}>
         <Toast.Container pos="absolute" {...selectedValue} p={3}>
           <Toast open>
@@ -311,7 +309,7 @@ export function Chat() {
   return (
     <>
       <Prime style={{ maxWidth: "400px" }}>
-        <Control
+        <Form.Control
           as="textarea"
           value={messageText}
           onChange={handleChange}

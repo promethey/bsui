@@ -14,8 +14,6 @@ const config = {
   tagline: "Modern Bootstrap component system for React applications",
   favicon: "img/bsui-favicon.ico",
 
-  // plugins: ["@docusaurus/theme-live-codeblock"],
-
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
@@ -92,13 +90,8 @@ const config = {
             position: "left",
           },
           {
-            to: "/docs/components/alert",
+            to: "/docs/components/accordion",
             label: "Components",
-            position: "left",
-          },
-          {
-            href: "https://promethey.github.io/bsui/storybook/",
-            label: "Storybook",
             position: "left",
           },
           {
@@ -108,13 +101,21 @@ const config = {
           },
           {
             href: "https://github.com/promethey/bsui",
-            label: "GitHub",
             position: "right",
+            className: "header-github-link",
+            "aria-label": "GitHub repository",
           },
           {
             href: "https://www.npmjs.com/package/@promethey/bsui",
-            label: "npm",
             position: "right",
+            className: "header-npm-link",
+            "aria-label": "NPM package",
+          },
+          {
+            href: "https://promethey.github.io/bsui/storybook",
+            position: "right",
+            className: "header-storybook-link",
+            "aria-label": "Storybook",
           },
         ],
       },
