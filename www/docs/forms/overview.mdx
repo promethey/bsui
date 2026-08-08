@@ -20,7 +20,7 @@ import { Form } from "@promethey/bsui";
 >
 > `Form` inherits all utility props supported by the `Prime` component, including spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
 
-# Basic Usage
+## Basic usage
 
 A basic form can combine labels, controls, validation or help text, checkboxes, and buttons.
 
@@ -38,10 +38,12 @@ export default function BasicUsage() {
           id="emailControl"
           type="email"
           placeholder="example@email.com"
+          aria-describedby="emailHelpBlock"
         />
-        <Form.Text>We'll never share your email with anyone else.</Form.Text>
+        <Form.Text id="emailHelpBlock">
+          We'll never share your email with anyone else.
+        </Form.Text>
       </Prime>
-
       <Prime mb={3}>
         <Form.Label htmlFor="passwordControl">Password</Form.Label>
         <Form.Control id="passwordControl" type="password" />
