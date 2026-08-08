@@ -10,40 +10,40 @@ The `Control` component provides styled form controls based on Bootstrap's form-
 ## Import
 
 ```jsx
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 ```
 
 > **Note**
 >
 > `Badge` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
 
-## Basic Usage
+## Basic usage
 
 ```jsx live
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Basic() {
-  return <Control placeholder="Enter your name" />;
+  return <Form.Control placeholder="Enter your name" />;
 }
 ```
 
-## Input Types
+## Input types
 
 Use the `type` prop to specify the native input type.
 
 ```jsx live
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Types() {
   return (
     <>
-      <Control type="text" placeholder="Text input" mb={3} />
+      <Form.Control type="text" placeholder="Text input" mb={3} />
 
-      <Control type="email" placeholder="Email input" mb={3} />
+      <Form.Control type="email" placeholder="Email input" mb={3} />
 
-      <Control type="password" placeholder="Password input" mb={3} />
+      <Form.Control type="password" placeholder="Password input" mb={3} />
 
-      <Control type="color" title="Choose a color" />
+      <Form.Control type="color" title="Choose a color" />
     </>
   );
 }
@@ -56,10 +56,12 @@ Set `as="textarea"` to render a multiline text control.
 Use the `rows` prop to control the visible number of lines.
 
 ```jsx live
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Textarea() {
-  return <Control as="textarea" rows={4} placeholder="Write a message..." />;
+  return (
+    <Form.Control as="textarea" rows={4} placeholder="Write a message..." />
+  );
 }
 ```
 
@@ -68,16 +70,16 @@ export default function Textarea() {
 Use the `size` prop to change the visual size.
 
 ```jsx live
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Sizes() {
   return (
     <>
-      <Control size="sm" placeholder="Small control" mb={3} />
+      <Form.Control size="sm" placeholder="Small control" mb={3} />
 
-      <Control placeholder="Default control" mb={3} />
+      <Form.Control placeholder="Default control" mb={3} />
 
-      <Control size="lg" placeholder="Large control" />
+      <Form.Control size="lg" placeholder="Large control" />
     </>
   );
 }
@@ -88,64 +90,64 @@ export default function Sizes() {
 Use `disabled` to prevent user interaction.
 
 ```jsx live
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Disabled() {
-  return <Control disabled value="Disabled control" />;
+  return <Form.Control disabled value="Disabled control" />;
 }
 ```
 
-## Read Only
+## Read only
 
 Use `readOnly` to display a value that cannot be edited.
 
 ```jsx live
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function ReadOnly() {
-  return <Control readOnly value="Read only value" />;
+  return <Form.Control readOnly value="Read only value" />;
 }
 ```
 
-## Plain Text
+## Plain text
 
 Use `plaintext` to display form values without the default control styling.
 
 ```jsx live
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Plaintext() {
-  return <Control plaintext value="Plain text value" readOnly />;
+  return <Form.Control plaintext value="Plain text value" readOnly />;
 }
 ```
 
-## File Input
+## File input
 
 Use `type="file"` to create a file selector.
 
 Set `multiple` to allow selecting multiple files.
 
 ```jsx live
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function File() {
-  return <Control type="file" multiple />;
+  return <Form.Control type="file" multiple />;
 }
 ```
 
-## Controlled Value
+## Controlled value
 
 Use `value` with React state to create a controlled component.
 
 ```jsx live
 import { useState } from "react";
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Controlled() {
   const [value, setValue] = useState("");
 
   return (
-    <Control
+    <Form.Control
       value={value}
       onChange={(event) => setValue(event.target.value)}
       placeholder="Controlled input"
@@ -154,28 +156,28 @@ export default function Controlled() {
 }
 ```
 
-## Default Value
+## Default value
 
 Use `defaultValue` for uncontrolled inputs.
 
 ```jsx live
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function DefaultValue() {
-  return <Control defaultValue="Initial value" />;
+  return <Form.Control defaultValue="Initial value" />;
 }
 ```
 
-## Complete Example
+## Complete example
 
 Combine different options with utility props.
 
 ```jsx live
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Complete() {
   return (
-    <Control
+    <Form.Control
       as="textarea"
       rows={5}
       placeholder="Message"
@@ -187,15 +189,15 @@ export default function Complete() {
 }
 ```
 
-## Utility Props
+## Utility props
 
 All utility props provided by `Prime` are supported.
 
 ```jsx live
-import { Control } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Utilities() {
-  return <Control bg="light" p={3} border="primary" shadow="lg" />;
+  return <Form.Control bg="light" p={3} border="primary" shadow="lg" />;
 }
 ```
 

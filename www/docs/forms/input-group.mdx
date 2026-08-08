@@ -10,43 +10,43 @@ The `InputGroup` component groups form controls and supplementary content into a
 ## Import
 
 ```jsx
-import { Control, InputGroup } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 ```
 
 > **Note**
 >
 > `InputGroup` inherits all utility props supported by the `Prime` component, including layout, spacing, typography, colors, borders, sizing, positioning, and other Bootstrap utility APIs.
 
-## Basic Usage
+## Basic usage
 
 Use `InputGroup` to combine a `Control` with supplementary content.
 
 ```jsx live
-import { Control, InputGroup } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Basic() {
   return (
-    <InputGroup>
-      <InputGroup.Text>@</InputGroup.Text>
-      <Control placeholder="Username" />
-    </InputGroup>
+    <Form.InputGroup>
+      <Form.InputGroup.Text>@</Form.InputGroup.Text>
+      <Form.Control placeholder="Username" />
+    </Form.InputGroup>
   );
 }
 ```
 
-## Text Addon
+## Text addon
 
 Use `InputGroup.Text` to render text or other content as an input group addon.
 
 ```jsx live
-import { Control, InputGroup } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function TextAddon() {
   return (
-    <InputGroup>
-      <InputGroup.Text>https://</InputGroup.Text>
-      <Control placeholder="example.com" />
-    </InputGroup>
+    <Form.InputGroup>
+      <Form.InputGroup.Text>https://</Form.InputGroup.Text>
+      <Form.Control placeholder="example.com" />
+    </Form.InputGroup>
   );
 }
 ```
@@ -54,15 +54,15 @@ export default function TextAddon() {
 `InputGroup.Text` can contain text, icons, or other React content.
 
 ```jsx live
-import { Control, InputGroup } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Content() {
   return (
-    <InputGroup>
-      <InputGroup.Text>$</InputGroup.Text>
-      <Control type="number" placeholder="Amount" />
-      <InputGroup.Text>.00</InputGroup.Text>
-    </InputGroup>
+    <Form.InputGroup>
+      <Form.InputGroup.Text>$</Form.InputGroup.Text>
+      <Form.Control type="number" placeholder="Amount" />
+      <Form.InputGroup.Text>.00</Form.InputGroup.Text>
+    </Form.InputGroup>
   );
 }
 ```
@@ -72,15 +72,15 @@ export default function Content() {
 An input group can contain multiple controls and addons.
 
 ```jsx live
-import { Control, InputGroup } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Multiple() {
   return (
-    <InputGroup>
-      <InputGroup.Text>First and last name</InputGroup.Text>
-      <Control placeholder="First name" />
-      <Control placeholder="Last name" />
-    </InputGroup>
+    <Form.InputGroup>
+      <Form.InputGroup.Text>First and last name</Form.InputGroup.Text>
+      <Form.Control placeholder="First name" />
+      <Form.Control placeholder="Last name" />
+    </Form.InputGroup>
   );
 }
 ```
@@ -97,14 +97,14 @@ Supported values are:
 ### Small
 
 ```jsx live
-import { Control, InputGroup } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Small() {
   return (
-    <InputGroup size="sm">
-      <InputGroup.Text>@</InputGroup.Text>
-      <Control placeholder="Username" />
-    </InputGroup>
+    <Form.InputGroup size="sm">
+      <Form.InputGroup.Text>@</Form.InputGroup.Text>
+      <Form.Control placeholder="Username" />
+    </Form.InputGroup>
   );
 }
 ```
@@ -112,14 +112,14 @@ export default function Small() {
 ### Large
 
 ```jsx live
-import { Control, InputGroup } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Large() {
   return (
-    <InputGroup size="lg">
-      <InputGroup.Text>@</InputGroup.Text>
-      <Control placeholder="Username" />
-    </InputGroup>
+    <Form.InputGroup size="lg">
+      <Form.InputGroup.Text>@</Form.InputGroup.Text>
+      <Form.Control placeholder="Username" />
+    </Form.InputGroup>
   );
 }
 ```
@@ -129,31 +129,55 @@ export default function Large() {
 `InputGroup` can be combined with other BSUI components such as `Button`.
 
 ```jsx live
-import { Button, Control, InputGroup } from "@promethey/bsui";
+import { Form, Button } from "@promethey/bsui";
 
 export default function ButtonGroup() {
   return (
-    <InputGroup>
-      <Control placeholder="Search..." />
+    <Form.InputGroup>
+      <Form.Control placeholder="Search..." />
       <Button tone="primary">Search</Button>
-    </InputGroup>
+    </Form.InputGroup>
   );
 }
 ```
 
-## Utility Props
+## Controlled
+
+`Control` can be used as a controlled input inside an `InputGroup`.
+
+```jsx live
+import { useState } from "react";
+import { Form } from "@promethey/bsui";
+
+export default function Controlled() {
+  const [value, setValue] = useState("");
+
+  return (
+    <Form.InputGroup>
+      <Form.InputGroup.Text>Search</Form.InputGroup.Text>
+      <Form.Control
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+        placeholder="Search..."
+      />
+    </Form.InputGroup>
+  );
+}
+```
+
+## Utility props
 
 `InputGroup` inherits all utility props provided by `Prime`.
 
 ```jsx live
-import { Control, InputGroup } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Utilities() {
   return (
-    <InputGroup mt={3} shadow="sm" rounded={2}>
-      <InputGroup.Text>Search</InputGroup.Text>
-      <Control placeholder="Enter a search term" />
-    </InputGroup>
+    <Form.InputGroup mt={3} shadow="sm" rounded={2}>
+      <Form.InputGroup.Text>Search</Form.InputGroup.Text>
+      <Form.Control placeholder="Enter a search term" />
+    </Form.InputGroup>
   );
 }
 ```
@@ -161,57 +185,16 @@ export default function Utilities() {
 `InputGroup.Text` also supports the utility props provided by `Prime`.
 
 ```jsx live
-import { Control, InputGroup } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function TextUtilities() {
   return (
-    <InputGroup>
-      <InputGroup.Text fw="bold" px={3}>
+    <Form.InputGroup>
+      <Form.InputGroup.Text fw="bolder" px={3}>
         $
-      </InputGroup.Text>
-      <Control type="number" placeholder="Amount" />
-    </InputGroup>
-  );
-}
-```
-
-## Textarea
-
-Use the `as="textarea"` prop of `Control` to create a multiline input.
-
-```jsx live
-import { Control, InputGroup } from "@promethey/bsui";
-
-export default function Textarea() {
-  return (
-    <InputGroup>
-      <InputGroup.Text>Message</InputGroup.Text>
-      <Control as="textarea" rows={3} placeholder="Enter your message..." />
-    </InputGroup>
-  );
-}
-```
-
-## Controlled Input
-
-`Control` can be used as a controlled input inside an `InputGroup`.
-
-```jsx live
-import { useState } from "react";
-import { Control, InputGroup } from "@promethey/bsui";
-
-export default function Controlled() {
-  const [value, setValue] = useState("");
-
-  return (
-    <InputGroup>
-      <InputGroup.Text>Search</InputGroup.Text>
-      <Control
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-        placeholder="Search..."
-      />
-    </InputGroup>
+      </Form.InputGroup.Text>
+      <Form.Control type="number" placeholder="Amount" />
+    </Form.InputGroup>
   );
 }
 ```

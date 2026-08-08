@@ -1,9 +1,9 @@
 // @ts-nocheck
-import { Control, Prime } from "components";
+import { Form, Prime } from "components";
 
 export default {
   title: "Form/Control",
-  component: Control,
+  component: Form.Control,
   subcomponents: {
     Prime,
   },
@@ -17,28 +17,34 @@ export default {
 };
 
 export function Default() {
-  return <Control placeholder="Form control" placeholder="name@example.com" />;
+  return (
+    <Form.Control placeholder="Form control" placeholder="name@example.com" />
+  );
 }
 
 export function Textarea() {
-  return <Control as="textarea" rows={3} />;
+  return <Form.Control as="textarea" rows={3} />;
 }
 
 export function Sizing() {
   const examples = ["lg", false, "sm"];
 
   return examples.map((example) => (
-    <Control size={example} placeholder={`.form-control-${example}`} mb={3} />
+    <Form.Control
+      size={example}
+      placeholder={`.form-control-${example}`}
+      mb={3}
+    />
   ));
 }
 
 export function Disabled() {
-  return <Control placeholder="Disabled input" disabled />;
+  return <Form.Control placeholder="Disabled input" disabled />;
 }
 
 export function Readonly() {
   return (
-    <Control
+    <Form.Control
       placeholder="Disabled input"
       value="Disabled readonly input"
       disabled
@@ -48,21 +54,23 @@ export function Readonly() {
 }
 
 export function Plaintext() {
-  return <Control plaintext value="email@example.com" readOnly />;
+  return <Form.Control plaintext value="email@example.com" readOnly />;
 }
 
 export function File() {
   return (
     <>
-      <Control type="file" mb={3} />
-      <Control type="file" multiple mb={3} />
-      <Control type="file" disabled mb={3} />
-      <Control type="file" size="sm" mb={3} />
-      <Control type="file" size="lg" />
+      <Form.Control type="file" mb={3} />
+      <Form.Control type="file" multiple mb={3} />
+      <Form.Control type="file" disabled mb={3} />
+      <Form.Control type="file" size="sm" mb={3} />
+      <Form.Control type="file" size="lg" />
     </>
   );
 }
 
 export function Color() {
-  return <Control type="color" value="#563d7c" title="Choose your color" />;
+  return (
+    <Form.Control type="color" value="#563d7c" title="Choose your color" />
+  );
 }

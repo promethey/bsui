@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Check, Prime } from "../src/components";
+import { Form, Prime } from "../src/components";
 
 export default {
   title: "Form/Check",
-  component: Check,
+  component: Form.Check,
   subcomponents: {
-    "Check.Label": Check.Label,
-    "Check.Input": Check.Input,
+    "Check.Label": Form.Check.Label,
+    "Check.Input": Form.Check.Input,
     Prime,
   },
   parameters: {
@@ -23,7 +23,7 @@ export function Default() {
   const [checked, setChecked] = useState(false);
 
   return (
-    <Check
+    <Form.Check
       id="flexDefault"
       label="Default checkbox"
       checked={checked}
@@ -34,15 +34,15 @@ export function Default() {
 
 export function Checked() {
   return (
-    <Check id="flexCheckChecked" label="Default checkbox" defaultChecked />
+    <Form.Check id="flexCheckChecked" label="Default checkbox" defaultChecked />
   );
 }
 
 export function Disabled() {
   return (
     <>
-      <Check id="flexCheckDisabled" label="Disabled checkbox" disabled />
-      <Check
+      <Form.Check id="flexCheckDisabled" label="Disabled checkbox" disabled />
+      <Form.Check
         id="flexCheckCheckedDisabled"
         label="Disabled checked checkbox"
         checked
@@ -55,14 +55,14 @@ export function Disabled() {
 export function Radios() {
   return (
     <>
-      <Check
+      <Form.Check
         id="flexRadioDefault1"
         type="radio"
         name="ratio_example"
         label="Default radio"
         defaultChecked
       />
-      <Check
+      <Form.Check
         id="flexRadioDefault2"
         type="radio"
         name="ratio_example"
@@ -75,7 +75,7 @@ export function Radios() {
 export function RadiosDisabled() {
   return (
     <>
-      <Check
+      <Form.Check
         id="flexRadioDisabled"
         type="radio"
         name="ratio_example_disabled"
@@ -83,7 +83,7 @@ export function RadiosDisabled() {
         defaultChecked
         disabled
       />
-      <Check
+      <Form.Check
         id="flexRadioCheckedDisabled"
         type="radio"
         name="ratio_example_disabled"
@@ -98,24 +98,24 @@ RadiosDisabled.storyName = "Radios disabled";
 export function Switch() {
   return (
     <>
-      <Check
+      <Form.Check
         type="switch"
         id="flexSwitchCheckDefault"
         label="Default switch checkbox input"
       />
-      <Check
+      <Form.Check
         type="switch"
         id="flexSwitchCheckChecked"
         label="Checked switch checkbox input"
         defaultChecked
       />
-      <Check
+      <Form.Check
         type="switch"
         id="flexSwitchCheckDisabled"
         label="Disabled switch checkbox input"
         disabled
       />
-      <Check
+      <Form.Check
         type="switch"
         id="flexSwitchCheckCheckedDisabled"
         label="Disabled checked switch checkbox input"
@@ -130,9 +130,9 @@ export function Inline() {
   return (
     <>
       <Prime mb={2}>
-        <Check id="inlineCheckbox1" label="1" value="option1" inline />
-        <Check id="inlineCheckbox1" label="2" value="option2" inline />
-        <Check
+        <Form.Check id="inlineCheckbox1" label="1" value="option1" inline />
+        <Form.Check id="inlineCheckbox1" label="2" value="option2" inline />
+        <Form.Check
           id="inlineCheckbox1"
           label="3 (disabled)"
           value="option3"
@@ -141,7 +141,7 @@ export function Inline() {
         />
       </Prime>
       <Prime>
-        <Check
+        <Form.Check
           type="radio"
           id="inlineCheckbox1"
           label="1"
@@ -149,7 +149,7 @@ export function Inline() {
           inline
           name="inlineRadioOptions"
         />
-        <Check
+        <Form.Check
           type="radio"
           id="inlineCheckbox1"
           label="2"
@@ -157,7 +157,7 @@ export function Inline() {
           inline
           name="inlineRadioOptions"
         />
-        <Check
+        <Form.Check
           type="radio"
           id="inlineCheckbox1"
           label="3 (disabled)"

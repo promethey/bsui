@@ -1,8 +1,8 @@
-import { Control, Label, Prime } from "components";
+import { Form, Prime } from "components";
 
 export default {
   title: "Form/Label",
-  component: Label,
+  component: Form.Label,
   subcomponents: {
     Prime,
   },
@@ -16,22 +16,22 @@ export default {
 };
 
 export function Default() {
-  return <Label htmlFor="email">Email address</Label>;
+  return <Form.Label htmlFor="email">Email address</Form.Label>;
 }
 
 export function Custom() {
   return (
-    <Label htmlFor="email" className="text-primary fw-bold">
+    <Form.Label htmlFor="email" className="text-primary fw-bold">
       Email address
-    </Label>
+    </Form.Label>
   );
 }
 
 export function WithControl() {
   return (
     <Prime style={{ maxWidth: "320px" }}>
-      <Label htmlFor="email">Email address</Label>
-      <Control id="email" type="email" placeholder="name@example.com" />
+      <Form.Label htmlFor="email">Email address</Form.Label>
+      <Form.Control id="email" type="email" placeholder="name@example.com" />
     </Prime>
   );
 }

@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Select, Prime } from "../src/components";
+import { Form, Select, Prime } from "../src/components";
 
 export default {
   title: "Form/Select",
-  component: Select,
+  component: Form.Select,
   subcomponents: {
-    "Select.Option": Select.Option,
+    "Select.Option": Form.Select.Option,
     Prime,
   },
   parameters: {
@@ -20,34 +20,34 @@ export default {
 
 export function Default() {
   return (
-    <Select>
-      <Select.Option selected>Open this select menu</Select.Option>
-      <Select.Option value={1}>One</Select.Option>
-      <Select.Option value={2}>Two</Select.Option>
-      <Select.Option value={3}>Three</Select.Option>
-    </Select>
+    <Form.Select>
+      <Form.Select.Option selected>Open this select menu</Form.Select.Option>
+      <Form.Select.Option value={1}>One</Form.Select.Option>
+      <Form.Select.Option value={2}>Two</Form.Select.Option>
+      <Form.Select.Option value={3}>Three</Form.Select.Option>
+    </Form.Select>
   );
 }
 
 export function Small() {
   return (
-    <Select size="sm">
-      <Select.Option selected>Open this select menu</Select.Option>
-      <Select.Option value={1}>One</Select.Option>
-      <Select.Option value={2}>Two</Select.Option>
-      <Select.Option value={3}>Three</Select.Option>
-    </Select>
+    <Form.Select size="sm">
+      <Form.Select.Option selected>Open this select menu</Form.Select.Option>
+      <Form.Select.Option value={1}>One</Form.Select.Option>
+      <Form.Select.Option value={2}>Two</Form.Select.Option>
+      <Form.Select.Option value={3}>Three</Form.Select.Option>
+    </Form.Select>
   );
 }
 
 export function Large() {
   return (
-    <Select size="lg">
-      <Select.Option selected>Open this select menu</Select.Option>
-      <Select.Option value={1}>One</Select.Option>
-      <Select.Option value={2}>Two</Select.Option>
-      <Select.Option value={3}>Three</Select.Option>
-    </Select>
+    <Form.Select size="lg">
+      <Form.Select.Option selected>Open this select menu</Form.Select.Option>
+      <Form.Select.Option value={1}>One</Form.Select.Option>
+      <Form.Select.Option value={2}>Two</Form.Select.Option>
+      <Form.Select.Option value={3}>Three</Form.Select.Option>
+    </Form.Select>
   );
 }
 
@@ -64,16 +64,16 @@ export function Multiple() {
 
   return (
     <>
-      <Select
+      <Form.Select
         value={value}
         onChange={handleChange}
         multiple
         visibleOptions={3}
         required>
-        <Select.Option value="1">One</Select.Option>
-        <Select.Option value="2">Two</Select.Option>
-        <Select.Option value="3">Three</Select.Option>
-      </Select>
+        <Form.Select.Option value="1">One</Form.Select.Option>
+        <Form.Select.Option value="2">Two</Form.Select.Option>
+        <Form.Select.Option value="3">Three</Form.Select.Option>
+      </Form.Select>
       <Prime mt={2}>Selected values: {value}</Prime>
     </>
   );
@@ -81,11 +81,11 @@ export function Multiple() {
 
 export function Disabled() {
   return (
-    <Select disabled>
-      <Select.Option selected>Open this select menu</Select.Option>
-      <Select.Option value={1}>One</Select.Option>
-      <Select.Option value={2}>Two</Select.Option>
-      <Select.Option value={3}>Three</Select.Option>
-    </Select>
+    <Form.Select disabled>
+      <Form.Select.Option selected>Open this select menu</Form.Select.Option>
+      <Form.Select.Option value={1}>One</Form.Select.Option>
+      <Form.Select.Option value={2}>Two</Form.Select.Option>
+      <Form.Select.Option value={3}>Three</Form.Select.Option>
+    </Form.Select>
   );
 }

@@ -10,95 +10,95 @@ The `Label` component renders a Bootstrap-styled form label and associates it wi
 ## Import
 
 ```jsx
-import { Control, Label } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 ```
 
 > **Note**
 >
 > `Label` inherits all utility props supported by the `Prime` component, including spacing, typography, colors, positioning, and other Bootstrap utility APIs.
 
-## Basic Usage
+## Basic usage
 
 Use `htmlFor` to associate the label with a form control. The value must match the `id` of the corresponding control.
 
 ```jsx live
-import { Control, Label } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Basic() {
   return (
-    <div>
-      <Label htmlFor="email">Email address</Label>
-      <Control id="email" type="email" placeholder="name@example.com" />
-    </div>
+    <>
+      <Form.Label htmlFor="email">Email address</Form.Label>
+      <Form.Control id="email" type="email" placeholder="name@example.com" />
+    </>
   );
 }
 ```
 
 Clicking the label focuses the associated control.
 
-## Form Example
+## Form example
 
 `Label` can be used together with other BSUI form components to build consistent forms.
 
 ```jsx live
-import { Control, Label } from "@promethey/bsui";
+import { Form, Prime } from "@promethey/bsui";
 
 export default function Form() {
   return (
-    <div>
-      <div className="mb-3">
-        <Label htmlFor="first-name">First name</Label>
-        <Control id="first-name" placeholder="John" />
-      </div>
+    <>
+      <Prime mb={3}>
+        <Form.Label htmlFor="first-name">First name</Form.Label>
+        <Form.Control id="first-name" placeholder="John" />
+      </Prime>
 
-      <div className="mb-3">
-        <Label htmlFor="last-name">Last name</Label>
-        <Control id="last-name" placeholder="Doe" />
-      </div>
+      <Prime mb={3}>
+        <Form.Label htmlFor="last-name">Last name</Form.Label>
+        <Form.Control id="last-name" placeholder="Doe" />
+      </Prime>
 
-      <div>
-        <Label htmlFor="email">Email address</Label>
-        <Control id="email" type="email" placeholder="john@example.com" />
-      </div>
-    </div>
+      <>
+        <Form.Label htmlFor="email">Email address</Form.Label>
+        <Form.Control id="email" type="email" placeholder="john@example.com" />
+      </>
+    </>
   );
 }
 ```
 
-## Required Field
+## Required field
 
 `Label` does not provide validation behavior itself, but its content can include additional elements such as a required indicator.
 
 ```jsx live
-import { Control, Label } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Required() {
   return (
-    <div>
-      <Label htmlFor="username">
+    <>
+      <Form.Label htmlFor="username">
         Username <span aria-hidden="true">*</span>
-      </Label>
-      <Control id="username" required placeholder="Enter username" />
-    </div>
+      </Form.Label>
+      <Form.Control id="username" required placeholder="Enter username" />
+    </>
   );
 }
 ```
 
-## Utility Props
+## Utility props
 
 `Label` inherits all utility props provided by `Prime`.
 
 ```jsx live
-import { Control, Label } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Utilities() {
   return (
-    <div>
-      <Label htmlFor="styled-input" fw="bold" mb={2}>
+    <>
+      <Form.Label htmlFor="styled-input" fw="bold" mb={2}>
         Styled label
-      </Label>
-      <Control id="styled-input" placeholder="Enter a value" />
-    </div>
+      </Form.Label>
+      <Form.Control id="styled-input" placeholder="Enter a value" />
+    </>
   );
 }
 ```

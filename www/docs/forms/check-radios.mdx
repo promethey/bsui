@@ -10,7 +10,7 @@ The `Check` component provides a unified interface for rendering checkbox, radio
 ## Import
 
 ```jsx
-import { Check } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 ```
 
 > **Note**
@@ -20,10 +20,10 @@ import { Check } from "@promethey/bsui";
 ## Basic Usage
 
 ```jsx live
-import { Check } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Basic() {
-  return <Check label="Default checkbox" />;
+  return <Form.Check label="Default checkbox" />;
 }
 ```
 
@@ -32,31 +32,31 @@ export default function Basic() {
 The default `type` is `checkbox`.
 
 ```jsx live
-import { Check } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Checkbox() {
   return (
     <>
-      <Check label="Option one" />
-      <Check label="Option two" />
-      <Check label="Option three" />
+      <Form.Check label="Option one" />
+      <Form.Check label="Option two" />
+      <Form.Check label="Option three" />
     </>
   );
 }
 ```
 
-## Checked State
+## Checked
 
 Use `defaultChecked` to define the initial checked state.
 
 ```jsx live
-import { Check } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Checked() {
   return (
     <>
-      <Check label="Unchecked checkbox" />
-      <Check label="Checked checkbox" defaultChecked />
+      <Form.Check label="Unchecked checkbox" />
+      <Form.Check label="Checked checkbox" defaultChecked />
     </>
   );
 }
@@ -67,14 +67,19 @@ export default function Checked() {
 Use `type="radio"` for mutually exclusive options.
 
 ```jsx live
-import { Check } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Radio() {
   return (
     <>
-      <Check type="radio" name="options" label="First option" defaultChecked />
-      <Check type="radio" name="options" label="Second option" />
-      <Check type="radio" name="options" label="Third option" />
+      <Form.Check
+        type="radio"
+        name="options"
+        label="First option"
+        defaultChecked
+      />
+      <Form.Check type="radio" name="options" label="Second option" />
+      <Form.Check type="radio" name="options" label="Third option" />
     </>
   );
 }
@@ -85,13 +90,13 @@ export default function Radio() {
 Use `type="switch"` to render a Bootstrap switch control.
 
 ```jsx live
-import { Check } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Switch() {
   return (
     <>
-      <Check type="switch" label="Enable notifications" />
-      <Check type="switch" label="Dark mode" defaultChecked />
+      <Form.Check type="switch" label="Enable notifications" />
+      <Form.Check type="switch" label="Dark mode" defaultChecked />
     </>
   );
 }
@@ -102,13 +107,13 @@ export default function Switch() {
 Use the `disabled` prop to prevent user interaction.
 
 ```jsx live
-import { Check } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Disabled() {
   return (
     <>
-      <Check label="Disabled checkbox" disabled />
-      <Check label="Disabled checked checkbox" disabled defaultChecked />
+      <Form.Check label="Disabled checkbox" disabled />
+      <Form.Check label="Disabled checked checkbox" disabled defaultChecked />
     </>
   );
 }
@@ -119,14 +124,14 @@ export default function Disabled() {
 Use the `inline` prop to display controls horizontally.
 
 ```jsx live
-import { Check } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Inline() {
   return (
     <>
-      <Check inline label="First" />
-      <Check inline label="Second" />
-      <Check inline label="Third" />
+      <Form.Check inline label="First" />
+      <Form.Check inline label="Second" />
+      <Form.Check inline label="Third" />
     </>
   );
 }
@@ -138,13 +143,13 @@ Use `checked` and `onChange` for controlled components.
 
 ```jsx live
 import { useState } from "react";
-import { Check } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Controlled() {
   const [checked, setChecked] = useState(false);
 
   return (
-    <Check
+    <Form.Check
       label={checked ? "Enabled" : "Disabled"}
       checked={checked}
       onChange={(event) => setChecked(event.target.checked)}
@@ -153,27 +158,29 @@ export default function Controlled() {
 }
 ```
 
-## Custom Value
+## Custom value
 
 Use the `value` prop to specify the submitted form value.
 
 ```jsx live
-import { Check } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Value() {
-  return <Check label="Accept terms" value="accepted" />;
+  return <Form.Check label="Accept terms" value="accepted" />;
 }
 ```
 
-## Utility Props
+## Utility props
 
 All utility props provided by `Prime` are supported.
 
 ```jsx live
-import { Check } from "@promethey/bsui";
+import { Form } from "@promethey/bsui";
 
 export default function Utilities() {
-  return <Check label="Styled checkbox" p={3} shadow="sm" rounded={2} mt={3} />;
+  return (
+    <Form.Check label="Styled checkbox" p={3} shadow="sm" rounded={2} mt={3} />
+  );
 }
 ```
 
