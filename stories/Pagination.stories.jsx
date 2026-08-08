@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Pagination, Prime, Select } from "../src/components";
+import { Pagination, Prime, Form } from "../src/components";
 
 export default {
   title: "Components/Pagination",
@@ -115,14 +115,16 @@ export function Alignment() {
         ))}
         <Pagination.Item>Next</Pagination.Item>
       </Pagination>
-      <Select
+      <Form.Select
         defaultValue="center"
         onChange={handleAlignChange}
         style={{ maxWidth: "140px" }}>
         {jc.map((justifyContent) => (
-          <Select.Option value={justifyContent}>{justifyContent}</Select.Option>
+          <Form.Select.Option value={justifyContent}>
+            {justifyContent}
+          </Form.Select.Option>
         ))}
-      </Select>
+      </Form.Select>
     </>
   );
 }

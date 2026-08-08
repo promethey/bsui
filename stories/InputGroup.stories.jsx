@@ -1,14 +1,5 @@
 import { useState } from "react";
-import {
-  Form,
-  InputGroup,
-  Control,
-  Prime,
-  Check,
-  Button,
-  Dropdown,
-  Select,
-} from "../src/components";
+import { Form, Prime, Button, Dropdown } from "../src/components";
 
 export default {
   title: "Form/InputGroup",

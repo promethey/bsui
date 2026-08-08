@@ -1,4 +1,4 @@
-import { Form, FloatingLabel, Control, Prime, Select } from "../src/components";
+import { Form, Prime } from "../src/components";
 
 export default {
   title: "Form/FloatingLabel",

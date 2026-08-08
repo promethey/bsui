@@ -1,14 +1,12 @@
 import PropTypes from "prop-types";
 import { Prime } from "components";
-import {
-  Label,
-  Control,
-  Check,
-  Range,
-  Select,
-  FloatingLabel,
-  InputGroup,
-} from "components";
+import Label from "../Label";
+import Control from "../Control";
+import Check from "../Check";
+import Range from "../Range";
+import Select from "../Select";
+import FloatingLabel from "../FloatingLabel";
+import InputGroup from "../InputGroup";
 import FormText from "../FormText";
 
 const propTypes = {

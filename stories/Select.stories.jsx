@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Select, Prime } from "../src/components";
+import { Form, Prime } from "../src/components";
 
 export default {
   title: "Form/Select",

@@ -4,7 +4,7 @@ import {
   Prime,
   Dropdown,
   Nav,
-  Control,
+  Form,
   Button,
 } from "../src/components";
 
@@ -50,7 +50,7 @@ export function Default() {
             <Nav.Link disabled>Disabled</Nav.Link>
           </Navbar.Nav>
           <Prime as="form" d="flex">
-            <Control placeholder="Search" />
+            <Form.Control placeholder="Search" />
             <Button tone="success" outline ms={2}>
               Search
             </Button>
