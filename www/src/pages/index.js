@@ -3,7 +3,7 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
-import HomepageHighlight from "@site/src/components/HomepageHighlight";
+import HomepageExample from "@site/src/components/HomepageExample";
 import CodeBlock from "@theme/CodeBlock";
 import Heading from "@theme/Heading";
 import styles from "./index.module.css";
@@ -54,27 +54,8 @@ export default function Home() {
       description="Build Bootstrap 5 applications with React components, utility props, Storybook, Sandpack examples, and JSDoc-powered IntelliSense.">
       <HomepageHeader />
       <main>
+        <HomepageExample />
         <HomepageFeatures />
-        <HomepageHighlight
-          Svg="img/storybook.svg"
-          title="Storybook Integration"
-          description="Explore components interactively with isolated examples, variants, and states."
-          background="linear-gradient(45deg, #dc2626, #ffffff)"
-        />
-        <div style={{ margin: "2px 0" }} />
-        <HomepageHighlight
-          Svg="img/js.svg"
-          title="JSDoc IntelliSense"
-          description="Get autocomplete, prop hints, and API documentation without TypeScript."
-          background="linear-gradient(45deg, #f59e0b, #ffffff)"
-        />
-        <div style={{ margin: "2px 0" }} />
-        <HomepageHighlight
-          Svg="img/codesandbox.svg"
-          title="Sandpack Examples"
-          description="Run and edit React examples directly inside the documentation."
-          background="linear-gradient(45deg, #6366f1, #ffffff)"
-        />
       </main>
     </Layout>
   );
