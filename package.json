@@ -46,16 +46,7 @@
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-fade": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
-    "react-transition-group": "^4.4.5",
-    "@codesandbox/sandpack-react": "^2.20.0",
-    "@docusaurus/core": "3.10.2",
-    "@docusaurus/faster": "3.10.2",
-    "@docusaurus/preset-classic": "3.10.2",
-    "@docusaurus/theme-live-codeblock": "^3.10.2",
-    "@mdx-js/react": "^3.0.0",
-    "clsx": "^2.0.0",
-    "prettier": "^3.9.6",
-    "prism-react-renderer": "^2.3.0"
+    "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
@@ -93,7 +84,16 @@
     "webpack-bundle-analyzer": "^5.3.0",
     "webpack-cli": "^6.0.1",
     "@docusaurus/module-type-aliases": "3.10.2",
-    "@docusaurus/types": "3.10.2"
+    "@docusaurus/types": "3.10.2",
+    "@codesandbox/sandpack-react": "^2.20.0",
+    "@docusaurus/core": "3.10.2",
+    "@docusaurus/faster": "3.10.2",
+    "@docusaurus/preset-classic": "3.10.2",
+    "@docusaurus/theme-live-codeblock": "^3.10.2",
+    "@mdx-js/react": "^3.0.0",
+    "clsx": "^2.0.0",
+    "prettier": "^3.9.6",
+    "prism-react-renderer": "^2.3.0"
   },
   "scripts": {
     "test": "vitest",
